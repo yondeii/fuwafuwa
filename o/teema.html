@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="modechange">
-<a href="/index">🏠</a>
+<a href="/">🏠</a>
 |
 <span style="text-decoration:underline"><a>小説図書館</a></span>
 |
@@ -24,9 +24,12 @@
 <div class="pagination">
 <p><strong>テーマ</strong></p>
 </div>
+<div class="pagination">
+<p><input type="text" id="myInput" onkeyup="myFunction()" placeholder=" theme search" title="Type in a name"></p>
+</div>
 
 <div class="outer-grid2">
-<ul>
+<ul id="myUL">
 <li><a href="/s/s001">CROSS NOVELS</a></li>
 <li><a href="/s/s002">DTP</a></li>
 <li><a href="/s/s003">GA文庫</a></li>
@@ -470,4 +473,22 @@
 </ul>
 </div>
 <div class="spacer"></div>
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
 </body></html>
