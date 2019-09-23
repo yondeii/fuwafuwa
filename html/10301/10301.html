@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>速習ECMAScript6: 次世代の標準JavaScriptを今すぐマスター！</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/mainday.css" title="default">
+<link rel="alternate stylesheet" href="/css/mainnight.css" title="alternate">
+<script type="text/javascript" src="/js/styleswitcher.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+</head>
+<body>
+<div class="novelpage">
+<div class="novelbody">
+<div id="tateyoko">
+<div id="_top"></div>
+<a href="/">🏠</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('default'); return false;">日</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">月</a>&emsp;
+<a href="#_top" onclick="myFunction()" style="cursor: pointer;">縦書き／横書き</a>
+<div id="calibre_link-4">
+<div>
+<div>
+<table class="noveltitle">
+<tr>
+<td colspan="2"><i><span><i>速習ECMAScript6: 次世代の標準JavaScriptを今すぐマスター！</i></span></i></td>
+</tr>
+<tr>
+                    
+                    
+      </tr>
+<tr>
+<td colspan="2">山田祥寛</td>
+</tr>
+<tr>
+<td colspan="2">WingsProject (2015)</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+</tr>
+</table>
+<div></div>
+</div>
+<div>
+<p>EcmaScript6</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="calibre_link-8">
+<nav id="calibre_link-92" {http://www.idpf.org/2007/ops}type="toc">
+<h1 id="calibre_link-93"><b>目次</b></h1>
+<ol>
+<li id="calibre_link-94" value="1"><a href="#calibre_link-9">Part1 はじめに</a><ol>
+<li id="calibre_link-95" value="1"><a href="#calibre_link-10"> ECMAScript 6とは？</a></li>
+<li id="calibre_link-96" value="2"><a href="#calibre_link-11"> ECMAScript 6を利用するには？</a></li>
+<li id="calibre_link-97" value="3"><a href="#calibre_link-12"> Babelの導入方法</a><ol>
+<li id="calibre_link-98" value="1"><a href="#calibre_link-13">  コードを手動で変換する</a><ol>
+<li id="calibre_link-99" value="1"><a href="#calibre_link-14">  ［1］Node.jsをインストールする</a></li>
+<li id="calibre_link-100" value="2"><a href="#calibre_link-15">  ［2］Babelをインストールする</a></li>
+<li id="calibre_link-101" value="3"><a href="#calibre_link-16">  ［3］BabelでECMAScript 6のコードをトランスコンパイル＆実行する</a></li>
+<li id="calibre_link-102" value="4"><a href="#calibre_link-17">  ［4］Polifilライブラリを有効化する</a></li>
+</ol>
+</li>
+<li id="calibre_link-103" value="2"><a href="#calibre_link-18">  Grunt経由でBabelを実行する</a><ol>
+<li id="calibre_link-104" value="1"><a href="#calibre_link-19">  ［1］grunt-babelをインストールする</a></li>
+<li id="calibre_link-105" value="2"><a href="#calibre_link-20">  ［2］Gruntfile.js（設定ファイル）を準備する</a></li>
+<li id="calibre_link-106" value="3"><a href="#calibre_link-21">  ［3］変換処理を実施する</a></li>
+</ol>
+</li>
+<li id="calibre_link-107" value="3"><a href="#calibre_link-22">  簡易インタプリターを利用する</a></li>
+</ol>
+</li>
+<li id="calibre_link-108" value="4"><a href="#calibre_link-23"> 対象読者</a></li>
+</ol>
+</li>
+<li id="calibre_link-109" value="2"><a href="#calibre_link-24">Part2 基本構文</a><ol>
+<li id="calibre_link-110" value="1"><a href="#calibre_link-25"> ブロックスコープを有効にする - let命令</a></li>
+<li id="calibre_link-111" value="2"><a href="#calibre_link-26"> 定数を宣言する - const命令</a></li>
+<li id="calibre_link-112" value="3"><a href="#calibre_link-27"> 整数リテラルの表現力を改善する - 2進数／8進数リテラル</a></li>
+<li id="calibre_link-113" value="4"><a href="#calibre_link-28"> 文字列リテラルへの変数／改行の埋め込みを可能にする - テンプレート文字列</a><ol>
+<li id="calibre_link-114" value="1"><a href="#calibre_link-29">  テンプレート文字列をアプリ仕様に加工する - タグ付きテンプレート文字列</a></li>
+</ol>
+</li>
+<li id="calibre_link-115" value="5"><a href="#calibre_link-30"> 新たなデータ型Symbolとは？</a><ol>
+<li id="calibre_link-116" value="1"><a href="#calibre_link-31">  シンボルの用法</a><ol>
+<li id="calibre_link-117" value="1"><a href="#calibre_link-32">  （1）定数の値として利用する</a></li>
+<li id="calibre_link-118" value="2"><a href="#calibre_link-33">  （2）非公開なプロパティを定義する</a></li>
+</ol>
+</li>
+</ol>
+</li>
+<li id="calibre_link-119" value="6"><a href="#calibre_link-34"> 配列／オブジェクトから個々の要素を抽出する - 分割代入</a><ol>
+<li id="calibre_link-120" value="1"><a href="#calibre_link-35">  分割代入の使い方</a><ol>
+<li id="calibre_link-121" value="1"><a href="#calibre_link-36">  （1）関数（メソッド）から複数の値を返したい</a></li>
+<li id="calibre_link-122" value="2"><a href="#calibre_link-37">  （2）変数の値を入れ替える</a></li>
+<li id="calibre_link-123" value="3"><a href="#calibre_link-38">  （3）名前付き引数を指定する</a></li>
+<li id="calibre_link-124" value="4"><a href="#calibre_link-39">  （4）正規表現でマッチした部分文字列を抽出する</a></li>
+</ol>
+</li>
+</ol>
+</li>
+<li id="calibre_link-125" value="7"><a href="#calibre_link-40"> 配列を個々の変数に展開する - 展開演算子</a></li>
+<li id="calibre_link-126" value="8"><a href="#calibre_link-41"> 配列など反復可能なオブジェクトを列挙する - for...of命令</a></li>
+</ol>
+</li>
+<li id="calibre_link-127" value="3"><a href="#calibre_link-42">Part3 関数</a><ol>
+<li id="calibre_link-128" value="1"><a href="#calibre_link-43"> 引数のデフォルト値を宣言する</a><ol>
+<li id="calibre_link-129" value="1"><a href="#calibre_link-44">  補足：必須パラメーターの表現</a></li>
+</ol>
+</li>
+<li id="calibre_link-130" value="2"><a href="#calibre_link-45"> 可変長引数を利用する</a></li>
+<li id="calibre_link-131" value="3"><a href="#calibre_link-46"> 関数リテラルをシンプルに記述する - アロー関数</a><ol>
+<li id="calibre_link-132" value="1"><a href="#calibre_link-47">  アロー関数はthisを固定する（レキシカルなthis）</a></li>
+<li id="calibre_link-133" value="2"><a href="#calibre_link-48">  注意：オブジェクトリテラルを返す時</a></li>
+</ol>
+</li>
+</ol>
+</li>
+<li id="calibre_link-134" value="4"><a href="#calibre_link-49">Part4 組み込みオブジェクト</a><ol>
+<li id="calibre_link-135" value="1"><a href="#calibre_link-50"> 非同期処理を簡便に処理する - Promiseオブジェクト</a><ol>
+<li id="calibre_link-136" value="1"><a href="#calibre_link-51">  非同期処理を連結する</a></li>
+<li id="calibre_link-137" value="2"><a href="#calibre_link-52">  複数の非同期処理を並行して実行する</a></li>
+</ol>
+</li>
+<li id="calibre_link-138" value="2"><a href="#calibre_link-53"> オブジェクトの挙動をカスタマイズする - Proxyオブジェクト</a></li>
+<li id="calibre_link-139" value="3"><a href="#calibre_link-54"> コレクション関連のオブジェクトを標準で提供 - Map／Setなど</a><ol>
+<li id="calibre_link-140" value="1"><a href="#calibre_link-55">  キー／値のセットを管理するマップ</a></li>
+<li id="calibre_link-141" value="2"><a href="#calibre_link-56">  一意な値の集合を管理するセット</a></li>
+</ol>
+</li>
+<li id="calibre_link-142" value="4"><a href="#calibre_link-57"> Unicode対応の改善</a><ol>
+<li id="calibre_link-143" value="1"><a href="#calibre_link-58">  for...of構文でもサロゲートペアを認識</a></li>
+<li id="calibre_link-144" value="2"><a href="#calibre_link-59">  Unicodeエスケープシーケンスが拡張</a></li>
+<li id="calibre_link-145" value="3"><a href="#calibre_link-60">  サロゲートペアからコードポイントを取得／設定も可能に</a></li>
+<li id="calibre_link-146" value="4"><a href="#calibre_link-61">  RegExpオブジェクトにuフラグが追加</a></li>
+</ol>
+</li>
+<li id="calibre_link-147" value="5"><a href="#calibre_link-62"> String／Array／Math／Objectなど組み込みオブジェクトのメソッドも拡充</a><ol>
+<li id="calibre_link-148" value="1"><a href="#calibre_link-63">  Stringオブジェクト</a></li>
+<li id="calibre_link-149" value="2"><a href="#calibre_link-64">  Arrayオブジェクト</a></li>
+<li id="calibre_link-150" value="3"><a href="#calibre_link-65">  Mathオブジェクト</a></li>
+<li id="calibre_link-151" value="4"><a href="#calibre_link-66">  Numberオブジェクト</a></li>
+<li id="calibre_link-152" value="5"><a href="#calibre_link-67">  RegExpオブジェクト</a></li>
+<li id="calibre_link-153" value="6"><a href="#calibre_link-68">  Objectオブジェクト</a></li>
+</ol>
+</li>
+</ol>
+</li>
+<li id="calibre_link-154" value="5"><a href="#calibre_link-69">Part5 オブジェクト指向構文</a><ol>
+<li id="calibre_link-155" value="1"><a href="#calibre_link-70"> オブジェクトリテラルをよりシンプルに表現する</a><ol>
+<li id="calibre_link-156" value="1"><a href="#calibre_link-71">  変数を同名のプロパティに設定する</a></li>
+<li id="calibre_link-157" value="2"><a href="#calibre_link-72">  メソッドを定義する</a></li>
+<li id="calibre_link-158" value="3"><a href="#calibre_link-73">  プロパティ名を動的に生成できる</a></li>
+</ol>
+</li>
+<li id="calibre_link-159" value="2"><a href="#calibre_link-74"> クラスを定義する - class命令</a><ol>
+<li id="calibre_link-160" value="1"><a href="#calibre_link-75">  匿名クラス（リテラル表現）も利用できる</a></li>
+<li id="calibre_link-161" value="2"><a href="#calibre_link-76">  静的メソッドを定義する - static修飾子</a></li>
+<li id="calibre_link-162" value="3"><a href="#calibre_link-77">  getter／setterも利用できる</a></li>
+<li id="calibre_link-163" value="4"><a href="#calibre_link-78">  既存のクラスを継承する - extendsキーワード</a></li>
+</ol>
+</li>
+<li id="calibre_link-164" value="3"><a href="#calibre_link-79"> 列挙可能なオブジェクトを定義する - イテレーター</a><ol>
+<li id="calibre_link-165" value="1"><a href="#calibre_link-80">  イテレーターを実装したクラスの準備</a></li>
+</ol>
+</li>
+<li id="calibre_link-166" value="4"><a href="#calibre_link-81"> 列挙可能なオブジェクトをより簡単に実装する - ジェネレーター</a><ol>
+<li id="calibre_link-167" value="1"><a href="#calibre_link-82">  カウントダウンするジェネレーター</a></li>
+</ol>
+</li>
+<li id="calibre_link-168" value="5"><a href="#calibre_link-83"> アプリを機能単位にまとめる - モジュール</a><ol>
+<li id="calibre_link-169" value="1"><a href="#calibre_link-84">  モジュールの内容をまるごとインポートする</a></li>
+<li id="calibre_link-170" value="2"><a href="#calibre_link-85">  デフォルトのエクスポートを宣言する</a></li>
+<li id="calibre_link-171" value="3"><a href="#calibre_link-86">  補足：ブラウザー環境で動作するには？</a></li>
+</ol>
+</li>
+</ol>
+</li>
+<li id="calibre_link-172" value="6"><a href="#calibre_link-87">書籍情報</a><ol>
+<li id="calibre_link-173" value="1"><a href="#calibre_link-88"> 著者プロフィール</a></li>
+<li id="calibre_link-174" value="2"><a href="#calibre_link-89"> 基本情報</a></li>
+<li id="calibre_link-175" value="3"><a href="#calibre_link-90"> サポートサイト</a></li>
+</ol>
+</li>
+</ol>
+</nav>
+</div>
+<div {http://www.idpf.org/2007/ops}type="frontmatter" id="calibre_link-2">
+<div id="calibre_link-176">
+<div id="calibre_link-9"><b><span><b>Part1</b></span>はじめに</b></div>
+<div id="calibre_link-10"> ECMAScript 6とは？</div>
+<p>　ECMAScriptとは、標準化団体Ecma Internationalによって標準化された言語仕様。ブラウザー上で動作するJavaScriptは、基本的に、このECMAScriptの仕様をもとに実装されています。ECMAScript 6は、2015年6月17日（現地時間）に採択された最新バージョンです。正式名称はECMAScript 2015とされていますが、これまでの経緯からECMAScript 6、ES6などと表記されることが多いので、本書でも、あえてECMAScript 6と呼ぶものとします。</p>
+<p>　ECMAScript 6で新たに提供された主な仕様には、以下のようなものがあります。</p>
+<ul><li>
+<p>class命令によるJava／C#ライクなクラス定義が可能に</p>
+</li><li>
+<p>import／export命令によるコードのモジュール化に対応</p>
+</li><li>
+<p>関数構文の改善（引数のデフォルト値、可変長引数、アロー関数など）</p>
+</li><li>
+<p>let／const命令によるブロックスコープの導入</p>
+</li><li>
+<p>for...of命令による値の列挙</p>
+</li><li>
+<p>イテレーター／ジェネレーターによる列挙可能なオブジェクトの操作が可能に</p>
+</li><li>
+<p>Promise、コレクション（Map／Set）／Proxyなどの組み込みオブジェクトを追加</p>
+</li><li>
+<p>String／Number／Array／Objectなどの既存組み込みオブジェクトの拡充 など</p>
+</li></ul>
+<p>　さまざまな機能が追加されていますね。その中でも特にclass命令の導入は画期的です。これまでJavaScriptではなにかと不便だったオブジェクト指向プログラミングが、ようやく他の言語に近い――ということは直観的な形で行えるようになったのです。</p>
+<div id="calibre_link-11"> ECMAScript 6を利用するには？</div>
+<p>　もっとも、ECMAScriptはあくまで言語仕様の取り決めにすぎません。残念ながら、現存している主なブラウザーがきちんとJavaScriptエンジンに仕様を反映させるまでには、今しばらくの時間が必要となります。</p>
+<p>　現時点での対応状況を確認するには、「ECMAScript 6 compatibility table」（http://kangax.github.io/compat-table/es6/）などのサイトが参考になるでしょう。Firefox、Chrome、Edgeなどが比較的よく対応しているのが見て取れます。</p>
+<figure><img src="images/00003.jpeg" alt="イメージ1" /></figure>
+<p><b><b><b>図：</b></b><b><b>ECMAScript 6 compatibility table</b></b></b></p>
+<div></div>
+<p>　そこで現時点でECMAScript 6を利用するためには、トランスコンパイラー／Polyfilライブラリなどのお世話になる必要があります。</p>
+<div><table><tr><td>
+<p><span><b><b>種類</b></b></span></p>
+</td><td>
+<p><span>トランスコンパイラー</span></p>
+</td><td>
+<p><span>Polyfilライブラリ</span></p>
+</td></tr><tr><td>
+<p><span><b><b>概要</b></b></span></p>
+</td><td>
+<p><span>ECMAScript6のコードをECMAScript 5のコードに変換するためのツール</span></p>
+</td><td>
+<p><span>ECMAScript6のコードを実行時にECMAScript 5に変換しながら実行するためのJavaScriptライブラリ</span></p>
+</td></tr><tr><td>
+<p><span><b><b>長所</b></b></span></p>
+</td><td>
+<p><span>変換済みのコードを実行できるので、動作は早い</span></p>
+</td><td>
+<p><span>ライブラリをインポートするだけで手軽に実行できる</span></p>
+</td></tr><tr><td>
+<p><span><b><b>短所</b></b></span></p>
+</td><td>
+<p><span>変換する手間がある</span></p>
+</td><td>
+<p><span>実行時変換なので、動作は比較的低速</span></p>
+</td></tr><tr><td>
+<p><span><b><b>例</b></b></span></p>
+</td><td>
+<p><span>Babel／traceur-compilerなど</span></p>
+</td><td>
+<p><span>browser-polyfill.js／es6-shim.jsなど</span></p>
+</td></tr></table></div>
+<p><b><b><b>表：</b></b><b><b>ECMAScript 6を利用するための選択肢</b></b></b></p>
+<p>　ただし、トランスコンパイラーでもGrunt／Gulpのようなタスクランナーを利用すれば変換処理を限りなく自動化できますので、短所がそこまでネックになることはないでしょう。</p>
+<p><b><b><b>［Note］</b></b><b><b>なぜ今、ECMAScript 6なのか？</b></b></b></p>
+<p>　標準のブラウザーで利用できないならば、まだECMAScript 6を利用するのは時期尚早なのではないか、そう考える読者の方もいるでしょう。確かに、ECMAScript 6が本格的にスタンダードになるのはすこし先の話です。</p>
+<p>　しかし、JavaScript界隈の進化は、ここ数年を見ても加速度を増しており、しかも、ECMAScript 6が仕様として確定した以上、現場でスタンダードになるのは確実な未来です。既にFirefox／Chrome／Edgeなどの主要ブラウザーが主な機能に対応していますし、メジャーなJavaScriptフレームワーク／ライブラリもECMAScript 6を見据えたロードマップを示しています。伴い、関連するドキュメントにもECMAScript 6を意識した（＝前提にした）コードをちらほら見かけるようになりました。</p>
+<p>　さらに、ECMAScript 6ではクラス構文をはじめとして、基本的な構文にさまざまな手が加えられ、ECMAScript 5までのコードとは様変わりしている点も多く見受けられます。いざECMAScript 6が主流になった時に「私の知ってるJavaScriptじゃない！」とならないためにも、まずはこの時期に、少しずつでも新たな構文／仕様に慣れておくことは重要です。</p>
+<div id="calibre_link-12"> Babelの導入方法</div>
+<p>　トランスコンパイラーの中でも開発が活発で、よく利用されているのがBabel（http://babeljs.io/）です。以下に、いくつかのパターンでのBabelの導入から変換までの手順をまとめます。</p>
+<div id="calibre_link-13"> コードを手動で変換する</div>
+<p>　Babelのスタンダードな利用方法です。babelコマンドを利用して、コマンドプロンプトからトランスコンパイルを実施します。</p>
+<div id="calibre_link-14"><b> ［1］Node.jsをインストールする</b></div>
+<p>　Babelは、Node.js（https://nodejs.org/）の上で動作します。ダウンロードしたnode-v4.2.2-x64.msiをダブルクリックすると、インストーラーが起動します。あとは、その指示に従って進めるだけなので、特に迷うところはないでしょう。</p>
+<figure><img src="images/00005.jpeg" alt="イメージ2" /></figure>
+<p><b><b><b>図：</b></b><b><b>Node.jsのインストーラー</b></b></b></p>
+<div></div>
+<div id="calibre_link-15"><b> ［2］Babelをインストールする</b></div>
+<p>　Babel本体は、npmからインストールできます。コマンドプロンプトから以下のコマンドを実行してください。-gオプションは、ライブラリをグローバルにインストールしなさい、という意味です。</p>
+<p><code>&gt;</code><code>npm install -g babel</code><code>-cli　　　　</code><span>... Babelクライアント</span><code>　</code></p>
+<p><code>&gt; npm install --save-dev</code><code>babel-preset-es2015　</code><span>... E</span><span>CMAScript 6対応プリセット</span></p>
+<div id="calibre_link-16"><b> ［3］BabelでECMAScript 6のコードをトランスコンパイル＆実行する</b></div>
+<p>　Babelをインストールすることで、babel／babel-nodeなどのコマンドを利用できるようになります。ECMAScript 6のコードをコンパイルするには、babelコマンドを呼び出します。</p>
+<p><code>&gt; babel basic.es6.js -o basic.js</code><code> --presets es2015</code></p>
+<p>　これでECMAScript 6で書かれたbasic.es6.jsを変換し、その結果をbasic.jsとして出力しなさい、という意味になります。basic.es6.jsの変更を監視して、変更都度に変換処理を実行するならば、以下のように-wオプションを付与してください。</p>
+<p><code>&gt; babel -w basic.es6.js -o basic.js</code><code> --presets es2015</code></p>
+<p>　トランスコンパイルからNode.jsでの実行までを一気に行うならば、babel-nodeコマンドも利用できます。</p>
+<p><code>&gt; babel-node basic.es6.js</code><code>--presets es2015</code></p>
+<div id="calibre_link-17"><b> ［4］Polifilライブラリを有効化する</b></div>
+<p>　ただし、Babelが変換対象とするのはclass／exportなどの新文法が中心です。Promiseのような新しい組み込みオブジェクト／メソッドを旧来のブラウザー環境で利用するには、Polyfillライブラリ（<span>polyfill.js</span>）を有効化する必要があります。</p>
+<p><span>　polyfill.jsは、以下のコマンドでインストールできます。</span></p>
+<p><code>&gt;</code><code>npm install</code><code>--save</code><code>babel-polyfill</code></p>
+<p>　あとは、インストールしたbabel-polyfillに含まれる<span>polyfill.jsを該当するページからインポートすることで、Polyfillが有効になります。</span></p>
+<p><code>&lt;script</code><code>src=</code><code>"</code><span><code>node_modules/babel-polyfill/</code></span><span><code>dist/</code></span><span><code>polyfill.js</code></span><code>"&gt;&lt;</code><code>/script&gt;</code></p>
+<div id="calibre_link-18"> Grunt経由でBabelを実行する</div>
+<p>　実際の開発では、いちいちコマンドから変換処理を実行するのは手間です。そこでGruntのようなタスクランナーに委ね、変換処理を自動化することもできます。本書では、Grunt本体のインストール方法／設定に関する詳細は割愛しますので、詳しくは「Web作成の定形作業を自動化できるJavaScriptタスク実行環境Grunt」（http://codezine.jp/article/detail/8556）などの専門記事も合わせて参照してください。</p>
+<div id="calibre_link-19"><b> ［1］grunt-babelをインストールする</b></div>
+<p>　GruntでBabelを利用するには、npmからgrunt-babelプラグインをインストールします。</p>
+<p><code>npm install --save-dev</code><code>grunt</code><code>grunt-babel load-grunt-tasks</code></p>
+<div id="calibre_link-20"><b> ［2］Gruntfile.js（設定ファイル）を準備する</b></div>
+<p>　以下は、grunt-babelを利用するための基本的な定義ファイルです。</p>
+<p><b><b><b>リスト</b></b><b><b> G</b></b><b><b>runtfile.js</b></b></b></p>
+<p><code>module.exports = function(grunt) {</code></p>
+<p><code>　</code><code>require('load-grunt-tasks')(grunt);</code></p>
+<p><code>　</code><code>grunt.initConfig({</code></p>
+<p><code>　</code><code>　</code><span>// Babelの設定情報</span></p>
+<p><code>　</code><code>　</code><code>babel: {</code></p>
+<p><code>　</code><code>　　</code><code>options: {</code></p>
+<p><code>　　</code><code>　　</code><span>// ソースマップ（変換前後の対応情報）を生成</span></p>
+<p><code>　　</code><code>　　</code><code>sourceMap: true</code><code>,</code></p>
+<p><code>　　　　</code><span>// ECMAScript 2015のプリセットを有効化</span></p>
+<p><code>　　　　presets:</code><code>['es2015']</code></p>
+<p><br /><br /></p>
+<p><code>　</code><code>　　</code><code>},</code></p>
+<p><code>　</code><code>　　</code><code>dist: {</code></p>
+<p><code>　　　</code><code>　</code><code>files: {</code></p>
+<p><code>　　　</code><code>　</code><span>// basic.es6.jsをbasic.jsに変換</span></p>
+<p><code>　　　</code><code>　</code><code>'lib/basic.js': 'src/basic.es6.js'</code></p>
+<p><code>　　　</code><code>　</code><code>}</code></p>
+<p><code>　</code><code>　　</code><code>}</code></p>
+<p><code>　</code><code>　</code><code>}</code></p>
+<p><code>　</code><code>});</code></p>
+<p><code>　</code><code>grunt.registerTask('default', ['babel']);</code></p>
+<p><code>};</code></p>
+<div id="calibre_link-21"><b> ［3］変換処理を実施する</b></div>
+<p>　あとは、gruntコマンドを実行することで、Babelを実行できます。</p>
+<p><code>&gt; grunt</code></p>
+<p><code>Running "babel:dist" (babel) task</code></p>
+<p><code>Done, without errors.</code></p>
+<p>　ブラウザー環境で動作する際には、先ほどと同じく、Polyfillライブラリのインポートが必要となります。</p>
+<div id="calibre_link-22"> 簡易インタプリターを利用する</div>
+<p>　まずは、ECMAScript 6に触れてみたい、最新の機能を学びたいという人にとって、BabelやGruntをいちいちインストールするのは手間です。とりあえず短いコードを書いて試してみたい、という人にとっては、まずは、Babel本家サイトで提供されている簡易インタプリターを利用させてもらうのが手っ取り早いでしょう。インタプリターはブラウザー上で動作しますので、特別な準備もいりません。</p>
+<figure><img src="images/00000.jpeg" alt="イメージ3" /></figure>
+<p><b><b><b>図：</b></b><b><b>本家サイトで提供されている簡易インタプリター（http://babeljs.io/repl/）</b></b></b></p>
+<div></div>
+<p>　ウィンドウの左枠でECMAScript 6のコードを入力すると、右枠にトランスコンパイル済みのコードが表示され、右下に出力が表示されます。</p>
+<p>　本書のサンプルも、原則として、簡易インタプリターと、ECMAScript 6のAPIに比較的対応しているという理由からFirefox 40で検証しています（先ほども触れたように、Babelが変換するのはclass／exportなど構文レベルの要素だけで、Map／SetなどAPIの動作はブラウザーに依存するためです）。</p>
+<div id="calibre_link-23"> 対象読者</div>
+<p>　本書は、既存のJavaScript（ECMAScript 5レベル）をある程度理解している方をターゲットにし、そこからの差分の知識を手早く習得していただくことを目的としています。</p>
+<p>　従来の構文については、原則として解説していませんので、改めてJavaScriptの基本を学びたいという方は、拙著「JavaScript本格入門」（技術評論社）、「JavaScript逆引きレシピ　jQuery対応」（翔泳社）などの専門書を合わせてお読みいただくことをお勧めいたします。</p>
+<div><table><tr><td>
+<p><span><b><b>表紙</b></b></span></p>
+</td><td><figure><img src="images/00002.jpeg" alt="イメージ6" /></figure>
+<p><br /><br /></p>
+</td><td><figure><img src="images/00001.jpeg" alt="イメージ7" /></figure>
+<p><br /><br /></p>
+</td></tr><tr><td>
+<p><span><b><b>タイトル</b></b></span></p>
+</td><td>
+<p><span>JavaScript本格入門</span></p>
+</td><td>
+<p><span>JavaScript逆引きレシピ</span></p>
+</td></tr><tr><td>
+<p><span><b><b>出版社</b></b></span></p>
+</td><td>
+<p><span>株式会社 技術評論社</span></p>
+</td><td>
+<p><span>株式会社 翔泳社</span></p>
+</td></tr><tr><td>
+<p><span><b><b>定価</b></b></span></p>
+</td><td>
+<p><span>2,980円（＋税）</span></p>
+</td><td>
+<p><span>3,000</span><span>円（＋税）</span></p>
+</td></tr><tr><td>
+<p><span><b><b>版型</b></b></span></p>
+</td><td>
+<p><span>B5変版</span></p>
+</td><td>
+<p><span>A5正寸</span></p>
+</td></tr><tr><td>
+<p><span><b><b>ページ数</b></b></span></p>
+</td><td>
+<p><span>424ページ</span></p>
+</td><td>
+<p><span>632</span><span>ページ</span></p>
+</td></tr><tr><td>
+<p><span><b><b>色数</b></b></span></p>
+</td><td>
+<p><span>2色</span></p>
+</td><td>
+<p><span>2色</span></p>
+</td></tr></table></div>
+</div>
+</div>
+<div {http://www.idpf.org/2007/ops}type="frontmatter" id="calibre_link-1">
+<div id="calibre_link-177">
+<div>
+<table>
+<tr><td>
+<h2 id="calibre_link-178"><b><b><b>ISBN</b></b></b></h2>
+</td><td>
+<p><span>978-4-7741-4466-5</span></p>
+</td><td>
+<p><span>978-4-7981-3546-5</span></p>
+</td></tr></table></div>
+<p><br /><br /></p>
+</div>
+</div>
+<div {http://www.idpf.org/2007/ops}type="frontmatter" id="calibre_link-91">
+<div id="calibre_link-179">
+<div id="calibre_link-24"><b><span><b>Part2</b></span>基本構文</b></div>
+<div id="calibre_link-25"> ブロックスコープを有効にする - let命令</div>
+<p>　従来のJavaScriptには、ブロックレベルのスコープは存在しませんでした。ブロックスコープとは、変数の有効範囲をたとえばif／forなどのブロック配下に限定するスコープのことです。具体的には、以下のコードを見てみましょう。</p>
+<p><code>if (true) {</code></p>
+<p><code>　</code><code>var i = 1;</code></p>
+<p><code>}</code></p>
+<p><code>console.log(i);</code></p>
+<p><span>　</span><span>// 結果：1</span></p>
+<p>　ブロックスコープが有効な言語では、結果は未定義エラーとなるはずです。ifブロックの中で定義された変数iは、ブロック外では無効であるからです。しかし、JavaScriptではブロックスコープの概念がありませんので、変数iはブロック外でも有効となり、結果は1です。</p>
+<p>　しかし、ECMAScript 6のlet命令を利用することで、ブロックスコープで有効な変数を宣言できるようになりました。</p>
+<p><code>if (true) {</code></p>
+<p><code>　</code><code>let i = 1;</code></p>
+<p><code>}</code></p>
+<p><code>console.log(i);</code></p>
+<p><span>　</span><span>// 結果：</span><span>エラー（</span><span>i is not defined</span><span>）</span></p>
+<p>　果たして、let命令で宣言された変数はブロック外では無効になり、結果はエラー（i is not defined）となります。</p>
+<p>　また、let命令ではスコープ内での変数の重複を認めません（var命令では許可）。ECMAScript 6以降でもvar命令は利用できますが、「スコープは最大限限定すべき」「重複チェックをコンパイラーに任せられる」などの理由から、基本はlet命令を優先して利用していくことになるでしょう。</p>
+<p><b><b><b>［Note］</b></b><b><b>switchブロックでのlet宣言に注意</b></b></b></p>
+<p>　switchブロックは、あくまで全体としてひとつのブロックです。よって、case句の単位に同名の変数をlet宣言した場合はエラーとなります。</p>
+<p><code>switch (i) {</code></p>
+<p><code>　</code><code>case 0:</code></p>
+<p><code>　</code><code>let value = 'i:0';</code></p>
+<p><code>　</code><code>break;</code></p>
+<p><code>　</code><code>case 1:</code></p>
+<p><code>　</code><code>let value = 'i:1';</code><code>　</code><span>// 重複エラー</span></p>
+<p><code>　</code><code>break;</code></p>
+<p><code>}</code></p>
+<p><b><b><b>［Note］</b></b><b><b>即時関数は利用しない</b></b></b></p>
+<p>　即時関数とは、関数ブロックで疑似的にスコープを形成し、グローバルスコープの汚染を防ぐテクニックです。「(function() {...}).call(this);」のように表します。従来のJavaScriptでは定石ともいえるしくみですが、ECMAScript 6では利用すべきではありません。コード全体をブロックで括り、配下の変数をlet命令で宣言すれば、即時関数と同じ効果を得られるからです。</p>
+<p><code>{</code></p>
+<p><code>　</code><code>let data = 0;</code><code>　</code><span>// ブロックの外からは見えない</span></p>
+<p><code>}</code></p>
+<p><code>console.log(data);</code></p>
+<p><span>　</span><span>// 結果：data is not defined</span> 定数を宣言する - const命令</p></div>
+<p>　const命令で、定数――宣言時に初期値を伴い、あとから値を再代入できない変数――を宣言できます。スコープはlet命令と同じく、ブロックスコープです。</p>
+<p><code>const data = 100;</code></p>
+<p><code>data = 150;</code><code>　</code><span>// エラー</span></p>
+<p>　ただし、const命令による定数は正しく「再代入できない」であって、「変更できない」ではない点に注意してください。たとえば、以下のような例を見てみましょう。</p>
+<p><code>const data = [1, 2, 3];</code></p>
+<p><code>data[0] = 10;</code></p>
+<p><code>console.log(data);</code><code>　</code><span>// 結果：[10,2,3]</span></p>
+<p>　この場合、配列オブジェクトはそのままに中身の要素だけを書き換えているため、constの制約にはかかりません（オブジェクトでプロパティを変更する場合なども同様です）。</p>
+<p>　もちろん、以下のように、配列そのものを変更した場合はエラーとなります。</p>
+<p><code>const data = [1, 2, 3];</code></p>
+<p><code>data = [10, 2, 3];</code><span>　</span><span>// エラー</span></p>
+<div id="calibre_link-27"> 整数リテラルの表現力を改善する - 2進数／8進数リテラル</div>
+<p>　ECMAScript 6では、従来の16進数リテラルに加えて、2進数／8進数リテラルがサポートされています。</p>
+<p>　2進数リテラルは「0b」、8進数リテラルは「0o（ゼロオー）」で始まるのが基本です。大文字小文字は区別しません（ただし、大文字のOは数字の0と区別が付きにくいため、小文字での表記がお勧めです）。</p>
+<p><code>console.log(0o10 === 8);</code></p>
+<p><span>　</span><span>// 結果：true</span><code>console.log(0b11 === 3);</code></p>
+<p><span>　</span><span>// 結果：true</span> これに伴い、Number#toStringメソッド、Number関数でも2進数／8進数表現の変換／解析が可能になっています。</p>
+<p><code>let num = 10;</code></p>
+<p><code>console.log(num.toString(8));</code></p>
+<p><code>　</code><span>// 結果：12</span></p>
+<p><code>console.log(num.toString(2));</code></p>
+<p><span>　</span><span>// 結果：1010</span></p>
+<p><code>console.log(Number('0o12'));</code></p>
+<p><span>　// 結果：10</span></p>
+<p><code>console.log(Number('0b1010'));</code></p>
+<p><span>　// 結果：10</span></p>
+<p>　ただし、Number関数と似たような機能であるNumber#parseIntメソッドでは、2進数／8進数表現は認識できません（16進数は認識）。現状では、数値リテラルの解析はNumberで統一しておくのが望ましいでしょう。</p>
+<p><b><b><b>［Note］ 従来の8進数表現</b></b></b></p>
+<p>　従来のJavaScriptでも8進数リテラルが存在しましたが、標準の機能ではなく、実装によって対応がわかれるため、利用すべきではありません。従来型では「010」のように、頭に「0」（ゼロ）を付けるだけでした。</p>
+<div id="calibre_link-28"> 文字列リテラルへの変数／改行の埋め込みを可能にする - テンプレート文字列</div>
+<p>　テンプレート文字列（Template Strings）を利用することで、さまざまな文字列リテラル表現を利用できます。テンプレート文字列はクォート「"」「'」の代わりに、「`」（バッククォート）で文字列を括ります。</p>
+<p><code>let str1 = `こんにちは、</code></p>
+<p><code>赤ちゃん`;</code></p>
+<p><code>console.log(str1);</code></p>
+<p><span>　</span><span>// 結果：こんにちは、［改行］赤ちゃん</span></p>
+<p>　これまでであれば「\n」（エスケープシーケンス）で表現していた改行文字を、文字列リテラルの中でそのまま表現できます。</p>
+<p>　また、以下のように${...}の形式で変数（式）を文字列に埋め込むことも可能です。これまでであれば、変数とリテラルとを「+」演算子で連結するしかなかったところなので、ぐんとシンプルになったことが実感できるでしょう。</p>
+<p><code>let name = 'Yamada';</code></p>
+<p><code>console.log(`Hello,${name}!!`);</code></p>
+<p><span>　</span><span>// 結果：Hello,Yamada!!</span></p>
+<div id="calibre_link-29"> テンプレート文字列をアプリ仕様に加工する - タグ付きテンプレート文字列</div>
+<p>　タグ付けされたテンプレート（Tagged template strings）を利用することで、テンプレート文字列を関数に渡して、テンプレート文字列による出力をカスタマイズすることもできます。</p>
+<p><span>// 2. テンプレート文字列を加工して埋め込み文字列をブラケットで括る関数</span></p>
+<p><code>function taggedStr(formats, ...args) {</code></p>
+<p><code>　</code><code>console.log(formats);</code></p>
+<p><span>　</span><span>// 結果：["","、","さん！"]</span></p>
+<p><code>　</code><code>console.log(args);</code></p>
+<p><span>　</span><span>// 結果：["こんにちは","山田"]</span></p>
+<p><code>　</code><code>return formats[0] + '[' + args[0] + ']' + formats[1]</code></p>
+<p><code>　</code><code>+ '[' + args[1] +']' + formats[2];</code></p>
+<p><code>}</code></p>
+<p><code>let greeting = 'こんにちは', name = '山田';</code></p>
+<p><span>// 1. テンプレート文字列をtaggedStr関数で加工</span></p>
+<p><code>console.log(taggedStr`${greeting}、${name}さん！`);</code></p>
+<p><span>　</span><span>// 結果：[こんにちは]、[山田]さん！</span></p>
+<p>　テンプレート文字列は、<span>1</span> のように「関数名`テンプレート文字列`」の形式で、関数に引き渡せます。関数の側では、第1引数でテンプレート文字列（分解したもの）を、第2引数（可変長引数）で文字列に埋め込まれた値のセットを、それぞれ受け取ります（<span>2</span>）。ここでは、埋め込まれた文字列の前後を[...]で括っているだけですが、本来は（たとえば）埋め込み文字列をエスケープ処理したり、ローカライズ処理するなどの用途で利用します。</p>
+<p>　以下に、サンプルコードのみ示しておきます。</p>
+<p><span>// 与えられた文字列をエスケープ処理するための_e関数</span></p>
+<p><code>function _e(str) {</code></p>
+<p><code>　if (!str) { return ''; }</code></p>
+<p><span>　// 変換表ESCに従って、文字列を置き換え</span></p>
+<p><code>　return str.replace(/[&lt;&gt;&amp;"']/g, function(submatch) {</code></p>
+<p><code>　const ESC = {</code></p>
+<p><code>　　'&lt;': '&lt;',</code></p>
+<p><code>　　'&gt;': '&gt;',</code></p>
+<p><code>　　'&amp;': '&amp;',</code></p>
+<p><code>　　'"': '"',</code></p>
+<p><code>　　"'": '''</code></p>
+<p><code>　};</code></p>
+<p><code>　return ESC[submatch];</code></p>
+<p><code>　});</code></p>
+<p><code>}</code></p>
+<p><span>// 分解されたtemplatesとvaluesを順に連結（valuesは</span><span>_e関数で</span><span>エスケープ）</span></p>
+<p><code>function escape(templates, ...values) {</code></p>
+<p><code>　let result = '';</code></p>
+<p><code>　for (let i = 0; i &lt; templates.length; i++) {</code></p>
+<p><code>　</code><code>　</code><code>result += templates[i] + _e(values[i]);</code></p>
+<p><code>　}</code></p>
+<p><code>　return result;</code></p>
+<p><code>}</code></p>
+<p><span>// テンプレート文字列をエスケープ処理</span></p>
+<p><code>let name = '&lt;Tom &amp; Jerry&gt;';</code></p>
+<p><code>console.log(escape`こんにちは、${name}さん！`);</code></p>
+<p><span>　</span><span>// 結果：こんにちは、&lt;Tom &amp; Jerry&gt;さん！</span></p>
+<div id="calibre_link-30"> 新たなデータ型Symbolとは？</div>
+<p>　ECMAScript 6では、従来のNumber、String、Boolean、Objectなどの型に加えて、新たにSymbolという型が追加されました。Symbolとは、名前の通り、シンボル（象徴）を作成するための型です。一見して文字列とも似ていますが、文字列ではありません。まずは、具体的な挙動をみていきましょう。</p>
+<p>　まずは、シンボルを作成し、生成されたシンボルの内容を確認してみましょう。</p>
+<p><code>let hoge　= Symbol('hoge');</code></p>
+<p><code>let hoge2 = Symbol('hoge');</code></p>
+<p><code>console.log(typeof hoge);</code></p>
+<p><span>　</span><span>// 結果：symbol</span><code>console.log(hoge.toString());</code></p>
+<p><span>　</span><span>// 結果：Symbol(hoge)</span><code>console.log(hoge === hoge2);</code></p>
+<p><span>　</span><span>// 結果：false</span> シンボルを生成するのは、Symbol命令の役割です。引数には任意でシンボルの名前を指定できます。ただし、ここで注意していただきたいのは名前が同じでも、別々に作成されたシンボルは別物であるという点です。上の例であれば、hoge、hoge2は、いずれも名前がhogeであるシンボルですが、===演算子での比較では異なるものと見なされます。</p>
+<p>　また、シンボルでは文字列や数値への暗黙的な型変換はできません。よって、以下はいずれもエラーです。</p>
+<p><code>console.log(hoge + '');</code></p>
+<p><span>　</span><span>// 結果：Cannot convert a Symbol value to a string</span><code>console.log(hoge - 0);</code></p>
+<p><span>　</span><span>// 結果：Cannot convert a Symbol value to a number</span> しかし、boolean型、object型への変換は可能です。</p>
+<p><code>console.log(typeof !!hoge);</code></p>
+<p><span>　</span><span>// 結果：</span><span>boolean</span><code>console.log(typeof new Object(hoge));</code></p>
+<p><span>　</span><span>// 結果：object</span> シンボルの用法
+</p><p>　さて、このような独特の性質を持ったシンボルですが、どのような状況で利用できるのでしょうか。具体的な利用例を、以下に挙げておきます。</p>
+<div id="calibre_link-32"><b> （1）定数の値として利用する</b></div>
+<p>　以下のような例を見てみましょう。</p>
+<p><code>var JAVASCRIPT = 0;</code></p>
+<p><code>var RUBY = 1;</code></p>
+<p><code>var PERL = 2;</code></p>
+<p><code>var PYTHON = 3;</code></p>
+<p><code>var PHP = 4;</code></p>
+<p>　一般的に、このような定数は、JAVASCRIPT、RUBY、PERLなどを識別するための定数であって、割り当てられた0、1、2...といった値には意味がありません。しかし、これら定数を利用するコードでは、定数、数値いずれを利用してもエラーにはなりません。</p>
+<p><code>if (lang === JAVASCRIPT) {...}</code></p>
+<p><code>if (lang === 0) {...}</code></p>
+<p>　コードの可読性を考えれば「0」で比較するのは望ましい状態ではありませんし、そもそも「var HOGE = 0;」のような定数が現れた時に、同じ値の定数が混在してしまうのはバグが混入する元です（役割が似ていれば猶更です）。</p>
+<p>　そこで定数の値としてシンボルを利用するのです。</p>
+<p><code>const JAVASCRIPT = Symbol();</code></p>
+<p><code>const RUBY = Symbol();</code></p>
+<p><code>const PERL = Symbol();</code></p>
+<p><code>const PYTHON = Symbol();</code></p>
+<p><code>const PHP = Symbol();</code></p>
+<p>　異なるSymbol命令で生成されたシンボルは、同名（引数なしも含む）であってもユニークであるのでした。生成されたシンボルの値にはどこからもわかりませんので、（たとえば）定数JAVASCRIPTと等しいのは定数JAVASCRIPTだけです。</p>
+<div id="calibre_link-33"><b> （2）非公開なプロパティを定義する</b></div>
+<p>　たとえば以下は、MyClazzクラスの中で、privateなSECRETプロパティを定義する例です（class命令については後述します）。</p>
+<p><span>// SECRETプロパティの名前でシンボルで準備</span></p>
+<p><code>const SECRET = Symbol();</code></p>
+<p><code>class MyClazz {</code></p>
+<p><code>　constructor(secret) {</code></p>
+<p><code>　　this.data1 = 1;</code></p>
+<p><code>　　this.data2 = 2;</code></p>
+<p><span>　　// SECRETプロパティに値を設定</span></p>
+<p><code>　　this[SECRET] = secret;</code></p>
+<p><code>　}</code></p>
+<p><span>　// SECRETプロパティを利用したメソッド</span></p>
+<p><code>　checkSecret(secret) {</code></p>
+<p><code>　　return this[SECRET] === secret;</code></p>
+<p><code>　}</code></p>
+<p><code>}</code></p>
+<p><code>let c = new MyClazz(12345);</code></p>
+<p><span>// メソッド経由ではSECRETプロパティにアクセスできる</span></p>
+<p><code>console.log(c.checkSecret(12345));</code></p>
+<p><span>　</span><span>// 結果：true</span><span>// SECRETプロパティへの直接アクセスは不可</span></p>
+<p><code>console.log(c.secret);</code></p>
+<p><span>　</span><span>// 結果：</span><span>undefined</span><span>// オブジェクトのキー（プロパティ）を列挙</span></p>
+<p><code>console.log(Object.keys(c));</code></p>
+<p><span>　</span><span>// 結果：["data1","data2"]</span></p>
+<p><span>// オブジェクトのキー（プロパティ）を列挙</span></p>
+<p><code>for (let k in c) {</code></p>
+<p><code>　console.log(k);</code></p>
+<p><code>}</code></p>
+<p><span>　</span><span>// 結果：data1、data2</span></p>
+<p><span>// オブジェクトをJSON文字列に変換</span></p>
+<p><code>console.log(JSON.stringify(c));</code></p>
+<p><span>　</span><span>// 結果：{"data1":1,"data2":2}</span></p>
+<p>　ここでは、SECRETプロパティの名前をシンボルとして準備し、「this[SECRET]=～」でプロパティとして定義しています。</p>
+<p>　シンボルSECRETの値は他からは判りませんので、SECRETプロパティに直接アクセスすることはできません。for...in命令による列挙、JSON.stringifyメソッドで生成されたJSON文字列にも、シンボルで生成されたプロパティは現れて<span><b>こない</b></span>点に注目してください。</p>
+<p><b><b><b>［Note］完全に隠ぺいされるわけではない</b></b></b></p>
+<p>　ただし、シンボルで定義されたプロパティが完全に隠ぺいできるわけではありません。getOwnPropertySymbolsメソッドを利用すれば、シンボルプロパティにアクセスすることは可能です。</p>
+<p><code>let idsym = Object.getOwnPropertySymbols(c)[0];</code></p>
+<p><code>console.log(c[idsym]);</code></p>
+<p><code>　</code><span>// 結果：12345</span></p>
+<div id="calibre_link-34"> 配列／オブジェクトから個々の要素を抽出する - 分割代入</div>
+<p>　分割代入（destructuring assignment）とは、配列／オブジェクトを分解し、その要素／プロパティを個々の変数に展開するための構文です。</p>
+<p>　以下の例であれば、配列要素を順に変数hoge／fooに割り当てます。</p>
+<p><code>let [hoge, foo] = [15, 21];</code></p>
+<p><code>console.log(hoge);</code></p>
+<p><span>　</span><span>// 結果：15</span></p>
+<p><code>console.log(foo);</code></p>
+<p><span>　</span><span>// 結果：21</span></p>
+<p>　「...」演算子を利用することで、残りの要素をまとめて配列として取り出すこともできます。たとえば以下は、配列要素の先頭2個を変数hoge、fooに、残りの要素をまとめて部分配列としてotherに、それぞれ割り当てる例です。</p>
+<p><code>let [hoge, foo, ...other] = [10, 20, 30, 40, 50, 60];</code></p>
+<p><code>console.log(hoge);</code></p>
+<p><span>　</span><span>// 結果：10</span></p>
+<p><code>console.log(foo);</code></p>
+<p><span>　</span><span>// 結果：20</span></p>
+<p><code>console.log(other);</code></p>
+<p><span>　</span><span>// 結果：[30,40,50,60]</span></p>
+<p>　オブジェクトのプロパティに割り当てることもできます。</p>
+<p><code>let {hoge, foo} = {hoge:'ほげ', foo:'ふー'};</code></p>
+<p><code>console.log(hoge);</code></p>
+<p><span>　</span><span>// 結果：ほげ</span></p>
+<p><code>console.log(foo);</code></p>
+<p><span>　</span><span>// 結果：ふー</span></p>
+<p>　入れ子になったプロパティを割り当てるならば、以下のようにします。</p>
+<p><code>let data = { hoge: 'ほげ', foo: { piyo : 'ぴよ' , goo: 'ぐぅ' }};</code></p>
+<p><code>let { hoge, foo, foo: {piyo, goo} } = data;</code></p>
+<p><code>console.log(hoge);</code></p>
+<p><span>　</span><span>// 結果：ほげ</span></p>
+<p><code>console.log(foo);</code></p>
+<p><span>　</span><span>// 結果：{"piyo":"ぴよ","goo":"ぐぅ"}</span></p>
+<p><code>console.log(piyo);</code></p>
+<p><span>　</span><span>// 結果：ぴよ</span></p>
+<p><code>console.log(goo);</code></p>
+<p><span>　</span><span>// 結果：ぐぅ</span></p>
+<p>　もしもプロパティを異なる名前の変数に割り当てたいならば、以下のようにも表現できます。たとえば以下であればhogeプロパティは変数xにセットされます。</p>
+<p><code>let {hoge: x, foo} = {hoge:'ほげ', foo:'ふー'};</code></p>
+<p><code>console.log(x);</code></p>
+<p><span>　</span><span>// 結果：ほげ</span></p>
+<p>　また、指定されたプロパティが存在しなかった場合のために、変数の後方に「= 値」の形式でデフォルト値を用意しておくこともできます。</p>
+<p><code>let {hoge = 'ほげほげ' , foo} = { foo:'ふー'};</code></p>
+<p><code>console.log(hoge);</code></p>
+<p><span>　// 結果：ほげほげ</span></p>
+<p><b><b><b>［Note］宣言のない代入</b></b></b></p>
+<p>　本文の例では、宣言と代入をまとめて実施していますが、個々の変数宣言と代入とを切り離すこともできます。</p>
+<p><code>let hoge, foo;</code></p>
+<p><code>[hoge, foo] = [15, 21];</code></p>
+<p>　ただし、オブジェクトの分割代入では、前後にカッコを付けなければならない点に注意してください。左辺の{...}はブロックと見なされ、それ単体で文とすることはできないからです。</p>
+<p><code>let hoge, foo;</code></p>
+<p><code>({hoge, foo} = {hoge:'ほげ', foo:'ふー'});</code></p>
+<div id="calibre_link-35"> 分割代入の使い方</div>
+<p>　分割代入の代表的な利用局面を、以下にまとめます。</p>
+<div id="calibre_link-36"><b> （1）関数（メソッド）から複数の値を返したい</b></div>
+<p>　配列（複数の値）を返す関数から、個々の変数に値を割り当てるには、以下のようにします。これで戻り値result1はhogeに、result2はfooに、それぞれ代入されます。</p>
+<p><code>function destructure() {</code></p>
+<p><code>　</code><code>let result1 = 10;</code></p>
+<p><code>　</code><code>let result2 = 20;</code></p>
+<p><code>　</code><code>return [result1, result2];　</code></p>
+<p><code>}</code></p>
+<p><code>let [hoge, foo] = destructure();</code></p>
+<p><code>console.log(hoge);</code></p>
+<p><span>　</span><span>// 結果：10</span></p>
+<p><code>console.log(foo);</code></p>
+<p><span>　</span><span>// 結果：20</span></p>
+<p>　このような状況では、一部の戻り値を無視することも可能です。たとえば以下であれば、戻り値result2だけがfooに割り当てられ、result1は切り捨てられます。</p>
+<p><code>let [, foo] = destructure();</code></p>
+<div id="calibre_link-37"><b> （2）変数の値を入れ替える</b></div>
+<p>　たとえば以下は、変数hoge、fooの内容を入れ替える例です。従来であれば、いずれかの変数をいったん一時変数に預ける必要があったものです。</p>
+<p><code>let hoge = 1;</code></p>
+<p><code>let foo = 15;</code></p>
+<p><code>[hoge, foo] = [foo, hoge];</code></p>
+<p><code>console.log(hoge);</code></p>
+<p><span>　</span><span>// 結果：15</span></p>
+<p><code>console.log(foo);</code></p>
+<p><span>　</span><span>// 結果：1</span></p>
+<div id="calibre_link-38"><b> （3）名前付き引数を指定する</b></div>
+<p>　以下は、引数としてupper（上辺）／lower（下辺）／height（高さ）を受け取り、台形の面積を求める例です。オブジェクトとして渡された引数をdestructureして、関数配下では、個々の変数としてアクセスできることが見て取れます。</p>
+<p><code>function trapezoid({upper = 1, lower = 1, height = 1}) {</code></p>
+<p><code>　</code><code>return (upper + lower) * height / 2;</code></p>
+<p><code>}</code></p>
+<p><code>console.log(</code></p>
+<p><code>　</code><code>trapezoid({</code></p>
+<p><code>　</code><code>upper: 5,</code></p>
+<p><code>　</code><code>lower: 10,</code></p>
+<p><code>　</code><code>height: 2</code></p>
+<p><code>　</code><code>}));</code></p>
+<p><span>　</span><span>// 結果：15</span></p>
+<p>　同じような例で、引数に渡したオブジェクトから特定のプロパティだけを取り出すのに利用することもできます。</p>
+<p><code>let book = {</code></p>
+<p><code>　</code><code>isbn: '978-4-7741-7568-3',</code></p>
+<p><code>　</code><code>title: 'AngularJSアプリケーションプログラミング',</code></p>
+<p><code>　</code><code>price: 3700</code></p>
+<p><code>};</code></p>
+<p><code>let getInfo = function(</code><span><b>{isbn}</b></span><code>) {</code></p>
+<p><code>　</code><code>console.log(isbn);</code></p>
+<p><code>};</code></p>
+<p><code>getInfo(book);</code></p>
+<p><span>　</span><span>// 結果：978-4-7741-7568-3</span></p>
+<p>　この例であれば、getInfo関数は引数としてオブジェクトを受け取りますが、実際には、その中で定義されたisbnプロパティだけを分割代入によって取り出しています。複数のプロパティを必要とする場合にも、関数の呼び出し側で、いちいちプロパティを意識せず、オブジェクトをまるごと渡せるのが良いところです。</p>
+<div id="calibre_link-39"><b> （4）正規表現でマッチした部分文字列を抽出する</b></div>
+<p>　RegExpオブジェクトのexecメソッドは、正規表現パターンにマッチした文字列を「マッチング文字列全体, サブマッチ文字列1,...」の配列として返します。分割代入を利用することで、得られたサブマッチ文字列を個々の変数に代入できます。</p>
+<p>　以下は電話番号を正規表現で解析し、市外局番（area）、市内局番（local）、加入者番号（privated）として取得します。</p>
+<p><code>let tel = '000-111-2222';</code></p>
+<p><code>let tel_pattern =<i><i>^(0\d{2,4})\-(\d{1,4})\-(\d{2,5})$</i></i>;</code></p>
+<p><code>let [, area, local, privated] = tel_pattern.exec(tel);</code></p>
+<p><code>console.log(area);</code></p>
+<p><span>　</span><span>// 結果：000</span></p>
+<p><code>console.log(local);</code></p>
+<p><span>　</span><span>// 結果：111</span></p>
+<p><code>console.log(privated);</code></p>
+<p><span>　</span><span>// 結果：2222</span></p>
+<p>　[, area, local, privated]のように、先頭を空にしているのは、この例ではマッチング文字列全体は利用していないためです。分割代入では、不要な変数はこのように無視することが可能です。</p>
+<div id="calibre_link-40"> 配列を個々の変数に展開する - 展開演算子</div>
+<p>　展開演算子（Spread Operator）とは、関数を呼び出す際に、列挙可能なオブジェクト（配列など）を個々の変数（引数）に展開するための演算子のことです。</p>
+<p>　たとえば以下のような例を見てみましょう。</p>
+<p><code>console.log(Math.max(100, -10, 50, 108));</code></p>
+<p><span>　</span><span>// 結果：108</span></p>
+<p><code>console.log(Math.max([100, -10, 50, 108]));</code></p>
+<p><span>　</span><span>// 結果：null</span> Math.maxは可変長引数（任意個数の数値）を受け取るメソッドです。よって、前者は正しく動作しますが、配列を渡した前者は動作しません。これを回避するために、従来はapplyメソッドを使って、以下のように表すのが定石でした。applyメソッドは、第1引数のオブジェクトをthis、第2引数（配列）を引数としてメソッドを実行します。この例であれば、Math.maxはthisがなんであれ、結果は変化しませんので、nullを渡しています。</p>
+<p><code>console.log(Math.max.apply(null, [100, -10, 50, 108]));</code></p>
+<p><span>　</span><span>// 結果：108</span></p>
+<p>　しかし、ECMAScript6では、展開演算子を利用することで、より直観的に表現できます。</p>
+<p><code>console.log(Math.max(...[100, -10, 50, 108]));</code></p>
+<p><span>　</span><span>// 結果：108</span></p>
+<div id="calibre_link-41"> 配列など反復可能なオブジェクトを列挙する - for...of命令</div>
+<p>　for...of命令を利用することで、列挙可能なオブジェクトからすべての要素を取り出せます。列挙可能なオブジェクトとは、配列だけでなく、Arrayライクなオブジェクト（NodeList、argumentsのような）、イテレーター／ジェネレーターなどを含みます。</p>
+<p><code>let data = [1, 2, 4];</code></p>
+<p><code>Array.prototype.hoge = function() {};</code></p>
+<p><code>for(let d of data) {</code></p>
+<p><code>　</code><code>console.log(d);</code></p>
+<p><code>}</code></p>
+<p><code>　</code><span>// 結果：1、2、4</span></p>
+<p>　従来のJavaScriptには、よく似た命令としてfor...inがありました。しかし、両者は異なるものですので、以下のコードで違いを理解しておきましょう。</p>
+<p><code>let data = [1, 2, 4];</code></p>
+<p><code>Array.prototype.hoge = function() {};</code></p>
+<p><code>for(let d of data) {</code></p>
+<p><code>　</code><code>console.log(d);</code></p>
+<p><code>}</code></p>
+<p><span>　</span><span>// 結果：1、2、4</span></p>
+<p><br /><br /></p>
+<p><code>for(let d in data) {</code></p>
+<p><code>　</code><code>console.log(d);</code></p>
+<p><code>}</code></p>
+<p><span>　</span><span>// 結果：0、1、2、hoge</span> 異なる点は2点です。</p>
+<ul><li>
+<p>for...of命令が値を列挙するのに対して、for...in命令はプロパティ名（インデックス）を列挙します。</p>
+</li><li>
+<p>for...of命令が値だけを列挙するのに対して、for...in命令はprototypeで拡張されたメンバーも含めて列挙します。</p>
+</li></ul>
+<p>　配列などの列挙には、for...in命令ではなく、for...of命令を利用するようにしてください。</p>
+<p><br /><br /></p>
+
+
+</div>
+<div {http://www.idpf.org/2007/ops}type="frontmatter" id="calibre_link-3">
+<div id="calibre_link-180">
+<div id="calibre_link-42"><b><span><b>Part3</b></span>関数</b></div>
+<div id="calibre_link-43"> 引数のデフォルト値を宣言する</div>
+<p>　従来のJavaScriptでは、引数にデフォルト値を設定することができませんでした。このため、関数ブロックの中で引数が渡されているかをチェックし、未定義の場合にデフォルト値を渡す、冗長なコードを書かなければなりませんでした。</p>
+<p><code>function show(name) {</code></p>
+<p><span>　// 引数nameのデフォルト値を「権兵衛」に</span></p>
+<p><code>　if (name === undefied) { name = '権兵衛'; }</code></p>
+<p><code>　console.log('私の名前は' + name + 'です！');</code></p>
+<p><code>}</code></p>
+<p>　しかし、ECMAScript 6では引数のデフォルト値が言語仕様として組み込まれました。仮引数の末尾に「= デフォルト値」と付与するだけです。</p>
+<p><code>function show(name = '権兵衛') {</code></p>
+<p><code>　console.log('私の名前は' + name + 'です！');</code></p>
+<p><code>}</code></p>
+<p><code>show();</code></p>
+<p><span>　// 結果：私の名前は権兵衛です！</span></p>
+<p><code>show('リオ');</code></p>
+<p><span>　// 結果：私の名前はリオです！</span></p>
+<p>　また、デフォルト値には他の引数、関数（式）の結果などを指定することもできます。</p>
+<p><code>function add(a, b = a) {</code></p>
+<p><code>　</code><code>return a + b;</code></p>
+<p><code>}</code></p>
+<p><code>console.log(add(1, 4));</code></p>
+<p><span>　// 結果：5</span></p>
+<p><code>console.log(add(1));</code></p>
+<p><span>　// 結果：2</span><span>（引数bの値はaと同じ1）</span></p>
+<p><code>function dateFormat(date = new Date()) {</code></p>
+<p><code>　return date.toLocaleString();</code></p>
+<p><code>}</code></p>
+<p><code>console.log(dateFormat(new Date(2015, 11, 4, 0, 0, 0)));</code></p>
+<p><span>　// 結果：2015/12/4 0:00:00</span></p>
+<p><code>console.log(dateFormat());</code></p>
+<p><span>　// 結果：2015/8/20 16:00:48</span><span>（現在の日時を表示）</span></p>
+<p>　ただし、他の引数をデフォルト値とする場合、参照できるのは自身より前に定義されたものだけである点に注意してください。</p>
+<p><b><b><b>［Note］</b></b><b><b>デフォルト値が適用されるのは？</b></b></b></p>
+<p>　デフォルト値が適用されるのは引数が未指定であった場合だけです（undefined値が明示的に指定された場合にも、適用されます）。その他、たとえばnull、falseなどが渡された場合には、デフォルト値は無視されます。</p>
+<div id="calibre_link-44"> 補足：必須パラメーターの表現</div>
+<p>　デフォルト値に関数を指定できることを利用して、必須パラメーターを表現することもできます。</p>
+<p><code>function required() {</code></p>
+<p><code>　throw new Error('Arguments is missing');</code></p>
+<p><code>}</code></p>
+<p><code>function hoge(value = required()) {</code></p>
+<p><code>　return value;</code></p>
+<p><code>}</code></p>
+<p><code>hoge();</code></p>
+<p><span>　// 結果：</span><span>エラー（</span><span>Arguments is missing</span><span>）</span></p>
+<p>　例外をスローするだけのrequired関数を準備しておき、これを必須パラメーターのデフォルト値として指定するわけです。これによって、引数が指定されなかった場合に、required関数が実行（例外がスロー）されます。</p>
+<div id="calibre_link-45"> 可変長引数を利用する</div>
+<p>　仮引数の前に「...」（ピリオド3個）を付与することで、可変長引数となります（英語ではRest Parameterと表記されています）。渡された任意個数の引数を配列としてまとめて受け取る機能です。</p>
+<p>　従来のJavaScriptでは、可変長引数を扱うのにargumentsオブジェクトを介する必要がありましたが、名前がありませんので、コードの可読性は自ずと悪くなります。そもそも引数リストとは別に管理しなければならないので、直観的ではありません。しかし、標準的な可変長引数のしくみが用意されたことで、引数リストの一環として可変長引数を扱えるようになり、コードがぐんと読みやすくなります。</p>
+<p><code>function sum(...args) {</code></p>
+<p><code>　let result = 0;</code></p>
+<p><code>　for(let arg of args) {</code></p>
+<p><code>　　result += arg;</code></p>
+<p><code>　}</code></p>
+<p><code>　return result;</code></p>
+<p><code>}</code></p>
+<p><code>console.log(sum(10, 20, 30));</code></p>
+<p><span>　// 結果：60</span></p>
+<p>　なお、従来のargumentsオブジェクトはいわゆるArrayライクなオブジェクト（＝Arrayではない）でしたが、可変長引数は真正のArrayです。これは、shift、popのようなArrayの標準メソッドを直接利用できることを意味します。</p>
+<div id="calibre_link-46"> 関数リテラルをシンプルに記述する - アロー関数</div>
+<p>　アロー関数（Arrow Function）を利用することで、関数リテラルをシンプルに記述できます。たとえば以下の<span>1</span> 、<span>2</span> は、いずれも同じ意味です。</p>
+<p><code>let data = [1, 2, 3];</code></p>
+<p><span>　</span><span>//</span><span>1. 従来の関数リテラルでの表記</span></p>
+<p><code>let formatted = data.map(function(value, index) {</code></p>
+<p><code>　return　value * value;</code></p>
+<p><code>});</code></p>
+<p><span>　// 2. アロー関数による表記</span></p>
+<p><code>let formatted = data.map((value, index) =&gt; value * value);</code></p>
+<p><code>console.log(formatted);</code></p>
+<p><span>　// 結果：[1,4,9]</span></p>
+<p>　アロー関数では、「(引数,...) =&gt; 本体」の形式で関数を表現できます。従来のリテラル表現に比べて、function、{...}などがなくなっているというだけではありません。アロー関数（本体が1文の場合）では、本体の値がそのまま戻り値と見なされますので、returnを明記しなくても構いません。引数がひとつである場合には、以下のように引数を括るカッコを省略することもできます。</p>
+<p><code>data.map(</code><span><b>value</b></span><code> =&gt; value * value);</code></p>
+<p>　ただし、引数がない場合には、カッコの省略はできません（空の丸カッコを書きます）。</p>
+<p><code>var func = () =&gt; console.log('hoge');</code></p>
+<p>　また、アロー関数で複数の文を持ちたい場合には、{...}で本体を括ります。この場合、戻り値を表すreturnは省略できませんので、注意してください。</p>
+<p><code>data.map((value, index) =&gt; {</code></p>
+<p><code>　</code><span><b>return</b></span><code></code><code>value * value</code><code>;</code></p>
+<p><code>});</code></p>
+<div id="calibre_link-47"> アロー関数はthisを固定する（レキシカルなthis）</div>
+<p>　アロー関数ではもうひとつ、thisを固定する、という機能があります。</p>
+<p>　JavaScriptでは、一般的にthisが示すものはそれぞれの関数によって決まります。たとえば、以下は従来の関数リテラルでCounterクラスを定義した例です。countプロパティはインスタンス化されてからの経過秒数を表します。</p>
+<p><code>var Counter = function() {</code></p>
+<p><span>　// 現在のthisを退避</span></p>
+<p><code>　var _this = this;</code></p>
+<p><code>　_this.count = 0;</code></p>
+<p><span>　// 1000ミリ秒間隔でcountプロパティをインクリメント</span></p>
+<p><code>　setInterval(function() {</code></p>
+<p><code>　　_this.count++;</code></p>
+<p><code>　}, 1000);</code></p>
+<p><code>};</code></p>
+<p><code>var c = new Counter();</code></p>
+<p>　Counterコンストラクターの直下では、thisはインスタンス自身を指します。しかし、setIntervalメソッドの配下ではthisは変化してしまい、インスタンスを参照しません（ブラウザー環境であればWindowオブジェクトを指します）。そこでコンストラクターでthisを_thisに退避し、setIntervalメソッドでも_this経由でcountプロパティを参照しているのです。</p>
+<p>　しかし、アロー関数では、thisはアロー関数自身が宣言された場所によって決まります。以下の例であれば、コンストラクターが示すthis（インスタンスそのもの）を指しますので、上の例にあったような_thisへの退避が不要になります。</p>
+<p><code>let</code><code> Counter = function() {</code></p>
+<p><code>　this.count = 0;</code></p>
+<p><span>　// 1000ミリ秒間隔でcountプロパティをインクリメント</span></p>
+<p><code>　setInterval(() =&gt; this.count</code><code>++</code><code>, 1000);</code></p>
+<p><code>};</code></p>
+<p><code>let</code><code> c = new Counter();</code></p>
+<div id="calibre_link-48"> 注意：オブジェクトリテラルを返す時</div>
+<p>　Arrow Functionでオブジェクトリテラルを返すには、リテラル全体をカッコでくくります。</p>
+<p><code>let hoge = () =&gt; (</code><span><b>{ foo: 123 }</b></span><code>);</code></p>
+<p>　以下のようにカッコなしで表された場合、{...}がブロックを、「foo:」はラベル構文と見なされてしまうからです。</p>
+<p><code>let hoge = () =&gt; { foo: 123 };</code></p>
+<p><br /><br /></p>
+</div>
+</div>
+<div {http://www.idpf.org/2007/ops}type="frontmatter" id="calibre_link-5">
+<div id="calibre_link-181">
+<div id="calibre_link-49"><b><span><b>Part4</b></span>組み込みオブジェクト</b></div>
+<div id="calibre_link-50"> 非同期処理を簡便に処理する - Promiseオブジェクト</div>
+<p>　非同期処理を実装するのに、古典的なアプローチとしてコールバック関数があります（setTimeout／setIntervalメソッドなどが好例です）。しかし、非同期処理が複数に連なる場合、コールバック関数は入れ子が深くなりすぎて、ひとつの関数が肥大化する傾向にあります。このような問題をコールバック地獄と言います。</p>
+<p>　このような問題を解決するのがPromiseオブジェクトです。Promiseを利用することで、非同期処理をあたかも同期処理であるかのように扱えます。jQueryの$.deferred、AngularJSの$qサービスなど、代表的なライブラリ／フレームワークで類似の機能が提供されているので、意識するとせざるとに関わらず、利用したことがある人はおおいはずです。本書では、Promiseの基本的な考え方については割愛しますので、「爆速でわかるjQuery.Deferred超入門」（http://techblog.yahoo.co.jp/programming/jquery-deferred/）などの専門記事を参照してください。jQueryのそれと構文は完全に一致しているわけではありませんが、理解する上での参考になります。</p>
+<p>　さて、具体的な例を見ていきます。以下は、文字列が渡されると、2000ミリ秒後に「入力値は●○」を、文字列が空の場合には「入力値が空です」というメッセージを、それぞれ返す非同期処理の例です。</p>
+<p><code>function hoge(value) {</code></p>
+<p><code>　return new Promise((resolve, reject) =&gt; {</code></p>
+<p><code>　　setTimeout(() =&gt; {</code></p>
+<p><code>　　　if (value) {</code></p>
+<p><code>　　　resolve(`値は${value}`);</code></p>
+<p><code>　　　} else {</code></p>
+<p><code>　　　reject('入力値が空です');</code></p>
+<p><code>　　　}</code></p>
+<p><code>　　}, 2000);</code></p>
+<p><code>　})</code></p>
+<p><code>}</code></p>
+<p><code>hoge(</code><span><b>'佐藤理央'</b></span><code>).then(</code></p>
+<p><code>　response =&gt; { console.log(response); },</code></p>
+<p><code>　error =&gt; { console.log(error); }</code></p>
+<p><code>);</code></p>
+<p><span>　</span><span>// 結果：値は佐藤理央</span></p>
+<p>　Promiseオブジェクトを利用する場合、非同期処理そのものを関数として用意しておきます。この例であれば、hoge関数です。hoge関数が戻り値として返すのが、Promiseオブジェクトです。</p>
+<p>　Promiseは、非同期処理の状態を監視するためのオブジェクトで、コンストラクターには非同期処理（function）本体を記述します。</p>
+<p><b><b><b>構文 Promiseコンストラクター</b></b></b></p>
+<p>new Promise((<i><i>resolve</i></i>,<i><i>reject</i></i>) =&gt; {<i><i>statements</i></i>}) resolve：処理の成功を通知するための関数</p>
+<p>　reject：処理の失敗を通知するための関数</p>
+<p>　statements：処理本体</p>
+<p>　Promiseコンストラクターは、resolve／rejectという2個の関数を受け取りますので、非同期処理ではこれらの関数を利用して、成功（resolve）／失敗（reject）を通知するわけです。この例であれば、setTimeout関数の中で、引数valueが未定義であればreject関数を、さもなければresolve関数を、それぞれ呼び出しています。resolve／reject関数の引数には、それぞれ成功した時の結果、エラーメッセージなど、任意のオブジェクトを渡すことができます。</p>
+<p>　Promiseオブジェクトでの処理結果を受け取るのは、thenメソッドです。</p>
+<p><b><b><b>構文 thenメソッド</b></b></b></p>
+<p>then(<i><i>succcess</i></i>,<i><i>failure</i></i>)</p>
+<p>　success：成功コールバック関数</p>
+<p>　failure：失敗コールバック関数</p>
+<p>　引数success／failureは、それぞれresolve／reject関数で指定された引数の内容を受け取って、成功／失敗時の処理を実施します。リスト内の太字を削除して、結果が以下のように変化することを確認してみましょう。</p>
+<p><span>入力値が空です</span></p>
+<div id="calibre_link-51"> 非同期処理を連結する</div>
+<p>　Promiseのありがたみは、連結してようやくイメージしやすくなります（単一の非同期処理であれば、単なる構文の違いで、コールバック関数でもさほど不便はありません）。</p>
+<p>　以下は、先ほどのhoge関数を複数回呼び出す例です。</p>
+<p><span>// 1. 初回のhoge関数を実行</span></p>
+<p><code>hoge(</code><span><b>'佐藤理央'</b></span><code>)</code></p>
+<p><code>.then(</code></p>
+<p><code>　response =&gt; {</code></p>
+<p><code>　　console.log('1. ' + response);</code></p>
+<p><span>　　// 2.</span><span>初回実行に成功したら、</span><span>2回目のhoge関数を実行</span></p>
+<p><code>　　return hoge(</code><span><b>'鈴木幸助'</b></span><code>);</code></p>
+<p><code>　}</code></p>
+<p><code>)</code></p>
+<p><code>.then(</code></p>
+<p><code>　response =&gt; {</code></p>
+<p><code>　　console.log('2. ' + response);</code></p>
+<p><code>　},</code></p>
+<p><code>　error =&gt; {</code></p>
+<p><code>　　console.log('Error.' + error);</code></p>
+<p><code>　}</code></p>
+<p><code>);</code></p>
+<p><span>　// 結果：1. 値は佐藤理央、2. 値は鈴木幸助</span></p>
+<p>　thenメソッドを連結するには、thenメソッドの配下で新たなPromiseオブジェクトを返します。この例であれば<span>1</span> のhoge関数を実行し、成功したら、<span>2</span> のhoge関数を呼び出します。</p>
+<p>　もしも<span>1</span> の関数呼び出しで引数を空にした場合には、以下のような結果を得られます。</p>
+<p><span>Error.入力値が空です</span></p>
+<p>　最初の成功コールバック関数が無視されて、2番目のthenメソッドで用意された失敗コールバック関数が実行されているのです。このように、非同期処理ごとに失敗コールバック関数を定義しなくても、必要な箇所でまとめてエラー処理できるのもPromiseの良いところです。</p>
+<p>　ちなみに、以下は<span>1</span> では引数あり、<span>2</span> の引数を省略した場合です。今度は、最初の成功コールバック関数が実行されて、その後、2番目のthenメソッドで用意された失敗コールバック関数が呼び出されます。</p>
+<p><span>1. 値は佐藤理央</span></p>
+<p><span>Error.入力値が空です</span></p>
+<div id="calibre_link-52"> 複数の非同期処理を並行して実行する</div>
+<p>　Promise.allメソッドを利用することで、複数の非同期処理を並列に実行し、そのすべてが成功した場合に、処理を実行することもできます。</p>
+<p><code>Promise.all([</code></p>
+<p><code>　</code><span><b>hoge('佐藤理央'),</b></span></p>
+<p><span><b>　hoge('腰掛奈美'),</b></span></p>
+<p><span><b>　hoge('鈴木花子')</b></span></p>
+<p><code>]).then(</code></p>
+<p><code>　response =&gt; {</code></p>
+<p><code>　　console.log(response);</code></p>
+<p><code>　},</code></p>
+<p><code>　error =&gt; {</code></p>
+<p><code>　　console.log('Error.' + error);</code></p>
+<p><code>　}</code></p>
+<p><code>);</code></p>
+<p><span>　// 結果：["値は佐藤理央","値は腰掛奈美","値は鈴木花子"]</span></p>
+<p>　結果は、それぞれのresolveから渡された結果を表す配列である点に注目です。また、非同期処理のいずれかが失敗した場合には、失敗コールバック関数が実行されます。</p>
+<p>　また、並行して実行された非同期処理のいずれかひとつが最初に完了したところで、後続の処理を実行するraceメソッドもあります。raceメソッドの結果は、成功／失敗に関わらず、あくまで最初に完了した非同期処理のそれによって変化します。</p>
+<p><code>Promise.race([</code></p>
+<p><code>　</code><span><b>hoge('佐藤理央'),</b></span></p>
+<p><span><b>　hoge('腰掛奈美'),</b></span></p>
+<p><span><b>　hoge('鈴木花子')</b></span></p>
+<p><code>]).then(</code></p>
+<p><code>　response =&gt; {</code></p>
+<p><code>　　console.log(response);</code></p>
+<p><code>　},</code></p>
+<p><code>　error =&gt; {</code></p>
+<p><code>　　console.log('Error.' + error);</code></p>
+<p><code>　}</code></p>
+<p><code>);</code></p>
+<p><span>　// 結果：値は佐藤理央</span><span>（結果は変動する可能性があります）</span></p>
+<div id="calibre_link-53"> オブジェクトの挙動をカスタマイズする - Proxyオブジェクト</div>
+<p>　Proxyオブジェクトは、プロパティの設定／取得／削除、for...of／for...in命令による列挙などなど、オブジェクトの標準的な操作を、アプリ独自の操作で差し替えるためのオブジェクトです。Proxyを利用することで、たとえばオブジェクト操作に対するロギング、プロパティ値の検証／変換などを、既存のオブジェクトに手を加えずに実装できます。</p>
+<p>　たとえば以下は、存在しないプロパティを取得した時に、デフォルト値として「？」を返す例です。</p>
+<p><code>let obj = { hoge: 'ほげ', foo: 'ふー' };</code></p>
+<p><code>var p_obj = new Proxy(obj, {</code></p>
+<p><code>　get(target, prop) {</code></p>
+<p><code>　　return prop in target ?</code></p>
+<p><code>　　　target[prop] : '？';</code></p>
+<p><code>　}</code></p>
+<p><code>});</code></p>
+<p><code>console.log(p_obj.hoge);</code></p>
+<p><span>　// 結果：ほげ</span></p>
+<p><code>console.log(p_obj.nothing);</code></p>
+<p><span>　// 結果：？</span></p>
+<p>　Proxyコンストラクターの構文は、以下の通りです。</p>
+<p><b><b><b>構文 Proxyコンストラクター</b></b></b></p>
+<p>new Proxy(<i><i>target</i></i>,<i><i>handler</i></i>)</p>
+<p>　target：操作を差し挟む対象のオブジェクト（ターゲット）</p>
+<p>　handler：ターゲットの操作を定義したオブジェクト（ハンドラー）</p>
+<p>　ハンドラーでは、以下のようなメソッドを定義できます。ハンドラーメソッドのことをトラップとも呼びます。</p>
+<div><table><tr><td>
+<p><span>メソッド</span><span>（トラップ）</span></p>
+</td><td>
+<p><span>ターゲットに対する操作</span></p>
+</td></tr><tr><td>
+<p><span>get function(</span><span><i><i>target</i></i></span><span>,</span><span><i><i>prop</i></i></span><span>,</span><span><i><i>receiver</i></i></span><span>) -&gt; any</span></p>
+</td><td>
+<p><span>プロパティの取得</span></p>
+</td></tr><tr><td>
+<p><span>set function(</span><span><i><i>target,</i></i></span><span><i><i>prop</i></i></span><span>,</span><span><i><i>val</i></i></span><span>,</span><span><i><i>receiver</i></i></span><span>) -&gt; boolean</span></p>
+</td><td>
+<p><span>プロパティの設定</span></p>
+</td></tr><tr><td>
+<p><span>enumerate function(</span><span><i><i>target</i></i></span><span>) -&gt; [String]</span></p>
+</td><td>
+<p><span>for...in命令による列挙</span></p>
+</td></tr><tr><td>
+<p><span>iterate function(</span><span><i><i>target</i></i></span><span>) -&gt; iterator</span></p>
+</td><td>
+<p><span>for...of命令による列挙</span></p>
+</td></tr><tr><td>
+<p><span>deleteProperty function(</span><span><i><i>target</i></i></span><span>,</span><span><i><i>prop</i></i></span><span>) -&gt; boolean</span></p>
+</td><td>
+<p><span>delete命令によるプロパティの削除</span></p>
+</td></tr></table></div>
+<p><b><b><b>表：</b></b><b><b>ハンドラーで実装できる主なメソッド</b></b></b></p>
+<p>　ここでは、getメソッドを実装して、ターゲット（target）のプロパティ（prop）が存在していれば、その値（target[prop]）を、さもなければ「？」を返しています。確かに元々のhogeプロパティが正しく参照できていること、存在しないnothingプロパティに対しては「？」を返すことを確認してみましょう。</p>
+<p>　なお、プロキシーに対する操作は、ターゲットにも反映されます。</p>
+<p><code>p_obj.goo = 'ぐぅ';</code></p>
+<p><code>console.log(obj.goo);</code></p>
+<p><span>　// 結果：ぐぅ</span></p>
+<p><code>console.log(p_obj.goo);</code></p>
+<p><span>　// 結果：ぐぅ</span></p>
+<div id="calibre_link-54"> コレクション関連のオブジェクトを標準で提供 - Map／Setなど</div>
+<p>　ECMAScript 6では、コレクションを管理するための専用オブジェクトとして、Map／Setが追加されました。</p>
+<div id="calibre_link-55"> キー／値のセットを管理するマップ</div>
+<p>　Mapオブジェクトは、キー／値のセットでデータを管理するオブジェクトです。従来のJavaScriptではObjectオブジェクト（リテラル）をもって、マップとしての役割を担わせてきました。しかし、Mapを利用することで、以下のような利点があります。</p>
+<ul><li>
+<p>　任意の型でキーを設定できる（Objectは文字列キーだけ）</p>
+</li><li>
+<p>　マップのサイズをsizeプロパティで簡単に取得できる（Objectは不可）</p>
+</li><li>
+<p>　クリーンなマップを作成できる（Objectには既定のキーが存在。ただし、Object.create(null)で回避可能）</p>
+</li></ul>
+<p>　利用方法は、他の言語で類似のクラスを利用したことがある人であれば、ごく直観的です。</p>
+<p><code>let obj = {};</code></p>
+<p><span>// マップの生成＆値の登録</span></p>
+<p><code>let m = new Map();</code></p>
+<p><code>m.set('hoge', 'ほげ');</code></p>
+<p><code>m.set('foo', 'ふぅ');</code></p>
+<p><code>m.set('piyo', 'ぴよ');</code></p>
+<p><span>// 1. オブジェクトをキーに値を設定</span></p>
+<p><code>m.set(obj, 'オブジェクト');</code></p>
+<p><code>console.log(m.get('hoge'));</code></p>
+<p><span>　// 結果：ほげ</span></p>
+<p><code>console.log(m.get(obj));</code></p>
+<p><span>　// 結果：オブジェクト</span></p>
+<p><span>// 2. オブジェクトリテラルでマップにアクセス</span></p>
+<p><code>console.log(m.get({}));</code></p>
+<p><span>　// 結果：</span><span>undefined</span><code>console.log(m.has('hoge'));</code></p>
+<p><span>　// 結果：true</span></p>
+<p><code>// マップのキーを列挙</code></p>
+<p><code>for(let key of m.keys()) {</code></p>
+<p><code>　console.log(key);</code></p>
+<p><code>}</code></p>
+<p><span>　// 結果：hoge、foo、piyo、{}</span></p>
+<p><span>// マップの値を列挙</span></p>
+<p><code>for(let value of m.values()) {</code></p>
+<p><code>　console.log(value);</code></p>
+<p><code>}</code></p>
+<p><span>　// 結果：ほげ、ふぅ、ぴよ、オブジェクト</span></p>
+<p><span>// マップのキー／値を列挙</span></p>
+<p><code>for(let [key, value] of m) {</code></p>
+<p><code>　console.log(`${key}:${value}`);</code></p>
+<p><code>}</code></p>
+<p><span>　// 結果：hoge:ほげ、foo:ふぅ、piyo:ぴよ、[object Object]:オブジェクト</span></p>
+<p><span>// マップを順番に処理</span></p>
+<p><code>m.forEach((value, key) =&gt; console.log(`${key}=${value}`));</code></p>
+<p><span>　// 結果：hoge=ほげ、foo=ふぅ、piyo=ぴよ、[object Object]=オブジェクト</span></p>
+<p><span>// hogeキーを削除</span></p>
+<p><code>m.delete('hoge');</code></p>
+<p><span>// すべてのキーを削除</span></p>
+<p><code>m.clear();</code></p>
+<p>　マップのキーには、<span>1</span> のように、Object型をはじめ、任意の型を指定できるのでした（function型やnullなども可能です）。ただし、参照型をキーにした場合、getメソッドでの取得には要注意です。<span>2</span> の例であれば、変数objとリテラル{}の参照先は別なので、値を正しく参照することはできません。</p>
+<p>　マップの値は、コンストラクターで、以下のように配列内配列（列挙可能なオブジェクト）として初期化することも可能です。</p>
+<p><code>let m = new Map([['hoge', 'ほげ'],['foo', 'ふぅ'],['piyo', 'ぴよ'],[obj, 'オブジェクト']]);</code></p>
+<div id="calibre_link-56"> 一意な値の集合を管理するセット</div>
+<p>　Setオブジェクトを利用することで、重複しない値の集合を管理できます。重複した値が追加された場合はこれを無視します。</p>
+<p><code>let obj = {};</code></p>
+<p><span>// セットの生成＆値の登録</span></p>
+<p><code>let s = new Set();</code></p>
+<p><code>s.add(5);</code></p>
+<p><code>s.add(10);</code></p>
+<p><code>s.add(8);</code></p>
+<p><code>s.add(0);</code></p>
+<p><span>// 1. 重複した値は無視</span></p>
+<p><code>s.add(8);</code></p>
+<p><span>// 2. 任意のオブジェクト型</span><span>を</span><span>登録可能</span></p>
+<p><code>s.add(obj);</code></p>
+<p><span>// セットの内容を確認</span></p>
+<p><code>console.log(s.size);</code></p>
+<p><span>　// 結果：5</span></p>
+<p><code>console.log(s.has(5));</code></p>
+<p><span>　// 結果：true</span></p>
+<p><span>// 3. 参照型に注意！</span></p>
+<p><code>console.log(s.has({}));</code></p>
+<p><span>　// 結果：false</span></p>
+<p><code>console.log(s.has(obj));</code></p>
+<p><span>　// 結果：true</span></p>
+<p><span>// セットから値を削除</span></p>
+<p><code>s.delete(5);</code></p>
+<p><span>// セットの値を列挙</span></p>
+<p><code>for(let value of s) {</code></p>
+<p><code>　console.log(value);</code></p>
+<p><code>}</code></p>
+<p><span>　// 結果：10、8、0、{}</span></p>
+<p><span>// セットの内容をクリア</span></p>
+<p><code>s.clear();</code></p>
+<p>　重複した値を登録した場合には、確かに無視されていることが確認できます（<span>1</span>）。この例であれば、8が2回登録されることはありません。<span>2</span>、<span>3</span>の参照型の登録／参照についての注意は、マップと同じです。</p>
+<p>　セットの値は、コンストラクターで、以下のように配列（列挙可能なオブジェクト）として初期化することも可能です。</p>
+<p><code>let s = new Set([5, 10, 8, 0, 8, obj]);</code></p>
+<p><b><b><b>［Note］NaNの扱い</b></b></b></p>
+<p>　Map／Setでは、NaNをキーとして利用することもできます。JavaScriptでは、Nan !== NaNですが、Map／Setでは、NaNはNaNであるとみなされます。他のオブジェクトは、===演算子でもって比較されます。</p>
+<p><b><b><b>［Note］弱参照に対応したマップ／セット</b></b></b></p>
+<p>　Map／Setには類似オブジェクトとして、WeakHash／WeakSetと呼ばれる、キーを弱参照で管理するオブジェクトがあります。弱参照とは、このマップ以外でキーが参照されなくなると、そのままガベージコレクトの対象になるということです。標準のMap／Setでは、いわゆる強参照でキーを管理しますので、マップ／セットでキーを保持している限り、そのオブジェクトはガベージコレクトの対象にはなりません。</p>
+<p>　その性質上、WeakMap／WeakSetでは、「キーは参照型でなければならない」「列挙することはできない（必要であれば、自分で管理）」などの制限があります。</p>
+<div id="calibre_link-57"> Unicode対応の改善</div>
+<p>　ECMAScript 6では、String／RegexpオブジェクトでUnicode対応が強化され、サロゲートペアをより手軽に扱えるようになりました。サロゲートペアとは、1文字4byteで表現されるUnicode文字のことです。一般的なUnicode文字は1文字2byteで扱われるため、これまでのJavaScriptではサロゲートペア文字を正しく1文字として扱うことができなかったのです。</p>
+<p><span>// 「</span><span>𠮟</span><span>」はサロゲートペア</span></p>
+<p><code>let str = '</code><span><b>𠮟</b></span><code>られて';</code></p>
+<p><code>console.log(str.length);　// 結果：</code><code>5</code><code>（「</code><code>𠮟</code><code>」を2文字と見なす）</code></p>
+<p>　具体的には、EcmaScript 6では、以下のような改善がなされています。</p>
+<div id="calibre_link-58"> for...of構文でもサロゲートペアを認識</div>
+<p>　サロゲートペア文字を含んだ文字列をfor...of命令で正しく取り出すことができます。</p>
+<p><code>let str = '</code><code>𠮟</code><code>られて';</code></p>
+<p><code>for(let d of str) {</code></p>
+<p><code>　console.log(d);</code></p>
+<p><code>}</code></p>
+<p><span>　// 結果：</span><span>𠮟</span><span>、ら、れ、て</span></p>
+<div id="calibre_link-59"> Unicodeエスケープシーケンスが拡張</div>
+<p>　新たに「\u{codepoint}」の形式で、0xffffを超えるUnicode文字を表現できるようになりました。よって、以下はいずれも「𠮟」という文字を表します。</p>
+<p><code>console.log('\ud842\udf9f' === '</code><code>𠮟</code><code>');</code></p>
+<p><span>　// 結果：true</span></p>
+<p><code>console.log('\u{20b9f}' === '</code><code>𠮟</code><code>');</code></p>
+<p><span>　// 結果：true</span></p>
+<div id="calibre_link-60"> サロゲートペアからコードポイントを取得／設定も可能に</div>
+<p>　Stringオブジェクトには新たにcodePointAt／fromCodePointメソッドが提供され、サロゲートペアからコードポイントを追加したり、コードポイントから文字を復元したりできるようになりました。</p>
+<p><code>console.log('</code><code>𠮟</code><code>られて'.codePointAt(0).toString(16));</code></p>
+<p><span>　// 結果：20b9f</span></p>
+<p><code>console.log(String.fromCodePoint(0x20b9f));</code></p>
+<p><span>　// 結果：</span><span>𠮟</span></p>
+<div id="calibre_link-61"> RegExpオブジェクトにuフラグが追加</div>
+<p>　正規表現を扱うRegExpオブジェクトにもUnicodeを扱うためのuフラグが実装されました。これを利用することで、サロゲートペアを正しく判定できます。</p>
+<p><code>let str = '</code><code>𠮟</code><code>られて';</code></p>
+<p><code>console.log(/^.られて$/u.test(str));</code></p>
+<p><span>　// 結果：true</span></p>
+<p>　「.」は任意の一文字を表します。uフラグを外すと、サロゲートペアが1文字と見なされなくなりますので、結果はfalseとなります。</p>
+<div id="calibre_link-62"> String／Array／Math／Objectなど組み込みオブジェクトのメソッドも拡充</div>
+<p>　既存のString／Array／Math／Number／RegExp／Objectなどの組み込みオブジェクトについても、ECMAScript 6ではさまざまなメンバーが追加されています。「ECMAScript 6 compatibility table」（http://kangax.github.io/compat-table/es6/）を見ても判るように、Internet Explorerを除く主要なブラウザーの最新版で多くの機能が実装されており、（無制限とまではいかないまでも）手元の環境でも試しやすくなっています。</p>
+<p>　なお、本書は個々のメソッドを解説するのが目的ではありませんので、以下では主な追加メソッドを列記していきます。表内で「*」の付いているものは静的メンバーです。</p>
+<div id="calibre_link-63"> Stringオブジェクト</div>
+<p>　startsWith／endsWith／includesなどのメソッドが実装され、これまではindexOfメソッドのお世話にならざるを得なかった文字列の判定をよりシンプルなコードで表現できるようになりました。</p>
+<div><table><tr><td>
+<p><span>メソッド</span></p>
+</td><td>
+<p><span>概要</span></p>
+</td></tr><tr><td>
+<p><span>*fromCodePoint</span></p>
+</td><td>
+<p><span>コードポイント値から文字列を生成</span></p>
+</td></tr><tr><td>
+<p><span>*raw`str`</span></p>
+</td><td>
+<p><span>テンプレート文字列の生の文字列を取得</span></p>
+</td></tr><tr><td>
+<p><span>codePointAt(</span><span><i>pos</i></span><span>)</span></p>
+</td><td>
+<p><span>UTF-16エンコードされたコードポイント値を取得（引数posは文字列内の位置）</span></p>
+</td></tr><tr><td>
+<p><span>normalize(</span><span>[</span><span><i>form</i></span><span>]</span><span>)</span></p>
+</td><td>
+<p><span>文字列を引数formの形式で正規化（</span><span>引数</span><span>formの値はNFC、NFD、NFKCなど）</span></p>
+</td></tr><tr><td>
+<p><span>repeat(</span><span><i><i>num</i></i></span><span>)</span></p>
+</td><td>
+<p><span>文字列を指定回数だけ繰り返したものを取得</span></p>
+</td></tr><tr><td>
+<p><span>startsWith(</span><span><i>search</i></span><span> [,</span><span><i><i>pos</i></i></span><span>])</span></p>
+</td><td>
+<p><span>文字列が指定された部分文字列searchで始まるか（引数posは検索開始位置）</span></p>
+</td></tr><tr><td>
+<p><span>endsWith(</span><span><i>search</i></span><span> [,</span><span><i><i>pos</i></i></span><span>])</span></p>
+</td><td>
+<p><span>文字列が指定された部分文字列searchで終わるか</span></p>
+</td></tr><tr><td>
+<p><span>includes(</span><span><i>search</i></span><span> [,</span><span><i><i>pos</i></i></span><span>])</span></p>
+</td><td>
+<p><span>文字列に指定された部分文字列searchが含まれるか</span></p>
+</td></tr></table></div>
+<p><b><b><b>表：</b></b><b><b>Stringオブジェクトに追加された主なメソッド</b></b></b></p>
+<div id="calibre_link-64"> Arrayオブジェクト</div>
+<p>　イテレーターに対応したkeys／valuesをはじめ、要素検索のためのfind／findIndexメソッドなどが追加となっています。</p>
+<div><table><tr><td>
+<p><span>メソッド</span></p>
+</td><td>
+<p><span>概要</span></p>
+</td></tr><tr><td>
+<p><span>*from(</span><span><i>alike</i></span><span> [,</span><span><i><i>map</i></i></span><span> [,</span><span><i><i>othis</i></i></span><span>])</span></p>
+</td><td>
+<p><span>配列ライクなオブジェクト、列挙可能なオブジェクトを配列に変換（引数mapは要素を変換するための関数、othisはthisとなるオブジェクト）</span></p>
+</td></tr><tr><td>
+<p><span>*of(</span><span><i><i>e1</i></i></span><span>,...)</span></p>
+</td><td>
+<p><span>可変長引数e1...から配列を生成</span></p>
+</td></tr><tr><td>
+<p><span>copyWithin(</span><span><i><i>target</i></i></span><span> ,</span><span><i><i>start</i></i></span><span> [,</span><span><i><i>end</i></i></span><span>])</span></p>
+</td><td>
+<p><span>start～end-1番目の要素をtargetの位置にコピー</span></p>
+</td></tr><tr><td>
+<p><span>find(fn(</span><span><i><i>elem,</i></i></span><span><i><i>index</i></i></span><span>,</span><span><i><i>ary</i></i></span><span>) [,othis])</span></p>
+</td><td>
+<p><span>コールバック関数fnが初めてtrueを返した要素を取得（コールバック関数の引数は、先頭から要素値、インデックス、配列）</span></p>
+</td></tr><tr><td>
+<p><span>findIndex(fn(</span><span><i><i>elem</i></i></span><span>,</span><span><i><i>index</i></i></span><span>,</span><span><i><i>ary</i></i></span><span>) [,</span><span><i><i>othis</i></i></span><span>])</span></p>
+</td><td>
+<p><span>コールバック関数fnが初めてtrueを返した要素のインデックス番号を取得</span></p>
+</td></tr><tr><td>
+<p><span>fill(</span><span><i><i>v</i></i></span><span>,</span><span><i><i>start</i></i></span><span>,</span><span><i><i>end</i></i></span><span>)</span></p>
+</td><td>
+<p><span>start～end-1番目の要素に値vをセット</span></p>
+</td></tr><tr><td>
+<p><span>keys()</span></p>
+</td><td>
+<p><span>配列のすべてのキーを含んだイテレーターを取得</span></p>
+</td></tr><tr><td>
+<p><span>values()</span></p>
+</td><td>
+<p><span>配列のすべての値を含んだイテレーターを取得</span></p>
+</td></tr><tr><td>
+<p><span>entries()</span></p>
+</td><td>
+<p><span>配列のすべてのエントリー（キー／値）を含んだイテレーターを取得</span></p>
+</td></tr></table></div>
+<p><b><b><b>表：</b></b><b><b>Arrayオブジェクトに追加された主なメソッド</b></b></b></p>
+<p>　Array.fromメソッドは、たとえばargumentsオブジェクトのような配列ライクなオブジェクトを配列として操作する際に用います。</p>
+<p><code>function hoge() {</code></p>
+<p><code>　</code><span><b>let args = Array.from(arguments);</b></span><code>　console.log(args.length);</code></p>
+<p><span>　</span><span>// 結果：5</span></p>
+<p><code>}</code></p>
+<p><code>hoge(1, 2, 3, 4, 5);</code></p>
+<p>　これまでであれば、以下のような、やや直観的でないコードで強制的に配列に変換する必要がありました。</p>
+<p><code>var args = Array.prototype.slice.call(arguments);　</code></p>
+<div id="calibre_link-65"> Mathオブジェクト</div>
+<p>　三角関数／対数に関わるメソッドが増強された他、立方根やシンプルな小数点数の切り捨てなどに対応しています。</p>
+<div><table><tr><td>
+<p><span>メソッド</span></p>
+</td><td>
+<p><span>概要</span></p>
+</td></tr><tr><td>
+<p><span>clz32(</span><span><i><i>x</i></i></span><span>)</span></p>
+</td><td>
+<p><span>指定した値を32ビット符号なし整数にした時の、</span><span>先頭の0の個数</span></p>
+</td></tr><tr><td>
+<p><span>sign(</span><span><i><i>x</i></i></span><span>)</span></p>
+</td><td>
+<p><span>指定した値が正数の場合は1、負数の場合は-1、0の場合は0を返す</span></p>
+</td></tr><tr><td>
+<p><span>trunc(</span><span><i><i>x</i></i></span><span>)</span></p>
+</td><td>
+<p><span>小数部分を単純に切り捨て、整数部分を取得</span></p>
+</td></tr><tr><td>
+<p><span>cbrt(</span><span><i><i>x</i></i></span><span>)</span></p>
+</td><td>
+<p><span>立方根を取得</span></p>
+</td></tr><tr><td>
+<p><span>hypot(</span><span><i><i>x1</i></i></span><span>,</span><span><i><i>x2</i></i></span><span>,...)</span></p>
+</td><td>
+<p><span>引数の二乗和の平方根を取得</span></p>
+</td></tr><tr><td>
+<p><span>log10(</span><span><i><i>x</i></i></span><span>)</span></p>
+</td><td>
+<p><span>底を10とする対数を取得</span></p>
+</td></tr><tr><td>
+<p><span>log2(</span><span><i><i>x</i></i></span><span>)</span></p>
+</td><td>
+<p><span>底を2とする対数を取得</span></p>
+</td></tr><tr><td>
+<p><span>log1p(</span><span><i><i>x</i></i></span><span>)</span></p>
+</td><td>
+<p><span>引数xに1を加えたものの自然対数を取得</span></p>
+</td></tr><tr><td>
+<p><span>expm1(</span><span><i><i>x</i></i></span><span>)</span></p>
+</td><td>
+<p><span>e^x - 1を取得</span></p>
+</td></tr><tr><td>
+<p><span>cosh(</span><span><i><i>x</i></i></span><span>)</span></p>
+</td><td>
+<p><span>ハイパーボリックコサインを取得</span></p>
+</td></tr><tr><td>
+<p><span>sinh(</span><span><i><i>x</i></i></span><span>)</span></p>
+</td><td>
+<p><span>ハイパーボリックサインを取得</span></p>
+</td></tr><tr><td>
+<p><span>tanh(</span><span><i><i>x</i></i></span><span>)</span></p>
+</td><td>
+<p><span>ハイパーボリックタンジェントを取得</span></p>
+</td></tr><tr><td>
+<p><span>acosh(</span><span><i><i>x</i></i></span><span>)</span></p>
+</td><td>
+<p><span>ハイパーボリックアークコサインを取得</span></p>
+</td></tr><tr><td>
+<p><span>asinh(</span><span><i><i>x</i></i></span><span>)</span></p>
+</td><td>
+<p><span>ハイパーボリックアークサインを取得</span></p>
+</td></tr><tr><td>
+<p><span>atanh(</span><span><i><i>x</i></i></span><span>)</span></p>
+</td><td>
+<p><span>ハイパーボリックアークタンジェントを取得</span></p>
+</td></tr><tr><td>
+<p><span>imul(</span><span><i><i>a</i></i></span><span> ,</span><span><i><i>b</i></i></span><span>)</span></p>
+</td><td>
+<p><span>高速な32ビット整数の乗算</span></p>
+</td></tr><tr><td>
+<p><span>fround(</span><span><i><i>x</i></i></span><span>)</span></p>
+</td><td>
+<p><span>指定した値に最も近い単精度float値を取得</span></p>
+</td></tr></table></div>
+<p><b><b><b>表：</b></b><b><b>Mathオブジェクトに追加された主なメソッド</b></b></b></p>
+<div id="calibre_link-66"> Numberオブジェクト</div>
+<p>　これまでグローバルオブジェクト（関数）として提供されてきたisNaN／isFinite／parseInt／parseFloatなどのメソッドがNumberオブジェクトのメンバーとして組み込まれ、よりわかりやすくなりました。</p>
+<div><table><tr><td>
+<p><span>メンバー</span></p>
+</td><td>
+<p><span>概要</span></p>
+</td></tr></table></div>
+</div>
+</div>
+<div {http://www.idpf.org/2007/ops}type="frontmatter" id="calibre_link-6">
+<div id="calibre_link-182">
+<div>
+<table>
+<tr><td>
+<h2 id="calibre_link-183"><b>*EPSILON</b></h2>
+</td><td>
+<p><span>1と、Number値で表現できる1よりも大きい最小値との差（2.2204460492503130808472633361816E-16）</span></p>
+</td></tr><tr><td>
+<p><span>*MIN_SAFE_INTEGER　</span></p>
+</td><td>
+<p><span>J</span><span>avaScriptにおいて正確に扱える最小の整数（-9007199254740991）</span></p>
+</td></tr><tr><td>
+<p><span>*MAX_SAFE_INTEGER</span></p>
+</td><td>
+<p><span>JavaScriptにおいて正確に扱える最大の整数（9007199254740991）</span></p>
+</td></tr><tr><td>
+<p><span>*isNaN(</span><span><i><i>num</i></i></span><span>)</span></p>
+</td><td>
+<p><span>NaN（Not a Number）であるかを判定</span></p>
+</td></tr><tr><td>
+<p><span>*isFinite(</span><span><i><i>num</i></i></span><span>)</span></p>
+</td><td>
+<p><span>有限値であるかを判定</span></p>
+</td></tr><tr><td>
+<p><span>*isInteger(</span><span><i><i>num</i></i></span><span>)</span></p>
+</td><td>
+<p><span>整数値であるかを判定</span></p>
+</td></tr><tr><td>
+<p><span>*isSafeInteger(</span><span><i><i>num</i></i></span><span>)</span></p>
+</td><td>
+<p><span>Safe Integer（正しくIEEE-754倍精度数として表</span><span>現できるか）であるかを判定</span></p>
+</td></tr><tr><td>
+<p><span>*parseFloat(</span><span><i><i>str</i></i></span><span>)</span></p>
+</td><td>
+<p><span>文字列を小数点数に変換</span></p>
+</td></tr><tr><td>
+<p><span>*parseInt(</span><span><i><i>str</i></i></span><span> [,</span><span><i><i>radix</i></i></span><span>])</span></p>
+</td><td>
+<p><span>文字列を整数に変換（引数radixは基数）</span></p>
+</td></tr></table></div>
+<p><b><b><b>表：</b></b><b><b>Numberオブジェクトに追加された主なメンバー</b></b></b></p>
+<p>　isFinite／isNaNメソッドは、正しくはグローバルオブジェクトの同名のメソッドとは挙動が一致しない点に注意してください。というのも、グローバルオブジェクトのそれは引数を数値に暗黙的に変換した上で判定するのに対して、Numberオブジェクトでは数値であり、かつ、NaN／Finite（有限値）であるものだけをtrueとします。よって、以下のようなコードでは結果が変わります。</p>
+<p><code>console.log(Number.isNaN('hoge'));</code></p>
+<p><span>　// 結果：false</span></p>
+<p><code>console.log(isNaN('hoge'));</code></p>
+<p><span>　// 結果：true</span></p>
+<p>　一方、parseInt／parseFloatメソッドはグローバルオブジェクトと完全に一致した動作を提供します。</p>
+<div id="calibre_link-67"> RegExpオブジェクト</div>
+<p>　新たにyフラグが追加され、lastIndexプロパティで指定された位置でマッチングを試みることができるようになりました。</p>
+<p><code>let re =<i><i>WINGS</i></i>y;</code></p>
+<p><code>console.log(re.flags);</code></p>
+<p><span>　// 結果：y</span></p>
+<p><code>console.log(re.test('WINGS'));</code></p>
+<p><span>　// 結果：true</span></p>
+<p><span><b>re.lastIndex = 2;</b></span></p>
+<p><code>console.log(re.test('出版WINGS'));</code></p>
+<p><span>　// 結果：true</span></p>
+<p>　この例では、3文字目（先頭文字は0）を先頭にマッチングを試みます。lastIndexプロパティを<span>1</span>、<span>3</span>などと変更した場合に、結果がfalse（マッチしない）になることも確認してみましょう。</p>
+<p>　なお、サンプルで利用しているflagsプロパティは、同じくECMAScript 6で追加となったプロパティで、現在のRegExpオブジェクトで有効になっているフラグを返します。</p>
+<div id="calibre_link-68"> Objectオブジェクト</div>
+<p>　Objectオブジェクトでは、以下のようなメソッドが追加されています。</p>
+<div><table><tr><td>
+<p><span>メソッド</span></p>
+</td><td>
+<p><span>概要</span></p>
+</td></tr><tr><td>
+<p><span>*assign(</span><span><i><i>target</i></i></span><span>,</span><span><i><i>src</i></i></span><span>,...)</span></p>
+</td><td>
+<p><span>オブジェクトtargetに対してオブジェクトsrc,...のプロパティをコピー</span></p>
+</td></tr><tr><td>
+<p><span>*is(</span><span><i><i>v1</i></i></span><span>,</span><span><i><i>v2</i></i></span><span>)</span></p>
+</td><td>
+<p><span>引数同士が等しいかどうかを判定</span></p>
+</td></tr><tr><td>
+<p><span>*getOwnPropertySymbols(</span><span><i><i>obj</i></i></span><span>)</span></p>
+</td><td>
+<p><span>オブジェクト配下に含まれるすべてのシンボルプロパティを取得（具体的な例はシンボルの項を参照）</span></p>
+</td></tr><tr><td>
+<p><span>*setPrototypeOf(</span><span><i><i>obj</i></i></span><span>,</span><span><i><i>proto</i></i></span><span>)</span></p>
+</td><td>
+<p><span>オブジェクトobjに新たなプロトタイプprotoを設定</span></p>
+</td></tr></table></div>
+<p><b><b><b>表：</b></b><b><b>Objectオブジェクトに追加された主なメンバー</b></b></b></p>
+<p>　assignメソッドは、jQueryなどでは$.extendメソッドとして提供されていたものです。たとえば、コンストラクターで初期値をプロパティにまとめて割り当てるようなケースでも利用できます。</p>
+<p><code>class Person {</code></p>
+<p><code>　constructor(firstName, lastName, sex) {</code></p>
+<p><code>　　</code><span><b>Object.assign(this, {firstName, lastName, sex });</b></span><code>　}</code></p>
+<p><code>　show() {</code></p>
+<p><code>　　return `${this.lastName}${this.firstName}は${this.sex}です。`;</code></p>
+<p><code>　}</code></p>
+<p><code>}</code></p>
+<p><code>let p = new Person('理央', '佐藤', '女');</code></p>
+<p><code>console.log(p.show());</code></p>
+<p><span>　// 結果：佐藤理央は女です。</span></p>
+<p>　コンストラクターの中では、thisが現在のインスタンスを渡しますので、これに引数をまとめたオブジェクトリテラルをまとめてマージしているわけです。</p>
+<p><b><b><b>［Note］本項のサンプル</b></b></b></p>
+<p>　コンストラクター、オブジェクト初期化子の省略記法は、いずれもECMAScript 6で導入されたものです。詳しい解説は、それぞれ該当する項を参照してください。</p>
+<p>　isメソッドは、ほぼ===演算子と同じ結果を返しますが、以下の比較でのみ異なる結果を返します。</p>
+<p><code>console.log(Object.is(</code><code>+</code><code>0, -0));</code></p>
+<p><span>　// 結果：false</span></p>
+<p><code>console.log(+0 === -0);</code></p>
+<p><span>　// 結果：true</span></p>
+<p><code>console.log(Object.is(NaN, NaN));</code></p>
+<p><span>　// 結果：true</span></p>
+<p><code>console.log(Object.is(NaN === NaN));</code></p>
+<p><span>　// 結果：false</span></p>
+<p><br /><br /></p>
+</div>
+</div>
+<div {http://www.idpf.org/2007/ops}type="frontmatter" id="calibre_link-0">
+<div id="calibre_link-184">
+<div id="calibre_link-69"><b><span><b>Part5</b></span>オブジェクト指向構文</b></div>
+<div id="calibre_link-70"> オブジェクトリテラルをよりシンプルに表現する</div>
+<p>　従来からのオブジェクトリテラル――{ 名前: 値,... }の表記がよりシンプルに表現できるようになりました。</p>
+<div id="calibre_link-71"> 変数を同名のプロパティに設定する</div>
+<p>　プロパティの名前と、その値を表す変数とが同名である場合には、値の指定を省略できます。</p>
+<p><code>let title = 'AngularJSアプリケーションプログラミング';</code></p>
+<p><code>let price = 3700;</code></p>
+<p><code>let publish = '技術評論社';</code></p>
+<p><code>let book =</code><span><b>{ title, price, publish }</b></span><code>;</code></p>
+<p><code>console.log(book);</code></p>
+<p><span>　// 結果：{"title":"AngularJSアプリケーションプログラミング","price":3700,"publish":"技術評論社"}</span></p>
+<p>　これまでであれば、太字の部分は以下のように表す必要がありました。</p>
+<p><code>{ title: title, price: price, publish: publish }</code></p>
+<div id="calibre_link-72"> メソッドを定義する</div>
+<p>　従来は、メソッドも「名前: function(params,...) {...}」のように関数型のプロパティとして表記しなければなりませんでした。しかし、ECMAScript 6では「名前(params) {...}」という表記が許されています。これは、一般的なメソッド定義に沿った表記でもあり、シンプルである以上に直観的です。</p>
+<p><code>let book = {</code></p>
+<p><code>　title: 'AngularJSアプリケーションプログラミング',</code></p>
+<p><code>　price: 3700,</code></p>
+<p><code>　</code><span><b>toString() {</b></span></p>
+<p><span><b>　　console.log(`${this.title}:${this.price}円`);</b></span><span><b>}</b></span></p>
+<p><code>};</code></p>
+<p><code>book.toString();</code></p>
+<p><span>　// 結果：AngularJSアプリケーションプログラミング:3700円</span></p>
+<div id="calibre_link-73"> プロパティ名を動的に生成できる</div>
+<p>　プロパティ名をブラケット（[...]）で括ることで、式の値から動的にプロパティ名を生成できます（Computed property names）。</p>
+<p><code>let i = 0;</code></p>
+<p><code>let data = {</code></p>
+<p><code>　['hoge' + ++i]: 15,</code></p>
+<p><code>　['hoge' + ++i]: 20,</code></p>
+<p><code>　['hoge' + ++i]: 25</code></p>
+<p><code>};</code></p>
+<p><code>console.log(data);</code></p>
+<p><span>　// 結果：{"hoge1":15,"hoge2":20,"hoge3":25}</span></p>
+<p>　より実践的な例については、イテレーターの項も合わせて参照してください。</p>
+<div id="calibre_link-74"> クラスを定義する - class命令</div>
+<p>　ECMAScript 6では、いよいよclass命令が利用できるようになりました。たとえば以下はname（名前）／sex（性別）プロパティ、showメソッドを提供するPersonクラスの例です。</p>
+<p><code>class Person {</code></p>
+<p><code>　constructor(name, sex) {</code></p>
+<p><code>　　this.name = name;</code></p>
+<p><code>　　this.sex = sex;</code></p>
+<p><code>　}</code></p>
+<p><code>　show() {</code></p>
+<p><code>　　return `${this.name}は${this.sex}です。`;</code></p>
+<p><code>　}</code></p>
+<p><code>}</code></p>
+<p><code>let p = new Person('理央', '女');</code></p>
+<p><code>console.log(p.show());</code></p>
+<p><span>　// 結果：理央は女です。</span></p>
+<p>　従来のprototypeプロパティやfunctionによるコンストラクター定義に比べると直観的でもあり、Java／C#などの言語を学んだことがある人であれば、すぐに理解できるはずです。ただし、public／protected／privateのようなアクセス修飾子はありません。</p>
+<p>　constructorはclassブロック配下で利用できる特殊なメソッドで、名前の通り、コンストラクターを表します。</p>
+<p><b><b><b>［Note］functionコンストラクターと等価ではない</b></b></b></p>
+<p>　classブロックで定義されたクラスは、内部的には関数です。ただし、従来のfunctionコンストラクターと完全に等価ではない点に注意してください。</p>
+<p>　　・関数として呼び出すことはできない（「let p = Person(...);」は不可）</p>
+<p>　　・クラスの巻き上げ（hoisted）はない（定義前の呼び出しは不可）</p>
+<div id="calibre_link-75"> 匿名クラス（リテラル表現）も利用できる</div>
+<p>　「class { ... }」の形式で、クラスリテラル（表現）も指定できます。関数リテラル（function() {...}）と同じく、式の中で利用可能です。</p>
+<p><code>const Person = class {</code></p>
+<p><span>　...中身は前述の通り...</span></p>
+<p><code>}</code></p>
+<p><code>let p = new Person('理央', '女');</code></p>
+<p><code>console.log(p.show());</code></p>
+<p><span>　// 結果：理央は女です。</span></p>
+<div id="calibre_link-76"> 静的メソッドを定義する - static修飾子</div>
+<p>　static修飾子を利用することで、静的メソッドを定義することも可能です。</p>
+<p><code>class Figure {</code></p>
+<p><code>　static triangle(base, height) {</code></p>
+<p><code>　　return base * height / 2;</code></p>
+<p><code>　}</code></p>
+<p><code>}</code></p>
+<p><code>console.log(Figure.triangle(10, 5));</code></p>
+<p><span>　// 結果：25</span></p>
+<div id="calibre_link-77"> getter／setterも利用できる</div>
+<p>　ECMAScript 5ではオブジェクトリテラルの中で利用できたgetter／setter構文が、ECMAScript 6ではclassブロックの中で利用できます。</p>
+<p><code>class Person {</code></p>
+<p><code>　constructor(name, sex) {</code></p>
+<p><code>　　this.name = name;</code></p>
+<p><code>　　this.sex = sex;</code></p>
+<p><code>　}</code></p>
+<p><span>　// ageプロパティのgetter／setter</span><code>　</code><span><b>get age() {</b></span></p>
+<p><span><b>　　return this._age;</b></span></p>
+<p>}</p>
+<p><span><b>　set age(value) {</b></span></p>
+<p><span><b>　　this._age = value</b></span></p>
+<p>}</p>
+<p><code>　show() {</code></p>
+<p><code>　　return `${this.name}は${this.sex}、${this.age}歳です。`;</code></p>
+<p><code>　}</code></p>
+<p><code>}</code></p>
+<p><code>let p = new Person('理央', '女');</code></p>
+<p><code>p.age = 10;</code></p>
+<p><code>console.log(p.show());</code></p>
+<p><span>　// 結果：理央は女、10歳です。</span></p>
+<p>　ECMAScript 6では、classブロックの中で「let age = 0;」のような、いわゆるインスタンスフィールドを定義することはできません。代わりに、getter／setterを利用してください。</p>
+<div id="calibre_link-78"> 既存のクラスを継承する - extendsキーワード</div>
+<p>　extendsキーワードを利用することで、既存のクラスを継承してサブクラスを定義することもできます。</p>
+<p><code>class Person {</code></p>
+<p><code>　constructor(name, sex) {</code></p>
+<p><code>　　this.name = name;</code></p>
+<p><code>　　this.sex = sex;</code></p>
+<p><code>　}</code></p>
+<p><code>　show() {</code></p>
+<p><code>　　return `${this.name}は${this.sex}です。`;</code></p>
+<p>}</p>
+<p><code>}</code></p>
+<p><code>class BusinessPerson extends Person {</code></p>
+<p><code>　constructor(name, sex, clazz) {</code></p>
+<p><code>　　</code><span><b>super(name, sex);</b></span><code>　　this.clazz = clazz;</code></p>
+<p><code>　}</code></p>
+<p><code>　show() {</code></p>
+<p><code>　　return `</code><span><b>${super.show()}</b></span><code> 役職は${this.clazz}です。`;</code></p>
+<p><code>　}</code></p>
+<p><code>}</code></p>
+<p><code>let bp = new BusinessPerson('理央', '女', '主任');</code></p>
+<p><code>console.log(bp.show());</code></p>
+<p><span>　// 結果：理央は女です。 役職は主任です。</span></p>
+<p>　サブクラスでは、superキーワードを利用することで、スーパークラスのメソッド（コンストラクター）を呼び出すこともできます（太字部分）。</p>
+<p><b><b><b>［Note］ 組み込みオブジェクトも継承可能に</b></b></b></p>
+<p>　ECMAScript 6では、Array／Date／Errorなどの組み込みオブジェクトをextendsキーワードで継承できるようになりました。特に、Errorなどはアプリ独自の例外オブジェクトを実装したい時に、標準的な手続きで作成できるのは便利です。</p>
+<div id="calibre_link-79"> 列挙可能なオブジェクトを定義する - イテレーター</div>
+<p>　イテレーターとは、オブジェクトの内容を列挙するための仕組みを備えたオブジェクトです。たとえばArray、String、Map、Setなどの標準オブジェクトは、いずれも、デフォルトでイテレーターを備えているので、for...of命令で配下の要素を列挙できるわけです。</p>
+<p><code>let array_data = [1, 2, 3];</code></p>
+<p><code>let str_data = 'いろは';</code></p>
+<p><code>let map_data = new Map();</code></p>
+<p><code>map_data.set('JS', 'JavaScript');</code></p>
+<p><code>map_data.set('PL', 'Perl');</code></p>
+<p><code>map_data.set('PY', 'Python');</code></p>
+<p><code>for(let tmp of array_data) {</code></p>
+<p><code>　console.log(tmp);</code></p>
+<p><code>}</code></p>
+<p><span>　// 結果：1、2、3</span></p>
+<p><code>for(let tmp of str_data) {</code></p>
+<p><code>　console.log(tmp);</code></p>
+<p><code>}</code></p>
+<p><span>　// 結果：い、ろ、は</span></p>
+<p><code>for(let [key, value] of map_data) {</code></p>
+<p><code>　console.log(`${key}：${value}`);</code></p>
+<p><code>}</code></p>
+<p><span>　// 結果：JS：JavaScript、PL：Perl、PY：Python</span> 配列を列挙している部分を、もう少し原始的に書くと、以下のようになります。</p>
+<p><code>let itr = array_data.values();</code></p>
+<p><code>let c;</code></p>
+<p><code>while(c = itr.next()) {</code></p>
+<p><code>　if (c.done) { break; }</code></p>
+<p><code>　console.log(c.done);</code></p>
+<p><span>　// 結果：false、false、false</span><code>　console.log(c.value);</code></p>
+<p><span>　// 結果：1、2、3</span></p>
+<p><code>}</code></p>
+<p>　valuesメソッドは配列内部のイテレーターを返します。イテレーターは、配列の次の要素を取得するためのnextメソッドを持ちます。nextメソッドの戻り値は、以下のようなプロパティを持つオブジェクトです。</p>
+<ul><li>
+<p>value：次の要素の値</p>
+</li><li>
+<p>done：イテレーターが終端に到達したか</p>
+</li></ul>
+<p>　ここではdoneプロパティがtrueになるまでwhileループを繰り返すことで、配列の内容をすべて出力しているわけです。for...of命令は、このようなイテレーターの取得からdoneプロパティによる判定、valueプロパティからの値の取り出しまでを自動的に賄ってくれる糖衣構文であるといっても良いでしょう。</p>
+<div id="calibre_link-80"> イテレーターを実装したクラスの準備</div>
+<p>　for...of命令では、内部的にはSymbol.iteratorという名前のメソッドを呼び出し、デフォルトイテレーターを取得します（ビルトインイテレーターシンボル）。よって、イテレーターを実装したクラスを定義する場合にも、Symbol.iteratorという名前でイテレーター（nextメソッドを実装したオブジェクトを返す）を用意すればよい、ということになります。</p>
+<p>　たとえば以下のMyClazzクラスは、コンストラクターで渡された配列を、for...of命令で列挙可能にしたものです。</p>
+<p><code>class MyClazz {</code></p>
+<p><span>　// 引数で渡された配列を保持</span></p>
+<p><code>　constructor(data) {</code></p>
+<p><code>　　this.data = data;</code></p>
+<p><code>　}</code></p>
+<p><span>　// デフォルトイテレーターを取得するためのメソッドを準備</span></p>
+<p><code>　[Symbol.iterator](){</code></p>
+<p><code>　　let current = 0;</code></p>
+<p><code>　　let that = this;</code></p>
+<p><code>　　return {</code></p>
+<p><span>　　　 // dataプロパティの次の要素を取得</span></p>
+<p><code>　　　 next(){</code></p>
+<p><code>　　　　 return current &lt; that.data.length ?</code></p>
+<p><code>　　　　　　{value:that.data[current++], done:false} :</code></p>
+<p><code>　　　　　　{done: true};</code></p>
+<p><code>　　　 }</code></p>
+<p><code>　　};</code></p>
+<p><code>　}</code></p>
+<p><code>}</code></p>
+<p><span>// MyClazz内部で保持された配列を列挙</span></p>
+<p><code>let c = new MyClazz(['ほげ', 'ふー', 'ぴよ']);</code></p>
+<p><code>for(let d of c) {</code></p>
+<p><code>　console.log(d);</code></p>
+<p><code>}</code></p>
+<p><span>　結果：ほげ、ふー、ぴよ</span></p>
+<p>　[Symbol.iterator]と、ブラケットで括っているのはComputed Propertyの構文です。</p>
+<p>　Symbol.iteratorメソッドが返すイテレーターのnextメソッドでは、配列の末尾まで到達していたら{ done: true }であるオブジェクトを、さもなくば、{ value: 配列の現在値, done: false}を返しています。</p>
+<div id="calibre_link-81"> 列挙可能なオブジェクトをより簡単に実装する - ジェネレーター</div>
+<p>　ジェネレーターを利用することで、列挙可能なオブジェクトをより簡単に実装できます。以下に、まずはごく基本的なジェネレーターの例を示します。</p>
+<p><code>function* myGenerator() {</code></p>
+<p><code>　yield 'あ';</code></p>
+<p><code>　yield 'い';</code></p>
+<p><code>　yield 'う';</code></p>
+<p><code>}</code></p>
+<p><code>for(let t of myGenerator()) {</code></p>
+<p><code>　console.log(t);</code></p>
+<p><code>}</code></p>
+<p><span>　// 結果：あ、い、う</span></p>
+<p>　ジェネレーターを定義するには、function* {...}という構文を利用します。functionキーワードの後方に「*」を付与するだけです。</p>
+<p>　ジェネレーターの配下では、yield命令を呼び出すことができます。yieldは、returnとよく似た命令で関数の値を呼び出し元に返します。しかし、return命令がその場で関数の実行を終了するのに対して、yield命令は処理を一時停止します。つまり、次に呼び出された時には、その時点から処理を再開できます。</p>
+<p>　よって、定義されたジェネレーターmyGeneratorをfor...of命令に渡すことで、ループの都度、先頭から順番にyield命令による値――あ、い、うが返されるというわけです。</p>
+<div id="calibre_link-82"> カウントダウンするジェネレーター</div>
+<p>　もう少しだけ実用性のありそうなジェネレーターを準備してみましょう。ジェネレーターcountdownは、引数beginの値を呼び出し都度にデクリメントします（値が0になったところで処理を終了）。</p>
+<p><code>function* countdown(begin) {</code></p>
+<p><code>　while (begin &gt;= 0) {</code></p>
+<p><code>　　yield begin--;</code></p>
+<p><code>　}</code></p>
+<p><code>}</code></p>
+<p><code>for(let t of countdown(10)) {</code></p>
+<p><code>　console.log(t);</code></p>
+<p><code>}</code></p>
+<p><span>　// 結果：10、9、8、7、6、5、4、3、2、1</span><span>、0</span></p>
+<p>　countdown関数では、beginが0以上の間だけwhileループを繰り返し、yield命令で値を返させています。よって、この例であれば、10～0の値を出力し、yield命令が値を返さなくなったところで処理を終了します。</p>
+<p><b><b><b>［Note］前項サンプルの書き換え</b></b></b></p>
+<p>　ジェネレーターを利用することで、前項のサンプルもシンプルに記述できます。配列の内容（that.data）をすべて読み込むまでyield命令を発行します。</p>
+<p><code>class MyClazz {</code></p>
+<p><code>　constructor(data) {</code></p>
+<p><code>　　this.data = data;</code></p>
+<p><code>　　</code><span><b>this[Symbol.iterator] = function*(){</b></span></p>
+<p><span><b>　　　let current = 0;</b></span></p>
+<p><span><b>　　　let that = this;</b></span></p>
+<p><span><b>　　　while(current &lt; that.data.length) {</b></span></p>
+<p><span><b>　　　　yield that.data[current++];</b></span><span><b>}</b></span></p>
+<p>}</p>
+<p><code>　}</code></p>
+<p><code>}</code></p>
+<div id="calibre_link-83"> アプリを機能単位にまとめる - モジュール</div>
+<p><b><b><b>［Note］babel-nodeコマンド</b></b></b></p>
+<p>　本項の内容は複数のファイルを前提としています。簡易インタプリター（Try it out）ではなく、babel-nodeコマンドで実行してください。</p>
+<p>　アプリの規模が大きくなればなるほど、アプリを機能単位に分割／整理するモジュールの存在は重要になってきます。これまでJavaScriptではモジュールを言語としてサポートしてこなかったため、外部ライブラリのお世話になる必要がありました。</p>
+<p>　しかし、ECMAScript 6では、いよいよ言語としてモジュールがサポートされることとなりました。以下はモジュールの基本的な例で、三角形や円の面積を求めるFigureモジュールをまとめたものです。</p>
+<p><span>// lib/Figure.js</span></p>
+<p><code>const PI = 3.1415;</code></p>
+<p><code>export function triangle(base, height) {</code></p>
+<p><code>　return base * height / 2;</code></p>
+<p><code>};</code></p>
+<p><code>export function circle(radius) {</code></p>
+<p><code>　return radius * radius * PI;</code></p>
+<p><code>}</code></p>
+<p><span>//</span><span>main</span><span>.js</span><code>import {triangle, circle} from './lib/Figure';</code></p>
+<p><code>console.log(triangle(10, 5));</code></p>
+<p><span>　// 結果：</span><span>25</span></p>
+<p><code>console.log(circle(2));</code></p>
+<p><span>　// 結果：</span><span>12.566</span></p>
+<p>　モジュールの外からアクセスできる要素は、exportキーワードで明示的に修飾します。たとえば上の例であれば、triangle／circle関数にexportキーワードが付いていますので、モジュール外部からのアクセスが可能になります。関数のほか、変数／定数／クラスなどにexportキーワードを付与することもできます。</p>
+<p>　定数PIはexportキーワードで修飾されていないので、モジュール外部からは参照できません。</p>
+<p>　以上でモジュールを準備できましたので、あとはメインのコード（ここではmain.js）からモジュールをインポートします。これには、import命令を利用します。</p>
+<p><b><b><b>構文 import命令</b></b></b></p>
+<p>import {<i><i>name</i></i>, ... } from<i><i>module</i></i></p>
+<p>　name：インポートする要素</p>
+<p>　module：モジュール（.js拡張子を抜いたパス）</p>
+<p>　たとえばこの例であれば、Figureモジュールからtriangle／circle関数を利用できるようにします。モジュール側で明示的にexport宣言していても、利用側でインポートされなかったものにはアクセスできません。たとえば、import命令を以下のようにした場合には、circle関数にはアクセスできません。</p>
+<p><code>import {triangle} from './lib/Figure';</code></p>
+<div id="calibre_link-84"> モジュールの内容をまるごとインポートする</div>
+<p>　アスタリスク（*）でモジュール内のすべてのエクスポートをインポートすることもできます。</p>
+<p><b><b><b>構文 import命令（2）</b></b></b></p>
+<p>import * as<i><i>alias</i></i> from<i><i>module</i></i></p>
+<p>　alias：モジュールの別名</p>
+<p>　module：モジュール</p>
+<p>　第2構文で、先ほどのmain.jsを書き換えてみます。</p>
+<p><code>import * as fig from './lib/Figure';</code></p>
+<p><code>console.log(fig.triangle(10, 5));</code></p>
+<p><code>console.log(fig.circle(2));</code></p>
+<p>　これでFigureモジュールのすべてのエクスポートを「fig.～」の形式で参照できるようになります。</p>
+<div id="calibre_link-85"> デフォルトのエクスポートを宣言する</div>
+<p>　モジュールにつきひとつだけであれば、デフォルトのエクスポートを宣言することもできます。これには、以下のようにdefaultキーワードを付与してください。デフォルトエクスポートでは、関数／クラスなどの名前は不要です。</p>
+<p><code>export</code><span><b>default</b></span><code> function(base, height) {</code></p>
+<p><code>　return base * height / 2;</code></p>
+<p><code>};</code></p>
+<p>　これをインポートするには、以下のようにimport命令を記述します。これで、Figureモジュールのデフォルトエクスポートに対してFigという名前でアクセスできるようになります。</p>
+<p><code>import Fig from './lib/Figure';</code></p>
+<p><code>console.log(Fig(10, 5));</code></p>
+<div id="calibre_link-86"> 補足：ブラウザー環境で動作するには？</div>
+<p>　Babelでは、内部的に、import命令をrequire関数（Node.js）に変換します。よって、これをブラウザー環境で動作するには、Browserify（babelify）などツールのお世話になる必要があります。Browserify（babelify）は、require関数をブラウザーでも利用できるように変換するためのツールです。以下のコマンドでインストールできます。</p>
+<p><code>&gt; npm install -g browserify</code></p>
+<p><code>&gt; npm ins</code><code>t</code><code>all --</code><code>save-dev babelify</code></p>
+<p>　あとは、以下のコマンドで該当するファイルを変換＆結合してください。</p>
+<p><code>&gt;</code><code>browserify main.js lib/Figure.js -t [ babelify --presets es2015 ] -o myApp.js</code></p>
+<p>　main.js／Figure.jsをバンドルした結果がmyapp.jsとして出力されますので、あとは、これをページからインポートすることで、ブラウザー上で動作するようになります。</p>
+<p><br /><br /></p>
+</div>
+</div>
+<div {http://www.idpf.org/2007/ops}type="frontmatter" id="calibre_link-7">
+<div id="calibre_link-185">
+<div id="calibre_link-87"><b>書籍情報</b></div>
+<div id="calibre_link-88"> 著者プロフィール</div>
+<p>山田 祥寛（やまだ よしひろ）</p>
+<p>Microsoft MVP for ASP.NET/IIS。執筆コミュニティ「WINGS プロジェクト」の代表でもある。主な著書に「AngularJSアプリケーションプログラミング」（技術評論社）、「ASP.NET MVC 5実践プログラミング」「はじめてのAndroidアプリ開発」（秀和システム）など。</p>
+<div id="calibre_link-89"> 基本情報</div>
+<p>2015年8月発行</p>
+<p>著　者：山田 祥寛（やまだ よしひろ）</p>
+<p>発行者：WINGSプロジェクト</p>
+<p>（c）2015 YOSHIHIRO YAMADA サポートサイト</p></div>
+<p>http://www.wings.msn.to/</p>
+<p>http://keijiban.msn.to/top.jsp?id=gr7638 （Q&amp;A掲示板）</p>
+
+
+</div>
+
+
+
+
+<script>function myFunction(){document.getElementById("tateyoko").classList.toggle("tateyoko")}</script></body></html>
