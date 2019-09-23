@@ -1,0 +1,6420 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visual Studio C#でRaspberry Pi ADCグラフ編</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/mainday.css" title="default">
+<link rel="alternate stylesheet" href="/css/mainnight.css" title="alternate">
+<script type="text/javascript" src="/js/styleswitcher.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+</head>
+<body>
+<div class="novelpage">
+<div class="novelbody">
+<div id="tateyoko">
+<div id="_top"></div>
+<a href="/">🏠</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('default'); return false;">日</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">月</a>&emsp;
+<a href="#_top" onclick="myFunction()" style="cursor: pointer;">縦書き／横書き</a>
+<div id="calibre_link-0">
+<div>
+<div>
+<table class="noveltitle">
+<tr>
+<td colspan="2"><i><span><i>Visual Studio C#でRaspberry Pi ADCグラフ編</i></span></i></td>
+</tr>
+<tr>
+                    
+                    
+      </tr>
+<tr>
+<td colspan="2">rapidnack</td>
+</tr>
+<tr>
+<td colspan="2"> (2018)</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+</tr>
+</table>
+<div></div>
+</div>
+<div></div>
+</div>
+</div>
+
+
+
+<div id="calibre_link-1">
+<div>
+<p>&nbsp;<span>Visual Studio C#</span>
+ &nbsp;</p>
+<p>&nbsp;<span>で</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Raspberry Pi</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>AD</span>
+<span>C</span>
+<span>グラフ編</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rapidnack&nbsp;--&nbsp;著</span>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<p>&nbsp;<span>・以下のサイトで、本書で掲載したソースコードを入手できます。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://github.com/Rapidnack/PigpiodIfTest">
+<span><u>https://github.com/Rapidnack/PigpiodIfTest</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<span>・本書中の会社名や商品名は、該当する各社の商標または登録商標です。本書中で</span>
+<span>は</span>
+<span>T</span>
+<span>M</span>
+<span>およ</span>
+<span>び®</span>
+<span>マークは省略させていただいております。</span>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<p>&nbsp;<a id="calibre_link-37"></a>
+<a href="#calibre_link-2">
+<span><u>はじめに</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-3">
+<span><u>1</u></span>
+<span><u>Visual Studio Communit</u></span>
+<span><u>y</u></span>
+<span><u>の準備</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-4">
+<span><u>2</u></span>
+<span><u>Raspberry P</u></span>
+<span><u>i</u></span>
+<span><u>の準備</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-5">
+<span><u>2.1</u></span>
+<span><u>Mon</u></span>
+<span><u>o</u></span>
+<span><u>のバージョン</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-6">
+<span><u>2.2</u></span>
+<span><u>ファイルシステムを書き込み可にする</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-7">
+<span><u>2.3</u></span>
+<span><u>KIOS</u></span>
+<span><u>K</u></span>
+<span><u>モード</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-8">
+<span><u>3</u></span>
+<span><u>新しいソリューションを作成</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-9">
+<span><u>3.1</u></span>
+<span><u>ソースコードをダウンロード</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-10">
+<span><u>3.2</u></span>
+<span><u>すぐ試してみたい場合は</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-11">
+<span><u>3.3</u></span>
+<span><u>新しいソリューションを作成</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-12">
+<span><u>3.4</u></span>
+<span><u>ライブラリプロジェクトを追加</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-13">
+<span><u>3.5</u></span>
+<span><u>ログ出力</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-14">
+<span><u>3.6</u></span>
+<span><u>例外対策</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-15">
+<span><u>4</u></span>
+<span><u>PigpiodI</u></span>
+<span><u>f</u></span>
+<span><u>クラス</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-16">
+<span><u>4.1</u></span>
+<span><u>PigpiodI</u></span>
+<span><u>f</u></span>
+<span><u>を追加</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-17">
+<span><u>4.2</u></span>
+<span><u>L</u></span>
+<span><u>チカ</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-18">
+<span><u>4.3</u></span>
+<span><u>サーボパルスを出力</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-19">
+<span><u>5</u></span>
+<span><u>AD</u></span>
+<span><u>C</u></span>
+<span><u>データをログ表示</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-20">
+<span><u>5.1</u></span>
+<span><u>SPI</u></span>
+<span><u>1</u></span>
+<span><u>の制約</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-21">
+<span><u>5.2</u></span>
+<span><u>ADC(MCP3208</u></span>
+<span><u>)</u></span>
+<span><u>を接続</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-22">
+<span><u>5.3</u></span>
+<span><u>コードを追加</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-23">
+<span><u>5.4</u></span>
+<span><u>AD</u></span>
+<span><u>CにL</u></span>
+<span><u>チカを接続</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-24">
+<span><u>5.5</u></span>
+<span><u>Raspberry P</u></span>
+<span><u>i</u></span>
+<span><u>で実行（リモートデスクトップ）</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-25">
+<span><u>5.6</u></span>
+<span><u>Raspberry P</u></span>
+<span><u>i</u></span>
+<span><u>で実行（小</u></span>
+<span><u>型</u></span>
+<span><u>LC</u></span>
+<span><u>D</u></span>
+<span><u>）</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-26">
+<span><u>6</u></span>
+<span><u>Rol</u></span>
+<span><u>l</u></span>
+<span><u>モードでグラフ表示</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-27">
+<span><u>6.1</u></span>
+<span><u>OxyPlot.WindowsForm</u></span>
+<span><u>s</u></span>
+<span><u>パッケージをインストール</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-28">
+<span><u>6.2</u></span>
+<span><u>PlotVie</u></span>
+<span><u>w</u></span>
+<span><u>を画面に追加</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-29">
+<span><u>6.3</u></span>
+<span><u>コードを追加</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-30">
+<span><u>6.4</u></span>
+<span><u>Raspberry P</u></span>
+<span><u>i</u></span>
+<span><u>で実行（リモートデスクトップ）</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-31">
+<span><u>6.5</u></span>
+<span><u>Raspberry P</u></span>
+<span><u>i</u></span>
+<span><u>で実行（小</u></span>
+<span><u>型</u></span>
+<span><u>LC</u></span>
+<span><u>D</u></span>
+<span><u>）</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-32">
+<span><u>7</u></span>
+<span><u>Fas</u></span>
+<span><u>t</u></span>
+<span><u>モードでグラフ表示</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-33">
+<span><u>7.1</u></span>
+<span><u>AD</u></span>
+<span><u>C</u></span>
+<span><u>にサーボパルス出力を接続</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-34">
+<span><u>7.2</u></span>
+<span><u>コードを追加</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-35">
+<span><u>7.3</u></span>
+<span><u>Raspberry P</u></span>
+<span><u>i</u></span>
+<span><u>で実行（リモートデスクトップ）</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-36">
+<span><u>7.4</u></span>
+<span><u>Raspberry P</u></span>
+<span><u>i</u></span>
+<span><u>で実行（小</u></span>
+<span><u>型</u></span>
+<span><u>LC</u></span>
+<span><u>D</u></span>
+<span><u>）</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<a id="calibre_link-2"><b>
+<span><b>はじめに</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>Raspberry P</span>
+<span>i</span>
+<span>用にタッチパネル付き小</span>
+<span>型</span>
+<span>LC</span>
+<span>D</span>
+<span>が多数販売されています</span>
+<span>。</span>
+<span>GU</span>
+<span>I</span>
+<span>アプリケーションを作りたくなりますね</span>
+<span>。</span>
+<span>We</span>
+<span>bで</span>
+<span>GU</span>
+<span>I</span>
+<span>アプリケーションの作成方法を検索する</span>
+<span>と</span>
+<span>Pytho</span>
+<span>nか</span>
+<span>C+</span>
+<span>+</span>
+<span>の例がほとんどです</span>
+<span>。</span>
+<span>Window</span>
+<span>s</span>
+<span>のよう</span>
+<span>に</span>
+<span>Visual Studi</span>
+<span>o</span>
+<span>で簡単</span>
+<span>に</span>
+<span>GU</span>
+<span>I</span>
+<span>アプリケーションを作れないものでしょうか。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>そんな思いから、前作</span>
+<span>「</span>
+<span>Visual Studio C</span>
+<span>#で</span>
+<span>Raspberry Pi</span>
+<span>&nbsp;</span>
+<span>リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>導入編」では</span>
+<span>、</span>
+<span>Visual Studi</span>
+<span>o</span>
+<span>で作成し</span>
+<span>た</span>
+<span>Window</span>
+<span>s</span>
+<span>フォームアプリケーションをそのま</span>
+<span>ま</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>で実行する手順を説明しました。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>GU</span>
+<span>I</span>
+<span>アプリケーションが作れるとなると、取得したデータをグラフ表示したくなります。そんなときは多量のデータを高速に表示できるグラフライブラ</span>
+<span>リ</span>
+<span>OxyPlo</span>
+<span>t</span>
+<span>の出番です。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="http://www.oxyplot.org/">
+<span><u>http://www.oxyplot.org/</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<span>OxyPlo</span>
+<span>t</span>
+<span>は横に流れていくデータレコーダのような表示にも、</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000021.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>オシロスコープのようにグラフ全体を高速に更新する表示にも使えます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000027.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>本書は</span>
+<span>、</span>
+<span>Window</span>
+<span>s</span>
+<span>フォームアプリケーションを新規に作成する手順を中心に説明します</span>
+<span>。</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>の準備については、前作</span>
+<span>「</span>
+<span>Visual Studio C</span>
+<span>#で</span>
+<span>Raspberry Pi</span>
+<span>&nbsp;</span>
+<span>リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>導入編」をご覧ください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>作成す</span>
+<span>る</span>
+<span>Window</span>
+<span>s</span>
+<span>フォームアプリケーションは、次のよう</span>
+<span>に</span>
+<span>Visual Studi</span>
+<span>oで</span>
+<span>Raspberry P</span>
+<span>iの</span>
+<span>GPI</span>
+<span>O</span>
+<span>を使ったデバッグができます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000064.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>あとは、完成し</span>
+<span>た</span>
+<span>Window</span>
+<span>s</span>
+<span>フォームアプリケーションをそのま</span>
+<span>ま</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>で実行するだけです。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000037.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>C</span>
+<span>#</span>
+<span>で「リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>」を操作するためのライブラリと、本書で作成す</span>
+<span>る</span>
+<span>Window</span>
+<span>s</span>
+<span>フォームアプリケーションのソースコード</span>
+<span>を</span>
+<span>GitHu</span>
+<span>b</span>
+<span>で公開しています。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://github.com/Rapidnack/PigpiodIfTest">
+<span><u>https://github.com/Rapidnack/PigpiodIfTest</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>201</span>
+<span>8年</span>
+<span>1</span>
+<span>0</span>
+<span>月&nbsp;rapidnack</span>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-3"><b>
+<span><b>Visual Studio Communit</b></span>
+<span><b>y</b></span>
+<span><b>の準備</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>Visual Studio Community&nbsp;201</span>
+<span>5、</span>
+<span>Visual Studio Community&nbsp;201</span>
+<span>7</span>
+<span>で動作確認をしています</span>
+<span>。</span>
+<span>Visual Studi</span>
+<span>o</span>
+<span>をインストールしていない場合は</span>
+<span>、</span>
+<span>Visual Studio Communit</span>
+<span>y</span>
+<span>をインストールしてください。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://visualstudio.microsoft.com/ja/vs/community/">
+<span><u>https://visualstudio.microsoft.com/ja/vs/community/</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000007.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Visual Studi</span>
+<span>o</span>
+<span>に慣れていない方は、簡単</span>
+<span>な</span>
+<span>Window</span>
+<span>s</span>
+<span>フォームアプリケーションが作れるように、入門書、説明サイト等で勉強してください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>サイト例：</span>
+<a href="http://www.atmarkit.co.jp/ait/articles/1704/10/news026.html">
+<span><u>http://www.atmarkit.co.jp/ait/articles/1704/10/news026.html</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-4"><b>
+<span><b>Raspberry P</b></span>
+<span><b>i</b></span>
+<span><b>の準備</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>前作</span>
+<span>「</span>
+<span>Visual Studio C</span>
+<span>#で</span>
+<span>Raspberry Pi</span>
+<span>&nbsp;</span>
+<span>リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>導入編」でセットアップし</span>
+<span>た</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>の設定を一部変更します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>2.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-5"><b>
+<span><b>Mon</b></span>
+<span><b>o</b></span>
+<span><b>のバージョン</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>2018/10/0</span>
+<span>4</span>
+<span>現在</span>
+<span>の</span>
+<span>Stabl</span>
+<span>e版</span>
+<span>5.1</span>
+<span>4</span>
+<span>はテキストボックスの表示に不具合があります。また</span>
+<span>、</span>
+<span>5.1</span>
+<span>0</span>
+<span>以前のバージョンはメモリリークがあり、グラフの更新を長時間続けると表示が固まってしまいます。そこで本書では一つ前</span>
+<span>の</span>
+<span>Stabl</span>
+<span>e版</span>
+<span>5.1</span>
+<span>2</span>
+<span>をインストールすることにしました。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>インストールされてい</span>
+<span>る</span>
+<span>Mon</span>
+<span>o</span>
+<span>のバージョンを確認します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>Mono -V</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>Mono JIT compiler version&nbsp;</span>
+<span>5.12.0.301</span>
+<span>&nbsp;(tarball Wed Jul 25 17:43:40 UTC 2018)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Copyright (C) 2002-2014 Novell, Inc, Xamarin Inc and Contributors. www.mono-project.com</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TLS:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __thread</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SIGSEGV:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; normal</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Notifications: epoll</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Architecture:&nbsp; armel,vfp+hard</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Disabled:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; none</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Misc:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; softdebug</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Interpreter:&nbsp;&nbsp; yes</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LLVM:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; supported, not enabled.</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GC:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sgen (concurrent by default)</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>5.1</span>
+<span>4</span>
+<span>がインストールされていた場合は、次の手順</span>
+<span>で</span>
+<span>5.1</span>
+<span>2</span>
+<span>に変更します。</span>
+<span>「</span>
+<span>sudo apt updat</span>
+<span>e</span>
+<span>」で警告が表示されますが問題ありません。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo apt remove monodevelop</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sudo apt autoremove</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sudo rm&nbsp;/etc/apt/sources.list.d/mono-official-stable.list</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>echo "deb https://download.mono-project.com/repo/debian stable-raspbianstretch/snapshots/5.12 main" | sudo tee /etc/apt/sources.list.d/mono-snapshot_5_12.list</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sudo apt update</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sudo apt install monodevelop</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>2.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-6"><b>
+<span><b>ファイルシステムを書き込み可にする</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>前作</span>
+<span>「</span>
+<span>Visual Studio C</span>
+<span>#で</span>
+<span>Raspberry Pi</span>
+<span>&nbsp;</span>
+<span>リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>導入編」の「</span>
+<a id="calibre_link-38">
+<span>Read only Root-FS</span>
+</a>
+<span>」を導入している場合は、次の操作で書き込み可にしておきます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>/boot/config.tx</span>
+<span>t</span>
+<span>の</span>
+<span>最後の行をコメントアウトして</span>
+<span>再起動すると、</span>
+<span>書き込み可能になります。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo mount -o remount,rw /mnt/boot-ro</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sudo vi /mnt/boot-ro/config.txt</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>最後の行をコメントアウトして再起動：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>#initramfs initrd.gz</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>再度書き込み禁止に戻すときは次のようにします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>/boot/config.tx</span>
+<span>t</span>
+<span>の</span>
+<span>最後の行のコメントアウトを外して</span>
+<span>再起動すると、</span>
+<span>書き込み禁止に戻ります。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo vi /boot/config.txt</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>最後の行のコメントアウトを外して再起動：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>initramfs initrd.gz</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>2.3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-7"><b>
+<span><b>KIOS</b></span>
+<span><b>K</b></span>
+<span><b>モード</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>起動す</span>
+<span>る</span>
+<span>GU</span>
+<span>I</span>
+<span>アプリケーションが異なるので、前作</span>
+<span>「</span>
+<span>Visual Studio C</span>
+<span>#で</span>
+<span>Raspberry Pi</span>
+<span>&nbsp;</span>
+<span>リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>導入編」の</span>
+<span>「</span>
+<span>KIOS</span>
+<span>K</span>
+<span>モード」の設定を一部変更します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>自動的にカーソルを消すようにします。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo apt-get install unclutter</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>自動的</span>
+<span>に</span>
+<span>GU</span>
+<span>I</span>
+<span>アプリケーションを起動するように</span>
+<span>、</span>
+<span>~/.config/lxsession/LXDE-pi/autostar</span>
+<span>t</span>
+<span>を編集します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>vi ~/.config/lxsession/LXDE-pi/autostart</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>~/.config/lxsession/LXDE-pi/autostar</span>
+<span>t</span>
+<span>の内容：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>@lxpanel --profile LXDE-pi</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@pcmanfm --desktop --profile LXDE-pi</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@xscreensaver -no-splash</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@xset s off</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@xset -dpms</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@xset s noblank</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@unclutter</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@mono /home/pi/Projects/</span>
+<span>AdcGraph</span>
+<span>/</span>
+<span>AdcGraph</span>
+<span>/bin/Debug/</span>
+<span>AdcGraph</span>
+<span>.exe</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>GU</span>
+<span>I</span>
+<span>アプリケーションを全画面表示で起動するように</span>
+<span>、</span>
+<span>~/.config/openbox/lxde-pi-rc.xm</span>
+<span>l</span>
+<span>を編集します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>vi ~/.config/openbox/lxde-pi-rc.xml</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>ファイルの最後の方に追加：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>...</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp; # end of the example</span>
+ &nbsp;</p>
+<p>&nbsp;<span>--&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp; &lt;application title="</span>
+<span>ADC Graph</span>
+<span>"&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;fullscreen&gt;yes&lt;/fullscreen&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp; &lt;/application&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp; &lt;/applications&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&lt;/openbox_config&gt;</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>これで起動時に全画面表示で実行されるようになりました</span>
+<span>。</span>
+<span><b>Alt+F1</b></span>
+<span><b>1</b></span>
+<span>キーで全画面表示を解除できます。</span>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-8"><b>
+<span><b>新しいソリューションを作成</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>新しいソリューションを作成し</span>
+<span>、</span>
+<span>GitHu</span>
+<span>b</span>
+<span>で公開しているライブラリを追加します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>3.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-9"><b>
+<span><b>ソースコードをダウンロード</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>GitHu</span>
+<span>b</span>
+<span>で公開している</span>
+<span>、</span>
+<span>C</span>
+<span>#</span>
+<span>で「リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>」を操作するためのライブラリをダウンロードします。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://github.com/Rapidnack/PigpiodIfTest">
+<span><u>https://github.com/Rapidnack/PigpiodIfTest</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<span>本書で作成す</span>
+<span>る</span>
+<span>Window</span>
+<span>s</span>
+<span>フォームアプリケーションのソースコードも含まれています。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000035.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ダウンロードし</span>
+<span>た</span>
+<span>ZI</span>
+<span>P</span>
+<span>ファイルを解凍します。解凍したフォルダーにあるライブラリプロジェクト</span>
+<span>「</span>
+<span>Rapidnack.Commo</span>
+<span>n</span>
+<span>」と</span>
+<span>「</span>
+<span>Rapidnack.Ne</span>
+<span>t</span>
+<span>」を使って新規</span>
+<span>に</span>
+<span>Window</span>
+<span>s</span>
+<span>フォームアプリケーションを作成していきます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000069.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>3.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-10"><b>
+<span><b>すぐ試してみたい場合は</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>解凍したフォルダーには本書で作成す</span>
+<span>る</span>
+<span>Window</span>
+<span>s</span>
+<span>フォームアプリケーションのソースコードが入っているので、新規</span>
+<span>に</span>
+<span>Window</span>
+<span>s</span>
+<span>フォームアプリケーションを作成する前</span>
+<span>に</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>で動作させることができます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>解凍したフォルダーにあ</span>
+<span>る</span>
+<span>AdcGraph.sl</span>
+<span>nを</span>
+<span>Visual Studi</span>
+<span>o</span>
+<span>で開きます。ソリューションエクスプローラでプロジェク</span>
+<span>ト</span>
+<span>AdcGrap</span>
+<span>h</span>
+<span>を右クリック、「スタートアッププロジェクトに設</span>
+<span>定</span>
+<span>(A</span>
+<span>)</span>
+<span>」をクリックします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000026.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>NuGe</span>
+<span>t</span>
+<span>パッケージを復元するため一度ソリューションをビルドします。ビルドに失敗する場合は、下記の手順</span>
+<span>で</span>
+<span>OxyPlot.WindowsForm</span>
+<span>s</span>
+<span>パッケージ</span>
+<span>と</span>
+<span>OxyPlot.Cor</span>
+<span>e</span>
+<span>パッケージをインストールし直してください。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000058.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>OxyPlot.WindowsForm</span>
+<span>s</span>
+<span>パッケージ</span>
+<span>と</span>
+<span>OxyPlot.Cor</span>
+<span>e</span>
+<span>パッケージをアンインストールします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000015.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000050.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>改め</span>
+<span>て</span>
+<span>OxyPlot.WindowsForm</span>
+<span>s</span>
+<span>パッケージを検索してインストールします</span>
+<span>。</span>
+<span>OxyPlot.Cor</span>
+<span>e</span>
+<span>パッケージも一緒にインストールされます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000005.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>前作</span>
+<span>「</span>
+<span>Visual Studio C</span>
+<span>#で</span>
+<span>Raspberry Pi</span>
+<span>&nbsp;</span>
+<span>リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>導入編」でセットアップし</span>
+<span>た</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>の電源を入れておきます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ビルドして実行します</span>
+<span>。</span>
+<span>I</span>
+<span>P</span>
+<span>アドレスに</span>
+<span>「</span>
+<span>raspberrypi.loca</span>
+<span>l</span>
+<span>」を入力したときは最初の接続に失敗することがあります。接続できないときは一</span>
+<span>度</span>
+<span>Clos</span>
+<span>e</span>
+<span>して再</span>
+<span>度</span>
+<span>Ope</span>
+<span>n</span>
+<span>してみてください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>動作を確認できたなら、前作</span>
+<span>「</span>
+<span>Visual Studio C</span>
+<span>#で</span>
+<span>Raspberry Pi</span>
+<span>&nbsp;</span>
+<span>リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>導入編」を参照して</span>
+<span>、</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>で実行してください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>KIOS</span>
+<span>K</span>
+<span>モードのセットアップを変更する必要があります。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>vi ~/.config/lxsession/LXDE-pi/autostart</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>~/.config/lxsession/LXDE-pi/autostar</span>
+<span>t</span>
+<span>の内容：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>@lxpanel --profile LXDE-pi</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@pcmanfm --desktop --profile LXDE-pi</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@xscreensaver -no-splash</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@xset s off</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@xset -dpms</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@xset s noblank</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@unclutter</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@mono /home/pi/Projects/</span>
+<span>PigpiodIfTest-master</span>
+<span>/</span>
+<span>AdcGraph</span>
+<span>/bin/Debug/</span>
+<span>AdcGraph</span>
+<span>.exe</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>3.3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-11"><b>
+<span><b>新しいソリューションを作成</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>フレームワーク</span>
+<span>に</span>
+<span>.NET Framework 4.</span>
+<span>5</span>
+<span>以上を選択して新しいプロジェクト</span>
+<span>「</span>
+<span>AdcGrap</span>
+<span>h</span>
+<span>」を作成します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000040.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>3.4</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-12"><b>
+<span><b>ライブラリプロジェクトを追加</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>ソリューションエクスプローラでソリューションを右クリックし、「エクスプローラでフォルダーを開</span>
+<span>く</span>
+<span>(X</span>
+<span>)</span>
+<span>」をクリックします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000072.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>表示されたフォルダーに</span>
+<span>、</span>
+<span>GitHu</span>
+<span>b</span>
+<span>からダウンロードしたライブラリプロジェクト</span>
+<span>「</span>
+<span>Rapidnack.Commo</span>
+<span>n</span>
+<span>」と</span>
+<span>「</span>
+<span>Rapidnack.Ne</span>
+<span>t</span>
+<span>」をコピーします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000030.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ライブラリプロジェクト</span>
+<span>「</span>
+<span>Rapidnack.Commo</span>
+<span>n</span>
+<span>」と</span>
+<span>「</span>
+<span>Rapidnack.Ne</span>
+<span>t</span>
+<span>」をソリューションに追加します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000062.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000048.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000017.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ソリューションに追加されました。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000011.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>プロジェクト</span>
+<span>「</span>
+<span>AdcGrap</span>
+<span>h</span>
+<span>」の「参照」を右クリックして、「参照を追加</span>
+<span>（R</span>
+<span>）」をクリックします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000046.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ライブラリプロジェクト</span>
+<span>「</span>
+<span>Rapidnack.Commo</span>
+<span>n</span>
+<span>」と</span>
+<span>「</span>
+<span>Rapidnack.Ne</span>
+<span>t</span>
+<span>」の参照をプロジェクト</span>
+<span>「</span>
+<span>AdcGrap</span>
+<span>h</span>
+<span>」に追加します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000002.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>3.5</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-13"><b>
+<span><b>ログ出力</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>ライブラリプロジェクト</span>
+<span>「</span>
+<span>Rapidnack.Commo</span>
+<span>n</span>
+<span>」をソリューションに追加してビルドすると、ツールボックス</span>
+<span>に</span>
+<span>LoggingTextBo</span>
+<span>x</span>
+<span>コントロールが追加され、フォームに追加できるようになります。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000056.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>フォーム</span>
+<span>に</span>
+<span>LoggingTextBo</span>
+<span>x</span>
+<span>を追加すると</span>
+<span>、</span>
+<span>System.Console.Write(</span>
+<span>)、</span>
+<span>System.Console.WriteLine(</span>
+<span>)</span>
+<span>の出力</span>
+<span>が</span>
+<span>LoggingTextBo</span>
+<span>x</span>
+<span>に表示されるようになります。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>まず、フォームサイズなど</span>
+<span>を</span>
+<span>Raspberry P</span>
+<span>iの</span>
+<span>LC</span>
+<span>D</span>
+<span>のサイズに合わせておきます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000013.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000074.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>フォームの左側にボタンなどを載せるパネルを追加します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000034.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000000.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>残りの部分</span>
+<span>に</span>
+<span>LoggingTextBo</span>
+<span>x</span>
+<span>を配置します。ログ表示用なの</span>
+<span>で</span>
+<span>Multilin</span>
+<span>e、</span>
+<span>ReadOnl</span>
+<span>y</span>
+<span>にして、見易いよう</span>
+<span>に</span>
+<span>BackColo</span>
+<span>r</span>
+<span>プロパティ</span>
+<span>を</span>
+<span>Windo</span>
+<span>w</span>
+<span>に変更します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000055.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000065.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000008.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>パネルにボタンを追加して試してみます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000010.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;button1_Click(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for</span>
+<span>&nbsp;(</span>
+<span>int</span>
+<span>&nbsp;i = 0; i &lt; 10; i++)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(</span>
+<span>"i = {0}"</span>
+<span>, i);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000022.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>3.6</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-14"><b>
+<span><b>例外対策</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>わざと例外が発生するコードを実行してみます。配列の範囲外をアクセスします。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;button1_Click(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int</span>
+<span>[] data =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>[] { 0, 1, 4, 9, 16 };</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for</span>
+<span>&nbsp;(</span>
+<span>int</span>
+<span>&nbsp;i = 0; i &lt; 10; i++)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(</span>
+<span>"data[{0}] = {1}"</span>
+<span>, i, data[i]);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>直</span>
+<span>接</span>
+<span>EX</span>
+<span>E</span>
+<span>を実行してボタンをクリックすると、エラーダイアログが表示されます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000031.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>エラーダイアログの代わりに例外の情報</span>
+<span>を</span>
+<span>LoggingTextBo</span>
+<span>x</span>
+<span>に表示するよう</span>
+<span>に</span>
+<span>Program.c</span>
+<span>s</span>
+<span>を変更します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Windows.Forms;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>namespace</span>
+<span>&nbsp;AdcGraph</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>static class&nbsp;</span>
+<span>Program</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>///</span>
+<span>&nbsp;</span>
+<span>&lt;summary&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>///</span>
+<span>&nbsp;アプリケーションのメイン&nbsp;エントリ&nbsp;ポイントです。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>///</span>
+<span>&nbsp;</span>
+<span>&lt;/summary&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>[STAThread]</span>
+ &nbsp;</p>
+<p>&nbsp;<span>static</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;Main()</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Application.ThreadException += (s, e) =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"{0}, {1}¥r¥n{2}¥r¥n"</span>
+<span>, e.Exception.TargetSite, e.Exception.Message, e.Exception.StackTrace);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>};</span>
+ &nbsp;</p>
+<p>&nbsp;<span>AppDomain.CurrentDomain.UnhandledException += (s, e) =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Exception ex = e.ExceptionObject&nbsp;</span>
+<span>as</span>
+<span>&nbsp;Exception;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(ex !=&nbsp;</span>
+<span>null</span>
+<span>)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"{0}, {1}¥r¥n{2}¥r¥n"</span>
+<span>, ex.TargetSite, ex.Message, ex.StackTrace);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>};</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Application.EnableVisualStyles();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Application.SetCompatibleTextRenderingDefault(</span>
+<span>false</span>
+<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Application.Run(</span>
+<span>new</span>
+<span>&nbsp;MainForm());</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>直</span>
+<span>接</span>
+<span>EX</span>
+<span>E</span>
+<span>を実行してボタンをクリックすると、例外の情報</span>
+<span>が</span>
+<span>LoggingTextBo</span>
+<span>x</span>
+<span>に表示されます。通常はログファイルに出力するようにしますが、本書で</span>
+<span>は</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>のファイルシステムを</span>
+<span>「</span>
+<span>Read-only Root-F</span>
+<span>S</span>
+<span>」にするので画面に表示することにしました。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000044.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>追加したボタ</span>
+<span>ン</span>
+<span>button</span>
+<span>1</span>
+<span>とそのイベントハンド</span>
+<span>ラ</span>
+<span>button1_Click(</span>
+<span>)</span>
+<span>は不要なので削除しておきます。</span>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>4</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-15"><b>
+<span><b>PigpiodI</b></span>
+<span><b>f</b></span>
+<span><b>クラス</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<img src="images/000052.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>C</span>
+<span>#</span>
+<span>で「リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>」を操作するためのクラ</span>
+<span>ス</span>
+<span>PigpiodI</span>
+<span>f</span>
+<span>を使って</span>
+<span>、</span>
+<span>Raspberry P</span>
+<span>iの</span>
+<span>GPI</span>
+<span>O</span>
+<span>を操作してみます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000020.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>4.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-16"><b>
+<span><b>PigpiodI</b></span>
+<span><b>f</b></span>
+<span><b>を追加</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>Raspberry P</span>
+<span>i</span>
+<span>との接続に使</span>
+<span>う</span>
+<span>I</span>
+<span>P</span>
+<span>アドレス入力フィールド</span>
+<span>、</span>
+<span>Ope</span>
+<span>n</span>
+<span>ボタン</span>
+<span>、</span>
+<span>Clos</span>
+<span>e</span>
+<span>ボタンをパネルに追加します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span><b>Type</b></span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span><b>(Name)</b></span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span><b>Text</b></span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>Label</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>labelAddress</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>IP address</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>TextBox</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>textBoxAddress</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>Button</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>buttonOpen</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Open</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>Button</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>buttonClose</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Close</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000073.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>GPI</span>
+<span>O</span>
+<span>を操作するボタン等を配置するパネルを追加します</span>
+<span>。</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>との接続状態に合わせて有効・無効を切り替えるので名前を付けておきます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span><b>Type</b></span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span><b>(Name)</b></span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>Panel</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>panelOperation</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000051.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000018.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Form1_Load(</span>
+<span>)</span>
+<span>イベントハンドラでクラ</span>
+<span>ス</span>
+<span>PigpiodI</span>
+<span>f</span>
+<span>のインスタンスを生成</span>
+<span>、</span>
+<span>buttonOpen_Click&nbsp;(</span>
+<span>)</span>
+<span>イベントハンドラ</span>
+<span>で</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>と接続</span>
+<span>、</span>
+<span>buttonClose_Click(</span>
+<span>)</span>
+<span>イベントハンドラで接続を切ります。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;Rapidnack.Net;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Windows.Forms;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>namespace</span>
+<span>&nbsp;AdcGraph</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>public partial class&nbsp;</span>
+<span>Form1</span>
+<span>&nbsp;: Form</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;PigpiodIf pigpiodIf;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>public</span>
+<span>&nbsp;Form1()</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>InitializeComponent();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;CloseConnection()</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.pigpio_stop();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;Form1_Load(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;PigpiodIf();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.StreamConnected&nbsp;+= (s, evt) =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Invoke(</span>
+<span>new</span>
+<span>&nbsp;Action(() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>panelOperation.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>};</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>panelOperation.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonClose.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;Form1_FormClosing(</span>
+<span>object</span>
+<span>&nbsp;sender, FormClosingEventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CloseConnection();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;buttonOpen_Click(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.pigpio_start(textBoxAddress.Text,&nbsp;</span>
+<span>"8888"</span>
+<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonOpen.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonClose.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;buttonClose_Click(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CloseConnection();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>panelOperation.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonOpen.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonClose.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Raspberry P</span>
+<span>i</span>
+<span>に接続したときパネ</span>
+<span>ル</span>
+<span>panelOperatio</span>
+<span>n</span>
+<span>を有効にするため</span>
+<span>、</span>
+<span>PigpiodI</span>
+<span>f</span>
+<span>のイベン</span>
+<span>ト</span>
+<span>StreamConnecte</span>
+<span>d</span>
+<span>にイベントハンドラを登録しています。イベン</span>
+<span>ト</span>
+<span>StreamConnecte</span>
+<span>d</span>
+<span>はアプリケーション</span>
+<span>の</span>
+<span>GU</span>
+<span>I</span>
+<span>スレッドとは別のスレッドで呼ばれるため、イベントハンドラの中</span>
+<span>で</span>
+<span>GU</span>
+<span>I</span>
+<span>を変更する場合</span>
+<span>は</span>
+<span>Invoke(</span>
+<span>)</span>
+<span>を使っ</span>
+<span>て</span>
+<span>GU</span>
+<span>I</span>
+<span>スレッドにして実行します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>pigpiodIf.StreamConnected&nbsp;+= (s, evt) =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Invoke(</span>
+<span>new</span>
+<span>&nbsp;Action(() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>// GU</span>
+<span>I</span>
+<span>を変更</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>};</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Raspberry P</span>
+<span>iの</span>
+<span>I</span>
+<span>P</span>
+<span>アドレスまたは</span>
+<span>「</span>
+<span>raspberrypi.loca</span>
+<span>l</span>
+<span>」を入力して</span>
+<span>「</span>
+<span>Ope</span>
+<span>n</span>
+<span>」をクリックします</span>
+<span>。</span>
+<span>I</span>
+<span>P</span>
+<span>アドレスに</span>
+<span>「</span>
+<span>raspberrypi.loca</span>
+<span>l</span>
+<span>」を入力したときは最初の接続に失敗することがあります。接続できないときは一</span>
+<span>度</span>
+<span>Clos</span>
+<span>e</span>
+<span>して再</span>
+<span>度</span>
+<span>Ope</span>
+<span>n</span>
+<span>してみてください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>2</span>
+<span>回接続メッセージが表示されますが、これ</span>
+<span>は</span>
+<span>pigpio</span>
+<span>d</span>
+<span>がコマンド用の接続とは別にピンの値が変化したこと通知する接続も使うためです。</span>
+<span>「</span>
+<span>Clos</span>
+<span>e</span>
+<span>」をクリックすると両方の接続が切れます</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000029.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>4.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-17"><b>
+<span><b>L</b></span>
+<span><b>チカ</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>LE</span>
+<span>D</span>
+<span>と抵抗をピン</span>
+<span>「</span>
+<span>BCM&nbsp;</span>
+<span>5</span>
+<span>」</span>
+<span>と</span>
+<span>GN</span>
+<span>D</span>
+<span>に接続し、１秒周期で点滅させます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000041.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>PiGpiodI</span>
+<span>f</span>
+<span>クラスのメソッ</span>
+<span>ド</span>
+<span>gpio_write(</span>
+<span>)</span>
+<span>を使います。機能の詳細は</span>
+<a href="http://abyz.me.uk/rpi/pigpio/pdif2.html">
+<span><u>http://abyz.me.uk/rpi/pigpio/pdif2.html</u></span>
+</a>
+<span>を、使い方はテストコー</span>
+<span>ド</span>
+<span>Rapidnack.Ne</span>
+<span>t</span>
+<span>フォルダーにあ</span>
+<span>る</span>
+<span>XPigpiodIf.c</span>
+<span>sの</span>
+<span>t1(</span>
+<span>)</span>
+<span>を参考にしてください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>LED Star</span>
+<span>t</span>
+<span>ボタン</span>
+<span>、</span>
+<span>LED Sto</span>
+<span>p</span>
+<span>ボタンをパネルに追加します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span><b>Type</b></span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span><b>(Name)</b></span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span><b>Text</b></span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>Button</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>buttonLedStart</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>LED Start</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>Button</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>buttonLedStop</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>LED Stop</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000033.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;Rapidnack.Net;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Threading;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Threading.Tasks;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Windows.Forms;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>namespace</span>
+<span>&nbsp;AdcGraph</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>public partial class&nbsp;</span>
+<span>Form1</span>
+<span>&nbsp;: Form</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;PigpiodIf pigpiodIf;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>&nbsp;GPIO = 5;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;CancellationTokenSource ledCts;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>public</span>
+<span>&nbsp;Form1()</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>InitializeComponent();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;CloseConnection()</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(ledCts !=&nbsp;</span>
+<span>null</span>
+<span>)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ledCts.Cancel();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>while</span>
+<span>&nbsp;(ledCts !=&nbsp;</span>
+<span>null</span>
+<span>)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Application.DoEvents();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.pigpio_stop();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;Form1_Load(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;PigpiodIf();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.StreamConnected&nbsp;+= (s, evt) =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Invoke(</span>
+<span>new</span>
+<span>&nbsp;Action(() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>panelOperation.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>};</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>panelOperation.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonClose.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonLedStop.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;Form1_FormClosing(</span>
+<span>object</span>
+<span>&nbsp;sender, FormClosingEventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CloseConnection();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;buttonOpen_Click(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.pigpio_start(textBoxAddress.Text,&nbsp;</span>
+<span>"8888"</span>
+<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonOpen.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonClose.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;buttonClose_Click(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CloseConnection();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>panelOperation.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonOpen.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonClose.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>async</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;buttonLedStart_Click(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonLedStart.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonLedStop.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>try</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ledCts =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;CancellationTokenSource();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>var</span>
+<span>&nbsp;ct = ledCts.Token;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>await</span>
+<span>&nbsp;Task.Run(</span>
+<span>async</span>
+<span>&nbsp;() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>while</span>
+<span>&nbsp;(!ct.IsCancellationRequested)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_HIGH);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>await</span>
+<span>&nbsp;Task.Delay(500, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_LOW);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>await</span>
+<span>&nbsp;Task.Delay(500, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>catch</span>
+<span>&nbsp;(OperationCanceledException)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>// nothing to do</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>finally</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ledCts =&nbsp;</span>
+<span>null</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonLedStart.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonLedStop.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;buttonLedStop_Click(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ledCts.Cancel();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>スタートボタンをクリックして繰り返し動作を開始、ストップボタンをクリックして終了、というパターンには、次のコードが便利です。スレッドを明示的に作らずに済みます。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Threading;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Threading.Tasks;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;CancellationTokenSource&nbsp;cts;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>async</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;buttonStart_Click(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonStart.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonStop.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>try</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>cts =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;CancellationTokenSource();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>var</span>
+<span>&nbsp;ct =&nbsp;cts.Token;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>await</span>
+<span>&nbsp;Task.Run(</span>
+<span>async</span>
+<span>&nbsp;() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>while</span>
+<span>&nbsp;(!ct.IsCancellationRequested)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>&nbsp;</span>
+<span>繰り返し動作</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>catch</span>
+<span>&nbsp;(OperationCanceledException)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>// nothing to do</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>finally</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>cts =&nbsp;</span>
+<span>null</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonStart.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonStop.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;buttonStop_Click(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>cts.Cancel();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>4.3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-18"><b>
+<span><b>サーボパルスを出力</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>Raspberry P</span>
+<span>i</span>
+<span>のリモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>は任意</span>
+<span>の</span>
+<span>GPI</span>
+<span>O</span>
+<span>ピンからサーボパルスを出力できます。本書ではピン</span>
+<span>「</span>
+<span>BCM&nbsp;2</span>
+<span>6</span>
+<span>」とピン</span>
+<span>「</span>
+<span>BCM 1</span>
+<span>3</span>
+<span>」を使います。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000060.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>PiGpiodI</span>
+<span>f</span>
+<span>クラスのメソッ</span>
+<span>ド</span>
+<span>set_servo_pulsewidth(</span>
+<span>)</span>
+<span>を使います。機能の詳細は</span>
+<a href="http://abyz.me.uk/rpi/pigpio/pdif2.html">
+<span><u>http://abyz.me.uk/rpi/pigpio/pdif2.html</u></span>
+</a>
+<span>を、使い方はテストコー</span>
+<span>ド</span>
+<span>Rapidnack.Ne</span>
+<span>t</span>
+<span>フォルダーにあ</span>
+<span>る</span>
+<span>XPigpiodIf.c</span>
+<span>sの</span>
+<span>t3(</span>
+<span>)</span>
+<span>を参考にしてください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>チェックボックスとトラックバー</span>
+<span>を2</span>
+<span>組パネルに追加します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span><b>Type</b></span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span><b>(Name)</b></span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>CheckBox</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>checkBoxServo1</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>CheckBox</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>checkBoxServo2</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>TrackBar</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>trackBarServo1</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>TrackBar</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>trackBarServo2</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000071.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>トラックバーの範囲</span>
+<span>は</span>
+<span>500~250</span>
+<span>0</span>
+<span>で初期値</span>
+<span>は</span>
+<span>150</span>
+<span>0</span>
+<span>です。サーボモーターの角度</span>
+<span>は</span>
+<span>50</span>
+<span>0で</span>
+<span>-9</span>
+<span>0</span>
+<span>°</span>
+<span>、</span>
+<span>150</span>
+<span>0で0</span>
+<span>°</span>
+<span>、</span>
+<span>250</span>
+<span>0で</span>
+<span>+9</span>
+<span>0</span>
+<span>°になります。値</span>
+<span>を0</span>
+<span>にするとサーボパルス出力が停止します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000039.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;Rapidnack.Net;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Threading;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Threading.Tasks;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Windows.Forms;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>namespace</span>
+<span>&nbsp;AdcGraph</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>public partial class&nbsp;</span>
+<span>Form1</span>
+<span>&nbsp;: Form</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>（省略）</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>&nbsp;SERVO_1 = 26;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>&nbsp;SERVO_2 = 13;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>（省略）</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;Form1_Load(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;PigpiodIf();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.StreamConnected&nbsp;+= (s, evt) =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Invoke(</span>
+<span>new</span>
+<span>&nbsp;Action(() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>panelOperation.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>checkBoxServo1_CheckedChanged(checkBoxServo1,&nbsp;</span>
+<span>new</span>
+<span>&nbsp;EventArgs());</span>
+ &nbsp;</p>
+<p>&nbsp;<span>checkBoxServo2_CheckedChanged(checkBoxServo2,&nbsp;</span>
+<span>new</span>
+<span>&nbsp;EventArgs());</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>};</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>panelOperation.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonClose.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonLedStop.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>（省略）</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;checkBoxServo1_CheckedChanged(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(checkBoxServo1.Checked)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.set_servo_pulsewidth(SERVO_1, (UInt32)trackBarServo1.Value);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.set_servo_pulsewidth(SERVO_1, 0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;trackBarServo1_Scroll(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(checkBoxServo1.Checked)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.set_servo_pulsewidth(SERVO_1, (UInt32)trackBarServo1.Value);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>checkBoxServo1.Checked =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;checkBoxServo2_CheckedChanged(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(checkBoxServo2.Checked)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.set_servo_pulsewidth(SERVO_2, (UInt32)trackBarServo2.Value);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.set_servo_pulsewidth(SERVO_2, 0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;trackBarServo2_Scroll(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(checkBoxServo2.Checked)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.set_servo_pulsewidth(SERVO_2, (UInt32)trackBarServo2.Value);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>checkBoxServo2.Checked =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Raspberry P</span>
+<span>i</span>
+<span>に接続したときサーボパルス出力をチェックボックスとトラックバーの状態に合わせるため</span>
+<span>、</span>
+<span>PigpiodI</span>
+<span>f</span>
+<span>のイベン</span>
+<span>ト</span>
+<span>StreamConnecte</span>
+<span>d</span>
+<span>にイベントハンドラを登録しています。イベン</span>
+<span>ト</span>
+<span>StreamConnecte</span>
+<span>d</span>
+<span>はアプリケーション</span>
+<span>の</span>
+<span>GU</span>
+<span>I</span>
+<span>スレッドとは別のスレッドで呼ばれるため、イベントハンドラの中</span>
+<span>で</span>
+<span>GU</span>
+<span>I</span>
+<span>を変更する場合</span>
+<span>は</span>
+<span>Invoke(</span>
+<span>)</span>
+<span>を使っ</span>
+<span>て</span>
+<span>GU</span>
+<span>I</span>
+<span>スレッドにして実行します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>pigpiodIf.StreamConnected&nbsp;+= (s, evt) =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Invoke(</span>
+<span>new</span>
+<span>&nbsp;Action(() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>（省略）</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>checkBoxServo1_CheckedChanged(checkBoxServo1,&nbsp;</span>
+<span>new</span>
+<span>&nbsp;EventArgs());</span>
+ &nbsp;</p>
+<p>&nbsp;<span>checkBoxServo2_CheckedChanged(checkBoxServo2,&nbsp;</span>
+<span>new</span>
+<span>&nbsp;EventArgs());</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>};</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ピン</span>
+<span>「</span>
+<span>BCM 2</span>
+<span>6</span>
+<span>」</span>
+<span>に</span>
+<span>250</span>
+<span>0</span>
+<span>、ピン</span>
+<span>「</span>
+<span>BCM 1</span>
+<span>3</span>
+<span>」</span>
+<span>に</span>
+<span>150</span>
+<span>0</span>
+<span>をセットしたときのサーボパルスをオシロスコープで確認しました。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000016.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000067.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ピン</span>
+<span>「</span>
+<span>BCM 2</span>
+<span>6</span>
+<span>」</span>
+<span>に</span>
+<span>250</span>
+<span>0</span>
+<span>、ピン</span>
+<span>「</span>
+<span>BCM 1</span>
+<span>3</span>
+<span>」</span>
+<span>に</span>
+<span>50</span>
+<span>0</span>
+<span>をセットしたときのサーボパルスをオシロスコープで確認しました。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000038.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000049.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>5</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-19"><b>
+<span><b>AD</b></span>
+<span><b>C</b></span>
+<span><b>データをログ表示</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>SP</span>
+<span>I</span>
+<span>接続</span>
+<span>の</span>
+<span>ADC(MCP3208</span>
+<span>)</span>
+<span>からデータを取得して、電圧値</span>
+<span>を</span>
+<span>LoggingTextBo</span>
+<span>x</span>
+<span>に表示します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000059.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>5.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-20"><b>
+<span><b>SPI</b></span>
+<span><b>1</b></span>
+<span><b>の制約</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>SPI</span>
+<span>0</span>
+<span>は小</span>
+<span>型</span>
+<span>LC</span>
+<span>D</span>
+<span>が使用するので</span>
+<span>、</span>
+<span>SPI</span>
+<span>1に</span>
+<span>ADC(MCP3208</span>
+<span>)</span>
+<span>を接続します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000070.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>SPI</span>
+<span>0</span>
+<span>のクロックとデータのタイミングはモード０～モード３全</span>
+<span>部</span>
+<span>O</span>
+<span>K</span>
+<span>ですが</span>
+<span>、</span>
+<span>SPI</span>
+<span>1</span>
+<span>のクロックとデータのタイミングはモード０とモード２だ</span>
+<span>け</span>
+<span>O</span>
+<span>K</span>
+<span>です。モード１とモード３はデータがクロックよ</span>
+<span>り1</span>
+<span>クロック分進んでしまっています</span>
+<span>。</span>
+<span>ADC(MCP3208</span>
+<span>)</span>
+<span>はモード０に対応しているので大丈夫でした。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>SPI</span>
+<span>0</span>
+<span>モード１</span>
+<span>：</span>
+<span>OK</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000003.jpg" alt="http://rapidack.sakura.ne.jp/ttl/wp-content/uploads/2018/09/TEK0005.bmp" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>SPI</span>
+<span>1</span>
+<span>モード１</span>
+<span>：</span>
+<span>N</span>
+<span>G</span>
+<span>（データがクロックよ</span>
+<span>り1</span>
+<span>クロック分進んでしまっています）</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000014.jpg" alt="http://rapidack.sakura.ne.jp/ttl/wp-content/uploads/2018/09/TEK0001.bmp" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>SPI</span>
+<span>0</span>
+<span>モード３</span>
+<span>：</span>
+<span>OK</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000004.jpg" alt="http://rapidack.sakura.ne.jp/ttl/wp-content/uploads/2018/09/TEK0007.bmp" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>SPI</span>
+<span>1</span>
+<span>モード３</span>
+<span>：</span>
+<span>N</span>
+<span>G</span>
+<span>（データがクロックよ</span>
+<span>り1</span>
+<span>クロック分進んでしまっています）</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000036.jpg" alt="http://rapidack.sakura.ne.jp/ttl/wp-content/uploads/2018/09/TEK0003.bmp" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h2><b>
+<span><b>5.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-21"><b>
+<span><b>ADC(MCP3208</b></span>
+<span><b>)</b></span>
+<span><b>を接続</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>SPI</span>
+<span>1に</span>
+<span>ADC(MCP3208</span>
+<span>)</span>
+<span>を接続します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000070.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>PiGpiodI</span>
+<span>f</span>
+<span>クラスのメソッ</span>
+<span>ド</span>
+<span>spi_open&nbsp;(</span>
+<span>)、</span>
+<span>spi_xfer&nbsp;(</span>
+<span>)、</span>
+<span>spi_close&nbsp;(</span>
+<span>)</span>
+<span>を使います。機能の詳細は</span>
+<a href="http://abyz.me.uk/rpi/pigpio/pdif2.html">
+<span><u>http://abyz.me.uk/rpi/pigpio/pdif2.html</u></span>
+</a>
+<span>を、使い方はテストコー</span>
+<span>ド</span>
+<span>Rapidnack.Ne</span>
+<span>t</span>
+<span>フォルダーにあ</span>
+<span>る</span>
+<span>XPigpiodIf.c</span>
+<span>sの</span>
+<span>tc(</span>
+<span>)</span>
+<span>を参考にしてください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>5.3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-22"><b>
+<span><b>コードを追加</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>Roll&nbsp;Star</span>
+<span>t</span>
+<span>ボタン</span>
+<span>、</span>
+<span>Roll&nbsp;Sto</span>
+<span>p</span>
+<span>ボタンをパネルに追加します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span><b>Type</b></span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span><b>(Name)</b></span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span><b>Text</b></span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>Button</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>buttonRollStart</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Roll&nbsp;Start</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>Button</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>buttonRollStop</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Roll&nbsp;Stop</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000063.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;Rapidnack.Net;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Threading;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Threading.Tasks;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Windows.Forms;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>namespace</span>
+<span>&nbsp;AdcGraph</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>public</span>
+<span>&nbsp;</span>
+<span>partial</span>
+<span>&nbsp;</span>
+<span>class</span>
+<span>&nbsp;</span>
+<span>Form1</span>
+<span>&nbsp;:&nbsp;</span>
+<span>Form</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;PigpiodIf pigpiodIf;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>&nbsp;GPIO = 5;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;CancellationTokenSource ledCts;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>&nbsp;SERVO_1 = 26;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>&nbsp;SERVO_2 = 13;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>&nbsp;NUM_ROLL_CHANNELS = 8;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>&nbsp;NUM_ROLL_SAMPLES = 100;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;CancellationTokenSource rollCts;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>public</span>
+<span>&nbsp;Form1()</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>InitializeComponent();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;CloseConnection()</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(ledCts !=&nbsp;</span>
+<span>null</span>
+<span>)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ledCts.Cancel();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>while</span>
+<span>&nbsp;(ledCts !=&nbsp;</span>
+<span>null</span>
+<span>)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Application.DoEvents();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(rollCts !=&nbsp;</span>
+<span>null</span>
+<span>)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollCts.Cancel();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>while</span>
+<span>&nbsp;(rollCts !=&nbsp;</span>
+<span>null</span>
+<span>)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Application.DoEvents();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.pigpio_stop();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;Form1_Load(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;PigpiodIf();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.StreamConnected&nbsp;+= (s, evt) =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Invoke(</span>
+<span>new</span>
+<span>&nbsp;Action(() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>panelOperation.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>checkBoxServo1_CheckedChanged(checkBoxServo1,&nbsp;</span>
+<span>new</span>
+<span>&nbsp;EventArgs());</span>
+ &nbsp;</p>
+<p>&nbsp;<span>checkBoxServo2_CheckedChanged(checkBoxServo2,&nbsp;</span>
+<span>new</span>
+<span>&nbsp;EventArgs());</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>};</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>panelOperation.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonClose.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonLedStop.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonRollStop.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>（省略）</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>async</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;buttonRollStart_Click(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonRollStart.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonRollStop.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int</span>
+<span>&nbsp;h = -1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>try</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollCts =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;CancellationTokenSource();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>var</span>
+<span>&nbsp;ct = rollCts.Token;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>await</span>
+<span>&nbsp;Task.Run(() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h = pigpiodIf.spi_open(2, 1000000, 256 + 0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(h &lt; 0)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>throw</span>
+<span>&nbsp;</span>
+<span>new</span>
+<span>&nbsp;PigpiodIfException(h,&nbsp;</span>
+<span>"PigpiodIf: "</span>
+<span>&nbsp;+ pigpiodIf.pigpio_error(h));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>while</span>
+<span>&nbsp;(!ct.IsCancellationRequested)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>double</span>
+<span>[] volts =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;</span>
+<span>double</span>
+<span>[NUM_ROLL_CHANNELS];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for</span>
+<span>&nbsp;(</span>
+<span>int</span>
+<span>&nbsp;ch = 0; ch &lt; NUM_ROLL_CHANNELS; ch++)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>byte</span>
+<span>[] buf =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;</span>
+<span>byte</span>
+<span>[] { (</span>
+<span>byte</span>
+<span>)(0x06 + (ch &gt;&gt; 2)), (</span>
+<span>byte</span>
+<span>)(ch &lt;&lt; 6), 0x00 };</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int</span>
+<span>&nbsp;b = pigpiodIf.spi_xfer((UInt32)h, buf, buf);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(b == 3)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>double</span>
+<span>&nbsp;volt = 3.3 * (((buf[1] &amp; 0x0f) * 256) + buf[2]) /&nbsp;4096.0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>volts[ch] = volt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>string</span>
+<span>&nbsp;s = volts[0].ToString(</span>
+<span>"0.0"</span>
+<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for</span>
+<span>&nbsp;(</span>
+<span>int</span>
+<span>&nbsp;ch = 1; ch &lt; NUM_ROLL_CHANNELS; ch++)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>s +=&nbsp;</span>
+<span>string</span>
+<span>.Format(</span>
+<span>", {0:0.0}"</span>
+<span>, volts[ch]);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(</span>
+<span>"{0}"</span>
+<span>, s);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>catch</span>
+<span>&nbsp;(OperationCanceledException)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>// nothing to do</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>catch</span>
+<span>&nbsp;(PigpiodIfException ex)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(ex.Message);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>finally</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(h &gt;= 0)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.spi_close((UInt32)h);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollCts =&nbsp;</span>
+<span>null</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonRollStart.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonRollStop.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;buttonRollStop_Click(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollCts.Cancel();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>5.4</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-23"><b>
+<span><b>AD</b></span>
+<span><b>CにL</b></span>
+<span><b>チカを接続</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>L</span>
+<span>チカに使用しているピン</span>
+<span>「</span>
+<span>BCM&nbsp;</span>
+<span>5</span>
+<span>」</span>
+<span>を</span>
+<span>ADC(MCP3208</span>
+<span>)の</span>
+<span>CH</span>
+<span>7</span>
+<span>に接続し</span>
+<span>、</span>
+<span>LE</span>
+<span>D</span>
+<span>の点滅に合わせて変化する電圧値</span>
+<span>を</span>
+<span>LoggingTextBo</span>
+<span>x</span>
+<span>に表示します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000057.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>5.5</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-24"><b>
+<span><b>Raspberry P</b></span>
+<span><b>i</b></span>
+<span><b>で実行（リモートデスクトップ）</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>Raspberry P</span>
+<span>i</span>
+<span>に接続し</span>
+<span>た</span>
+<span>LC</span>
+<span>D</span>
+<span>と同様に、リモートデスクトップを開いたときもアプリケーションが全画面で実行されます</span>
+<span>。</span>
+<span><b>Alt+F1</b></span>
+<span><b>1</b></span>
+<span>キーで全画面表示を解除できます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ソリューショ</span>
+<span>ン</span>
+<span>AdcGrap</span>
+<span>hを</span>
+<span>ZI</span>
+<span>P</span>
+<span>ファイルに纏め</span>
+<span>て</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>のリモートデスクトップのファイルマネージャにコピー＆ペーストして解凍します。解凍したディレクトリ</span>
+<span>の</span>
+<span>AdcGraph/AdcGraph/bin/Debu</span>
+<span>g</span>
+<span>に移動し</span>
+<span>、</span>
+<span>AdcGraph.ex</span>
+<span>e</span>
+<span>をダブルクリックします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>詳しい手順は、前作</span>
+<span>「</span>
+<span>Visual Studio C</span>
+<span>#で</span>
+<span>Raspberry Pi</span>
+<span>&nbsp;</span>
+<span>リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>導入編」をご覧ください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000068.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>5.6</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-25"><b>
+<span><b>Raspberry P</b></span>
+<span><b>i</b></span>
+<span><b>で実行（小</b></span>
+<span><b>型</b></span>
+<span><b>LC</b></span>
+<span><b>D</b></span>
+<span><b>）</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>リモートデスクトップで動作を確認できたので、リモートデスクトップ</span>
+<span>の</span>
+<span>LXTermina</span>
+<span>l</span>
+<span>から</span>
+<span>「</span>
+<span>sudo reboo</span>
+<span>t</span>
+<span>」を入力して再起動します</span>
+<span>。</span>
+<span>Raspberry P</span>
+<span>iの</span>
+<span>LC</span>
+<span>D</span>
+<span>に全画面表示されるアプリケーションも更新されるので動作を確認します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>詳しい手順は、前作</span>
+<span>「</span>
+<span>Visual Studio C</span>
+<span>#で</span>
+<span>Raspberry Pi</span>
+<span>&nbsp;</span>
+<span>リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>導入編」をご覧ください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000059.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>6</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-26"><b>
+<span><b>Rol</b></span>
+<span><b>l</b></span>
+<span><b>モードでグラフ表示</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>AD</span>
+<span>C</span>
+<span>から取得したデータをグラフに表示します。新しいデータが右端に追加されグラフは左側に流れていきます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000047.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>6.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-27"><b>
+<span><b>OxyPlot.WindowsForm</b></span>
+<span><b>s</b></span>
+<span><b>パッケージをインストール</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>NuGe</span>
+<span>t</span>
+<span>パッケージマネージャーを表示します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000058.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>OxyPlot.WindowsForm</span>
+<span>s</span>
+<span>パッケージを検索してインストールします</span>
+<span>。</span>
+<span>OxyPlot.Cor</span>
+<span>e</span>
+<span>パッケージも一緒にインストールされます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000012.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>OxyPlot.WindowsForm</span>
+<span>s</span>
+<span>パッケージをインストールすると、ツールボックス</span>
+<span>に</span>
+<span>PlotVie</span>
+<span>w</span>
+<span>コントロールが表示され、フォームに追加できるようになります。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000024.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>6.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-28"><b>
+<span><b>PlotVie</b></span>
+<span><b>w</b></span>
+<span><b>を画面に追加</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>画面が狭いので</span>
+<span>、</span>
+<span>LoggingTextBo</span>
+<span>xと</span>
+<span>PlotVie</span>
+<span>w</span>
+<span>の表示をタブコントロールで切り替えることにします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>まず</span>
+<span>、</span>
+<span>LoggingTextBo</span>
+<span>xの</span>
+<span>Doc</span>
+<span>k</span>
+<span>プロパティ</span>
+<span>を</span>
+<span>Non</span>
+<span>e</span>
+<span>に変更して下側にどけておきます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000025.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000045.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>空いた場所にタブコントロールを追加します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000054.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>どけておい</span>
+<span>た</span>
+<span>LoggingTextBo</span>
+<span>x</span>
+<span>をタブコントロール</span>
+<span>の</span>
+<span>tabPage</span>
+<span>1</span>
+<span>にドラッグ＆ドロップして</span>
+<span>、</span>
+<span>LoggingTextBo</span>
+<span>x</span>
+<span>とタブコントロール</span>
+<span>の</span>
+<span>Doc</span>
+<span>k</span>
+<span>プロパティ</span>
+<span>を</span>
+<span>Fil</span>
+<span>l</span>
+<span>に変更します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000006.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>tabPage</span>
+<span>2</span>
+<span>にツールボックスか</span>
+<span>ら</span>
+<span>PlotVie</span>
+<span>w</span>
+<span>を追加して</span>
+<span>、</span>
+<span>PlotView</span>
+<span>&nbsp;の</span>
+<span>Doc</span>
+<span>k</span>
+<span>プロパティ</span>
+<span>を</span>
+<span>Fil</span>
+<span>l、</span>
+<span>BackColo</span>
+<span>r</span>
+<span>プロパティ</span>
+<span>を</span>
+<span>Windo</span>
+<span>w</span>
+<span>に変更します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000075.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000009.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>タブコントロールの各タブページの名前とタイトルを変更します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000042.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>表示され</span>
+<span>た</span>
+<span>TabPag</span>
+<span>e</span>
+<span>コレクションエディターで、タブページの名前とタイトルを変更します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000043.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span><b>(Name)</b></span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span><b>Text</b></span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>tabPageLog</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Log</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>tabPageGraph</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Graph</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000053.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>6.3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-29"><b>
+<span><b>コードを追加</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;OxyPlot;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;OxyPlot.Axes;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;OxyPlot.Series;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;Rapidnack.Net;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Threading;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Threading.Tasks;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Windows.Forms;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>namespace</span>
+<span>&nbsp;AdcGraph</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>public</span>
+<span>&nbsp;</span>
+<span>partial</span>
+<span>&nbsp;</span>
+<span>class</span>
+<span>&nbsp;</span>
+<span>Form1</span>
+<span>&nbsp;:&nbsp;</span>
+<span>Form</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>（省略）</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>&nbsp;NUM_ROLL_CHANNELS = 8;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>&nbsp;NUM_ROLL_SAMPLES = 100;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;CancellationTokenSource rollCts;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;PlotModel rollPlotModel;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;LineSeries[] rollSeries;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>（省略）</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;Form1_Load(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;PigpiodIf();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.StreamConnected&nbsp;+= (s, evt) =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Invoke(</span>
+<span>new</span>
+<span>&nbsp;Action(() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>panelOperation.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>checkBoxServo1_CheckedChanged(checkBoxServo1,&nbsp;</span>
+<span>new</span>
+<span>&nbsp;EventArgs());</span>
+ &nbsp;</p>
+<p>&nbsp;<span>checkBoxServo2_CheckedChanged(checkBoxServo2,&nbsp;</span>
+<span>new</span>
+<span>&nbsp;EventArgs());</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>};</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollPlotModel =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;PlotModel();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollSeries =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;LineSeries[NUM_ROLL_CHANNELS];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for</span>
+<span>&nbsp;(</span>
+<span>int</span>
+<span>&nbsp;ch = 0; ch &lt; NUM_ROLL_CHANNELS; ch++)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollSeries[ch] =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;LineSeries();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollSeries[ch].Title =&nbsp;</span>
+<span>string</span>
+<span>.Format(</span>
+<span>"CH{0}"</span>
+<span>, ch);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollPlotModel.Series.Add(rollSeries[ch]);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollPlotModel.Axes.Add(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>new</span>
+<span>&nbsp;LinearAxis() { Position = AxisPosition.Left, Minimum = 0 - 0.1, Maximum = 3.3 + 0.1 }</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonClose.Enabled = false;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonLedStop.Enabled = false;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonRollStop.Enabled = false;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>（省略）</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>async</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;buttonRollStart_Click(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonRollStart.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonRollStop.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int</span>
+<span>&nbsp;h = -1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>try</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollCts =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;CancellationTokenSource();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>var</span>
+<span>&nbsp;ct = rollCts.Token;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>await</span>
+<span>&nbsp;Task.Run(() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h = pigpiodIf.spi_open(2, 1000000, 256 + 0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(h &lt; 0)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>throw</span>
+<span>&nbsp;</span>
+<span>new</span>
+<span>&nbsp;PigpiodIfException(h,&nbsp;</span>
+<span>"PigpiodIf: "</span>
+<span>&nbsp;+ pigpiodIf.pigpio_error(h));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for</span>
+<span>&nbsp;(</span>
+<span>int</span>
+<span>&nbsp;ch = 0; ch &lt; NUM_ROLL_CHANNELS; ch++)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollSeries[ch].Points.Clear();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DateTime start = DateTime.Now;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>while</span>
+<span>&nbsp;(!ct.IsCancellationRequested)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>double</span>
+<span>[] volts =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;</span>
+<span>double</span>
+<span>[NUM_ROLL_CHANNELS];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DataPoint[] dataPoints =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;DataPoint[NUM_ROLL_CHANNELS];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for</span>
+<span>&nbsp;(</span>
+<span>int</span>
+<span>&nbsp;ch = 0; ch &lt; NUM_ROLL_CHANNELS; ch++)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>byte</span>
+<span>[] buf =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;</span>
+<span>byte</span>
+<span>[] { (</span>
+<span>byte</span>
+<span>)(0x06 + (ch &gt;&gt; 2)), (</span>
+<span>byte</span>
+<span>)(ch &lt;&lt; 6), 0x00 };</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int</span>
+<span>&nbsp;b = pigpiodIf.spi_xfer((UInt32)h, buf, buf);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(b == 3)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>TimeSpan ts = DateTime.Now - start;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>double</span>
+<span>&nbsp;volt = 3.3 * (((buf[1] &amp; 0x0f) * 256) + buf[2]) /&nbsp;4096.0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>volts[ch] = volt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>dataPoints[ch] =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;DataPoint(ts.TotalSeconds, volt);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>string</span>
+<span>&nbsp;s = volts[0].ToString(</span>
+<span>"0.0"</span>
+<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for</span>
+<span>&nbsp;(</span>
+<span>int</span>
+<span>&nbsp;ch = 1; ch &lt; NUM_ROLL_CHANNELS; ch++)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>s +=&nbsp;</span>
+<span>string</span>
+<span>.Format(</span>
+<span>", {0:0.0}"</span>
+<span>, volts[ch]);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(</span>
+<span>"{0}"</span>
+<span>, s);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Invoke(new Action(() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for</span>
+<span>&nbsp;(</span>
+<span>int</span>
+<span>&nbsp;ch = 0; ch &lt; NUM_ROLL_CHANNELS; ch++)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(rollSeries[ch].Points.Count &gt;= NUM_ROLL_SAMPLES)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollSeries[ch].Points.RemoveAt(0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollSeries[ch].Points.Add(dataPoints[ch]);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollPlotModel.InvalidatePlot(</span>
+<span>true</span>
+<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(plotView1.Model != rollPlotModel)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>plotView1.Model = rollPlotModel;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>plotView1.Invalidate();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>catch</span>
+<span>&nbsp;(OperationCanceledException)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>// nothing to do</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>catch</span>
+<span>&nbsp;(PigpiodIfException ex)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(ex.Message);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>finally</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(h &gt;= 0)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.spi_close((UInt32)h);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollCts =&nbsp;</span>
+<span>null</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonRollStart.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonRollStop.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;buttonRollStop_Click(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollCts.Cancel();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Task.Run(</span>
+<span>)</span>
+<span>の内側はアプリケーション</span>
+<span>の</span>
+<span>GU</span>
+<span>I</span>
+<span>スレッドとは異なるスレッドで動いています。グラフの表示更新</span>
+<span>は</span>
+<span>GU</span>
+<span>I</span>
+<span>を変更するので</span>
+<span>、</span>
+<span>Invoke(</span>
+<span>)</span>
+<span>を使っ</span>
+<span>て</span>
+<span>GU</span>
+<span>I</span>
+<span>スレッドにして実行します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>await</span>
+<span>&nbsp;Task.Run(</span>
+<span>async</span>
+<span>&nbsp;() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>while</span>
+<span>&nbsp;(!ct.IsCancellationRequested)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>&nbsp;</span>
+<span>データ取得</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Invoke(</span>
+<span>new</span>
+<span>&nbsp;Action(() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>&nbsp;</span>
+<span>グラフ表示更新</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}, ct);</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ビルドして実行します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000047.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>6.4</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-30"><b>
+<span><b>Raspberry P</b></span>
+<span><b>i</b></span>
+<span><b>で実行（リモートデスクトップ）</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>Raspberry P</span>
+<span>i</span>
+<span>に接続し</span>
+<span>た</span>
+<span>LC</span>
+<span>D</span>
+<span>と同様に、リモートデスクトップを開いたときもアプリケーションが全画面で実行されます</span>
+<span>。</span>
+<span><b>Alt+F1</b></span>
+<span><b>1</b></span>
+<span>キーで全画面表示を解除できます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ソリューショ</span>
+<span>ン</span>
+<span>AdcGrap</span>
+<span>hを</span>
+<span>ZI</span>
+<span>P</span>
+<span>ファイルに纏め</span>
+<span>て</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>のリモートデスクトップのファイルマネージャにコピー＆ペーストして解凍します。解凍したディレクトリ</span>
+<span>の</span>
+<span>AdcGraph/AdcGraph/bin/Debu</span>
+<span>g</span>
+<span>に移動し</span>
+<span>、</span>
+<span>AdcGraph.ex</span>
+<span>e</span>
+<span>をダブルクリックします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>詳しい手順は、前作</span>
+<span>「</span>
+<span>Visual Studio C</span>
+<span>#で</span>
+<span>Raspberry Pi</span>
+<span>&nbsp;</span>
+<span>リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>導入編」をご覧ください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000032.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>6.5</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-31"><b>
+<span><b>Raspberry P</b></span>
+<span><b>i</b></span>
+<span><b>で実行（小</b></span>
+<span><b>型</b></span>
+<span><b>LC</b></span>
+<span><b>D</b></span>
+<span><b>）</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>リモートデスクトップで動作を確認できたので、リモートデスクトップ</span>
+<span>の</span>
+<span>LXTermina</span>
+<span>l</span>
+<span>から</span>
+<span>「</span>
+<span>sudo reboo</span>
+<span>t</span>
+<span>」を入力して再起動します</span>
+<span>。</span>
+<span>Raspberry P</span>
+<span>iの</span>
+<span>LC</span>
+<span>D</span>
+<span>に全画面表示されるアプリケーションも更新されるので動作を確認します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>詳しい手順は、前作</span>
+<span>「</span>
+<span>Visual Studio C</span>
+<span>#で</span>
+<span>Raspberry Pi</span>
+<span>&nbsp;</span>
+<span>リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>導入編」をご覧ください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000021.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>7</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-32"><b>
+<span><b>Fas</b></span>
+<span><b>t</b></span>
+<span><b>モードでグラフ表示</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>1</span>
+<span>秒周期</span>
+<span>のL</span>
+<span>チカの代わりに</span>
+<span>、</span>
+<span>20m</span>
+<span>s</span>
+<span>周期のサーボパルス</span>
+<span>を</span>
+<span>Rol</span>
+<span>l</span>
+<span>モードで表示してみると</span>
+<span>、1</span>
+<span>秒間</span>
+<span>に</span>
+<span>5</span>
+<span>0</span>
+<span>個のパルスが発生しているのにほとんど取りこぼしています。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000019.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>そこで、グラ</span>
+<span>フ1</span>
+<span>枚分のデータを取得してからまとめて表示す</span>
+<span>る</span>
+<span>Fas</span>
+<span>t</span>
+<span>モードを追加します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000027.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>7.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-33"><b>
+<span><b>AD</b></span>
+<span><b>C</b></span>
+<span><b>にサーボパルス出力を接続</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>サーボパルス出力に使用しているピン</span>
+<span>「</span>
+<span>BCM 2</span>
+<span>6</span>
+<span>」</span>
+<span>を</span>
+<span>ADC(MCP3208</span>
+<span>)の</span>
+<span>CH</span>
+<span>0</span>
+<span>に、ピン</span>
+<span>「</span>
+<span>BCM 1</span>
+<span>3</span>
+<span>」</span>
+<span>を</span>
+<span>CH</span>
+<span>1</span>
+<span>に接続し、サーボパルスの波形をグラフに表示します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>7.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-34"><b>
+<span><b>コードを追加</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>Fast Star</span>
+<span>t</span>
+<span>ボタン</span>
+<span>、</span>
+<span>Fast Sto</span>
+<span>p</span>
+<span>ボタンをパネルに追加します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span><b>Type</b></span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span><b>(Name)</b></span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span><b>Text</b></span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>Button</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>buttonFastStart</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Fast&nbsp;Start</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>Button</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>buttonFastStop</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Fast&nbsp;Stop</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000023.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;OxyPlot;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;OxyPlot.Axes;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;OxyPlot.Series;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;Rapidnack.Net;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Collections.Generic;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Linq;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Threading;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Threading.Tasks;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>using</span>
+<span>&nbsp;System.Windows.Forms;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>namespace</span>
+<span>&nbsp;AdcGraph</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>public</span>
+<span>&nbsp;</span>
+<span>partial</span>
+<span>&nbsp;</span>
+<span>class</span>
+<span>&nbsp;</span>
+<span>Form1</span>
+<span>&nbsp;:&nbsp;</span>
+<span>Form</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;PigpiodIf pigpiodIf;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>&nbsp;GPIO = 5;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;CancellationTokenSource ledCts;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>&nbsp;SERVO_1 = 26;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>&nbsp;SERVO_2 = 13;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>&nbsp;NUM_ROLL_CHANNELS = 8;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>&nbsp;NUM_ROLL_SAMPLES = 100;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;CancellationTokenSource rollCts;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;PlotModel rollPlotModel;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;LineSeries[] rollSeries;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>enum</span>
+<span>&nbsp;</span>
+<span>EState</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Idle,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Arming,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>WaitingForTrigger1,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>WaitingForTrigger2,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Triggered</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>&nbsp;NUM_FAST_CHANNELS = 2;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>&nbsp;NUM_FAST_SAMPLES = 100;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>double</span>
+<span>&nbsp;AUTO_TRIGGER = 0.1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>&nbsp;INTERVAL_IN_MS = 33;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;CancellationTokenSource fastCts;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;PlotModel fastPlotModel;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;LineSeries[] fastSeries;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;DateTime lastDispleyTime = DateTime.MinValue;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>public</span>
+<span>&nbsp;Form1()</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>InitializeComponent();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;CloseConnection()</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(ledCts !=&nbsp;</span>
+<span>null</span>
+<span>)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ledCts.Cancel();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>while</span>
+<span>&nbsp;(ledCts !=&nbsp;</span>
+<span>null</span>
+<span>)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Application.DoEvents();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(rollCts !=&nbsp;</span>
+<span>null</span>
+<span>)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollCts.Cancel();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>while</span>
+<span>&nbsp;(rollCts !=&nbsp;</span>
+<span>null</span>
+<span>)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Application.DoEvents();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(fastCts !=&nbsp;</span>
+<span>null</span>
+<span>)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>fastCts.Cancel();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>while</span>
+<span>&nbsp;(fastCts !=&nbsp;</span>
+<span>null</span>
+<span>)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Application.DoEvents();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.pigpio_stop();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;Form1_Load(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;PigpiodIf();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.StreamConnected&nbsp;+= (s, evt) =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Invoke(</span>
+<span>new</span>
+<span>&nbsp;Action(() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>panelOperation.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>checkBoxServo1_CheckedChanged(checkBoxServo1,&nbsp;</span>
+<span>new</span>
+<span>&nbsp;EventArgs());</span>
+ &nbsp;</p>
+<p>&nbsp;<span>checkBoxServo2_CheckedChanged(checkBoxServo2,&nbsp;</span>
+<span>new</span>
+<span>&nbsp;EventArgs());</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>};</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollPlotModel =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;PlotModel();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollSeries =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;LineSeries[NUM_ROLL_CHANNELS];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for</span>
+<span>&nbsp;(</span>
+<span>int</span>
+<span>&nbsp;ch = 0; ch &lt; NUM_ROLL_CHANNELS; ch++)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollSeries[ch] =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;LineSeries();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollSeries[ch].Title =&nbsp;</span>
+<span>string</span>
+<span>.Format(</span>
+<span>"CH{0}"</span>
+<span>, ch);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollPlotModel.Series.Add(rollSeries[ch]);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rollPlotModel.Axes.Add(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>new</span>
+<span>&nbsp;LinearAxis() { Position = AxisPosition.Left, Minimum = 0 - 0.1, Maximum = 3.3 + 0.1 }</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>fastPlotModel =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;PlotModel();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>fastSeries =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;LineSeries[NUM_FAST_CHANNELS];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for</span>
+<span>&nbsp;(</span>
+<span>int</span>
+<span>&nbsp;ch = 0; ch &lt; NUM_FAST_CHANNELS; ch++)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>fastSeries[ch] =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;LineSeries();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>fastSeries[ch].Title =&nbsp;</span>
+<span>string</span>
+<span>.Format(</span>
+<span>"CH{0}"</span>
+<span>, ch);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>fastPlotModel.Series.Add(fastSeries[ch]);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>fastPlotModel.Axes.Add(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>new</span>
+<span>&nbsp;LinearAxis() { Position = AxisPosition.Left, Minimum = 0 - 0.1, Maximum = 3.3 + 0.1 }</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>panelOperation.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonClose.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonLedStop.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonRollStop.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonFastStop.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>（省略）</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>async</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;buttonRollStart_Click(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonRollStart.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonFastStart.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonRollStop.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>（省略）</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>finally</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>（省略）</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonRollStart.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonFastStart.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonRollStop.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>（省略）</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>async</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;buttonFastStart_Click(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonRollStart.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonFastStart.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonFastStop.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int</span>
+<span>&nbsp;h = -1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>try</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>fastCts =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;CancellationTokenSource();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>var</span>
+<span>&nbsp;ct = fastCts.Token;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>await</span>
+<span>&nbsp;Task.Run(</span>
+<span>async</span>
+<span>&nbsp;() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h = pigpiodIf.spi_open(2, 1000000, 256 + 0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(h &lt; 0)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>throw</span>
+<span>&nbsp;</span>
+<span>new</span>
+<span>&nbsp;PigpiodIfException(h,&nbsp;</span>
+<span>"PigpiodIf: "</span>
+<span>&nbsp;+ pigpiodIf.pigpio_error(h));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>List&lt;DataPoint&gt;[] dataPoints =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;List&lt;DataPoint&gt;[NUM_FAST_CHANNELS];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for</span>
+<span>&nbsp;(</span>
+<span>int</span>
+<span>&nbsp;ch = 0; ch &lt; NUM_FAST_CHANNELS; ch++)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>dataPoints[ch] =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;List&lt;DataPoint&gt;();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>while</span>
+<span>&nbsp;(!ct.IsCancellationRequested)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>EState state = EState.Arming;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for</span>
+<span>&nbsp;(</span>
+<span>int</span>
+<span>&nbsp;ch = 0; ch &lt; NUM_FAST_CHANNELS; ch++)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>dataPoints[ch].Clear();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DateTime start = DateTime.Now;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>while</span>
+<span>&nbsp;(</span>
+<span>true</span>
+<span>)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>double</span>
+<span>[] volts =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;</span>
+<span>double</span>
+<span>[NUM_FAST_CHANNELS];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for</span>
+<span>&nbsp;(</span>
+<span>int</span>
+<span>&nbsp;ch = 0; ch &lt; NUM_FAST_CHANNELS; ch++)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>byte</span>
+<span>[] buf =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;</span>
+<span>byte</span>
+<span>[] { (</span>
+<span>byte</span>
+<span>)(0x06 + (ch &gt;&gt; 2)), (</span>
+<span>byte</span>
+<span>)(ch &lt;&lt; 6), 0x00 };</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int</span>
+<span>&nbsp;b = pigpiodIf.spi_xfer((UInt32)h, buf, buf);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(b == 3)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>TimeSpan ts = DateTime.Now - start;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>volts[ch] = 3.3 * (((buf[1] &amp; 0x0f) * 256) + buf[2]) /&nbsp;4096.0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(EState.Arming &lt; state &amp;&amp; state &lt; EState.Triggered)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>dataPoints[ch].RemoveAt(0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>dataPoints[ch].Add(</span>
+<span>new</span>
+<span>&nbsp;DataPoint(ts.TotalSeconds, volts[ch]));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(dataPoints[0].Count &gt;= NUM_FAST_SAMPLES / 2)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>switch</span>
+<span>&nbsp;(state)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>case</span>
+<span>&nbsp;EState.Arming:</span>
+ &nbsp;</p>
+<p>&nbsp;<span>state = EState.WaitingForTrigger1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>break</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>case</span>
+<span>&nbsp;EState.WaitingForTrigger1:</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(dataPoints[0].Last().Y &lt; 3.3 / 2)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>state = EState.WaitingForTrigger2;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else</span>
+<span>&nbsp;</span>
+<span>if</span>
+<span>&nbsp;((DateTime.Now - start) &gt;= TimeSpan.FromSeconds(AUTO_TRIGGER))</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>state = EState.Triggered;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>break</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>case</span>
+<span>&nbsp;EState.WaitingForTrigger2:</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(dataPoints[0].Last().Y &gt; 3.3 / 2)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>state = EState.Triggered;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else</span>
+<span>&nbsp;</span>
+<span>if</span>
+<span>&nbsp;((DateTime.Now - start) &gt;= TimeSpan.FromSeconds(AUTO_TRIGGER))</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>state = EState.Triggered;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>break</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(dataPoints[0].Count &gt;= NUM_FAST_SAMPLES)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(state == EState.Triggered)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>state = EState.Idle;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>break</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for</span>
+<span>&nbsp;(</span>
+<span>int</span>
+<span>&nbsp;ch = 0; ch &lt; NUM_FAST_CHANNELS; ch++)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>double</span>
+<span>&nbsp;x0 = dataPoints[ch][0].X;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for</span>
+<span>&nbsp;(</span>
+<span>int</span>
+<span>&nbsp;sample = 0; sample &lt; dataPoints[ch].Count; sample++)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>var</span>
+<span>&nbsp;dp = dataPoints[ch][sample];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>dataPoints[ch][sample] =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;DataPoint(dp.X - x0, dp.Y);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int</span>
+<span>&nbsp;leftInMS = INTERVAL_IN_MS - (</span>
+<span>int</span>
+<span>)(DateTime.Now - lastDispleyTime).TotalMilliseconds;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(leftInMS &gt; 0)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//Console.WriteLine("spentTime: {0}", leftInMS);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>await</span>
+<span>&nbsp;Task.Delay(leftInMS, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>lastDispleyTime = DateTime.Now;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Invoke(</span>
+<span>new</span>
+<span>&nbsp;Action(() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for</span>
+<span>&nbsp;(</span>
+<span>int</span>
+<span>&nbsp;ch = 0; ch &lt; NUM_FAST_CHANNELS; ch++)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>fastSeries[ch].Points.Clear();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>fastSeries[ch].Points.AddRange(dataPoints[ch]);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>fastPlotModel.InvalidatePlot(</span>
+<span>true</span>
+<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(plotView1.Model != fastPlotModel)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>plotView1.Model = fastPlotModel;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>plotView1.Invalidate();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>catch</span>
+<span>&nbsp;(OperationCanceledException)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>// nothing to do</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>catch</span>
+<span>&nbsp;(PigpiodIfException ex)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(ex.Message);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>finally</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(h &gt;= 0)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.spi_close((UInt32)h);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>fastCts =&nbsp;</span>
+<span>null</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonRollStart.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonFastStart.Enabled =&nbsp;</span>
+<span>true</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buttonFastStop.Enabled =&nbsp;</span>
+<span>false</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;buttonFastStop_Click(</span>
+<span>object</span>
+<span>&nbsp;sender, EventArgs e)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>fastCts.Cancel();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>トリガーポジションとトリガーレベル</span>
+<span>を</span>
+<span>50</span>
+<span>%</span>
+<span>固定にしています。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>1</span>
+<span>画面分の半分のデータが取得できるまで</span>
+<span>は</span>
+<span>Add(</span>
+<span>)</span>
+<span>のみ、半分データを取得してからトリガー条件が満足するまでは一番古いデータを捨ててか</span>
+<span>ら</span>
+<span>Add(</span>
+<span>)</span>
+<span>、トリガー条件が満足してからは残り半分を取得するま</span>
+<span>で</span>
+<span>Add(</span>
+<span>)</span>
+<span>のみを続けます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>WaitingForTrigger</span>
+<span>1で</span>
+<span>50</span>
+<span>%</span>
+<span>未満を</span>
+<span>、</span>
+<span>WaitingForTrigger</span>
+<span>2で</span>
+<span>50</span>
+<span>%</span>
+<span>より上の待ち、立ち上がりを検出します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>AUTO_TRIGGE</span>
+<span>R</span>
+<span>の時間までにトリガーが掛からないときは残り半分の取得を開始します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>private&nbsp;enum&nbsp;</span>
+<span>EState</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Idle,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Arming,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>WaitingForTrigger1,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>WaitingForTrigger2,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Triggered</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private const double AUTO_TRIGGER = 0.1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>...</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(EState.Arming &lt; state &amp;&amp; state &lt; EState.Triggered)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>dataPoints[ch].RemoveAt(0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>dataPoints[ch].Add(</span>
+<span>new</span>
+<span>&nbsp;DataPoint(ts.TotalSeconds, volts[ch]));</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>グラフ更新時間に上限を設けています。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;</span>
+<span>const</span>
+<span>&nbsp;</span>
+<span>int</span>
+<span>&nbsp;INTERVAL_IN_MS = 33;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>private</span>
+<span>&nbsp;DateTime lastDispleyTime = DateTime.MinValue;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>...</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int</span>
+<span>&nbsp;leftInMS = INTERVAL_IN_MS - (</span>
+<span>int</span>
+<span>)(DateTime.Now - lastDispleyTime).TotalMilliseconds;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(leftInMS &gt; 0)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>await</span>
+<span>&nbsp;Task.Delay(leftInMS, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>lastDispleyTime = DateTime.Now;</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Task.Run(</span>
+<span>)</span>
+<span>の内側はアプリケーション</span>
+<span>の</span>
+<span>GU</span>
+<span>I</span>
+<span>スレッドとは異なるスレッドで動いています。グラフの表示更新</span>
+<span>は</span>
+<span>GU</span>
+<span>I</span>
+<span>を変更するので</span>
+<span>、</span>
+<span>Invoke(</span>
+<span>)</span>
+<span>を使っ</span>
+<span>て</span>
+<span>GU</span>
+<span>I</span>
+<span>スレッドにして実行します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>await</span>
+<span>&nbsp;Task.Run(</span>
+<span>async</span>
+<span>&nbsp;() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>while</span>
+<span>&nbsp;(!ct.IsCancellationRequested)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>&nbsp;</span>
+<span>データ取得</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Invoke(</span>
+<span>new</span>
+<span>&nbsp;Action(() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>&nbsp;</span>
+<span>グラフ表示更新</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}, ct);</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ビルドして実行します。残念ながらリモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>と通信する時間が掛かるのでまだまだ取りこぼしがあります。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000061.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>7.3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-35"><b>
+<span><b>Raspberry P</b></span>
+<span><b>i</b></span>
+<span><b>で実行（リモートデスクトップ）</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>Raspberry P</span>
+<span>i</span>
+<span>に接続し</span>
+<span>た</span>
+<span>LC</span>
+<span>D</span>
+<span>と同様に、リモートデスクトップを開いたときもアプリケーションが全画面で実行されます</span>
+<span>。</span>
+<span><b>Alt+F1</b></span>
+<span><b>1</b></span>
+<span>キーで全画面表示を解除できます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ソリューショ</span>
+<span>ン</span>
+<span>AdcGrap</span>
+<span>hを</span>
+<span>ZI</span>
+<span>P</span>
+<span>ファイルに纏め</span>
+<span>て</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>のリモートデスクトップのファイルマネージャにコピー＆ペーストして解凍します。解凍したディレクトリ</span>
+<span>の</span>
+<span>AdcGraph/AdcGraph/bin/Debu</span>
+<span>g</span>
+<span>に移動し</span>
+<span>、</span>
+<span>AdcGraph.ex</span>
+<span>e</span>
+<span>をダブルクリックします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>詳しい手順は、前作</span>
+<span>「</span>
+<span>Visual Studio C</span>
+<span>#で</span>
+<span>Raspberry Pi</span>
+<span>&nbsp;</span>
+<span>リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>導入編」をご覧ください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>通信に掛かる時間が無くなったの</span>
+<span>で</span>
+<span>20m</span>
+<span>s</span>
+<span>周期のサーボパルスをほぼ取りこぼしなく取得できています。完全に取りこぼしを無くすためにはデータ取得のタイミングをハードウェアで制御する必要があるでしょう。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000066.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>7.4</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-36"><b>
+<span><b>Raspberry P</b></span>
+<span><b>i</b></span>
+<span><b>で実行（小</b></span>
+<span><b>型</b></span>
+<span><b>LC</b></span>
+<span><b>D</b></span>
+<span><b>）</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>リモートデスクトップで動作を確認できたので、リモートデスクトップ</span>
+<span>の</span>
+<span>LXTermina</span>
+<span>l</span>
+<span>から</span>
+<span>「</span>
+<span>sudo reboo</span>
+<span>t</span>
+<span>」を入力して再起動します</span>
+<span>。</span>
+<span>Raspberry P</span>
+<span>iの</span>
+<span>LC</span>
+<span>D</span>
+<span>に全画面表示されるアプリケーションが更新されるので動作を確認します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>詳しい手順は、前作</span>
+<span>「</span>
+<span>Visual Studio C</span>
+<span>#で</span>
+<span>Raspberry Pi</span>
+<span>&nbsp;</span>
+<span>リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>導入編」をご覧ください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000028.jpg" alt="" />
+</p>
+</div>
+</div>
+
+
+<script>function myFunction(){document.getElementById("tateyoko").classList.toggle("tateread")}</script></body></html>

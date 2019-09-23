@@ -1,0 +1,4644 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visual Studio C#でRaspberry Pi リモートGPIO導入編</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/mainday.css" title="default">
+<link rel="alternate stylesheet" href="/css/mainnight.css" title="alternate">
+<script type="text/javascript" src="/js/styleswitcher.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+</head>
+<body>
+<div class="novelpage">
+<div class="novelbody">
+<div id="tateyoko">
+<div id="_top"></div>
+<a href="/">🏠</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('default'); return false;">日</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">月</a>&emsp;
+<a href="#_top" onclick="myFunction()" style="cursor: pointer;">縦書き／横書き</a>
+<div id="calibre_link-31">
+<div>
+<div>
+<table class="noveltitle">
+<tr>
+<td colspan="2"><i><span><i>Visual Studio C#でRaspberry Pi リモートGPIO導入編</i></span></i></td>
+</tr>
+<tr>
+                    
+                    
+      </tr>
+<tr>
+<td colspan="2">rapidnack</td>
+</tr>
+<tr>
+<td colspan="2"> (2018)</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+</tr>
+</table>
+<div></div>
+</div>
+<div></div>
+</div>
+</div>
+
+
+
+<div id="calibre_link-0">
+<div>
+<p>&nbsp;<span>Visual Studio C#</span>
+ &nbsp;</p>
+<p>&nbsp;<span>で</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Raspberry Pi</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>導入編</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rapidnack&nbsp;--&nbsp;著</span>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<p>&nbsp;<span>・以下のサイトで、本書で掲載したソースコードを入手できます。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://github.com/Rapidnack/PigpiodIfTest">
+<span><u>https://github.com/Rapidnack/PigpiodIfTest</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<span>・本書中の会社名や商品名は、該当する各社の商標または登録商標です。本書中で</span>
+<span>は</span>
+<span>T</span>
+<span>M</span>
+<span>およ</span>
+<span>び®</span>
+<span>マークは省略させていただいております。</span>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<p>&nbsp;<a id="calibre_link-32"></a>
+<a href="#calibre_link-1">
+<span><u>はじめに</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-2">
+<span><u>1</u></span>
+<span><u>Visual Studio Communit</u></span>
+<span><u>y</u></span>
+<span><u>の準備</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-3">
+<span><u>2</u></span>
+<span><u>Raspberry P</u></span>
+<span><u>i</u></span>
+<span><u>の準備</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-4">
+<span><u>2.1</u></span>
+<span><u>Window</u></span>
+<span><u>sに</u></span>
+<span><u>Tera Ter</u></span>
+<span><u>m</u></span>
+<span><u>をインストール</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-5">
+<span><u>2.2</u></span>
+<span><u>Window</u></span>
+<span><u>sに</u></span>
+<span><u>Bonjour Print Service</u></span>
+<span><u>s</u></span>
+<span><u>をインストール</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-6">
+<span><u>2.3</u></span>
+<span><u>Window</u></span>
+<span><u>sで</u></span>
+<span><u>Raspbia</u></span>
+<span><u>n</u></span>
+<span><u>イメージ</u></span>
+<span><u>を</u></span>
+<span><u>S</u></span>
+<span><u>D</u></span>
+<span><u>カードに書き込む</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-7">
+<span><u>2.4</u></span>
+<span><u>Raspbia</u></span>
+<span><u>n</u></span>
+<span><u>をセットアップ</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-8">
+<span><u>2.5</u></span>
+<span><u>リモー</u></span>
+<span><u>ト</u></span>
+<span><u>GPI</u></span>
+<span><u>O</u></span>
+<span><u>等を設定</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-9">
+<span><u>2.6</u></span>
+<span><u>SS</u></span>
+<span><u>H</u></span>
+<span><u>で接続</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-10">
+<span><u>3</u></span>
+<span><u>Visual Studi</u></span>
+<span><u>o</u></span>
+<span><u>でビルド、実行</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-11">
+<span><u>3.1</u></span>
+<span><u>ソースコードをダウンロード</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-12">
+<span><u>3.2</u></span>
+<span><u>GPIO</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-13">
+<span><u>3.3</u></span>
+<span><u>PWM</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-14">
+<span><u>3.4</u></span>
+<span><u>Serial</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-15">
+<span><u>3.5</u></span>
+<span><u>I2C</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-16">
+<span><u>3.6</u></span>
+<span><u>SPI</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-17">
+<span><u>4</u></span>
+<span><u>Raspberry P</u></span>
+<span><u>i</u></span>
+<span><u>で実行（リモートデスクトップ）</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-18">
+<span><u>4.1</u></span>
+<span><u>リモートデスクトップをインストール</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-19">
+<span><u>4.2</u></span>
+<span><u>Mon</u></span>
+<span><u>o</u></span>
+<span><u>をインストール</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-20">
+<span><u>4.3</u></span>
+<span><u>ttf-mscorefonts-installe</u></span>
+<span><u>r</u></span>
+<span><u>をインストール</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-21">
+<span><u>4.4</u></span>
+<span><u>リモートデスクトップで実行</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-22">
+<span><u>5</u></span>
+<span><u>Raspberry P</u></span>
+<span><u>i</u></span>
+<span><u>で実行（小</u></span>
+<span><u>型</u></span>
+<span><u>LC</u></span>
+<span><u>D</u></span>
+<span><u>）</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-23">
+<span><u>5.1</u></span>
+<span><u>3.</u></span>
+<span><u>5</u></span>
+<span><u>イン</u></span>
+<span><u>チ</u></span>
+<span><u>HDMI LCD</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-24">
+<span><u>5.2</u></span>
+<span><u>3.</u></span>
+<span><u>5</u></span>
+<span><u>イン</u></span>
+<span><u>チ</u></span>
+<span><u>SPI LC</u></span>
+<span><u>D</u></span>
+<span><u>（その１）</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-25">
+<span><u>5.3</u></span>
+<span><u>3.</u></span>
+<span><u>5</u></span>
+<span><u>イン</u></span>
+<span><u>チ</u></span>
+<span><u>SPI LC</u></span>
+<span><u>D</u></span>
+<span><u>（その２）</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-26">
+<span><u>5.4</u></span>
+<span><u>KIOS</u></span>
+<span><u>K</u></span>
+<span><u>モード</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-27">
+<span><u>6</u></span>
+<span><u>Read only Root-FS</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-28">
+<span><u>6.1</u></span>
+<span><u>Read only Root-F</u></span>
+<span><u>S</u></span>
+<span><u>のセットアップ</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-29">
+<span><u>6.2</u></span>
+<span><u>書き込み可にする</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-30">
+<span><u>6.3</u></span>
+<span><u>書き込み禁止に戻す</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<a id="calibre_link-1"><b>
+<span><b>はじめに</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>Raspberry P</span>
+<span>i</span>
+<span>用にタッチパネル付き小</span>
+<span>型</span>
+<span>LC</span>
+<span>D</span>
+<span>が多数販売されています</span>
+<span>。</span>
+<span>GU</span>
+<span>I</span>
+<span>アプリケーションを作りたくなりますね</span>
+<span>。</span>
+<span>We</span>
+<span>bで</span>
+<span>GU</span>
+<span>I</span>
+<span>アプリケーションの作成方法を検索する</span>
+<span>と</span>
+<span>Pytho</span>
+<span>nか</span>
+<span>C+</span>
+<span>+</span>
+<span>の例がほとんどです</span>
+<span>。</span>
+<span>Window</span>
+<span>s</span>
+<span>のよう</span>
+<span>に</span>
+<span>Visual Studi</span>
+<span>o</span>
+<span>で簡単</span>
+<span>に</span>
+<span>GU</span>
+<span>I</span>
+<span>アプリケーションを作れないものでしょうか。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>既</span>
+<span>に</span>
+<span>Mon</span>
+<span>o（</span>
+<span>.NET Framewor</span>
+<span>k</span>
+<span>互換環境）</span>
+<span>は</span>
+<span>System.Windows.Form</span>
+<span>s</span>
+<span>の実装を完了しているので</span>
+<span>、</span>
+<span>Visual Studi</span>
+<span>o</span>
+<span>で作成し</span>
+<span>た</span>
+<span>Window</span>
+<span>s</span>
+<span>フォームアプリケーションをそのま</span>
+<span>ま</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>で実行できます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>これ</span>
+<span>で</span>
+<span>C</span>
+<span>#で</span>
+<span>GU</span>
+<span>I</span>
+<span>アプリケーションを作れるぞ！と喜んだのですが</span>
+<span>、</span>
+<span>Visual Studio</span>
+<span>&nbsp;</span>
+<span>上</span>
+<span>で</span>
+<span>GPI</span>
+<span>O</span>
+<span>を使ったデバッグができませんでした。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ところが最近</span>
+<span>の</span>
+<span>Raspbia</span>
+<span>n</span>
+<span>の設定画面には「リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>」という項目が追加されているではないですか</span>
+<span>。</span>
+<span>C</span>
+<span>#</span>
+<span>でこの「リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>」を操作できれば</span>
+<span>、</span>
+<span>Visual Studi</span>
+<span>oで</span>
+<span>GPI</span>
+<span>O</span>
+<span>を使ったデバッグもできてしまいます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000010.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>そこで</span>
+<span>、</span>
+<span>C</span>
+<span>#</span>
+<span>で「リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>」を操作するためのライブラリを作</span>
+<span>り</span>
+<span>GitHu</span>
+<span>b</span>
+<span>に公開しました。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://github.com/Rapidnack/PigpiodIfTest">
+<span><u>https://github.com/Rapidnack/PigpiodIfTest</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>次のよう</span>
+<span>に</span>
+<span>Visual Studi</span>
+<span>oで</span>
+<span>Raspberry P</span>
+<span>iの</span>
+<span>GPI</span>
+<span>O</span>
+<span>を使ったデバッグができます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000048.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>あとは、完成し</span>
+<span>た</span>
+<span>Window</span>
+<span>s</span>
+<span>フォームアプリケーションをそのま</span>
+<span>ま</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>で実行するだけです。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000026.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Window</span>
+<span>s</span>
+<span>フォームアプリケーションはだいぶ古い技術です</span>
+<span>が</span>
+<span>Window</span>
+<span>s</span>
+<span>上でもまだまだ現役です</span>
+<span>。</span>
+<span>Windows/Mac/Linu</span>
+<span>x</span>
+<span>で共通に使えるクロスプラットフォームとしても用途が広がりました。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>「リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>」は次のような機能を持っています。何を作りましょうか。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="http://abyz.me.uk/rpi/pigpio/pdif2.html">
+<span><u>http://abyz.me.uk/rpi/pigpio/pdif2.html</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000006.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>201</span>
+<span>8年9</span>
+<span>月&nbsp;rapidnack</span>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-2"><b>
+<span><b>Visual Studio Communit</b></span>
+<span><b>y</b></span>
+<span><b>の準備</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>Visual Studio Community&nbsp;201</span>
+<span>5、</span>
+<span>Visual Studio Community&nbsp;201</span>
+<span>7</span>
+<span>で動作確認をしています</span>
+<span>。</span>
+<span>Visual Studi</span>
+<span>o</span>
+<span>をインストールしていない場合は</span>
+<span>、</span>
+<span>Visual Studio Communit</span>
+<span>y</span>
+<span>をインストールしてください。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://visualstudio.microsoft.com/ja/vs/community/">
+<span><u>https://visualstudio.microsoft.com/ja/vs/community/</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000016.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Visual Studi</span>
+<span>o</span>
+<span>に慣れていない方は、簡単</span>
+<span>な</span>
+<span>Window</span>
+<span>s</span>
+<span>フォームアプリケーションが作れるように、入門書、説明サイト等で勉強してください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>サイト例：</span>
+<a href="http://www.atmarkit.co.jp/ait/articles/1704/10/news026.html">
+<span><u>http://www.atmarkit.co.jp/ait/articles/1704/10/news026.html</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-3"><b>
+<span><b>Raspberry P</b></span>
+<span><b>i</b></span>
+<span><b>の準備</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>最新</span>
+<span>の</span>
+<span>Raspbia</span>
+<span>n</span>
+<span>をインストールして、リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>等を有効にします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>2.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-4"><b>
+<span><b>Window</b></span>
+<span><b>sに</b></span>
+<span><b>Tera&nbsp;Ter</b></span>
+<span><b>m</b></span>
+<span><b>をインストール</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>Tera&nbsp;Ter</span>
+<span>m</span>
+<span>を使う</span>
+<span>と</span>
+<span>Linu</span>
+<span>x</span>
+<span>のコマンドをコピー＆ペーストして実行できるので</span>
+<span>、</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>をセットアップするのに便利です。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://forest.watch.impress.co.jp/library/software/utf8teraterm/">
+<span><u>https://forest.watch.impress.co.jp/library/software/utf8teraterm/</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>2.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-5"><b>
+<span><b>Window</b></span>
+<span><b>sに</b></span>
+<span><b>Bonjour Print Service</b></span>
+<span><b>s</b></span>
+<span><b>をインストール</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>Bonjour Print Service</span>
+<span>s</span>
+<span>をインストールすると</span>
+<span>、</span>
+<span>I</span>
+<span>P</span>
+<span>アドレスの代わりに</span>
+<span>「</span>
+<span>raspberrypi.loca</span>
+<span>l</span>
+<span>」</span>
+<span>で</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>に接続できます</span>
+<span>。</span>
+<span>Windows 1</span>
+<span>0</span>
+<span>の場合はインストール不要です。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://support.apple.com/kb/DL999?viewlocale=ja_JP&amp;locale=ja_JP">
+<span><u>https://support.apple.com/kb/DL999?viewlocale=ja_JP&amp;locale=ja_JP</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>2.3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-6"><b>
+<span><b>Window</b></span>
+<span><b>sで</b></span>
+<span><b>Raspbia</b></span>
+<span><b>n</b></span>
+<span><b>イメージ</b></span>
+<span><b>を</b></span>
+<span><b>S</b></span>
+<span><b>D</b></span>
+<span><b>カードに書き込む</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>Raspbia</span>
+<span>n</span>
+<span>のイメージをダウンロードします。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://www.raspberrypi.org/downloads/raspbian/">
+<span><u>https://www.raspberrypi.org/downloads/raspbian/</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000002.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>「</span>
+<span>Etche</span>
+<span>r</span>
+<span>」や</span>
+<span>「</span>
+<span>Win32 Disk Image</span>
+<span>r</span>
+<span>」でダウンロードしたイメージ</span>
+<span>を</span>
+<span>S</span>
+<span>D</span>
+<span>カードに書き込みます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000049.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000020.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>2.4</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-7"><b>
+<span><b>Raspbia</b></span>
+<span><b>n</b></span>
+<span><b>をセットアップ</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>S</span>
+<span>D</span>
+<span>カード</span>
+<span>を</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>に差し込み起動します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000025.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>国を設定すると言語、タイムゾーンが設定されます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000039.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>パスワードを変更しないと起動のたびに変更を促すダイアログが表示されるので、ここで変更しておきます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000055.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Wif</span>
+<span>i</span>
+<span>内蔵また</span>
+<span>は</span>
+<span>Wif</span>
+<span>i</span>
+<span>ドングルを接続している場合、ここで設定します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000017.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Raspbia</span>
+<span>n</span>
+<span>を最新に更新します。数十分掛かります。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000022.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>再起動する</span>
+<span>と</span>
+<span>Raspbia</span>
+<span>n</span>
+<span>が日本語になります。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000044.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>2.5</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-8"><b>
+<span><b>リモー</b></span>
+<span><b>ト</b></span>
+<span><b>GPI</b></span>
+<span><b>O</b></span>
+<span><b>等を設定</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>メニュー「</span>
+<img src="images/000054.jpg" alt="" />
+<span>&nbsp;-&gt;&nbsp;設定&nbsp;-&gt;&nbsp;Raspberry P</span>
+<span>i</span>
+<span>の設定」で設定画面を起動して</span>
+<span>、</span>
+<span>SS</span>
+<span>H、</span>
+<span>SP</span>
+<span>I、</span>
+<span>I2</span>
+<span>C、</span>
+<span>Serial Por</span>
+<span>t</span>
+<span>、リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>等使用するインターフェースを有効にします</span>
+<span>。</span>
+<span>Serial Consol</span>
+<span>e</span>
+<span>は有効にするとログイン時の文字列が出力されてしまうので無効にします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000046.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>再起動します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000040.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>は設定画面で有効にしただけではま</span>
+<span>だ</span>
+<span>P</span>
+<span>C</span>
+<span>などから接続できません。</span>
+<img src="images/000035.jpg" alt="" />
+<span>LxTermina</span>
+<span>l</span>
+<span>などから次のように入力し</span>
+<span>て</span>
+<span>pigpio</span>
+<span>d</span>
+<span>サービスを起動します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;systemctl&nbsp;start&nbsp;pigpiod</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>さらに次のように入力しておけば起動時か</span>
+<span>ら</span>
+<span>P</span>
+<span>C</span>
+<span>などから接続できるようになります。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;systemctl&nbsp;enable&nbsp;pigpiod</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span><b>&nbsp;</b></span>
+ &nbsp;</p>
+<h2><b>
+<span><b>2.6</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-9"><b>
+<span>SS</span>
+<span>H</span>
+<span>で接続</span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>Tera&nbsp;Ter</span>
+<span>m</span>
+<span>を起動し</span>
+<span>、</span>
+<span>Raspberry P</span>
+<span>iの</span>
+<span>I</span>
+<span>P</span>
+<span>アドレスまたは</span>
+<span>「</span>
+<span>raspberrypi.loca</span>
+<span>l</span>
+<span>」を入力して接続します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000009.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>初めて接続するときは次のダイアログが表示されるので、「既存の鍵を新しい鍵で上書きす</span>
+<span>る</span>
+<span>(R</span>
+<span>)</span>
+<span>」にチェックを付けて「続</span>
+<span>行</span>
+<span>(C</span>
+<span>)</span>
+<span>」をクリックします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000027.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Raspberry P</span>
+<span>i</span>
+<span>のユーザー名とパスワードを入力して</span>
+<span>「</span>
+<span>O</span>
+<span>K</span>
+<span>」をクリックします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000011.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Raspberry P</span>
+<span>iに</span>
+<span>SS</span>
+<span>H</span>
+<span>で接続しました。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000000.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-10"><b>
+<span><b>Visual Studi</b></span>
+<span><b>o</b></span>
+<span><b>でビルド、実行</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>GitHu</span>
+<span>b</span>
+<span>で公開しているライブラリに添付されているサンプルアプリケーション</span>
+<span>を</span>
+<span>Visual Studi</span>
+<span>o</span>
+<span>でビルドして実行してみましょう。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>3.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-11"><b>
+<span><b>ソースコードをダウンロード</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>GitHu</span>
+<span>b</span>
+<span>で公開している</span>
+<span>、</span>
+<span>C</span>
+<span>#</span>
+<span>で「リモー</span>
+<span>ト</span>
+<span>GPI</span>
+<span>O</span>
+<span>」を操作するためのライブラリをダウンロードします。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://github.com/Rapidnack/PigpiodIfTest">
+<span><u>https://github.com/Rapidnack/PigpiodIfTest</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000015.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ダウンロードし</span>
+<span>た</span>
+<span>ZI</span>
+<span>P</span>
+<span>ファイルを解凍して</span>
+<span>、</span>
+<span>PigpiodIfTest.sl</span>
+<span>nを</span>
+<span>Visual Studi</span>
+<span>o</span>
+<span>で開きます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000034.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ソリューションをビルドします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000047.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ビルド終了後、実行します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000005.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Raspberry P</span>
+<span>iの</span>
+<span>I</span>
+<span>P</span>
+<span>アドレスまたは</span>
+<span>「</span>
+<span>raspberrypi.loca</span>
+<span>l</span>
+<span>」を入力して</span>
+<span>「</span>
+<span>Ope</span>
+<span>n</span>
+<span>」をクリック、接続を確認してから</span>
+<span>「</span>
+<span>O</span>
+<span>n</span>
+<span>」をクリックします</span>
+<span>。2</span>
+<span>回接続メッセージが表示されますが、これ</span>
+<span>は</span>
+<span>pigpio</span>
+<span>d</span>
+<span>がコマンド用の接続とは別にピンの値が変化したこと通知する接続も使うためです。</span>
+<span>「</span>
+<span>Clos</span>
+<span>e</span>
+<span>」をクリックすると両方の接続が切れます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000024.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>サンプルアプリケーションはピン</span>
+<span>「</span>
+<span>BCM&nbsp;</span>
+<span>5</span>
+<span>」</span>
+<span>を</span>
+<span>0.</span>
+<span>5</span>
+<span>秒間隔</span>
+<span>で</span>
+<span>ON/OF</span>
+<span>F</span>
+<span>し、そのピンのレベルの変化を検出し</span>
+<span>て</span>
+<span>I</span>
+<span>P</span>
+<span>アドレスのテキストボックスの背景色を変化させます</span>
+<span>。</span>
+<span>LE</span>
+<span>D</span>
+<span>と抵抗をピン</span>
+<span>「</span>
+<span>BCM&nbsp;</span>
+<span>5</span>
+<span>」</span>
+<span>と</span>
+<span>GN</span>
+<span>D</span>
+<span>に接続する</span>
+<span>と</span>
+<span>ON/OF</span>
+<span>F</span>
+<span>を目で確認できます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000038.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>次のコードで、ピン</span>
+<span>「</span>
+<span>BCM&nbsp;</span>
+<span>5</span>
+<span>」</span>
+<span>を</span>
+<span>0.</span>
+<span>5</span>
+<span>秒間隔</span>
+<span>で</span>
+<span>ON/OF</span>
+<span>F</span>
+<span>しています。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>MainForm.cs: line 86</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>await</span>
+<span>&nbsp;Task.Run(</span>
+<span>async</span>
+<span>&nbsp;() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>while</span>
+<span>&nbsp;(</span>
+<span>true</span>
+<span>)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ct.ThrowIfCancellationRequested();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.</span>
+<span>gpio_write</span>
+<span>(GPIO,&nbsp;PigpiodIf.PI_HIGH);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>await</span>
+<span>&nbsp;Task.Delay(500, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.</span>
+<span>gpio_write</span>
+<span>(GPIO,&nbsp;PigpiodIf.PI_LOW);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>await</span>
+<span>&nbsp;Task.Delay(500, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}, ct);</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>次のコードで、ピン</span>
+<span>「</span>
+<span>BCM&nbsp;</span>
+<span>5</span>
+<span>」のレベルの変化を検出し</span>
+<span>て</span>
+<span>I</span>
+<span>P</span>
+<span>アドレスのテキストボックスの背景色を変化させています。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>MainForm.cs: line 73</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>callback =&nbsp;pigpiodIf.</span>
+<span>callback</span>
+<span>(GPIO,&nbsp;PigpiodIf.EITHER_EDGE, (gpio, level, tick, user) =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(</span>
+<span>"callback: {0}, {1}, {2}, {3}"</span>
+<span>,&nbsp;gpio, level, tick, user);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Invoke(</span>
+<span>new</span>
+<span>&nbsp;Action(() =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>bool</span>
+<span>&nbsp;isLow&nbsp;= (level ==&nbsp;PigpiodIf.PI_LOW);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>textBoxAddress.Enabled&nbsp;=&nbsp;isLow;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>textBoxAddress.BackColor&nbsp;=&nbsp;isLow&nbsp;?&nbsp;Color.Lime&nbsp;:&nbsp;Color.Aqua;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>});</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>MainForm.cs: line 105</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>pigpiodIf.</span>
+<span>callback_cancel</span>
+<span>(callback);</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>次のように</span>
+<span>、</span>
+<span>Visual Studi</span>
+<span>oで</span>
+<span>Raspberry P</span>
+<span>iの</span>
+<span>GPI</span>
+<span>O</span>
+<span>を使ったデバッグができます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000029.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>試し</span>
+<span>に</span>
+<span>0.</span>
+<span>5</span>
+<span>秒の待ち時間を取り除くと、おおよ</span>
+<span>そ</span>
+<span>5m</span>
+<span>s～</span>
+<span>10m</span>
+<span>s</span>
+<span>ごと</span>
+<span>に</span>
+<span>H</span>
+<span>L</span>
+<span>切り替わります。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>MainForm.cs: line 88</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>while&nbsp;(true)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ct.ThrowIfCancellationRequested();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.</span>
+<span>gpio_write</span>
+<span>(GPIO,&nbsp;PigpiodIf.PI_HIGH);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.</span>
+<span>gpio_write</span>
+<span>(GPIO,&nbsp;PigpiodIf.PI_LOW);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000012.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000030.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>3.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-12"><b>
+<span><b>GPIO</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>set_mode</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Set a GPIO mode</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>get_mode</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Get a GPIO mode</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>set_pull_up_down</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Set/clear GPIO pull up/down resistor</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>gpio_read</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Read a GPIO</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>gpio_write</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Write a GPIO</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>機能の詳細は</span>
+<a href="http://abyz.me.uk/rpi/pigpio/pdif2.html">
+<span><u>http://abyz.me.uk/rpi/pigpio/pdif2.html</u></span>
+</a>
+<span>を、使い方は次のテストコー</span>
+<span>ド</span>
+<span>XPiGpiodIf.t1(</span>
+<span>)</span>
+<span>を参考にしてください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>XPiGpiodIf.t1(</span>
+<span>)</span>
+<span>を実行するため</span>
+<span>に</span>
+<span>GPI</span>
+<span>O</span>
+<span>に何も接続する必要はありませんが</span>
+<span>、</span>
+<span>LE</span>
+<span>D</span>
+<span>と抵抗をピン</span>
+<span>「</span>
+<span>BCM&nbsp;</span>
+<span>5</span>
+<span>」</span>
+<span>と</span>
+<span>GN</span>
+<span>D</span>
+<span>に接続するとテスト中の動作を目で確認できます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000038.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>XPiGpiodIf.cs: line 27</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>public</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;t1(PigpiodIf&nbsp;pigpiodIf,&nbsp;CancellationToken&nbsp;ct)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int</span>
+<span>&nbsp;v;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(</span>
+<span>"¥r¥nMode/PUD/read/write tests."</span>
+<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.</span>
+<span>set_mode</span>
+<span>(GPIO,&nbsp;PigpiodIf.PI_INPUT);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>v =&nbsp;pigpiodIf.</span>
+<span>get_mode</span>
+<span>(GPIO);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(1, 1, v, 0, 0,&nbsp;</span>
+<span>"set mode, get mode"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.</span>
+<span>set_pull_up_down</span>
+<span>(GPIO,&nbsp;PigpiodIf.PI_PUD_UP);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>v =&nbsp;pigpiodIf.</span>
+<span>gpio_read</span>
+<span>(GPIO);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(1, 2, v, 1, 0,&nbsp;</span>
+<span>"set pull up down, read"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.</span>
+<span>set_pull_up_down</span>
+<span>(GPIO,&nbsp;PigpiodIf.PI_PUD_DOWN);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>v =&nbsp;pigpiodIf.</span>
+<span>gpio_read</span>
+<span>(GPIO);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(1, 3, v, 0, 0,&nbsp;</span>
+<span>"set pull up down, read"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.</span>
+<span>gpio_write</span>
+<span>(GPIO,&nbsp;PigpiodIf.PI_LOW);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>v =&nbsp;pigpiodIf.</span>
+<span>get_mode</span>
+<span>(GPIO);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(1, 4, v, 1, 0,&nbsp;</span>
+<span>"write, get mode"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>v =&nbsp;pigpiodIf.</span>
+<span>gpio_read</span>
+<span>(GPIO);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(1, 5, v, 0, 0,&nbsp;</span>
+<span>"read"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.</span>
+<span>gpio_write</span>
+<span>(GPIO,&nbsp;PigpiodIf.PI_HIGH);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>v =&nbsp;pigpiodIf.</span>
+<span>gpio_read</span>
+<span>(GPIO);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(1, 6, v, 1, 0,&nbsp;</span>
+<span>"write, read"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>3.3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-13"><b>
+<span><b>PWM</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>set_PWM_dutycycle</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Start/stop PWM pulses on a GPIO</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>get_PWM_dutycycle</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Get the PWM&nbsp;dutycycle&nbsp;in use on a GPIO</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>set_PWM_range</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Configure PWM range for a GPIO</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>get_PWM_range</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Get configured PWM range for a GPIO</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>set_PWM_frequency</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Configure PWM frequency for a GPIO</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>get_PWM_frequency</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Get configured PWM frequency for a GPIO</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>get_PWM_real_range</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Get underlying PWM range for a GPIO</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>機能の詳細は</span>
+<a href="http://abyz.me.uk/rpi/pigpio/pdif2.html">
+<span><u>http://abyz.me.uk/rpi/pigpio/pdif2.html</u></span>
+</a>
+<span>を、使い方は次のテストコー</span>
+<span>ド</span>
+<span>XPiGpiodIf.t2(</span>
+<span>)</span>
+<span>を参考にしてください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>XPiGpiodIf.t2(</span>
+<span>)</span>
+<span>を実行するため</span>
+<span>に</span>
+<span>GPI</span>
+<span>O</span>
+<span>に何も接続する必要はありませんが</span>
+<span>、</span>
+<span>LE</span>
+<span>D</span>
+<span>と抵抗をピン</span>
+<span>「</span>
+<span>BCM&nbsp;</span>
+<span>5</span>
+<span>」</span>
+<span>と</span>
+<span>GN</span>
+<span>D</span>
+<span>に接続するとテスト中の動作を目で確認できます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000038.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>XPiGpiodIf.cs: line 57</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>public</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;t2(PigpiodIf&nbsp;pigpiodIf,&nbsp;CancellationToken&nbsp;ct)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>PigpiodIf.Callback&nbsp;callback =&nbsp;</span>
+<span>null</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>try</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int</span>
+<span>&nbsp;dc, f, r,&nbsp;rr,&nbsp;oc;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(</span>
+<span>"¥r¥nPWM&nbsp;dutycycle/range/frequency tests."</span>
+<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.</span>
+<span>set_PWM_range</span>
+<span>(GPIO, 255);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.</span>
+<span>set_PWM_frequency</span>
+<span>(GPIO, 0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>f =&nbsp;pigpiodIf.</span>
+<span>get_PWM_frequency</span>
+<span>(GPIO);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(2, 1, f, 10, 0,&nbsp;</span>
+<span>"set PWM range, set/get PWM frequency"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int</span>
+<span>&nbsp;t2_count = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>callback =&nbsp;pigpiodIf.callback(GPIO,&nbsp;PigpiodIf.EITHER_EDGE, (gpio, level, tick, user) =&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>t2_count++;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>});</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.</span>
+<span>set_PWM_dutycycle</span>
+<span>(GPIO, 0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>dc =&nbsp;pigpiodIf.</span>
+<span>get_PWM_dutycycle</span>
+<span>(GPIO);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(2, 2, dc, 0, 0,&nbsp;</span>
+<span>"get PWM&nbsp;dutycycle"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.time_sleep(0.5);&nbsp;</span>
+<span>/* allow old notifications to flush */</span>
+ &nbsp;</p>
+<p>&nbsp;<span>oc&nbsp;= t2_count;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.time_sleep(2);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>f = t2_count -&nbsp;oc;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(2, 3, f, 0, 0,&nbsp;</span>
+<span>"set PWM&nbsp;dutycycle, callback"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.</span>
+<span>set_PWM_dutycycle</span>
+<span>(GPIO, 128);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>dc =&nbsp;pigpiodIf.</span>
+<span>get_PWM_dutycycle</span>
+<span>(GPIO);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(2, 4, dc, 128, 0,&nbsp;</span>
+<span>"get PWM&nbsp;dutycycle"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.time_sleep(0.2);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>oc&nbsp;= t2_count;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.time_sleep(2);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>f = t2_count -&nbsp;oc;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(2, 5, f, 40, 5,&nbsp;</span>
+<span>"set PWM&nbsp;dutycycle, callback"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.</span>
+<span>set_PWM_frequency</span>
+<span>(GPIO, 100);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>f =&nbsp;pigpiodIf.</span>
+<span>get_PWM_frequency</span>
+<span>(GPIO);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(2, 6, f, 100, 0,&nbsp;</span>
+<span>"set/get PWM frequency"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.time_sleep(0.2);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>oc&nbsp;= t2_count;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.time_sleep(2);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>f = t2_count -&nbsp;oc;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(2, 7, f, 400, 1,&nbsp;</span>
+<span>"callback"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.</span>
+<span>set_PWM_frequency</span>
+<span>(GPIO, 1000);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>f =&nbsp;pigpiodIf.</span>
+<span>get_PWM_frequency</span>
+<span>(GPIO);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(2, 8, f, 1000, 0,&nbsp;</span>
+<span>"set/get PWM frequency"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.time_sleep(0.2);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>oc&nbsp;= t2_count;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.time_sleep(2);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>f = t2_count -&nbsp;oc;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(2, 9, f, 4000, 1,&nbsp;</span>
+<span>"callback"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>r =&nbsp;pigpiodIf.</span>
+<span>get_PWM_range</span>
+<span>(GPIO);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(2, 10, r, 255, 0,&nbsp;</span>
+<span>"get PWM range"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rr&nbsp;=&nbsp;pigpiodIf.</span>
+<span>get_PWM_real_range</span>
+<span>(GPIO);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(2, 11,&nbsp;rr, 200, 0,&nbsp;</span>
+<span>"get PWM real range"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.</span>
+<span>set_PWM_range</span>
+<span>(GPIO, 2000);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>r =&nbsp;pigpiodIf.</span>
+<span>get_PWM_range</span>
+<span>(GPIO);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(2, 12, r, 2000, 0,&nbsp;</span>
+<span>"set/get PWM range"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rr&nbsp;=&nbsp;pigpiodIf.</span>
+<span>get_PWM_real_range</span>
+<span>(GPIO);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(2, 13,&nbsp;rr, 200, 0,&nbsp;</span>
+<span>"get PWM real range"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>finally</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.</span>
+<span>set_PWM_dutycycle</span>
+<span>(GPIO, 0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.callback_cancel(callback);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>3.4</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-14"><b>
+<span><b>Serial</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>serial_open</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Opens a serial device</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>serial_close</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Closes a serial device</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>serial_write_byte</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Writes a byte to a serial device</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>serial_read_byte</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Reads a byte from a serial device</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>serial_write</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Writes bytes to a serial device</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>serial_read</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Reads bytes from a serial device</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>serial_data_available</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Returns number of bytes ready to be read</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>機能の詳細は</span>
+<a href="http://abyz.me.uk/rpi/pigpio/pdif2.html">
+<span><u>http://abyz.me.uk/rpi/pigpio/pdif2.html</u></span>
+</a>
+<span>を、使い方は次のテストコー</span>
+<span>ド</span>
+<span>XPiGpiodIf.ta(</span>
+<span>)</span>
+<span>を参考にしてください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>XPiGpiodIf.ta(</span>
+<span>)</span>
+<span>を実行するには</span>
+<span>、</span>
+<span>TX</span>
+<span>Dと</span>
+<span>RX</span>
+<span>D</span>
+<span>をショートして送信データをループバックする必要があります。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000043.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>XPiGpiodIf.cs: line 575</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>public</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;ta(PigpiodIf&nbsp;pigpiodIf,&nbsp;CancellationToken&nbsp;ct)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int</span>
+<span>&nbsp;h, b, e;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>string</span>
+<span>&nbsp;TEXT;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>byte</span>
+<span>[]&nbsp;recv&nbsp;=&nbsp;</span>
+<span>new</span>
+<span>&nbsp;</span>
+<span>byte</span>
+<span>[2048];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(</span>
+<span>"¥r¥nSerial&nbsp;link tests."</span>
+<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>/* this test needs RXD and TXD to be connected */</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h =&nbsp;pigpiodIf.</span>
+<span>serial_open</span>
+<span>(</span>
+<span>"/dev/ttyAMA0"</span>
+<span>, 57600, 0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(10, 1, h, 0, 0,&nbsp;</span>
+<span>"serial open"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.time_sleep(0.1);&nbsp;</span>
+<span>/* allow time for transmission */</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b =&nbsp;pigpiodIf.</span>
+<span>serial_read</span>
+<span>((UInt32)h,&nbsp;recv);&nbsp;</span>
+<span>/* flush buffer */</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b =&nbsp;pigpiodIf.</span>
+<span>serial_data_available</span>
+<span>((UInt32)h);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(10, 2, b, 0, 0,&nbsp;</span>
+<span>"serial data available"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>TEXT =&nbsp;</span>
+<span>@"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>To be, or not to be, that is the question -</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Whether 'tis Nobler in the mind to suffer</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>The Slings and Arrows of outrageous Fortune,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Or to take Arms against a Sea of troubles,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>var</span>
+<span>&nbsp;bytes = System.Text.Encoding.UTF8.GetBytes(TEXT);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>e =&nbsp;pigpiodIf.</span>
+<span>serial_write</span>
+<span>((UInt32)h, bytes);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(10, 3, e, 0, 0,&nbsp;</span>
+<span>"serial write"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>e =&nbsp;pigpiodIf.</span>
+<span>serial_write_byte</span>
+<span>((UInt32)h, 0xAA);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>e =&nbsp;pigpiodIf.</span>
+<span>serial_write_byte</span>
+<span>((UInt32)h, 0x55);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>e =&nbsp;pigpiodIf.</span>
+<span>serial_write_byte</span>
+<span>((UInt32)h, 0x00);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>e =&nbsp;pigpiodIf.</span>
+<span>serial_write_byte</span>
+<span>((UInt32)h, 0xFF);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(10, 4, e, 0, 0,&nbsp;</span>
+<span>"serial write byte"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.time_sleep(0.1);&nbsp;</span>
+<span>/* allow time for transmission */</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b =&nbsp;pigpiodIf.</span>
+<span>serial_data_available</span>
+<span>((UInt32)h);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(10, 5, b,&nbsp;bytes.Length&nbsp;+ 4, 0,&nbsp;</span>
+<span>"serial data available"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>recv&nbsp;=&nbsp;</span>
+<span>new</span>
+<span>&nbsp;</span>
+<span>byte</span>
+<span>[bytes.Length];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b =&nbsp;pigpiodIf.</span>
+<span>serial_read</span>
+<span>((UInt32)h,&nbsp;recv);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(10, 6, b,&nbsp;bytes.Length, 0,&nbsp;</span>
+<span>"serial read"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>recv&nbsp;=&nbsp;recv.Take(b).ToArray();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>string</span>
+<span>&nbsp;text = System.Text.Encoding.UTF8.GetString(recv);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(10, 7,&nbsp;</span>
+<span>string</span>
+<span>.Compare(TEXT, text), 0, 0,&nbsp;</span>
+<span>"serial read"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b =&nbsp;pigpiodIf.</span>
+<span>serial_read_byte</span>
+<span>((UInt32)h);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(10, 8, b, 0xAA, 0,&nbsp;</span>
+<span>"serial read byte"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b =&nbsp;pigpiodIf.</span>
+<span>serial_read_byte</span>
+<span>((UInt32)h);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(10, 9, b, 0x55, 0,&nbsp;</span>
+<span>"serial read byte"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b =&nbsp;pigpiodIf.</span>
+<span>serial_read_byte</span>
+<span>((UInt32)h);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(10, 10, b, 0x00, 0,&nbsp;</span>
+<span>"serial read byte"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b =&nbsp;pigpiodIf.</span>
+<span>serial_read_byte</span>
+<span>((UInt32)h);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(10, 11, b, 0xFF, 0,&nbsp;</span>
+<span>"serial read byte"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b =&nbsp;pigpiodIf.</span>
+<span>serial_data_available</span>
+<span>((UInt32)h);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(10, 12, b, 0, 0,&nbsp;</span>
+<span>"serial data&nbsp;availabe"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>e =&nbsp;pigpiodIf.</span>
+<span>serial_close</span>
+<span>((UInt32)h);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(10, 13, e, 0, 0,&nbsp;</span>
+<span>"serial close"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>3.5</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-15"><b>
+<span><b>I2C</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>i2c_open</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Opens an I2C device</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>i2c_close</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Closes an I2C device</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>i2c_write_byte</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>smbus&nbsp;write byte</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>i2c_read_byte</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>smbus&nbsp;read byte</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>i2c_write_byte_data</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>smbus&nbsp;write byte data</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>i2c_read_byte_data</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>smbus&nbsp;read byte data</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>i2c_write_block_data</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>smbus&nbsp;write block data</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>i2c_read_block_data</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>smbus&nbsp;read block data</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>i2c_write_i2c_block_data</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>smbus&nbsp;write I2C block data</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>i2c_read_i2c_block_data</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>smbus&nbsp;read I2C block data</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>i2c_read_device</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Reads the raw I2C device</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>i2c_write_device</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Writes the raw I2C device</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>機能の詳細は</span>
+<a href="http://abyz.me.uk/rpi/pigpio/pdif2.html">
+<span><u>http://abyz.me.uk/rpi/pigpio/pdif2.html</u></span>
+</a>
+<span>を、使い方は次のテストコー</span>
+<span>ド</span>
+<span>XPiGpiodIf.tb(</span>
+<span>)</span>
+<span>を参考にしてください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>XPiGpiodIf.tb(</span>
+<span>)</span>
+<span>を実行するには</span>
+<span>、</span>
+<span>ADXL34</span>
+<span>5</span>
+<span>を接続する必要があります。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000001.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>XPiGpiodIf.cs: line&nbsp;646</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>public</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;tb(PigpiodIf&nbsp;pigpiodIf,&nbsp;CancellationToken&nbsp;ct)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int</span>
+<span>&nbsp;h, e, b;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>string</span>
+<span>&nbsp;exp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>string</span>
+<span>&nbsp;buf;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>byte</span>
+<span>[] bytes =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;</span>
+<span>byte</span>
+<span>[128];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(</span>
+<span>"¥r¥nSMBus&nbsp;/ I2C tests."</span>
+<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>/* this test requires an ADXL345 on I2C bus 1&nbsp;addr&nbsp;0x53 */</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h = pigpiodIf.</span>
+<span>i2c_open</span>
+<span>(1, 0x53, 0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 1, h, 0, 0,&nbsp;</span>
+<span>"i2c open"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>e = pigpiodIf.</span>
+<span>i2c_write_device</span>
+<span>((UInt32)h,&nbsp;</span>
+<span>new</span>
+<span>&nbsp;</span>
+<span>byte</span>
+<span>[] { 0x00 });&nbsp;</span>
+<span>/* move to known register */</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 2, e, 0, 0,&nbsp;</span>
+<span>"i2c write device"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>bytes =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;</span>
+<span>byte</span>
+<span>[1];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b = pigpiodIf.</span>
+<span>i2c_read_device</span>
+<span>((UInt32)h, bytes);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 3, b, 1, 0,&nbsp;</span>
+<span>"i2c read device"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 4, bytes[0], 0xE5, 0,&nbsp;</span>
+<span>"i2c read device"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b = pigpiodIf.</span>
+<span>i2c_read_byte</span>
+<span>((UInt32)h);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 5, b, 0xE5, 0,&nbsp;</span>
+<span>"i2c read byte"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b = pigpiodIf.</span>
+<span>i2c_read_byte_data</span>
+<span>((UInt32)h, 0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 6, b, 0xE5, 0,&nbsp;</span>
+<span>"i2c read byte data"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b = pigpiodIf.</span>
+<span>i2c_read_byte_data</span>
+<span>((UInt32)h, 48);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 7, b, 2, 0,&nbsp;</span>
+<span>"i2c read byte data"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>exp =&nbsp;</span>
+<span>"¥x1D[aBcDeFgHjKM]"</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>bytes = System.Text.Encoding.UTF8.GetBytes(exp);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>e = pigpiodIf.</span>
+<span>i2c_write_device</span>
+<span>((UInt32)h, bytes);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 8, e, 0, 0,&nbsp;</span>
+<span>"i2c write device"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>e = pigpiodIf.</span>
+<span>i2c_write_device</span>
+<span>((UInt32)h,&nbsp;</span>
+<span>new</span>
+<span>&nbsp;</span>
+<span>byte</span>
+<span>[] { 0x1D });</span>
+ &nbsp;</p>
+<p>&nbsp;<span>bytes =&nbsp;</span>
+<span>new</span>
+<span>&nbsp;</span>
+<span>byte</span>
+<span>[bytes.Length&nbsp;- 1];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b = pigpiodIf.</span>
+<span>i2c_read_device</span>
+<span>((UInt32)h, bytes);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buf&nbsp;= System.Text.Encoding.UTF8.GetString(bytes);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 9, b,&nbsp;buf.Length, 0,&nbsp;</span>
+<span>"i2c read device"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 10,&nbsp;</span>
+<span>string</span>
+<span>.Compare(buf, 0, exp, 1,&nbsp;buf.Length&nbsp;- 1), 0, 0,&nbsp;</span>
+<span>"i2c read device"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(</span>
+<span>string</span>
+<span>.Compare(buf, 0, exp, 1,&nbsp;buf.Length&nbsp;- 1) != 0)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(</span>
+<span>"got [{0}] expected [{1}]"</span>
+<span>,&nbsp;buf,&nbsp;exp.Substring(1));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>e = pigpiodIf.</span>
+<span>i2c_write_byte_data</span>
+<span>((UInt32)h, 0x1d, 0xAA);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 11, e, 0, 0,&nbsp;</span>
+<span>"i2c write byte data"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b = pigpiodIf.</span>
+<span>i2c_read_byte_data</span>
+<span>((UInt32)h, 0x1d);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 12, b, 0xAA, 0,&nbsp;</span>
+<span>"i2c read byte data"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>e = pigpiodIf.</span>
+<span>i2c_write_byte_data</span>
+<span>((UInt32)h, 0x1d, 0x55);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 13, e, 0, 0,&nbsp;</span>
+<span>"i2c write byte data"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b = pigpiodIf.</span>
+<span>i2c_read_byte_data</span>
+<span>((UInt32)h, 0x1d);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 14, b, 0x55, 0,&nbsp;</span>
+<span>"i2c read byte data"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>exp =&nbsp;</span>
+<span>"[1234567890#]"</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>bytes = System.Text.Encoding.UTF8.GetBytes(exp);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>e = pigpiodIf.</span>
+<span>i2c_write_block_data</span>
+<span>((UInt32)h, 0x1C, bytes);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 15, e, 0, 0,&nbsp;</span>
+<span>"i2c write block data"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>e = pigpiodIf.</span>
+<span>i2c_write_device</span>
+<span>((UInt32)h,&nbsp;</span>
+<span>new</span>
+<span>&nbsp;</span>
+<span>byte</span>
+<span>[] { 0x1D });</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b = pigpiodIf.</span>
+<span>i2c_read_device</span>
+<span>((UInt32)h, bytes);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buf&nbsp;= System.Text.Encoding.UTF8.GetString(bytes);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 16, b,&nbsp;buf.Length, 0,&nbsp;</span>
+<span>"i2c read device"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 17,&nbsp;</span>
+<span>string</span>
+<span>.Compare(buf, 0, exp, 0,&nbsp;buf.Length), 0, 0,&nbsp;</span>
+<span>"i2c read device"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(</span>
+<span>string</span>
+<span>.Compare(buf, 0, exp, 0,&nbsp;buf.Length) != 0)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(</span>
+<span>"got [{0}] expected [{1}]"</span>
+<span>,&nbsp;buf, exp);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b = pigpiodIf.</span>
+<span>i2c_read_i2c_block_data</span>
+<span>((UInt32)h, 0x1D, bytes);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buf&nbsp;= System.Text.Encoding.UTF8.GetString(bytes);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 18, b,&nbsp;buf.Length, 0,&nbsp;</span>
+<span>"i2c read i2c block data"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 19,&nbsp;</span>
+<span>string</span>
+<span>.Compare(buf, 0, exp, 0,&nbsp;buf.Length), 0, 0,&nbsp;</span>
+<span>"i2c read i2c block data"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(</span>
+<span>string</span>
+<span>.Compare(buf, 0, exp, 0,&nbsp;buf.Length) != 0)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(</span>
+<span>"got [{0}] expected [{1}]"</span>
+<span>,&nbsp;buf, exp);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>exp =&nbsp;</span>
+<span>"(-+=;:,&lt;&gt;!%)"</span>
+<span>;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>bytes = System.Text.Encoding.UTF8.GetBytes(exp);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>e = pigpiodIf.</span>
+<span>i2c_write_i2c_block_data</span>
+<span>((UInt32)h, 0x1D, bytes);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 20, e, 0, 0,&nbsp;</span>
+<span>"i2c write i2c block data"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b = pigpiodIf.</span>
+<span>i2c_read_i2c_block_data</span>
+<span>((UInt32)h, 0x1D, bytes);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buf&nbsp;= System.Text.Encoding.UTF8.GetString(bytes);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 21, b,&nbsp;buf.Length, 0,&nbsp;</span>
+<span>"i2c read i2c block data"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 22,&nbsp;</span>
+<span>string</span>
+<span>.Compare(buf, 0, exp, 0,&nbsp;buf.Length), 0, 0,&nbsp;</span>
+<span>"i2c read i2c block data"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(</span>
+<span>string</span>
+<span>.Compare(buf, 0, exp, 0,&nbsp;buf.Length) != 0)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(</span>
+<span>"got [{0}] expected [{1}]"</span>
+<span>,&nbsp;buf, exp);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>e = pigpiodIf.</span>
+<span>i2c_close</span>
+<span>((UInt32)h);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(11, 23, e, 0, 0,&nbsp;</span>
+<span>"i2c close"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>3.6</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-16"><b>
+<span><b>SPI</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>spi_open</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Opens a SPI device</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>spi_close</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Closes a SPI device</span>
+ &nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;<span>spi_xfer</span>
+ &nbsp;</p>
+</td>
+<td>
+<p>&nbsp;<span>Transfers bytes with a SPI device</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>機能の詳細は</span>
+<a href="http://abyz.me.uk/rpi/pigpio/pdif2.html">
+<span><u>http://abyz.me.uk/rpi/pigpio/pdif2.html</u></span>
+</a>
+<span>を、使い方は次のテストコー</span>
+<span>ド</span>
+<span>XPiGpiodIf.tc(</span>
+<span>)</span>
+<span>を参考にしてください。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>XPiGpiodIf.tc(</span>
+<span>)</span>
+<span>を実行するには</span>
+<span>、</span>
+<span>MCP320</span>
+<span>2</span>
+<span>を接続する必要があります。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000014.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>XPiGpiodIf.cs: line 746</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>public</span>
+<span>&nbsp;</span>
+<span>void</span>
+<span>&nbsp;tc(PigpiodIf&nbsp;pigpiodIf,&nbsp;CancellationToken&nbsp;ct)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int</span>
+<span>&nbsp;h, x, b, e;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>byte</span>
+<span>[]&nbsp;buf&nbsp;=&nbsp;</span>
+<span>new</span>
+<span>&nbsp;</span>
+<span>byte</span>
+<span>[128];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(</span>
+<span>"¥r¥nSPI&nbsp;tests."</span>
+<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>/* this test requires a MCP3202 on SPI1&nbsp;channel&nbsp;2&nbsp;*/</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h =&nbsp;pigpiodIf.</span>
+<span>spi_open</span>
+<span>(2, 50000,&nbsp;256 +&nbsp;0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(12, 1, h, 0, 0,&nbsp;</span>
+<span>"spi&nbsp;open"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for</span>
+<span>&nbsp;(x = 0; x &lt; 5; x++)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>buf&nbsp;=&nbsp;</span>
+<span>new</span>
+<span>&nbsp;</span>
+<span>byte</span>
+<span>[] { 0x01, 0x80, 0x00 };</span>
+ &nbsp;</p>
+<p>&nbsp;<span>b =&nbsp;pigpiodIf.</span>
+<span>spi_xfer</span>
+<span>((UInt32)h,&nbsp;buf,&nbsp;buf);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(12, 2, b, 3, 0,&nbsp;</span>
+<span>"spi&nbsp;xfer"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if</span>
+<span>&nbsp;(b == 3)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>{</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pigpiodIf.time_sleep(1.0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Console.WriteLine(</span>
+<span>"{0} "</span>
+<span>, ((buf[1] &amp; 0x0F) * 256) |&nbsp;buf[2]);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>e =&nbsp;pigpiodIf.</span>
+<span>spi_close</span>
+<span>((UInt32)h);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CHECK(12, 99, e, 0, 0,&nbsp;</span>
+<span>"spi&nbsp;close"</span>
+<span>, ct);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>4</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-17"><b>
+<span><b>Raspberry P</b></span>
+<span><b>i</b></span>
+<span><b>で実行（リモートデスクトップ）</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>Visual Studi</span>
+<span>o</span>
+<span>で動作を確認できたの</span>
+<span>で</span>
+<span>.&nbsp;Raspberry P</span>
+<span>i</span>
+<span>にコピーして実行してみます</span>
+<span>。</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>のデスクトップをリモートデスクトップとし</span>
+<span>て</span>
+<span>Window</span>
+<span>s</span>
+<span>の画面に表示すると</span>
+<span>、</span>
+<span>Window</span>
+<span>s</span>
+<span>のエクスプローラ</span>
+<span>と</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>のファイルマネージャとの間でコピー＆ペーストができ便利です。フォルダごとはダメなようなの</span>
+<span>で</span>
+<span>ZI</span>
+<span>P</span>
+<span>ファイルに纏めてからコピー＆ペーストします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>4.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-18"><b>
+<span><b>リモートデスクトップをインストール</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>Raspberry P</span>
+<span>iに</span>
+<span>xrd</span>
+<span>p</span>
+<span>をインストールします</span>
+<span>。</span>
+<span>xrd</span>
+<span>p</span>
+<span>をインストールする前</span>
+<span>に</span>
+<span>tightvncserve</span>
+<span>r</span>
+<span>をインストールするとネットワーク関連の設定作業を省略できます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;apt-get install&nbsp;tightvncserver</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sudo&nbsp;apt-get install&nbsp;xrdp</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>4.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-19"><b>
+<span><b>Mon</b></span>
+<span><b>o</b></span>
+<span><b>をインストール</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>.NE</span>
+<span>T</span>
+<span>の実行ファイル</span>
+<span>を</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>で実行するため</span>
+<span>、</span>
+<span>Mon</span>
+<span>o</span>
+<span>をインストールします</span>
+<span>。</span>
+<span>Raspbia</span>
+<span>n</span>
+<span>のパッケージに含まれ</span>
+<span>る</span>
+<span>Mon</span>
+<span>o</span>
+<span>は古いので、公式サイトから取得できるようにします</span>
+<span>。</span>
+<span>2018/10/0</span>
+<span>4</span>
+<span>現在</span>
+<span>の</span>
+<span>Stabl</span>
+<span>e版</span>
+<span>5.1</span>
+<span>4</span>
+<span>はテキストボックスの表示に不具合があるので一つ前</span>
+<span>の</span>
+<span>5.1</span>
+<span>2</span>
+<span>を選択します。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://www.mono-project.com/download/stable/#download-lin-raspbian">
+<span><u>https://www.mono-project.com/download/stable/#download-lin-raspbian</u></span>
+</a>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;apt install apt-transport-https&nbsp;dirmngr</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sudo&nbsp;apt-key adv --keyserver&nbsp;hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF</span>
+ &nbsp;</p>
+<p>&nbsp;<span>echo "deb&nbsp;https://download.mono-project.com/repo/debian stable-raspbianstretch/snapshots/5.12 main" |&nbsp;sudo&nbsp;tee /etc/apt/sources.list.d/mono-snapshot_5_12.list</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sudo&nbsp;apt update</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>「</span>
+<span>sudo&nbsp;apt updat</span>
+<span>e</span>
+<span>」で警告が表示されますが問題ありません</span>
+<span>。</span>
+<span>Mon</span>
+<span>o</span>
+<span>の開発環</span>
+<span>境</span>
+<span>MonoDevelo</span>
+<span>p</span>
+<span>をインストールすること</span>
+<span>で</span>
+<span>.NE</span>
+<span>T</span>
+<span>関連をまとめてインストールします。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;apt-get install&nbsp;monodevelop</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>ホームディレクトリ</span>
+<span>に</span>
+<span>Project</span>
+<span>s</span>
+<span>ディレクトリを作ります。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>cd</span>
+ &nbsp;</p>
+<p>&nbsp;<span>mkdir&nbsp;Projects</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>4.3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-20"><b>
+<span><b>ttf-mscorefonts-installe</b></span>
+<span><b>r</b></span>
+<span><b>をインストール</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>Visual Studi</span>
+<span>o</span>
+<span>でビルドし</span>
+<span>た</span>
+<span>GU</span>
+<span>I</span>
+<span>アプリケーションの実行に必要なフォントをインストールします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;apt-get install&nbsp;ttf-mscorefonts-installer</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>4.4</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-21"><b>
+<span><b>リモートデスクトップで実行</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>Window</span>
+<span>s</span>
+<span>の「リモートデスクトップ接続」を起動し</span>
+<span>、</span>
+<span>Raspberry P</span>
+<span>iの</span>
+<span>I</span>
+<span>P</span>
+<span>アドレスまたは</span>
+<span>「</span>
+<span>raspberrypi.loca</span>
+<span>l</span>
+<span>」を入力して「接</span>
+<span>続</span>
+<span>(N</span>
+<span>)</span>
+<span>」をクリックします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000021.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ログイン画面が表示されるので</span>
+<span>、</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>のユーザー名とパスワードを入力して</span>
+<span>「</span>
+<span>O</span>
+<span>K</span>
+<span>」をクリックします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000008.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Raspberry P</span>
+<span>i</span>
+<span>のデスクトップ</span>
+<span>が</span>
+<span>Window</span>
+<span>s</span>
+<span>上に表示されます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000033.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ファイルマネージャを表示して</span>
+<span>、</span>
+<span>Project</span>
+<span>s</span>
+<span>ディレクトリを開いておきます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000053.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000018.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.NE</span>
+<span>T</span>
+<span>の実行ファイル</span>
+<span>を</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>にコピー＆ペーストするた</span>
+<span>め</span>
+<span>ZI</span>
+<span>P</span>
+<span>ファイルに纏めます。今回はソリューションごと纏めます。まずソリューションファイ</span>
+<span>ル</span>
+<span>PigpiodIfTest.sl</span>
+<span>n</span>
+<span>のあるフォルダから１つ上に移動し、</span>
+ &nbsp;</p>
+<p>&nbsp;<span>フォル</span>
+<span>ダ</span>
+<span>PigpiodIfTest-maste</span>
+<span>r</span>
+<span>を右クリックして</span>
+<span>、</span>
+<span>ZI</span>
+<span>P</span>
+<span>ファイルに纏めます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000037.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000004.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000028.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Window</span>
+<span>s</span>
+<span>のエクスプローラでコピー</span>
+<span>、</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>のファイルマネージャでペーストすると</span>
+<span>、</span>
+<span>ZI</span>
+<span>P</span>
+<span>ファイル</span>
+<span>が</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>にコピーできます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000051.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ZI</span>
+<span>P</span>
+<span>ファイルを右クリックして解凍します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000013.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>解凍したディレクトリ</span>
+<span>の</span>
+<span>PigpiodIfTest-master/PigpiodIfTest/bin/Debu</span>
+<span>g</span>
+<span>に移動し</span>
+<span>、</span>
+<span>PigpiodIfTest.ex</span>
+<span>e</span>
+<span>をダブルクリックします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000019.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>EX</span>
+<span>E</span>
+<span>ファイルの実行方法を設定します。以</span>
+<span>後</span>
+<span>EX</span>
+<span>E</span>
+<span>ファイルをダブルクリックするだけで実行できるようになります。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000032.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>I</span>
+<span>P</span>
+<span>アドレスを空欄のまま</span>
+<span>「</span>
+<span>Ope</span>
+<span>n</span>
+<span>」をクリック、接続を確認してから</span>
+<span>「</span>
+<span>O</span>
+<span>n</span>
+<span>」をクリックします。見た目はまる</span>
+<span>で</span>
+<span>Windows 9</span>
+<span>8</span>
+<span>ですが</span>
+<span>、</span>
+<span>Window</span>
+<span>s</span>
+<span>でビルドし</span>
+<span>た</span>
+<span>GU</span>
+<span>I</span>
+<span>アプリケーションがそのま</span>
+<span>ま</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>で動作しています。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000050.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>5</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-22"><b>
+<span><b>Raspberry P</b></span>
+<span><b>i</b></span>
+<span><b>で実行（小</b></span>
+<span><b>型</b></span>
+<span><b>LC</b></span>
+<span><b>D</b></span>
+<span><b>）</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>Raspberry P</span>
+<span>i</span>
+<span>のリモートデスクトップで実行できることが確認できました。次</span>
+<span>は</span>
+<span>Raspberry P</span>
+<span>i</span>
+<span>に小</span>
+<span>型</span>
+<span>LC</span>
+<span>D</span>
+<span>を接続し</span>
+<span>、</span>
+<span>GU</span>
+<span>I</span>
+<span>アプリケーションが起動時に全画面表示で実行されるようにしましょう。</span>
+ &nbsp;</p>
+<p>&nbsp;<span><b>Alt+F1</b></span>
+<span><b>1</b></span>
+<span>キーで全画面表示を解除できます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>5.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-23"><b>
+<span><b>3.</b></span>
+<span><b>5</b></span>
+<span><b>イン</b></span>
+<span><b>チ</b></span>
+<span><b>HDMI&nbsp;LCD</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>HDM</span>
+<span>I</span>
+<span>接続</span>
+<span>の</span>
+<span>3.</span>
+<span>5</span>
+<span>イン</span>
+<span>チ</span>
+<span>LC</span>
+<span>D</span>
+<span>のセットアップ例です。</span>
+<span>使用したLCDはGPIOのピンがすべて横に出ているため、簡単に接続できます。</span>
+<span>Tera&nbsp;Ter</span>
+<span>m</span>
+<span>か</span>
+<span>ら</span>
+<span>SS</span>
+<span>H</span>
+<span>で接続してセットアップします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000026.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>使用したLCDはタッチパネルの割り込みピンがBCM 25なので、SPI1（Auxiliary SPI）と共存できます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000023.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>メーカー提供のセットアップスクリプトを使うと色々ファイルが書き換わってしまうので、手作業でセットアップします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>/boot/cmdline.txtを編集して、コンソールのフォントを変更します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;vi /boot/cmdline.txt</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>/boot/cmdline.txtの行末に追加：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>fbcon=font:ProFont6x11</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>/boot/config.tx</span>
+<span>t</span>
+<span>を編集して、</span>
+<span>画面サイズを変更します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;vi /boot/config.txt</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>/boot/config.tx</span>
+<span>t</span>
+<span>に追加：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>hdmi_group=2</span>
+ &nbsp;</p>
+<p>&nbsp;<span>hdmi_mode=87</span>
+ &nbsp;</p>
+<p>&nbsp;<span>hdmi_cvt&nbsp;480 320 60 6 0&nbsp;0&nbsp;0</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>/boot/config.tx</span>
+<span>t</span>
+<span>を編集して、タッチパネルのカーネルモジュールを有効にします。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;vi /boot/config.txt</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>/boot/config.tx</span>
+<span>t</span>
+<span>に追加：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>dtoverlay=ads7846,cs=1,penirq=25,penirq_pull=2,speed=50000,keep_vref_on=0,swapxy=0,pmax=255,xohms=150,xmin=200,xmax=3900,ymin=200,ymax=3900</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>タッチパネルを設定します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;apt-get install&nbsp;xserver-xorg-input-evdev</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sudo&nbsp;cp -rf&nbsp;/usr/share/X11/xorg.conf.d/10-evdev.conf /usr/share/X11/xorg.conf.d/45-evdev.conf</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sudo&nbsp;apt-get install&nbsp;xinput-calibrator</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>仮のキャリブレーション結果</span>
+<span>を</span>
+<span>/usr/share/X11/xorg.conf.d/99-calibration.con</span>
+<span>f</span>
+<span>に書き込みます。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;vi /usr/share/X11/xorg.conf.d/99-calibration.conf</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>仮のキャリブレーション結果：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>Section "InputClass"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Identifier&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "calibration"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MatchProduct&nbsp;&nbsp;&nbsp; "ADS7846&nbsp;Touchscreen"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Option&nbsp; "Calibration"&nbsp;&nbsp; "3900 200 3900 200"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Option&nbsp; "SwapAxes"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "1"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>EndSection</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>再起動します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;reboot</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>xinput_calibrato</span>
+<span>r</span>
+<span>を実行します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>DISPLAY=:0.0&nbsp;xinput_calibrator</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000045.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>4</span>
+<span>か所タップすると、キャリブレーションの結果が出力されます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000042.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>結果</span>
+<span>を</span>
+<span>/usr/share/X11/xorg.conf.d/99-calibration.con</span>
+<span>f</span>
+<span>に書き込みます。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;vi /usr/share/X11/xorg.conf.d/99-calibration.conf</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>例：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>Section "InputClass"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Identifier&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "calibration"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MatchProduct&nbsp;&nbsp;&nbsp; "ADS7846&nbsp;Touchscreen"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Option&nbsp; "Calibration"&nbsp;&nbsp; "</span>
+<span>3921 206 3885 169</span>
+<span>"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Option&nbsp; "SwapAxes"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "1"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>EndSection</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>再起動して終了です。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>5.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-24"><b>
+<span><b>3.</b></span>
+<span><b>5</b></span>
+<span><b>イン</b></span>
+<span><b>チ</b></span>
+<span><b>SPI&nbsp;LC</b></span>
+<span><b>D</b></span>
+<span><b>（その１）</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>SP</span>
+<span>I</span>
+<span>接続</span>
+<span>の</span>
+<span>3.</span>
+<span>5</span>
+<span>イン</span>
+<span>チ</span>
+<span>LC</span>
+<span>D</span>
+<span>のセットアップ例です。使用し</span>
+<span>た</span>
+<span>LC</span>
+<span>D</span>
+<span>は一般的なものですが、</span>
+<span>タッチパネルの割り込みピンがSPI1（Auxiliary SPI）のCS1とぶつかっているため、SPI1（Auxiliary SPI）を使うとタッチパネルが反応しなくなります。SPI1（Auxiliary SPI）を使う場合は後述の</span>
+<span>3.</span>
+<span>5</span>
+<span>イン</span>
+<span>チ</span>
+<span>SPI LC</span>
+<span>D</span>
+<span>（その２）</span>
+<span>がお勧めです。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000041.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>Tera&nbsp;Ter</span>
+<span>m</span>
+<span>か</span>
+<span>ら</span>
+<span>SS</span>
+<span>H</span>
+<span>で接続して</span>
+<span>、</span>
+<span>SP</span>
+<span>I</span>
+<span>接続</span>
+<span>の</span>
+<span>3.</span>
+<span>5</span>
+<span>イン</span>
+<span>チ</span>
+<span>LC</span>
+<span>D</span>
+<span>をセットアップします</span>
+<span>。</span>
+<span>GPI</span>
+<span>Oの</span>
+<span>4</span>
+<span>0</span>
+<span>ピンを引き出していないため</span>
+<span>、</span>
+<span>GPI</span>
+<span>O</span>
+<span>を使うためには何らかの工夫が必要です。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000007.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>使用し</span>
+<span>た</span>
+<span>LC</span>
+<span>D</span>
+<span>は</span>
+<span>タッチパネルの割り込みピンがBCM&nbsp;17でSPI1（Auxiliary SPI）のCS1とぶつかっているため、SPI1（Auxiliary SPI）を使うとタッチパネルが反応しなくなります。SPI1（Auxiliary SPI）を使う場合はBCM 17、BCM 18を使わないLCDを選択する必要があります。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000023.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>/etc/modules-load.d/fbtft.con</span>
+<span>f</span>
+<span>を編集して、必要なカーネルモジュールをロードするようにします。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;vi /etc/modules-load.d/fbtft.conf</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>/etc/modules-load.d/fbtft.con</span>
+<span>f</span>
+<span>の内容：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>spi-bcm2835</span>
+ &nbsp;</p>
+<p>&nbsp;<span>flexfb</span>
+ &nbsp;</p>
+<p>&nbsp;<span>fbtft_device</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>/boot/cmdline.txtを編集して、コンソールの設定を変更します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;vi /boot/cmdline.txt</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>/boot/cmdline.txtの行末に追加：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>fbcon=map:1&nbsp;fbcon=font:ProFont6x11</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>/usr/share/X11/xorg.conf.d/99-fbturbo.con</span>
+<span>f</span>
+<span>を編集して、画面の出力先を変更します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;vi /usr/share/X11/xorg.conf.d/99-fbturbo.conf</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>fb</span>
+<span>0を</span>
+<span>fb</span>
+<span>1</span>
+<span>に変更：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Option&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "fbdev" "/dev/</span>
+<span>fb1</span>
+<span>"</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>デバイスツリー</span>
+<span>オーバーレイをインストールします。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>git&nbsp;clone https://github.com/swkim01/waveshare-dtoverlays.git</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sudo&nbsp;cp&nbsp;waveshare-dtoverlays/waveshare35a-overlay.dtb /boot/overlays/waveshare35a.dtbo</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>/boot/config.tx</span>
+<span>t</span>
+<span>を編集して、</span>
+<span>デバイスツリー</span>
+<span>オーバーレイを有効にします。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;vi /boot/config.txt</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>/boot/config.tx</span>
+<span>t</span>
+<span>に追加：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>dtoverlay=waveshare35a:swapxy=1</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>タッチパネルを設定します。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;apt-get install&nbsp;xserver-xorg-input-evdev</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sudo&nbsp;cp -rf&nbsp;/usr/share/X11/xorg.conf.d/10-evdev.conf /usr/share/X11/xorg.conf.d/45-evdev.conf</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sudo&nbsp;apt-get install&nbsp;xinput-calibrator</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>仮のキャリブレーション結果</span>
+<span>を</span>
+<span>/usr/share/X11/xorg.conf.d/99-calibration.con</span>
+<span>f</span>
+<span>に書き込みます。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;vi /usr/share/X11/xorg.conf.d/99-calibration.conf</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>仮のキャリブレーション結果：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>Section "InputClass"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Identifier&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "calibration"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MatchProduct&nbsp;&nbsp;&nbsp; "ADS7846&nbsp;Touchscreen"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Option&nbsp; "Calibration"&nbsp;&nbsp; "3900&nbsp;200&nbsp;200&nbsp;3900"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Option&nbsp; "SwapAxes"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "0"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>EndSection</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>再起動します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;reboot</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>xinput_calibrato</span>
+<span>r</span>
+<span>を実行します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>DISPLAY=:0.0&nbsp;xinput_calibrator</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000045.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>4</span>
+<span>か所タップすると、キャリブレーションの結果が出力されます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000031.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>結果</span>
+<span>を</span>
+<span>/usr/share/X11/xorg.conf.d/99-calibration.con</span>
+<span>f</span>
+<span>に書き込みます。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;vi /usr/share/X11/xorg.conf.d/99-calibration.conf</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>例：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>Section "InputClass"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Identifier&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "calibration"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MatchProduct&nbsp;&nbsp;&nbsp; "ADS7846&nbsp;Touchscreen"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Option&nbsp; "Calibration"&nbsp;&nbsp; "</span>
+<span>3942 273 240 3855</span>
+<span>"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Option&nbsp; "SwapAxes"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "0"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>EndSection</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>再起動して終了です。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>5.3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-25"><b>
+<span><b>3.</b></span>
+<span><b>5</b></span>
+<span><b>イン</b></span>
+<span><b>チ</b></span>
+<span><b>SPI LC</b></span>
+<span><b>D</b></span>
+<span><b>（その２）</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>SP</span>
+<span>I</span>
+<span>接続</span>
+<span>の</span>
+<span>3.</span>
+<span>5</span>
+<span>イン</span>
+<span>チ</span>
+<span>LC</span>
+<span>D</span>
+<span>のセットアップ例です。</span>
+<span>タッチパネルの割り込みピンがSPI1（Auxiliary SPI）のCS1とぶつからないため、SPI1（Auxiliary SPI）とタッチパネルが共存できます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000052.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>Raspberry P</span>
+<span>iの</span>
+<span>3.3</span>
+<span>V、</span>
+<span>5</span>
+<span>V</span>
+<span>ピン</span>
+<span>は</span>
+<span>LC</span>
+<span>D</span>
+<span>のコネクタで塞がってしまうので</span>
+<span>、</span>
+<span>LC</span>
+<span>D</span>
+<span>の三端子レギュレータにヘッダーピンをはんだ付けしておくと便利です。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000036.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Tera&nbsp;Ter</span>
+<span>m</span>
+<span>か</span>
+<span>ら</span>
+<span>SS</span>
+<span>H</span>
+<span>で接続して</span>
+<span>、</span>
+<span>SP</span>
+<span>I</span>
+<span>接続</span>
+<span>の</span>
+<span>3.</span>
+<span>5</span>
+<span>イン</span>
+<span>チ</span>
+<span>LC</span>
+<span>D</span>
+<span>をセットアップします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>メーカー提供のスクリプト等を取得します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>cd</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sudo&nbsp;git&nbsp;clone&nbsp;</span>
+<a href="https://github.com/kedei/LCD_driver">
+<span>https://github.com/kedei/LCD_driver</span>
+</a>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>LCD35_sho</span>
+<span>w</span>
+<span>を編集して</span>
+<span>、</span>
+<span>/boot/config.tx</span>
+<span>t</span>
+<span>を差替えないようにします。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;chmod&nbsp;-R 777&nbsp;LCD_driver</span>
+ &nbsp;</p>
+<p>&nbsp;<span>cd&nbsp;LCD_driver</span>
+ &nbsp;</p>
+<p>&nbsp;<span>vi&nbsp;LCD35_show</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>６行目の行頭</span>
+<span>に#</span>
+<span>を追加してコメントアウト：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>#sudo&nbsp;cp ./boot/35_config_128M.txt&nbsp;/boot/config.txt</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>コメントアウトした行の代わり</span>
+<span>に</span>
+<span>/boot/config.tx</span>
+<span>t</span>
+<span>を直接編集します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;vi&nbsp;</span>
+<span>/boot/config.txt</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>/boot/config.tx</span>
+<span>t</span>
+<span>の行末に追加：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>display_default_lcd=1</span>
+ &nbsp;</p>
+<p>&nbsp;<span>dtoverlay=kedei</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>LCD35_sho</span>
+<span>w</span>
+<span>を実行します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>./LCD35_show</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>パラメータで画面の向きを指定できます</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>./LCD35_show&nbsp;90</span>
+ &nbsp;</p>
+<p>&nbsp;<span>./LCD35_show&nbsp;180</span>
+ &nbsp;</p>
+<p>&nbsp;<span>./LCD35_show&nbsp;270</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>自動的に再起動します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>5.4</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-26"><b>
+<span><b>KIOS</b></span>
+<span><b>K</b></span>
+<span><b>モード</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>自動的にカーソルを消すようにします。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;apt-get install&nbsp;unclutter</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>自動的</span>
+<span>に</span>
+<span>GU</span>
+<span>I</span>
+<span>アプリケーションを起動するように</span>
+<span>、</span>
+<span>~/.config/lxsession/LXDE-pi/autostar</span>
+<span>t</span>
+<span>を編集します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>vi ~/.config/lxsession/LXDE-pi/autostart</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>~/.config/lxsession/LXDE-pi/autostar</span>
+<span>t</span>
+<span>の内容：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>@lxpanel&nbsp;--profile LXDE-pi</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@pcmanfm&nbsp;--desktop --profile LXDE-pi</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@xscreensaver&nbsp;-no-splash</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@xset&nbsp;s off</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@xset&nbsp;-dpms</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@xset&nbsp;s&nbsp;noblank</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@unclutter</span>
+ &nbsp;</p>
+<p>&nbsp;<span>@mono /home/pi/Projects/PigpiodIfTest-master/PigpiodIfTest/bin/Debug/PigpiodIfTest.exe</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>GU</span>
+<span>I</span>
+<span>アプリケーションを全画面表示で起動するように</span>
+<span>、</span>
+<span>~/.config/openbox/lxde-pi-rc.xm</span>
+<span>l</span>
+<span>を編集します。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>vi ~/.config/openbox/lxde-pi-rc.xml</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>ファイルの最後の方に追加：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>...</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp; # end of the example</span>
+ &nbsp;</p>
+<p>&nbsp;<span>--&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span>&lt;application title="Pigpiod&nbsp;C# I/F Test"&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;fullscreen&gt;yes&lt;/fullscreen&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;&nbsp;&nbsp; &lt;/application&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp; &lt;/applications&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&lt;/openbox_config&gt;</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>これで起動時に全画面表示で実行されるようになりました</span>
+<span>。</span>
+<span><b>Alt+F1</b></span>
+<span><b>1</b></span>
+<span>キーで全画面表示を解除できます。</span>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>6</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-27"><b>
+<span><b>Read only Root-FS</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>Raspberry P</span>
+<span>i</span>
+<span>の使い方によっては、シャットダウンをせずに電源を切りたくなります</span>
+<span>。</span>
+<span>S</span>
+<span>D</span>
+<span>メモリ上のファイルシステム</span>
+<span>を</span>
+<span>Read onl</span>
+<span>y</span>
+<span>にしてしまいましょう。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>6.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-28"><b>
+<span><b>Read only Root-F</b></span>
+<span><b>S</b></span>
+<span><b>のセットアップ</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>「</span>
+<span>Read-only Root-FS with&nbsp;overlayfs&nbsp;for&nbsp;Raspia</span>
+<span>n</span>
+<span>」に書かれている手順に従い</span>
+<span>、</span>
+<span>SS</span>
+<span>H</span>
+<span>で接続し</span>
+<span>た</span>
+<span>Tera&nbsp;Ter</span>
+<span>m</span>
+<span>からコマンドを入力します。再起動する</span>
+<span>と</span>
+<span>S</span>
+<span>D</span>
+<span>メモリ上のファイルシステム</span>
+<span>が</span>
+<span>Read onl</span>
+<span>y</span>
+<span>になっています。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://github.com/josepsanzcamp/root-ro">
+<span><u>https://github.com/josepsanzcamp/root-ro</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>cd&nbsp;/home/pi</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sudo&nbsp;bash</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>echo Installing all dependencies</span>
+ &nbsp;</p>
+<p>&nbsp;<span>apt-get install&nbsp;git&nbsp;rsync&nbsp;gawk&nbsp;busybox&nbsp;bindfs</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>echo Disabling swap</span>
+ &nbsp;</p>
+<p>&nbsp;<span>dphys-swapfile&nbsp;swapoff</span>
+ &nbsp;</p>
+<p>&nbsp;<span>dphys-swapfile&nbsp;uninstall</span>
+ &nbsp;</p>
+<p>&nbsp;<span>update-rc.d&nbsp;dphys-swapfile&nbsp;disable</span>
+ &nbsp;</p>
+<p>&nbsp;<span>systemctl&nbsp;disable&nbsp;dphys-swapfile</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>echo Cloning repository</span>
+ &nbsp;</p>
+<p>&nbsp;<span>git&nbsp;clone https://github.com/josepsanzcamp/root-ro.git</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>echo Doing the setup</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rsync&nbsp;-va&nbsp;root-ro/etc/initramfs-tools/* /etc/initramfs-tools/</span>
+ &nbsp;</p>
+<p>&nbsp;<span>mkinitramfs&nbsp;-o /boot/initrd.gz</span>
+ &nbsp;</p>
+<p>&nbsp;<span>echo&nbsp;initramfs&nbsp;initrd.gz &gt;&gt; /boot/config.txt</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>echo Restarting RPI</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reboot</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>書き込みはメモリ上のファイルシステムに対して実行されるので、「大量の書き込みはできない」「書き込んだ内容は電源遮断時に消えてしまう」ことになります。その代りいつでも電源を切ることができます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span><b>&nbsp;</b></span>
+ &nbsp;</p>
+<h2><b>
+<span><b>6.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-29"><b>
+<span><b>書き込み可にする</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>/boot/config.tx</span>
+<span>t</span>
+<span>の</span>
+<span>最後の行をコメントアウトして</span>
+<span>再起動すると、</span>
+<span>書き込み可能になります。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;mount -o&nbsp;remount,rw&nbsp;/mnt/boot-ro</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sudo&nbsp;vi /mnt/boot-ro/config.txt</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>最後の行をコメントアウトして再起動：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>#initramfs&nbsp;initrd.gz</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>6.3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-30"><b>
+<span><b>書き込み禁止に戻す</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>/boot/config.tx</span>
+<span>t</span>
+<span>の</span>
+<span>最後の行のコメントアウトを外して</span>
+<span>再起動すると、</span>
+<span>書き込み禁止に戻ります。</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>sudo&nbsp;vi /boot/config.txt</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;<span>最後の行のコメントアウトを外して再起動：</span>
+ &nbsp;</p>
+<div>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>initramfs&nbsp;initrd.gz</span>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+<script>function myFunction(){document.getElementById("tateyoko").classList.toggle("tateread")}</script></body></html>

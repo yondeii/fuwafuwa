@@ -1,0 +1,2091 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEOに効く！アフィリエイトに効く! WordPressでサクッと口コミ評価サイトを作る！</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/mainday.css" title="default">
+<link rel="alternate stylesheet" href="/css/mainnight.css" title="alternate">
+<script type="text/javascript" src="/js/styleswitcher.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+</head>
+<body>
+<div class="novelpage">
+<div class="novelbody">
+<div id="tateyoko">
+<div id="_top"></div>
+<a href="/">🏠</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('default'); return false;">日</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">月</a>&emsp;
+<a href="#_top" onclick="myFunction()" style="cursor: pointer;">縦書き／横書き</a>
+<div id="calibre_link-18">
+<div>
+<div>
+<table class="noveltitle">
+<tr>
+<td colspan="2"><i><span><i>SEOに効く！アフィリエイトに効く! WordPressでサクッと口コミ評価サイトを作る！</i></span></i></td>
+</tr>
+<tr>
+                    
+                    
+      </tr>
+<tr>
+<td colspan="2">柴犬会長</td>
+</tr>
+<tr>
+<td colspan="2">The President of Shiba Inu (2015)</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+</tr>
+</table>
+<div></div>
+</div>
+<div>
+<p>レンタルサーバーでWordPressを利用し新たなサイトを作ろうとすると、申し込みから各種設定、キーワード選定、WordPress導入・更新・プラグイン等々、サイト準備する前に様々なことを行わなくてはなりません。普段WordPressを使い慣れている人でも「入れるべきプラグインって何だっけ？」と、よく忘れます。また、設定する順序も考えなくてはなりません。本書では、レンタルサーバーへの申し込みからWordPress導入、ドメイン設定、SEOに最適なテーマと主要なプラグインの導入、アクセス解析・ウェブマスターツールの導入、最終的には「口コミ評価サイト」を作る一連のプロセスまで詳細に説明しています。さらにメルマガ配信の構築方法も載せています。プラグインは多数ありますが、その中でも設定しやすく、わかりやすいプラグインを選びました。さらに加えてグーグル検索結果で表示されるレビュー設定方法も記載してあります。これらは、３５０を超える画像を用いて説明しておりますので、構築するプロセスを理解しやすいです。本書を手に入れればWordPressにおける「口コミ評価投稿・メルマガ配信システム」を手に入れたようなものです。設定手順をググる苦痛からも解放され、特に何も考えず最速で設定できます。</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="calibre_link-11">
+
+
+    
+<h1 id="calibre_link-20"><b>SEOに効く！アフィリエイトに効く！ WordPressでサクッと口コミ評価サイトを作る！</b></h1>
+<h2><b>
+    作者：柴犬会長
+</b></h2>
+<div>
+    概要：　レンタルサーバーでWordPressを利用し新たなサイトを作ろうとすると、申し込みから各種設定、キーワード選定、WordPress導入・更新・プラグイン等々、サイト準備する前に様々なことを行わなくてはなりません。普段WordPressを使い慣れている人でも「入れるべきプラグインって何だっけ？」と、よく忘れます。また、設定する順序も考えなくてはなりません。本書では、レンタルサーバーへの申し込みからWordPress導入、ドメイン設定、SEOに最適なテーマと主要なプラグインの導入、アクセス解析・ウェブマスターツールの導入、最終的には「口コミ評価サイト」を作る一連のプロセスまで詳細に説明しています。さらにメルマガ配信の構築方法も載せています。プラグインは多数ありますが、その中でも設定しやすく、わかりやすいプラグインを選びました。さらに加えてグーグル検索結果で表示されるレビュー設定方法も記載してあります。これらは、３５０を超える画像を用いて説明しておりますので、構築するプロセスを理解しやすいです。本書を手に入れればWordPressにおける「口コミ評価投稿・メルマガ配信システム」を手に入れたようなものです。設定手順をググる苦痛からも解放され、特に何も考えず最速で設定できます。
+</div>
+
+    
+
+</div>
+<div id="calibre_link-15">
+
+
+<h3><b>レンタルサーバーを借りる</b></h3><div><p>本書でのレンタルサーバーはミニバード（mini bird）を利用します。</p>
+<p>&nbsp;</p>
+<p>料金の安いその他レンタルサーバーとして、さくらインターネットやロリポップが有名です。ここ最近（2015年7月）は様々なレンタルサービスやクラウドサービスが出てきています。エックスサーバーは誰もが勧めるレンタルサーバーですが、月額使用料が1000円を超えてしまいます。一方のミニバードは月額250円です。</p>
+<p>&nbsp;</p>
+<p><img src="images/00305.jpeg" alt="" /></p>
+<p><a href="http://www.minibird.jp/">http://www.minibird.jp/</a></p>
+<p>&nbsp;</p>
+<p>ミニバードの利点としては安い価格帯のレンタルサーバーにおいて、レスポンスが早く、データベースが５つ使えるのが利点です。一つのレンタルサーバーで5つのWordPressを稼働させされるので、非常に経済的です。WordPressサイトを複数作成し稼働させるレンタルサーバーとして最適なサーバーの一つです。</p>
+<p>&nbsp;</p>
+<p>ミニバードを利用するには下記のような手順で登録・申し込みをします。</p>
+<p>&nbsp;</p>
+<p>ネットオウル会員登録</p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p>決済登録情報登録</p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p>「ミニバード管理」から「新規取得」</p>
+<p>&nbsp;</p>
+<p><img src="images/00243.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span>&nbsp;</p>
+<p><span>次ぎにサーバーIDを決めます。このドメインがミニバードが提供するドメインとなります。</span>私は口コミ評判サイトとして「kutikomi」と入力しました。（独自ドメインの設定に関しては後ほど説明します。）</p>
+<p>&nbsp;</p>
+<p><img src="images/00083.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>これを確定していくと・・・<span>次のような画面になります。</span></p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00265.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>「サーバー設定完了後」とありますが、私が申し込んだ際には直ぐに完了メールが届きました。以上でミニバードのレンタルサーバーを借りることが出来ました。</p></div>
+
+
+</div>
+<div id="calibre_link-1">
+
+
+<h3><b>サイトテーマを考え、キーワードを選定する</b></h3><div><p>今回、口コミ評判サイトを作成しますが、WordPress導入、独自ドメイン設定の前に、まず「サイトテーマ」を決定しなければなりません。口コミ評判で集客し、販売するという一連のプロセスの為の「口コミ評判サイトのテーマの決定」です。</p>
+<p>&nbsp;</p>
+<p>口コミや評判サイトと言えば、「価格ドットコム」が有名です。「価格ドットコム」は価格だけでなく、その製品の評判を記載することにより、購入意欲の高いユーザーを集客し続けています。その他、「食べログ」では外食したいと思うユーザーを、「Amazon」は主に本を購入したいユーザーです。最近では「転職会議」が企業の評判・口コミで転職したいユーザーを集客し、転職サービスを展開しています。</p>
+<p>&nbsp;</p>
+<p>つまり、何らかの販売物・それに関連する口コミや評判によって集客し、うまく販売に結びつけたいわけです。ところで、アフィリエイトにおいて稼げるテーマとして紹介されるのが、下記の３つのテーマです。</p>
+<ol><li value="1"><span>稼げるモノ・ノウハウ系</span></li>
+<li value="2"><span>恋愛・モテる系</span></li>
+<li value="3"><span>悩み・コンプレックス系</span></li>
+</ol><p>先に明かしますが、本書が設定する売り物として、服を考えています。ここで服と結びつけるテーマとしては、恋愛・モテる系、悩み・コンプレックス系になるかと思います。ザックリとですが、キーワードとして、</p>
+<ul><li><span>服</span></li>
+<li><span>恋愛</span></li>
+<li><span>モテる</span></li>
+<li><span>悩み</span></li>
+</ul><p>が浮かび上がってきました。そして恋愛、つまり異性を意識した時、つまり「デート」「合コン」ではないかと考えました。</p>
+<ul><li><span>「デート　服装」</span></li>
+<li><span>「合コン　服装」</span></li>
+</ul><p>ここで、実際にこのキーワードでGoogle検索してみます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00166.jpeg" alt="" /></p>
+<p><a href="https://www.google.co.jp/">https://www.google.co.jp/</a></p>
+<p>&nbsp;</p>
+<p>検索サジェストで、「男」「女」というキーワードが合わせて表示されました。グーグルのサジェスト機能は検索されるのが多いキーワードが表示されるので、キーワード選定に有効です。</p>
+<p>&nbsp;</p>
+<p><img src="images/00039.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>合コンの方も「男」「女」また「春」「夏」と季節用語が出てきました。さて、これらキーワードからまとめて、サイトテーマ（サイトタイトル）を決めます。</p>
+<ul><li><span>服装</span></li>
+<li><span>デート</span></li>
+<li><span>合コン</span></li>
+<li><span>男</span></li>
+<li><span>女</span></li>
+</ul><p>&nbsp;</p>
+<p>しばらく考えまして・・・「合コン・デートの服装 - ウケと評判！ 男 vs 女」というタイトルで口コミサイトを作ろうと思います。季節用語は無視しましたが、頭の片隅に残しておきます。</p>
+<p>&nbsp;</p>
+<p>今回はgoogleのサジェスト機能のみで選定してしましたが、キーワード選定やサイト内容に含ませるキーワードの選定に役立つサイトがありますので、紹介したいと思います。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00271.jpeg" alt="" /></p>
+<p><a href="http://kouho.jp/">http://kouho.jp/</a></p>
+<p>Googleサジェストをより詳しく表示させることが出来ます。おすすめです。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00207.jpeg" alt="" /></p>
+<p><a href="https://adwords.google.com/">https://adwords.google.com/</a></p>
+<p>キーワード広告の単価・難易度をザックリと知ることができます。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>そして、次にキーワード検索から上位表示させる、いわゆるSEO難易度を知ることができるサイトを紹介します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00019.jpeg" alt="" /></p>
+<p><a href="http://seopack.jp/keyword/index.php">http://seopack.jp/keyword/index.php</a></p>
+<p>&nbsp;</p>
+<p>実際に「デート 服装」「合コン 服装」で難易度チェックしてみますと、</p>
+<p>&nbsp;</p>
+<p><img src="images/00267.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><img src="images/00070.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>と表示されます。このサイトに「はじめてSEO対策する方には、【SEO難易度が70以下】かつ【検索数が5,000以下】のワードがおすすめです。」とあるので、しっかりとSEO対策をすれば、検索結果１ページ目に表示される可能性が高いです。ちなみに上位表示の難しい儲かる・稼ぐ系のキーワードの筆頭である「FX」をチェックしますと、</p>
+<p>&nbsp;</p>
+<p><img src="images/00355.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>と、難易度87と表示されました。この「FX」で検索結果１ページ目を表示させるのは至難の技です。</p>
+<p>&nbsp;</p>
+<p>・・・とこのようにテーマを決め、キーワードを決めて、難易度等を確認してタイトルを決めていくわけです。</p></div>
+
+
+</div>
+<div id="calibre_link-3">
+
+
+<h3><b>独自ドメイン名を決定し取得する</b></h3><div><p>独自ドメインの取得先は「お名前.com」「ムームードメイン」が有名です。本書では「ムームードメイン」を利用して取得します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00219.jpeg" alt="" /></p>
+<p><a href="https://muumuu-domain.com/">https://muumuu-domain.com/</a></p>
+<p>&nbsp;</p>
+<p>下記が手順です。</p>
+<p>&nbsp;</p>
+<p>新規登録</p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p>ログイン</p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p>ここで独自ドメインを決めます。「合コン・デートの服装 - ウケと評判！ 男 vs 女」に沿ったドメインを考えて決めます。キーワードとしては「服装」は必須で「合コン」か「デート」の組み合わせかと思います。残念ですが２つ入れるのはURLが長過ぎです。URLが長いと覚えられにくいなどの弊害が出てきます。</p>
+<ul><li><span>goukonnnofukusou</span></li>
+<li><span>de-tonofukusou</span></li>
+</ul><p>実際にこれでGoogle検索してみましょう。</p>
+<p>&nbsp;</p>
+<p>&nbsp;次の図は「goukonnnofukusou」と検索した結果です。</p>
+<p>&nbsp;</p>
+<p><img src="images/00283.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>次の図は「de-tonofukusou」と検索した結果です。</span>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00040.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>検索結果を比較すると「de-tonofukusou」の方が多いです。デートの服装に関する情報サイトが合コンの服装に関する情報サイトより多い→デートの服装の方が関心が多い、と言えますので、本書では「de-tonofukusou」で運用しようと思います。なお、迷ったらサイトを２つ作って同時運用するなどの選択肢もあります。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00024.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>「de-tonofukusou」で検索すると、ドメイン「xyz」で¥99円と非常に安く取得出来ることがわかります。これを取得し設定すれば、「http://de-tonofukusou.xyz」のURLを利用できるわけです。右側にある緑枠の丸ボタンをクリックし手順に従って取得します。最終的には取得完了メールが届きます。</p>
+<p>&nbsp;</p>
+<p>&nbsp;これで独自ドメインは取得できたことになります。</p></div>
+
+
+</div>
+<div id="calibre_link-0">
+
+
+<h3><b>レンタルサーバーに独自ドメインを設定する</b></h3><div><p>レンタルサーバーに独自ドメインを設定するには、ムームードメインの情報とミニバードの情報を紐付けします。わかりにくいですが、下記の手順に従えば問題ありません。</p>
+<p>&nbsp;</p>
+<p>ミニバードの「サーバー管理ツール」にアクセスして、サーバー情報のネームサーバーの情報をメモします。</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00171.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓&nbsp;</p>
+<p>ここでメモするのはネームサーバーの部分です。</p>
+<p>&nbsp;</p>
+<p><img src="images/00251.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>ミニバードのネームサーバーは、</p>
+<ul><li><span>ns1.minibird.jp</span></li>
+<li><span>ns2.minibird.jp</span></li>
+<li><span>ns3.minibird.jp</span><span>&nbsp;</span></li>
+</ul><p>であることがわかります。次に、ムームードメインのコントロールパネルにアクセスし、このネームサーバーを設定します。&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00331.jpeg" alt="" /></p>
+<p><a href="https://muumuu-domain.com/?mode=conpane">https://muumuu-domain.com/?mode=conpane</a></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>ドメイン名をクリックすると、画面が切り替わります。</p>
+<p>&nbsp;</p>
+<p><img src="images/00272.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>「ネームサーバ設定変更」をクリックします。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00112.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>下方にある「取得したドメインで使用する」にチェックし、先にメモしたネームサーバー情報を記入します。<span>入力し終えたら下方にある「ネームサーバ設定変更」をクリックして先に進めます。</span>&nbsp;</p>
+<p><img src="images/00194.jpeg" alt="" /></p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>&nbsp;次のような画面がでればOKです。</p>
+<p>&nbsp;</p>
+<p><img src="images/00152.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;ミニバードの「サーバー管理ツール」に戻り、メニューの「ドメイン設定」を開きます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00242.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>ここのタブ「ドメイン追加」をクリックし、「他社管理のドメインを追加する」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00060.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;<span>　　↓</span></p>
+<p>下記のように取得したドメインを記入し、「確認画面」ボタンを押します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00132.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;<span>　　↓</span></p>
+<p>しかし、下記のようなメッセージが出てうまくいきません。</p>
+<p>&nbsp;</p>
+<p><img src="images/00216.jpeg" alt="" />&nbsp;</p>
+<p>&nbsp;</p>
+<p>これは、先のネームサーバの設定に時間がかかるからです。</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00152.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>しばらく、休憩するなどして再度行ってみて下さい。私は10分後に再度行ってみました。・・・すると、次のように画面が切り替わり</p>
+<p>&nbsp;</p>
+<p><img src="images/00080.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00322.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>無事にレンタルサーバーに独自ドメインを設定するが出来ました。</p></div>
+
+
+</div>
+<div id="calibre_link-6">
+
+
+<h3><b>WordPressを導入する</b></h3><div><p>サーバーに「WordPress」を導入します。ミニバードは予めWordPressをインストールするツールがあるので、これを利用して導入することになります。さっそく行います。</p>
+<p>&nbsp;</p>
+<p>「サーバーアカウント一覧」から「サーバー管理ツール」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00301.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>&nbsp;</p>
+<p><span><img src="images/00153.jpeg" alt="" /></span></p>
+<p>&nbsp;</p>
+<p>「サーバー管理ツール」をクリックします。（なお現在<span>（2015年7月）</span><span>２週間ほど試用期間として無料で使えます。試用期間が終わる前にこの画面で「本契約」として支払いをするわけです。）</span></p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>&nbsp;別ウインドウが開きます。左側にあるメニューの「簡単インストール」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00294.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>ここで決定した独自ドメインの</span>右にある「選択」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00335.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>「追加インストール」をクリックし、下方にあるWordPressの「インストール設定」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00035.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>画面が下記に切り替わります。 空欄にそれぞれ各自決めた文字列を入力していきます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00244.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>本書の作成するサイトタイトルは「<span>合コン・デートの服装 - ウケと評判！ 男 vs 女</span><span>」と決めましたので、「ブログ」のところは「</span><span>合コン・デートの服装 - ウケと評判！ 男 vs 女</span><span>」としています。インストール先は空欄のままで、それ以外は各自決めて入力します。</span></p>
+<ul><li><span>「インストール先」・・・（空欄のまま）</span></li>
+<li><span>「ブログ名」・・・合コン・デートの服装 - ウケと評判！ 男 vs 女</span></li>
+<li><span>「ユーザ名」・・・</span><span>（各自決めて下さい）</span></li>
+<li><span>「パスワード」・・・</span><span>（各自決めて下さい）</span></li>
+<li><span>「メールアドレス」・・・</span><span>（各自決めて下さい）</span></li>
+</ul><p>&nbsp;　　↓</p>
+<p>入力し終えたら「確認画面」を押します。画面が切り替わって続けて「確定する」を押すとブログの「ログイン情報」と「データベース情報」が表示されますので、これをメモしておきます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00107.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>&nbsp;では実際にログインフォームのURLをクリックしてログインしてみましょう。</p>
+<p>&nbsp;</p>
+<p><img src="images/00353.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>上記のように表示されたら、まだ設定の反映待ちです。私のケースですが、ここで10分程度待ちました。ログインして手順に従い、次のような画面になればOKです。</p>
+<p>&nbsp;</p>
+<p><img src="images/00218.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>なお、同時にサイトも公開されますので、確認しましょう。&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00117.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>と表示され、（*独自ドメインに対する）サーバーへWordPressが導入されたことが確認出来ます。</p>
+<p>&nbsp;</p>
+<p>（*ミニバードは、ミニバードから割り当てられたドメイン（本書では「http://kutikomi.minibird.jp/」）に対して、独自ドメインを設定するようにはなっていないようです。先に独自ドメインを取得し、その独自ドメインに対してWordPressをインストールする、という流れになります。本書の手順で行った方が良いです。）</p>
+<p>&nbsp;</p>
+<p>これでミニバードへWordPressが導入されました。</p></div>
+
+
+</div>
+<div id="calibre_link-12">
+
+
+<h3><b>WordPress更新とセキュリティ対策をする</b></h3><div><p>WordPressを導入したら、その更新をします。更新は下記の図の更新アイコンをクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00324.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>なお更新としては、</p>
+<ol><li value="1"><span>WordPress本体の更新</span></li>
+<li value="2"><span>プラグインの更新</span></li>
+<li value="3"><span>テーマの更新</span></li>
+</ol><p>と３種類あります。それぞれ必要に応じて更新します。更新は簡単で、更新する対象をチェックし、更新ボタンを押せば、完了です。</p>
+<p>&nbsp;</p>
+<p>では、プラグインの更新をします。プラグイン「Akismet」の左をチェックし、「プラグインを更新」をクリックすれば完了です。「すべて選択」でも良いです。</p>
+<p>&nbsp;</p>
+<p><img src="images/00163.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>さて、このプラグインの「Akimet」はあらかじめスマム対策のプラグインの一つですが、WordPressを導入したらまずはセキュリティ対策のプラグインを導入し、有効化します。「Akimet」は最初から導入されていますが、有効化されていませんので、これを有効化します。</p>
+<p>&nbsp;</p>
+<p>左メニューの「プラグイン」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00184.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>右側に表示される「Akismet」の下にある「有効化」をクリックします。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00296.jpeg" alt="" /></p>
+<p><span>　　↓</span></p>
+<p>プラグインは有効になりました。次にAkismetのアカウントを有効化します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00158.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>ここで「Akismet」のAPIキーを入力しなければなりません。APIキーを取得するために、「APIキーの取得」をクリックします。</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span><img src="images/00037.jpeg" alt="" /></span></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><span><img src="images/00269.jpeg" alt="" /></span></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span>&nbsp;</p>
+<p><span>クリックして飛んだサイトで「GET AN AKISMET API KEY」をクリックします。</span><span>すでに「</span><span>WordPress.com」に</span><span>登録している人はログインできます。登録していない方はここで新規登録します。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00290.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>登録しログインすると左側に「Basic」が表示されているので、この「GET STARTED」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00014.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;　　↓</p>
+<p>すると今度は右側に次のような図が表示されます。この「$36.00/yr」をスライドさせて「0<span>.00/yr」にしましょう。これで「Akismet」を無料で利用できます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00240.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00104.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>すると左側の表示か下記のように変わるので、この「CONTINUE」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00350.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00215.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>表示が変わります。ここにAPI KEYがあります。「SHOW」を押すと文字列が表示されますので、WordPressのダッシュボードに戻り、これを入力し、「このキーを利用」を押せばすべて完了します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00277.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>さて、&nbsp;マルチバイト文字の取り扱いに関する不具合の累積的修正と強化を行うプラグインである「WP Multibyte Patch」を有効化しておきましょう。これは「有効化」をクリックするだけでOKです。</p>
+<p>&nbsp;</p>
+<p><img src="images/00320.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>次にログイン対策用のプラグインである「SiteGuard WP Plugin」を導入しましょう。これはWordPressのバージョンによって入っていたり入っていなかったりします。今回は入ってなかったので、プラグインから検索して導入します。</p>
+<p>&nbsp;</p>
+<p><span>このプラグイン</span><span>「SiteGuard WP Plugin」</span><span>はログインのURLを変更させることが出来ます。WordPressの</span><span>管理画面へのログインURLは通常「サイトURL/wp-login.php」なので、悪意のある人（悪意のあるプログラム）はこれを知っていて、ログインを試みようとします。このログインURLを変えることでセキュリティが向上します。</span></p>
+<p>&nbsp;</p>
+<p><span>導入は下記の手順で可能です。</span></p>
+<p>&nbsp;</p>
+<p>ダッシュボードの「プラグイン」の「新規追加」をクリックします。</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00075.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>右側にある検索窓から「SiteGuard WP Plugin」を入力しエンターキー</p>
+<p>&nbsp;</p>
+<p><img src="images/00092.jpeg" alt="" /></p>
+<p><span>　　↓</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00292.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>上記が表示されるので、「いますぐインストール」をクリック、有効化します。</span></p>
+<p><span>　　↓</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00120.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>上記のような表示がされますので、右端にある「こちら」をクリックします。</span></p>
+<p><span>　　↓</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00032.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;上記が変更後のログインページURLです。このURLはここで変更可能です。実際にこのURLにアクセスすると下記のような画面になります。</p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00180.jpeg" alt="" />&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>新たに文字認証が追加されており、ログインに関するセキュリティは非常に強固になりました。なおこのプラグインを停止し、有効化するとログインURLが再度変わるので気をつけて下さい。</p></div>
+
+
+</div>
+<div id="calibre_link-13">
+
+
+<h3><b>WordPressのテーマを変更する</b></h3><div><p>今回、口コミサイトに使うWordPressのテーマは「Simplicity」です。</p>
+<p>&nbsp;</p>
+<p><img src="images/00135.jpeg" alt="" /></p>
+<p><a href="http://wp-simplicity.com/">http://wp-simplicity.com/</a></p>
+<p>&nbsp;</p>
+<p>上記URLにアクセスし、ダウンロードします。右側のメニューに「最新版のダウンロード」とあるのでこれをクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00009.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>左側に表示される最新の開発版をダウンロードします。（なお、本書の執筆現在[2015年7月]は、「バージョン：1.7.6 20150630c」です。）</p>
+<p>&nbsp;</p>
+<p><img src="images/00237.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>zipファイルがダウンロードされます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00099.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>ダッシュボードに戻り「外観」の「テーマ」を開きます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00346.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>テーマの「新規追加」をクリック、</p>
+<p>&nbsp;</p>
+<p><img src="images/00212.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>「テーマのアップロード」をクリック、</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00076.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>ここで先ほどダウンロードしたファイルを選択し「いますぐインストール」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00316.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>これを有効化すれば、テーマが「<span>Simplicity」となります。</span></span></p>
+<p><span>　　↓</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00011.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>下記が初期状態です。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00115.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>テーマのデザインがシンプルだとカスタマイズしやすいです。</span><span>ソーシャルボタンや関連記事表示も標準でついています。</span><span>数多いWordPressのテーマの中、「</span><span>Simplicity」はおすすめのテーマの一つです。</span></p></div>
+
+
+</div>
+<div id="calibre_link-4">
+
+
+<h3><b>サイト表示高速化のプラグインを導入する</b></h3><div><p>SEO対策・高速化の為のプラグインを導入します。具体的には下記の３つです。</p>
+<ol><li value="1"><span>Head Cleaner</span></li>
+<li value="2"><span>W3 Total Cache</span></li>
+<li value="3"><span>EWWW Image Optimizer</span></li>
+</ol><p>上記以外にもSEO対策・高速化のプラグインは数多くあります。その中で上記の３つを選んだのは安定している（導入後のバグがない）、導入がわかりやすい、多くの人に受けいられ評価されている、という点です。よくわからない人や特にこだわりがない人は上記の３つで良いかと思います。</p>
+<p>&nbsp;</p>
+<p>ではまず「Head Cleaner」を導入します。このプラグインはサイト表示速度を向上させてくれます。</p>
+<p>&nbsp;</p>
+<p>「プラグイン」の「新規追加」を開き、</p>
+<p>&nbsp;</p>
+<p><img src="images/00222.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>検索窓に「Header Cleaner」と入力してエンターキーを押します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00062.jpeg" alt="" /></p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00081.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>「いますぐインストール」を押し、有効化した後、設定します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00193.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>設定は「チェックをする」「チェックを外す」の選択をし、更新するだけですので簡単です。具体的には下記のようにします。</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00012.jpeg" alt="" /></p>
+<p><img src="images/00300.jpeg" alt="" /></p>
+<p><img src="images/00150.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓&nbsp;</p>
+<p>上記の部分にチェックし、それ以外のチェックは外します。そして、更新ボタンを押します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00235.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>「&nbsp;<span>Head Cleaner」はこれでOKです。</span></p>
+<p>&nbsp;</p>
+<p><span>次は、「W3 Total Cache」です。名前の通り、キャッシュを利用して表示速度の高速にさせるプラグインです。さっそく</span>検索してインストール、有効化します。</p>
+<p>&nbsp;</p>
+<p><span><img src="images/00173.jpeg" alt="" /></span></p>
+<p><span>　　↓</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00225.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>さて、設定をしていきましょう。</p>
+<p>&nbsp;</p>
+<p><span><img src="images/00246.jpeg" alt="" /></span></p>
+<p>これもチェックとチェック外しの選択となります。具体的には、下記４つのキャッシュを有効にします。</p>
+<ol><li value="1"><span>Page Cache</span></li>
+<li value="2"><span>Database Cache</span></li>
+<li value="3"><span>Object Cache</span></li>
+<li value="4"><span>Browser Cache</span></li>
+</ol><p>対象となる項目にチェックして、それ以外はチェックしません。具体的にみていきましょう。</p>
+<p>&nbsp;</p>
+<p>それぞれの「Enable」にチェックします。&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00245.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><img src="images/00108.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><img src="images/00337.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><img src="images/00046.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>また項目の「Miscellaneous」では「Enable Google Page Speed・・・」のチェックを外します。「Verify rewrite rules」はチェックしたままにしておきます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00352.jpeg" alt="" /></p>
+<p>　　↓</p>
+<p>ここでセーブします。下記のボタンを押します。いくつもありますが、どれでもよいです。</p>
+<p>&nbsp;</p>
+<p><img src="images/00326.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>さて、さらに有効にした下記に対して詳細に設定していきます。</p>
+<ol><li value="1"><span>Page Cache</span></li>
+<li value="2"><span>Database Cache</span></li>
+<li value="3"><span>Object Cache</span></li>
+<li value="4"><span>Browser Cache</span></li>
+</ol><p>それぞれを詳細に設定する画面を開くには、ダッシュボード左メニューの該当する箇所を押せば可能です。</p>
+<p>&nbsp;</p>
+<p><img src="images/00192.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>まずは、「Page Cache」からです。&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00177.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>上記２つにチェックがあるか確認します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00058.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>rss2(default)へのチェックは外します。「Page Cache」は完了です。</p>
+<p>ここで保存（「Save all settings」を押す）して、次は「Database Cache」です。</p>
+<p>&nbsp;</p>
+<p><img src="images/00160.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>「Database Cache」は上記へのチェックのみでOKです。他の項目にある数値などはいじりません。</p>
+<p>&nbsp;</p>
+<p>次に「Object Cache」ですがこれは特にいじりません。最後に「Browser Cache」です。</p>
+<p>&nbsp;</p>
+<p><img src="images/00038.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>上記４つにチェックをすればOKです。下方に色々と項目がありますが、いじらなくてよいです。確認し、保存しましょう。</p>
+<p>&nbsp;</p>
+<p><img src="images/00326.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>さて、キャッシュというものは表示が早くなり快適なものである一方、厄介なものでもあります。例えばデザインを変更しても変わらなかったりします。これはキャッシュが邪魔しているからです。新たに記事を追加するなどは良いですが、既存のものを編集したりするのは、既存のキャッシュがあってこれが邪魔している場合があります。ですので、なるべくWordPressを編集したりデザイン変更したりした際にはキャッシュをいったんクリアにします。</p>
+<p>&nbsp;</p>
+<p>やり方は非常に簡単で、「Empty the page cache」をクリックするだけです。</p>
+<p>&nbsp;</p>
+<p><img src="images/00030.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>最後のプラグインは「EWWW Image Optimizer」です。このプラグインは画像を圧縮し表示速度をあげるプラグインです。</p>
+<p>&nbsp;</p>
+<p><img src="images/00131.jpeg" alt="" /></p>
+<p><span>　　↓</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00017.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00164.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>設定画面をみるとタブによってそれぞれ設定するようになっています。</p>
+<p>&nbsp;</p>
+<p><img src="images/00106.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>設定する際には該当するタブをクリックし、設定することになります。なお「Cloud Settings」タブはいじりません。</p>
+<p>&nbsp;</p>
+<p>まずは「Basic Settings」タブです。 チェックする箇所は下記の１つです。</p>
+<p>&nbsp;</p>
+<p><img src="images/00351.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>次は「Advanced Settings」タブです。ずっと下方にある「disable pngout」にチェックです。</p>
+<p>&nbsp;</p>
+<p><img src="images/00022.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><img src="images/00262.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>最後に「Conversion Settings」タブです。これも１つです。</p>
+<p>&nbsp;</p>
+<p><img src="images/00189.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>すべてチェックし終えたら、保存して終了です。&nbsp;</p>
+<p>&nbsp;</p>
+<p>以上で下記の３つのプラグインが完了しました。</p>
+<ol><li value="1"><span>Head Cleaner</span></li>
+<li value="2"><span>W3 Total Cache</span></li>
+<li value="3"><span>EWWW Image Optimizer</span></li>
+</ol><p>この作業をやるだけで、サイト表示の速度がかなり早くなります。上記のチェックをする（外す）だけなので面倒くさがらずにやりましょう。</p></div>
+
+
+</div>
+<div id="calibre_link-10">
+
+
+<h3><b>WordPressに記事を投稿する</b></h3><div><p>それではWordPressに記事を投稿します。記事がないとウィジェット表示がされなかったしてデザインのカスタマイズに支障がでます。少なくとも３つくらいの記事は欲しいところです。</p>
+<p>&nbsp;</p>
+<p>さっそく、記事を書いていきます。ダッシュボードのメニューの「投稿」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00188.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>すでにタイトル「Hello world!」の記事がありますので、これを編集して記事としましょう。</p>
+<p>&nbsp;</p>
+<p><img src="images/00057.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>ここで右側の画面が切り替わります。この画面で決めてやるべきことは下記の５つです。</p>
+<ol><li value="1"><span>タイトルを決める</span></li>
+<li value="2"><span>パーマリンクを決める</span></li>
+<li value="3"><span>記事内容を決める</span></li>
+<li value="4"><span>カテゴリーを決める</span></li>
+<li value="5"><span>アイキャッチ画像を決める</span></li>
+</ol><p>&nbsp;</p>
+<p><span>まずはタイトルです。記事タイトルはいわゆる検索結果上位表示のSEOを考えると、ここにキーワードを入れた方が良いです。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00249.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>サイトは、合コン・デートに関する服装でした。この記事のタイトルは「３０代男性向け！上質に浮かび上がる大人柄。」としました。</p>
+<p>&nbsp;</p>
+<p>次にパーマリンクです。これはこの記事のアクセスURLを決めることが出来ます。これはわかりやすいURLにすることでSEOにも効果があると言われています。</p>
+<p>&nbsp;</p>
+<p><img src="images/00155.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>「編集」ボタンを押すと、編集出来ます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00210.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>商品内容・タイトルからの関連を考え「30dai-dansei」としてみました。</p>
+<p>&nbsp;</p>
+<p><img src="images/00098.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>決めたら「OK」ボタンを押して確定します。</p>
+<p>&nbsp;</p>
+<p>次に記事内容です。記事内容は文章を考え入力して下さい。なお、画像を追加する際には、「メディアを追加」ボタンを押します。</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00016.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>ここでファイルをアップロードし、</p>
+<p>&nbsp;</p>
+<p><img src="images/00119.jpeg" alt="" /></p>
+<p><span>　　↓</span></p>
+<p>右側に表示されている「投稿に挿入」ボタンを押せばOKです。なおここで、画像のタイトル、キャプション、代替テキストやサイズまで指定できます。SEOの観点からですと、可能な限り入力した方が良いでしょう。</p>
+<p>&nbsp;</p>
+<p><img src="images/00087.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>次はカテゴリーです。カテゴリーは初期に「未分類」カテゴリーがあるだけです。新たに追加します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00008.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>「+新規カテゴリーを追加」をクリックすると、入力できるようになります。<span>今回は「メンズ」カテゴリを追加します。メンズと入力欄に入れて、「新規カテゴリーを追加」ボタンをクリックします。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00113.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>そうすると「未分類」に加えて「メンズ」が追加されます。「メンズ」にチェックを入れて「未分類」へのチェックを外します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00241.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>これで、この記事のカテゴリーが「未分類」から「メンズ」カテゴリーに変更されました。</p>
+<p>&nbsp;</p>
+<p>さて最後にアイキャッチ画像です。アイキャッチとは記事一覧表示された際に左にある画像のことを言います。設定すると、下記のようになります。</p>
+<p>&nbsp;</p>
+<p><img src="images/00175.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>記事内容に沿った画像を載せることで、興味を引きやすくします。画像は縦横150×150pxを用意します。</p>
+<p>&nbsp;</p>
+<p>「アイキャッチ画像を設定」ボタンを押します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00196.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓&nbsp;</p>
+<p>ファイルをアップロードします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00217.jpeg" alt="" /></p>
+<p><img src="images/00119.jpeg" alt="" /></p>
+<p>　　↓</p>
+<p>アップロードされた画像が右下に表示されますので、ここで「アイキャッチ画像を設定」ボタンを押します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00236.jpeg" alt="" /></p>
+<p>&nbsp;<span>　　↓</span></p>
+<p>設定されました。なお、アイキャッチ画像を変更したい場合は、いったん「アイキャッチ画像を削除」をクリックすればOKです。ここでクリックしてもアップロードした画像はサーバー上に残っているので、再度設定出来ます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00102.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>さて、</p>
+<ol><li value="1"><span>タイトルを決める</span></li>
+<li value="2"><span>パーマリンクを決める</span></li>
+<li value="3"><span>記事内容を決める</span></li>
+<li value="4"><span>カテゴリーを決める</span></li>
+<li value="5"><span>アイキャッチ画像を決める</span></li>
+</ol><p><span>上記すべての入力が終わりました。この記事を公開しようと思います。元々「Hello World!」だったので、「更新」ボタンを押します。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00275.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>確認の為に「投稿を表示する」で、 内容を確認してみて下さい。</p>
+<p>&nbsp;</p>
+<p><img src="images/00299.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>記事内容が確認出来たらOKです*。</p>
+<p>&nbsp;</p>
+<p>（*なお、これを執筆中に編集がタイトル「Hello World!」に戻ってしまう場面に出くわしました。おそらく、キャッシュが邪魔をしてしまったのだと思われます。リビジョンの「表示」を押して復元することで解決しました。</p>
+<p>&nbsp;</p>
+<p><img src="images/00095.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>元記事を編集する際にはキャッシュの不具合に出会うかもしれませんが、上記の画面から対応可能です。）</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>一つの記事では物足りないので、「新規追加」をクリックして記事を追加して下さい。</p>
+<p>&nbsp;</p>
+<p><img src="images/00224.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>これを繰り返します。いくつかの記事を追加したらサイトを見てみます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00349.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>サイトらしくなってきました。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>さて、各記事の下方に次のような表示がされていると思います。</p>
+<p>&nbsp;</p>
+<p><img src="images/00089.jpeg" alt="" /></p>
+<p>これはセキュリティの面から、管理者表示をログインユーザー名ではなく、違う名前にした方がよいとおすすめしています。ですので、これを変える為に「プロフィール設定」をクリックします。&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00034.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>ここで「名」と「性」を決めます。これが変更後の表示名となります。私は、「店」「長」としました。入力しましたら、下方にある「プロフィールを更新」ボタンを押します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00341.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>「ブログ上の表示名」で「店 長」を選びました。</p>
+<p>&nbsp;</p>
+<p><img src="images/00066.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>再度「プロフィールを更新」ボタンを押せばOKです。</p>
+<p><span>　　↓</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00341.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>店 長 へと変わりました。</p>
+<p>&nbsp;</p>
+<p><img src="images/00085.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>以上です。</p>
+<p>&nbsp;</p>
+<p>なお、いわゆるSEO対策としては、キーワードを含めた「記事の文字数・記事数」が多ければ多いほどよいです。検索されるキーワードのターゲットが広がります。もちろん、人を惹き付ける内容であればソーシャルボタンで拡散されて多くのアクセスを得られることになります。ただ一方で、アクセスを得られたからといって、物を売るターゲットとなり得るかは別の話です。これがなかなか難しいのがインターネット上での集客であり、販売です。</p></div>
+
+
+</div>
+<div id="calibre_link-19">
+
+
+<h3><b>テーマに合ったデザインにカスタマイズする</b></h3><div><p>記事を入れましたが、デザインとしてはシンプルすぎます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00105.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>またサイトに不要と思われる項目やメニューなどを表示させないなど、カスタマイズしていきます。好みのデザインは人それぞれなので、最終的には個人個人の判断で決めます。下記からの説明は、私の好みのデザイン設定となりますが、そのプロセスを参考になさって下さい。</p>
+<p>&nbsp;</p>
+<p>ダッシュボードの外観にある「カスタマイズ」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00082.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>画面が切り替わって左側にメニューが表示されます。ここで文字変更や全体的なデザイン、色などを変更出来ます。「サイトタイトルとキャッチフレーズ」の「キャッチフレーズ」がまだ「Just another WordPress site」とあるので、これをサイトテーマに合った「異性からの意見で失敗しない服装を選ぶ！」としました。</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00206.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00328.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>「スキン」ですが、「深紅きなり」を選びました。</p>
+<p>&nbsp;</p>
+<p><img src="images/00191.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>レイアウト（全体・リスト）は「完全レスポンシブデザインにする」にチェックしました。</p>
+<p>&nbsp;</p>
+<p><img src="images/00211.jpeg" alt="" />&nbsp;</p>
+<p>&nbsp;</p>
+<p>これでブラウザの横幅に応じて表示がスムーズに切り替わります。</p>
+<p>&nbsp;</p>
+<p>「グローバルナビを表示」ですが、このグローバルナビは、タイトル下にある「サンプルページ」のメニュー部分です。</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00325.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>なお、ここにあるサンプルページは「固定ページ」編集可能です。</p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>デザインのカスタマイズが終わったら「保存して公開」を押します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00250.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>先ほどのサンプルページを編集する場合は、ダッシュボードにある「固定ページ」をクリックし、「編集」を押します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00270.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00315.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>「サンプルページ」ではおかしいので、「当サイトのコンセプト」などのタイトルにし、内容としてサイト説明やサイト利用方法などを記載すれば良いでしょう。</p>
+<p>&nbsp;</p>
+<p>さて、よりシンプルなサイトにしたいので、右メニューにある「」「最近のコメント」「アーカイブ」「メタ情報」、さらに下方にある「コメント」とコメント投稿個所を非表示にしたいと思います。</p>
+<p>&nbsp;</p>
+<p><img src="images/00065.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>外観の「ウィジェット」をクリックし、右側にある「サイドバーウイジェット」を編集します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00332.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>非表示にさせる対象となる「最近のコメント」「アーカイブ」「メタ情報」を枠外にドラックアンドドロップすればOKです。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00357.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>それぞれ行って最終的に<span>は、サイドバーに「検索」「最近の投稿」「カテゴリー」の表示がある状態となります。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00354.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>これでサイドバーはOKです。次に下方にあるコメントですが、これはダッシュボードの外観の「カスタマイズ」にあります。</p>
+<p>&nbsp;</p>
+<p><img src="images/00082.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>切り替わった画面の左がの「コメント」部分です。ここで「コメントの表示」へのチェックを外します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00162.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>なお、コメントでは２ちぇんねるのようなスレッド式にも出来るようです。</p>
+<p>&nbsp;</p>
+<p><img src="images/00250.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>保存して終了です。</p>
+<p>&nbsp;</p>
+<p>なお、右にサイドバーを左にしたり、アクセス解析コードの設置や、ソーシャルボタンの選択、ヘッダーへの背景画像の設置など、様々な設定がこの「カスタマイズ」にて行えます。私は左サイドバーが好みなので、変更しました。（「レイアウト（全体・リスト）」の「サイドバーを左側に表示」へチェック<span>）</span></p>
+<p>&nbsp;</p>
+<p><span><img src="images/00182.jpeg" alt="" /></span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>サイトテーマの雰囲気が出てきたと思います。</p></div>
+
+
+</div>
+<div id="calibre_link-16">
+
+
+<h3><b>記事アクセスランキングのプラグインを導入する</b></h3><div><p>これは、ウィジェットの「[S]新着・人気記事」で実現させます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00065.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><img src="images/00185.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>上記に記載してあるように、プラグイン「WordPress Popular Posts」が必要ですので、これを</span><span>インストールし、有効化します。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00285.jpeg" alt="" /></p>
+<p><span>　　↓</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00103.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>ここで、ダッシュボードにある外観の「ウィジェット」をクリックし、<span>「[S]新着・人気記事」</span>を「サイドバーウイジェット」に入れて表示させましょう。</p>
+<p>&nbsp;</p>
+<p><img src="images/00027.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>空欄に対して文字を入力します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00260.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>集計単位は集計する期間を設定します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00121.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;集計単位は<span>１ヶ月にしました。その他、「集計単位の表示」「閲覧数の表示」「ランキング順位の表示」にチェックすれば、それぞれ表示されます。</span><span>「保存」ボタンを押します。</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;サイト（トップページ）を見ますと、下記のように表示されるのが確認できます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00004.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>なお、個別の記事に行くと新着記事が表示されます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00297.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>常に人気記事を表示させたい場合は、[S]人気記事のウィジェットを利用すれば良いでしょう。おな、「最近の投稿」ウィジェットが新着記事とかぶるので、私はこれをドラックアンドドロップで非表示にさせました。</p>
+<p>&nbsp;</p>
+<p>サイドバーは充実させればさせるほど、縦長になってしまいます。記事の文字数が少ないと、サイドバーだけが長くいびつなサイトが出来上がってしまいます。記事の内容と文字数に力を入れることがサイトデザインとしても求められます。</p></div>
+
+
+</div>
+<div id="calibre_link-8">
+
+
+<h3><b>閲覧者の口コミ投稿用のプラグインを導入・設定する</b></h3><div><p>これはプラグイン「WP Customer Reviews」で実現します。</p>
+<p>&nbsp;</p>
+<p>まずは検索し、インストール、有効化です。</p>
+<p>&nbsp;</p>
+<p><img src="images/00093.jpeg" alt="" /></p>
+<p>&nbsp;　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00167.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>&nbsp;　　↓</span>&nbsp;</p>
+<p>有効化しますと、下記のような画面がでます。下方にある「No Thanks!」をクリックします。ちなみにここでメールアドレスを入力して「OK!」とすれば、このプラグインに関するセキュリティ情報、新バージョンリリースをメールで受けられます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00286.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>&nbsp;　　↓</span></p>
+<p>下にいきます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00304.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>&nbsp;　　↓</span></p>
+<p>ここは特にいじらなくてよいですが、Countryコードに「USA」とデフォルトで入っているので「JAPAN」と変えます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00308.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>&nbsp;　　↓</span></p>
+<p>「Product」を選び、３つのチェックの内、一番上にチェックをつけます。この設定で、各記事ページに対して評価投稿できるようになります。なお、上から２つめにチェックすると固定ページに対して評価投稿できるようになります。</p>
+<p>&nbsp;</p>
+<p><img src="images/00273.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>&nbsp;　　↓</span></p>
+<p>「Above Reviews」「Below Reviews」と選択できますが、これは「投稿の設置箇所」を投稿されたレビューの「上（Above）」にするか「下（Below）」にするか、です。好みに応じて決めて下さい。</p>
+<p>今回はレビューの他に名前だけ必須項目にしたいので、「Name」にチェックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00047.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>&nbsp;　　↓</span></p>
+<p>「Heading to use for Review Titles」でタイトル使用時に使うタグを決められます。その他ですが、実際に投稿する際に使用するボタンです。上記のような文字を入力して「Save Changes」ボタンで保存します。・・・しかし、このプラグインにバグがあり下記のよう同一表示になってしまいます（2015年7月）。</p>
+<p>&nbsp;</p>
+<p><img src="images/00148.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>&nbsp;　　↓</span></p>
+<p>ただ、これは特に大きな問題ではないのでOKです。これで、新規に記事を投稿するとレビュー投稿ボタンが下方に表示されるようになります。しかし、既に投稿している記事には表示されていませんので、下記のように設定します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00041.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>&nbsp;　　↓</span></p>
+<p>記事の編集画面を開きます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00170.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>&nbsp;　　↓</span></p>
+<p>ここで記事編集画面の下方にある「WP Customer Reviews」「Enable WP Customer Reviews for this page」にチェックして、通常の記事の「更新」ボタンを押します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00255.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>&nbsp;　　↓</span></p>
+<p>チェックした記事の表示を確認しますと、下記のように「服装を評価して下さい！」とボタン表示されているのが確認できます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00330.jpeg" alt="" /></p>
+<p><span>&nbsp;　　↓</span></p>
+<p>実際に、このボタンを押しますと、下記のように投稿フォーム画面が開きます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00000.jpeg" alt="" /></p>
+<p>&nbsp;<span>&nbsp;　　↓</span></p>
+<p>実際に投稿してみます。下記のように空欄にそれぞれ入力し、チェックを入れ「評価を送信する」ボタンをおします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00227.jpeg" alt="" />&nbsp;</p>
+<p>&nbsp;</p>
+<p><span>&nbsp;　　↓</span></p>
+<p>しかし、下記のような表示が出てしまいます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00268.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>&nbsp;　　↓</span></p>
+<p>これは「Review:」の「テスト投稿です。」の文字数が少ないからです。初期値は３０文字以上必要です。長めにして投稿してみます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00025.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>&nbsp;　　↓</span></p>
+<p>無事に投稿が完了しますと、下記のようなメッセージが表示されます。「投稿ありがとうございました。承認後、反映されます。」といった意味です。</p>
+<p>&nbsp;</p>
+<p><img src="images/00201.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>&nbsp;　　↓</span></p>
+<p>ということで、管理者として投稿を承認し、反映させてみます。<span>投稿されたメッセージは、ダッシュボードの「Customer Reviews」にあります。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00067.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>&nbsp;　　↓</span></p>
+<p>ここで、マウスポインタをメッセージ内容に下方にさせると「Mark as Approved 」が表示されるので、これをクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00133.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>&nbsp;　　↓</span></p>
+<p>サイトに戻りますと、下記のように表示されることが確認できます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00128.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>なお、メッセージ内容を編集したり、削除（Delete Forever）したりも出来ますので、確認してみて下さい。</span></p>
+<p>&nbsp;</p>
+<p>さて、このプラグインは日本語に対応されていないので、可能な限り日本語にしようと思います。方法としては、ファイルに書かれている「英文」を「日本文」に直接書き換えて実現させます。</p>
+<p>&nbsp;</p>
+<p>「WP Customer Reviews」の「編集」をクリックします。&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00043.jpeg" alt="" />&nbsp;</p>
+<p>&nbsp;</p>
+<p>編集ファイルとして下記のように表示されていることを確認します。</p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00279.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>キーボードのコマンド＋Fで検索して、地道に変更していきます。</p>
+<p>&nbsp;</p>
+<p><span>「Name:」を「お名前：」に。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00323.jpeg" alt="" /></p>
+<p>&nbsp;<span>　　↓</span><span>&nbsp;</span></p>
+<p><img src="images/00344.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>「Review:」を「レビュー：」に。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00253.jpeg" alt="" /></p>
+<p>&nbsp;<span>&nbsp;</span><span>　　↓</span><span>&nbsp;</span></p>
+<p><img src="images/00342.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>「* Required Field」を「* 必須項目」に。</p>
+<p>&nbsp;</p>
+<p><img src="images/00313.jpeg" alt="" /></p>
+<p><span>&nbsp;</span><span>　　↓</span><span>&nbsp;</span>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00055.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>「Rating:」を「評価：」に。</p>
+<p><img src="images/00073.jpeg" alt="" /></p>
+<p><span>&nbsp;</span><span>　　↓</span><span>&nbsp;</span></p>
+<p><img src="images/00247.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>「Check this box to confirm you are human.」を「チェックを入れてください。」に。&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00110.jpeg" alt="" /></p>
+<p><span>&nbsp;</span><span>　　↓</span><span>&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00129.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>「Thank you for your comments. All submissions are moderated and if approved, yours will appear soon.」を「評価レビューありがとうございます！承認後に表示されますのでお待ち下さい！」に。</p>
+<p>&nbsp;</p>
+<p><img src="images/00147.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>&nbsp;</span><span>　　↓</span><span>&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00002.jpeg" alt="" /></p>
+<p><span>&nbsp;</span></p>
+<p><span>　　↓</span><span>&nbsp;</span>&nbsp;</p>
+<p>これを反映させる為に「ファイルを更新」ボタンを押します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00109.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>まだ他のファイルを編集します。右側に表示されている「プラグインファイル」にある「wp-customer-reviews/wp-customer-reviews.js」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00233.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>これでこのファイルを編集できるようになります。</p>
+<p><span>　　↓</span><span>&nbsp;</span><span>&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00015.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>３つある「Click here to hide form」の２つ* を「フォームを閉じる」に。（* 一つ目の 'Click here to hide form' はプログラムで使用するためこのままにしておきます。）</p>
+<p>&nbsp;</p>
+<p><img src="images/00256.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span><span>&nbsp;</span><span>&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00228.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>さて、 すべて空欄で「評価を送信する」ボタンをクリックすると、下記のように表示されます。これもすべて英文ですので、ここも日本文に直します。</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00356.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>これも「wp-customer-reviews.js」ファイルで変更できます。「You must 」で検索すると５つほど出てくるので、該当する箇所をそれぞれ編集すればOKです。具体的には下記のようにします。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>「You must include your "+nice_name+".」を「"+nice_name+"を入力して下さい。」に。</p>
+<p>&nbsp;</p>
+<p><img src="images/00318.jpeg" alt="" /></p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00339.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>「You must include a review. Please make reviews;entences. 」を「レビュー：を３０文字以上入力して下さい。」に。「You must confirm that your are human.」を「チェックを入れて下さい。」に。&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00359.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00020.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>「Please select a star rating from 1 to 5.」を「評価をして下さい。」に。</p>
+<p>&nbsp;</p>
+<p><img src="images/00220.jpeg" alt="" /></p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00050.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>すべて終えて確認しますと下記のようになります。</p>
+<p>&nbsp;</p>
+<p><img src="images/00086.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;以上、投稿フォームが下記のようにほぼ日本語化されました。残念ながら投稿フォームにある「Submit your review」の部分は編集できませんでした。</p>
+<p>&nbsp;</p>
+<p><img src="images/00214.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>この部分はバグと関係があると思われますが、表示が英文というだけで、使えないことはないです。この日本語化問題に問題解決したい人は是非行ってネット上に公開して頂きたいです。</p>
+<p>&nbsp;</p>
+<p>さて、ここまで出来たら閲覧者に評価をしてもらいましょう。実際に評価投稿させ、投稿を承認した後の画面が下記となります。</p>
+<p>&nbsp;</p>
+<p><img src="images/00334.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>多くの人に評価を頂くことでサイトも活気づき、商品への客観的評価の信頼性も高まります。</p></div>
+
+
+</div>
+<div id="calibre_link-14">
+
+
+<h3><b>管理者の商品評価用のプラグインを導入・設定する</b></h3><div><p>管理者による商品評価はプラグイン「WP Review」で実現させます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00124.jpeg" alt="" /></p>
+<p>&nbsp;　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00140.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>インストールし、有効化させて下さい。その後は、ダッシュボードの「ウィジェット」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00168.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>「WP Review Widget」を<span>「 サイドバーウイジェット」へと移動させます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00078.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>次に「投稿一覧」画面を表示させます。</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00199.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>ここで評価したい商品がある記事の「編集」ボタンを押します。&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00229.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>下方に「Review」があるので、ここの「Review Type」を「Star」にします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00071.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>「Review Item」の 「Feature Name」に評価項目をいれます。項目の追加は「Add another」を押せば追加できるようになります。右にある「Star」で最小が１、最大が５の間で評価をします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00195.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>「Review Description」では「総合評価」を入れ、コメントを入れます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00291.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>ここまで入力したら右上にある「更新」ボタンを押します。ここで、実際にサイトにあるサイドバーをみてみましょう。</p>
+<p>&nbsp;</p>
+<p><img src="images/00053.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>先ほど評価した記事のみが表示されています。この記事をクリックします。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00190.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>記事の下方に、評価項目と評価、コメントが確認できます。</p>
+<p>&nbsp;</p>
+<p>・・・さて、評価の星が黒色というのはデザイン的にイマイチなので、これを黄色っぽく変えます。ダッシュボードの「プラグイン」-「WP Review」の「Settings」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00149.jpeg" alt="" /></p>
+<p>　　↓&nbsp;</p>
+<p>次の画面で、色を変えることができます。なお「Review Location」で評価を表示する場所を変更できます。「After Content」は記事の下に、「Before Content」は記事の上に評価を表示させることになります。なお先ほどは「After Content」だったので記事下に表示されていたわけです。</p>
+<p>&nbsp;</p>
+<p><img src="images/00061.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓&nbsp;</span></p>
+<p>実際に色を変えるには、「色を選択」をクリックすることで可能です。</p>
+<p>&nbsp;</p>
+<p><img src="images/00044.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓&nbsp;</span></p>
+<p>私は下記のように変更しました。</p>
+<p>&nbsp;</p>
+<p><img src="images/00165.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓&nbsp;</span></p>
+<p><span>ここで「変更を保存」ボタンをクリックして確定させます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00187.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>再度、評価表示をみてみると、デザインが指定した色に変わっていることが確認できます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00056.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>なお、「変更を保存」ボタンの上にある「Default features」であらかじめ評価項目を指定することが出来ます。これにより記事の編集画面でわざわざ評価項目を追加しなくても、すでに追加されている状態で評価できることになります。</p>
+<p>&nbsp;</p>
+<p><img src="images/00059.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;３つの記事をすべて評価し、サイドバーをみてみますと、下記のように表示されているのが確認できます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00154.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>ここで、「Top Rated」と「Recent」のタブが２つありますが、この「Recent」を非表示にしたい場合は下記のようにチェックを外します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00033.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　 ↓</p>
+<p>「Top Rated」だけが表示されているのが確認できます。</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00266.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>管理者の商品評価用のプラグイン導入・設定は以上です。</p></div>
+
+
+</div>
+<div id="calibre_link-7">
+
+
+<h3><b>メルマガ配信のプラグインを導入・設定・運用する</b></h3><div><p>定期的にサイトを訪れてくれる人はなかなか居ません。訪問者がよほどサイトを気に入ってくれなければ、ブックマークされず、２度目の訪問は難しいです。</p>
+<p>&nbsp;</p>
+<p>しかし、メルマガ登録させれば、２・３度目の訪問をさせることが可能です。なぜならメールは誰もが毎日チェックする媒体だからです。このメルマガ内容にサイトへのリンクを貼れば、クリックさせて再度訪問させることができます。</p>
+<p>&nbsp;</p>
+<p>肝心なのはサイト訪問者にメルマガ登録させることです。メルマガ登録させるには、メルマガ登録と引き換えに、無料でなんらかの有益な情報・特典を提供することです。そしてメルマガには役に立つ有益な記事や商品を説明してサイトに誘導・・・これはネット上での自社サイトへの集客方法の一つです。</p>
+<p>&nbsp;</p>
+<p>・・・さて、メルマガ登録させ、配信させるプラグインがあります。この種のプラグインもいくつかありますが、この中で私が推薦するプラグインは次のプラグインです。</p>
+<p>&nbsp;</p>
+<p>それは「MailPoet Newsletters」です。</p>
+<p>&nbsp;</p>
+<p><img src="images/00127.jpeg" alt="" /></p>
+<p>&nbsp;　　↓</p>
+<p><img src="images/00010.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>インストール・有効化したらダッシュボード「MailPoet」の「設定」をクリックします。</p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00126.jpeg" alt="" />&nbsp;</p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>タブにより設定の切り替えを行います。まずは「基本設定」です。</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00100.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>ここで、通知を受け取るメールアドレス「メール通知」と「通知の送信者」を決めることができます。「通知の送信者」は閲覧者へ送る際の名前となるので、ここは「店長」としました。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00288.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>高度な設定においても「返信先の名前とメールアドレス」の部分を「店長」とします。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00213.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><img src="images/00077.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>上記を反映させる為に、「設定を保存」を押します。&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00317.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;<span>　　↓</span></p>
+<p>さて、次は「購読者」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00183.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>ここで「リストを追加」をクリックします。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00307.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>名前に「メルマガ」と入力し、「リストを追加」ボタンをクリックします。この"リスト"とは、メルマガ配信する１つの内容を代表するタイトルのようなものだと理解すればよいかと思います。</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00329.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>次に「ニュースレター」をクリックします。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00036.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>「メールの新規作成」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00031.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>「スタンダードなニュースレター」として、件名を「ウケる服装とは？」、チェックボックス「メルマガ」にチェックを入れ、「次のステップ」ボタンを押します。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00252.jpeg" alt="" />&nbsp;</p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>次は実際にメルマガ配信する内容を決めます。初期状態にはすでに下記のように文字や画像が入っています。すべて削除して入力していきます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00125.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>私は下記のような内容にしました。</p>
+<p>&nbsp;</p>
+<p><img src="images/00134.jpeg" alt="" /></p>
+<p><span>　　↓</span></p>
+<p><span>ここで内容確認として、設定した自身のメールにプレビューとして送信確認できます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00111.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>「プレヴューを送る」をクリックすると、下記のようにポップアップが表示されます。これは右上の「×印」で消せます。</p>
+<p><span>　　↓</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00096.jpeg" alt="" /></p>
+<p><span>　　↓</span></p>
+<p>下記が実際に私のGmailに送られたメールです。内容も反映されて送信されていることが確認できました。また、Gmailにある「To 自分」の右にある矢印をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00274.jpeg" alt="" /></p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>&nbsp;下記のように表示されています。これは、メールが送信元「sv4.minibird.netowl.jp」のサーバーから「店長&lt;info@de-tonofukusou.xyz&gt;」として、「店長&lt;info@de-tonofukusou.xyz&gt;」と「店 長&lt;XXXXX@gmail.com&gt;」に送信されたという意です。</p>
+<p>&nbsp;</p>
+<p><img src="images/00209.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;　　↓</p>
+<p>さて確認してOKなら「次のステップ」ボタンを押します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00239.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>&nbsp;　　↓</span></p>
+<p>そして「下書きとして保存して閉じる」を押しましょう*。 （* ここで送信を押しても、まだ送る相手がいません。）</p>
+<p>&nbsp;</p>
+<p><img src="images/00314.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>さて次に、メルマガ登録させるウィジェットをつくります。再度「設定」に戻ります。</p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00126.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>「フォーム」を選び「当たらしフォームを作る」をクリックします。&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00280.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>右側にある「ランダムなテキスト、またはHTML」をドラックアンドドロップして左側の項目の１つとして追加します。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00298.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;<span>　　↓</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00123.jpeg" alt="" />&nbsp;</p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>「 表示を編集」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00146.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>ここで編集画面がポップアップしますので、ここに文章を入力して「終了」ボタンを押します。なお、ここに入力する文章はメルマガを登録させる為に非常に重要です。ポイントとしては３つあります。</p>
+<ol><li value="1"><span>他では入手できない独自の情報であることを"期待させる"こと。</span></li>
+<li value="2"><span>配信する回数を記載し、メールの受信を具体的に"想像させる"こと。</span></li>
+<li value="3"><span>いつでもメール解除可能で、迷惑メールにならないよう"安心させる"こと。</span></li>
+</ol><p>&nbsp;以上です。ザックリとですが、今回は下記のように記載しました。</p>
+<p>&nbsp;</p>
+<p><img src="images/00001.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>そして下方にある「最初のリスト」を削除します。</span>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00261.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>これを「メルマガ」にします。</p>
+<p><span>　　↓</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00079.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><img src="images/00321.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>「保存」ボタンを押し「ウィジェット」クリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00257.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>サイドバーに「MailPoet Subscription Form」を追加します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00097.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>ここで、タイトルを「無料で特典をゲット！」 として「保存」します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00293.jpeg" alt="" />&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>サイトのサイドバーには下記の表示されますので、実際にメールアドレスを入力して確かめます。私はyahooメールを持っていますので、これをつかってテスト確認してみます。メールアドレスを入力し、「購読！」を押します。</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00137.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>しかしエラーが発生してしまいました。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00197.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>「Show more details.」をクリックすると、"メール機能がインストールされてない"という旨の文が表示されました。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00276.jpeg" alt="" />&nbsp;</p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>ここでミニバードの「サーバー管理ツール」の「メールアドレス設定」を開きます。&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00358.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>ここでドメイン名「de-tonofukusou.xyz」の「選択」をクリックしてメールアドレスを作成します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00063.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>メールアドレス追加において、メールアドレス「info」パスワード「（各自設定）」を入力し、「確認画面」ボタンを押します*。（* なお、メールアドレスの追加はお試し期間では使えません。初期費用と月額使用料を支払う必要があります。）</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00238.jpeg" alt="" />&nbsp;</p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>これでメールアドレスが使えるようになりました。再度、確認テストを行います。</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00137.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>エラーがなくなり、仮登録されたようです。&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00223.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>yahooメールを開くと、購読承認メールが届いていました。「ここをクリックして購読を承認する」をクリックします。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00347.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>画面が切り替わり、正式に購読申し込みが完了したことが確認できます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00042.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span>実際にこのメールアドレス登録から正式承認のプロセスで、ダッシュボード「MailPoet」の「購読者」のステータスも下記のように変わります。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00159.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00161.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>メルマガ登録者に対して「ニュースレター」からメルマガ配信します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00036.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>既に配信内容は作られています。送信は下記の「編集」行っていきます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00006.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;<span>　　↓</span></p>
+<p><span>「次のステップ」をクリックします。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00239.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>「送信」を押します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00052.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>「待たずにすぐメールを送信」を押します。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00289.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>ポップアップを「OK 」します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00101.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>画面が変わります。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00186.jpeg" alt="" /></p>
+<p><span>　　↓</span></p>
+<p>下記が実際にyahooメールに送られたメール内容です。 実際に送信されたことが確認できました。また、購読中止も行ってみます。「購読中止」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00264.jpeg" alt="" /></p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>画面が切り替わります。</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00345.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>ここでステータスが「購読中止」と変わります。</p>
+<p>&nbsp;</p>
+<p><img src="images/00007.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>そして、自身のメールにもメルマガの購読者が減ったことを通知するメールが届きます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00234.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;以上が一連の流れです。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>次にこの「<span>MailPoet Newsletters」</span><span>の運用方法です。実は「</span><span>購読者」において、購読者に対するリストを変更させることができます。変更の仕方は下記のようにリストを選んで「適応」をクリックするだけです。</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00208.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00343.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>リストの「メルマガ」から「最初のリスト」に変更できました。これをうまく使えば、最初に配信したい幾つかのリストを作成しておいて、順次適応し配信させていくことができます。例えば、「メルマガ」→「メルマガ２」→「<span>メルマガ３」→「メルマガ４」</span><span>→「メルマガ５」という感じです。</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>さて、以降は細かい点についてです。「設定」において、初期では「PHP Mail」にチェックがあるかと思いますが、これは「Sendmail」にしましょう。この変更でサーバーに対する不可が軽減されます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00221.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><img src="images/00074.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>また、メルマガ購読者に届いたメールを返信すると、ミニバードのメールに届くか確認します。下記のように返信します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00142.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>「WebMail」 の下にある「ログイン」をクリックするとメール管理画面に移動します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00254.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>yahooから返信メールが届いていることが確認できます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00051.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>レンタルサーバーは通常、メールの送受信に制限を設けています。ミニバードは下記のような制限を課しています。</p>
+<p>&nbsp;</p>
+<p><img src="images/00287.jpeg" alt="" />&nbsp;</p>
+<p><a href="http://www.minibird.jp/man/mail_base.php">http://www.minibird.jp/man/mail_base.php</a></p>
+<p>&nbsp;</p>
+<p>メルマガ登録の特典用ファイルなどを添付するのは難しいので、ファイル転送サービスを使ってURLからダウンロードさせれば対応できます。</p>
+<p>&nbsp;</p>
+<p>以上のように、WordPressのプラグインを利用し、無料でメルマガ配信システムを導入・運用できることができます。</p></div>
+
+
+</div>
+<div id="calibre_link-5">
+
+
+<h3><b>グーグルへのインデックス登録と４つのテストを受ける</b></h3><div><p>グーグルへインデックス登録（サイト登録）します。これはグーグルにサイトの存在を知らせ、検索結果に表示させる為です。実際に検索結果の１ページ目に表示させるのはさらなる努力が必要ですが、そのスタートの第一歩として必須です。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>下記URLにアクセスします。</p>
+<p><a href="https://www.google.com/webmasters/tools/submit-url">https://www.google.com/webmasters/tools/submit-url</a></p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00348.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>サイトURLと画像認証番号を入力し「リクエストを送信」ボタンを押します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00172.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>これでOKです。経験上ですが、リクエスト送信後、サイトタイトルを検索キーワードとして検索すると、数日後には検索結果を確認できました。タイミングにもよりますが一週間以内にはインデックス登録されると思います。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>次にテストを受けてみます。モバイルフレンドリーテストとスピードテスト３つの計４つです。</p>
+<ol><li value="1"><span>モバイルフレンドリーテスト</span></li>
+<li value="2"><span>スピードテスト（PageSpeed Insights）</span></li>
+<li value="3"><span>スピードテスト（GTmetrix）</span></li>
+<li value="4"><span>スピードテスト（Pingdom）</span></li>
+</ol><p>まずモバイルフレンドリーテストですが、これはスマートフォンやタブレットに対応したサイトであるか？をテストされます。</p>
+<p>&nbsp;</p>
+<p>これもサイトURLを入力し「分析」ボタンをクリックすればOKです。</p>
+<p>&nbsp;</p>
+<p><img src="images/00021.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>下記のように表示されればモバイル対応サイトとして問題ありません。</p>
+<p>&nbsp;</p>
+<p><img src="images/00312.jpeg" alt="" /></p>
+<p>&nbsp;<img src="images/00064.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>次にスピードテストです。</p>
+<p>&nbsp;</p>
+<p>まず１つ目の「PageSpeed Insights」をやってみます。下記URLにアクセスし、空欄にサイトURLを入れ、「分析」ボタンを押します。</p>
+<p><a href="https://developers.google.com/speed/pagespeed/insights/">https://developers.google.com/speed/pagespeed/insights/</a></p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00169.jpeg" alt="" /></p>
+<p>　　↓</p>
+<p>満点が100点としての点数が表示されます。今回は７８点でした。目安として70点以上であればOKだと思います。また、速度が上げるためのいくつかの修正をアドバイスされます。特にJavascript/CSS系のファイルの修正アドバイスされますが、これはWordPressでのプラグインとして必要となるファイルだったりするので、修正しなくて良いでしょう。</p>
+<p>&nbsp;</p>
+<p><img src="images/00248.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>次に「gtmetrix」というスピードテストを受けてみます。下記URLにアクセスします。</p>
+<p><a href="https://gtmetrix.com/">https://gtmetrix.com/</a></p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00145.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>これもスコア表示されます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00181.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>スコアの下にある「Waterfall Chart」タブをクリックすると、ブラウザがサイト表示していく際に読み込んでいくファイルのプロセスが表示されます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00302.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>最後のスピードテストです。 下記<span>URLにアクセスし、サイトURLを入力し「Test Now」ボタンをクリックします。</span></p>
+<p><a href="http://tools.pingdom.com/fpt/">http://tools.pingdom.com/fpt/</a></p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00054.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>&nbsp;点数、リクエスト総数、ローディング時間、ページサイズが表示されます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00204.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>ここで、下方にあるプルダウンメニューを「Sort by load time」に変更してみます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00231.jpeg" alt="" />&nbsp;</p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>これで、読み込みの遅い順番に表示されるようになります。&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00049.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>小さくて見づらいですが、「font awesome」というWebフォントの読み込みが最も遅いのがわかります。これは最もサイズが大きいからです。ファイルサイズが大きめのjquery.jsファイルの読み込みが遅いのも確認できます。そして、次あたりから画像ファイルの拡張子「jpg」がいくつか表示されています。</p>
+<p>&nbsp;</p>
+<p>このように読み込みの遅いファイルを具体的に知ることができます。あまりにも読み込みの遅いサイズの大きい画像ファイルなら、差し替えを検討した方がよいでしょう。</p></div>
+
+
+</div>
+<div id="calibre_link-17">
+
+
+<h3><b>アクセス解析・ウェブマスターツールを設定する</b></h3><div><p>アクセス解析には「Google Analytics」を利用します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00338.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>下記URLにアクセスしログインします。<span>Googleアカウントを持っていない人は新規登録して下さい。</span></p>
+<p><a href="https://www.google.com/intl/ja_jp/analytics/">https://www.google.com/intl/ja_jp/analytics/</a></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>ログインしたら右にある「アナリティクス設定」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00203.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>アカウントにあるタブ* をクリックし、下方にある「新しいアカウントを作成」をクリックします。ここで言う「新しいアカウント」とは、サイトのアカウントとなります。一つのサイトのアクセス解析に一つのアカウントを作成するわけです。（*私は既に複数のサイトを登録していますので、画面が違うかもしれません。）</p>
+<p>&nbsp;</p>
+<p><img src="images/00069.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>空欄に入力していきます。アカウント名は１つのサイトにつき１つなので、サイト名の一部の名前やドメイン名の一部で良いでしょう。</p>
+<p>&nbsp;</p>
+<p><img src="images/00327.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>入力し終えたら「トラッキングIDを取得」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00178.jpeg" alt="" /></p>
+<p><span>　　↓</span></p>
+<p>「日本」を選択し「同意する」と続けていきます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00151.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>コードが 表示されますので、UAから始まるハイフンを含める数字をメモしておきます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00282.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>ダッシュボードに戻り「カスタマイズ」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00141.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>ここの左側メニューにある「アクセス解析（Analyticsなど）」をクリックします。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00029.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>ここにさきほどのUAから始まるコードを入力します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00143.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>「保存して公開」ボタンを押します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00116.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>以上でアクセス解析の設定は完了です。&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>続いてウェブマスターツールの設定を行います。</p>
+<p>&nbsp;</p>
+<p><img src="images/00259.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>ウェブマスターツール</p>
+<p><a href="https://www.google.com/webmasters/tools/home?hl=ja">https://www.google.com/webmasters/tools/home?hl=ja</a></p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>上記URLにアクセスし右側にある「プロパティを追加」をクリックします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00138.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span>&nbsp;</p>
+<p>サイトURLを入力し、「続行」ボタンを押します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00090.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>このサイトURLの所有権を確認されます。「別の方法」タブをクリックします。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00336.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>ここの「HTMLタグ」にチェックをします。</p>
+<p>&nbsp;</p>
+<p><img src="images/00198.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>すると下記のようにコードが展開されますので、このコードの「content="xxxx.....xxxxx"」部分をコピーします。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00263.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>ここでダッシュボードの「カスタマイズ」にある「アクセス解析（Analyticsなど）」を開き、先ほどのアクセス解析のコードと同じように、貼付けます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00360.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>「保存して公開」ボタンを押します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00116.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>再度ウェブマスターツールに戻り、「HTMLタグ」にチェックした状態で「確認」ボタンを押します。</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00174.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>すると次のようになります。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00136.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>「続行」をクリックすると 画面が変わります。</p>
+<p>&nbsp;</p>
+<p><img src="images/00018.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><img src="images/00139.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>「サイトマップの追加/テスト」をクリックします。&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00023.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>ここで、いったんウェブマスターツールとは別に「サイトマップ」というものをWordPress側で作ります。これは<span>サイトマップを作成するプラグイン「Google XML Sitemaps」で実現させます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00084.jpeg" alt="" /></p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00114.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>インストール・有効化し、「設定」から「XML-Sitemap」をクリックします。</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="images/00295.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>ここからはチェックボックスで設定です。下記のように設定します。（ここでの設定の考え方ですが、Google検索エンジンに対しての検索される優先順位を決めるような感じです。）</p>
+<p>&nbsp;</p>
+<p><img src="images/00226.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><img src="images/00157.jpeg" alt="" /></p>
+<p>&nbsp;&nbsp;</p>
+<p><img src="images/00088.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><img src="images/00310.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><img src="images/00333.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><img src="images/00156.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p><span>「設定を更新」ボタンを押して、保存します。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00200.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>ここで画面が更新します。サイトマップのURLが表示されますので、これをクリックして実際にサイトマップをみてみましょう。</p>
+<p>&nbsp;</p>
+<p><img src="images/00309.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>下記のように表示されればOKです。&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00278.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>ウェブマスターツールに戻って「sitemap.xml」と入力し、「サイトマップを送信」ボタンを押します。</p>
+<p>&nbsp;</p>
+<p><img src="images/00013.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>画面が切り替わります。「ページを更新する。」をクリックします。&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00303.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>　　↓</span></p>
+<p>送信されたサイトマップが表示されます。</p>
+<p>&nbsp;</p>
+<p><img src="images/00028.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;以上で、アクセス解析とウェブマスターツールの設定が完了しました。</p></div>
+
+
+</div>
+<div id="calibre_link-2">
+
+
+<h3><b>グーグル検索に対するレビュー表示を設定をする</b></h3><div><p>グーグル検索結果で１ページ目に表示させることはアクセスアップに重要です。さらに言えば、レビュー表示もさせることが出来れば、注目が集まりクリックされやすくなるでしょう。</p>
+<p>&nbsp;</p>
+<p>これは、グーグルのウェブマスターツールで実現できます。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>ウェブマスターツールにアクセスします。</p>
+<p><a href="https://www.google.com/webmasters/tools/home?hl=ja">https://www.google.com/webmasters/tools/home?hl=ja</a></p>
+<p>検索デザインから「データ ハイライター」をクリックします。</p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00122.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>右画面にある「ハイライト表示を開始」をクリックします。</p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00005.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>するとポップアップ画面が表示されますので、投稿ページの一つのURLを記入し、「このページをタグ付けし、他のページも同様にタグ付けする」を選び、OKを押します。</p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00232.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>タグ付けの方法は、文章（数字）や画像を選び、それに対して「名前」「料金」「評価」などをタグとして選びます。</p>
+<p><span>　　↓</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00094.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>それぞれ行っていきます。</p>
+<p><span>　　↓</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00340.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><img src="images/00205.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>上記をそれぞれ設定しました（画像のやり方も同じです）。それぞれ設定した部分が、右画面に表示されます。今回は計４カ所です。</p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00072.jpeg" alt="" /></p>
+<p><img src="images/00311.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>「完了」ボタンを押します。</p>
+<p><span>　　↓</span></p>
+<p>&nbsp;</p>
+<p><span><img src="images/00179.jpeg" alt="" /></span></p>
+<p>&nbsp;</p>
+<p><span>ここで、同様に設定させるページを選択します。これはこのままでよいので「ページセットを作成」をクリックします。</span></p>
+<p><span>　　↓</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00048.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>すると選択したページも同様に自動的にタグ付けが設定されます。ここで、それぞれのページのタグ付けに間違えがないか、各ページを確認するよう促されます。</p>
+<p>　　 ↓</p>
+<p>&nbsp;</p>
+<p><img src="images/00284.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>それぞれのページを確認してよければ「次へ」ボタンをクリックしていきます。</p>
+<p><span>　　↓</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00144.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>すべてのページの確認が終わったら「OK」ボタンを押します。</p>
+<p>　　<span>↓</span></p>
+<p><img src="images/00026.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>完了です。上部画面は下記のようになります。</p>
+<p>&nbsp;</p>
+<p>　　↓</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00258.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>「公開」ボタンを押します。</p>
+<p>　　<span>↓</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00118.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>画面が切り替わります。</p>
+<p>&nbsp;　　↓</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="images/00003.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>この設定が反映されれば、グーグル検索結果でレビュー表示されます。</p></div>
+
+
+</div>
+<div id="calibre_link-9">
+
+
+<h3><b>柴犬会長</b></h3><div><p><strong><b>サーバー構築・超入門 - CentOS 6.5</b></strong></p>
+<p>&nbsp;</p>
+<p><img src="images/00230.jpeg" alt="" /></p>
+<ul><li><span>　「サーバー構築」として個々ソフトウェアのインストールは、インターネット上の情報を参考にしつつ手順を踏んでコマンドを打てば出来ます。しかしそれは、なにを実現するための構築なのか？、その設定はシステムの位置づけとしてどんな意味があるのか？といった点が欠落しがちです。初めて「サーバー構築」を学習する人にとって、この欠落部分への理解が重要だと考えております。本書はこれをわかりやすく理解できるよう、140近くの掲載画像数を交えて説明しております。著者が実際に構築して進めていく上で行き詰まった部分も掲載しておりますので、非常に参考になると思います。多少のネットワーク知識がありLinuxコマンド操作も出来るけど、「サーバー構築」で行き詰まるという初心者、また中級者の方にもお勧めです。購入は、<a href="http://www.amazon.co.jp/gp/product/B00M3K6V8A?ie=UTF8&amp;camp=1207&amp;creative=8411&amp;creativeASIN=B00M3K6V8A&amp;linkCode=shr&amp;tag=zhenwuriver-22">こちら</a>から。</span></li>
+</ul><p>&nbsp;</p>
+<p><strong><b>Entry to using the Cisco router switch after attaining CCNA</b></strong></p>
+<p>&nbsp;</p>
+<p><img src="images/00091.jpeg" alt="" /></p>
+<ul><li><span>「CCNA取得後のCiscoルーター・スイッチ実機入門」英語版です。The manual is for people who have not started using the existing device yet though they've already got CCNA. This manual contains enough photos and images for you to understand the instructions and contents with relevance to your device without overloading you with non essential information that may cause confusion. I would be very happy if this manual allows users to better understand and utilize their device. 購入は、<a href="http://www.amazon.co.jp/gp/product/B00KHHCEPA?ie=UTF8&amp;camp=1207&amp;creative=8411&amp;creativeASIN=B00KHHCEPA&amp;linkCode=shr&amp;tag=zhenwuriver-22">こちら</a>から。</span></li>
+</ul><p>&nbsp;</p>
+<p><strong><b>CCNA取得後のCiscoルーター・スイッチ実機入門</b></strong></p>
+<p>&nbsp;</p>
+<p><img src="images/00130.jpeg" alt="" /></p>
+<ul><li><span>　本書は、CCNAを取得したが実機を扱ったことがない、という方を対象としております。読者がわかりやすく理解できるよう、写真やイメージを豊富に使っております。また、混乱を招く細かい説明を思い切って省き、本質を理解することに注力しております。本書を活用し、実機への理解ときっかけになって頂ければ幸いです。購入は、<a href="http://www.amazon.co.jp/gp/product/B00JWQK8MS?ie=UTF8&amp;camp=1207&amp;creative=8411&amp;creativeASIN=B00JWQK8MS&amp;linkCode=shr&amp;tag=zhenwuriver-22">こちら</a>から。</span></li>
+</ul><p>&nbsp;</p>
+<p><strong><b>IT現場の英文ライティング</b></strong></p>
+<p>&nbsp;</p>
+<p><img src="images/00202.jpeg" alt="" /></p>
+<ul><li><span>　本書は、IT現場で実際にやり取りされている英文メールを紹介している。対象は、ITに関わるエンジニアや制作者である。英文ライティングの本は数多く出版されているが、参考となりえる英文は皆無と言っていい。多くが文法的な解説が主であったり、ITとは全く関係のない文法の解説だったりする。実際にやり取りする英文メールはパターン化しており、使用される単語も難しいものではない。なにより、ITは英語以上に世界共通語である。簡単な英文で海外のエンジニアや制作者とのやり取りを行えることを実感して欲しい。 購入は、<a href="http://www.amazon.co.jp/gp/product/B00BPXLQ54?ie=UTF8&amp;camp=1207&amp;creative=8411&amp;creativeASIN=B00BPXLQ54&amp;linkCode=shr&amp;tag=zhenwuriver-22">こちら</a>から。</span></li>
+</ul><p>&nbsp;</p>
+<p><strong><b>脱！富士登山 - 自分の山を探す！</b></strong></p>
+<p><img src="images/00068.jpeg" alt="" /></p>
+<ul><li><span>　皆さん、富士山は登りましたでしょうか？富士山が世界遺産に登録され、これを機に初めて山に登った方もおられることでしょう。「山頂からの景色が素晴らしかった。」「涼しくて気持ち良かった。」という方も居れば、残念ながら「人が多すぎて登りにくかった。」「高山病になって辛かった。もう二度と行かない。」という方も居ます。当然のことですが、富士山は多くの山の１つに過ぎません。日本には多く山があり、自分に合った山が必ずあります。また、山の楽しみ方は人それぞれです。本書は、ここ一年間約４０近くの山を登った著者が、標高・季節・景観などを考察して感じたことを記しています。単独行派の私の登山感想に近いですが、登山の参考またはネタにして頂ければ嬉しいです。購入は、<a href="http://www.amazon.co.jp/gp/product/B00GEJLBF4?ie=UTF8&amp;camp=1207&amp;creative=8411&amp;creativeASIN=B00GEJLBF4&amp;linkCode=shr&amp;tag=zhenwuriver-22">こちら</a>から。</span></li>
+</ul><p>&nbsp;</p>
+<p><strong><b>ブラック企業と雇用契約書 - 私達の戦略</b></strong></p>
+<p>&nbsp;</p>
+<p><img src="images/00306.jpeg" alt="" /></p>
+<ul><li><span>　日本社会の仕事によるうつ病･自殺問題などは、長時間労働と"業務範囲の不明確さ"が原因である、と私は強く思っている。自分の担当する仕事のみならず"会社組織の一員としての働き"という"不明確な会社の要求とその評価"が、私達を疲れさせている。"不明確な会社の要求とその評価"が、私達を追いつめる。ブラック企業・上司は、まさにこの不明確な"会社組織の一員としての働き"を利用し、私達に"頑張る姿勢"を常に求め、追いつめる。そもそも私達は、雇用契約書を会社と取り交わし、基本的にはその契約に則って働くわけである。極端な話だが、契約を取り交わした業務内容さえこなせば、なんら問題ないはずである。・・・本書は、会社から要求される契約以外の業務への対処方法と知識習得の本である。・・・会社に潰されない為に、そして日本の労働環境改善の為に、私達は何をすべきなのか？ 購入は、<a href="http://www.amazon.co.jp/gp/product/B00DVY5CCS?ie=UTF8&amp;camp=1207&amp;creative=8411&amp;creativeASIN=B00DVY5CCS&amp;linkCode=shr&amp;tag=zhenwuriver-22">こちら</a>から。</span></li>
+</ul><p>&nbsp;</p>
+<p><strong><b>Piwigoで画像共有サイト構築</b></strong></p>
+<p>&nbsp;</p>
+<p><img src="images/00176.jpeg" alt="" /></p>
+<ul><li><span>　Piwigoは、PHP、MySQL上で動くCMSです。このPiwigoを利用すれば、簡単に画像共有サイトを作成することが出来ます。本書は、Piwigoのインストール、テーマ変更、モジュール導入と使い方、ユーザー管理や権限設定などを解説しております。WordPressやXOOPS、EC-CubeといったCMS導入経験のある中級者向けの本です。購入は、<a href="http://www.amazon.co.jp/gp/product/B00D2ZC5YO?ie=UTF8&amp;camp=1207&amp;creative=8411&amp;creativeASIN=B00D2ZC5YO&amp;linkCode=shr&amp;tag=zhenwuriver-22">こちら</a>から。</span></li>
+</ul><p>&nbsp;</p>
+<p><strong><b>日本人への処方箋</b></strong></p>
+<p>&nbsp;</p>
+<p><img src="images/00045.jpeg" alt="" /></p>
+<ul><li><span>　選んだ会社が間違っていたのだろうか？私は長く勤めたいと思った会社がない。知人が「心の病気」にかかり薬を飲むようになってから、これらの問題の本質と解決策などをネットや書物で模索し始めた。どうやらこの理由は、私自身が日本の労働環境と労働観についていけないという点にあるようだ。本書は、著名人や人気ブロガーの記事を引用し、日本の労働環境や日本人そのものの生き方に疑問を投げかけている。日本の高い自殺率や「生きづらさ」を理解し、社会が少しでも改善すれば私は嬉しい。購入は、<a href="http://www.amazon.co.jp/gp/product/B00AANHOHE?ie=UTF8&amp;camp=1207&amp;creative=8411&amp;creativeASIN=B00AANHOHE&amp;linkCode=shr&amp;tag=zhenwuriver-22">こちら</a>から。</span></li>
+</ul><p>&nbsp;</p>
+<p><strong><b>実戦演習・ブラック企業へのツッコミ方</b></strong></p>
+<p>&nbsp;</p>
+<p><img src="images/00281.jpeg" alt="" /></p>
+<ul><li><span>　モノ・サービスを売って利益を上げることは非常に難しい。普通の会社であるなら、不況になれば売上も減るのが当然だ。しかし、このような不況下でも成長している会社がある。それは、ブラック企業だ。会社にとって一番のコストは人件費だ。そこでブラック企業は...2人分相当の仕事を1人でやらせる、相互監視システム導入する、助成金目当ての採用をする、コストに見合わなくなったら退職させる・・・のようなことをする。そう、いまや人材は一つのリスク・リターンの扱いになってしまった。この本は、ブラック企業に入ってしまったときの有効的な対処方法、そして、実際に私が行った各種手続きを記述している。あなたもブラック企業も恐れるリスク要因となって頂ければ、心強い。購入は、<a href="http://www.amazon.co.jp/gp/product/B00AANHP14?ie=UTF8&amp;camp=1207&amp;creative=8411&amp;creativeASIN=B00AANHP14&amp;linkCode=shr&amp;tag=zhenwuriver-22">こちら</a>から。</span></li>
+</ul></div>
+
+
+</div>
+
+
+
+
+<script>function myFunction(){document.getElementById("tateyoko").classList.toggle("tateread")}</script></body></html>

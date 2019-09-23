@@ -1,0 +1,7378 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESP32 + MAX10 ブレッドボードSDR FMモノラルラジオ編</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/mainday.css" title="default">
+<link rel="alternate stylesheet" href="/css/mainnight.css" title="alternate">
+<script type="text/javascript" src="/js/styleswitcher.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+</head>
+<body>
+<div class="novelpage">
+<div class="novelbody">
+<div id="tateyoko">
+<div id="_top"></div>
+<a href="/">🏠</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('default'); return false;">日</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">月</a>&emsp;
+<a href="#_top" onclick="myFunction()" style="cursor: pointer;">縦書き／横書き</a>
+<div id="calibre_link-67">
+<div>
+<div>
+<table class="noveltitle">
+<tr>
+<td colspan="2"><i><span><i>ESP32 + MAX10 ブレッドボードSDR FMモノラルラジオ編</i></span></i></td>
+</tr>
+<tr>
+                    
+                    
+      </tr>
+<tr>
+<td colspan="2">rapidnack</td>
+</tr>
+<tr>
+<td colspan="2"> (2019)</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+</tr>
+</table>
+<div></div>
+</div>
+<div></div>
+</div>
+</div>
+
+
+
+<div id="calibre_link-0">
+<div>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ESP32 + MAX10</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ブレッドボー</span>
+<span>ド</span>
+<span>SDR</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>F</span>
+<span>M</span>
+<span>モノラルラジオ編</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>rapidnack&nbsp;--&nbsp;著</span>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<p>&nbsp;<span>・以下のサイトで、本書で掲載したソースコードを入手できます。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://github.com/Rapidnack/MAX1k_FM_Mono">
+<span><u>https://github.com/Rapidnack/MAX1k_FM_Mono</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://github.com/Rapidnack/AvalonPacket">
+<span><u>https://github.com/Rapidnack/AvalonPacket</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<span>・本書中の会社名や商品名は、該当する各社の商標または登録商標です。本書中で</span>
+<span>は</span>
+<span>T</span>
+<span>M</span>
+<span>およ</span>
+<span>び®</span>
+<span>マークは省略させていただいております。</span>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<p>&nbsp;<a id="calibre_link-68"></a>
+<a href="#calibre_link-1">
+<span><u>はじめに</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-2">
+<span><u>1</u></span>
+<span><u>ハードウェアの準備</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-3">
+<span><u>1.1</u></span>
+<span><u>MAX1</u></span>
+<span><u>0</u></span>
+<span><u>評価ボー</u></span>
+<span><u>ド</u></span>
+<span><u>MAX1000</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-4">
+<span><u>1.2</u></span>
+<span><u>ESP3</u></span>
+<span><u>2</u></span>
+<span><u>ボード</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-5">
+<span><u>1.3</u></span>
+<span><u>A/</u></span>
+<span><u>D</u></span>
+<span><u>コンバータ</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-6">
+<span><u>1.4</u></span>
+<span><u>OLE</u></span>
+<span><u>D</u></span>
+<span><u>ボード</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-7">
+<span><u>1.5</u></span>
+<span><u>I2S DA</u></span>
+<span><u>C</u></span>
+<span><u>ボード</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-8">
+<span><u>1.6</u></span>
+<span><u>手作</u></span>
+<span><u>り</u></span>
+<span><u>R-2R DAC</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-9">
+<span><u>2</u></span>
+<span><u>Arduino ID</u></span>
+<span><u>E</u></span>
+<span><u>の準備</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-10">
+<span><u>2.1</u></span>
+<span><u>Arduino ID</u></span>
+<span><u>E</u></span>
+<span><u>をインストール</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-11">
+<span><u>2.2</u></span>
+<span><u>Arduino core for the ESP3</u></span>
+<span><u>2</u></span>
+<span><u>をインストール</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-12">
+<span><u>2.3</u></span>
+<span><u>Oled Driver for SSD1306 displa</u></span>
+<span><u>y</u></span>
+<span><u>をインストール</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-13">
+<span><u>2.4</u></span>
+<span><u>AvalonPacke</u></span>
+<span><u>t</u></span>
+<span><u>ライブラリをインストール</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-14">
+<span><u>2.5</u></span>
+<span><u>サンプルスケッ</u></span>
+<span><u>チ</u></span>
+<span><u>AvalonPacket_FM_Radi</u></span>
+<span><u>o</u></span>
+<span><u>を使う</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-15">
+<span><u>3</u></span>
+<span><u>Quartus Prime Lite Editio</u></span>
+<span><u>n</u></span>
+<span><u>の準備</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-16">
+<span><u>3.1</u></span>
+<span><u>Quartus Prime Lite Editio</u></span>
+<span><u>n</u></span>
+<span><u>をインストール</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-17">
+<span><u>3.2</u></span>
+<span><u>USB Programmer Drive</u></span>
+<span><u>r</u></span>
+<span><u>をインストール</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-18">
+<span><u>3.3</u></span>
+<span><u>F</u></span>
+<span><u>M</u></span>
+<span><u>ラジオのプロジェクトをダウンロード</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-19">
+<span><u>3.4</u></span>
+<span><u>FPG</u></span>
+<span><u>A</u></span>
+<span><u>に書き込む</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-20">
+<span><u>3.5</u></span>
+<span><u>FPG</u></span>
+<span><u>Aの</u></span>
+<span><u>FLAS</u></span>
+<span><u>H</u></span>
+<span><u>メモリに書き込む</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-21">
+<span><u>4</u></span>
+<span><u>SD</u></span>
+<span><u>R</u></span>
+<span><u>の構成</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-22">
+<span><u>4.1</u></span>
+<span><u>top.</u></span>
+<span><u>v　</u></span>
+<span><u>Verilo</u></span>
+<span><u>g</u></span>
+<span><u>ソースコード</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-23">
+<span><u>4.2</u></span>
+<span><u>QsysCore.qsy</u></span>
+<span><u>s</u></span>
+<span><u>作成手順</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-24">
+<span><u>5</u></span>
+<span><u>Arduin</u></span>
+<span><u>o</u></span>
+<span><u>スケッチか</u></span>
+<span><u>らL</u></span>
+<span><u>チカ</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-25">
+<span><u>5.1</u></span>
+<span><u>サンプルスケッ</u></span>
+<span><u>チ</u></span>
+<span><u>AvalonPacket_LED_Swee</u></span>
+<span><u>p</u></span>
+<span><u>を使う</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-26">
+<span><u>5.2</u></span>
+<span><u>サンプルスケッ</u></span>
+<span><u>チ</u></span>
+<span><u>AvalonPacket_LED_Swee</u></span>
+<span><u>p</u></span>
+<span><u>の内容</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-27">
+<span><u>6</u></span>
+<span><u>手作</u></span>
+<span><u>り</u></span>
+<span><u>R-2R DAC</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-28">
+<span><u>6.1</u></span>
+<span><u>サンプルスケッ</u></span>
+<span><u>チ</u></span>
+<span><u>AvalonPacket_LED_Swee</u></span>
+<span><u>p</u></span>
+<span><u>を変更</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-29">
+<span><u>6.2</u></span>
+<span><u>DAC</u></span>
+<span><u>A、</u></span>
+<span><u>DAC</u></span>
+<span><u>B</u></span>
+<span><u>の出力内容を変更</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-30">
+<span><u>6.3</u></span>
+<span><u>サンプルスケッ</u></span>
+<span><u>チ</u></span>
+<span><u>AvalonPacket_LE</u></span>
+<span><u>D</u></span>
+<span><u>を使う</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-31">
+<span><u>7</u></span>
+<span><u>PLL</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-32">
+<span><u>7.1</u></span>
+<span><u>pll.qi</u></span>
+<span><u>p</u></span>
+<span><u>作成手順</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-33">
+<span><u>8</u></span>
+<span><u>自</u></span>
+<span><u>作</u></span>
+<span><u>NCO</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-34">
+<span><u>8.1</u></span>
+<span><u>サンプルスケッ</u></span>
+<span><u>チ</u></span>
+<span><u>AvalonPacket_NC</u></span>
+<span><u>O</u></span>
+<span><u>を使う</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-35">
+<span><u>8.2</u></span>
+<span><u>DAC</u></span>
+<span><u>A、</u></span>
+<span><u>DAC</u></span>
+<span><u>B</u></span>
+<span><u>の出力内容を変更</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-36">
+<span><u>8.3</u></span>
+<span><u>サンプルスケッ</u></span>
+<span><u>チ</u></span>
+<span><u>AvalonPacket_NC</u></span>
+<span><u>O</u></span>
+<span><u>の内容</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-37">
+<span><u>8.4</u></span>
+<span><u>サンプルスケッ</u></span>
+<span><u>チ</u></span>
+<span><u>AvalonPacket_NCO_Touc</u></span>
+<span><u>h</u></span>
+<span><u>を使う</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-38">
+<span><u>8.5</u></span>
+<span><u>サンプルスケッ</u></span>
+<span><u>チ</u></span>
+<span><u>AvalonPacket_NCO_Touc</u></span>
+<span><u>h</u></span>
+<span><u>の内容</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-39">
+<span><u>8.6</u></span>
+<span><u>サンプルスケッ</u></span>
+<span><u>チ</u></span>
+<span><u>AvalonPacket_FM_Radi</u></span>
+<span><u>o</u></span>
+<span><u>を使う</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-40">
+<span><u>8.7</u></span>
+<span><u>サンプルスケッ</u></span>
+<span><u>チ</u></span>
+<span><u>AvalonPacket_FM_Radi</u></span>
+<span><u>o</u></span>
+<span><u>の内容</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-41">
+<span><u>8.8</u></span>
+<span><u>romsin.qi</u></span>
+<span><u>p</u></span>
+<span><u>作成手順</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-42">
+<span><u>8.9</u></span>
+<span><u>MyNCO.</u></span>
+<span><u>v　</u></span>
+<span><u>Verilo</u></span>
+<span><u>g</u></span>
+<span><u>ソースコード</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-43">
+<span><u>9</u></span>
+<span><u>ADC</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-44">
+<span><u>9.1</u></span>
+<span><u>DAC</u></span>
+<span><u>A、</u></span>
+<span><u>DAC</u></span>
+<span><u>B</u></span>
+<span><u>の出力内容を変更</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-45">
+<span><u>9.2</u></span>
+<span><u>トップモジュー</u></span>
+<span><u>ル</u></span>
+<span><u>top.</u></span>
+<span><u>v</u></span>
+<span><u>の該当箇所</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-46">
+<span><u>10</u></span>
+<span><u>自</u></span>
+<span><u>作</u></span>
+<span><u>CI</u></span>
+<span><u>C</u></span>
+<span><u>フィルタ</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-47">
+<span><u>10.1</u></span>
+<span><u>入力データ</u></span>
+<span><u>を</u></span>
+<span><u>NC</u></span>
+<span><u>Oの</u></span>
+<span><u>CO</u></span>
+<span><u>S、</u></span>
+<span><u>SI</u></span>
+<span><u>N</u></span>
+<span><u>出力に変更</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-48">
+<span><u>10.2</u></span>
+<span><u>サンプルスケッ</u></span>
+<span><u>チ</u></span>
+<span><u>AvalonPacket_NCO_Touc</u></span>
+<span><u>h</u></span>
+<span><u>を使う</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-49">
+<span><u>10.3</u></span>
+<span><u>DAC</u></span>
+<span><u>A、</u></span>
+<span><u>DAC</u></span>
+<span><u>B</u></span>
+<span><u>の出力内容を変更</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-50">
+<span><u>10.4</u></span>
+<span><u>MyCIC.</u></span>
+<span><u>v　</u></span>
+<span><u>Verilo</u></span>
+<span><u>g</u></span>
+<span><u>ソースコード</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-51">
+<span><u>10.5</u></span>
+<span><u>入力データを元に戻す</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-52">
+<span><u>11</u></span>
+<span><u>自</u></span>
+<span><u>作</u></span>
+<span><u>FI</u></span>
+<span><u>R</u></span>
+<span><u>フィルタ</u></span>
+<span><u>（</u></span>
+<span><u>3.072MSp</u></span>
+<span><u>s→</u></span>
+<span><u>384kSp</u></span>
+<span><u>s</u></span>
+<span><u>）</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-53">
+<span><u>11.1</u></span>
+<span><u>入力データ</u></span>
+<span><u>を</u></span>
+<span><u>NC</u></span>
+<span><u>Oの</u></span>
+<span><u>CO</u></span>
+<span><u>S、</u></span>
+<span><u>SI</u></span>
+<span><u>N</u></span>
+<span><u>出力に変更</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-54">
+<span><u>11.2</u></span>
+<span><u>サンプルスケッ</u></span>
+<span><u>チ</u></span>
+<span><u>AvalonPacket_NCO_Touc</u></span>
+<span><u>h</u></span>
+<span><u>を使う</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-55">
+<span><u>11.3</u></span>
+<span><u>DAC</u></span>
+<span><u>A、</u></span>
+<span><u>DAC</u></span>
+<span><u>B</u></span>
+<span><u>の出力内容を変更</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-56">
+<span><u>11.4</u></span>
+<span><u>ram16x256.qi</u></span>
+<span><u>p</u></span>
+<span><u>作成手順</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-57">
+<span><u>11.5</u></span>
+<span><u>MyFIR.</u></span>
+<span><u>v　</u></span>
+<span><u>Verilo</u></span>
+<span><u>g</u></span>
+<span><u>ソースコード</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-58">
+<span><u>11.6</u></span>
+<span><u>入力データを元に戻す</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-59">
+<span><u>12</u></span>
+<span><u>F</u></span>
+<span><u>M</u></span>
+<span><u>復調</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-60">
+<span><u>12.1</u></span>
+<span><u>vectran.qsy</u></span>
+<span><u>s</u></span>
+<span><u>作成手順</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-61">
+<span><u>12.2</u></span>
+<span><u>トップモジュー</u></span>
+<span><u>ル</u></span>
+<span><u>top.</u></span>
+<span><u>v</u></span>
+<span><u>の該当箇所</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-62">
+<span><u>13</u></span>
+<span><u>自</u></span>
+<span><u>作</u></span>
+<span><u>FI</u></span>
+<span><u>R</u></span>
+<span><u>フィルタ</u></span>
+<span><u>（</u></span>
+<span><u>384kSp</u></span>
+<span><u>s→</u></span>
+<span><u>48kSp</u></span>
+<span><u>s</u></span>
+<span><u>）</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-63">
+<span><u>14</u></span>
+<span><u>自作ディエンファシス</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-64">
+<span><u>14.1</u></span>
+<span><u>MyDeEmphasis.</u></span>
+<span><u>v　</u></span>
+<span><u>Verilo</u></span>
+<span><u>g</u></span>
+<span><u>ソースコード</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-65">
+<span><u>15</u></span>
+<span><u>自</u></span>
+<span><u>作</u></span>
+<span><u>I2S I/F</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="#calibre_link-66">
+<span><u>15.1</u></span>
+<span><u>MyI2S.</u></span>
+<span><u>v　</u></span>
+<span><u>Verilo</u></span>
+<span><u>g</u></span>
+<span><u>ソースコード</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<a id="calibre_link-1"><b>
+<span><b>はじめに</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>FPG</span>
+<span>A</span>
+<span>を使っ</span>
+<span>た</span>
+<span>SD</span>
+<span>R（</span>
+<span>Software-defined radi</span>
+<span>o</span>
+<span>）を手軽に学習する方法を探して試行錯誤してきましたが、やっと納得できる方法を見つけました。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000091.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>選局、音量の操作用に</span>
+<span>、</span>
+<span>ESP3</span>
+<span>2</span>
+<span>のタッチセンサーに接続したジャンパーワイヤーをケースに開けた穴から外に出しています。電源用</span>
+<span>の</span>
+<span>US</span>
+<span>B</span>
+<span>ケーブルとアンテナを接続すればラジオとして使用できます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000114.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>SD</span>
+<span>R</span>
+<span>の構成を次のようにしました。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000087.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>使用している部品は安価です。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>MAX1</span>
+<span>0</span>
+<span>を搭載し</span>
+<span>た</span>
+<span>FPG</span>
+<span>A</span>
+<span>ボー</span>
+<span>ド</span>
+<span>MAX100</span>
+<span>0</span>
+<span>はチップワンストップか</span>
+<span>ら</span>
+<span>2,73</span>
+<span>0</span>
+<span>円で入手できました</span>
+<span>。</span>
+<span>A/</span>
+<span>D</span>
+<span>コンバー</span>
+<span>タ</span>
+<span>AD928</span>
+<span>3</span>
+<span>も秋月電子か</span>
+<span>ら</span>
+<span>40</span>
+<span>0</span>
+<span>円で入手できました。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>簡単に作れるように色々工夫しました。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>●</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span>アナログのバンドパスフィルターを省略してアンテナ信号をそのま</span>
+<span>ま</span>
+<span>A/</span>
+<span>D</span>
+<span>コンバータに入力</span>
+ &nbsp;</p>
+<p>&nbsp;<span>●</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span>A/</span>
+<span>D</span>
+<span>コンバータはピッチ変換基板を使ってブレッドボードに搭載</span>
+ &nbsp;</p>
+<p>&nbsp;<span>●</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span>音声出力用</span>
+<span>に</span>
+<span>I2S DA</span>
+<span>C</span>
+<span>ボードを使用</span>
+ &nbsp;</p>
+<p>&nbsp;<span>●</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span>操作パネル</span>
+<span>は</span>
+<span>ESP3</span>
+<span>2</span>
+<span>のタッチセンサー</span>
+<span>と</span>
+<span>OLE</span>
+<span>D</span>
+<span>ディスプレイを使っ</span>
+<span>て</span>
+<span>Arduin</span>
+<span>o</span>
+<span>スケッチで作成</span>
+ &nbsp;</p>
+<p>&nbsp;<span>●</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span>FPG</span>
+<span>A</span>
+<span>の動作確認</span>
+<span>は</span>
+<span>R-2R DA</span>
+<span>C</span>
+<span>に接続したオシロスコープを使用</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ESP3</span>
+<span>2</span>
+<span>ボード</span>
+<span>と</span>
+<span>OLE</span>
+<span>D</span>
+<span>ディスプレイはピンヘッダーがはんだ付けされてないものを選び</span>
+<span>、</span>
+<span>FPG</span>
+<span>A</span>
+<span>ボードとともに秋月電子の分割ロングピンソケット（細ピン用）をはんだ付けします。これでジャンパーワイヤーを使って配線できます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>SD</span>
+<span>R</span>
+<span>に必要</span>
+<span>な</span>
+<span>NC</span>
+<span>O、</span>
+<span>CI</span>
+<span>C</span>
+<span>フィルタ</span>
+<span>、</span>
+<span>FI</span>
+<span>R</span>
+<span>フィルタを自作しましたが</span>
+<span>、</span>
+<span>ESP3</span>
+<span>2</span>
+<span>のタッチセンサーで制御し</span>
+<span>た</span>
+<span>NC</span>
+<span>O</span>
+<span>の出力をフィルタに入力、フィルタの出力</span>
+<span>を</span>
+<span>R-2R DA</span>
+<span>C</span>
+<span>に接続したオシロスコープで観測することで、動作を確認できました。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000089.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000019.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>FPGA Verilo</span>
+<span>g</span>
+<span>ソースコード、</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Arduin</span>
+<span>o</span>
+<span>ライブラ</span>
+<span>リ</span>
+<span>AvalonPacket</span>
+ &nbsp;</p>
+<p>&nbsp;<span>を</span>
+<span>GitHu</span>
+<span>b</span>
+<span>で公開しています。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://github.com/Rapidnack/MAX1k_FM_Mono">
+<span><u>https://github.com/Rapidnack/MAX1k_FM_Mono</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://github.com/Rapidnack/AvalonPacket">
+<span><u>https://github.com/Rapidnack/AvalonPacket</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ディジタル・デザイン・テクノロジ&nbsp;No.1 (C</span>
+<span>Q</span>
+<span>出版</span>
+<span>社)</span>
+<span>はバイブルです。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>201</span>
+<span>9年3</span>
+<span>月&nbsp;rapidnack</span>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-2"><b>
+<span><b>ハードウェアの準備</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>ジャンパーワイヤーを使って配線できるように各部品を準備します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000091.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>1.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-3"><b>
+<span><b>MAX1</b></span>
+<span><b>0</b></span>
+<span><b>評価ボー</b></span>
+<span><b>ド</b></span>
+<span><b>MAX1000</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>チップワンストップか</span>
+<span>ら</span>
+<span>2,73</span>
+<span>0</span>
+<span>円で入手できました。秋月電子の分割ロングピンソケット（細ピン用）をはんだ付けしてジャンパーワイヤーを使って配線できるようにします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000110.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>1.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-4"><b>
+<span><b>ESP3</b></span>
+<span><b>2</b></span>
+<span><b>ボード</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>ネジ穴が開いていて、かつピンヘッダーがはんだ付けされてないものを選びます。秋月電子の分割ロングピンソケット（細ピン用）をはんだ付けしてジャンパーワイヤーを使って配線できるようにします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000075.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>1.3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-5"><b>
+<span><b>A/</b></span>
+<span><b>D</b></span>
+<span><b>コンバータ</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>秋月電子通商で販売されてい</span>
+<span>る</span>
+<span>40</span>
+<span>0</span>
+<span>円の&nbsp;AD928</span>
+<span>3（</span>
+<span>80MSp</span>
+<span>s</span>
+<span>、８ビット）をピッチ変換基板にはんだ付けして使っています。パスコ</span>
+<span>ン</span>
+<span>0.1u</span>
+<span>F</span>
+<span>はチップ部品をピッチ変換基板に付けました。ブレッドボード上の青いコンデンサ</span>
+<span>も</span>
+<span>0.1u</span>
+<span>F</span>
+<span>です。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000102.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ピッチ変換基板の下の配線はこんな感じです。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000093.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>1.4</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-6"><b>
+<span><b>OLE</b></span>
+<span><b>D</b></span>
+<span><b>ボード</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>ピンヘッダーがはんだ付けされてないものを選びます。秋月電子の分割ロングピンソケット（細ピン用）をはんだ付けしてジャンパーワイヤーを使って配線できるようにします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000030.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>1.5</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-7"><b>
+<span><b>I2S DA</b></span>
+<span><b>C</b></span>
+<span><b>ボード</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>PCM5102</span>
+<span>A</span>
+<span>を搭載し</span>
+<span>た</span>
+<span>I2S DA</span>
+<span>C</span>
+<span>ボードを小型のブレッドボードに載せます。ボード上のミニジャックは使いにくいので別</span>
+<span>の</span>
+<span>3.5m</span>
+<span>m</span>
+<span>ステレオミニジャックをケースに取り付けます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000112.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>I2S DA</span>
+<span>C</span>
+<span>ボードの下はこんな感じです。黒いジャンパーケーブルの隣の白いジャンパーケーブルも忘れずに配線してください。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000084.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>1.6</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-8"><b>
+<span><b>手作</b></span>
+<span><b>り</b></span>
+<span><b>R-2R DAC</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>音声出力用</span>
+<span>の</span>
+<span>I2S DA</span>
+<span>C</span>
+<span>とは別に、オシロスコープ用</span>
+<span>に</span>
+<span>R-2R DA</span>
+<span>C</span>
+<span>を２チャンネル用意します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>小さなブレッドボードに抵抗を載せた簡単</span>
+<span>な</span>
+<span>R-2R DA</span>
+<span>C</span>
+<span>です。８ビット２チャンネル分の抵抗を載せていますが</span>
+<span>、</span>
+<span>MAX100</span>
+<span>0</span>
+<span>ボードの入出力ピンが少ないので最下位ビット</span>
+<span>を</span>
+<span>GN</span>
+<span>D</span>
+<span>に接続して７ビット２チャンネルとして使います。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000061.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>オシロスコープのプローブの接続はこんな感じです。プローブのクリップに短いジャンパーケーブルをくわえてブレッドボードに挿しています。奥</span>
+<span>が</span>
+<span>DAC</span>
+<span>A</span>
+<span>、手前</span>
+<span>が</span>
+<span>DAC</span>
+<span>B</span>
+<span>です。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000016.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-9"><b>
+<span><b>Arduino ID</b></span>
+<span><b>E</b></span>
+<span><b>の準備</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>Arduino ID</span>
+<span>E</span>
+<span>をインストールし、インストールし</span>
+<span>た</span>
+<span>Arduino ID</span>
+<span>E</span>
+<span>に各種ライブラリをインストールします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>2.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-10"><b>
+<span><b>Arduino ID</b></span>
+<span><b>E</b></span>
+<span><b>をインストール</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>Arduino 1.8.</span>
+<span>7</span>
+<span>で動作確認しています。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://www.arduino.cc/en/main/software">
+<span><u>https://www.arduino.cc/en/main/software</u></span>
+</a>
+<span>か</span>
+<span>ら</span>
+<span>Arduino ID</span>
+<span>E</span>
+<span>をダウンロードしてインストールします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>2.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-11"><b>
+<span><b>Arduino core for the ESP3</b></span>
+<span><b>2</b></span>
+<span><b>をインストール</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<a href="https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/boards_manager.md">
+<span><u>Installation instructions using Arduino IDE Boards Manager</u></span>
+</a>
+<span>の手順に従いインストールします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>環境設定の「追加のボードマネージャ</span>
+<span>の</span>
+<span>UR</span>
+<span>L</span>
+<span>」に</span>
+<span>「</span>
+<span>https://dl.espressif.com/dl/package_esp32_index.jso</span>
+<span>n</span>
+<span>」を追加します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000014.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000068.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000096.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ボードマネージャで</span>
+<span>「</span>
+<span>esp3</span>
+<span>2</span>
+<span>」を検索してインストールします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000001.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000027.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>2.3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-12"><b>
+<span><b>Oled Driver for SSD1306 displa</b></span>
+<span><b>y</b></span>
+<span><b>をインストール</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>ライブラリマネージャで検索してインストールします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000082.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000122.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>2.4</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-13"><b>
+<span><b>AvalonPacke</b></span>
+<span><b>t</b></span>
+<span><b>ライブラリをインストール</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<a href="https://github.com/Rapidnack/AvalonPacket.git">
+<span><u>GitHub&nbsp;Rapidnack/AvalonPacket</u></span>
+</a>
+<span>からライブラリ</span>
+<span>を</span>
+<span>ZI</span>
+<span>P</span>
+<span>ファイルでダウンロードしてインストールします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000121.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000011.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>2.5</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-14"><b>
+<span><b>サンプルスケッ</b></span>
+<span><b>チ</b></span>
+<span><b>AvalonPacket_FM_Radi</b></span>
+<span><b>o</b></span>
+<span><b>を使う</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>AvalonPacke</span>
+<span>t</span>
+<span>ライブラリに同梱されているサンプルスケッ</span>
+<span>チ</span>
+<span>AvalonPacket_FM_Radio.in</span>
+<span>o</span>
+<span>を開きます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000015.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000083.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>次の周波数、周波数表記、局名の箇所を受信可能な放送局のものに書き換えてください。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>const int NUM_STATIONS = 6;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>double freq[NUM_STATIONS] = {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>80.0e6,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>81.3e6,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>82.5e6,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>90.5e6,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>91.6e6,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>93.0e6</span>
+ &nbsp;</p>
+<p>&nbsp;<span>};</span>
+ &nbsp;</p>
+<p>&nbsp;<span>String freqString[NUM_STATIONS] = {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"80.0 MHz",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"81.3 MHz",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"82.5 MHz",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"90.5 MHz",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"91.6 MHz",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"93.0 MHz"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>};</span>
+ &nbsp;</p>
+<p>&nbsp;<span>String stationName[NUM_STATIONS] = {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"TOKYO FM",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"J-WAVE",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"NHK FM",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"TBS FM",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"JOQR FM",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"NIPPON FM"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>};</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ESP3</span>
+<span>2</span>
+<span>ボードに書き込みます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000114.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-69"><b></b></a>
+<a id="calibre_link-15"><b>
+<span><b>Quartus Prime Lite Editio</b></span>
+<span><b>n</b></span>
+<span><b>の準備</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>Intel FPGA</span>
+<span>(旧</span>
+<span>Altera</span>
+<span>)</span>
+<span>の無償版開発ツール&nbsp;Quartus Prime Lite Editio</span>
+<span>n</span>
+<span>をインストールします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>arrow.co</span>
+<span>m</span>
+<span>の評価ボー</span>
+<span>ド</span>
+<span>MAX100</span>
+<span>0</span>
+<span>内蔵</span>
+<span>の</span>
+<span>Arrow-USB-Blaste</span>
+<span>r</span>
+<span>のドライバもインストールします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>3.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-70"><b></b></a>
+<a id="calibre_link-16"><b>
+<span><b>Quartus Prime Lite Editio</b></span>
+<span><b>n</b></span>
+<span><b>をインストール</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>下記アドレスから「ライト・エディション」を選択します。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://www.intel.co.jp/content/www/jp/ja/software/programmable/quartus-prime/download.html">
+<span><u>インテ</u></span>
+<span><u>ル</u></span>
+<span><u>® Quartus® Prime</u></span>
+<span><u>&nbsp;</u></span>
+<span><u>開発ソフトウェアのダウンロード</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000094.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>「</span>
+<span>Quartus Prime (includes Nios II EDS)</span>
+<span>&nbsp;</span>
+<span>」と</span>
+<span>「</span>
+<span>MAX 10 FPGA device suppor</span>
+<span>t</span>
+<span>」</span>
+<span>は必ずダウンロードしてください。</span>
+<span>ダウンロード時にログインが必要です。ユーザーアカウントを取得していない場合は登録してください。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000120.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ダウンロードされた</span>
+<span>「</span>
+<span>QuartusLiteSetup-18.1.0.625-windows.ex</span>
+<span>e</span>
+<span>」を実行してインストールします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000025.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>3.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-71"><b></b></a>
+<a id="calibre_link-17"><b>
+<span><b>USB Programmer Drive</b></span>
+<span><b>r</b></span>
+<span><b>をインストール</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>下記アドレスから、</span>
+<span>「</span>
+<span>MAX1000 User Guid</span>
+<span>e</span>
+<span>」、</span>
+<span>「</span>
+<span>USB Programmer Driver Ver. 2.2 (Win64</span>
+<span>)</span>
+<span>」をダウンロードできます。</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://www.arrow.com/en/products/max1000/arrow-development-tools">
+<span><u>https://www.arrow.com/en/products/max1000/arrow-development-tools</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>MAX1000 User Guide&nbsp;:</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://www.arrow.com/en/products/max1000/arrow-development-tools/~/media/f19115ca0929486c9e09fc138b8c7c81.ashx?h=16&amp;thn=1&amp;w=16">
+<span><u>https://www.arrow.com/en/products/max1000/arrow-development-tools/~/media/f19115ca0929486c9e09fc138b8c7c81.ashx?h=16&amp;thn=1&amp;w=16</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>USB Programmer Driver Ver. 2.2 (Win64)&nbsp;:</span>
+ &nbsp;</p>
+<p>&nbsp;<a href="https://www.arrow.com/en/products/max1000/arrow-development-tools/-/media/e0151a61f1d844378206d2db77f3f259.ashx?h=16&amp;thn=1&amp;w=16">
+<span><u>https://www.arrow.com/en/products/max1000/arrow-development-tools/-/media/e0151a61f1d844378206d2db77f3f259.ashx?h=16&amp;thn=1&amp;w=16</u></span>
+</a>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000119.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ダウンロードした</span>
+<span>「</span>
+<span>Arrow_USB_Programmer_22_win64.zi</span>
+<span>p</span>
+<span>」を解凍して、</span>
+ &nbsp;</p>
+<p>&nbsp;<span>「</span>
+<span>Arrow-USB-Blaster-Setup-2.2.ex</span>
+<span>e</span>
+<span>」を実行してインストールします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>3.3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-72"><b></b></a>
+<a id="calibre_link-18"><b>
+<span><b>F</b></span>
+<span><b>M</b></span>
+<span><b>ラジオのプロジェクトを</b></span>
+<span><b>ダウンロード</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<a href="https://github.com/Rapidnack/MAX1k_FM_Mono">
+<span><u>GitHub Rapidnack/MAX1k_FM_Mono</u></span>
+</a>
+<span>か</span>
+<span>ら</span>
+<span>F</span>
+<span>M</span>
+<span>ラジオのプロジェクト</span>
+<span>を</span>
+<span>ZI</span>
+<span>P</span>
+<span>ファイルでダウンロードして解凍します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000076.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Quartus Prime Lite Editio</span>
+<span>n</span>
+<span>の</span>
+<span>「</span>
+<span>Fil</span>
+<span>e</span>
+<span>」メニューから</span>
+<span>「</span>
+<span>Open Project</span>
+<span>...</span>
+<span>」をクリックし、解凍したプロジェクト内</span>
+<span>の</span>
+<span>top.qp</span>
+<span>f</span>
+<span>を開きます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000012.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>コンパイルを開始します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000081.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>コンパイルが正常に終了したことを確認します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000034.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>3.4</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-19"><b>
+<span><b>FPG</b></span>
+<span><b>A</b></span>
+<span><b>に書き込む</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>プログラマーを開きます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000040.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Hardware Setu</span>
+<span>p</span>
+<span>ダイアログ</span>
+<span>で</span>
+<span>Arrow-USB-Blaste</span>
+<span>r</span>
+<span>を選択します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000106.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>top.so</span>
+<span>f</span>
+<span>が表示されていることを確認し</span>
+<span>て</span>
+<span>Star</span>
+<span>t</span>
+<span>をクリックします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000057.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>正常に書き込まれたことを確認します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000003.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ESP3</span>
+<span>2</span>
+<span>ボード</span>
+<span>に</span>
+<span>AvalonPacke</span>
+<span>t</span>
+<span>ライブラリに同梱されているサンプルスケッ</span>
+<span>チ</span>
+<span>AvalonPacket_FM_Radi</span>
+<span>o</span>
+<span>が書き込まれていれば、タッチセンサーで選局、音量を操作できます。電波の強い地域では１ｍほどのリード線をアンテナ端子に接続すれば受信できると思います。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000114.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>R-2R DA</span>
+<span>C</span>
+<span>にオシロスコープのプローブを接続する</span>
+<span>と</span>
+<span>DAC</span>
+<span>A</span>
+<span>に接続し</span>
+<span>た</span>
+<span>CH</span>
+<span>1に</span>
+<span>CI</span>
+<span>C</span>
+<span>フィルタの入力信号</span>
+<span>（</span>
+<span>73.728MSp</span>
+<span>s</span>
+<span>）が</span>
+<span>、</span>
+<span>DAC</span>
+<span>B</span>
+<span>に接続し</span>
+<span>た</span>
+<span>CH</span>
+<span>2に</span>
+<span>FI</span>
+<span>R</span>
+<span>フィルタの出力信号</span>
+<span>（</span>
+<span>384kSp</span>
+<span>s</span>
+<span>）が表示されます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000006.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>3.5</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-20"><b>
+<span><b>FPG</b></span>
+<span><b>Aの</b></span>
+<span><b>FLAS</b></span>
+<span><b>H</b></span>
+<span><b>メモリに書き込む</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>FPG</span>
+<span>Aの</span>
+<span>FLAS</span>
+<span>H</span>
+<span>メモリに書き込めば、電源を切ってもコンフィグレーションが消えないようにできます</span>
+<span>。</span>
+<span>top.so</span>
+<span>fを</span>
+<span>top.po</span>
+<span>f</span>
+<span>に替えて書き込みます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>so</span>
+<span>f</span>
+<span>ファイルを選択し</span>
+<span>て</span>
+<span>Delet</span>
+<span>e</span>
+<span>をクリックします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000020.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Add File</span>
+<span>...</span>
+<span>をクリックして</span>
+<span>、</span>
+<span>po</span>
+<span>f</span>
+<span>ファイルを選択します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000070.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>下図のようにチェックを付け</span>
+<span>て</span>
+<span>Star</span>
+<span>t</span>
+<span>をクリックします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000037.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>正常に書き込まれたことを確認します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000038.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>4</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-21"><b>
+<span><b>SD</b></span>
+<span><b>R</b></span>
+<span><b>の構成</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>SD</span>
+<span>R</span>
+<span>の構成は次のようにしました。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000087.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>4.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-22"><b>
+<span><b>top.</b></span>
+<span><b>v　</b></span>
+<span><b>Verilo</b></span>
+<span><b>g</b></span>
+<span><b>ソースコード</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>トップモジュー</span>
+<span>ル</span>
+<span>top.</span>
+<span>v</span>
+<span>です。主</span>
+<span>に</span>
+<span>NC</span>
+<span>O</span>
+<span>、フィルタなど、サブモジュール間の接続を記述しています。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>`timescale 1 ps / 1 ps</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>module top</span>
+ &nbsp;</p>
+<p>&nbsp;<span>(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire CLK,</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>input wire SPI_SCLK,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire SPI_NSS,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire SPI_MOSI,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output wire SPI_MISO,</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>input wire [7:0] ADC,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output wire ENCODE,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output wire I2S_SCK,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output wire I2S_BCK,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output wire I2S_LRCK,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output wire I2S_DATA,</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>output reg [6:0] DACA,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output reg [6:0] DACB,</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>output wire [7:0] LED</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>localparam CIC_WIDTH = 19;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>localparam FIR_WIDTH = 16;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>localparam PI = 17'sb0011_0010_0100_0011_1; // pi = 0011 . 0010 0100 0011 1111 0110 1010</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire [31:0] pio0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire [31:0] pio1;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>wire clk; // 73.728M (actual 73.714286M)</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>wire [3:0] gain;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire [3:0] volume;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg [7:0] uadc_r;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire signed [7:0] adc;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>wire signed [11:0] sin;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire signed [11:0] cos;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>reg signed [CIC_WIDTH-1:0] i;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg signed [CIC_WIDTH-1:0] q;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire signed [CIC_WIDTH-1:0] icic;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire icic_valid;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire signed [CIC_WIDTH-1:0] qcic;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire qcic_valid;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire signed [FIR_WIDTH-1:0] ifir;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire ifir_valid;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire signed [FIR_WIDTH-1:0] qfir;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire qfir_valid;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire signed [FIR_WIDTH-1:0] phase;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg signed [FIR_WIDTH-1:0] phase_r;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire signed [FIR_WIDTH:0] phase_diff;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg signed [FIR_WIDTH:0] freq;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>wire signed [FIR_WIDTH-1:0] freq_LPR;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire freq_LPR_valid;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire signed [FIR_WIDTH-1:0] freq_LPRD;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire freq_LPRD_valid;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>wire signed [6:0] daca;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire signed [6:0] dacb;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>pll</span>
+<span>pll_inst (</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.inclk0 (CLK),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.c0 (clk)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>QsysCore u0 (</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.clk_clk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (clk),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.reset_reset_n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (1'b1),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.spi_slave_to_avalon_mm_master_bridge_0_export_0_mosi_to_the_spislave_inst_for_spichain&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (SPI_MOSI),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.spi_slave_to_avalon_mm_master_bridge_0_export_0_nss_to_the_spislave_inst_for_spichain&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (SPI_NSS),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.spi_slave_to_avalon_mm_master_bridge_0_export_0_miso_to_and_from_the_spislave_inst_for_spichain (SPI_MISO),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.spi_slave_to_avalon_mm_master_bridge_0_export_0_sclk_to_the_spislave_inst_for_spichain&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (SPI_SCLK),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.pio_0_external_connection_export&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (pio0),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.pio_1_external_connection_export&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (pio1)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign LED = pio0[7:0];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign gain = 3;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign volume = pio0[3:0];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>uadc_r &lt;= ADC;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign ENCODE = clk;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign adc = (uadc_r[7] == 0) ? uadc_r + 8'h80 : uadc_r - 8'h80;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>MyNCO #(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.OUT_WIDTH(12)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>) nco_inst (</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.clk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (clk),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.reset_n&nbsp;&nbsp; (1'b1),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.clken&nbsp;&nbsp;&nbsp;&nbsp; (1'b1),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.phi_inc_i (pio1),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.fsin_o&nbsp;&nbsp;&nbsp; (sin),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.fcos_o&nbsp;&nbsp;&nbsp; (cos),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.out_valid ()</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>i &lt;= adc * cos;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>q &lt;= adc * sin;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>MyCIC #(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.DATA_WIDTH(CIC_WIDTH)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>) cic_inst_i (</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.clk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (clk),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.reset_n&nbsp;&nbsp; (1'b1),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.in_error&nbsp; (2'b00),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.in_valid&nbsp; (1'b1),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.in_ready&nbsp; (),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.in_data&nbsp;&nbsp; (i),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.out_data&nbsp; (icic),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.out_error (),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.out_valid (icic_valid),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.out_ready (1'b1)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>MyCIC #(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.DATA_WIDTH(CIC_WIDTH)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>) cic_inst_q (</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.clk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (clk),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.reset_n&nbsp;&nbsp; (1'b1),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.in_error&nbsp; (2'b00),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.in_valid&nbsp; (1'b1),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.in_ready&nbsp; (),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.in_data&nbsp;&nbsp; (q),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.out_data&nbsp; (qcic),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.out_error (),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.out_valid (qcic_valid),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.out_ready (1'b1)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>MyFIR #(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.DATA_WIDTH(FIR_WIDTH)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>) fir8_inst_i (</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.clk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (clk),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.reset_n&nbsp;&nbsp; (1'b1),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_sink_data (icic[CIC_WIDTH-1 -gain -: FIR_WIDTH]),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_sink_valid (icic_valid),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_sink_error (2'b00),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_source_data (ifir),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_source_valid (ifir_valid),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_source_error ()</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>MyFIR #(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.DATA_WIDTH(FIR_WIDTH)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>) fir8_inst_q (</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.clk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (clk),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.reset_n&nbsp;&nbsp; (1'b1),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_sink_data (qcic[CIC_WIDTH-1 -gain -: FIR_WIDTH]),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_sink_valid (qcic_valid),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_sink_error (2'b00),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_source_data (qfir),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_source_valid (qfir_valid),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_source_error ()</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>vectran vectran_inst (</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.clk&nbsp;&nbsp;&nbsp; (clk),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.areset (1'b0),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (ifir),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (qfir),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (phase),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.en&nbsp;&nbsp;&nbsp;&nbsp; (ifir_valid)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (ifir_valid) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>phase_r &lt;= phase;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>if (phase_diff &gt; PI) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>freq &lt;= phase_diff - (PI &lt;&lt;&lt; 1);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else if (phase_diff &lt; -PI) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>freq &lt;= phase_diff + (PI &lt;&lt;&lt; 1);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>freq &lt;= phase_diff;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign phase_diff = phase - phase_r;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>MyLPF #(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.DATA_WIDTH(FIR_WIDTH)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>) lpf8_inst (</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.clk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (clk),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.reset_n&nbsp;&nbsp; (1'b1),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_sink_data (freq[FIR_WIDTH-1 -: FIR_WIDTH]),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_sink_valid (ifir_valid),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_sink_error (2'b00),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_source_data (freq_LPR),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_source_valid (freq_LPR_valid),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_source_error ()</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>MyDeEmphasis #(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.DATA_WIDTH(FIR_WIDTH)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>) MyDeEmphasis_inst (</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.clk (clk),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.reset_n (1'b1),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.in_data (freq_LPR),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.in_valid (freq_LPR_valid),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.out_data (freq_LPRD),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.out_valid (freq_LPRD_valid)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>MyI2S #(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.IN_WIDTH(FIR_WIDTH)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>) MyI2S_inst (</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.clk (clk),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.reset_n (1'b1),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.volume (4'b1111 - volume),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.in_left (freq_LPRD),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.in_right (freq_LPRD),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.in_valid (freq_LPRD_valid),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.SCK (I2S_SCK),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.BCK (I2S_BCK),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.LRCK (I2S_LRCK),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.DATA (I2S_DATA)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>assign daca = sin[11 -: 7];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>assign dacb = cos[11 -: 7];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>assign daca = i[CIC_WIDTH-1 -: 7];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>assign dacb = q[CIC_WIDTH-1 -: 7];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>assign daca = icic[CIC_WIDTH-1 -: 7]; // icic_valid</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>assign dacb = qcic[CIC_WIDTH-1 -: 7]; // qcic_valid</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>assign daca = ifir[FIR_WIDTH-1 -: 7]; // ifir_valid</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>assign dacb = qfir[FIR_WIDTH-1 -: 7]; // qfir_valid</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>assign daca = phase[FIR_WIDTH-1 -: 7]; // ifir_valid</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>assign dacb = freq[FIR_WIDTH -: 7]; // ifir_valid</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>assign daca = freq_LPR[FIR_WIDTH-1 -: 7]; // freq_LPR_valid</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>assign dacb = freq_LPRD[FIR_WIDTH-1 -: 7]; // freq_LPRD_valid</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign daca = i[CIC_WIDTH-1 -: 7];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign dacb = ifir[FIR_WIDTH-1 -: 7];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DACA &lt;= (daca[6] == 0) ? daca + 7'h40 : daca - 7'h40;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (ifir_valid)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DACB &lt;= (dacb[6] == 0) ? dacb + 7'h40 : dacb - 7'h40;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>endmodule</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>最後</span>
+<span>の</span>
+<span>dac</span>
+<span>a、</span>
+<span>dac</span>
+<span>b</span>
+<span>のデータを色々変えて</span>
+<span>、</span>
+<span>R-2R DA</span>
+<span>C</span>
+<span>に接続したオシロスコープで観測することができます。</span>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h2><b>
+<span><b>4.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-23"><b>
+<span><b>QsysCore.qsy</b></span>
+<span><b>s</b></span>
+<span><b>作成手順</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>メニュ</span>
+<span>ー</span>
+<span>Tool</span>
+<span>s→</span>
+<span>Platform Designe</span>
+<span>rで</span>
+<span>Platform Designe</span>
+<span>r</span>
+<span>を起動します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000073.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>SPI Slave to Avalon Master Bridge Intel FPGA I</span>
+<span>P</span>
+<span>を追加します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000002.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000004.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>cl</span>
+<span>k、</span>
+<span>clk_rese</span>
+<span>t</span>
+<span>を接続します</span>
+<span>。</span>
+<span>export_</span>
+<span>0の</span>
+<span>Expor</span>
+<span>t</span>
+<span>欄をダブルクリックします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000067.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>PIO (Parallel I/O) Intel FPGA I</span>
+<span>P</span>
+<span>を追加します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000059.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>3</span>
+<span>2</span>
+<span>ビットにします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000042.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>cl</span>
+<span>k、</span>
+<span>rese</span>
+<span>t、</span>
+<span>s</span>
+<span>1</span>
+<span>を接続します</span>
+<span>。</span>
+<span>external_connectio</span>
+<span>nの</span>
+<span>Expor</span>
+<span>t</span>
+<span>欄をダブルクリックします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000107.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>PIO (Parallel I/O) Intel FPGA I</span>
+<span>P</span>
+<span>をもう１つ追加します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000054.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>アドレスがぶつかっているので</span>
+<span>、2</span>
+<span>つ目</span>
+<span>の</span>
+<span>PI</span>
+<span>O</span>
+<span>のアドレス</span>
+<span>を</span>
+<span>0x0000 0010</span>
+<span>&nbsp;</span>
+<span>－&nbsp;0x0000 000</span>
+<span>f</span>
+<span>に変更します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000041.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000092.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000017.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>エラーが無くなれば完成です。トップモジュールに追加するためにテンプレートをメモ帳などにコピーしておきます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000085.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000045.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>コードを生成します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000056.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000079.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000111.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000066.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000039.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000064.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>メニュ</span>
+<span>ー</span>
+<span>Projec</span>
+<span>t→</span>
+<span>Add/Remove Files in Project</span>
+<span>...</span>
+<span>でダイアログを表示し、プロジェクト</span>
+<span>に</span>
+<span>QsysCore.qi</span>
+<span>p</span>
+<span>を追加します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000031.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000109.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>5</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-24"><b>
+<span><b>Arduin</b></span>
+<span><b>o</b></span>
+<span><b>スケッチか</b></span>
+<span><b>らL</b></span>
+<span><b>チカ</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>ESP3</span>
+<span>2と</span>
+<span>FPG</span>
+<span>A</span>
+<span>の間</span>
+<span>の</span>
+<span>SP</span>
+<span>I</span>
+<span>接続を確認するため</span>
+<span>、</span>
+<span>Arduin</span>
+<span>o</span>
+<span>スケッチか</span>
+<span>ら</span>
+<span>FPG</span>
+<span>A</span>
+<span>ボー</span>
+<span>ド</span>
+<span>MAX100</span>
+<span>0</span>
+<span>上</span>
+<span>の</span>
+<span>LE</span>
+<span>D</span>
+<span>を点滅してみます</span>
+<span>。</span>
+<span><b>PIO</b></span>
+<span><b>0は</b></span>
+<span><b>F</b></span>
+<span><b>M</b></span>
+<span><b>ラジオの音量調節と兼用なのでミニジャックからイヤホンを外してください。</b></span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000024.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>5.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-25"><b>
+<span><b>サンプルスケッ</b></span>
+<span><b>チ</b></span>
+<span><b>AvalonPacket_LED_Swee</b></span>
+<span><b>p</b></span>
+<span><b>を使う</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>AvalonPacke</span>
+<span>t</span>
+<span>ライブラリに同梱されているサンプルスケッ</span>
+<span>チ</span>
+<span>AvalonPacket_LED_Sweep.in</span>
+<span>o</span>
+<span>を開きます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000050.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ESP3</span>
+<span>2</span>
+<span>に書き込む</span>
+<span>と</span>
+<span>FPG</span>
+<span>A</span>
+<span>ボー</span>
+<span>ド</span>
+<span>MAX100</span>
+<span>0</span>
+<span>上</span>
+<span>の</span>
+<span>LE</span>
+<span>D</span>
+<span>の表示がカウントアップしていきます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>SP</span>
+<span>I</span>
+<span>通信が正常な場</span>
+<span>合</span>
+<span>0x8</span>
+<span>0、</span>
+<span>0x</span>
+<span>0、</span>
+<span>0x</span>
+<span>0、</span>
+<span>0x</span>
+<span>4</span>
+<span>の４バイトの応答</span>
+<span>が</span>
+<span>Arduino ID</span>
+<span>E</span>
+<span>のシリアルモニタに表示されます。異なる値が表示される場合</span>
+<span>は</span>
+<span>SP</span>
+<span>I</span>
+<span>接続を確認してください。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000065.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>LE</span>
+<span>D</span>
+<span>が期待通り点滅する場合、サンプルスケッ</span>
+<span>チ</span>
+<span>AvalonPacket_FM_Radio.in</span>
+<span>o</span>
+<span>に戻しておきます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>5.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-26"><b>
+<span><b>サンプルスケッ</b></span>
+<span><b>チ</b></span>
+<span><b>AvalonPacket_LED_Swee</b></span>
+<span><b>p</b></span>
+<span><b>の内容</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>サンプルスケッ</span>
+<span>チ</span>
+<span>AvalonPacket_LED_Sweep.in</span>
+<span>o</span>
+<span>の内容は次のようになっています。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>#include &lt;SPI.h&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>#include &lt;AvalonPacket.h&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>AvalonPacket ap = AvalonPacket();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>byte response[4];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int responseSize;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>unsigned long p0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void setup() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Serial.begin(57600);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>delay(1000); // Wait until FPGA is configured</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>p0 = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void loop() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>responseSize = ap.write(0, p0++, response);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ap.printBytes(response, responseSize);</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>delay(1000);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>responseSize = ap.write(0, p0++, response</span>
+<span>)で</span>
+<span>PI</span>
+<span>O</span>
+<span>にカウントアップしていくデー</span>
+<span>タ</span>
+<span>p</span>
+<span>0</span>
+<span>が書き込まれます</span>
+<span>。</span>
+<span>unsigned lon</span>
+<span>g</span>
+<span>の４バイトデータが正常に書き込まれた場合</span>
+<span>、</span>
+<span>0x8</span>
+<span>0、</span>
+<span>0x</span>
+<span>0、</span>
+<span>0x</span>
+<span>0、</span>
+<span>0x</span>
+<span>4</span>
+<span>の４バイトの応答が返ってきます。</span>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>6</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-27"><b>
+<span><b>手作</b></span>
+<span><b>り</b></span>
+<span><b>R-2R DAC</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>手作</span>
+<span>り</span>
+<span>R-2R DA</span>
+<span>C</span>
+<span>を確認するため</span>
+<span>、</span>
+<span>LE</span>
+<span>D</span>
+<span>を点滅させているデータ</span>
+<span>を</span>
+<span>R-2R DA</span>
+<span>C</span>
+<span>にも出力してオシロスコープで表示します</span>
+<span>。</span>
+<span><b>PIO</b></span>
+<span><b>0は</b></span>
+<span><b>F</b></span>
+<span><b>M</b></span>
+<span><b>ラジオの音量調節と兼用なのでミニジャックからイヤホンを外してください。</b></span>
+ &nbsp;</p>
+<p>&nbsp;<span>奥</span>
+<span>が</span>
+<span>DAC</span>
+<span>A</span>
+<span>、手前</span>
+<span>が</span>
+<span>DAC</span>
+<span>B</span>
+<span>です。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000016.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>6.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-28"><b>
+<span><b>サンプルスケッ</b></span>
+<span><b>チ</b></span>
+<span><b>AvalonPacket_LED_Swee</b></span>
+<span><b>p</b></span>
+<span><b>を変更</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>L</span>
+<span>チカに使ったサンプルスケッ</span>
+<span>チ</span>
+<span>AvalonPacket_LED_Swee</span>
+<span>p</span>
+<span>のコンソール出力</span>
+<span>と</span>
+<span>delay(</span>
+<span>)</span>
+<span>の行をコメントアウトして使います。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>#include &lt;SPI.h&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>#include &lt;AvalonPacket.h&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>AvalonPacket ap = AvalonPacket();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>byte response[4];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int responseSize;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>unsigned long p0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void setup() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Serial.begin(57600);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>delay(1000); // Wait until FPGA is configured</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>p0 = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void loop() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>responseSize = ap.write(0, p0++, response);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>ap.printBytes(response, responseSize);</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>delay(1000);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>6.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-29"><b>
+<span><b>DAC</b></span>
+<span><b>A、</b></span>
+<span><b>DAC</b></span>
+<span><b>B</b></span>
+<span><b>の出力内容を変更</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>トップモジュー</span>
+<span>ル</span>
+<span>top.</span>
+<span>v</span>
+<span>を表示し、最後にあ</span>
+<span>る</span>
+<span>DAC</span>
+<span>A、</span>
+<span>DAC</span>
+<span>B</span>
+<span>に値をセットしている箇所を書き換えます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000113.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>アドレ</span>
+<span>ス</span>
+<span>0x</span>
+<span>0の</span>
+<span>PI</span>
+<span>O</span>
+<span>の下位７ビット</span>
+<span>を</span>
+<span>DAC</span>
+<span>A</span>
+<span>に、ビット反転した７ビット</span>
+<span>を</span>
+<span>DAC</span>
+<span>B</span>
+<span>に接続します。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>assign daca = i[CIC_WIDTH-1 -: 7];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>assign dacb = ifir[FIR_WIDTH-1 -: 7];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DACA &lt;= pio0[6:0];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DACB &lt;= ~pio0[6:0];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>endmodule</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>抵抗の値のばらつきのため直線になっていませんが、下図のような表示になります。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000055.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>6.3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-30"><b>
+<span><b>サンプルスケッ</b></span>
+<span><b>チ</b></span>
+<span><b>AvalonPacket_LE</b></span>
+<span><b>D</b></span>
+<span><b>を使う</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>オシロスコープの表示か</span>
+<span>ら</span>
+<span>R-2R DA</span>
+<span>C</span>
+<span>の出力に異常が見つかった場合は</span>
+<span>、</span>
+<span>Arduino ID</span>
+<span>E</span>
+<span>のシリアルモニタから入力した数値</span>
+<span>で</span>
+<span>PIO</span>
+<span>0</span>
+<span>の値を設定できるサンプルスケッ</span>
+<span>チ</span>
+<span>AvalonPacket_LED.in</span>
+<span>o</span>
+<span>を開きます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>#include &lt;SPI.h&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>#include &lt;AvalonPacket.h&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>AvalonPacket ap = AvalonPacket();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>byte response[4];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int responseSize;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>unsigned long hexToULong(String str) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>char buf[80];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>str.toCharArray(buf, 80);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Serial.println(buf);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>return strtoul(buf, 0, 16);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void setup() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Serial.begin(57600);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>delay(1000); // Wait until FPGA is configured</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Serial.setTimeout(-1);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void loop() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>String str = Serial.readStringUntil('¥n');</span>
+ &nbsp;</p>
+<p>&nbsp;<span>unsigned long i = hexToULong(str);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>responseSize = ap.write(0, i, response);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ap.printBytes(response, responseSize);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>シリアルモニタから数値を入力したとき以</span>
+<span>外</span>
+<span>DA</span>
+<span>C</span>
+<span>の出力が変化しないので、オシロスコープ</span>
+<span>を</span>
+<span>D</span>
+<span>C</span>
+<span>入力にします。確認したいビットの値だけを変化させ、配線ミスをチェックできます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000029.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DA</span>
+<span>C</span>
+<span>の出力が期待通りに変化する場合、サンプルスケッ</span>
+<span>チ</span>
+<span>AvalonPacket_FM_Radio.in</span>
+<span>o</span>
+<span>に戻しておきます。</span>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>7</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-31"><b>
+<span><b>PLL</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>自</span>
+<span>作</span>
+<span>NC</span>
+<span>O</span>
+<span>の説明の前に</span>
+<span>、</span>
+<span>AD</span>
+<span>C</span>
+<span>のサンプリング周波数を決めて、その周波数</span>
+<span>を</span>
+<span>PL</span>
+<span>L</span>
+<span>で生成しシステムクロックとします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>AD</span>
+<span>C</span>
+<span>のサンプリング周波数</span>
+<span>を</span>
+<span>70MSp</span>
+<span>s</span>
+<span>位にすると</span>
+<span>、</span>
+<span>70MHz~35MH</span>
+<span>z、</span>
+<span>70MHz~105MH</span>
+<span>z、</span>
+<span>140MHz~105MH</span>
+<span>z、</span>
+<span>140MHz~175MH</span>
+<span>z</span>
+<span>、...の信号</span>
+<span>が</span>
+<span>0Hz~35MH</span>
+<span>z</span>
+<span>の信号とし</span>
+<span>て</span>
+<span>AD</span>
+<span>C</span>
+<span>から出力されます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>音声出力用</span>
+<span>の</span>
+<span>I2S DA</span>
+<span>C</span>
+<span>のサンプリング周波数</span>
+<span>が</span>
+<span>48kSp</span>
+<span>s</span>
+<span>で</span>
+<span>、</span>
+<span>F</span>
+<span>M</span>
+<span>復調に必要な帯域</span>
+<span>が</span>
+<span>400kH</span>
+<span>z</span>
+<span>位なの</span>
+<span>で</span>
+<span>48kH</span>
+<span>z</span>
+<span>の８倍</span>
+<span>の</span>
+<span>384kSp</span>
+<span>s</span>
+<span>として</span>
+<span>、</span>
+<span>AD</span>
+<span>C</span>
+<span>のサンプリング周波数</span>
+<span>は</span>
+<span>384kH</span>
+<span>zの</span>
+<span>19</span>
+<span>2</span>
+<span>倍</span>
+<span>の</span>
+<span>73.728MSp</span>
+<span>s</span>
+<span>とします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>F</span>
+<span>M</span>
+<span>放送の帯域を含ん</span>
+<span>だ</span>
+<span>73.728MHz~110.592MH</span>
+<span>z</span>
+<span>の信号</span>
+<span>が</span>
+<span>0Hz~36.864MH</span>
+<span>z</span>
+<span>の信号とし</span>
+<span>て</span>
+<span>AD</span>
+<span>C</span>
+<span>から出力されます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>7.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-32"><b>
+<span><b>pll.qi</b></span>
+<span><b>p</b></span>
+<span><b>作成手順</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>Quartus Prime Lite Editio</span>
+<span>n</span>
+<span>で提供されてい</span>
+<span>る</span>
+<span>ALTPLL I</span>
+<span>P</span>
+<span>で作成し</span>
+<span>た</span>
+<span>pl</span>
+<span>l</span>
+<span>モジュールを追加して</span>
+<span>、</span>
+<span>FPG</span>
+<span>A</span>
+<span>に供給され</span>
+<span>る</span>
+<span>12MH</span>
+<span>z</span>
+<span>のクロック入</span>
+<span>力</span>
+<span>CL</span>
+<span>K</span>
+<span>か</span>
+<span>ら</span>
+<span>73.728MH</span>
+<span>z</span>
+<span>のシステムクロッ</span>
+<span>ク</span>
+<span>cl</span>
+<span>k</span>
+<span>を生成します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000099.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>作成するモジュールの名前</span>
+<span>を</span>
+<span>pl</span>
+<span>l</span>
+<span>とします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000049.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>評価ボー</span>
+<span>ド</span>
+<span>MAX100</span>
+<span>0</span>
+<span>に載っているクロック</span>
+<span>は</span>
+<span>12MH</span>
+<span>z</span>
+<span>です。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000008.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>リセット入力、ロック出力は今回使わないので削除します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000021.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>クロック出力周波数</span>
+<span>に</span>
+<span>73.728MH</span>
+<span>z</span>
+<span>を設定しますが</span>
+<span>、</span>
+<span>12MH</span>
+<span>z</span>
+<span>のクロックを使って出力できる一番近い周波数</span>
+<span>は</span>
+<span>73.714286MH</span>
+<span>z</span>
+<span>のようです。音声出力用</span>
+<span>の</span>
+<span>I2S DA</span>
+<span>C</span>
+<span>はサンプリング周波数</span>
+<span>が</span>
+<span>47.99kSp</span>
+<span>s</span>
+<span>になりますが問題なく動作しました。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000072.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>作成したモジュールをトップモジュールに追加するとき参考にするテンプレートファイルも出力しておきます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000097.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>作成したモジュールをプロジェクトに追加します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000117.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>8</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-33"><b>
+<span><b>自</b></span>
+<span><b>作</b></span>
+<span><b>NCO</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>Quartus Prime Lite Editio</span>
+<span>n</span>
+<span>に添付されてい</span>
+<span>る</span>
+<span>NC</span>
+<span>O、</span>
+<span>CI</span>
+<span>C</span>
+<span>フィルタは評価版のようで、コンフィグ時に表示されるダイアログを閉じると動作が停止してしまいます。（しかも一度追加するとプロジェクトから削除してもダイアログが表示されます。）また</span>
+<span>、</span>
+<span>FI</span>
+<span>R</span>
+<span>フィルタはダイアログを表示しませんが、なぜか期待通りの動作をさせることができませんでした。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>そこで</span>
+<span>、</span>
+<span>NC</span>
+<span>O、</span>
+<span>CI</span>
+<span>C</span>
+<span>フィルタ</span>
+<span>、</span>
+<span>FI</span>
+<span>R</span>
+<span>フィルタを自作することにしました。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000060.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>8.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-34"><b>
+<span><b>サンプルスケッ</b></span>
+<span><b>チ</b></span>
+<span><b>AvalonPacket_NC</b></span>
+<span><b>O</b></span>
+<span><b>を使う</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>Arduino ID</span>
+<span>E</span>
+<span>のシリアルモニタに周波数を入力し</span>
+<span>、</span>
+<span>FPG</span>
+<span>A</span>
+<span>内部に設置し</span>
+<span>た</span>
+<span>PIO</span>
+<span>1</span>
+<span>経由</span>
+<span>で</span>
+<span>NC</span>
+<span>O</span>
+<span>の周波数を設定します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000046.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>8.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-35"><b>
+<span><b>DAC</b></span>
+<span><b>A、</b></span>
+<span><b>DAC</b></span>
+<span><b>B</b></span>
+<span><b>の出力内容を変更</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>トップモジュー</span>
+<span>ル</span>
+<span>top.</span>
+<span>v</span>
+<span>を表示し、最後にあ</span>
+<span>る</span>
+<span>DAC</span>
+<span>A、</span>
+<span>DAC</span>
+<span>B</span>
+<span>に値をセットしている箇所を書き換えます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000069.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>NC</span>
+<span>Oの</span>
+<span>SI</span>
+<span>N、</span>
+<span>CO</span>
+<span>S</span>
+<span>出力</span>
+<span>の</span>
+<span>MS</span>
+<span>B</span>
+<span>側７ビットをそれぞ</span>
+<span>れ</span>
+<span>R-2R DA</span>
+<span>Cの</span>
+<span>DAC</span>
+<span>A、</span>
+<span>DAC</span>
+<span>B</span>
+<span>に接続し、オシロスコープで確認します</span>
+<span>。</span>
+<span>NC</span>
+<span>O</span>
+<span>の出力は符号付き</span>
+<span>、</span>
+<span>R-2R DA</span>
+<span>C</span>
+<span>の入力は符号無しなので変換しています。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+<span>assign daca = sin[11 -: 7];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign dacb = cos[11 -: 7];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DACA &lt;= (daca[6] == 0) ? daca + 7'h40 : daca - 7'h40;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DACB &lt;= (dacb[6] == 0) ? dacb + 7'h40 : dacb - 7'h40;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>endmodule</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>オシロスコープ</span>
+<span>の</span>
+<span>DAC</span>
+<span>A</span>
+<span>に接続され</span>
+<span>た</span>
+<span>CH</span>
+<span>1に</span>
+<span>SI</span>
+<span>N</span>
+<span>波形が</span>
+<span>、</span>
+<span>DAC</span>
+<span>B</span>
+<span>に接続され</span>
+<span>た</span>
+<span>CH</span>
+<span>2に</span>
+<span>CO</span>
+<span>S</span>
+<span>波形が表示されます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000116.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>8.3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-36"><b>
+<span><b>サンプルスケッ</b></span>
+<span><b>チ</b></span>
+<span><b>AvalonPacket_NC</b></span>
+<span><b>O</b></span>
+<span><b>の内容</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>サンプルスケッ</span>
+<span>チ</span>
+<span>AvalonPacket_NC</span>
+<span>O</span>
+<span>は、シリアルモニタに入力された設定周波数からクロック当たりの位相増分を求め</span>
+<span>て</span>
+<span>NC</span>
+<span>O</span>
+<span>に設定しています。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>クロック当たりの位相増分&nbsp;= 0x100000000&nbsp;</span>
+<span>*</span>
+<span>（設定周波数&nbsp;/</span>
+<span>&nbsp;</span>
+<span>クロック周波数）</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>#include &lt;SPI.h&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>#include &lt;AvalonPacket.h&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>AvalonPacket ap = AvalonPacket();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>byte response[4];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int responseSize;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>unsigned long freqToPhaseInc(double freq) { // in Hz</span>
+ &nbsp;</p>
+<p>&nbsp;<span>double clk = 73714286; // 73.714286MHz</span>
+ &nbsp;</p>
+<p>&nbsp;<span>double phaseInc360 = (double)0x80000000UL * 2; // 32bits full scale</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>if (freq &gt;= clk)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>freq -= clk;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>return (unsigned long)(phaseInc360 * (freq / clk));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void setup() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Serial.begin(57600);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>delay(1000); // Wait until FPGA is configured</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Serial.setTimeout(-1);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void loop() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>String str = Serial.readStringUntil('¥n');</span>
+ &nbsp;</p>
+<p>&nbsp;<span>double freq = str.toDouble();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>unsigned long i = freqToPhaseInc(freq);</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>Serial.println(freq);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>responseSize = ap.write(0x10, i, response);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ap.printBytes(response, responseSize);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>8.4</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-37"><b>
+<span><b>サンプルスケッ</b></span>
+<span><b>チ</b></span>
+<span><b>AvalonPacket_NCO_Touc</b></span>
+<span><b>h</b></span>
+<span><b>を使う</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>周波数を変更するたびにシリアルモニタに数値を入力するのは大変なので</span>
+<span>、</span>
+<span>ESP3</span>
+<span>2</span>
+<span>のタッチセンサー</span>
+<span>で</span>
+<span>NC</span>
+<span>O</span>
+<span>の周波数を変更できるようにしました。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000089.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000028.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>タッチセンサーに触れ続ける</span>
+<span>と</span>
+<span>NC</span>
+<span>O</span>
+<span>の周波数をスイープできます。自</span>
+<span>作</span>
+<span>FI</span>
+<span>R</span>
+<span>フィルタの動作を確認するとき活用します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000018.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>8.5</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-38"><b>
+<span><b>サンプルスケッ</b></span>
+<span><b>チ</b></span>
+<span><b>AvalonPacket_NCO_Touc</b></span>
+<span><b>h</b></span>
+<span><b>の内容</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>次がサンプルスケッ</span>
+<span>チ</span>
+<span>AvalonPacket_NCO_Touc</span>
+<span>h</span>
+<span>の内容です。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>#include &lt;SPI.h&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>#include &lt;AvalonPacket.h&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>#include &lt;Wire.h&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>#include "SSD1306Wire.h"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>long freq = 1000;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>long freqStep = 1000;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>SSD1306Wire display(0x3c, 21, 22);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>AvalonPacket ap = AvalonPacket();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>byte response[4];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int responseSize;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int threshold = 60;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>volatile unsigned long touchMillis = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>volatile int touchId = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void gotTouch(int id) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T4, dummy, 0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T6, dummy, 0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T8, dummy, 0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T9, dummy, 0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchMillis = millis();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchId = id;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void dummy() { }</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void gotTouch1() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (touchRead(T4) &lt; threshold) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>gotTouch(1);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void gotTouch2() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (touchRead(T6) &lt; threshold) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>gotTouch(2);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void gotTouch3() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (touchRead(T8) &lt; threshold) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>gotTouch(3);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void gotTouch4() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (touchRead(T9) &lt; threshold) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>gotTouch(4);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>unsigned long freqToPhaseInc(double freq) { // in Hz</span>
+ &nbsp;</p>
+<p>&nbsp;<span>double clk = 73714286; // 73.714286MHz</span>
+ &nbsp;</p>
+<p>&nbsp;<span>double phaseInc360 = (double)0x80000000UL * 2; // 32bits full scale</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>if (freq &gt;= clk)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>freq -= clk;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>return (unsigned long)(phaseInc360 * (freq / clk));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void sendFreq(double freq) { // in Hz</span>
+ &nbsp;</p>
+<p>&nbsp;<span>unsigned long i = freqToPhaseInc(freq);</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>Serial.println(freq);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>responseSize = ap.write(0x10, i, response);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ap.printBytes(response, responseSize);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void updateDisplay() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>display.clear();</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>display.setFont(ArialMT_Plain_24);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>display.drawString(0, 0, String(freq) + "Hz");</span>
+ &nbsp;</p>
+<p>&nbsp;<span>display.setFont(ArialMT_Plain_16);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>display.drawString(0, 32,"Step: " + String(freqStep) + "Hz");</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>display.display();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void setup() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Serial.begin(57600);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>display.init();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>display.flipScreenVertically();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>delay(1000); // Wait until FPGA is configured</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sendFreq(freq);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>updateDisplay();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T4, gotTouch1, threshold);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T6, gotTouch2, threshold);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T8, gotTouch3, threshold);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T9, gotTouch4, threshold);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void loop() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (touchId &gt; 0) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Serial.print("Touch: ");</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Serial.println(touchId);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (touchId == 1) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (freqStep &gt; 1) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>freqStep /= 10;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>} else if (touchId == 2) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (freqStep &lt; 1000000) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>freqStep *= 10;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>} else if (touchId == 3) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (freq &gt; 0) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>freq -= freqStep;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (freq &lt; 0)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>freq = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>} else if (touchId == 4) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>freq += freqStep;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>sendFreq(freq);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>updateDisplay();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchId = -1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>} else if (touchId &lt; 0 &amp;&amp; touchMillis + 100 &lt; millis()) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchId = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T4, gotTouch1, threshold);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T6, gotTouch2, threshold);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T8, gotTouch3, threshold);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T9, gotTouch4, threshold);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>8.6</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-39"><b>
+<span><b>サンプルスケッ</b></span>
+<span><b>チ</b></span>
+<span><b>AvalonPacket_FM_Radi</b></span>
+<span><b>o</b></span>
+<span><b>を使う</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>サンプルスケッ</span>
+<span>チ</span>
+<span>AvalonPacket_FM_Radi</span>
+<span>o</span>
+<span>は、タッチセンサーで放送局を選択できます。ラジオらしく音量も操作できます。音量</span>
+<span>は</span>
+<span>FPG</span>
+<span>A</span>
+<span>内部に設置し</span>
+<span>た</span>
+<span>PIO</span>
+<span>0</span>
+<span>経由</span>
+<span>で</span>
+<span>I2S DA</span>
+<span>C</span>
+<span>に渡すデータをシフトします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000086.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>8.7</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-40"><b>
+<span><b>サンプルスケッ</b></span>
+<span><b>チ</b></span>
+<span><b>AvalonPacket_FM_Radi</b></span>
+<span><b>o</b></span>
+<span><b>の内容</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>次がサンプルスケッ</span>
+<span>チ</span>
+<span>AvalonPacket_FM_Radi</span>
+<span>o</span>
+<span>の内容です。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>#include &lt;SPI.h&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>#include &lt;AvalonPacket.h&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>#include &lt;Wire.h&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>#include "SSD1306Wire.h"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>#include &lt;nvs.h&gt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>uint8_t volume = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>uint8_t station = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>const int NUM_STATIONS = 6;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>double freq[NUM_STATIONS] = {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>80.0e6,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>81.3e6,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>82.5e6,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>90.5e6,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>91.6e6,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>93.0e6</span>
+ &nbsp;</p>
+<p>&nbsp;<span>};</span>
+ &nbsp;</p>
+<p>&nbsp;<span>String freqString[NUM_STATIONS] = {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"80.0 MHz",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"81.3 MHz",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"82.5 MHz",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"90.5 MHz",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"91.6 MHz",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"93.0 MHz"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>};</span>
+ &nbsp;</p>
+<p>&nbsp;<span>String stationName[NUM_STATIONS] = {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"TOKYO FM",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"J-WAVE",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"NHK FM",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"TBS FM",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"JOQR FM",</span>
+ &nbsp;</p>
+<p>&nbsp;<span>"NIPPON FM"</span>
+ &nbsp;</p>
+<p>&nbsp;<span>};</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>SSD1306Wire display(0x3c, 21, 22);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>nvs_handle handle = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>AvalonPacket ap = AvalonPacket();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>byte response[4];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int responseSize;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>int threshold = 60;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>volatile unsigned long touchMillis = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>volatile int touchId = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void gotTouch(int id) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T4, dummy, 0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T6, dummy, 0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T8, dummy, 0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T9, dummy, 0);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchMillis = millis();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchId = id;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void dummy() { }</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void gotTouch1() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (touchRead(T4) &lt; threshold) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>gotTouch(1);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void gotTouch2() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (touchRead(T6) &lt; threshold) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>gotTouch(2);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void gotTouch3() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (touchRead(T8) &lt; threshold) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>gotTouch(3);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void gotTouch4() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (touchRead(T9) &lt; threshold) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>gotTouch(4);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void sendVolume(unsigned long volume) { // 0 - 15</span>
+ &nbsp;</p>
+<p>&nbsp;<span>responseSize = ap.write(0, volume, response);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ap.printBytes(response, responseSize);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>unsigned long freqToPhaseInc(double freq) { // in Hz</span>
+ &nbsp;</p>
+<p>&nbsp;<span>double clk = 73714286; // 73.714286MHz</span>
+ &nbsp;</p>
+<p>&nbsp;<span>double phaseInc360 = (double)0x80000000UL * 2; // 32bits full scale</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>if (freq &gt;= clk)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>freq -= clk;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>return (unsigned long)(phaseInc360 * (freq / clk));</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void sendFreq(double freq) { // in Hz</span>
+ &nbsp;</p>
+<p>&nbsp;<span>unsigned long i = freqToPhaseInc(freq);</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>Serial.println(freq);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>responseSize = ap.write(0x10, i, response);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ap.printBytes(response, responseSize);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void updateDisplay() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>display.clear();</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>display.setFont(ArialMT_Plain_24);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>display.drawString(0, 0, stationName[station]);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>display.drawString(0, 24, freqString[station]);</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>display.setFont(ArialMT_Plain_24);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>String str = "";</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for (int i = 0; i &lt; volume; i++) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>str += "*";</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>display.drawString(0, 48, str);</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>display.display();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void setup() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Serial.begin(57600);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>display.init();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>display.flipScreenVertically();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>nvs_open("FPGA Radio", NVS_READWRITE, &amp;handle);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (handle != 0) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>nvs_get_u8(handle, "volume", &amp;volume);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>nvs_get_u8(handle, "station", &amp;station);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (15 &lt; volume) volume = 15;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (NUM_STATIONS-1 &lt; station) station = NUM_STATIONS-1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>delay(1000); // Wait until FPGA is configured</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sendVolume(volume);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sendFreq(freq[station]);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>updateDisplay();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T4, gotTouch1, threshold);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T6, gotTouch2, threshold);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T8, gotTouch3, threshold);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T9, gotTouch4, threshold);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>void loop() {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (touchId &gt; 0) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Serial.print("Touch: ");</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Serial.println(touchId);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (touchId == 1) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (station &gt; 0) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>station -= 1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>} else {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>station = NUM_STATIONS-1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>} else if (touchId == 2) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (station &lt; NUM_STATIONS-1) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>station += 1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>} else {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>station = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>} else if (touchId == 3) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (volume &gt; 0) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>volume -= 1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>} else if (touchId == 4) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (volume &lt; 15) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>volume += 1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>sendFreq(freq[station]);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>sendVolume(volume);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (handle != 0) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>nvs_set_u8(handle, "station", station);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>nvs_set_u8(handle, "volume", volume);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>updateDisplay();</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchId = -1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>} else if (touchId &lt; 0 &amp;&amp; touchMillis + 300 &lt; millis()) {</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchId = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T4, gotTouch1, threshold);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T6, gotTouch2, threshold);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T8, gotTouch3, threshold);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>touchAttachInterrupt(T9, gotTouch4, threshold);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+<p>&nbsp;<span>}</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>8.8</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-41"><b>
+<span><b>romsin.qi</b></span>
+<span><b>p</b></span>
+<span><b>作成手順</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>1</span>
+<span>8</span>
+<span>ビット</span>
+<span>ｘ</span>
+<span>409</span>
+<span>6</span>
+<span>ワード</span>
+<span>の</span>
+<span>SI</span>
+<span>N</span>
+<span>テーブルを</span>
+<span>、</span>
+<span>Quartus Prime Lite Editio</span>
+<span>n</span>
+<span>に添付されてい</span>
+<span>る</span>
+<span>ROM 1-POR</span>
+<span>T</span>
+<span>で作成します</span>
+<span>。</span>
+<span>ROM 2-POR</span>
+<span>T</span>
+<span>を使えば１つ</span>
+<span>の</span>
+<span>RO</span>
+<span>Mで</span>
+<span>SI</span>
+<span>N、</span>
+<span>CO</span>
+<span>S</span>
+<span>を出力できるのですが</span>
+<span>、</span>
+<span>Quartus Prime Lite Edition 18.</span>
+<span>1は</span>
+<span>ROM 2-POR</span>
+<span>Tの</span>
+<span>MegaWizar</span>
+<span>d</span>
+<span>を起動できなかったので</span>
+<span>、</span>
+<span>ROM 1-POR</span>
+<span>T</span>
+<span>で作成し</span>
+<span>た</span>
+<span>RO</span>
+<span>M</span>
+<span>を２つ使います。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>RO</span>
+<span>M</span>
+<span>データを記述し</span>
+<span>た</span>
+<span>romsim.mi</span>
+<span>f</span>
+<span>ファイル</span>
+<span>は</span>
+<span>FPG</span>
+<span>A</span>
+<span>プロジェクトフォルダに入っています。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>WIDTH=18;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DEPTH=4096;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ADDRESS_RADIX=HEX;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DATA_RADIX=HEX;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CONTENT BEGIN</span>
+ &nbsp;</p>
+<p>&nbsp;<span>0000 : 00000;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>0001 : 000c9;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>0002 : 00192;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>0003 : 0025b;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>0004 : 00324;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>...</span>
+ &nbsp;</p>
+<p>&nbsp;<span>0ffc : 3fcdc;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>0ffd : 3fda5;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>0ffe : 3fe6e;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>0fff : 3ff37;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>END;</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>以下の手順</span>
+<span>で</span>
+<span>SI</span>
+<span>N</span>
+<span>テーブ</span>
+<span>ル</span>
+<span>RO</span>
+<span>M</span>
+<span>を作成します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000035.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000115.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000013.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000000.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000100.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000078.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000062.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>Finis</span>
+<span>h</span>
+<span>ボタンをクリックし</span>
+<span>て</span>
+<span>SI</span>
+<span>N</span>
+<span>テーブ</span>
+<span>ル</span>
+<span>RO</span>
+<span>M　</span>
+<span>romsin.qi</span>
+<span>p</span>
+<span>を生成し、ダイアログ</span>
+<span>の</span>
+<span>Ye</span>
+<span>s</span>
+<span>ボタンをクリックしてプロジェクトに追加します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000032.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>MAX1</span>
+<span>0</span>
+<span>のプロジェクト</span>
+<span>に</span>
+<span>RO</span>
+<span>M</span>
+<span>を追加してコンパイルすると、次のエラーが表示されます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000105.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>RO</span>
+<span>M</span>
+<span>を初期化するために設定を変更します。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000051.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000044.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000088.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>8.9</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-42"><b>
+<span><b>MyNCO.</b></span>
+<span><b>v　</b></span>
+<span><b>Verilo</b></span>
+<span><b>g</b></span>
+<span><b>ソースコード</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>SI</span>
+<span>N</span>
+<span>テーブ</span>
+<span>ル</span>
+<span>RO</span>
+<span>M　</span>
+<span>romsin.qi</span>
+<span>p</span>
+<span>を使っ</span>
+<span>て</span>
+<span>NC</span>
+<span>O</span>
+<span>を作ります</span>
+<span>。</span>
+<span>3</span>
+<span>2</span>
+<span>ビット加算器にクロックごとに加算する値を入</span>
+<span>力</span>
+<span>phi_inc_i&nbsp;で設定することで</span>
+<span>、</span>
+<span>3</span>
+<span>2</span>
+<span>ビット加算器が桁あふれして０に戻るまでの周期を制御できます</span>
+<span>。</span>
+<span>3</span>
+<span>2</span>
+<span>ビット加算器の値</span>
+<span>を</span>
+<span>SI</span>
+<span>N</span>
+<span>テーブ</span>
+<span>ル</span>
+<span>RO</span>
+<span>M</span>
+<span>のアドレスに入力する</span>
+<span>と</span>
+<span>SI</span>
+<span>N</span>
+<span>出力が得られます</span>
+<span>。</span>
+<span>3</span>
+<span>2</span>
+<span>ビット加算器の値</span>
+<span>に</span>
+<span>9</span>
+<span>0</span>
+<span>°分足した値</span>
+<span>を</span>
+<span>SI</span>
+<span>N</span>
+<span>テーブ</span>
+<span>ル</span>
+<span>RO</span>
+<span>M</span>
+<span>のアドレスに入力する</span>
+<span>と</span>
+<span>CO</span>
+<span>S</span>
+<span>出力が得られます。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>`timescale 1ns/1ns</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>module MyNCO</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;#(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>parameter ACCUMULATOR_WIDTH = 32,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>parameter OUT_WIDTH = 12</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input&nbsp; wire clk,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input&nbsp; wire reset_n,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input&nbsp; wire clken,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input&nbsp; wire [ACCUMULATOR_WIDTH-1:0] phi_inc_i,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output wire [OUT_WIDTH-1:0] fsin_o,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output wire [OUT_WIDTH-1:0] fcos_o,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output wire out_valid</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>// ROM 18x4096</span>
+ &nbsp;</p>
+<p>&nbsp;<span>localparam ROM_DATA_WIDTH = 18;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>localparam ROM_ADDR_WIDTH = 12;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire [ROM_DATA_WIDTH-1:0] cos;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire [ROM_DATA_WIDTH-1:0] sin;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg [ACCUMULATOR_WIDTH-1:0] addr;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire [ACCUMULATOR_WIDTH-1:0] cos_addr;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign out_valid = 1'b1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (~reset_n)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>addr &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end else if (clken) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>addr &lt;= addr + phi_inc_i;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign cos_addr = addr + (1'b1 &lt;&lt; (ACCUMULATOR_WIDTH - 2));</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>romsin</span>
+<span>romsin_sin_inst (</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.address ( addr[ACCUMULATOR_WIDTH-1 -: ROM_ADDR_WIDTH] ),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.clock ( clk ),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.q ( sin )</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>romsin</span>
+<span>romsin_cos_inst (</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.address ( cos_addr[ACCUMULATOR_WIDTH-1 -: ROM_ADDR_WIDTH] ),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.clock ( clk ),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.q ( cos )</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign fcos_o = cos[ROM_DATA_WIDTH-1 -: OUT_WIDTH];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign fsin_o = sin[ROM_DATA_WIDTH-1 -: OUT_WIDTH];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>endmodule</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>9</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-43"><b>
+<span><b>ADC</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>オシロスコープのプローブをアンテナ端子に接続したとき</span>
+<span>の</span>
+<span>FF</span>
+<span>T</span>
+<span>表示です。電波の強い地域で直径１ｍのマグネチックループアンテナを接続しています。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000071.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>9.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-44"><b>
+<span><b>DAC</b></span>
+<span><b>A、</b></span>
+<span><b>DAC</b></span>
+<span><b>B</b></span>
+<span><b>の出力内容を変更</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>AD</span>
+<span>C</span>
+<span>の出力と周波数シフトの出力をオシロスコープ</span>
+<span>で</span>
+<span>FF</span>
+<span>T</span>
+<span>表示するため、トップモジュー</span>
+<span>ル</span>
+<span>top.</span>
+<span>v</span>
+<span>を変更します。トップモジュー</span>
+<span>ル</span>
+<span>top.</span>
+<span>v</span>
+<span>の最後にあ</span>
+<span>る</span>
+<span>DAC</span>
+<span>A、</span>
+<span>DAC</span>
+<span>B</span>
+<span>に値をセットしている箇所を書き換えます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000077.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>AD</span>
+<span>C</span>
+<span>の出力</span>
+<span>を</span>
+<span>R-2R DA</span>
+<span>Cの</span>
+<span>DAC</span>
+<span>A</span>
+<span>に、周波数シフトの出力</span>
+<span>を</span>
+<span>DAC</span>
+<span>B</span>
+<span>に接続し、オシロスコープで確認します。周波数シフトの出力は符号付き</span>
+<span>、</span>
+<span>R-2R DA</span>
+<span>C</span>
+<span>の入力は符号無しなので変換しています。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>&nbsp;</span>
+<span>assign daca = sin[11 -: 7];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign dacb = i[CIC_WIDTH-1 -: 7];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DACA &lt;= ADC[7 -: 7];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DACB &lt;= (dacb[6] == 0) ? dacb + 7'h40 : dacb - 7'h40;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>endmodule</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>まず</span>
+<span>は</span>
+<span>DAC</span>
+<span>A、</span>
+<span>AD</span>
+<span>C</span>
+<span>の出力</span>
+<span>の</span>
+<span>FF</span>
+<span>T</span>
+<span>表示です。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>F</span>
+<span>M</span>
+<span>放送の帯域を含ん</span>
+<span>だ</span>
+<span>73.728MHz~110.592MH</span>
+<span>z</span>
+<span>の信号</span>
+<span>が</span>
+<span>0Hz~36.864MH</span>
+<span>z</span>
+<span>の信号とし</span>
+<span>て</span>
+<span>AD</span>
+<span>C</span>
+<span>から出力されます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000053.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>次は周波数シフトの出力</span>
+<span>の</span>
+<span>FF</span>
+<span>T</span>
+<span>表示です。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>選局した放送局</span>
+<span>が</span>
+<span>0H</span>
+<span>z</span>
+<span>にシフトされます</span>
+<span>。</span>
+<span>0H</span>
+<span>z</span>
+<span>になればあとはローパスフィルターと間引きで、選局した放送局だけを選択して復調回路に渡すことができます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000033.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>9.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-45"><b>
+<span><b>トップモジュー</b></span>
+<span><b>ル</b></span>
+<span><b>top.</b></span>
+<span><b>v</b></span>
+<span><b>の該当箇所</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>A/</span>
+<span>D</span>
+<span>コンバータの出力は符号無しデータです。信号処理用に符号付きデー</span>
+<span>タ</span>
+<span>ad</span>
+<span>c</span>
+<span>に変換しています。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>module top</span>
+ &nbsp;</p>
+<p>&nbsp;<span>(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>...</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire [7:0] ADC,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output wire ENCODE,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>...</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>...</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg [7:0] uadc_r;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire signed [7:0] adc;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>...</span>
+ &nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>uadc_r &lt;= ADC;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign ENCODE = clk;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign adc = (uadc_r[7] == 0) ? uadc_r + 8'h80 : uadc_r - 8'h80;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>...</span>
+ &nbsp;</p>
+<p>&nbsp;<span>endmodule</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>符号付きデータに変換し</span>
+<span>た</span>
+<span>ad</span>
+<span>cと</span>
+<span>NC</span>
+<span>Oの</span>
+<span>SI</span>
+<span>N、</span>
+<span>CO</span>
+<span>S</span>
+<span>出力とを掛け合わせて選局した放送局</span>
+<span>を</span>
+<span>0H</span>
+<span>z</span>
+<span>にシフトします。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>module top</span>
+ &nbsp;</p>
+<p>&nbsp;<span>...</span>
+ &nbsp;</p>
+<p>&nbsp;<span>localparam CIC_WIDTH = 19;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>...</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire signed [7:0] adc;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>wire signed [11:0] sin;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire signed [11:0] cos;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>reg signed [CIC_WIDTH-1:0] i;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg signed [CIC_WIDTH-1:0] q;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>...</span>
+ &nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>i &lt;= adc * cos;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>q &lt;= adc * sin;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>...</span>
+ &nbsp;</p>
+<p>&nbsp;<span>endmodule</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>10</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-46"><b>
+<span><b>自</b></span>
+<span><b>作</b></span>
+<span><b>CI</b></span>
+<span><b>C</b></span>
+<span><b>フィルタ</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>73.728MSp</span>
+<span>s</span>
+<span>の入力データ</span>
+<span>を</span>
+<span>1/2</span>
+<span>4</span>
+<span>に間引い</span>
+<span>て</span>
+<span>3.072MSp</span>
+<span>s</span>
+<span>のデータを出力します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>●</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span>1.536MH</span>
+<span>z～</span>
+<span>3.072MH</span>
+<span>z</span>
+<span>のデータのイメージは反転し</span>
+<span>て</span>
+<span>1.536MH</span>
+<span>z～</span>
+<span>0H</span>
+<span>z</span>
+<span>に現れます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>●</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span>3.072MH</span>
+<span>z～</span>
+<span>4.608MH</span>
+<span>z</span>
+<span>のデータのイメージはそのま</span>
+<span>ま</span>
+<span>0Hz</span>
+<span>&nbsp;～</span>
+<span>1.536MH</span>
+<span>z</span>
+<span>に現れます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>●</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span>4.608MH</span>
+<span>z～</span>
+<span>6.144MH</span>
+<span>z</span>
+<span>のデータのイメージは反転し</span>
+<span>て</span>
+<span>1.536MH</span>
+<span>z～</span>
+<span>0H</span>
+<span>z</span>
+<span>に現れます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>●</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span>6.144MH</span>
+<span>z～</span>
+<span>7.68MH</span>
+<span>z</span>
+<span>のデータのイメージはそのま</span>
+<span>ま</span>
+<span>0Hz</span>
+<span>&nbsp;～</span>
+<span>1.536MH</span>
+<span>z</span>
+<span>に現れます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>以上のよう</span>
+<span>に</span>
+<span>0H</span>
+<span>z</span>
+<span>付近に現れるイメージ</span>
+<span>は</span>
+<span>CI</span>
+<span>C</span>
+<span>フィルタのギャップの部分になり、次</span>
+<span>の</span>
+<span>FI</span>
+<span>R</span>
+<span>フィルタ</span>
+<span>で</span>
+<span>0H</span>
+<span>z</span>
+<span>付近だけを取り出せ</span>
+<span>ば</span>
+<span>1.536MH</span>
+<span>z</span>
+<span>より上のデータのイメージを除去することができます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CI</span>
+<span>C</span>
+<span>フィルタの入力データの周波数をスイープさせて上記の動作をしているか確認します。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>10.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-47"><b>
+<span><b>入力データ</b></span>
+<span><b>を</b></span>
+<span><b>NC</b></span>
+<span><b>Oの</b></span>
+<span><b>CO</b></span>
+<span><b>S、</b></span>
+<span><b>SI</b></span>
+<span><b>N</b></span>
+<span><b>出力に変更</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>CI</span>
+<span>C</span>
+<span>フィルタに入力す</span>
+<span>るi、q</span>
+<span>データを</span>
+<span>、</span>
+<span>NC</span>
+<span>Oの</span>
+<span>CO</span>
+<span>S、</span>
+<span>SI</span>
+<span>N</span>
+<span>出力に変更します。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>always @(posedge clk) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>i &lt;= adc * cos;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>q &lt;= adc * sin;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>i &lt;= cos &lt;&lt;&lt; 6;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>q &lt;= sin &lt;&lt;&lt;&nbsp;6;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>10.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-48"><b>
+<span><b>サンプルスケッ</b></span>
+<span><b>チ</b></span>
+<span><b>AvalonPacket_NCO_Touc</b></span>
+<span><b>h</b></span>
+<span><b>を使う</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>タッチセンサー</span>
+<span>で</span>
+<span>NC</span>
+<span>O</span>
+<span>の周波数を連続して変更できるサンプルスケッ</span>
+<span>チ</span>
+<span>AvalonPacket_NCO_Touc</span>
+<span>h</span>
+<span>を使います。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000089.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>10.3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-49"><b>
+<span><b>DAC</b></span>
+<span><b>A、</b></span>
+<span><b>DAC</b></span>
+<span><b>B</b></span>
+<span><b>の出力内容を変更</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>CI</span>
+<span>C</span>
+<span>フィルタの入出力データをオシロスコープ</span>
+<span>で</span>
+<span>FF</span>
+<span>T</span>
+<span>表示するため、トップモジュー</span>
+<span>ル</span>
+<span>top.</span>
+<span>v</span>
+<span>を変更します。トップモジュー</span>
+<span>ル</span>
+<span>top.</span>
+<span>v</span>
+<span>の最後にあ</span>
+<span>る</span>
+<span>DAC</span>
+<span>A、</span>
+<span>DAC</span>
+<span>B</span>
+<span>に値をセットしている箇所を書き換えます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000108.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>CI</span>
+<span>C</span>
+<span>フィルタの入力データ</span>
+<span>を</span>
+<span>R-2R DA</span>
+<span>Cの</span>
+<span>DAC</span>
+<span>A</span>
+<span>に、出力データ</span>
+<span>を</span>
+<span>DAC</span>
+<span>B</span>
+<span>に接続し、オシロスコープ</span>
+<span>の</span>
+<span>FF</span>
+<span>T</span>
+<span>表示で出力データを確認します</span>
+<span>。</span>
+<span>R-2R DA</span>
+<span>C</span>
+<span>の入力は符号無しなので変換しています。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+<span>assign daca = i[CIC_WIDTH-1 -: 7];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign dacb = icic[CIC_WIDTH-1 -: 7];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DACA &lt;= (daca[6] == 0) ? daca + 7'h40 : daca - 7'h40;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (icic_valid)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DACB &lt;= (dacb[6] == 0) ? dacb + 7'h40 : dacb - 7'h40;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>endmodule</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>出力データのサンプリング周波</span>
+<span>数</span>
+<span>3.072MSp</span>
+<span>sの</span>
+<span>1 /&nbsp;</span>
+<span>2</span>
+<span>の範</span>
+<span>囲</span>
+<span>0Hz</span>
+<span>&nbsp;～</span>
+<span>1.536MH</span>
+<span>z</span>
+<span>に現れるイメージだけに注目します。ステップ</span>
+<span>を</span>
+<span>10000H</span>
+<span>z</span>
+<span>に変更し</span>
+<span>て</span>
+<span>NC</span>
+<span>O</span>
+<span>の周波数を上げていくと、予想通りにイメージが現れることが確認できます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>●</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span>1.536MH</span>
+<span>z～</span>
+<span>3.072MH</span>
+<span>z</span>
+<span>のデータのイメージは反転し</span>
+<span>て</span>
+<span>1.536MH</span>
+<span>z～</span>
+<span>0H</span>
+<span>z</span>
+<span>に現れます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>●</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span>3.072MH</span>
+<span>z～</span>
+<span>4.608MH</span>
+<span>z</span>
+<span>のデータのイメージはそのま</span>
+<span>ま</span>
+<span>0Hz</span>
+<span>&nbsp;～</span>
+<span>1.536MH</span>
+<span>z</span>
+<span>に現れます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>●</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span>4.608MH</span>
+<span>z～</span>
+<span>6.144MH</span>
+<span>z</span>
+<span>のデータのイメージは反転し</span>
+<span>て</span>
+<span>1.536MH</span>
+<span>z～</span>
+<span>0H</span>
+<span>z</span>
+<span>に現れます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>●</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span>6.144MH</span>
+<span>z～</span>
+<span>7.68MH</span>
+<span>z</span>
+<span>のデータのイメージはそのま</span>
+<span>ま</span>
+<span>0Hz</span>
+<span>&nbsp;～</span>
+<span>1.536MH</span>
+<span>z</span>
+<span>に現れます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000103.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>10.4</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-50"><b>
+<span><b>MyCIC.</b></span>
+<span><b>v　</b></span>
+<span><b>Verilo</b></span>
+<span><b>g</b></span>
+<span><b>ソースコード</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>自</span>
+<span>作</span>
+<span>CI</span>
+<span>C</span>
+<span>フィルタ</span>
+<span>の</span>
+<span>Verilo</span>
+<span>g</span>
+<span>ソースコードです。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>`timescale 1ns/1ns</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>module MyCIC</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;#(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>parameter NUM_STAGES = 4,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>parameter RATE = 24,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>parameter RATE_WIDTH = 5, // ceil(log2(RATE))</span>
+ &nbsp;</p>
+<p>&nbsp;<span>parameter SCALE_WIDTH = 19, // ceil(log2(RATE) * NUM_STAGES)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>parameter DATA_WIDTH = 19</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire clk,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire reset_n,</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>input wire [1:0] in_error,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire in_valid,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output wire in_ready,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire signed [DATA_WIDTH-1:0] in_data,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output reg signed [DATA_WIDTH-1:0] out_data,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output wire [1:0] out_error,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output reg out_valid,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire out_ready</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>localparam WIDTH = SCALE_WIDTH + DATA_WIDTH;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>integer i;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg signed [WIDTH-1:0] integ [0:NUM_STAGES];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg signed [WIDTH-1:0] diff [0:NUM_STAGES];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg signed [WIDTH-1:0] diff_d [0:NUM_STAGES];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg [RATE_WIDTH-1:0] count;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg next_out_valid;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>assign in_ready = 1'b1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign out_error = 2'b00;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (~reset_n)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for (i = 1; i &lt;= NUM_STAGES; i = i + 1) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>integ[i] &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>diff[1] &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end else if (in_valid)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>integ[1] &lt;= in_data + integ[1];</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>for (i = 2; i &lt;= NUM_STAGES; i = i + 1) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>integ[i] &lt;= integ[i-1] + integ[i];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>diff[1] &lt;= integ[NUM_STAGES-1] + integ[NUM_STAGES];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (~reset_n)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>count &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>next_out_valid &lt;= 1'b1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end else if (in_valid)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (count == RATE - 1)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>count &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>next_out_valid &lt;= 1'b1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end else</span>
+ &nbsp;</p>
+<p>&nbsp;<span>begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>count &lt;= count + 1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>next_out_valid &lt;= 1'b0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end else</span>
+ &nbsp;</p>
+<p>&nbsp;<span>begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>next_out_valid &lt;= 1'b0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (~reset_n)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for (i = 1; i &lt;= NUM_STAGES; i = i + 1) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>diff_d[i] &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>for (i = 2; i &lt;= NUM_STAGES; i = i + 1) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>diff[i] &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>out_data &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end else</span>
+ &nbsp;</p>
+<p>&nbsp;<span>begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>out_valid &lt;= next_out_valid;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>if (next_out_valid)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>for (i = 1; i &lt;= NUM_STAGES; i = i + 1) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>diff_d[i] &lt;= diff[i];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>for (i = 2; i &lt;= NUM_STAGES; i = i + 1) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>diff[i] &lt;= diff[i-1] - diff_d[i-1];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>out_data &lt;= (diff[NUM_STAGES] - diff_d[NUM_STAGES]) &gt;&gt;&gt; SCALE_WIDTH;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>endmodule</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h2><b>
+<span><b>10.5</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-51"><b>
+<span><b>入力データを元に戻す</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>動作確認後</span>
+<span>、</span>
+<span>CI</span>
+<span>C</span>
+<span>フィルタに入力す</span>
+<span>るi、q</span>
+<span>データを元に戻しておきます。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>always @(posedge clk) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>i &lt;= adc * cos;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>q &lt;= adc * sin;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h1><b>
+<span><b>11</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-52"><b>
+<span><b>自</b></span>
+<span><b>作</b></span>
+<span><b>FI</b></span>
+<span><b>R</b></span>
+<span><b>フィルタ</b></span>
+<span><b>（</b></span>
+<span><b>3.072MSp</b></span>
+<span><b>s→</b></span>
+<span><b>384kSp</b></span>
+<span><b>s</b></span>
+<span><b>）</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>CI</span>
+<span>C</span>
+<span>フィルタの出力をさら</span>
+<span>に</span>
+<span>1/</span>
+<span>8</span>
+<span>に間引</span>
+<span>く</span>
+<span>FI</span>
+<span>R</span>
+<span>フィルタは</span>
+<span>、</span>
+<span>3.072MSp</span>
+<span>s</span>
+<span>のデータを入力</span>
+<span>し</span>
+<span>384kSp</span>
+<span>s</span>
+<span>のデータを出力します</span>
+<span>。</span>
+<span>73.328MH</span>
+<span>z</span>
+<span>のシステムクロッ</span>
+<span>ク</span>
+<span>19</span>
+<span>2</span>
+<span>クロックの間に計算をすれば良いのです</span>
+<span>が1</span>
+<span>クロック加算器のクリアに使うので最</span>
+<span>大</span>
+<span>19</span>
+<span>1</span>
+<span>個になります。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>乗算用のデータを保持するため</span>
+<span>の</span>
+<span>RA</span>
+<span>M</span>
+<span>のアドレス</span>
+<span>が</span>
+<span>25</span>
+<span>6</span>
+<span>個で、計算中に間引き分</span>
+<span>の8</span>
+<span>個のデータが追加されるので、計算に使えるクロック数がもっと多い場合でも実際に</span>
+<span>は</span>
+<span>25</span>
+<span>6－8＝</span>
+<span>24</span>
+<span>8</span>
+<span>個までになります。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>3.072MSp</span>
+<span>s</span>
+<span>の入力データに対してカットオフ周波</span>
+<span>数</span>
+<span>192kH</span>
+<span>z</span>
+<span>としたいので、正規化遮断周波数</span>
+<span>は</span>
+<span>192 / 3072 = 0.062</span>
+<span>5</span>
+<span>にします。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>11.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-53"><b>
+<span><b>入力データ</b></span>
+<span><b>を</b></span>
+<span><b>NC</b></span>
+<span><b>Oの</b></span>
+<span><b>CO</b></span>
+<span><b>S、</b></span>
+<span><b>SI</b></span>
+<span><b>N</b></span>
+<span><b>出力に変更</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>i、q</span>
+<span>データを</span>
+<span>、</span>
+<span>NC</span>
+<span>Oの</span>
+<span>CO</span>
+<span>S、</span>
+<span>SI</span>
+<span>N</span>
+<span>出力に変更し、直</span>
+<span>接</span>
+<span>FI</span>
+<span>R</span>
+<span>フィルタに入力します。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>always @(posedge clk) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>i &lt;= adc * cos;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>q &lt;= adc * sin;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>i &lt;= cos &lt;&lt;&lt;&nbsp;6;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>q &lt;= sin &lt;&lt;&lt;&nbsp;6;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>MyFIR #(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.DATA_WIDTH(FIR_WIDTH)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>) fir8_inst_i (</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.clk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (clk),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.reset_n&nbsp;&nbsp; (1'b1),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>//</span>
+<span>.ast_sink_data (icic[CIC_WIDTH-1 -gain -: FIR_WIDTH]),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_sink_data (i[CIC_WIDTH-1 -: FIR_WIDTH]),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_sink_valid (icic_valid),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_sink_error (2'b00),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_source_data (ifir),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_source_valid (ifir_valid),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_source_error ()</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>11.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-54"><b>
+<span><b>サンプルスケッ</b></span>
+<span><b>チ</b></span>
+<span><b>AvalonPacket_NCO_Touc</b></span>
+<span><b>h</b></span>
+<span><b>を使う</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>タッチセンサー</span>
+<span>で</span>
+<span>NC</span>
+<span>O</span>
+<span>の周波数を連続して変更できるサンプルスケッ</span>
+<span>チ</span>
+<span>AvalonPacket_NCO_Touc</span>
+<span>h</span>
+<span>を使います。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000089.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>11.3</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-55"><b>
+<span><b>DAC</b></span>
+<span><b>A、</b></span>
+<span><b>DAC</b></span>
+<span><b>B</b></span>
+<span><b>の出力内容を変更</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>FI</span>
+<span>R</span>
+<span>フィルタの入出力データをオシロスコープ</span>
+<span>で</span>
+<span>FF</span>
+<span>T</span>
+<span>表示するため、トップモジュー</span>
+<span>ル</span>
+<span>top.</span>
+<span>v</span>
+<span>を変更します。トップモジュー</span>
+<span>ル</span>
+<span>top.</span>
+<span>v</span>
+<span>の最後にあ</span>
+<span>る</span>
+<span>DAC</span>
+<span>A、</span>
+<span>DAC</span>
+<span>B</span>
+<span>に値をセットしている箇所を書き換えます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000009.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>FI</span>
+<span>R</span>
+<span>フィルタの入力データ</span>
+<span>を</span>
+<span>R-2R DA</span>
+<span>Cの</span>
+<span>DAC</span>
+<span>A</span>
+<span>に、出力データ</span>
+<span>を</span>
+<span>DAC</span>
+<span>B</span>
+<span>に接続し、オシロスコープ</span>
+<span>の</span>
+<span>FF</span>
+<span>T</span>
+<span>表示で出力データを確認します</span>
+<span>。</span>
+<span>R-2R DA</span>
+<span>C</span>
+<span>の入力は符号無しなので変換しています。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+<span>assign daca = i[CIC_WIDTH-1 -: 7];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign dacb = ifir[FIR_WIDTH-1 -: 7];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DACA &lt;= (daca[6] == 0) ? daca + 7'h40 : daca - 7'h40;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (ifir_valid)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DACB &lt;= (dacb[6] == 0) ? dacb + 7'h40 : dacb - 7'h40;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>endmodule</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>出力データのサンプリング周波</span>
+<span>数</span>
+<span>384kSp</span>
+<span>sの</span>
+<span>1 /&nbsp;</span>
+<span>2</span>
+<span>の範</span>
+<span>囲</span>
+<span>0Hz</span>
+<span>&nbsp;～</span>
+<span>192kH</span>
+<span>z</span>
+<span>に現れるイメージだけに注目します</span>
+<span>。</span>
+<span>NC</span>
+<span>O</span>
+<span>の周波数を上げていくと</span>
+<span>、</span>
+<span>192kH</span>
+<span>z～</span>
+<span>384kH</span>
+<span>z</span>
+<span>の範囲</span>
+<span>は</span>
+<span>192kH</span>
+<span>z～</span>
+<span>0H</span>
+<span>z</span>
+<span>の向きにイメージが現れますが、レベルはどんどん下がっていきます。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000048.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>さら</span>
+<span>に</span>
+<span>NC</span>
+<span>O</span>
+<span>の周波数を上げて行って</span>
+<span>も</span>
+<span>0Hz</span>
+<span>&nbsp;～</span>
+<span>192kH</span>
+<span>z</span>
+<span>に現れるイメージのレベルは低いままです。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000036.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>11.4</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-56"><b>
+<span><b>ram16x256.qi</b></span>
+<span><b>p</b></span>
+<span><b>作成手順</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>FI</span>
+<span>R</span>
+<span>フィルタは係数と同じ個数の過去データとを乗算して出力データを作ります。２ポー</span>
+<span>ト</span>
+<span>RA</span>
+<span>M</span>
+<span>を使って、データ</span>
+<span>を</span>
+<span>RA</span>
+<span>M</span>
+<span>に書き込む動作と、乗算のため</span>
+<span>に</span>
+<span>RA</span>
+<span>M</span>
+<span>から読み出す動作を同時にできるようにします。</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000101.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000063.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000080.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000090.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000026.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000118.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>11.5</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-57"><b>
+<span><b>MyFIR.</b></span>
+<span><b>v　</b></span>
+<span><b>Verilo</b></span>
+<span><b>g</b></span>
+<span><b>ソースコード</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>自</span>
+<span>作</span>
+<span>FI</span>
+<span>R</span>
+<span>フィルタ</span>
+<span>（</span>
+<span>3.072MSp</span>
+<span>s→</span>
+<span>384kSp</span>
+<span>s</span>
+<span>）</span>
+<span>の</span>
+<span>Verilo</span>
+<span>g</span>
+<span>ソースコードです。係数は試行錯誤したいの</span>
+<span>で</span>
+<span>RO</span>
+<span>M</span>
+<span>にはしていません。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>フィルタ係数の設計は</span>
+<a href="http://dsp.jpn.org/dfdesign/fir/mado.shtml">
+<span><u>石川高専山田洋士研究室ホームページの窓関数法</u></span>
+</a>
+<span>を利用させていただきました。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>正規化された係数</span>
+<span>を</span>
+<span>3276</span>
+<span>7</span>
+<span>倍し</span>
+<span>て</span>
+<span>1</span>
+<span>6</span>
+<span>ビット整数にして使っています。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>`timescale 1ns/1ns</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>module MyFIR</span>
+ &nbsp;</p>
+<p>&nbsp;<span>#(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>parameter RATE = 8,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>parameter DATA_WIDTH = 16</span>
+ &nbsp;</p>
+<p>&nbsp;<span>)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire clk,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire reset_n,</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>input wire signed [DATA_WIDTH-1:0] ast_sink_data,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire ast_sink_valid,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire [1:0] ast_sink_error,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output reg signed [DATA_WIDTH-1:0] ast_source_data,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output reg ast_source_valid,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output wire [1:0] ast_source_error</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>localparam NUM_TAPS = 191;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>localparam H_WIDTH = 16;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>localparam Y_WIDTH = H_WIDTH + DATA_WIDTH - 1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>// RAM 16x256</span>
+ &nbsp;</p>
+<p>&nbsp;<span>localparam RAM_NUM_ADDRS = 256;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>integer i;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg signed [H_WIDTH-1:0] h[0:NUM_TAPS-1];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire signed [DATA_WIDTH-1:0] x;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg signed [Y_WIDTH-1:0] y;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>wire [7:0] raddr;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg [7:0] waddr;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg [7:0] last_waddr;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg [8:0] cnt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg [7:0] deci_cnt;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>// Normalized Frequency: 0.0625</span>
+ &nbsp;</p>
+<p>&nbsp;<span>initial begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[0] = -3;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[1] = -6;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[2] = -8;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[3] = -9;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[4] = -9;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[5] = -7;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[6] = -4;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[7] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[8] = 4;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[9] = 9;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[10] = 12;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[11] = 14;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[12] = 13;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[13] = 11;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[14] = 6;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[15] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[16] = -7;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[17] = -14;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[18] = -20;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[19] = -23;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[20] = -23;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[21] = -19;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[22] = -11;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[23] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[24] = 12;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[25] = 24;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[26] = 33;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[27] = 39;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[28] = 38;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[29] = 31;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[30] = 18;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[31] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[32] = -20;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[33] = -39;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[34] = -54;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[35] = -62;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[36] = -60;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[37] = -49;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[38] = -28;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[39] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[40] = 31;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[41] = 60;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[42] = 83;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[43] = 95;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[44] = 92;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[45] = 74;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[46] = 42;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[47] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[48] = -47;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[49] = -90;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[50] = -124;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[51] = -141;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[52] = -136;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[53] = -109;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[54] = -62;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[55] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[56] = 68;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[57] = 132;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[58] = 181;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[59] = 206;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[60] = 200;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[61] = 160;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[62] = 91;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[63] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[64] = -100;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[65] = -195;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[66] = -267;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[67] = -304;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[68] = -296;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[69] = -238;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[70] = -136;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[71] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[72] = 152;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[73] = 296;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[74] = 410;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[75] = 471;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[76] = 463;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[77] = 377;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[78] = 218;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[79] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[80] = -251;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[81] = -501;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[82] = -710;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[83] = -838;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[84] = -850;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[85] = -719;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[86] = -435;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[87] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[88] = 563;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[89] = 1218;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[90] = 1915;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[91] = 2597;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[92] = 3205;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[93] = 3684;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[94] = 3990;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[95] = 4096;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[96] = 3990;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[97] = 3684;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[98] = 3205;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[99] = 2597;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[100] = 1915;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[101] = 1218;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[102] = 563;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[103] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[104] = -435;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[105] = -719;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[106] = -850;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[107] = -838;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[108] = -710;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[109] = -501;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[110] = -251;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[111] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[112] = 218;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[113] = 377;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[114] = 463;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[115] = 471;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[116] = 410;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[117] = 296;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[118] = 152;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[119] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[120] = -136;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[121] = -238;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[122] = -296;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[123] = -304;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[124] = -267;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[125] = -195;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[126] = -100;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[127] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[128] = 91;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[129] = 160;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[130] = 200;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[131] = 206;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[132] = 181;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[133] = 132;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[134] = 68;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[135] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[136] = -62;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[137] = -109;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[138] = -136;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[139] = -141;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[140] = -124;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[141] = -90;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[142] = -47;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[143] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[144] = 42;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[145] = 74;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[146] = 92;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[147] = 95;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[148] = 83;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[149] = 60;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[150] = 31;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[151] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[152] = -28;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[153] = -49;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[154] = -60;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[155] = -62;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[156] = -54;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[157] = -39;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[158] = -20;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[159] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[160] = 18;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[161] = 31;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[162] = 38;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[163] = 39;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[164] = 33;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[165] = 24;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[166] = 12;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[167] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[168] = -11;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[169] = -19;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[170] = -23;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[171] = -23;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[172] = -20;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[173] = -14;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[174] = -7;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[175] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[176] = 6;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[177] = 11;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[178] = 13;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[179] = 14;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[180] = 12;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[181] = 9;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[182] = 4;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[183] = 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[184] = -4;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[185] = -7;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[186] = -9;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[187] = -9;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[188] = -8;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[189] = -6;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>h[190] = -3;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>assign ast_source_error = 2'b00;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (~reset_n) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>waddr &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>cnt &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>deci_cnt &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>y &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ast_source_data &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ast_source_valid &lt;= 1'b0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else begin</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>if (ast_sink_valid) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (waddr == RAM_NUM_ADDRS-1) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>waddr &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>waddr &lt;= waddr + 1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>if (deci_cnt == RATE-1) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>deci_cnt &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>ast_source_data &lt;= y[Y_WIDTH-1 -: DATA_WIDTH];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ast_source_valid &lt;= 1'b1;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>last_waddr &lt;= waddr;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>cnt &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>y &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>deci_cnt &lt;= deci_cnt + 1;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>if (cnt &lt; NUM_TAPS) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>cnt &lt;= cnt + 1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (cnt &lt; NUM_TAPS) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>y &lt;= y + h[cnt] * x;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ast_source_valid &lt;= 1'b0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (cnt &lt; NUM_TAPS) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>cnt &lt;= cnt + 1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (cnt &lt; NUM_TAPS) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>y &lt;= y + h[cnt] * x;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ast_source_valid &lt;= 1'b0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>assign raddr = (RAM_NUM_ADDRS + last_waddr - (NUM_TAPS - 1) + cnt &lt;= RAM_NUM_ADDRS-1)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>? RAM_NUM_ADDRS + last_waddr - (NUM_TAPS - 1) + cnt</span>
+ &nbsp;</p>
+<p>&nbsp;<span>: RAM_NUM_ADDRS + last_waddr - (NUM_TAPS - 1) + cnt - RAM_NUM_ADDRS;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>ram16x256 ram16x256_inst (</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.clock (clk),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.data (ast_sink_data),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.rdaddress (raddr),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.wraddress (waddr),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.wren (ast_sink_valid),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.q (x)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>endmodule</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>11.6</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-58"><b>
+<span><b>入力データを元に戻す</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>動作確認後、変更箇所を元に戻しておきます。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>always @(posedge clk) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>i &lt;= adc * cos;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>q &lt;= adc * sin;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>MyFIR #(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.DATA_WIDTH(FIR_WIDTH)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>) fir8_inst_i (</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.clk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (clk),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.reset_n&nbsp;&nbsp; (1'b1),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_sink_data (icic[CIC_WIDTH-1 -gain -: FIR_WIDTH]),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_sink_valid (icic_valid),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_sink_error (2'b00),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_source_data (ifir),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_source_valid (ifir_valid),</span>
+ &nbsp;</p>
+<p>&nbsp;<span>.ast_source_error ()</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>12</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-59"><b>
+<span><b>F</b></span>
+<span><b>M</b></span>
+<span><b>復調</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>Quartus Prime Lite Editio</span>
+<span>n</span>
+<span>で提供されてい</span>
+<span>る</span>
+<span>ALTERA_CORDIC I</span>
+<span>P</span>
+<span>を使って</span>
+<span>、</span>
+<span>I</span>
+<span>Q</span>
+<span>信号</span>
+<span>を</span>
+<span>P</span>
+<span>M</span>
+<span>復調して位相データに戻します。さらに位相データの直前のデータとの差分をとることで周波数データに戻します。この周波数データが元の音声データです。正確にはステレオ復調用のパイロット信号</span>
+<span>と</span>
+<span>L</span>
+<span>R</span>
+<span>差分データも含んだ複合信号ですが</span>
+<span>、</span>
+<span>19KH</span>
+<span>z</span>
+<span>のパイロット信号より低い帯域をローパスフィルターで取り出せ</span>
+<span>ば</span>
+<span>F</span>
+<span>M</span>
+<span>モノラルの音声データになります。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>12.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-60"><b>
+<span><b>vectran.qsy</b></span>
+<span><b>s</b></span>
+<span><b>作成手順</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>ALTERA_CORDIC I</span>
+<span>Pを</span>
+<span>P</span>
+<span>M</span>
+<span>復調用に設定し</span>
+<span>た</span>
+<span>vectran.qsy</span>
+<span>s</span>
+<span>を作ります。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000043.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000023.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000022.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000047.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000052.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000058.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000095.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000010.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000007.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000074.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000104.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<img src="images/000005.jpg" alt="" />
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>12.2</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-61"><b>
+<span><b>トップモジュー</b></span>
+<span><b>ル</b></span>
+<span><b>top.</b></span>
+<span><b>v</b></span>
+<span><b>の該当箇所</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>P</span>
+<span>M</span>
+<span>復調した位相デー</span>
+<span>タ</span>
+<span>phas</span>
+<span>e</span>
+<span>の直前のデータとの差分をとることで周波数データに戻します</span>
+<span>。</span>
+<span>phas</span>
+<span>eは</span>
+<span>-18</span>
+<span>0</span>
+<span>°</span>
+<span>～</span>
+<span>+18</span>
+<span>0</span>
+<span>°の範囲に収められているので、連続しているの</span>
+<span>に</span>
+<span>-18</span>
+<span>0</span>
+<span>°近くか</span>
+<span>ら</span>
+<span>+18</span>
+<span>0</span>
+<span>°近くに値が飛ぶことがあります。逆向き</span>
+<span>の</span>
+<span>+18</span>
+<span>0</span>
+<span>°近くか</span>
+<span>ら</span>
+<span>-18</span>
+<span>0</span>
+<span>°近くに値が飛ぶこともあります。差分が</span>
+<span>±</span>
+<span>18</span>
+<span>0</span>
+<span>°を超えるとき</span>
+<span>は</span>
+<span>36</span>
+<span>0</span>
+<span>°差し引いて周波数データが連続するようにしています。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>module top</span>
+ &nbsp;</p>
+<p>&nbsp;<span>...</span>
+ &nbsp;</p>
+<p>&nbsp;<span>localparam FIR_WIDTH = 16;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>localparam PI = 17'sb0011_0010_0100_0011_1; // pi = 0011 . 0010 0100 0011 1111 0110 1010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire signed [FIR_WIDTH-1:0] phase;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg signed [FIR_WIDTH-1:0] phase_r;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>wire signed [FIR_WIDTH:0] phase_diff;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg signed [FIR_WIDTH:0] freq;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>...</span>
+ &nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (ifir_valid) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>phase_r &lt;= phase;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>if (phase_diff &gt; PI) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>freq &lt;= phase_diff - (PI &lt;&lt;&lt; 1);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else if (phase_diff &lt; -PI) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>freq &lt;= phase_diff + (PI &lt;&lt;&lt; 1);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>freq &lt;= phase_diff;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign phase_diff = phase - phase_r;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>...</span>
+ &nbsp;</p>
+<p>&nbsp;<span>endmodule</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>13</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-62"><b>
+<span><b>自</b></span>
+<span><b>作</b></span>
+<span><b>FI</b></span>
+<span><b>R</b></span>
+<span><b>フィルタ</b></span>
+<span><b>（</b></span>
+<span><b>384kSp</b></span>
+<span><b>s→</b></span>
+<span><b>48kSp</b></span>
+<span><b>s</b></span>
+<span><b>）</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>自</span>
+<span>作</span>
+<span>FI</span>
+<span>R</span>
+<span>フィルタ</span>
+<span>（</span>
+<span>3.072MSp</span>
+<span>s→</span>
+<span>384kSp</span>
+<span>s</span>
+<span>）と係数以外同じです。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>F</span>
+<span>M</span>
+<span>復調した音声データ</span>
+<span>を</span>
+<span>I2S DA</span>
+<span>C</span>
+<span>用</span>
+<span>に</span>
+<span>1/</span>
+<span>8</span>
+<span>に間引</span>
+<span>く</span>
+<span>FI</span>
+<span>R</span>
+<span>フィルタは</span>
+<span>、</span>
+<span>384kSp</span>
+<span>s</span>
+<span>のデータを入力</span>
+<span>し</span>
+<span>48kSp</span>
+<span>s</span>
+<span>のデータを出力します</span>
+<span>。</span>
+<span>73.328MH</span>
+<span>z</span>
+<span>のシステムクロッ</span>
+<span>ク</span>
+<span>153</span>
+<span>6</span>
+<span>クロックの間に計算をすれば良いのです</span>
+<span>が1</span>
+<span>クロック加算器のクリアに使うので最</span>
+<span>大</span>
+<span>153</span>
+<span>5</span>
+<span>個になります。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>乗算用のデータを保持するため</span>
+<span>の</span>
+<span>RA</span>
+<span>M</span>
+<span>のアドレス</span>
+<span>が</span>
+<span>25</span>
+<span>6</span>
+<span>個で、計算中に間引き分</span>
+<span>の8</span>
+<span>個のデータが追加されるので、実際に</span>
+<span>は</span>
+<span>25</span>
+<span>6－8＝</span>
+<span>24</span>
+<span>8</span>
+<span>個までになります。今回</span>
+<span>は</span>
+<span>19</span>
+<span>9</span>
+<span>個にしました。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>384kSp</span>
+<span>s</span>
+<span>の入力データに対してカットオフ周波</span>
+<span>数</span>
+<span>15kH</span>
+<span>z</span>
+<span>位にしたいので、正規化遮断周波数</span>
+<span>は</span>
+<span>15&nbsp;/ 384</span>
+<span>&nbsp;</span>
+<span>≒&nbsp;0.03</span>
+<span>9</span>
+<span>にします。</span>
+ &nbsp;</p>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>14</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-63"><b>
+<span><b>自作ディエンファシス</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>F</span>
+<span>M</span>
+<span>放送は送信時に高域を強調しているので、反対の周波数特性で減衰させます。</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>y[n] = 0.7058823529411764 * y[n-1] + 0.2941176470588236 * x[n]</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>14.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-64"><b>
+<span><b>MyDeEmphasis.</b></span>
+<span><b>v　</b></span>
+<span><b>Verilo</b></span>
+<span><b>g</b></span>
+<span><b>ソースコード</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>音声データ</span>
+<span>を</span>
+<span>I2S DA</span>
+<span>C</span>
+<span>に出力す</span>
+<span>る</span>
+<span>Verilo</span>
+<span>g</span>
+<span>ソースコードです。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>`timescale 1ns/1ns</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>module MyDeEmphasis</span>
+ &nbsp;</p>
+<p>&nbsp;<span>#(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>parameter DATA_WIDTH = 10</span>
+ &nbsp;</p>
+<p>&nbsp;<span>)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire clk,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire reset_n,</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>input wire signed [DATA_WIDTH-1:0] in_data,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire in_valid,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output reg signed [DATA_WIDTH-1:0] out_data,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output wire out_valid</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (~reset_n) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>out_data &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else begin</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>if (in_valid) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>// y[n] = 0.7058823529411764 * y[n-1] + 0.2941176470588236 * x[n]</span>
+ &nbsp;</p>
+<p>&nbsp;<span>// 0 . 1011 0100 1011 0100 1011 0100 * y[n-1]</span>
+ &nbsp;</p>
+<p>&nbsp;<span>out_data &lt;=&nbsp;&nbsp; (out_data &gt;&gt;&gt; 1)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>+ (out_data &gt;&gt;&gt; 3)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>+ (out_data &gt;&gt;&gt; 4)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>+ (out_data &gt;&gt;&gt; 6)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>+ (out_data &gt;&gt;&gt; 9)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>// + 0 . 0100 1011 0100 1011 0100 1011 * x[n]</span>
+ &nbsp;</p>
+<p>&nbsp;<span>+ (in_data &gt;&gt;&gt; 2)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>+ (in_data &gt;&gt;&gt; 5)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>+ (in_data &gt;&gt;&gt; 7)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>+ (in_data &gt;&gt;&gt; 8)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>+ (in_data &gt;&gt;&gt; 10);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>assign out_valid = in_valid;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>endmodule</span>
+ &nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<div></div>
+<br />
+&nbsp;<h1><b>
+<span><b>15</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-65"><b>
+<span><b>自</b></span>
+<span><b>作</b></span>
+<span><b>I2S&nbsp;I/F</b></span>
+</b></a>
+</b></h1>
+<p>&nbsp;<span>48kSp</span>
+<span>s</span>
+<span>の音声データ</span>
+<span>を</span>
+<span>I2S DA</span>
+<span>C</span>
+<span>に送るシリアルデータに変換します。これでラジオの完成です。</span>
+ &nbsp;</p>
+<h2><b>
+<span><b>15.1</b></span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a id="calibre_link-66"><b>
+<span><b>MyI2S.</b></span>
+<span><b>v　</b></span>
+<span><b>Verilo</b></span>
+<span><b>g</b></span>
+<span><b>ソースコード</b></span>
+</b></a>
+</b></h2>
+<p>&nbsp;<span>音声データ</span>
+<span>を</span>
+<span>I2S DA</span>
+<span>C</span>
+<span>に出力す</span>
+<span>る</span>
+<span>Verilo</span>
+<span>g</span>
+<span>ソースコードです。</span>
+ &nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td>
+<p>&nbsp;<span>`timescale 1ns/1ns</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>module MyI2S</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;#(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>parameter VOLUME_WIDTH = 4,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>parameter IN_WIDTH = 10,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>parameter OUT_WIDTH = 32</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;)</span>
+ &nbsp;</p>
+<p>&nbsp;<span>(</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire clk, // 73.728M</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire reset_n,</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>input wire [VOLUME_WIDTH-1:0] volume,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire signed [IN_WIDTH-1:0] in_left,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire signed [IN_WIDTH-1:0] in_right,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>input wire in_valid,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output reg SCK,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output reg BCK,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output reg LRCK,</span>
+ &nbsp;</p>
+<p>&nbsp;<span>output reg DATA</span>
+ &nbsp;</p>
+<p>&nbsp;<span>);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>localparam LRCK_CLK = 1536;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>localparam LRCK_HALF_CLK = LRCK_CLK &gt;&gt; 1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>localparam BCK_CLK = 24;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>localparam BCK_HALF_CLK = BCK_CLK &gt;&gt; 1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg [10:0] lrck_cnt; // fs = 48k = clk / 1536</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg [5:0] bck_cnt; // fs * 64 = clk / 24</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>reg signed [OUT_WIDTH-1:0] out_left;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>reg signed [OUT_WIDTH-1:0] out_right;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (~reset_n) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>lrck_cnt &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>LRCK &lt;= 1'b1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (in_valid) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>lrck_cnt &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>LRCK &lt;= 1'b1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>lrck_cnt &lt;= lrck_cnt + 1;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>if (lrck_cnt == LRCK_HALF_CLK-1) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>LRCK &lt;= 1'b0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>always @(posedge clk) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (~reset_n) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>bck_cnt &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>BCK &lt;= 1'b0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DATA &lt;= 1'b0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>out_left &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>out_right &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (in_valid) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>bck_cnt &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>BCK &lt;= 1'b0;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>DATA &lt;= (lrck_cnt &lt; LRCK_HALF_CLK) ? out_left[OUT_WIDTH-1] :&nbsp;out_right[OUT_WIDTH-1];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>out_left &lt;= in_left &lt;&lt;&lt; (OUT_WIDTH - IN_WIDTH - volume);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>out_right &lt;= in_right &lt;&lt;&lt; (OUT_WIDTH - IN_WIDTH - volume);</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (bck_cnt == BCK_CLK-1) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>bck_cnt &lt;= 0;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>BCK &lt;= 1'b0;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>DATA &lt;= (lrck_cnt &lt; LRCK_HALF_CLK) ? out_left[OUT_WIDTH-1] : out_right[OUT_WIDTH-1];</span>
+ &nbsp;</p>
+<p>&nbsp;<span>if (lrck_cnt &lt; LRCK_HALF_CLK) out_left &lt;= out_left &lt;&lt;&lt; 1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else out_right &lt;= out_right &lt;&lt;&lt; 1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>else begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>bck_cnt &lt;= bck_cnt + 1;</span>
+ &nbsp;</p>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;<span>if (bck_cnt == BCK_HALF_CLK-1) begin</span>
+ &nbsp;</p>
+<p>&nbsp;<span>BCK &lt;= 1'b1;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>end</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>&nbsp;</span>
+ &nbsp;</p>
+<p>&nbsp;<span>endmodule</span>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<script>function myFunction(){document.getElementById("tateyoko").classList.toggle("tateread")}</script></body></html>

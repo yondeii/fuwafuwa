@@ -1,0 +1,4686 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node.jsビギナーズガイド: サーバーサイドJavaScriptをマスターせよ！ PRIMERシリーズ (libroブックス)</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/mainday.css" title="default">
+<link rel="alternate stylesheet" href="/css/mainnight.css" title="alternate">
+<script type="text/javascript" src="/js/styleswitcher.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+</head>
+<body>
+<div class="novelpage">
+<div class="novelbody">
+<div id="tateyoko">
+<div id="_top"></div>
+<a href="/">🏠</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('default'); return false;">日</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">月</a>&emsp;
+<a href="#_top" onclick="myFunction()" style="cursor: pointer;">縦書き／横書き</a>
+<div id="calibre_link-0">
+<div>
+<div>
+<table class="noveltitle">
+<tr>
+<td colspan="2"><i><span><i>Node.jsビギナーズガイド: サーバーサイドJavaScriptをマスターせよ！ PRIMERシリーズ (libroブックス)</i></span></i></td>
+</tr>
+<tr>
+                    
+                    
+      </tr>
+<tr>
+<td colspan="2">掌田津耶乃</td>
+</tr>
+<tr>
+<td colspan="2">tuyano project (2015)</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+</tr>
+</table>
+<div></div>
+</div>
+<div></div>
+</div>
+</div>
+
+
+
+<div id="calibre_link-10">
+<div>
+<p><a id="calibre_link-124"></a><span><i>サーバーサイドJavaScriptをマスターせよ！</i></span></p>
+<p><a id="calibre_link-125"></a><span><b>Node.jsビギナーズガイド</b></span></p>
+ 
+<hr />
+<p><a id="calibre_link-126"></a><span><i>掌田津耶乃</i></span></p>
+<p>&nbsp;</p>
+<p>
+</p><div id="calibre_link-127"></div>
+</div>
+</div>
+<div id="calibre_link-21">
+<div>
+<h1 id="calibre_link-128"><b><a id="calibre_link-34"><b></b></a><span><b>Node.js = サーバーサイドJavaScript!</b></span></b></h1><p><span>Webの開発は日進月歩だ。次々と新しいサーバー用のプログラミング言語が登場し、そして陳腐化していく。そのスピードについていくのはとてもじゃないがアマチュアの手には余る。</span></p>
+<p>&nbsp;</p>
+<p><span>僕らは一体、どんな言語を覚えればいいのだろう。</span></p>
+<p>&nbsp;</p>
+<p><span>クライアント側は、JavaScriptで決まりだ。じゃあ、サーバー側は？　JavaScriptみたいな「とりあえずこれを覚えておけばオッケー、当分は心配ない」っていう言語はどれ？　ていうか、なんで両方JavaScriptじゃダメなの？</span></p>
+<p>&nbsp;</p>
+<p><span>そんな素人くさい疑問に、本気で答えてくれたもの、それが「Node.js」だ。これは、オープンソースのサーバーサイドJavaScript環境。そう、サーバー側でJavaScriptを動かす環境なのだ。......いや、これは正確じゃないな。</span><span><b>JavaScriptでサーバーを作れる環境</b></span><span>なのだ。</span></p>
+<p>&nbsp;</p>
+<p><span>Node.jsは、Webサーバーに何らかのプラグインを追加してJavaScriptを対応させた、といったものではない。これは、「サーバー機能を持ったJavaScriptランタイム」だ。つまり、Node.jsでプログラムを実行して、サーバーを作って起動し処理できるんだ。</span></p>
+<p>&nbsp;</p>
+<p><span>「サーバーを作る」なんていうと、猛烈に難しそうだけど、そんなことはない。Node.jsには、サーバーのオブジェクトが用意されている。これを作ってメソッドを呼び出せば、それでサーバーが実行される。</span></p>
+<p>&nbsp;</p>
+<p><span>もちろん、いろいろ覚えないといけないことはある。だけど、他のサーバー用言語にはない、とても大きな魅力がNode.jsにはある。それは、「クライアントもサーバーも、１つの言語で全部開発できる」ってこと。</span></p>
+<p>&nbsp;</p>
+<p><span>もう、僕らはWebサイトを構築するのに、いくつもの言語を覚えて組み合わせる必要なんてない。ただ、JavaScriptだけあればいいんだ。この安心感。やっと見つけた、一つだけの答え。</span></p>
+<p>&nbsp;</p>
+<p><span>僕らは一体、どんな言語を覚えればいいんだ？</span></p>
+<p>&nbsp;</p>
+<p><span>「もちろん、JavaScript一択。」</span></p>
+<p>&nbsp;</p>
+<p><span>いいじゃないか、Node.js。世の中、とにかくなんでも複雑になりすぎる。せめて自分のサーバー開発ぐらいは、シンプルにいきたいものだ。違うかい？</span></p>
+<p>&nbsp;</p>
+<p><span>（※node.js 6.7.0、express 4.13.4対応）</span></p>
+<p>&nbsp;</p>
+<p><span>2016.10　掌田津耶乃</span></p>
+<p>
+</p><div id="calibre_link-129"></div>
+</div>
+</div>
+<div id="calibre_link-33">
+<div>
+<br id="calibre_link-130" /><p></p>
+<p>&nbsp;</p>
+<div><table cellspacing="0" cellpadding="0" border="1"> 
+<tbody name="toc" id="calibre_link-131"> 
+<tr> 
+<td>
+<nav epubU0003Atype="landmarks">
+<p>table of contents</p>
+</nav>
+
+	</td> 
+</tr> 
+</tbody> 
+</table></div>
+<p>&nbsp;</p>
+<p><a href="#calibre_link-34"><span><u>Node.js = サーバーサイドJavaScript!</u></span></a></p>
+<p>&nbsp;</p>
+<p><a href="#calibre_link-35"><span><u>1. Node.js利用の準備を整えよう</u></span></a></p>
+<p><a href="#calibre_link-36"><span><u>Node.jsってどんなもの？</u></span></a></p>
+<p><a href="#calibre_link-37"><span><u>Node.jsを準備しよう！</u></span></a></p>
+<p><a href="#calibre_link-38"><span><u>インストールを実行しよう</u></span></a></p>
+<p><a href="#calibre_link-39"><span><u>Node.jsはどこにある？</u></span></a></p>
+<p><a href="#calibre_link-40"><span><u>Node.jsのスクリプトを書いてみよう！</u></span></a></p>
+<p><a href="#calibre_link-41"><span><u>Herokuの利用環境を整えよう</u></span></a></p>
+<p><a href="#calibre_link-42"><span><u>Heroku公開に必要なファイルの準備</u></span></a></p>
+<p><a href="#calibre_link-43"><span><u>Herokuにデプロイしてみよう！</u></span></a></p>
+<p><a href="#calibre_link-44"><span><u>ダッシュボードで確認しよう</u></span></a></p>
+<p>&nbsp;</p>
+<p><a href="#calibre_link-45"><span><u>2. Node.jsのスクリプトの基本を覚えよう</u></span></a></p>
+<p><a href="#calibre_link-46"><span><u>基本のスクリプトとhttpオブジェクト</u></span></a></p>
+<p><a href="#calibre_link-47"><span><u>リクエスト処理用関数について</u></span></a></p>
+<p><a href="#calibre_link-48"><span><u>リクエストの処理</u></span></a></p>
+<p><a href="#calibre_link-49"><span><u>ファイルの読み込みと「fs」オブジェクト</u></span></a></p>
+<p><a href="#calibre_link-50"><span><u>HTMLファイルを読み込んで表示する</u></span></a></p>
+<p><a href="#calibre_link-51"><span><u>HTML内の一部をスクリプトで変更する</u></span></a></p>
+<p>&nbsp;</p>
+<p><a href="#calibre_link-52"><span><u>3. EJSテンプレートエンジンを使おう！</u></span></a></p>
+<p><a href="#calibre_link-53"><span><u>npmでEJSをインストールしよう</u></span></a></p>
+<p><a href="#calibre_link-54"><span><u>テンプレートで使える特殊なタグ</u></span></a></p>
+<p><a href="#calibre_link-55"><span><u>簡単なテンプレートを作る</u></span></a></p>
+<p><a href="#calibre_link-56"><span><u>EJSによるテンプレートの表示</u></span></a></p>
+<p><a href="#calibre_link-57"><span><u>テンプレート部品を組み合わせる</u></span></a></p>
+<p><a href="#calibre_link-58"><span><u>配列データを繰り返し出力する</u></span></a></p>
+<p>&nbsp;</p>
+<p><a href="#calibre_link-59"><span><u>4. 複数ページのルーティングとフォーム送信</u></span></a></p>
+<p><a href="#calibre_link-60"><span><u>複数ページのルーティングの考え方</u></span></a></p>
+<p><a href="#calibre_link-61"><span><u>「url」オブジェクトによるURL処理</u></span></a></p>
+<p><a href="#calibre_link-62"><span><u>ルート処理の流れをチェックする</u></span></a></p>
+<p><a href="#calibre_link-63"><span><u>フォームのPOST送信について</u></span></a></p>
+<p><a href="#calibre_link-64"><span><u>POST送信されたデータの処理</u></span></a></p>
+<p>&nbsp;</p>
+<p><a href="#calibre_link-65"><span><u>5. Expressを導入しよう</u></span></a></p>
+<p><a href="#calibre_link-66"><span><u>フレームワークと「Express」</u></span></a></p>
+<p><a href="#calibre_link-67"><span><u>Expressのインストールについて</u></span></a></p>
+<p><a href="#calibre_link-68"><span><u>ExpressのWebアプリケーションを作る</u></span></a></p>
+<p><a href="#calibre_link-69"><span><u>Express利用の基本スクリプト</u></span></a></p>
+<p><a href="#calibre_link-70"><span><u>Expressの基本処理を整理する</u></span></a></p>
+<p><a href="#calibre_link-71"><span><u>テンプレートを利用する</u></span></a></p>
+<p><a href="#calibre_link-72"><span><u>テンプレート利用の処理を作る</u></span></a></p>
+<p><a href="#calibre_link-73"><span><u>テンプレート利用の処理のポイント</u></span></a></p>
+<p>&nbsp;</p>
+<p><a href="#calibre_link-74"><span><u>6. Express GeneratorでWebアプリケーションを自動生成する</u></span></a></p>
+<p><a href="#calibre_link-75"><span><u>Express Application Generatorの準備</u></span></a></p>
+<p><a href="#calibre_link-76"><span><u>ExpressコマンドでWebアプリを作る</u></span></a></p>
+<p><a href="#calibre_link-77"><span><u>Webアプリケーションの中身をチェック！</u></span></a></p>
+<p><a href="#calibre_link-78"><span><u>メインプログラム「app.js」について</u></span></a></p>
+<p><a href="#calibre_link-79"><span><u>「routes」のスクリプトとテンプレート</u></span></a></p>
+<p><a href="#calibre_link-80"><span><u>「helo」ページを作ってみよう</u></span></a></p>
+<p>&nbsp;</p>
+<p><a href="#calibre_link-81"><span><u>7. Expressによるリクエスト処理の基本</u></span></a></p>
+<p><a href="#calibre_link-82"><span><u>クエリー文字列によるパラメータ送信</u></span></a></p>
+<p><a href="#calibre_link-83"><span><u>フォームの送信について</u></span></a></p>
+<p><a href="#calibre_link-84"><span><u>Ajaxでアクセスした情報をJSONで受け取る</u></span></a></p>
+<p><a href="#calibre_link-85"><span><u>クッキーの利用</u></span></a></p>
+<p>&nbsp;</p>
+<p><a href="#calibre_link-86"><span><u>8. Node.js/ExpressでPostgreSQLを使おう</u></span></a></p>
+<p><a href="#calibre_link-87"><span><u>Node.jsでのPostgreSQLの利用</u></span></a></p>
+<p><a href="#calibre_link-88"><span><u>データベースの準備をする</u></span></a></p>
+<p><a href="#calibre_link-89"><span><u>Expressのapp.jsを用意する</u></span></a></p>
+<p><a href="#calibre_link-90"><span><u>indexでテーブルの一覧を表示する</u></span></a></p>
+<p><a href="#calibre_link-91"><span><u>データベースアクセスの流れ</u></span></a></p>
+<p><a href="#calibre_link-92"><span><u>レコードの追加を行う</u></span></a></p>
+<p><a href="#calibre_link-93"><span><u>データ追加の処理の流れ</u></span></a></p>
+<p>
+</p><div id="calibre_link-132"></div>
+</div>
+</div>
+<div id="calibre_link-103">
+<div>
+<table cellspacing="0" cellpadding="0" border="0"> 
+<tbody> 
+<tr> 
+<td> 
+
+<h1 id="calibre_link-133"><b><a id="calibre_link-35"><b></b></a><span><b>1. Node.js利用の準備を整えよう</b></span></b></h1><p><span><b>まずは、Node.jsをインストールし、実際にスクリプトを実行するまでやってみましょう。更には、Herokuのアカウントを取得し、作ったアプリをデプロイし公開できるようにしましょう。</b></span></p>
+<p>&nbsp;</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+
+
+</div>
+</div>
+<div id="calibre_link-112">
+<div>
+<h2 id="calibre_link-134"><b><a id="calibre_link-36"><b></b></a><span><b>Node.jsってどんなもの？</b></span></b></h2><p><span><b>Node.j</b></span><span><b>s</b></span><span>は、JavaScriptで処理を実行できるプログラム実行環境です。JavaScriptのプログラムを処理するランタイムを持っており、Webブラウザなどを使わずスクリプト単体で実行することができます。</span></p>
+<p>&nbsp;</p>
+<p><span>これだけだと、「JavaScriptで処理を実行なんて、するかな？　どんな用途があるんだろう？」と思うかも知れません。が、Node.jsがこれだけ広く利用されるようになったのは、標準でHTTPサーバープログラムの機能をライブラリに用意しているためです。つまり、</span><span><u>JavaScriptでHTTPサーバープログラムを作り、動かすことができる</u></span><span>のです。</span></p>
+<p>&nbsp;</p>
+<p><span>多くのWebサイトは、あらかじめ用意されている公開ディレクトリにHTMLファイルなどを配置して作成します。「サーバーサイドの開発」といえば、PerlとかPHPとかいったプログラミング言語で処理を書き、それをサーバーに設置します。こうしたものでは、サーバープログラムは別に用意されていて、そこで公開されるファイルを作成します。</span></p>
+<p>&nbsp;</p>
+<p><span>が、Node.jsは、「サーバープログラムそのもの」を作成するのです。「HTTPのアクセスを受け付け、アドレスに応じて表示する処理を出力する」といったサーバーの処理そのものを作っていくのです。もちろん、JavaScriptで！　これを実行すれば、Node.jsで書いたHTTPサーバーのプログラムがその場で実行され、Webアプリケーションがうごくようになる、というわけです。</span></p>
+<p>&nbsp;</p>
+<p><span>「サーバーそのものを作る？　なんかすごく難しそうなんですけど」――うん、確かに。ただ、「サーバーを作る」といっても、Node.jsにはちゃんと「サーバーのオブジェクト」みたいなのがあって、それを用意するだけで作ることができるので、極端に難しいというわけではありません。そんなに難易度が高かったらこんなにも注目されることもないでしょうから。</span></p>
+
+
+<h3><b><a id="calibre_link-135"><b></b></a><span><b>Node.jsの特徴</b></span></b></h3>
+<p><span>では、このNode.jsというのはどんなものなのでしょう。その特徴を簡単に整理してみましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・サーバーサイドとクライアントサイドを一つの言語で開発できる</b></span></p>
+<p><span>Webの開発というのは、とにかくあちこちの言語を組み合わせて継ぎ接ぎだらけで作っている感があります。Webページの中ではJavaScriptが動き、サーバーではPHPなどが動く、といった具合ですね。が、Node.jsを使えば、サーバーからクライアントまですべて「JavaScriptだけ」で作れます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・イベントループ方式</b></span></p>
+<p><span>従来タイプのWebサーバーでは、アセスごとに新たにスレッドが起動し処理を実行します。このためアクセスが集中すると、猛烈にスレッドが増え、がくんと効率が落ちてしまいました。</span></p>
+<p>&nbsp;</p>
+<p><span>Node.jsは「イベントループ」方式をとることで、スケーリング（いきなり猛烈アクセスされたりしたときにも対応できる能力）に秀でていることを証明しました。イベントループ方式っていうのは、猛烈なスピードでイベントループを回し、アクセスしてきたものを順番に処理していくやり方です。</span></p>
+<p>&nbsp;</p>
+<p><span>――まぁ、私たちシロウトが「Webアプリを作ってみるか」というとき、スケーリングが......なんていわれてもピンと来ないかも知れません。けれど、「とにかく全部JavaScriptだけ」というのは、なかなかに魅力的じゃないでしょうか。</span></p>
+
+
+<h3><b><a id="calibre_link-136"><b></b></a><span><b>今なら手軽に利用できる！</b></span></b></h3>
+<p><span>このNode.js、しばらく前までは、「じゃあ、ちょっと試してみようかな」と思った人がいたとしてもなかなか手が出せませんでした。理由は２つ。１つは「Linuxとかでないとダメ」だったから。WindowsやMacでちゃちゃっと使えないとやる気になれませんからね。</span></p>
+<p>&nbsp;</p>
+<p><span>そして２つ目は「本番環境がない」ということ。せっかく覚えても、そのへんのレンタルサーバーじゃNode.jsなんて動きません。自前でサーバーマシンを用意して公開すればいい？　冗談でしょ？</span></p>
+<p>&nbsp;</p>
+<p><span>......そんなマニア向けの環境っぽかったNode.jsも、今ではWindowsやMac版もでき、誰でも簡単にインストールして使えるようになりました。そして本番環境も、「クラウド」サービスを利用することで、誰でも無料でNode.jsによるサイト構築ができるようになってきました。例えば、Herokuというクラウドサービスは、だれでも無料でサーバー環境が構築できます。このサーバー環境にNode.jsが利用できるのです。</span></p>
+<p>&nbsp;</p>
+<p><span>こんな具合に、アマチュアレベルでも手を出せる環境が整ってきたのです。もはや障害は何もありません。今こそ、Node.jsを始めるのに絶好の機会なのです。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-111">
+<div>
+<h2 id="calibre_link-137"><b><a id="calibre_link-37"><b></b></a><span><b>Node.jsを準備しよう！</b></span></b></h2><p><span>では早速、Node.jsを用意しましょう。Node.jsは現在、以下のアドレスにて配布されています。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>https://nodejs.org/</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00027.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>この本家サイトにアクセスし、インストーラをダウンロードするボタンを押せば、現在の環境にインストールするためのソフトウェアが自動的に選択されダウンロードされます。ここには、推奨版（本書執筆時、v4.6.0LTS）と最新版（本書執筆時、v6.7.0 Current）が配布されています。最新版は、なにしろ最新版ですから一番新しい機能が揃っていますが、新しすぎてプラグインなどが対応していないこともあります。実際の業務などにすぐ利用するという場合は、推奨版のほうがバグなども枯れていていいでしょう。学習のためなら、最新版で新しい機能を学んでおいたほうがいいでしょう。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-119">
+<div>
+<h2 id="calibre_link-138"><b><a id="calibre_link-38"><b></b></a><span><b>インストールを実行しよう</b></span></b></h2><p><span>インストーラは、特に難しいところはありません。インストーラの表示に従って進めていくだけです。では簡単にまとめておきましょう。なお、ここではv6.7.0のWindows 64bit版を使って説明します。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・Welcome画面</b></span></p>
+<p><span>インストーラを起動すると最初にWelcome画面が現れます。同時に、インストールできる状態かチェックを行います。「Next」ボタンが選択できるようになれば次に進めます。</span></p>
+<p><img src="images/00018.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span><b>・ユーザーライセンス契約</b></span></p>
+<p><span>次に進むと、ユーザーライセンス契約の画面になります。ここで、「I accept......」というチェックボックスをONにして利用許諾契約に同意します。そして次に進みます。</span></p>
+<p><img src="images/00028.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span><b>・インストール場所</b></span></p>
+<p><span>続いて、Destination Folder（インストールするフォルダ）画面になります。デフォルトでは「Program Files」フォルダ内に「nodejs」というフォルダを作り、この中にインストールするようになっています。特に理由がない限りはそのままにしておきましょう。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00036.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span><b>・カスタムセットアップ</b></span></p>
+<p><span>インストールする内容を設定する画面になります。ここでどの項目をインストールするかを指定できます。デフォルトで必要なもの全てがインストールされるようになっていますので、そのまま次に進みましょう。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00054.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span><b>・準備完了</b></span></p>
+<p><span>「Ready to install Node.js」画面になれば、準備完了です。「Install」ボタンをクリックしてインストールを開始しましょう。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00071.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span><b>・インストール完了</b></span></p>
+<p><span>インストールには多少の時間がかかります。しばらく待ってると、やがて「Completed the Node.js Setup Wizard」という画面が現れます。これが出たらインストール完了です。「Finish」ボタンを押して終了して下さい。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00006.jpeg" alt="" /></p>
+
+
+</div>
+</div>
+<div id="calibre_link-107">
+<div>
+<h2 id="calibre_link-139"><b><a id="calibre_link-39"><b></b></a><span><b>Node.jsはどこにある？</b></span></b></h2><p><span>インストールすると、Windowsの場合には「Node.js command prompt」という項目がスタートメニューの中に追加されます。これは、実はただのコマンドプロンプトです。何か専用のアプリのようなものを期待した人、残念でした。Node.jsは、実はダブルクリックして起動するとウインドウがぱっと開いて操作する......というようなアプリケーション本体はありません。</span></p>
+<p>&nbsp;</p>
+<p><span>WindowsでもMacでも、Node.jsはコマンドプロンプトやターミナルを起動し、コマンドを実行して使います。何しろこれ、ただの「サーバー環境のスクリプトを実行するプログラム」でしかないのですから。コマンドで「このスクリプトを実行しろ」と命令するぐらいで、他に機能なんてありません。</span></p>
+<p>&nbsp;</p>
+<p><span>え、じゃあWebアプリの作成は？と思った人。自分で必要なファイルを作って行います。編集作業は？　エディタかなにか持ってるでしょう？　本番環境へのデプロイは？　ただのサーバープログラムにあるわけないでしょ。......というわけで、「スクリプトを実行する」ということ以外のことは、全部、自前で面倒見ないといけません。</span></p>
+<p>&nbsp;</p>
+<p><span>とりあえず、本番環境へのデプロイはしばらく脇へ置いておくとして、使いやすいテキストエディタを用意しておきましょう。もちろん、標準のメモ帳やテキストエディットでもOKですが、できればJavaScriptに対応したエディタが使えるといいですね！　ここではWindows用に「Notepad++」を紹介しておきます。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>http://notepad-plus-plus.org/</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00026.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>これも専用のインストーラが用意されているので、インストールは簡単です。このNotepad++は、非常に多くのプログラミング言語に対応しており、キーワードなどの色分け表示や構文にあわせたインデント、候補のポップアップ表示などの機能を備えています。プログラミングにはかなり重宝するエディタですよ！</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-13">
+<div>
+<h2 id="calibre_link-140"><b><a id="calibre_link-40"><b></b></a><span><b>Node.jsのスクリプトを書いてみよう！</b></span></b></h2><p><span>では、さっそくNode.jsを使ってみましょう。Node.jsの利用の仕方はとてもシンプルです。「スクリプトを書く」「コマンドで実行する」――これだけです。</span></p>
+<p>&nbsp;</p>
+<p><span>既に述べたように、Node.jsのスクリプトは、JavaScriptを使います。といっても、Webページで使っているスクリプトとはかなり違いますので、慣れないとちょっとビビるかも知れません。とりあえず、スクリプトの具体的な内容は後回しにして、「書いて動かす」ということを体験してみましょう。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var http = require('http');</span></p>
+<p>&nbsp;</p>
+<p><span>var server = http.createServer();</span></p>
+<p><span>server.on('request', doRequest);</span></p>
+<p><span>server.listen(1234);</span></p>
+<p><span>console.log('Server running!');</span></p>
+<p>&nbsp;</p>
+<p><span>// リクエストの処理</span></p>
+<p><span>function doRequest(req, res) {</span></p>
+<p><span> res.writeHead(200, {'Content-Type': 'text/plain'});</span></p>
+<p><span> res.write('Hello World\n');</span></p>
+<p><span> res.end();</span></p>
+<p>}</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>ごくごく単純なスクリプトを掲載しておきました。テキストエディタを起動し、これを記述してから、適当な場所に適当なファイル名（ただし、拡張子は「.js」とする）で保存してください。ここでは、デスクトップに「node.js-sample」というフォルダを作り、この中に「app.js」という名前で保存した、という形で説明をしていきます。よくわからなかったら同じように作ってみてください。</span></p>
+<p>&nbsp;</p>
+<p><span>スクリプトを書いて保存したら、これを実行してみましょう。コマンドプロンプト（Node.js command promptでOKです）あるいはターミナルを起動し、スクリプトファイルを作成した場所にカレントディレクトリを移動します。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>cd Desktop\node.js-sample\</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00045.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>こんな感じですね。スクリプトファイルがある場所まで移動したら、後はnode.jsのコマンドでスクリプトを実行するだけです。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span><b>node</b></span><span>app.js</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00064.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>実行すると、スクリプトに問題がなければ「Server running!!」とメッセージが出力されます。これを確認したら、Webブラウザを起動し、以下にアクセスしてみましょう。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>http://localhost:1234/</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00079.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>ここでは、1234というポート番号で実行していますが、これは自由に変更できます。80に変更すれば、ポート番号を設定せず、単にlocalhostでアクセスできます。もしうまくアクセスできなかったら「http://127.0.0.1:1234」でもアクセスできますので試してみてください。</span></p>
+<p>&nbsp;</p>
+<p><span>ブラウザからアクセスして</span><span>「</span><span><b>Hello Worl</b></span><span><b>d</b></span><span>」と表示されたら、Node.jsは無事に機能しています。このサンプルは、単に「Hello World」とテキストを出力するだけのものだったわけですね。</span></p>
+<p>&nbsp;</p>
+<p><span>ちなみに、実行しているNode.jsの終了は、コマンドプロンプト（あるいはターミナル）でCtrlキー＋「C」キーを押してスクリプトの実行を中断するだけです。再び入力可能な状態に戻ったらNode.jsは終了しています。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00014.jpeg" alt="" /></p>
+
+
+</div>
+</div>
+<div id="calibre_link-19">
+<div>
+<h2 id="calibre_link-141"><b><a id="calibre_link-41"><b></b></a><span><b>Herokuの利用環境を整えよう</b></span></b></h2><p><span>これでローカル環境でNode.jsを実行する方法はわかりました。では、これをサーバーにデプロイして一般公開してみましょう。</span></p>
+<p>&nbsp;</p>
+<p><span>Node.jsのプログラムを一般公開する場合、普通のレンタルサーバーの類いはまず使えません。サーバー内でNode.jsのプログラムが実行できないといけないため、ただのWebサーバーが使えるだけのサービスではダメなのです。</span></p>
+<p>&nbsp;</p>
+<p><span>そこで登場するのが「</span><span><b>クラウドサービス</b></span><span>」です。「PaaS」とか「IaaS」とかいったもので、Node.jsに対応しているサービスを探して使うのが一番でしょう。現在、Node.jsに対応している主なクラウドサービスとしては以下のようなものが挙げられます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●Heroku</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>https://www.heroku.com/</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>●OpenShift</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>https://www.openshift.com/</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>この他にもたくさんのクラウドサービスがNode.jsに対応しています。ここでは、Herokuを利用することにしましょう。Herokuは、Ruby on Railsが使えるクラウドサービスとして有名ですが、現在はその他の言語にも対応しており、Node.jsも使うことができます。では、利用の手順を整理しておきましょう。</span></p>
+
+
+<h3><b><a id="calibre_link-142"><b></b></a><span><b>Heroku登録の作業</b></span></b></h3><p><span><b>1. Herokuアカウントの新規登録</b></span></p>
+<p><span>まずは、上のHerokuサイトにアクセスし、アカウントを取得しましょう。画面にある「Sign Up for free」ボタンをクリックしてください。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00033.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span><b>2. 必要事項の記入</b></span></p>
+<p><span>アカウント登録ページに移動します。ここで、氏名、登録するメールアドレス、会社名などを記入し、「Create Free Account」ボタンを押してください。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00062.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span><b>3. Eメールをチェック！</b></span></p>
+<p><span>登録を行っても、まだ終わりではありません。これは、仮登録された状態なのです。登録したメールアドレスをチェックしましょう。Herokuから「Confirm your account on Heroku」といったメールが届きます。</span></p>
+<p>&nbsp;</p>
+<p><span>これを開くと、アカウントをアクティブにするためのリンクが書かれていますので、これをクリックしてリンク先にアクセスし、登録を完了してください。</span></p>
+<p>&nbsp;</p>
+<p><span>――登録完了すると、「Dashboard」というところにアクセスできるようになります。これは、Herokuにアップロードしているアプリの管理画面です。ここで新たにアプリを登録したりすることができます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00069.jpeg" alt="" /></p>
+
+
+<h3><b><a id="calibre_link-143"><b></b></a><span><b>Heroku Toolbeltのインストール</b></span></b></h3><p><span><b>1. ダウンロードページにアクセス</b></span></p>
+<p><span>続いて、「Heroku Toolbelt」というプログラムをインストールしましょう。これは、Herokuを利用するために必要なプログラム（Ruby、Gitといったもの）を一式まとめてインストールしてくれるものです。以下のアドレスにアクセスし、各プラットフォーム用のHeroku Toolbeltをダウンロードして下さい。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>https://devcenter.heroku.com/articles/heroku-command-line</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00004.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span><b>2. インストールの起動画面</b></span></p>
+<p><span>Heroku Toolbeltは、専用のインストーラになっています。ダウンロードしたプログラムを起動してください。いわゆる「Welcome」画面が現れます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00056.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span><b>3. インストール場所の指定</b></span></p>
+<p><span>「Select Distination Location」画面になります。ここでインストール場所を指定します。特に理由がない限り、デフォルトのままにしておきましょう。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00042.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span><b>4. インストールする内容</b></span></p>
+<p><span>「Select Components」という画面になります。インストールする内容をカスタマイズ人はここで設定できます。通常は、「Full Installation」という項目が選ばれているはずなので、そのままにしておきましょう。これですべてインストールされます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00025.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span><b>5. インストールの実行</b></span></p>
+<p><span>「Ready to Install」と表示されたら準備完了です。「Install」ボタンを押してインストールを開始しましょう。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00077.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span><b>6. インストールの完了！</b></span></p>
+<p><span>インストール作業が終わるまでじっと待っていると、やがて「Completing the Heroku Toolbelt Setup Wizard」と表示されます。これが出たらインストール完了です。「Finish」ボタンを押して集雨量して下さい。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00076.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>――以上で、Herokuを利用するための準備は整いました。ただし、まだデプロイはできません。その前に、必要なファイルの準備があります。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-30">
+<div>
+<h2 id="calibre_link-144"><b><a id="calibre_link-42"><b></b></a><span><b>Heroku公開に必要なファイルの準備</b></span></b></h2><p><span>Herokuは、クラウドサービスです。ローカル環境と違い、直接手を加えて操作したりはできません。このため、クラウド環境で行わなければいけない様々な処理は、あらかじめ決められた形式のファイルとして用意しておき、その中に情報を記述しておく必要があります。</span></p>
+<p>&nbsp;</p>
+<p><span>Node.jsのアプリをHerokuで実行するためには、「package.json」と「Procfile」という２つのファイルが必要です。また、作成したNode.jsのスクリプトの一部を修正する必要もあります。それらについてまとめておきましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●package.jsonの作成</b></span></p>
+<p><span>作成したWebアプリのルート（フォルダを開いたすぐの場所）に配置します。これはJSON形式でアプリの情報を記述しておくものです。以下のように記述をしておきます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>※package.json</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p>{</p>
+<p><span>  "name": "......アプリ名......",</span></p>
+<p><span>  "version": "バージョン名"</span></p>
+<p>}</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>nam</b></span><span><b>e</b></span><span>には、それぞれのアプリ名を記述しておけばよいでしょう</span><span><b>。vesion</b></span><span>にはバージョン番号（0.0.1とか）を適当に記述しておきます。こ</span><span>の</span><span><b>package.jso</b></span><span><b>n</b></span><span>には他にも色々な情報を記述できるのですが、とりあえず必要となるのはこれだけです。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●Procfileの作成</b></span></p>
+<p><span>これもWebアプリのルートに配置します。拡張子は付けず、ただ</span><span>「</span><span><b>Procfil</b></span><span><b>e</b></span><span>」という名前で作成してください。これには以下の一文のみを記述します。</span></p>
+<p>&nbsp;</p>
+<p><span><b>※Procfile</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>web: node app.js</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>これで、指定のスクリプトが実行されるようになります。Node.jsのアプリでは、このように「</span><span><b>web: node スクリプトファイル</b></span><span>」という形で記述をします。これにより、クラウド側でnode app.jsが実行され、Node.jsのサーバーが起動します。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●app.jsの修正</b></span></p>
+<p><span>最後にもう１つ、先ほど作成したNode.jsのスクリプトファイル（app.js）の一文を修正する必要があります。スクリプトファイルをチェックし、以下の文を書き換えてください。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>server.listen(1234);</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>↓</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>server.listen(process.env.PORT, process.env.IP);</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>わかりますか？　Node.jsのスクリプトには、必ず</span><span>「</span><span><b>listen( ○○ )</b></span><span><b>;</b></span><span>」と書かれた文があります。この部分を、</span><span>「</span><span><b>listen(process.env.PORT, process.env.IP)</b></span><span><b>;</b></span><span>」という具合に書き換えます。</span></p>
+<p>&nbsp;</p>
+<p><span>――これでファイル類の準備は完了です。さあ、後はデプロイするだけです！</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-31">
+<div>
+<h2 id="calibre_link-145"><b><a id="calibre_link-43"><b></b></a><span><b>Herokuにデプロイしてみよう！</b></span></b></h2><p><span>では、いよいよHerokuにNode.jsのアプリをデプロイしてみましょう。この作業は、基本的にコマンドラインで行います。「コマンドプロンプト」または「ターミナル」を起動して作業して下さい。</span></p>
+<p>&nbsp;</p>
+<p><span><b>1. ログインする</b></span></p>
+<p><span>まず、herokuにログインします。以下のようにコマンドを実行して下さい。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>heroku login</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>Enterすると、アカウント（登録したメールアドレス）を尋ねてくるので入力します。続いてパスワードを入力します。これでHerokuにログインしました。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00031.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span><b>2. カレントディレクトリの移動</b></span></p>
+<p><span>ではアプリのデプロイ作業をしましょう。まず、Node.jsのスクリプトファイルがある場所にカレントディレクトリを移動します。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>cd Desktop\node.js-sample</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>「cd ディレクトリ」とタイプして移動しておきます。注意したいのは、パスのセパレータ（区切り文字）です。Windowsユーザーの場合、「cd Desktop\node.js-sample」と書くでしょう。コマンドプロンプトではこれでOKです。が、Git bashの場合には、「cd Desktop/node.js-sample」というようにスラッシュ記号を使ってください。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00046.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span><b>3. gitを初期化する</b></span></p>
+<p><span>ここからがデプロイのための作業になります。これから先は、「git」コマンドを使って作業しますので、まず最初にgitを初期化します。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>git init</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00067.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>これで、現在のフォルダ（アプリケーションのフォルダ）がGitリポジトリへデプロイできるように初期化されます。要するに、これでこのフォルダをGit経由でHerokuにデプロイするための準備ができたわけです。</span></p>
+<p>&nbsp;</p>
+<p><span><b>4. Herokuアプリの作成</b></span></p>
+<p><span>Herokuにアプリを作成します。これは、アプリをHerokuデプロイするための場所を確保しておくためのものです。要するに「Herokuのサーバー側のアプリケーションを準備する」という作業です。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>heroku create アプリ名</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00001.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>アプリ名はなんでも構いませんが、「既に使われていないもの」でなければいけません。自分が、ではなくて、Herokuで、です。アプリ名は、Herokuのサブドメインとして用意されるため、同じ名前のものが既にある場合は新たに作れないのです。ですから、絶対に他と重複しない名前にしてください。</span></p>
+<p>&nbsp;</p>
+<p><span>「とりあえずデプロイできればいい」というなら、アプリ名を指定せず、ただ「heroku create」としましょう。これで自動的にアプリ名が割り振られてセットアップされます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>5. Gitに更新されたファイルを追加する</b></span></p>
+<p><span>続いて、更新されたファイルをGitに追加して登録します。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>git add .</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00021.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>「git add 追加するファイル」でファイルをGitに追加します。「git add .」というように最後にドットをつけると、更新されたファイルすべてを指定できます。初回はすべて新たに作成されたファイルなのですから、こうしてすべてを追加しておく必要があります。</span></p>
+<p>&nbsp;</p>
+<p><span><b>6. コミットする</b></span></p>
+<p><span>次に行うのは、「コミット」という作業です。これで更新情報がまとめてGitに送られます。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>git commit -m "......何かコメントを書く......"</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00066.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>「git commit」コマンドは、通常、「-m」というオプションを付けます。これはコメントです。必ずこれを付けて実行するようにして下さい。内容はなんでも構いません。</span></p>
+<p>&nbsp;</p>
+<p><span><b>7. プッシュする</b></span></p>
+<p><span>コミットした修正情報を元に、実際に必要なファイル類をアップロードし組み込みます。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>git push heroku master</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00057.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><img src="images/00035.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>これで実際にデプロイ作業が行われると考えると良いでしょう。結構な数のファイルがサーバーにアップロードされていくため、少し時間がかかります。ずらっとデプロイ作業の処理が書き出されていきますが、再び入力待ちの状態に戻ればデプロイが完了しています。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-110">
+<div>
+<h2 id="calibre_link-146"><b><a id="calibre_link-44"><b></b></a><span><b>ダッシュボードで確認しよう</b></span></b></h2><p><span>これでデプロイができました。以下のアドレスにアクセスし、ダッシュボードをチェックしてください。作成したアプリ名が追加されています。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>https://dashboard.heroku.com/apps</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00034.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>ここからアプリ名をクリックすると、そのアプリの諸設定を行う画面が現れます。ここで、アプリ名の下にある「Open app」をクリックすると、新しいウインドウが開き、デプロイしたアプリが表示されます。これで、先ほどの「Hello World」が表示されれば、デプロイ成功！というわけです。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00081.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>とりあえず、これでNode.jsを使ったプログラムの作り方からデプロイして公開するまでがひと通りわかりましたね。では、次は先ほどサンプルで書いたスクリプトに戻って、具体的なスクリプトの内容について説明を始めることにしましょう。</span></p>
+<p>&nbsp;</p>
+<p>
+</p><div id="calibre_link-147"></div>
+</div>
+</div>
+<div id="calibre_link-116">
+<div>
+<table cellspacing="0" cellpadding="0" border="0"> 
+<tbody> 
+<tr> 
+<td> 
+
+<h1 id="calibre_link-148"><b><a id="calibre_link-45"><b></b></a><span><b>2. Node.jsのスクリプトの基本を覚えよう</b></span></b></h1><p><span><b>Node.jsは、「http」オブジェクトというものから「http.Server」オブジェクトを作ってサーバーを構築します。またリクエストとレスポンスを扱う「request」「response」オブジェクトで送受の処理を行います。これらのオブジェクトの基本的な使い方について覚えましょう。</b></span></p>
+<p>&nbsp;</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+
+
+</div>
+</div>
+<div id="calibre_link-1">
+<div>
+<h2 id="calibre_link-149"><b><a id="calibre_link-46"><b></b></a><span><b>基本のスクリプトとhttpオブジェクト</b></span></b></h2><p><span>では、前回作成したスクリプトを見ながら、Node.jsのスクリプトの基本について理解していきましょう。（下のリストを参照）</span></p>
+<p>&nbsp;</p>
+<p><span><b>※前回作成のスクリプト</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var http = require('http');</span></p>
+<p>&nbsp;</p>
+<p><span>var server = http.createServer();</span></p>
+<p><span>server.on('request', doRequest);</span></p>
+<p><span>server.listen(1234); // テスト用!</span></p>
+<p><span>//server.listen(process.env.PORT, process.env.IP); // Heroku用!</span></p>
+<p><span>console.log('Server running!');</span></p>
+<p>&nbsp;</p>
+<p><span>// リクエストの処理</span></p>
+<p><span>function doRequest(req, res) {</span></p>
+<p><span> res.writeHead(200, {'Content-Type': 'text/plain'});</span></p>
+<p><span> res.write('Hello World\n');</span></p>
+<p><span> res.end();</span></p>
+<p>}</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>1. httpオブジェクトのロード</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var http =</span><span><b>require</b></span><span>('http');</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>まず最初に行うのは、必要なライブラリ類のロードです。これは</span><span>「</span><span><b>requir</b></span><span><b>e</b></span><span>」という関数を使って行います。引数に、読み込むオブジェクト名を指定することで、そのオブジェクトが読み込まれて返されます。これを変数に代入して利用することになります。</span></p>
+<p>&nbsp;</p>
+<p><span>ここでは引数に</span><span>「</span><span><b>htt</b></span><span><b>p</b></span><span>」というオブジェクトを指定していますね。これは文字通りHTTPの各種機能をまとめたものです。ここからサーバーのオブジェクトを作成します。</span></p>
+<p>&nbsp;</p>
+<p><span><b>2. Serverオブジェクトの作成</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var server = http.</span><span><b>createServer</b></span><span>();</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>httpオブジェクトの</span><span>「</span><span><b>createServe</b></span><span><b>r</b></span><span>」メソッドを呼び出し</span><span>て</span><span><b>http.Serve</b></span><span><b>r</b></span><span>オブジェクトを作成します。これが、いわばNode.jsの「サーバー」となる部分です。このオブジェクトを用意し、必要な設定をしてからサーバーとして実行します。ここでは引数なしで呼び出していますが、以下のように書くこともできます。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>http.createServer(function(○○){</span></p>
+<p><span> ......処理が書いてある......</span></p>
+<p><span>}).listen(○○);</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>おそらく、Node.jsのサイトやその他の解説サイトを見ると、たいていはこの書き方をしているはずです。createServerの引数に、サーバーでリクエストを受け取った時の処理を関数として用意しておく書き方です。また、その後にlistenという待受のためのメソッド（後述）も続けて書いてあります。</span></p>
+<p>&nbsp;</p>
+<p><span>この書き方でも全く問題ないのですが、全部ひとまとめに書いてあるため、慣れないとちょっとわかりにくいので、ここではあえて「createServer時には引数はなし。後で必要な処理を用意する」という書き方をしてあります。Node.jsのコードに慣れてきたら、上のようにまとめて書くようにするとよいでしょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>3.リクエストの処理を設定</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>server.</span><span><b>on</b></span><span>('request', doRequest);</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>http.Serverオブジェクトには、さまざまなイベントが用意されており、その処理を組み込むためのメソッドも用意されています。</span><span>「</span><span><b>o</b></span><span><b>n</b></span><span>」というメソッドは、指定のイベント処理を組み込むためのもので、第一引数にイベント名を、第２引数に組み込む処理（関数）をそれぞれ指定します。</span></p>
+<p>&nbsp;</p>
+<p><span>ここでは、</span><span>「</span><span><b>reques</b></span><span><b>t</b></span><span>」というイベントに、</span><span>「</span><span><b>doReques</b></span><span><b>t</b></span><span>」という関数を割り当てています。requestというのは、http.Serverオブジェクトがクライアントからのリクエストを受け取ったときに発生するイベントで、要するにこれで「ブラウザからサーバーにアクセスした時のサーバー側の処理」を組み込むわけです。</span></p>
+<p>&nbsp;</p>
+<p><span><b>4. 待ち受けスタート</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>server.</span><span><b>listen</b></span><span>(1234);</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>http.Serverオブジェクトの準備が整ったら、</span><span>「</span><span><b>liste</b></span><span><b>n</b></span><span>」メソッドを実行します。これにより、サーバーは待ち受け状態となり、クライアントからリクエストがあればそれを受け取り処理するようになります。引数にはポート番号を指定してあります。</span></p>
+<p>&nbsp;</p>
+<p><span>listenの引数は、第２引数としてホスト名を指定したり、第３引数にバックログを指定したり、第４引数にコールバック関数を用意したりすることもできるんですが、とりあえず「第１引数にポート番号」だけ覚えておけば十分です。なお、指定した番号は、適当です。</span></p>
+<p>&nbsp;</p>
+<p><span><b>※Herokuの待受は？</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>server.listen(server.listen(process.env.PORT, process.env.IP););</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>Herokuにアップする場合</span><span>、</span><span><b>server.liste</b></span><span><b>n</b></span><span>の部分をこのように修正する必要があります。ここでは、引数</span><span>に</span><span><b>process.env.POR</b></span><span><b>T</b></span><span>と</span><span><b>process.env.I</b></span><span><b>P</b></span><span>というものを指定してあります。これは、それぞれ「プロセス環境に保存されているポート番号とIPアドレスの値」を指定しているのです。</span></p>
+<p>&nbsp;</p>
+<p><span>Herokuでは、ポート番号などを勝手に設定して動かすとアプリがクラッシュしてしまいます。必ず、Herokuのクラウド環境にあわせて設定しておかなければいけません。そのために用いているのが、このprocess.env.PORTとprocess.env.IPなのです。まぁ、意味はわからなくていいので、「Herokuにアップするアプリでは、listenの引数はこう書く」とだけ覚えておきましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>5. コンソールに出力</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span><b>console.log</b></span><span>('Server running!');</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>listenで待ち受けスタートした所で、メッセージをコンソールに出力しています</span><span>。</span><span><b>consol</b></span><span><b>e</b></span><span>はコンソールを扱うためのオブジェクトで、</span><span>「</span><span><b>lo</b></span><span><b>g</b></span><span>」メソッドでログ出力を行うことができます。ちょっとしたデバッグ用にログの出力は覚えておくと重宝するでしょう。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-11">
+<div>
+<h2 id="calibre_link-150"><b><a id="calibre_link-47"><b></b></a><span><b>リクエスト処理用関数について</b></span></b></h2><p><span>さて、http.Serverオブジェクトの作成・準備・待受開始までの流れは大体わかりました。残るは、「リクエストを受け取った時の処理」の内容でしょう。</span></p>
+<p>&nbsp;</p>
+<p><span>先のサンプルでは、「doRequest」という関数を定義しておき、これをonメソッドで「request」イベントに組み込んでいました。このrequestイベントで実行される処理こそが、クライアントからのリクエストを処理するためのものでした。</span></p>
+<p>&nbsp;</p>
+<p><span>この関数は以下のような形で定義されています。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>function 関数名</span><span>(</span><span><b>req</b></span><span>,</span><span><b>res</b></span><span>){</span></p>
+<p><span> ......必要な処理......</span></p>
+<p>}</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>引数は２つのオブジェクトが渡されます。それぞれ以下にまとめておきましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>request</b></span></p>
+<p><span>第１引数は、</span><span>「</span><span><b>reques</b></span><span><b>t</b></span><span>」オブジェクトが渡されます。これの正体は</span><span>、</span><span><b>http.IncomingMessag</b></span><span><b>e</b></span><span>というオブジェクトで、クライアントからのリクエストに関する機能がまとめられています。</span></p>
+<p>&nbsp;</p>
+<p><span><b>response</b></span></p>
+<p><span>第２引数は</span><span>「</span><span><b>respons</b></span><span><b>e</b></span><span>」オブジェクトが渡されます。これの正体は</span><span>、</span><span><b>http.serverRespons</b></span><span><b>e</b></span><span>というオブジェクトで、サーバーからクライアントへ戻されるレスポンスに関する機能がまとめられています。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-18">
+<div>
+<h2 id="calibre_link-151"><b><a id="calibre_link-48"><b></b></a><span><b>リクエストの処理</b></span></b></h2><p><span>このrequestとresponseを使うことで、リクエストを受けた時の対処を作成していきます。では、どのような処理をしているのか整理しましょう。。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・ヘッダー情報の書き出し</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>res.</span><span><b>writeHead</b></span><span>(200, {'Content-Type': 'text/plain'});</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>「</span><span><b>writeHea</b></span><span><b>d</b></span><span>」は、responseオブジェクトのメソッドで、ヘッダー情報をレスポンスに書き出すものです。第１引数にはステータスコードを指定し、第２引数にヘッダー情報を連想配列でまとめたものを指定します。</span></p>
+<p>&nbsp;</p>
+<p><span>ここでは</span><span>、</span><span><b>{'Content-Type': 'text/plain'</b></span><span><b>}</b></span><span>という値が用意されていますね。これにより</span><span>、</span><span><b>Content-typ</b></span><span><b>e</b></span><span>というヘッダー情報に</span><span>「</span><span><b>text/plai</b></span><span><b>n</b></span><span>」という値を設定していることがわかります。これはレスポンスとして返送するコンテンツの種類を示すヘッダー情報で、これにより「このコンテンツは標準テキストである」ということがクライアントに伝えられます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・コンテンツの書き出し</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>res.</span><span><b>write</b></span><span>('Hello World\n');</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>HTTPでは、ヘッダー情報の後に、ボディ部分となるコンテンツが書きだされますが、このコンテンツの書き出しを行なっているのがresponseオブジェクトの</span><span>「</span><span><b>writ</b></span><span><b>e</b></span><span>」です。引数に指定した値がボディ部分のコンテンツとして書きだされます。</span></p>
+<p>&nbsp;</p>
+<p><span>こ</span><span>の</span><span><b>writ</b></span><span><b>e</b></span><span>は、何度でも呼び出すことができます。これを呼び出して書きだしても、まだコンテンツは終了していませんので、どんど</span><span>ん</span><span><b>writ</b></span><span><b>e</b></span><span>で追記していけます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・コンテンツの完了</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>res.end();</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>コンテンツの書き出しが完了したら、最後にresponseの</span><span>「</span><span><b>en</b></span><span><b>d</b></span><span>」を呼び出してコンテンツ出力を完了します。ここではた</span><span>だ</span><span><b>en</b></span><span><b>d</b></span><span>を呼び出しているだけですが、引数に書き出すコンテンツの値を指定することもできます。その場合には、引数の値を書きだした後にコンテンツを完了します。</span></p>
+<p>&nbsp;</p>
+<p><span>こ</span><span>の</span><span><b>en</b></span><span><b>d</b></span><span>により、レスポンス処理は終わり、そのリクエストの処理は完了します。</span><span>「</span><span><b>writeHea</b></span><span><b>d</b></span><span>」</span><span>「</span><span><b>writ</b></span><span><b>e</b></span><span>」</span><span>「</span><span><b>en</b></span><span><b>d</b></span><span>」の３つがあれば、クライアントへの返送内容は全部書けるのです。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-27">
+<div>
+<h2 id="calibre_link-152"><b><a id="calibre_link-49"><b></b></a><span><b>ファイルの読み込みと「fs」オブジェクト</b></span></b></h2><p><span>しかし、「responseのwriteで書き出すだけ」とはいっても、まさかwriteでHTMLのコードを延々書き出していくわけ？　ありえないでしょ。......と思った人。その通り、表示するWebページの内容をスクリプトの中で文字列として用意する？――ありえません、そんなの。</span></p>
+<p>&nbsp;</p>
+<p><span>やっぱり、表示するページの内容は別にファイルとして用意しておいて、それを読み込んで表示するようになっていなければWebじゃありません。では、次にそれをやってみましょう。</span></p>
+<p>&nbsp;</p>
+<p><span>ファイルの読み込みは</span><span>「</span><span><b>f</b></span><span><b>s</b></span><span>」というオブジェクトとして用意されています。require関数で</span><span>「</span><span><b>f</b></span><span><b>s</b></span><span>」を読み込み、その中にあるメソッドを呼び出して読み込みをします。以下に整理しましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●fsオブジェクトの読み込み</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var fs = require('fs');</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>既にhttpオブジェクトの読み込みはやりましたからわかりますね。fsオブジェクトも同様に読み込み、変数に代入しておきます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●ファイルの読み込み</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>fs.</span><span><b>readFil</b></span><span><b>e</b></span><span>( ファイルのパス , エンコード , コールバック関数 );</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>fsオブジェクトの</span><span>「</span><span><b>readFil</b></span><span><b>e</b></span><span>」メソッドでファイルの読み込みを行います。普通に考えると</span><span>「</span><span><b>readFil</b></span><span><b>e</b></span><span>で読み込んだデータを返す」というようなものを想像しますが、違います</span><span>。</span><span><b>readFil</b></span><span><b>e</b></span><span>には返値はありません。なぜなら、これ</span><span>は</span><span><u>非同期で実行される処</u></span><span><u>理</u></span><span>だからです。</span></p>
+<p>&nbsp;</p>
+<p><span>ファイルの読み込みは、時間のかかる処理です。ですから、「読み込み終えたらデータを返して次に進む」というようになっていると、場合によってはものすごく待たされてしまいます。サーバーでそんなことをしたら、「前にアクセスした人のファイルを読み込み終えるまで全員待ってる」ということになってしまいます。</span></p>
+<p>&nbsp;</p>
+<p><span>そこで、「読み込み開始したら、すぐ次の処理に進む」というような設計になっているのです。読み込みの作業はバックグラウンドで行われます。そして読み込みが完了したら、あらかじめ設定しておいた処理を呼び出し、そこで「読み込み後の処理」を行わせる、という考え方です。この「作業が終わったら後で呼び出される関数」のことを「</span><span><b>コールバック関数</b></span><span>」といいます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>readFil</b></span><span><b>e</b></span><span>では、第１引数に読み込むファイルのパスを指定し、第２引数にエンコード名、そして第３引数に読み込み完了後のコールバック関数を用意します。読み込み作業がおわったら、コールバック関数の中で処理を行うようにしておくのです。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-97">
+<div>
+<h2 id="calibre_link-153"><b><a id="calibre_link-50"><b></b></a><span><b>HTMLファイルを読み込んで表示する</b></span></b></h2><p><span>では、実際にHTMLファイルを読み込んで表示させてみることにしましょう。</span></p>
+<p>&nbsp;</p>
+<p><span>まず、読み込むHTMLファイルを作成する必要があります。ここでは</span><span>「</span><span><b>hello.htm</b></span><span><b>l</b></span><span>」というファイル名で作っておくことにしましょう。下にサンプルコードを上げておきますが、内容はどんなものでもまったく構いません。</span></p>
+<p>&nbsp;</p>
+<p><span><b>※hello.htmlの内容</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;!DOCTYPE html&gt;</span></p>
+<p><span>&lt;html lang="ja"&gt;</span></p>
+<p><span>&lt;head&gt;</span></p>
+<p><span>&lt;meta http-equiv="content-type"</span></p>
+<p><span>content="text/html; charset=UTF-8"&gt;</span></p>
+<p><span>&lt;title&gt;sample&lt;/title&gt;</span></p>
+<p><span>&lt;style&gt;</span></p>
+<p><span>body { font-size:12pt; color:#006666; }</span></p>
+<p><span>h1 { font-size:18pt; background-color:#AAFFFF; }</span></p>
+<p><span>pre { background-color:#EEEEEE; }</span></p>
+<p><span>&lt;/style&gt;</span></p>
+<p><span>&lt;/head&gt;</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;body&gt;</span></p>
+<p><span>&lt;header&gt;</span></p>
+<p><span>&lt;h1&gt;Sample Page&lt;/h1&gt;</span></p>
+<p><span>&lt;/header&gt;</span></p>
+<p><span>&lt;article&gt;</span></p>
+<p><span>&lt;p&gt;これはNode.jsのサンプルページです。&lt;/p&gt;</span></p>
+<p><span>&lt;/article&gt;</span></p>
+<p><span>&lt;/body&gt;</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;/html&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>作成したファイルは、Node.jsのスクリプトファイル（前回作ったapp.js）と同じ場所に配置しておいてください。</span></p>
+<p>&nbsp;</p>
+<p><span>続いて、スクリプトを作成しましょう。これも下にリストを掲載しておきます。スクリプトを記述したら、コマンドラインで</span><span>「</span><span><b>node app.j</b></span><span><b>s</b></span><span>」を実行し、ブラウザからアクセスしてみてください。hello.htmlに用意したページが表示されますよ。</span></p>
+<p>&nbsp;</p>
+<p><span><b>※app.jsのスクリプト</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var http = require('http');</span></p>
+<p><span>var fs = require('fs');</span></p>
+<p>&nbsp;</p>
+<p><span>var server = http.createServer();</span></p>
+<p><span>server.on('request', doRequest);</span></p>
+<p><span>server.listen(1234);</span></p>
+<p><span>console.log('Server running!');</span></p>
+<p>&nbsp;</p>
+<p><span>// リクエストの処理</span></p>
+<p><span>function doRequest(req, res) {</span></p>
+<p><span><b>fs.readFile</b></span><span>('./hello.html', 'UTF-8',</span><span>function(err, data) {</span></p>
+<p><span> res.</span><span><b>writeHead</b></span><span>(200, {'Content-Type': 'text/html'});</span><span>res.</span><span><b>write</b></span><span>(data);</span><span>res.</span><span><b>end</b></span><span>();</span><span>});</span></p>
+<p>}</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00047.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>ここでは、リクエスト時に実行されるdoRequest関数で、hello.htmlを読み込んで表示する処理を行なっています。このdoRequestの読み込み処理は、整理すると以下のようになっていることがわかります。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span><b>fs.readFile</b></span><span>('./hello.html', 'UTF-8',</span></p>
+<p><span> function(err, data) {...後処理...}</span></p>
+<p>);</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>第１引数</span><span>に</span><span><b>'./hello.html</b></span><span><b>'</b></span><span>とファイルパスを指定し、第２引数に</span><span>は</span><span><b>'UTF-8</b></span><span><b>'</b></span><span>を指定します。そして第３引数に、読み込み完了後の処理を行うコールバック関数が用意されています。</span></p>
+<p>&nbsp;</p>
+<p><span>このコールバック関数では、２つの引数が用意されています。第１引数は、エラーが発生した場合のエラーメッセージです。読み込みに失敗した場合の処理を用意するならば、関数内で、「if (err){......}」といった形で書いておけばよいでしょう。</span></p>
+<p>&nbsp;</p>
+<p><span>第２引</span><span>数</span><span><b>dat</b></span><span><b>a</b></span><span>に、読み込まれたテキストが保管されています。これをresponseのwriteで書き出せばいいわけですね。readFileのコールバック関数の処理を見ると、</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>res.writeHead(200, {'Content-Type': 'text/html'});</span></p>
+<p><span>res.write(data);</span></p>
+<p><span>res.end();</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>このように、writeHead、write、endをこの中で実行しています。このことは重要です。例えば、このdoRequestの処理は、ついこう書きたくなるかもしれません。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>function doRequest(req, res) {</span></p>
+<p><span> res.writeHead(200, {'Content-Type': 'text/html'});</span></p>
+<p><span> fs.readFile('./hello.html', 'UTF-8',</span></p>
+<p><span>function(err, data) {</span></p>
+<p><span>res.write(data);</span></p>
+<p>});</p>
+<p><span> res.end();</span></p>
+<p>}</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00010.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>読み込んだデータを出力するwriteだけreadFileのコールバック関数に用意すればいいや、と考えればこうなります。が、これでは動かないのです。アクセスすると画面には何も表示されず、コマンドプロンプトにはエラーメッセージが出力されるでしょう。</span></p>
+<p>&nbsp;</p>
+<p><span>「readFile</span><span>は</span><span><b>非同</b></span><span><b>期</b></span><span>である」という点を忘れてはいけません。readFileのコールバック関数が呼び出されるよりも前に、その後にあるres.endは実行されてしまいます。コールバック関数のres.writeを実行するときには、既にリクエスト処理は完了しているのです。</span></p>
+<p>&nbsp;</p>
+<p><span>このように、非同期で実行する処理が含まれている時には、「非同期処理が完了した後でレスポンスの処理をする」という点に注意する必要があります。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-121">
+<div>
+<h2 id="calibre_link-154"><b><a id="calibre_link-51"><b></b></a><span><b>HTML内の一部をスクリプトで変更する</b></span></b></h2><p><span>ただHTMLファイルを読み込んで表示するというだけでは、あまりサーバー側のプログラムを作るメリットが感じられませんね。そこで、読み込んだHTMLをもとにして、ちょっとしたテキスト処理を行うようにしてみましょう。</span></p>
+<p>&nbsp;</p>
+<p><span>テンプレート的な考え方では、まず表示をするHTMLの中に、テキストを置換するための特別な値を埋め込んでおき、それを読み込んで表示する際に必要なコンテンツに置換して出力する――という方法が考えられます。</span></p>
+<p>&nbsp;</p>
+<p><span>では、やってみましょう。まず、hello.htmlを修正します。</span></p>
+<p>&nbsp;</p>
+<p><span><b>※hello.htmlの内容</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;!DOCTYPE html&gt;</span></p>
+<p><span>&lt;html lang="ja"&gt;</span></p>
+<p><span>&lt;head&gt;</span></p>
+<p><span>&lt;meta http-equiv="content-type"</span></p>
+<p><span>content="text/html; charset=UTF-8"&gt;</span></p>
+<p><span>&lt;title&gt;</span><span><b>@title@</b></span><span>&lt;/title&gt;</span><span>&lt;style&gt;</span></p>
+<p><span>body { font-size:12pt; color:#006666; }</span></p>
+<p><span>h1 { font-size:18pt; background-color:#AAFFFF; }</span></p>
+<p><span>pre { background-color:#EEEEEE; }</span></p>
+<p><span>&lt;/style&gt;</span></p>
+<p><span>&lt;/head&gt;</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;body&gt;</span></p>
+<p><span>&lt;header&gt;</span></p>
+<p><span>&lt;h1 id="h1"&gt;</span><span><b>@title@</b></span><span>&lt;/h1&gt;</span><span>&lt;/header&gt;</span></p>
+<p><span>&lt;article&gt;</span></p>
+<p><span>&lt;p&gt;</span><span><b>@content@</b></span><span>&lt;/p&gt;</span><span>&lt;/article&gt;</span></p>
+<p><span>&lt;/body&gt;</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;/html&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>基本的には先ほどとほぼ同じですが、ソースコード内に</span><span>「</span><span><b>@title</b></span><span><b>@</b></span><span>」と</span><span>「</span><span><b>@content</b></span><span><b>@</b></span><span>」という記述があるのに気がついたでしょう。これが、置換用の特別な値です（別にNode.jsにそういう特別な値が定義されてるわけではありませんよ。適当に考えた値です）。スクリプトでは、これらのテキストを検索して置き換えれば、スクリプトからHTML内を操作できるだろう、というわけです。</span></p>
+<p>&nbsp;</p>
+<p><span>Node.jsのスクリプトも修正しましょう。下に掲載しておきます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>※app.jsのソースコード</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var http = require('http');</span></p>
+<p><span>var fs = require('fs');</span></p>
+<p>&nbsp;</p>
+<p><span>var server = http.createServer();</span></p>
+<p><span>server.on('request', doRequest);</span></p>
+<p><span>server.listen(1234);</span></p>
+<p><span>console.log('Server running!');</span></p>
+<p>&nbsp;</p>
+<p><span>// リクエストの処理</span></p>
+<p><span>function doRequest(req, res) {</span></p>
+<p><span> var number = Math.floor(Math.random() * 3);</span></p>
+<p><span> fs.readFile('./hello.html', 'UTF-8',</span></p>
+<p><span> function(err, data) {</span></p>
+<p><span> var title = ["ページA", "ページB", "ページC"];</span></p>
+<p><span> var content = ["※これはサンプルで作ったものです。",</span></p>
+<p><span> "もう一つのコンテンツです。",</span></p>
+<p><span> "最後に用意したコンテンツですよ。"];</span></p>
+<p><span> var data2 = data.</span></p>
+<p><span> replace(/@title@/g, title[number]).</span></p>
+<p><span> replace(/@content@/g, content[number]);</span></p>
+<p><span> res.writeHead(200, {'Content-Type': 'text/html'});</span></p>
+<p><span> res.write(data2);</span></p>
+<p><span> res.end();</span></p>
+<p>});</p>
+<p>}</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00080.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>修正が終わったら、Node.jsを再起動し、表示を確認しましょう。アクセスするごとに、あらかじめ用意した３つのパターンからランダムに表示内容（タイトルとコンテンツ）が取得されページが表示されます。</span></p>
+<p>&nbsp;</p>
+<p><span>ここではテキストを読み込んだ後、replaceでテキストの置換をします。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var data2 = data.replace(/@title@/g, title[number]).</span></p>
+<p><span> replace(/@content@/g, content[number]);</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>このようにし</span><span>て</span><span><b>@title</b></span><span><b>@</b></span><span>と</span><span><b>@content</b></span><span><b>@</b></span><span>をそれぞれ配列title/contentからランダムに選んだものに置換してからwriteしているわけです。配列から取り出す要素は、numberにランダムに値を代入して指定しています。何度かリロードして表示を確かめてみましょう。</span></p>
+<p>&nbsp;</p>
+<p><span>なお、ここでは非同期でファイルを読み込</span><span>む</span><span><b>readFil</b></span><span><b>e</b></span><span>を使いましたが、同期処理でファイルを読み込むメソッドもfsには用意されています。これについては次回、改めて触れることになるでしょう。</span></p>
+<p>&nbsp;</p>
+<p><span>――とりあえず、これでちょっとした値をスクリプトからHTML内に埋め込むことはできました。しかし、これではあまり汎用性はありませんね。もう少し汎用的に表示を作成・操作できないと困ります。そこで次は「</span><span><b>テンプレートエンジン</b></span><span>」というものを使い、もっと便利にHTMLを使えるようにしましょう。</span></p>
+<p>&nbsp;</p>
+<p>
+</p><div id="calibre_link-155"></div>
+</div>
+</div>
+<div id="calibre_link-115">
+<div>
+<table cellspacing="0" cellpadding="0" border="0"> 
+<tbody> 
+<tr> 
+<td> 
+
+<h1 id="calibre_link-156"><b><a id="calibre_link-52"><b></b></a><span><b>3. EJSテンプレートエンジンを使おう！</b></span></b></h1><p><span><b>HTMLファイルを利用してWebページを表示するには「テンプレートエンジン」が便利です。ここでは「EJS」と呼ばれるテンプレートエンジンの基本的な使い方について説明しましょう。</b></span></p>
+<p>&nbsp;</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+
+
+</div>
+</div>
+<div id="calibre_link-25">
+<div>
+<h2 id="calibre_link-157"><b><a id="calibre_link-53"><b></b></a><span><b>npmでEJSをインストールしよう</b></span></b></h2><p><span>前回、HTMLファイルを読み込んで表示させる、ということを行いましたが、思ったより面倒くさいことがわかりました。ファイルを読み込むのに非同期メソッドを使わないといけないし、ちょっとしたデータをHTMLに受渡して表示させるのもいちいちreplaceでコードを置換したりしないといけない。もっと簡単な方法はないのか？と思ったことでしょう。</span></p>
+<p>&nbsp;</p>
+<p><span>実は、あります。それは</span><span>「</span><span><b>テンプレートエンジン</b></span><span>」を使うのです。Node.jsでは、さまざまなテンプレートエンジンが利用できます。もっとも一般的に用いられているのは</span><span>「</span><span><b>EJ</b></span><span><b>S</b></span><span>」というものでしょう。</span></p>
+<p>&nbsp;</p>
+<p><span>では、EJSをインストールしましょう。Node.jsには</span><span>「</span><span><b>np</b></span><span><b>m</b></span><span>」というパッケージ管理プログラムが用意されています。これを使うことで、コマンド一発で必要なライブラリをオンライン経由でダウンロードしインストールできます。</span></p>
+<p>&nbsp;</p>
+<p><span>コマンドプロンプトやターミナルを起動し、以下のように実行してください。これでEJSが自動的にインストールされます。(ちなみに、これはNode.jsのアプリケーションフォルダに移動しないで実行してかまいません）</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>npm -g install ejs</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00005.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>この「npm」というパッケージ管理プログラムは、Node.jsを利用する場合には必須です。必要なものがあれば大抵はnpmでインストールをしますので、「npm install」はここで覚えておくようにしましょう。</span></p>
+<p>&nbsp;</p>
+<p><span>今回は、「np</span><span>m</span><span><b>-</b></span><span><b>g</b></span><span>install」というように</span><span>「</span><span><b>-</b></span><span><b>g</b></span><span>」というオプションがついていますが、これは</span><span><b>グローバルインストール</b></span><span>といって、個々のアプリではなく、プラットフォーム環境全体で使えるようにインストールするものです。これをつけない場合は、それぞれのアプリ内にパッケージをインストールします。Herokuなどのクラウド環境にアップロードして動かす場合は、必要なパッケージもすべてアプリ内に用意する必要がありますから、こういう場合は-gを付けず、アプリ内にすべてインストールしましょう。</span></p>
+<p>&nbsp;</p>
+<p><span>なお、EJSそのものは、npmを使わなくとも入手できます。Githubで公開されており、そこからファイルをダウンロードできます。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>https://github.com/visionmedia/ejs</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00016.jpeg" alt="" /></p>
+
+
+</div>
+</div>
+<div id="calibre_link-7">
+<div>
+<h2 id="calibre_link-158"><b><a id="calibre_link-54"><b></b></a><span><b>テンプレートで使える特殊なタグ</b></span></b></h2><p><span>EJSでは、テンプレートとなるHTMLのコード内に、特殊なタグを使って必要な情報を埋め込むことができます。用意されているタグは以下の２つです。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●値を出力するタグ (1)</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span><b>&lt;%</b></span><span><b>=</b></span><span>値</span><span><b>%&gt;</b></span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>記述した値をその場に書き出します。スクリプト側で用意した変数などを表示するのに使います。HTMLタグなどが含まれていた場合、それらはエスケープ処理されます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●値を出力するタグ (2)</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span><b>&lt;%</b></span><span><b>-</b></span><span>値</span><span><b>%&gt;</b></span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>同じように値をその場に書き出します。ただし、こちらはHTML関連のタグはエスケープ処理されず、そのまま書きだされます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●処理を実行する</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;% ......スクリプト...... %&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>スクリプトを記述し、それをレンダリングする際に実行します。これは、HTMLに&lt;script&gt;タグで書かれているスクリプトとは違います。&lt;script&gt;タグはクライアント側（ブラウザ内）に送られ、そこで実行されますが、こ</span><span>の</span><span><b>&lt;% %</b></span><span><b>&gt;</b></span><span>で書かれたタグはサーバー側（Node.js内）で実行され、その結果がクライアントへと送られます。</span></p>
+<p>&nbsp;</p>
+<p><span>これらのタグは、閉じる部分はすべて共通し</span><span>て</span><span><b>%</b></span><span><b>&gt;</b></span><span>となっていますが、これ</span><span>を</span><span><b>-%</b></span><span><b>&gt;</b></span><span>というように半角マイナスをつけて記述すると、値の出力後、改行するようになります。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-98">
+<div>
+<h2 id="calibre_link-159"><b><a id="calibre_link-55"><b></b></a><span><b>簡単なテンプレートを作る</b></span></b></h2><p><span>実際にこれらのタグをどう使いこなすかは、やってみないとわかりませんね。では、簡単なサンプルを作ってみましょう。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;!DOCTYPE html&gt;</span></p>
+<p><span>&lt;html lang="ja"&gt;</span></p>
+<p><span>&lt;head&gt;</span></p>
+<p><span>&lt;meta http-equiv="content-type"</span></p>
+<p><span>content="text/html; charset=UTF-8"&gt;</span></p>
+<p><span>&lt;title&gt;&lt;%=title %&gt;&lt;/title&gt;</span></p>
+<p><span>&lt;style&gt;</span></p>
+<p><span>body { font-size:12pt; color:#006666; }</span></p>
+<p><span>h1 { font-size:18pt; background-color:#AAFFFF; }</span></p>
+<p><span>pre { background-color:#EEEEEE; }</span></p>
+<p><span>&lt;/style&gt;</span></p>
+<p><span>&lt;/head&gt;</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;body&gt;</span></p>
+<p><span>&lt;header&gt;</span></p>
+<p><span>&lt;h1 id="h1"&gt;&lt;%=title %&gt;&lt;/h1&gt;</span></p>
+<p><span>&lt;/header&gt;</span></p>
+<p><span>&lt;article&gt;</span></p>
+<p><span>&lt;p&gt;&lt;%-content %&gt;&lt;/p&gt;</span></p>
+<p><span>&lt;/article&gt;</span></p>
+<p><span>&lt;/body&gt;</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;/html&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>上に簡単なテンプレートのサンプルを掲載しておきました。これを</span><span>「</span><span><b>hello.ej</b></span><span><b>s</b></span><span>」というファイル名で、Node.jsのスクリプトファイルと同じ場所に保存してください。</span></p>
+<p>&nbsp;</p>
+<p><span>これが、EJSのテンプレートファイルです。テンプレートファイルは、通常、</span><span>「</span><span><b>.ej</b></span><span><b>s</b></span><span>」という拡張子で作成します。ここでは、HTMLの中に以下のようなタグを埋め込んであります。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;%=title %&gt;</span></p>
+<p><span>&lt;%-content %&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>これらは、それぞ</span><span>れ</span><span><b>titl</b></span><span><b>e</b></span><span>、</span><span><b>conten</b></span><span><b>t</b></span><span>という変数を出力していることになります。ということは、スクリプト側で、これらの変数を用意し、テンプレート側に渡すことができればいいわけですね</span><span>。</span><span><b>&lt;%= %</b></span><span><b>&gt;</b></span><span>と</span><span><b>&lt;%- %</b></span><span><b>&gt;</b></span><span>は、テンプレートのもっとも基本となるものといってよいでしょう。（なお、contentの出力は&lt;%=ではなく、&lt;%-を使っています。これは、もう少し後になって理由がわかります）</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-17">
+<div>
+<h2 id="calibre_link-160"><b><a id="calibre_link-56"><b></b></a><span><b>EJSによるテンプレートの表示</b></span></b></h2><p><span>では、用意したテンプレートファイルを読み込んでWebページを表示させてみましょう。これには、いくつかの操作が必要となります。</span></p>
+<p>&nbsp;</p>
+<p><span><b>1. ファイルの読み込み</b></span></p>
+<p><span>EJS自体にはファイルを読み込む機能はありません。読み込みは、fsオブジェクトを利用することになります。（ただし、今回は非同期ではなく、同期メソッドを使って前回のreadFileよりシンプルなスクリプトにします）</span></p>
+<p>&nbsp;</p>
+<p><span><b>2. 読み込んだテンプレートデータのレンダリング</b></span></p>
+<p><span>これにより、テンプレート内にある&lt;%= %&gt;タグなどの特殊なタグが実際に出力されるテキストに変換されます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>3. データの出力</b></span></p>
+<p><span>最後に、作成されたデータをレスポンスに書き出して完了です。</span></p>
+<p>&nbsp;</p>
+<p><span>要するに、EJSというテンプレートエンジンが行なってくれるのは、2のレンダリング部分だけで、後は普通にNode.jsの機能を使って処理する必要がある、というわけですね。</span></p>
+<p>&nbsp;</p>
+<p><span>では、先ほど作成したhello.ejsをレンダリングして表示するスクリプトを作成してみましょう。下にサンプルを掲載しておきますので、これを記述して動かしてみてください。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var http = require('http');</span></p>
+<p><span>var fs = require('fs');</span></p>
+<p><span>var ejs = require('ejs');</span></p>
+<p>&nbsp;</p>
+<p><span>var hello = fs.readFileSync('./hello.ejs', 'utf8');</span></p>
+<p>&nbsp;</p>
+<p><span>var server = http.createServer();</span></p>
+<p><span>server.on('request', doRequest);</span></p>
+<p><span>server.listen(1234);</span></p>
+<p><span>console.log('Server running!');</span></p>
+<p>&nbsp;</p>
+<p><span>// リクエストの処理</span></p>
+<p><span>function doRequest(req, res) {</span></p>
+<p><span> var hello2 = ejs.render(hello, {</span></p>
+<p><span> title:"タイトルです",</span></p>
+<p><span> content:"これはサンプルで作成したテンプレートです。",</span></p>
+<p>});</p>
+<p><span> res.writeHead(200, {'Content-Type': 'text/html'});</span></p>
+<p><span> res.write(hello2);</span></p>
+<p><span> res.end();</span></p>
+<p>}</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00024.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>タイトルやコンテンツの部分には、スクリプト側で用意しておいたテキストが嵌めこまれ表示されることがわかるでしょう。動作を確認したら、スクリプトのポイントをチェックしましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●ejsの読み込み</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var ejs = require('ejs');</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>最初にEJSのライブラリを読み込みます。これはrequire関数で</span><span>「</span><span><b>ej</b></span><span><b>s</b></span><span>」を引数に指定します。ここで取得されたejsオブジェクトを使ってテンプレートのレンダリングなどを行います。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●同期メソッドによるファイルの読み込み</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var hello = fs.</span><span><b>readFileSync</b></span><span>('./hello.ejs', 'utf8');</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>fsオブジェクトを使い、テンプレートファイルを読み込みます。ここではreadFileではなく、</span><span>「</span><span><b>readFileSyn</b></span><span><b>c</b></span><span>」というメソッドを使っています。基本的にはreadFileと同じですが、非同期ではなく、同期処理で読み込みます。つまり、このメソッドを呼び出すとファイルの読み込みを行い、それが完了してから次に進む、というわけです。</span></p>
+<p>&nbsp;</p>
+<p><span>同期処理ですから、読み込み終わったら呼び出す「コールバック関数」はありません。終わったらそのまま続きのスクリプトを実行するのですからコールバックなんて必要ないですね。</span></p>
+<p>&nbsp;</p>
+<p><span>「だけど、ファイルの読み込みは時間がかかることもあるから非同期にしないと他の処理が止まってしまうって......」と思った人。その通り、readFileSync実行中は他の処理があったとしても停止中です。が、これを呼び出している場所をよく見てください。http.createServerで</span><span><u>サーバーを作る前にファイルの読み込みを済ませている</u></span><span>のがわかるでしょう？</span></p>
+<p>&nbsp;</p>
+<p><span>テンプレートというのは、リクエストがある度に使うわけで、なら最初からグローバル変数に読み込んでおいて利用したほうが絶対に楽ちんですから。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●テンプレートをレンダリングする</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var hello2 = ejs.</span><span><b>render</b></span><span>(hello, {</span></p>
+<p><span> title:"タイトルです",</span></p>
+<p><span> content:"これはサンプルで作成したテンプレートです。",</span></p>
+<p>});</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>テンプレートのレンダリングを行うのが、ejsオブジェクトの</span><span>「</span><span><b>rende</b></span><span><b>r</b></span><span>」メソッドです。これは、整理すると以下のようになります。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>ejs.render( テンプレートデータ , オプション );</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>第１引</b></span><span><b>数</b></span><span>――レンダリングする対象データ（＝読み込んだテンプレートの文字列）を指定します。</span></p>
+<p><span><b>第２引</b></span><span><b>数</b></span><span>――テンプレートに渡す変数などの情報を連想配列にまとめたものを指定します。</span></p>
+<p>&nbsp;</p>
+<p><span>ポイントは第２引数です。先ほど、テンプレート</span><span>に</span><span><b>titl</b></span><span><b>e</b></span><span>と</span><span><b>conten</b></span><span><b>t</b></span><span>という変数を出力するようにタグを用意したのを思い出してください。これらの変数が連想配列に用意されていることがわかるでしょう。このように、第２引数に変数などの値を用意してrenderすることで、テンプレート側にあるそれらの変数に値が代入されるのです。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●ヘッダー情報にCintent-Type:text/hemlを設定する</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>res.writeHead(200, {'Content-Type': 'text/html'});</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>最後に忘れてはいけないのが、writeHeadによるヘッダーの出力です。Content-Typeに</span><span>「</span><span><b>text/htm</b></span><span><b>l</b></span><span>」を設定します。これにより、レスポンスに書き出される内容がHTMLであることがわかります。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-122">
+<div>
+<h2 id="calibre_link-161"><b><a id="calibre_link-57"><b></b></a><span><b>テンプレート部品を組み合わせる</b></span></b></h2><p><span>テンプレートの基本的な使い方はこれでわかりました。が、これだけではテンプレートとしての機能は十分ではありませんね。ページを表示するのに、テンプレートをレンダリングして書き出す。これだけです。</span></p>
+<p>&nbsp;</p>
+<p><span>例えば、いくつものページがあるサイトでは、全体の構成を記したテンプレートを用意し、ここに必要に応じてコンテンツ用のテンプレートをはめ込んで表示させたりします（本連載を掲載している入門サイト「libro」もそのような形で作られています）。こうした「全体のテンプレート内に、コンテンツのテンプレートを嵌めこみ表示する」といったことは行えるのでしょうか。やってみましょう。</span></p>
+<p>&nbsp;</p>
+<p><span>ベースとなるテンプレートには、先ほど作成したhello.ejsをそのまま使うことにします。このテンプレートでは、コンテンツを表示する部分</span><span>に</span><span><b>&lt;%- content %</b></span><span><b>&gt;</b></span><span>というタグを用意しておきました。ということは、実際に表示する内容のテンプレートを用意しておき、それをここにはめ込んで出力すれば、コンテンツだけをいろいろと変更してページを作れるようになります。</span></p>
+<p>&nbsp;</p>
+<p><span>では、コンテンツ用のテンプレートとして、</span><span>「</span><span><b>content1.ej</b></span><span><b>s</b></span><span>」というファイルを作成しましょう。内容は下のリスト欄に掲載しておきます。作成後、Node.jsのスクリプトファイルと同じ場所に配置しておいてください。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;p&gt;※サンプルで作ったコンテンツです。&lt;/p&gt;</span></p>
+<p><span>&lt;p&gt;別ファイルとして用意したものを読み込んで使います。&lt;/p&gt;</span></p>
+<p><span>&lt;p&gt;&lt;%= message %&gt;&lt;/p&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>このファイルでは、コンテンツとして表示する内容をHTMLで記述してあります。また</span><span>、</span><span><b>&lt;%= message %</b></span><span><b>&gt;</b></span><span>というようにテンプレート用のタグも用意しておきました。</span></p>
+<p>&nbsp;</p>
+<p><span>このcontent1.ejsを、先ほどのhello.ejs</span><span>の</span><span><b>&lt;%- content %</b></span><span><b>&gt;</b></span><span>にはめ込んで表示させてみます。スクリプトを下に掲載しておきましたので書き換えて試してみてください。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var http = require('http');</span></p>
+<p><span>var fs = require('fs');</span></p>
+<p><span>var ejs = require('ejs');</span></p>
+<p>&nbsp;</p>
+<p><span>var hello = fs.readFileSync('./hello.ejs', 'utf-8');</span></p>
+<p><span>var content1 = fs.readFileSync('./content1.ejs', 'utf-8');</span></p>
+<p>&nbsp;</p>
+<p><span>var server = http.createServer();</span></p>
+<p><span>server.on('request', doRequest);</span></p>
+<p><span>server.listen(1234);</span></p>
+<p><span>console.log('Server running!');</span></p>
+<p>&nbsp;</p>
+<p><span>// リクエストの処理</span></p>
+<p><span>function doRequest(req, res) {</span></p>
+<p><span> var hello2 = ejs.render(hello, {</span></p>
+<p><span> title: "タイトルです",</span></p>
+<p><span> content: ejs.render(content1,{</span></p>
+<p><span> message:"テストメッセージ"</span></p>
+<p><span> })</span></p>
+<p>});</p>
+<p><span> res.writeHead(200, {'Content-Type': 'text/html'});</span></p>
+<p><span> res.write(hello2);</span></p>
+<p><span> res.end();</span></p>
+<p>}</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00041.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>ここでは、以下の手順で表示を作成しています。</span></p>
+<p>&nbsp;</p>
+<p><span><b>1</b></span><span><b>.</b></span><span>サーバーを作成する前に、あらかじめ２つのテンプレートを変数に読み込んでおく。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var hello = fs.readFileSync('./hello.ejs', 'utf-8');</span></p>
+<p><span>var content1 = fs.readFileSync('./content1.ejs', 'utf-8');</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>2</b></span><span><b>.</b></span><span>コンテンツ用のテンプレート（content1.ejs）をrenderでレンダリングする。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>ejs.render(content1,{</span></p>
+<p><span> message:"テストメッセージ"</span></p>
+<p><span>})</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>3</b></span><span><b>.</b></span><span>ページ全体のテンプレート（hello.ejs）をrenderでレンダリングする。この際、content1.ejsをレンダリングしたデータをオプションの値として渡す。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var hello2 = ejs.render(hello, {</span></p>
+<p><span> title: "タイトルです",</span></p>
+<p><span> content: ......content1のレンダリング結果......</span></p>
+<p>});</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>4</b></span><span><b>.</b></span><span>レンダリングされたデータを書き出す。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>res.write(hello2);</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>複数のテンプレートを組み合わせて使う場合の基本は、「中にあるものを先にレンダリングし、その結果をオプションに指定して外側のレンダリングを行う」ということです。</span></p>
+<p>&nbsp;</p>
+<p><span>あるテンプレート内に別のテンプレートをはめ込む場合、「レンダリング済み」のデータを嵌めこむのが基本です。はめ込んだ後でレンダリングすれば......と思っていると、はめ込んだテンプレート内のタグがレンダリングされずに表示されてしまったりするので気をつけてください。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-104">
+<div>
+<h2 id="calibre_link-162"><b><a id="calibre_link-58"><b></b></a><span><b>配列データを繰り返し出力する</b></span></b></h2><p><span>EJSのテンプレートでは</span><span>、</span><span><b>&lt;% %</b></span><span><b>&gt;</b></span><span>タグを使ってJavaScriptのスクリプトを実行させることができます。これは、レンダリング時に実行される（つまりサーバー内で実行される）ため、ブラウザに実際に表示されるページには現れません。スクリプトの実行結果が表示されるのみです。</span></p>
+<p>&nbsp;</p>
+<p><span>こ</span><span>の</span><span><b>&lt;% %</b></span><span><b>&gt;</b></span><span>によるスクリプトを作成する場合、注意すべき点がいくつかあります。まとめておきましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>1.</b></span><span><b>&lt;% %</b></span><span><b>&gt;</b></span><span>内では、何かを書き出して表示することはできません。その場合は一度タグを抜け</span><span>、</span><span><b>&lt;%= %</b></span><span><b>&gt;</b></span><span>タグなどで値を出力する必要があります</span><span>。</span><span><b>&lt;% %</b></span><span><b>&gt;</b></span><span>タグの中</span><span>で</span><span><b>&lt;%= %</b></span><span><b>&gt;</b></span><span>タグを使うことはできません。</span></p>
+<p>&nbsp;</p>
+<p><span><b>2</b></span><span><b>.</b></span><span>JavaScriptのスクリプトですが、一般的なJavaScriptの機能には利用できないものもあります。例えば、DateやMathなどのオブジェクトは使えますが、alertのようなブラウザ依存機能は使えません。またdocumentなどDOMを操作する機能も使えません。サーバーで実行されるんですから当たり前ですが、つい勘違いしてしまいがちなので、念のため。</span></p>
+<p>&nbsp;</p>
+<p><span><b>3</b></span><span><b>.</b></span><span> スクリプトからレンダリング時に渡される変数などの値は、そのまま&lt;% %&gt;内で変数として使うことができます。</span></p>
+<p>&nbsp;</p>
+<p><span>では、実際に簡単なサンプルを作ってみましょう。まず、content1.ejsの内容を下のリスト欄のように書換えてみてください。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;p&gt;※サンプルで作ったコンテンツです。&lt;/p&gt;</span></p>
+<p><span>&lt;p&gt;配列データを渡してリストにして表示します。&lt;/p&gt;</span></p>
+<p><span>&lt;p&gt;&lt;ol&gt;</span></p>
+<p><span><b>&lt;% data.forEach(function(val){ %&gt;</b></span></p>
+<p><span>&lt;li&gt;&lt;%= val %&gt;&lt;/li&gt;</span></p>
+<p><span><b>&lt;% }) %&gt;</b></span></p>
+<p><span>&lt;/ol&gt;&lt;/p&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>ここでは、dataの内容を取り出して表示させる処理を&lt;% %&gt;利用で作成しています。続いて、Node.jsのスクリプトを、下のリスト欄にあげたように修正します。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var http = require('http');</span></p>
+<p><span>var fs = require('fs');</span></p>
+<p><span>var ejs = require('ejs');</span></p>
+<p>&nbsp;</p>
+<p><span>var hello = fs.</span><span><b>readFileSync</b></span><span>('./hello.ejs', 'utf8');</span><span>var content1 = fs.</span><span><b>readFileSync</b></span><span>('./content1.ejs', 'utf8');</span></p>
+<p><span>var server = http.createServer();</span></p>
+<p><span>server.on('request', doRequest);</span></p>
+<p><span>server.listen(1234);</span></p>
+<p><span>console.log('Server running!');</span></p>
+<p>&nbsp;</p>
+<p><span>// リクエストの処理</span></p>
+<p><span>function doRequest(req, res) {</span></p>
+<p><span> var hello2 =</span><span><b>ejs.render</b></span><span>(hello, {</span></p>
+<p><span> title: "タイトルです",</span></p>
+<p><span> content:</span><span><b>ejs.render</b></span><span>(content1, {</span></p>
+<p><span> data: [</span></p>
+<p><span> "これは最初のデータです。",</span></p>
+<p><span> "次のデータだよ。",</span></p>
+<p><span> "一番最後のデータなのだ。"</span></p>
+<p>]</p>
+<p><span> })</span></p>
+<p>});</p>
+<p><span> res.writeHead(200, {'Content-Type': 'text/html'});</span></p>
+<p><span> res.write(hello2);</span></p>
+<p><span> res.end();</span></p>
+<p>}</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>そして実際にアクセスしてみましょう。配列に用意したデータがリストとして表示されます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00043.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>ここでは、renderメソッドの引数に「data」という値を用意しています。これは、見ればわかるようにテキストの配列が設定されています。この配列の値を順に取り出して表示しよう、というわけです。出力されている部分を見ると、</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;% data.</span><span><b>forEach</b></span><span>(function(</span><span><b>val</b></span><span>){ %&gt;</span><span>&lt;li&gt;&lt;%= val %&gt;&lt;/li&gt;</span></p>
+<p><span>&lt;% }) %&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>このようになっていますね</span><span>。</span><span><b>&lt;% %</b></span><span><b>&gt;</b></span><span>タグを使い、繰り返し処理を記述しています。</span><span>「</span><span><b>forEac</b></span><span><b>h</b></span><span>」という見慣れないメソッドが使われていますが、これは配列（Arrayオブジェクト）にあるメソッドで、配列から要素を順に取り出して引数の関数を実行するものです。取り出された値は、引数の関数に引数として渡されます。働きがよくわからない人は、以下のように書換えて考えると良いでしょう。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;% for (var i = 0;i &lt; data.length;i++){ %&gt;</span></p>
+<p><span> &lt;li&gt;&lt;%= data[i] %&gt;&lt;/li&gt;</span></p>
+<p><span>&lt;% } %&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>構文内の、値を書き出す部分</span><span>は</span><span><b>&lt;%= %</b></span><span><b>&gt;</b></span><span>タグになっています</span><span>。</span><span><b>&lt;% %</b></span><span><b>&gt;</b></span><span>を使うときには、このように「処理部分だけ</span><span>を</span><span><b>&lt;% %</b></span><span><b>&gt;</b></span><span>内に書き、出力</span><span>は</span><span><b>&lt;%= %</b></span><span><b>&gt;</b></span><span>に書く」というように、処理と出力をきちんと切り分けて考える必要がある、ということを忘れないようにしましょう。</span></p>
+<p>
+</p><div id="calibre_link-163"></div>
+</div>
+</div>
+<div id="calibre_link-23">
+<div>
+<table cellspacing="0" cellpadding="0" border="0"> 
+<tbody> 
+<tr> 
+<td> 
+
+<h1 id="calibre_link-164"><b><a id="calibre_link-59"><b></b></a><span><b>4. 複数ページのルーティングとフォーム送信</b></span></b></h1><p><span><b>サーバーのプログラムというのは、クライアントから送られるリクエストを受け取り処理するものです。その基本的な処理として「複数ページのルーティング」と、「フォームによるPOST送信処理」について説明しましょう。</b></span></p>
+<p>&nbsp;</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+
+
+</div>
+</div>
+<div id="calibre_link-3">
+<div>
+<h2 id="calibre_link-165"><b><a id="calibre_link-60"><b></b></a><span><b>複数ページのルーティングの考え方</b></span></b></h2><p><span>Node.jsで簡単なページが表示できるようになった、では次に何を覚えればいいんだろう？とここで考えてしまう人はけっこう多いようです。１ページだけの表示ができても、実用にはなりません。通常のWebではもっとさまざまなリクエストに応える処理をしなければいけません。</span></p>
+<p>&nbsp;</p>
+<p><span>まずは、「複数のページ」から考えていきましょう。普通、Webというのは複数のページがあるものです。Node.jsで複数ページを表示させるにはどうすればいいんでしょう？</span></p>
+<p>&nbsp;</p>
+<p><span>ここでは、前回使ったEJSというテンプレートエンジンを使って考えることにしましょう（使わなくても考え方は同じですが......）。基本的な考え方はとてもシンプルです。複数のページを利用する場合、まずそれらのページをあらかじめ読み込んでおき、リクエストに応じてどのページをレンダリングして表示するかを決めればいいわけです。</span></p>
+<p>&nbsp;</p>
+<p><span>では、「どのページを表示するか」をクライアントからどうやって伝えるのか？　普通のWebサイトでは、URLによってそれは伝えられます。http://○○/indexならindexのページを、http://○○/heloならheloページを......というような具合ですね。</span></p>
+<p>&nbsp;</p>
+<p><span>通常のWebサーバーでは、自動的に対応するHTMLページを読み込み送り返しますが、Node.jsの場合、プログラムの中でそうした処理を考えてやらなければいけません。送られてきたURLからドメインより後の部分を取り出し、その値によって表示するページを変える、といった処理を考えればよいわけですね。</span></p>
+<p>&nbsp;</p>
+<p><span>では、実際にやってみましょう。まず、下準備として、表示に使用するEJSのテンプレートファイルを用意しておきましょう。ここでは以下の３つのテンプレートファイルを用意することにします。</span></p>
+<p>&nbsp;</p>
+<p><span><b>template.ej</b></span><span><b>s</b></span><span>――ページ全体のレイアウトとなるテンプレートです。前回まで、hello.ejsというファイル名で使ってましたね。テンプレートファイルであることがわかるようにここからファイル名を変更しました</span></p>
+<p><span><b>content1.ej</b></span><span><b>s</b></span><span>――１つ目のコンテンツを記述したテンプレートです。トップページにアクセスした時に表示します。</span></p>
+<p><span><b>content2.ej</b></span><span><b>s</b></span><span>――２つ目のコンテンツを記述したテンプレートです。/otherにアクセスしたら表示します。</span></p>
+<p>&nbsp;</p>
+<p><span>これらのテンプレートを使って、２つのページを表示するスクリプトを作成していきましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>※template.ejs</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;!DOCTYPE html&gt;</span></p>
+<p><span>&lt;html lang="ja"&gt;</span></p>
+<p><span>&lt;head&gt;</span></p>
+<p><span>&lt;meta http-equiv="content-type"</span></p>
+<p><span>content="text/html; charset=UTF-8"&gt;</span></p>
+<p><span>&lt;title&gt;&lt;%=title %&gt;&lt;/title&gt;</span></p>
+<p><span>&lt;style&gt;</span></p>
+<p><span>body { font-size:12pt; color:#006666; }</span></p>
+<p><span>h1 { font-size:18pt; background-color:#AAFFFF; }</span></p>
+<p><span>pre { background-color:#EEEEEE; }</span></p>
+<p><span>&lt;/style&gt;</span></p>
+<p><span>&lt;/head&gt;</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;body&gt;</span></p>
+<p><span>&lt;header&gt;</span></p>
+<p><span>&lt;h1 id="h1"&gt;&lt;%=title %&gt;&lt;/h1&gt;</span></p>
+<p><span>&lt;/header&gt;</span></p>
+<p><span>&lt;article&gt;</span></p>
+<p><span>&lt;p&gt;&lt;%-content %&gt;&lt;/p&gt;</span></p>
+<p><span>&lt;/article&gt;</span></p>
+<p><span>&lt;/body&gt;</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;/html&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>※content1.ejs</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;h2&gt;※サンプルで作ったコンテンツです。&lt;/h2&gt;</span></p>
+<p><span>&lt;p&gt;&lt;%= message %&gt;&lt;/p&gt;</span></p>
+<p><span>&lt;hr&gt;</span></p>
+<p><span>&lt;p&gt;&lt;a href="/other"&gt;other pageへ&lt;/a&gt;&lt;/p&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>※content2.ejs</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;p&gt;※別のページのコンテンツです。&lt;/p&gt;</span></p>
+<p><span>&lt;p&gt;&lt;%= message %&gt;&lt;/p&gt;</span></p>
+<p><span>&lt;p&gt;　&lt;/p&gt;</span></p>
+<p><span>&lt;p&gt;&lt;a href="/"&gt;戻る&lt;/a&gt;&lt;/p&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+
+
+</div>
+</div>
+<div id="calibre_link-28">
+<div>
+<h2 id="calibre_link-166"><b><a id="calibre_link-61"><b></b></a><span><b>「url」オブジェクトによるURL処理</b></span></b></h2><p><span>では、用意したテンプレートを使うスクリプトを作成しましょう。これは、先にスクリプトを見ながら説明をしていったほうが早いですね。下にNode.jsで実行するメインスクリプトを掲載しておきます。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var http = require('http');</span></p>
+<p><span>var fs = require('fs');</span></p>
+<p><span>var ejs = require('ejs');</span></p>
+<p><span>var url =</span><span><b>require('url')</b></span><span>;</span></p>
+<p><span>var template = fs.readFileSync('./template.ejs', 'utf8');</span></p>
+<p><span>var content1 = fs.readFileSync('./content1.ejs', 'utf8');</span></p>
+<p><span>var content2 = fs.readFileSync('./content2.ejs', 'utf8');</span></p>
+<p>&nbsp;</p>
+<p><span>// ルーティング情報の連想配列の用意</span></p>
+<p><span>var routes = {</span></p>
+<p><span> "/":{</span></p>
+<p><span> "title":"Main Page",</span></p>
+<p><span> "message":"これはサンプルのページですよ。",</span></p>
+<p><span> "content":content1},</span></p>
+<p><span> "/index":{</span></p>
+<p><span> "title":"Main Page",</span></p>
+<p><span> "message":"これはサンプルのページですよ。",</span></p>
+<p><span> "content":content1},</span></p>
+<p><span> "/other":{</span></p>
+<p><span> "title":"Other Page",</span></p>
+<p><span> "message":"別のページを表示していますよ。",</span></p>
+<p><span> "content":content2}</span></p>
+<p>};</p><p><span>// サーバーの作成と実行</span></p>
+<p><span>var server = http.createServer();</span></p>
+<p><span>server.on('request', doRequest);</span></p>
+<p><span>server.listen(1234);</span></p>
+<p><span>console.log('Server running!');</span></p>
+<p>&nbsp;</p>
+<p><span>// リクエストの処理</span></p>
+<p><span>function doRequest(request, response) {</span></p>
+<p><span> var url_parts =</span><span><b>url.parse(request.url)</b></span><span>;</span><span>// ルートエラーのチェック</span></p>
+<p><span><b>if (routes[url_parts.pathname] == null)</b></span><span>{</span></p>
+<p><span> console.log("NOT FOUND PAGE:" + request.url);</span></p>
+<p><span> response.writeHead(200, { 'Content-Type': 'text/html' });</span></p>
+<p><span> response.end("&lt;html&gt;&lt;body&gt;&lt;h1&gt;NOT FOUND PAGE:" +</span></p>
+<p><span> request.url + "&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;");</span></p>
+<p><span> return;</span></p>
+<p>}</p>
+<p><span>// ページのレンダリング</span></p>
+<p><span> var content = ejs.render( template,</span></p>
+<p>{</p>
+<p><span> title:</span><span><b>routes[url_parts.pathname].title</b></span><span>,</span><span>content: ejs.render(</span></p>
+<p><span><b>routes[url_parts.pathname].content</b></span><span>,</span><span>{</span></p>
+<p><span> message:</span><span><b>routes[url_parts.pathname].message</b></span><span>}</span></p>
+<p><span> )</span></p>
+<p>}</p>
+<p>);</p>
+<p><span> response.writeHead(200, {'Content-Type': 'text/html'});</span></p>
+<p><span> response.write(content);</span></p>
+<p><span> response.end();</span></p>
+<p>}</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>これを実行して、http://localhost:1234/ にアクセスしてみてください。content1.ejsの内容が表示されます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00052.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>このページにあるリンクをクリックすると、http://localhost:1234/otherにジャンプし、content2.ejsの内容を表示します。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00061.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>ここにある「戻る」リンクをクリックすれば、最初のページに戻ります。わずか２ページですが、ページを行き来して異なるコンテンツを表示しているのが確認できるでしょう。</span></p>
+<p>&nbsp;</p>
+<p><span>表示したいは単純ですが、テンプレートの中にコンテンツを組み込むようにしているため、ページを移動しても全体のレイアウトは同じスタイルを保っていることがわかります。テンプレートを使うことにより、Webサイト全体のレイアウトを統一できるのですね。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-26">
+<div>
+<h2 id="calibre_link-167"><b><a id="calibre_link-62"><b></b></a><span><b>ルート処理の流れをチェックする</b></span></b></h2><p><span>では、動作の確認ができたところで、スクリプトの内容を見ながら処理の仕方を説明していきましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●urlのロード</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var url = require('url');</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>URLを扱うためには、</span><span>「</span><span><b>ur</b></span><span><b>l</b></span><span>」というオブジェクトをロードしておきます。このurlオブジェクトは、URLの文字列をパースし、そこから必要なものを取り出す機能を提供します。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●URLのパース</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var url_parts = url.</span><span><b>parse</b></span><span>(request.</span><span><b>url</b></span><span>);</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>リクエストがアクセスしてきたURLをパース処理します。リクエストされたURLは、requestイベントハンドラの引数に渡されるrequestオブジェクトの</span><span>「</span><span><b>ur</b></span><span><b>l</b></span><span>」というプロパティで得ることができます。</span></p>
+<p>&nbsp;</p>
+<p><span>urlオブジェクトの</span><span>「</span><span><b>pars</b></span><span><b>e</b></span><span>」は、URLの文字列を要素ごとに分割しオブジェクト化して返すものです。これで、変数url_partsにURLの要素が保管されます。それぞれの要素は生成されたオブジェクトのプロパティとして保管されており、いつでも利用できるようになります。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●各ページのデータを用意する</b></span></p>
+<p><span>今回のスクリプトでは、それぞれのページのデータ</span><span>を</span><span><b>route</b></span><span><b>s</b></span><span>という変数にまとめています。これは、アクセス先のパスをキーとして用意し、そのパスで表示されるページの情報を連想配列でまとめたものを値に設定してあります。例えば、ルートである"/"の値を見てみると、</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>"/":{</span></p>
+<p><span> "title":"Main Page",</span></p>
+<p><span> "message":"これはサンプルのページですよ。",</span></p>
+<p><span> "content":content1</span></p>
+<p>}</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>こんな型式になっていることがわかるでしょう。連想配列には、title、message、contentというキーが用意されており、それぞれ「タイトルテキスト」「ページに表示するメッセージテキスト」「表示するページの内容（テンプレートデータ）」を値として保管してあります。</span></p>
+<p>&nbsp;</p>
+<p><span>この変数routesから、アクセスするアドレスのパスごとに必要な情報を取り出し処理しよう、というわけです。アクセスしたパスをキーとする値を取り出せば、そこにタイトル、メッセージ、コンテンツのデータがセットで用意されます。それらをテンプレートにはめ込めばページの出来上がり！というわけです。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●パスが得られない場合の処理</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>if (routes[url_parts.pathname] == null){......}</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>変数url_partsにURLの各要素がオブジェクトとして保管されていましたが、この中で「パス」の値は</span><span>「</span><span><b>pathnam</b></span><span><b>e</b></span><span>」というプロパティとして保管されています。</span></p>
+<p>&nbsp;</p>
+<p><span>変数routesには、既に述べたように各パスごとで必要となる情報が、パスをキーとした連想配列にまとめられていました。ということは</span><span>、</span><span><b>routes[url_parts.pathname</b></span><span><b>]</b></span><span>の値を取り出せば、現在のリクエストがアクセスしているパスの情報が取り出せることになります。もしこの値がnullならば、変数routesは情報がない、すなわち「そのパスにはアクセスできない」ということになるわけです。</span></p>
+<p>&nbsp;</p>
+<p><span>そこで、nullの場合にはエラーメッセージなどを表示させておきます。これで、用意されていないアドレスへの対応ができました。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●アクセスしたパスのページをレンダリングする</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var content = ejs.render( template,</span></p>
+<p>{</p>
+<p><span> title:</span><span><b>routes[url_parts.pathname].title</b></span><span>,</span><span>content: ejs.render(</span></p>
+<p><span><b>routes[url_parts.pathname].content</b></span><span>,</span></p>
+<p>{</p>
+<p><span> message:</span><span><b>routes[url_parts.pathname].message</b></span><span>}</span></p>
+<p><span> )</span></p>
+<p>}</p>
+<p>);</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>後は、変数routesから必要な値を取り出してレンダリングをするだけです。例えば、titleに設定する値は、</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>title: routes[url_parts.pathname].title</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>このように用意すればいいですし、コンテンツのレンダリングをcontentに用意するには、</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>content: ejs.render(</span></p>
+<p><span> routes[url_parts.pathname].content, ......)</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>このようにすればよいでしょう。ここで表示するコンテンツのテンプレート</span><span>は</span><span><b>routes[url_parts.pathname].conten</b></span><span><b>t</b></span><span>で得られますから、これをrenderするだけです。</span></p>
+<p>&nbsp;</p>
+<p><span>――後は、writeHead、write、endのセットを実行してページ出力の完了です。テンプレートのレンダリング処理があるのでちょっと面倒に見えますが、基本的に「ページで使う値はroutes[url_parts.pathname]の中にまとめられている」ということさえわかっていれば難しいことはありません。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-9">
+<div>
+<h2 id="calibre_link-168"><b><a id="calibre_link-63"><b></b></a><span><b>フォームのPOST送信について</b></span></b></h2><p><span>続いて、フォームをPOST送信した時の処理について考えてみましょう。既に、アドレスによってページ処理する方法はわかりましたから、フォームを持ったページを用意して、その送信先のアドレスの処理をする、という作業はわかっています。</span></p>
+<p>&nbsp;</p>
+<p><span>最大の問題は、「GETか、POSTか」をどう見分けるかという点。そしてもう１点は「送信されたフォーム情報をどう取得するか」という点でしょう。</span></p>
+<p>&nbsp;</p>
+<p><span>まずは、GETとPOSTの切り分けについてです。これは実は簡単に行えます。requestイベントハンドラで引数に渡されるrequestオブジェクトの</span><span>「</span><span><b>metho</b></span><span><b>d</b></span><span>」を調べるだけで済みます。ハンドラ内で、こん</span><span>な</span><span>具合に処理を用意すればよいでしょう。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>if (request.</span><span><b>method</b></span><span> ==</span><span><b>"GET"</b></span><span>){</span></p>
+<p><span> ......GETの処理......</span></p>
+<p>}</p>
+<p><span>if (request.</span><span><b>method</b></span><span> ==</span><span><b>"POST"</b></span><span>){</span></p>
+<p><span> ......POSTの処理......</span></p>
+<p>}</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>残る「POST送信されたフォームデータの取得」は、実際にコードを見たほうがわかりやすいでしょう。</span></p>
+<p>&nbsp;</p>
+<p><span>――では、これもサンプルを作って説明しましょう。まずは、表示コンテンツのテンプレートからです。今回は、content1.ejsにフォームを設置し、新たに用意するcontent3.ejsで送信されたフォームの表示を行わせることにしましょう。</span></p>
+<p>&nbsp;</p>
+<p><span>下にサンプルリストを掲載しておきます。まずはこれらを作成しておいてください。</span></p>
+<p>&nbsp;</p>
+<p><span><b>※content1.ejs</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;h2&gt;※サンプルで作ったコンテンツです。&lt;/h2&gt;</span></p>
+<p><span>&lt;p&gt;</span><span><b>&lt;%= message %&gt;</b></span><span>&lt;/p&gt;</span><span>&lt;hr&gt;</span></p>
+<p><span>&lt;form method="post" action="./post"&gt;</span></p>
+<p><span>&lt;table&gt;</span></p>
+<p><span>&lt;tr&gt;&lt;td&gt;ID:&lt;/td&gt;</span></p>
+<p><span>&lt;td&gt;&lt;input type="text" name="idname"&gt;&lt;/td&gt;&lt;/tr&gt;</span></p>
+<p><span>&lt;tr&gt;&lt;td&gt;PASS:&lt;/td&gt;</span></p>
+<p><span>&lt;td&gt;&lt;input type="password" name="pass"&gt;&lt;/td&gt;&lt;/tr&gt;</span><span>&lt;tr&gt;&lt;td&gt;&lt;/td&gt;</span></p>
+<p><span>&lt;td&gt;&lt;input type="submit"&gt;&lt;/td&gt;&lt;/tr&gt;</span></p>
+<p><span>&lt;/table&gt;</span></p>
+<p><span>&lt;/form&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>※content3.ejs</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;p&gt;※POSTでアクセスされたコンテンツです。&lt;/p&gt;</span></p>
+<p><span>&lt;p&gt;ID:</span><span><b>&lt;%= idname %&gt;</b></span><span>&lt;/p&gt;</span><span>&lt;p&gt;PASS:</span><span><b>&lt;%= pass %&gt;</b></span><span>&lt;/p&gt;</span><span>&lt;p&gt;&lt;a href="/"&gt;戻る&lt;/a&gt;&lt;/p&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>content1.ejsにフォームを用意しています。フォームの送信先は、action="./post"と指定しています。この/postに送信された内容を表示するのに用意したのがcontent3.ejsです。ここでは「idname」と「pass」という２つの変数を出力しています。</span></p>
+<p>&nbsp;</p>
+<p><span>ということは、/postに送信されたフォームから値を取り出し、idnameとpassという変数に収めてcontent3.ejsをレンダリングする、という処理を用意すればいいわけですね。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-15">
+<div>
+<h2 id="calibre_link-169"><b><a id="calibre_link-64"><b></b></a><span><b>POST送信されたデータの処理</b></span></b></h2><p><span>続いて、Node.jsのスクリプトを作成しましょう。今回は、フォームの送信先でcontent3.ejsを表示するため、"/post"というパスの情報を追加してあります。だいぶ長くなってきましたので、間違えないように記述しましょう。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var http = require('http');</span></p>
+<p><span>var fs = require('fs');</span></p>
+<p><span>var ejs = require('ejs');</span></p>
+<p><span>var url = require('url');</span></p>
+<p><span><b>var qs = require('querystring');</b></span></p>
+<p>&nbsp;</p>
+<p><span>var template = fs.readFileSync('./template.ejs', 'utf8');</span></p>
+<p><span>var content1 = fs.readFileSync('./content1.ejs', 'utf8');</span></p>
+<p><span>var content2 = fs.readFileSync('./content2.ejs', 'utf8');</span></p>
+<p><span>var content3 = fs.readFileSync('./content3.ejs', 'utf8');</span></p>
+<p>&nbsp;</p>
+<p><span>var routes = {</span></p>
+<p><span> "/":{</span></p>
+<p><span> "title":"Main Page",</span></p>
+<p><span> "message":"これはサンプルのページですよ。",</span></p>
+<p><span> "content":content1},</span></p>
+<p><span> "/index":{</span></p>
+<p><span> "title":"Main Page",</span></p>
+<p><span> "message":"これはサンプルのページですよ。",</span></p>
+<p><span> "content":content1},</span></p>
+<p><span> "/other":{</span></p>
+<p><span> "title":"Other Page",</span></p>
+<p><span> "message":"別のページを表示していますよ。",</span></p>
+<p><span> "content":content2},</span></p>
+<p><span> "/post":{</span></p>
+<p><span> "title":"Post Page",</span></p>
+<p><span> "content":content3}</span></p>
+<p>};</p><p><span>var server = http.createServer();</span></p>
+<p><span>server.on('request', doRequest);</span></p>
+<p><span>server.listen(1234);</span></p>
+<p><span>console.log('Server running!');</span></p>
+<p>&nbsp;</p>
+<p><span>// リクエストの処理</span></p>
+<p><span>function doRequest(request, response) {</span></p>
+<p><span> var url_parts = url.parse(request.url);</span></p>
+<p><span>// ルートエラーのチェック</span></p>
+<p><span> if (routes[url_parts.pathname] == null){</span></p>
+<p><span> response.writeHead(200, { 'Content-Type': 'text/html' });</span></p>
+<p><span> response.end("&lt;html&gt;&lt;body&gt;&lt;h1&gt;NOT FOUND PAGE:" +</span></p>
+<p><span> request.url + "&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;");</span></p>
+<p><span> return;</span></p>
+<p>}</p>
+<p><span>// GETの処理</span></p>
+<p><span> if (request.method == "GET"){</span></p>
+<p><span> var content = ejs.render( template,</span></p>
+<p>{</p>
+<p><span> title: routes[url_parts.pathname].title,</span></p>
+<p><span> content: ejs.render(</span></p>
+<p><span> routes[url_parts.pathname].content,</span></p>
+<p>{</p>
+<p><span> message: routes[url_parts.pathname].message</span></p>
+<p>}</p>
+<p><span> )</span></p>
+<p>}</p>
+<p>);</p>
+<p><span> response.writeHead(200, {'Content-Type': 'text/html'});</span></p>
+<p><span> response.write(content);</span></p>
+<p><span> response.end();</span></p>
+<p><span> return;</span></p>
+<p>}</p>
+<p><span>// POSTの処理</span></p>
+<p><span> if (request.method == "POST"){</span></p>
+<p><span> if (url_parts.pathname == "/post"){</span></p>
+<p><span> var body='';</span></p>
+<p><span> request.on('data', function (data) {</span></p>
+<p><span> body +=data;</span></p>
+<p>});</p>
+<p><span> request.on('end',function(){</span></p>
+<p><span> var post =</span><span><b>qs.parse(body)</b></span><span>;</span><span>var content = ejs.render( template,</span></p>
+<p>{</p>
+<p><span> title: routes[url_parts.pathname].title,</span></p>
+<p><span> content: ejs.render(</span></p>
+<p><span> routes[url_parts.pathname].content,</span></p>
+<p>{</p>
+<p><span> idname: post.idname,</span></p>
+<p><span> pass: post.pass</span></p>
+<p>}</p>
+<p><span> )</span></p>
+<p>}</p>
+<p>);</p>
+<p><span> response.writeHead(200,</span></p>
+<p><span> {'Content-Type': 'text/html'});</span></p>
+<p><span> response.write(content);</span></p>
+<p><span> response.end();</span></p>
+<p>});</p>
+<p><span> } else {</span></p>
+<p><span> response.writeHead(200,</span></p>
+<p><span> {'Content-Type': 'text/plain'});</span></p>
+<p><span> response.write("NO-POST!!");</span></p>
+<p><span> response.end();</span></p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>スクリプトを記述したら、実際にNode.jsを起動し、アクセスしてみましょう。http://localhost:1234/にアクセスすると用意されたフォームが表示されます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00053.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>ここでIDとPASSに適当に値を記入し送信すると、送信された内容が表示されます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00078.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>今回のスクリプトでは、</span><span>「</span><span><b>querystrin</b></span><span><b>g</b></span><span>」というオブジェクトをロードして使っています。冒頭付近にある以下の文ですね。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var qs = require('querystring');</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>このquerystringは、クエリー文字列を扱うための機能を提供します。これを利用することで、クエリー文字列から必要な値を適格に取り出せるようになるわけです。――では、スクリプトの内容を見ていきましょう。</span></p>
+<p>&nbsp;</p>
+<p><span>ここでは</span><span>、</span><span><b>request.metho</b></span><span><b>d</b></span><span>でGET時とPOST時の処理を分けています。GET時の処理は先ほどと同じですね。問題はPOST時の処理です。ここでは、まず</span><span>「</span><span><b>dat</b></span><span><b>a</b></span><span>」というイベントハンドリングを行なっています。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var body='';</span></p>
+<p><span>request.on('data', function (data) {</span></p>
+<p><span> body +=data;</span></p>
+<p>});</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>このdataイベントは、POSTで送信されたデータを受信した際に発生します。イベントハンドラでは、送られてきたデータが引数として渡されます。こうして得られたデータを変数bodyにどんどん追加していくくことで、受信したデータが完成されていきます。</span></p>
+<p>&nbsp;</p>
+<p><span>そして、すべての受信処理が完了した後で、POSTデータの処理とページのレンダリングなどを行います。これは「end」というイベントハンドラを用意して実装します。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>request.on('end',function(){</span></p>
+<p><span> var post =</span><span><b>qs.parse(body)</b></span><span>;</span><span>......略......</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>endイベントハンドラで最初に行なっているのは、先ほどdataイベントで受け取ったデータをまとめてある変数bodyをパースする処理です。これは</span><span>、</span><span><b>querystrin</b></span><span><b>g</b></span><span>オブジェクトの</span><span>「</span><span><b>pars</b></span><span><b>e</b></span><span>」というメソッドで行なっています。このメソッドは、引数に渡されたクエリー文字列をパースし、オブジェクトにまとめます。例えば、こんな具合です。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>a=abc&amp;x=xyz</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>↓</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>{ a: "abc", x:"xyz" }</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>この際、URLエンコードされた値なども自動的に元の文字列に復号されます。こうして得られた変数postから、必要に応じて値を取り出せばいいわけです。今回はcontent3をレンダリングするとき以下のようにしていますね。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>content: ejs.render(</span></p>
+<p><span> routes[url_parts.pathname].content,</span></p>
+<p>{</p>
+<p><span> idname:</span><span><b>post.idname</b></span><span>,</span><span>pass:</span><span><b>post.pass</b></span></p>
+<p>}</p>
+<p><span>)</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>送信された値は</span><span>、</span><span><b>post.idnam</b></span><span><b>e</b></span><span>、</span><span><b>post.pas</b></span><span><b>s</b></span><span>で取り出せます。後は、それらをまとめてレンダリングするだけです。</span></p>
+<p>&nbsp;</p>
+<p><span>POST送信は、データの受信がちょっと面倒ですが、それさえクリアできれば後は簡単です。これでだいぶ普通のWebページのようなものが作れるようになってきましたね。（まぁ、Node.jsで普通のWebサーバーのような使い方をするのがよいか？という問題はありますが......）</span></p>
+<p>
+</p><div id="calibre_link-170"></div>
+</div>
+</div>
+<div id="calibre_link-94">
+<div>
+<table cellspacing="0" cellpadding="0" border="0"> 
+<tbody> 
+<tr> 
+<td> 
+
+<h1 id="calibre_link-171"><b><a id="calibre_link-65"><b></b></a><span><b>5. Expressを導入しよう</b></span></b></h1><p><span><b>Node.jsで効率的にWebアプリケーションを開発するなら、そのためのフレームワークを導入するのが一番です。ここでは、Node.jsのWebアプリケーションフレームワーク定番ともいえる「Express」をインストールし利用してみましょう。</b></span></p>
+<p>&nbsp;</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+
+
+</div>
+</div>
+<div id="calibre_link-16">
+<div>
+<h2 id="calibre_link-172"><b><a id="calibre_link-66"><b></b></a><span><b>フレームワークと「Express」</b></span></b></h2><p><span>ここまで、Webアプリケーションの基本的な機能に関する処理の仕方について説明をして来ました。が、正直いって「思ったよりも面倒くさい」と感じたのではないでしょうか。</span></p>
+<p>&nbsp;</p>
+<p><span>何しろ、何をやるにもすべて細かく自分で処理を書かないといけない。EJSを導入してテンプレートを使えるようになったけれど、テンプレートファイルを予めロードしておいてそれをレンダリングする、なんて処理を自分で書かないといけない。複数のページを用意したければ自分でURLごとのルーティング処理を作っておかないといけない。POSTされたデータはイベントを使ってデータをすべて取り出し、それをデコードして必要な値を利用できるようにこれまた自分で処理を書かないといけない。これでは、多数のページを持つ複雑なWebアプリケーションを作ろうという気も萎えてきます。</span></p>
+<p>&nbsp;</p>
+<p><span>こうした処理の大半は、「Webアプリケーションなら必ず必要となるもの」だったりします。だったら、Webアプリケーションが使う機能をあらかじめすべて実装し、Webアプリケーションとしての基本的なシステムを用意しておけば、圧倒的に簡単に開発が行えるようになるはずです。</span></p>
+<p>&nbsp;</p>
+<p><span>こうした考えで誕生したのが「</span><span><b>Webアプリケーションフレームワーク</b></span><span>」と一般に呼ばれるものです。単に機能を集めたライブラリではなく、Webアプリケーションとしての基本的なシステムそのものを提供するプログラムのことです。</span></p>
+<p>&nbsp;</p>
+<p><span>Node.jsにも、このWebアプリケーションフレームワークは用意されています。中でももっとも広く使われているのが</span><span>「</span><span><b>Expres</b></span><span><b>s</b></span><span>」というものでしょう。</span></p>
+<p>&nbsp;</p>
+<p><span>Expressは、EJSなどと同じく、Node.jsのパッケージとして提供されています。npmで簡単にインストールし、これを組み込んだサーバープログラムを作ることができます。またテンプレートエンジンにEJSなどを利用できるため、今まで作ったEJSテンプレートをそのまま再利用できます。</span></p>
+<p>&nbsp;</p>
+<p><span>Expressには、Webアプリケーションのための基本的なシステムが構築されており、これに必要に応じて処理を追加していきます。Node.jsのみでの実装と同様に、イベントに処理を組み込んでいくという基本的な開発スタイルは変わりありませんが、用意されているさまざまなオブジェクトを駆使することで非常に簡単に必要な処理を組み立てることができます。</span></p>
+<p>&nbsp;</p>
+<p><span>Expressのサイトは以下になります。ここでドキュメントなども公開されています。（※ただし、npmを利用するため、ここからライブラリファイルなどをダウンロードする必要はありません）</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>http://expressjs.com/</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00017.jpeg" alt="" /></p>
+
+
+</div>
+</div>
+<div id="calibre_link-118">
+<div>
+<h2 id="calibre_link-173"><b><a id="calibre_link-67"><b></b></a><span><b>Expressのインストールについて</b></span></b></h2><p><span>では、実際にExpressを利用してみましょう。Expressを使う場合、考えておきたいのは、「Expressをどこにインストールするか」です。これは以下の２通りがあります。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・Node.jsのモジュールとしてインストールする</b></span></p>
+<p><span>Node.js本体のモジュールとして保存します。こうすれば、どのWebアプリケーションからでも利用できます。ただし、アプリをサーバーにデプロイしたとき、そのサーバーにExpressがないと動きません。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・Webアプリケーションフォルダ内にインストールする</b></span></p>
+<p><span>この方式は、アプリを作るごとに毎回インストールをしないといけません。ただし、アプリにすべてのファイルが用意されますから、サーバーにデプロイした場合、サーバーにExpressがなくとも問題なく動きます。</span></p>
+<p>&nbsp;</p>
+<p><span>Node.jsのモジュールとしてインストールするのは、簡単です。EJSと同じく、コマンドプロンプトから以下のように実行するだけです。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>npm -g install express</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>ただし、実際に作ったアプリをデプロイすることを考えたら、アプリ内に必要なモジュールをすべてインストールしたほうがよいでしょう。ここでは、その方式でアプリを作成してみましょう。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-101">
+<div>
+<h2 id="calibre_link-174"><b><a id="calibre_link-68"><b></b></a><span><b>ExpressのWebアプリケーションを作る</b></span></b></h2><p><span>では、実際に簡単なアプリケーションを作ってみましょう。以下の手順にそって作業を進めて下さい。</span></p>
+<p>&nbsp;</p>
+<p><span><b>1. アプリケーションのフォルダを用意する</b></span></p>
+<p><span>まずは、アプリケーションを作成するフォルダを用意しましょう。ここではデスクトップに「expressapp」という名前でフォルダを用意することにしましょう。</span></p>
+<p>&nbsp;</p>
+<p><span>コマンドプロンプトを起動している場合は、cdでデスクトップに移動し、以下のように実行すればフォルダが作成されます。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>mkdir expressapp</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00013.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span><b>2. コマンドプロンプトでフォルダに移動</b></span></p>
+<p><span>コマンドプロンプト（Mac OS　Xならばターミナル）を起動します。そしてcdコマンドで「expressapp」フォルダに移動して下さい。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00023.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span><b>3. npmを初期化する</b></span></p>
+<p><span>npmを初期化します。これは以下のように実行します。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>npm init</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00032.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>実行すると、名前、バージョン、説明文、エントリー、テストコマンド、gitリポジトリ、キーワード、作者、ライセンスなどを次々と聞いてきます。わからなかったら、全部そのままEnterキーを押し続けて下さい。これでpackage.jsonファイルが作成されます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>4. Expressをインストールする</b></span></p>
+<p><span>Expressをインストールします。これは、以下のように行います。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>npm install express --save</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00058.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><img src="images/00050.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>これで、アプリケーションの「expressapp」内に「node_modules」というフォルダが作られ、その中に「express」というフォルダが保存されます。これがExpressのファイルが保管されているところです。</span></p>
+<p>&nbsp;</p>
+<p><span><b>5. EJSをインストールする</b></span></p>
+<p><span>続いて、Expressでテンプレートエンジンとして使用するEJSをインストールします。やはりnpmを使います。以下のように実行してください。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>npm install ejs</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00060.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>これで「node_modules」フォルダ内に「ejs」フォルダが作られ、そこにファイルが保存されます。</span></p>
+<p>&nbsp;</p>
+<p><span>――これで、Webアプリケーション作成のための準備が整いました。後は、ここにスクリプトやテンプレートなど具体的なコードを追加してアプリケーションを構築していけばいいのです。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-100">
+<div>
+<h2 id="calibre_link-175"><b><a id="calibre_link-69"><b></b></a><span><b>Express利用の基本スクリプト</b></span></b></h2><p><span>では、Expressを利用したアプリケーションのスクリプトを作成しましょう。まずは、Expressを利用する、もっとも基本的なスクリプトを考えてみましょう。</span></p>
+<p>&nbsp;</p>
+<p><span>テキストエディタを使い、下のスクリプトを記述して下さい。そして、先ほどの「expressapp」フォルダ内に、「app.js」という名前で保存しましょう。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var express = require('express');</span></p>
+<p><span>var app = express();</span></p>
+<p>&nbsp;</p>
+<p><span>app.get('/', function(req, res){</span></p>
+<p><span>res.send('Hello World!');</span></p>
+<p><span>})</span></p>
+<p>&nbsp;</p>
+<p><span>var server = app.listen(3000, function(){</span></p>
+<p><span>console.log('Server is running!');</span></p>
+<p><span>})</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>保存したら、コマンドプロンプトで、このapp.jsがある場所（「expressapp」フォルダ内）に移動し、</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>node app.js</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>このようにnodeコマンドを実行して下さい。そして、ブラウザから以下にアクセスしてみましょう。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>http://localhost:3000/</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00068.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>これで、画面に「Hello World!!」とテキストが表示されます。まだテンプレートもない、ただテキストを出力しているだけの単純なサンプルですが、「Expressを使ったアプリ」の基本はこれでわかります。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-123">
+<div>
+<h2 id="calibre_link-176"><b><a id="calibre_link-70"><b></b></a><span><b>Expressの基本処理を整理する</b></span></b></h2><p><span>このサンプルではExpressを利用するため、従来のスクリプトとは書き方が変わっています。ではポイントを整理しておきましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・Expressをロードする</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var express = require('express');</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>まず最初にExpressのライブラリをロードします。これ</span><span>は</span><span><b>require('express'</b></span><span><b>)</b></span><span>で行えます。後は、これを読み込んだ変数expressを使ってExpressの機能を利用していきます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・ExpressのApplicationオブジェクトを作成する</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var app = express();</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>最初に行うのは、アプリケーションのオブジェクトを用意することです。これは</span><span>、</span><span><b>expres</b></span><span><b>s</b></span><span>関数を呼び出して行います。この関数は、Expressのアプリケーションとなる</span><span>「</span><span><b>Applicatio</b></span><span><b>n</b></span><span>」オブジェクトを作成して返すものです。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・GETを登録する</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>app.get("/", function(req, res){......略......});</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>続いて、GETの登録を行います。これは、HTTPのGETによるアクセスの登録です。第１引数にはアクセスしたパスを、第２引数には実行する関数をそれぞれ指定します。これで、第１引数のパスにアクセスがあったとき、第２引数の関数を呼び出し実行するようになります。</span></p>
+<p>&nbsp;</p>
+<p><span>第２引数のコールバック関数では、requestとresponseのオブジェクトがそれぞれ引数として渡されます。これは、既にお馴染みのリクエストとレスポンスのオブジェクトが渡されます。</span></p>
+<p>&nbsp;</p>
+<p><span>このgetメソッドで必要なだけアクセス先のパスに関数を登録していけば、いくつでもページを追加していけるわけです。面倒なルーティング処理などは必要なくなるのです。</span></p>
+<p>&nbsp;</p>
+<p><span>・ポートをリッスンする</span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>app.listen(3000, function(){......略......});</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>最後に、ポート番号を指定して「listen」を呼び出します。これで、指定のポート番号で待ち受け状態を開始します。コールバック関数で、リッスン開始後の処理を用意しておくことができます。</span></p>
+<p>&nbsp;</p>
+<p><span>これでサーバー起動の処理は完了です。後は、どこからか指定のパスにアクセスがあれば、その処理が実行されるようになる、というわけです。</span></p>
+<p>&nbsp;</p>
+<p><span>Node.js単体で作っていたのに比べると、ずいぶんとスッキリとしたスクリプトになることがわかるでしょう。Expressを使えば、ずいぶんと効率的にWebアプリケーションを作れることが想像できますね。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-106">
+<div>
+<h2 id="calibre_link-177"><b><a id="calibre_link-71"><b></b></a><span><b>テンプレートを利用する</b></span></b></h2><p><span>とりあえず、Expressを使った基本的な処理の流れはだいたいわかりました。続いて、テンプレートを利用して表示を行ってみることにしましょう。テンプレートファイルを用意し、app.jsのスクリプトを修正すればできそうですね。</span></p>
+<p>&nbsp;</p>
+<p><span>まずは、テンプレートから作成しましょう。今回は「test.ejs」というファイル名で作成することにします。下にソースコードを掲載しておきます。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;!DOCTYPE html&gt;</span></p>
+<p><span>&lt;html lang="ja"&gt;</span></p>
+<p><span>&lt;head&gt;</span></p>
+<p><span>&lt;meta http-equiv="content-type"</span></p>
+<p><span>content="text/html; charset=UTF-8"&gt;</span></p>
+<p><span>&lt;title&gt;&lt;%=title %&gt;&lt;/title&gt;</span></p>
+<p><span>&lt;style&gt;</span></p>
+<p><span>body { font-size:12pt; color:#000066; }</span></p>
+<p><span>h1 { font-size:18pt; background-color:#DDDDFF; }</span></p>
+<p><span>pre { background-color:#EEEEEE; }</span></p>
+<p><span>&lt;/style&gt;</span></p>
+<p><span>&lt;/head&gt;</span></p>
+<p><span>&lt;body&gt;</span></p>
+<p><span>&lt;header&gt;</span></p>
+<p><span>&lt;h1&gt;&lt;%=title %&gt;&lt;/h1&gt;</span></p>
+<p><span>&lt;/header&gt;</span></p>
+<p><span>&lt;article&gt;</span></p>
+<p><span>&lt;%-content %&gt;</span></p>
+<p><span>&lt;/article&gt;</span></p>
+<p><span>&lt;/body&gt;</span></p>
+<p><span>&lt;/html&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>今回作成したtest.ejsは、Webアプリケーションの中にそのまま配置はしません。Webアプリケーションのフォルダの中に、新たに</span><span>「</span><span><b>view</b></span><span><b>s</b></span><span>」という名前のフォルダを用意してください。そしてこのフォルダの中</span><span>に</span><span><b>test.ej</b></span><span><b>s</b></span><span>を入れておきます。</span></p>
+<p>&nbsp;</p>
+<p><span>Expressでは、画面表示関係のテンプレートは、このように</span><span><u>「views」フォルダ内にまとめる</u></span><span>ことになっています（設置場所やフォルダ名などは変更できますが、デフォルトではviewsという名前のフォルダになっているのでここではそのまま作成します）。</span></p>
+<p>&nbsp;</p>
+<p><span>作成したテンプレートは、基本的に前回までのEJS用テンプレートとほとんど同じです。ここでは、ヘッダー部分とボディ</span><span>に</span><span><b>&lt;%=title %</b></span><span><b>&gt;</b></span><span>というタイトルを出力するタグを用意し、またコンテンツの表示用</span><span>に</span><span><b>&lt;%-content %</b></span><span><b>&gt;</b></span><span>というタグを用意してあります。Node.jsのスクリプトでは、これらのタグで出力しているtitleやcontentといった変数に値を受け渡すように処理を用意すればいいわけですね。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-22">
+<div>
+<h2 id="calibre_link-178"><b><a id="calibre_link-72"><b></b></a><span><b>テンプレート利用の処理を作る</b></span></b></h2><p><span>では、Node.jsのスクリプトを作成しましょう。app.jsを下のように書き換えて下さい。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var express = require('express');</span></p>
+<p><span>var ejs = require("ejs");</span></p>
+<p>&nbsp;</p>
+<p><span>var app = express();</span></p>
+<p>&nbsp;</p>
+<p><span>app.engine('ejs',ejs.renderFile);</span></p>
+<p>&nbsp;</p>
+<p><span>app.get("/", function(req, res){</span></p>
+<p><span> res.render('test.ejs',</span></p>
+<p><span> {title: 'Test Page' ,</span></p>
+<p><span> content: 'this is test.'});</span></p>
+<p>});</p><p><span>var server = app.listen(3000, function(){</span></p>
+<p><span>console.log('Server is running!');</span></p>
+<p><span>})</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>これで修正は完了です。再び「node app.js」でサーバーを起動し、localhost:3000にアクセスしてみましょう。テンプレートをレンダリングした表示が現れますよ。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00051.jpeg" alt="" /></p>
+
+
+</div>
+</div>
+<div id="calibre_link-102">
+<div>
+<h2 id="calibre_link-179"><b><a id="calibre_link-73"><b></b></a><span><b>テンプレート利用の処理のポイント</b></span></b></h2><p><span>これで、EJSを使ったテンプレート機能がExpressでもちゃんと使えるようになりました。では修正点をチェックしましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・EJSのロード</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var ejs = require("ejs");</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>まず、最初にrequireでEJSをロードしておきます。これは既にお馴染みの作業ですからわかりますね。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・テンプレートエンジンの設定</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>app.engine('ejs',ejs.renderFile);</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>テンプレートエンジンの設定を行います。これ</span><span>は</span><span><b>Applicatio</b></span><span><b>n</b></span><span>オブジェクトの</span><span>「</span><span><b>engin</b></span><span><b>e</b></span><span>」メソッドを使って設定します。第１引数にはテンプレートファイルの拡張子を、第２引数にはテンプレートエンジンのコールバック関数を設定します。このコールバック関数には</span><span>、</span><span><b>ej</b></span><span><b>s</b></span><span>オブジェクト</span><span>の</span><span><b>renderFil</b></span><span><b>e</b></span><span>プロパティを設定します。これでテンプレートエンジンの設定が完了しました。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・GETのコールバック関数の用意</b></span></p>
+<p><span>コールバック関数内で行なっているのは、EJSテンプレートを使ったページの表示です。response</span><span>の</span><span><b>rende</b></span><span><b>r</b></span><span>メソッドを呼び出していますね。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>res.render( テンプレートファイル , オブジェクト );</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>第１引数には使用するテンプレートファイル名、第２引数にはテンプレート側に渡す変数名をキーとして値を連想配列としてまとめたものを指定します。これでページがレンダリングされます。</span></p>
+<p>&nbsp;</p>
+<p><span>注意して欲しいのは、テンプレートファイル名です。これは「views」フォルダ内に配置されている必要があります。ただし、'views/test.ejs'なんて具合にviewsフォルダ内のパスを書く必要はありません。ただ、'test.ejs'とファイル名だけを指定すればOKです。</span></p>
+<p>&nbsp;</p>
+<p><span>Expressでは自動的に「views」フォルダ内からファイルを検索するようになっているのです。逆に、「views」フォルダでなく、アプリケーションのフォルダ内にファイルがあったりすると、見つからずにエラーになりますので気をつけて下さい。</span></p>
+<p>&nbsp;</p>
+<p><span>――さあ、これでとりあえず、Expressを使ったアプリケーションの基本はわかりました。使い方さえわかれば、Node.js単体で使うよりも全体が整理されてわかりやすいですね！</span></p>
+<p>
+</p><div id="calibre_link-180"></div>
+</div>
+</div>
+<div id="calibre_link-20">
+<div>
+<table cellspacing="0" cellpadding="0" border="0"> 
+<tbody> 
+<tr> 
+<td> 
+
+<h1 id="calibre_link-181"><b><a id="calibre_link-74"><b></b></a><span><b>6. Express GeneratorでWebアプリケーションを自動生成する</b></span></b></h1><p><span><b>Expressには、Webアプリケーションを自動生成する便利な機能があります。これを使って、高速開発に挑戦してみましょう！</b></span></p>
+<p>&nbsp;</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+
+
+</div>
+</div>
+<div id="calibre_link-2">
+<div>
+<h2 id="calibre_link-182"><b><a id="calibre_link-75"><b></b></a><span><b>Express Application Generatorの準備</b></span></b></h2><p><span>前回、Expressを使ったWebアプリケーションのごくごく初歩的なものを作りましたが、「結局、全部ファイルを手作りするんじゃあんまり便利そうでないなぁ」と感じたかもしれません。</span></p>
+<p>&nbsp;</p>
+<p><span>とりあえず「基本から」ということで最低限のファイルを作って動かしましたが、実をいえばそんなことをしなくてもExpressのWebアプリケーションは作れるのです。ExpressにはWebアプリケーションの基本ファイルを自動生成する機能があり、これを使うことでWebアプリケーション作成をほぼ自動化できます。</span></p>
+<p>&nbsp;</p>
+<p><span>この自動生成機能は「Express Applicatio Generator」と呼ばれるものです。これはExpressとは別のモジュールとして用意されています。これを利用するためには、まずモジュールをNode.jsにインストールしておく必要があります。</span></p>
+<p>&nbsp;</p>
+<p><span>コマンドプロンプト（またはターミナル）を起動し、以下のようにコマンドを実行して下さい。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>npm install express-generator -g</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00002.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>これでExpress Application GeneratorがNode.jsにインストルされます。これは、アプリケーションを生成するためのものなので、作成したアプリケーションにインストールする必要はありません。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-108">
+<div>
+<h2 id="calibre_link-183"><b><a id="calibre_link-76"><b></b></a><span><b>ExpressコマンドでWebアプリを作る</b></span></b></h2><p><span>では、Webアプリケーションを作成しましょう。以下の手順にそって作業してください。</span></p>
+<p>&nbsp;</p>
+<p><span><b>1. コマンドプロンプトでcdする</b></span></p>
+<p><span>コマンドプロンプト（Mac OS Xではターミナル）を起動し、アプリケーションを作成する場所に移動します。ここではデスクトップに作成することにしましょう。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>cd Desktop</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00012.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>これでOKです。</span></p>
+<p>&nbsp;</p>
+<p><span><b>2.Expressコマンドを実行</b></span></p>
+<p><span>では、Expressコマンドで、Webアプリケーションを生成しましょう。これは「express フォルダ名」というようにして実行します。ただし！　このままだと、テンプレートエンジンに「jade」というものが設定されます。まぁ、これでもいいんですが（またjadeというテンプレートエンジンを覚えればいいんですが）、やっぱり既に使っているEJSを使って作れたほうがいいですね。</span></p>
+<p>&nbsp;</p>
+<p><span>EJSをテンプレートエンジンに設定する場合には「-e」というオプションを付けてexpressコマンドを実行します。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>express -e フォルダ名</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>このような形ですね。今回は「helloexpress」という名前で作成することにしましょう。以下のように実行して下さい。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>express -e helloexpress</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00022.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>これでデスクトップに「helloexpress」というフォルダが作成され、その中に必要なファイル類が保存されます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>3. npm installを実行する</b></span></p>
+<p><span>これで終わりではありません。続いて、「cd helloexpress」でアプリケーションのフォルダ内に移動し、npm installを実行します。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>npm install</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00020.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><img src="images/00039.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>npm installはオプションなどは特にありません。これを行わないと、必要なファイル類が揃わないため、デプロイ時にアプリケーションがうまく動きません。</span></p>
+<p>&nbsp;</p>
+<p><span>――これで、Webアプリケーションは完成しました！</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-24">
+<div>
+<h2 id="calibre_link-184"><b><a id="calibre_link-77"><b></b></a><span><b>Webアプリケーションの中身をチェック！</b></span></b></h2><p><span>では、作成されたWebアプリケーションの構成を見てみましょう。インストールしたフォルダ（ここでは「helloexpress」フォルダ）内には、以下のようなファイルやフォルダが作られています。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・「bin」フォルダ</b></span></p>
+<p><span>実行するプログラムが保管されているところです。このフォルダ内には「www」というファイルが１つだけあります。これがアプリケーションの実行スクリプトファイルになります。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・「node_modules」フォルダ</b></span></p>
+<p><span>Node.jsで使うモジュール類（Expressなど各種のプログラムやそれに必要なファイル）がすべてここにまとめられています。ユーザーがこの中のファイルを操作することはまずありません。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・「public」フォルダ</b></span></p>
+<p><span>これは公開ファイルを設置するところです。というとわかりにくいですが、例えばイメージファイルやJavaScriptのライブラリ、スタイルシートファイルといったものをここにまとめます。ここに配置することで、Expressの中で利用できるようになります。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・「routes」フォルダ</b></span></p>
+<p><span>ここにまとめられているのは、それぞれのWebページでの処理を行うスクリプトファイル類です。Expressが生成するWebアプリケーションでは、スクリプト関係はメイン処理の部分と、個々のページの処理が別々のフォルダに分かれているのです。ここには、それぞれのページの処理が保管されています。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・「views」フォルダ</b></span></p>
+<p><span>これは前回、登場しましたね。ページのテンプレートファイルがまとめられています。画面表示のために必要なファイル類はすべてこの中に用意します。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・app.js</b></span></p>
+<p><span>これがメインプログラムとなるスクリプトファイルです。ただし、Node.jsでプログラムを実行する際には、このファイルは指定しません。先ほどの「bin」フォルダ内にあるwwwからapp.jsが呼び出され実行されます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・package.json</b></span></p>
+<p><span>これも既に登場しました。Webアプリケーションのパッケージ情報を記述したファイルでしたね。</span></p>
+<p>&nbsp;</p>
+<p><span>――ざっと全体の構成をまとめました。これをベースにWebアプリケーションを作成する場合には、「app.jsでメインプログラムを修正する」「routesに作成するページ用のスクリプトファイルを用意する」「viewsに表示用のテンプレートファイルを用意する」といった流れで作っていけばいいことがわかるでしょう。</span></p>
+<p>&nbsp;</p>
+<p><span>ちょっとわかりにくいのは、「bin」フォルダ内にある「www」と、「app.js」の違いでしょう。Express Application Generatorで生成されるプログラムは、アプリケーションの起動スクリプトと、メインスクリプトが分かれているのです。wwwはプログラムを起動するためのスクリプトで、app.jsがアプリケーションのメインプログラムになります。</span></p>
+<p>&nbsp;</p>
+<p><span>流れがわかったら、コマンドプロンプトで「helloexpress」フォルダ内に移動し、以下のように実行して下さい。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>node .\bin\www</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00049.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>これでサーバープログラムが実行されます。ブラウザから、http://localhost:3000にアクセスすると、簡単なページが表示されます。Expressで自動生成されるWebアプリでは、デフォルトでポート番号3000が指定されるので間違えないようにしてください。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00059.jpeg" alt="" /></p>
+
+
+</div>
+</div>
+<div id="calibre_link-5">
+<div>
+<h2 id="calibre_link-185"><b><a id="calibre_link-78"><b></b></a><span><b>メインプログラム「app.js」について</b></span></b></h2><p><span>では、作成されたWebアプリケーションを見ていきましょう。まずはマインプログラムである「app.js」からです。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var express = require('express');</span></p>
+<p><span>var path = require('path');</span></p>
+<p><span>var favicon = require('serve-favicon');</span></p>
+<p><span>var logger = require('morgan');</span></p>
+<p><span>var cookieParser = require('cookie-parser');</span></p>
+<p><span>var bodyParser = require('body-parser');</span></p>
+<p>&nbsp;</p>
+<p><span>var routes = require('./routes/index');</span></p>
+<p><span>var users = require('./routes/users');</span></p>
+<p>&nbsp;</p>
+<p><span>var app = express();</span></p>
+<p>&nbsp;</p>
+<p><span>// view engine setup</span></p>
+<p><span>app.set('views', path.join(__dirname, 'views'));</span></p>
+<p><span>app.set('view engine', 'ejs');</span></p>
+<p>&nbsp;</p>
+<p><span>// uncomment after placing your favicon in /public</span></p>
+<p><span>//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));</span></p>
+<p><span>app.use(logger('dev'));</span></p>
+<p><span>app.use(bodyParser.json());</span></p>
+<p><span>app.use(bodyParser.urlencoded({ extended: false }));</span></p>
+<p><span>app.use(cookieParser());</span></p>
+<p><span>app.use(express.static(path.join(__dirname, 'public')));</span></p>
+<p>&nbsp;</p>
+<p><span>app.use('/', routes);</span></p>
+<p><span>app.use('/users', users);</span></p>
+<p>&nbsp;</p>
+<p><span>// catch 404 and forward to error handler</span></p>
+<p><span>app.use(function(req, res, next) {</span></p>
+<p><span>  var err = new Error('Not Found');</span></p>
+<p><span>  err.status = 404;</span></p>
+<p><span>  next(err);</span></p>
+<p>});</p><p><span>// error handlers</span></p>
+<p>&nbsp;</p>
+<p><span>// development error handler</span></p>
+<p><span>// will print stacktrace</span></p>
+<p><span>if (app.get('env') === 'development') {</span></p>
+<p><span>  app.use(function(err, req, res, next) {</span></p>
+<p><span> res.status(err.status || 500);</span></p>
+<p><span> res.render('error', {</span></p>
+<p><span> message: err.message,</span></p>
+<p><span> error: err</span></p>
+<p>});</p>
+<p>});</p>
+<p>}</p><p><span>// production error handler</span></p>
+<p><span>// no stacktraces leaked to user</span></p>
+<p><span>app.use(function(err, req, res, next) {</span></p>
+<p><span>  res.status(err.status || 500);</span></p>
+<p><span>  res.render('error', {</span></p>
+<p><span> message: err.message,</span></p>
+<p><span> error: {}</span></p>
+<p>});</p>
+<p>});</p><p><span>module.exports = app;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>結構な長さがありますね。ポイントをピックアップして説明していくことにしましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>1. ライブラリのロード</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var express = require('express');</span></p>
+<p><span>var path = require('path');</span></p>
+<p><span>var favicon = require('serve-favicon');</span></p>
+<p><span>var logger = require('morgan');</span></p>
+<p><span>var cookieParser = require('cookie-parser');</span></p>
+<p><span>var bodyParser = require('body-parser');</span></p>
+<p>&nbsp;</p>
+<p><span>var routes = require('./routes/index');</span></p>
+<p><span>var users = require('./routes/users');</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>最初に行なっているのは、ライブラリのロードです。各種ライブラリをロードし、以下のような変数に保管しています。</span></p>
+<p>&nbsp;</p>
+<p><span><b>expres</b></span><span><b>s</b></span><span>――これがExpressオブジェクトの変数です。</span></p>
+<p><span><b>pat</b></span><span><b>h</b></span><span>――Pathオブジェクトです。</span></p>
+<p><span><b>serve-favico</b></span><span><b>n</b></span><span>――favicon（Webページに付けられるアイコンデータ）に関するものです。</span></p>
+<p><span><b>morga</b></span><span><b>n</b></span><span>――ログ出力に関するオブジェクトです。</span></p>
+<p><span><b>cookie-pars</b></span><span><b>e</b></span><span>r――クッキーの利用に関するオブジェクトです。</span></p>
+<p><span><b>bodyParse</b></span><span><b>r</b></span><span>――ボディ部分のパース処理に関するオブジェクトです。</span></p>
+<p>&nbsp;</p>
+<p><span><b>route</b></span><span><b>s</b></span><span>――「routes」フォルダに設置してあるindex.js内のオブジェクトです。この内容は後で説明します。</span></p>
+<p><span><b>use</b></span><span><b>r</b></span><span>――「routes」フォルダに設置してあるuser.js内のオブジェクトです。これも後で触れます。</span></p>
+<p>&nbsp;</p>
+<p><span>最後の２つは、モジュールではなくて、アプリケーション内に用意されているスクリプトファイルをロードするものです。requireで、こんな具合に他のスクリプトをロードできるのですね。</span></p>
+<p>&nbsp;</p>
+<p><span>ずいぶん、いろいろなモジュールがロードされていますが、実はロードされているのはこれだけではありません。アプリケーションを起動するための「www」には、以下のような文が書かれています。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var app = require('../app');</span></p>
+<p><span>var debug = require('debug')('helloexpress:server');</span></p>
+<p><span>var http = require('http');</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>これで、このapp.jsスクリプトと、デバッグに関するオブジェクト、そしてhttpオブジェクトが用意されます。これらすべてが揃ってアプリケーションを構築しているのですね。</span></p>
+<p>&nbsp;</p>
+<p><span><b>2. express関数でApplicationを作成する</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var app = express();</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>express関数でApplicationオブジェクトを作成します。これは前回と同じですね。</span></p>
+<p>&nbsp;</p>
+<p><span><b>3. 各種のアプリケーション設定を行う</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>app.set('views', path.join(__dirname, 'views'));</span></p>
+<p><span>app.set('view engine', 'ejs');</span></p>
+<p>&nbsp;</p>
+<p><span>app.use(logger('dev'));</span></p>
+<p><span>app.use(bodyParser.json());</span></p>
+<p><span>app.use(bodyParser.urlencoded({ extended: false }));</span></p>
+<p><span>app.use(cookieParser());</span></p>
+<p><span>app.use(express.static(path.join(__dirname, 'public')));</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>その後に、app.set～とかapp.use～とかいった文がずらっと並んでいますが、これは各種のアプリケーションの設定を行なっている部分です。これらは、とりあえずユーザーがあれこれ編集することはないでしょう。間違えて書き換えたりしないように注意してください。</span></p>
+<p>&nbsp;</p>
+<p><span><b>4. getでルート設定をする</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>app.use('/', routes);</span></p>
+<p><span>app.use('/users', users);</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>getで、'<i><i>'と'</i></i>users'のアドレスにそれぞれroutesとusersを設定しています。このroutesとusersは、さっき出てきましたね？　「routes」フォルダ内にあるindex.jsとusers.jsをそれぞれrequireでロードしたものをおさめた変数でした。</span></p>
+<p>&nbsp;</p>
+<p><span>これらの変数をuseで設定することで、指定のアドレスにスクリプトを割りつけているのです。すなわち、'<i><i>'にアクセスがあったら「routes」内のindex.jsが、'</i></i>users'にアクセスがあったらusers.jsが、それぞれ実行されるようになるわけです。</span></p>
+<p>&nbsp;</p>
+<p><span><b>5. エラー処理の設定</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>app.use(function(req, res, next) {</span></p>
+<p><span>  var err = new Error('Not Found');</span></p>
+<p><span>  err.status = 404;</span></p>
+<p><span>  next(err);</span></p>
+<p>});</p><p><span>if (app.get('env') === 'development') {</span></p>
+<p><span>  app.use(function(err, req, res, next) {</span></p>
+<p><span> res.status(err.status || 500);</span></p>
+<p><span> res.render('error', {</span></p>
+<p><span> message: err.message,</span></p>
+<p><span> error: err</span></p>
+<p>});</p>
+<p>});</p>
+<p>}</p><p><span>app.use(function(err, req, res, next) {</span></p>
+<p><span>  res.status(err.status || 500);</span></p>
+<p><span>  res.render('error', {</span></p>
+<p><span> message: err.message,</span></p>
+<p><span> error: {}</span></p>
+<p>});</p>
+<p>});</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>app.use、if文、またapp.useと続きますが、これらはエラーに関する処理を行うためのものです。これらも、特にユーザーが触る部分ではありません。忘れていい部分ですね。</span></p>
+<p>&nbsp;</p>
+<p><span><b>6. アプリケーションを設定する</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>module.exports = app;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>最後に、作成したappオブジェクトを、module.exportsに代入します。これでアプリケーションが設定され動くようになります。</span></p>
+<p>&nbsp;</p>
+<p><span>途中、いきなり難しそうな処理がずらっと出てきたりもしましたが、すべて理解する必要はまったくありません。全体の流れとして、ごくざっと「こんな感じで処理がされているんだ」ということが把握できれば今は十分でしょう。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-113">
+<div>
+<h2 id="calibre_link-186"><b><a id="calibre_link-79"><b></b></a><span><b>「routes」のスクリプトとテンプレート</b></span></b></h2><p><span>続いて、表示するWebページの処理を見ていきましょう。Webページは、「routes」内にスクリプトを、「views」内にテンプレートを用意し、両者の組み合わせで作成されます。ここでは、/indexで表示されるページを構成するroutes内の</span><span>「</span><span><b>index.j</b></span><span><b>s</b></span><span>」と、views内の</span><span>「</span><span><b>index.ej</b></span><span><b>s</b></span><span>」の中身を見てみましょう。（下のリストを参照）</span></p>
+<p>&nbsp;</p>
+<p><span><b>※routes/index.js</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var express = require('express');</span></p>
+<p><span>var router = express.Router();</span></p>
+<p>&nbsp;</p>
+<p><span>/* GET home page. */</span></p>
+<p><span>router.get('/', function(req, res, next) {</span></p>
+<p><span>  res.render('index', { title: 'Express' });</span></p>
+<p>});</p><p><span>module.exports = router;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>※views/index.ejs</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;!DOCTYPE html&gt;</span></p>
+<p><span>&lt;html&gt;</span></p>
+<p><span>  &lt;head&gt;</span></p>
+<p><span> &lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;</span></p>
+<p><span> &lt;link rel='stylesheet' href='<i><i>stylesheets</i></i>style.css' /&gt;</span></p>
+<p><span>  &lt;/head&gt;</span></p>
+<p><span>  &lt;body&gt;</span></p>
+<p><span> &lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;</span></p>
+<p><span> &lt;p&gt;Welcome to &lt;%= title %&gt;&lt;/p&gt;</span></p>
+<p><span>  &lt;/body&gt;</span></p>
+<p><span>&lt;/html&gt;</span></p>
+<p>&nbsp;</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>・expressライブラリのロード</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var express = require('express');</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>ここで必要となるexpressライブラリをロードします。これはapp.jsのところでも登場しましたね。Expressのオブジェクトです。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・Routerオブジェクトの用意</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var router = express.Router();</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>expressの「Router」メソッドを呼び出します。これでルーティング（URLと、それで呼び出される処理とを関連付け得るためのもの）に関するオブジェクトを作成します。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・GETでルート情報を設定する</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>router.get('/', function(req, res, next) {</span></p>
+<p><span>  res.render('index', { title: 'Express' });</span></p>
+<p>});</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>Routerにも、app.jsのexpressオブジェクトと同じようにgetメソッドが用意されています。これでURLのパスに関数を設定します。これで、指定したアドレスにアクセスがあったら設定した関数を呼び出し実行するようになります。</span></p>
+<p>&nbsp;</p>
+<p><span>ここではrenderメソッドを呼び出してindexのテンプレートをレンダリングしています。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・exportsにrouterを設定</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>module.exports = router;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>最後に、module.exportsにrouterオブジェクトを設定して作業完了です。app.jsで、最後</span><span>に</span><span>module.exports = app</span><span>;</span><span>を実行していたのと同じですね。</span></p>
+<p>&nbsp;</p>
+<p><span>以上、整理すると</span><span>「</span><span>Route</span><span>r</span><span>の作成」「getによるルートの設定」</span><span>「</span><span>module.export</span><span>sに</span><span>route</span><span>r</span><span>の設定」という流れでルーティングが行われていました。ここではindexについて調べましたが、基本的にはどれも同じような形でルーティングを設定します。ルーティングのためのスクリプトは、自分で新たにページを追加すると用意しないといけなくなりますから、書き方の基本はしっかり覚えておきましょう。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-32">
+<div>
+<h2 id="calibre_link-187"><b><a id="calibre_link-80"><b></b></a><span><b>「helo」ページを作ってみよう</b></span></b></h2><p><span>では、この基本的な仕組みを使って、新しいページを作ってみましょう。今回は、/heloにアクセスして表示されるページを作成してみます。必要なものを整理しましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・「routes」内のhelo.js</b></span></p>
+<p><span>/heloの処理を記述するスクリプトファイルとして、「routes」フォルダ内に</span><span>「</span><span><b>helo.j</b></span><span><b>s</b></span><span>」ファイルを作成します。この中で、router.getで'/'にレンダリングする処理を設定しておきました。また簡単なサンプルとして、titleとdataをテンプレートに渡して処理するようにしてあります。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var express = require('express');</span></p>
+<p><span>var router = express.Router();</span></p>
+<p>&nbsp;</p>
+<p><span>/* GET helo page. */</span></p>
+<p><span>router.get('/', function(req, res, next) {</span></p>
+<p><span>res.render('helo', {</span></p>
+<p><span>title: 'Helo',</span></p>
+<p><span>data: {</span></p>
+<p><span>'太郎':'taro@yamada',</span></p>
+<p><span>'花子':'hanako@flower',</span></p>
+<p><span>'つやの':'syoda@tuyano.com'</span></p>
+<p>}</p>
+<p>});</p>
+<p>});</p><p><span>module.exports = router;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>・「views」内のhelo.ejs</b></span></p>
+<p><span>/heloで表示するテンプレートファイルですね。ここでは</span><span>、</span><span><b>&lt;%= title %</b></span><span><b>&gt;</b></span><span>でtitleを出力する文と、変数data内のキーと値を&lt;table&gt;にまとめて出力する文を記述してあります。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;!DOCTYPE html&gt;</span></p>
+<p><span>&lt;html&gt;</span></p>
+<p><span>  &lt;head&gt;</span></p>
+<p><span> &lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;</span></p>
+<p><span> &lt;link rel='stylesheet' href='<i><i>stylesheets</i></i>style.css' /&gt;</span></p>
+<p><span>  &lt;/head&gt;</span></p>
+<p><span>  &lt;body&gt;</span></p>
+<p><span> &lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;</span></p>
+<p><span>&lt;table&gt;</span></p>
+<p><span>&lt;% for(var key in data){ %&gt;</span></p>
+<p><span>&lt;tr&gt;&lt;td&gt;&lt;%= key %&gt;&lt;/td&gt;</span></p>
+<p><span>&lt;td&gt;&lt;%= data[key] %&gt;&lt;/td&gt;&lt;/tr&gt;</span></p>
+<p><span>&lt;% } %&gt;</span></p>
+<p><span>&lt;/table&gt;</span></p>
+<p><span>  &lt;/body&gt;</span></p>
+<p><span>&lt;/html&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>・app.js</b></span></p>
+<p><span>メインプログラム内では、helo = require('./routes/helo')でhelo.js内のexportsを変数heloに代入し、app.use('<i><i>helo', helo);で</i></i>heloへのアクセス処理をheloオブジェクトのheloメソッドに設定しています。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>// 冒頭のrequire文のところに以下を追記</span></p>
+<p><span>var helo = require('./routes/helo');</span></p>
+<p>&nbsp;</p>
+<p><span>// app.use文のところに以下を追記</span></p>
+<p><span>app.use('/helo', helo);</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>・「public」内の「stylesheets」内のstyle.css</b></span></p>
+<p><span>最後に&lt;table&gt;のスタイルシートを追加しておきます。スタイルシートは、「public」内の「stylesheets」フォルダに保管されます。この中の</span><span>「</span><span><b>style.cs</b></span><span><b>s</b></span><span>」を開き、&lt;table&gt;のスタイルを記述しておけばよいでしょう。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>table tr td{</span></p>
+<p><span>background-color:#eeeeff;</span></p>
+<p><span>padding: 3px;</span></p>
+<p>}</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>――ひと通りの編集が終わったら、Node.jsでapp.jsを実行し、http://localhost:3000/heloにアクセスしてみましょう。作ったページがちゃんと表示されましたか？</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00070.jpeg" alt="" /></p>
+<p>
+</p><div id="calibre_link-188"></div>
+</div>
+</div>
+<div id="calibre_link-14">
+<div>
+<table cellspacing="0" cellpadding="0" border="0"> 
+<tbody> 
+<tr> 
+<td> 
+
+<h1 id="calibre_link-189"><b><a id="calibre_link-81"><b></b></a><span><b>7. Expressによるリクエスト処理の基本</b></span></b></h1><p><span><b>Expressを利用してWebページを作るとき必要となる処理として、「クエリー文字列の処理」「フォームの送信処理」「AjaxによるJSONデータ送受」「クッキーの読み書き」といったものについてまとめて説明しましょう。</b></span></p>
+<p>&nbsp;</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+
+
+</div>
+</div>
+<div id="calibre_link-12">
+<div>
+<h2 id="calibre_link-190"><b><a id="calibre_link-82"><b></b></a><span><b>クエリー文字列によるパラメータ送信</b></span></b></h2><p><span>あるページから別のページにアクセスをするとき、何らかの形で必要な情報を受け渡す必要があったとします。どのようなやり方が考えられるでしょうね？</span></p>
+<p>&nbsp;</p>
+<p><span>まず、誰もが思いつくのは「</span><span><b>クエリー文字列</b></span><span>」を利用することでしょう。クエリー文字列というのは、URLの末尾に?を使って値を記述したものですね。例えば</span><span>、</span><span><b>http://○○/index</b></span><span><b>?a=hell</b></span><span><b>o</b></span><span> というような形でURLを指定することで、aというパラメータに"hello"を設定して送ることができます。</span></p>
+<p>&nbsp;</p>
+<p><span>このクエリー文字列の値は、Requestオブジェクトの</span><span>「</span><span><b>quer</b></span><span><b>y</b></span><span>」プロパティ内にまとめられています。この中に、それぞれのキーごとにプロパティとして値が保管されています。例えば、/index?a=helloであれば、quey.aに"hello"が保管されている、というわけです。</span></p>
+<p>&nbsp;</p>
+<p><span>実際に簡単な利用例を挙げておきましょう。前回作成した/heloを書き換えることにしましょう。「views」内にhelo.ejs、「routes」内にhelo.jsを配置し、app.js内にこれらを利用するためのコードを追記してありましたね。</span></p>
+<p>&nbsp;</p>
+<p><span><b>※routes/helo.js</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var express = require('express');</span></p>
+<p><span>var router = express.Router();</span></p>
+<p>&nbsp;</p>
+<p><span>/* GET helo page. */</span></p>
+<p><span>router.get('/', function(req, res, next) {</span></p>
+<p><span>var p1 = req.query.p1;</span></p>
+<p><span>var p2 = req.query.p2;</span></p>
+<p><span>var msg = p1 == undefined ? "" : p1 + "," + p2;</span></p>
+<p><span>res.render('helo',</span></p>
+<p>{</p>
+<p><span>title: 'HELO Page',</span></p>
+<p><span>msg: msg</span></p>
+<p>}</p>
+<p>);</p>
+<p>});</p><p><span>module.exports = router;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>※views/helo.ejs</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;!DOCTYPE html&gt;</span></p>
+<p><span>&lt;html&gt;</span></p>
+<p><span>&lt;head&gt;</span></p>
+<p><span>&lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;</span></p>
+<p><span>&lt;link rel='stylesheet' href='<i><i>stylesheets</i></i>style.css' /&gt;</span></p>
+<p><span>&lt;/head&gt;</span></p>
+<p><span>&lt;body&gt;</span></p>
+<p><span>&lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;</span></p>
+<p><span>&lt;p&gt;&lt;%= msg %&gt;&lt;/a&gt;</span></p>
+<p><span>&lt;p&gt;&lt;a href="/helo?p1=hello&amp;p2=bye"&gt;link&lt;/a&gt;&lt;/p&gt;</span></p>
+<p><span>&lt;/body&gt;</span></p>
+<p><span>&lt;/html&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00075.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>ここでは</span><span>、</span><span><b>href="/helo</b></span><span><b>?p1=hello&amp;p2=bye</b></span><span><b>"</b></span><span>というようにして&lt;a&gt;タグのリンクを作成しています。そして/heloのアクセス処理では、以下のようにしてクエリー文字列から値を取り出し利用しています。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var p1 = req.query.p1;</span></p>
+<p><span>var p2 = req.query.p2;</span></p>
+<p><span>var msg = p1 == undefined ? "" : p1 + "," + p2;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>クエリー文字列が渡されていない場合、p1とp2の値はundefinedとなります。undefinedでなければ、クエリー文字列で何かの値が渡されている、と考えてよいでしょう。また、ここではquery.p1として取り出してありますが、query["p1"]というような形で記述することも可能です。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-96">
+<div>
+<h2 id="calibre_link-191"><b><a id="calibre_link-83"><b></b></a><span><b>フォームの送信について</b></span></b></h2><p><span>クライアントからの情報送信の基本は、やはり「フォーム」でしょう。フォームから送信される処理もExpressでは非常に簡単に行えます。これは以下の２つのポイントにまとめられるでしょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・POST送信はrouter.postで登録</b></span></p>
+<p><span>Expressでは、公開されるアドレスと、そこにアクセスした時の処理を登録するようになっていました。今まで、routes内に用意するスクリプトでは「router..get」を使ってこの登録作業を行って来ました。が、POST送信先のアドレスは、router.postを使う必要があります。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>《Router》.post( アドレス , 呼び出す関数 );</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>このように呼び出すことで、指定のアドレスにPOSTでアクセスできるようになります。基本的に、router.getをrouter.postに書きかるだけで使い方は同じなのですぐにわかりますね。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・送信フォームの値はbodyから取得する</b></span></p>
+<p><span>送信されたフォームの値は、Request内の「body」というプロパティにまとめられています。これは以下のように利用します。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var 変数 = 《Request》.body[ 取り出す名前 ];</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>取り出す名前は、フォームの入力用タグのname属性に記述した名前を指定します。では、これも実際に簡単なサンプルを作ってみましょう。</span></p>
+<p>&nbsp;</p>
+<p><span>下のリスト欄に必要なスクリプトをまとめておきました。今回も/helo関係のファイルを書き換えて作成します。</span></p>
+<p>&nbsp;</p>
+<p><span><b>※routers/helo.js</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var express = require('express');</span></p>
+<p><span>var router = express.Router();</span></p>
+<p>&nbsp;</p>
+<p><span>/* GET helo page. */</span></p>
+<p><span>router.get('/', function(req, res, next) {</span></p>
+<p><span>var p1 = req.query["p1"];</span></p>
+<p><span>var p2 = req.query.p2;</span></p>
+<p><span>var msg = p1 == undefined ? "" : p1 + "," + p2;</span></p>
+<p><span>res.render('helo',</span></p>
+<p>{</p>
+<p><span>title: 'HELO Page',</span></p>
+<p><span>msg: msg,</span></p>
+<p><span>input: ''</span></p>
+<p>}</p>
+<p>);</p>
+<p>});</p><p><span>/* POST helo page. */</span></p>
+<p><span>router.</span><span><b>post</b></span><span>('/', function(req, res, next) {</span></p>
+<p><span>var str =</span><span><b>req.body['input1']</b></span><span>;</span><span>res.render('helo',</span></p>
+<p>{</p>
+<p><span>title: 'HELO Page',</span></p>
+<p><span>msg: "you typed: " + str,</span></p>
+<p><span>input: str</span></p>
+<p>}</p>
+<p>);</p>
+<p>});</p><p><span>module.exports = router;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>※views/helo.ejs</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;!DOCTYPE html&gt;</span></p>
+<p><span>&lt;html&gt;</span></p>
+<p><span>&lt;head&gt;</span></p>
+<p><span>&lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;</span></p>
+<p><span>&lt;link rel='stylesheet' href='<i><i>stylesheets</i></i>style.css' /&gt;</span></p>
+<p><span>&lt;/head&gt;</span></p>
+<p><span>&lt;body&gt;</span></p>
+<p><span>&lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;</span></p>
+<p><span>&lt;p&gt;&lt;%= msg %&gt;&lt;/a&gt;</span></p>
+<p><span><b>&lt;form method="post" action="/helo"&gt;</b></span></p>
+<p><span><b>&lt;input type="text" name="input1"</b></span></p>
+<p><span><b>value="&lt;%= input %&gt;"&gt;</b></span></p>
+<p><span><b>&lt;input type="submit"&gt;</b></span></p>
+<p><span><b>&lt;/form&gt;</b></span></p>
+<p><span>&lt;/body&gt;</span></p>
+<p><span>&lt;/html&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>修正したら、Node.jsを起動し、/heloにアクセスしてみましょう。入力フィールドが１つだけあるフォームが表示されます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00015.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>適当に何か書いて送信すると、送ったテキストがフォームの上に表示されます。またフィールドに書いたテキストもそのまま保持されているのがわかります。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00011.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>送信するフォームには、&lt;form method="post" action="/helo"&gt;と記述してあります。つまり、/heloでは、GETとPOSTの両方の対応が必要になります。routes/helo.jsを見ると、router.getとrouter.postの両方が用意されていることがわかるでしょう。</span></p>
+<p>&nbsp;</p>
+<p><span>フォームを付け取り処理しているのrouter.post部分では、このようにして送られた値を取り出しています。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var str = req.body['input1'];</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>これで、&lt;input type="text" name="input1"&gt;タグのvalueを変数に取り出すことができます。後は、それを使った処理を実行するだけです。わかってしまえばとても単純ですね！</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-6">
+<div>
+<h2 id="calibre_link-192"><b><a id="calibre_link-84"><b></b></a><span><b>Ajaxでアクセスした情報をJSONで受け取る</b></span></b></h2><p><span>最近は、フォームを使わず、Ajaxで必要な情報をサーバーから受け取ることのほうが多くなって来ました。フォームよりこちらの使い方のほうを覚えておいたほうがよいかも知れません。</span></p>
+<p>&nbsp;</p>
+<p><span>Ajaxでのアクセスは、基本的にクライアント内のJavaScriptで行いますから、アクセスに関する処理をNode.jsのテンプレートやスクリプトに用意する必要はありません。通常のAjaxと同様にAjaxのスクリプトを書くだけです。</span></p>
+<p>&nbsp;</p>
+<p><span>ただし、アクセスされた側（つまり、Ajaxでアクセスされた時のサーバー側の処理）については考えておく必要があります。単に必要な情報を書き出すだけなら、Responseの</span><span>「</span><span><b>sen</b></span><span><b>d</b></span><span>」を呼び出せばよいでしょう。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>《Response》</span><span>.</span><span><b>sen</b></span><span><b>d</b></span><span>( 出力する値 );</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>たったこれだけでテキストやテンプレートの内容をクライアント側に送り返すことができます。また、もしJSONを使ってデータの返送を行いたいならば、「json」メソッドが便利です。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>《Response》</span><span>.</span><span><b>jso</b></span><span><b>n</b></span><span>( JSON形式のデータ );</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>これでJSONデータを書き出して送ることができます。受け取った側で、テキストをJSON.parseして処理する場よいでしょう。</span></p>
+<p>&nbsp;</p>
+<p><span>では、これも利用例を挙げておきましょう。先ほどのサンプルを使い、heloからAjax通信でformにアクセスし、JSONで送られた値を受け取って表示させてみます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>※routes/helo.js</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var express = require('express');</span></p>
+<p><span>var router = express.Router();</span></p>
+<p>&nbsp;</p>
+<p><span>/* GET helo page. */</span></p>
+<p><span>router.get('/', function(req, res, next) {</span></p>
+<p><span>var p1 = req.query["p1"];</span></p>
+<p><span>var p2 = req.query.p2;</span></p>
+<p><span>var msg = p1 == undefined ? "" : p1 + "," + p2;</span></p>
+<p><span>res.render('helo',</span></p>
+<p>{</p>
+<p><span>title: 'HELO Page',</span></p>
+<p><span>msg: msg,</span></p>
+<p><span>input: ''</span></p>
+<p>}</p>
+<p>);</p>
+<p>});</p><p><span>/* POST helo page. */</span></p>
+<p><span>router.post('/', function(req, res, next) {</span></p>
+<p><span>var str = req.query.input1;</span></p>
+<p><span>res.json(</span></p>
+<p><span>{ msg: str }</span></p>
+<p>);</p>
+<p>});</p><p><span>module.exports = router;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>※views/helo.ejs</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;!DOCTYPE html&gt;</span></p>
+<p><span>&lt;html&gt;</span></p>
+<p><span>&lt;head&gt;</span></p>
+<p><span>&lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;</span></p>
+<p><span>&lt;link rel='stylesheet' href='<i><i>stylesheets</i></i>style.css' /&gt;</span></p>
+<p><span>&lt;script type="text/javascript"&gt;</span></p>
+<p><span>var ajax = null;</span></p>
+<p>&nbsp;</p>
+<p><span>function doAction(){</span></p>
+<p><span>var input = document.getElementById("input1");</span></p>
+<p><span>var callback = function(){</span></p>
+<p><span>var target = document.getElementById("msg");</span></p>
+<p><span>var res = JSON.parse(ajax.getResponse());</span></p>
+<p><span>target.textContent = "you send::" + res.msg;</span></p>
+<p>}</p>
+<p><span>ajax = new AjaxObject('/helo?input1=' +</span></p>
+<p><span>input.value,callback);</span></p>
+<p>}</p><p><span>function AjaxObject(url,callback){</span></p>
+<p><span>var response = null;</span></p>
+<p><span>var callback = callback;</span></p>
+<p>&nbsp;</p>
+<p><span>ajaxStart(url);</span></p>
+<p>&nbsp;</p>
+<p><span>this.getResponse = function(){</span></p>
+<p><span>return response;</span></p>
+<p>}</p><p><span>function ajaxStart(url){</span></p>
+<p><span>var req =  createRequest();</span></p>
+<p><span>if (req == null){</span></p>
+<p><span>alert("実行できません！");</span></p>
+<p><span>return;</span></p>
+<p>}</p>
+<p><span>req.open("POST",url);</span></p>
+<p><span>req.setRequestHeader</span></p>
+<p><span>("User-Agent","XMLHttpRequest");</span></p>
+<p><span>req.onreadystatechange = function(){</span></p>
+<p><span>if (this.readyState == 4 &amp;&amp;</span></p>
+<p><span>this.status == 200){</span></p>
+<p><span>precallback(this);</span></p>
+<p>}</p>
+<p>}</p>
+<p><span>req.send();</span></p>
+<p>}</p><p><span>function createRequest(){</span></p>
+<p><span>var httplist = [</span></p>
+<p><span>function(){</span></p>
+<p><span>return new XMLHttpRequest();</span></p>
+<p><span>},</span></p>
+<p><span>function(){</span></p>
+<p><span>return new ActiveXObjct</span></p>
+<p><span>("Msxml2.XMLHTTP");</span></p>
+<p><span>},</span></p>
+<p><span>function(){</span></p>
+<p><span>return new ActiveXObject</span></p>
+<p><span>("Microsoft.XMLHTTP");</span></p>
+<p>}</p>
+<p>];</p>
+<p><span>for(var i = 0;i &lt; httplist.length;i++){</span></p>
+<p><span>try {</span></p>
+<p><span>var http = httplist[i]();</span></p>
+<p><span>if (http != null) return http;</span></p>
+<p><span>} catch(e){</span></p>
+<p><span>continue;</span></p>
+<p>}</p>
+<p>}</p>
+<p><span>return null;</span></p>
+<p>}</p><p><span>function precallback(request){</span></p>
+<p><span>response = request.responseText;</span></p>
+<p><span>callback();</span></p>
+<p>}</p>
+<p>}</p>
+<p><span>&lt;/script&gt;</span></p>
+<p><span>&lt;/head&gt;</span></p>
+<p><span>&lt;body onload="init()"&gt;</span></p>
+<p><span>&lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;</span></p>
+<p><span>&lt;p id="msg"&gt;&lt;%= msg %&gt;&lt;/a&gt;</span></p>
+<p><span>&lt;form id="form1" name="form1" method="post" action="/helo"</span></p>
+<p><span>onsubmit="return false;"&gt;</span></p>
+<p><span>&lt;input type="text" id="input1" name="input1"</span></p>
+<p><span>value="&lt;%= input %&gt;"&gt;</span></p>
+<p><span>&lt;input type="button" id="btn" value="click"</span></p>
+<p><span>onclick="doAction();"&gt;</span></p>
+<p><span>&lt;/form&gt;</span></p>
+<p><span>&lt;/body&gt;</span></p>
+<p><span>&lt;/html&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>先程と同様に、フォームの入力フィールドに何か書いてボタンをクリックしてみましょう。ページ移動せず、その場で表示が更新されます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00040.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>helo.js</span><span>の</span><span><b>router.pos</b></span><span><b>t</b></span><span>では、送信された情報からinput1の値を取り出し、それをJSONデータにしてクライアントに送り返しています。以下の部分ですね。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var str = req.query.input1;</span></p>
+<p><span>res.json(</span></p>
+<p><span>{ msg: str }</span></p>
+<p>);</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>「</span><span><b>quer</b></span><span><b>y</b></span><span>」は、クエリー文字列がまとめられているプロパティでしたね。そこからinput1の値を取り出し、そしてRequestの</span><span>「</span><span><b>jso</b></span><span><b>n</b></span><span>」メソッドで送信をします。送るデータは、連想配列の形で引数に用意します。これで、変数strの値がmsgというキーで送られます。後は、Ajax通信のコールバック関数でJSON型式のデータを受け取って処理をしてやります。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var callback = function(){</span></p>
+<p><span>var target = document.getElementById("msg");</span></p>
+<p><span>var res = JSON.parse(ajax.getResponse());</span></p>
+<p><span>target.textContent = "you send::" + res.msg;</span></p>
+<p>}</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>JavaScriptのJSON.parseで、Ajax通信で受け取った結果からgetResponseした値をパースし、そこからmsgの値を取り出します。JSONを利用すると、必要に応じて複数の値をサーバーから受け取ることができ、非常に便利です。ここではmsgだけですが、サーバー側で送る値を用意すれば、いくつもの値をまとめて送ることができます。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-99">
+<div>
+<h2 id="calibre_link-193"><b><a id="calibre_link-85"><b></b></a><span><b>クッキーの利用</b></span></b></h2><p><span>ちょっとしたデータの保管に多用されるのが「</span><span><b>クッキー</b></span><span>」です。Expressには、クッキーを利用するための機能がひと通り用意されています。それらの使い方を整理しておきましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・ライブラリのロード</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>《Application》.use(express.cookieParser());</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>クッキーを利用する場合、expressの</span><span><b>「cookieParser</b></span><span>」をロードしておきます。これによりクッキーの情報をオブジェクトとして扱えるようになります。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・クッキーの保存</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>《Response》</span><span>.</span><span><b>cooki</b></span><span><b>e</b></span><span>( 名前 , 値 [, オプション] );</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>クッキーを保存する場合、Response</span><span>の</span><span><b>cooki</b></span><span><b>e</b></span><span>メソッドを呼び出します。値につける名前と保存するテキストを指定するだけです。第３引数に、オプション設定を連想配列として用意することもできます。例えばクッキーの有効期限をexpiresという値として持たせたりすることができます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・クッキーの取得</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>《Request》</span><span>.</span><span><b>cookie</b></span><span><b>s</b></span><span>.名前</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>クッキーの値は、cookieParserによりRequestの</span><span>「</span><span><b>cookie</b></span><span><b>s</b></span><span>」プロパティにまとめられます。この中に、クッキーの名前のプロパティが作成され、そこにそれぞれの値が保管されます。</span></p>
+<p>&nbsp;</p>
+<p><span>では、以下に簡単な利用例を挙げておきましょう。先の/heloを使ったサンプルをそのまま利用しています。</span></p>
+<p>&nbsp;</p>
+<p><span><b>※routers/helo.js</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var express = require('express');</span></p>
+<p><span>var router = express.Router();</span></p>
+<p>&nbsp;</p>
+<p><span>/* GET helo page. */</span></p>
+<p><span>router.get('/', function(req, res, next) {</span></p>
+<p><span>var str;</span></p>
+<p><span> try {</span></p>
+<p><span> str = req.cookies.lastdata;</span></p>
+<p><span> } catch(e){}</span></p>
+<p><span> res.render('helo',</span></p>
+<p>{</p>
+<p><span> title: 'HELO Page',</span></p>
+<p><span> msg: 'please type...',</span></p>
+<p><span> cookie: "last:" + str,</span></p>
+<p><span> input: ''</span></p>
+<p>}</p>
+<p>);</p>
+<p>});</p><p><span>/* POST helo page. */</span></p>
+<p><span>router.post('/', function(req, res, next) {</span></p>
+<p><span>var str = req.body.input1;</span></p>
+<p><span>res.cookie("lastdata",str,</span></p>
+<p><span>{ expires: new Date(Date.now() + 600000)});</span></p>
+<p><span>res.render('helo',</span></p>
+<p>{</p>
+<p><span>title: 'HELO Page',</span></p>
+<p><span>msg: "you typed: " + str,</span></p>
+<p><span>cookie: str,</span></p>
+<p><span>input: str</span></p>
+<p>}</p>
+<p>);</p>
+<p>});</p><p><span>module.exports = router;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>※views/helo.ejs</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;!DOCTYPE html&gt;</span></p>
+<p><span>&lt;html&gt;</span></p>
+<p><span>&lt;head&gt;</span></p>
+<p><span>&lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;</span></p>
+<p><span>&lt;link rel='stylesheet' href='<i><i>stylesheets</i></i>style.css' /&gt;</span></p>
+<p><span>&lt;/head&gt;</span></p>
+<p><span>&lt;body onload="init()"&gt;</span></p>
+<p><span>&lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;</span></p>
+<p><span>&lt;p&gt;&lt;%= msg %&gt;&lt;/a&gt;</span></p>
+<p><span>&lt;p&gt;&lt;%= cookie %&gt;&lt;/p&gt;</span></p>
+<p><span>&lt;form id="form1" name="form1" method="post" action="/helo"&gt;</span><span>&lt;input type="text" id="input1" name="input1"</span></p>
+<p><span>value="&lt;%= input %&gt;"&gt;</span></p>
+<p><span>&lt;input type="submit" value="click"&gt;</span></p>
+<p><span>&lt;/form&gt;</span></p>
+<p><span>&lt;/body&gt;</span></p>
+<p><span>&lt;/html&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><i><i>heloのフォームに何か書いて送信すると、それがクッキーに保管されます。以後、</i></i>heloにアクセスすると、保管してあった値が表示されるようになります。ここでは10分間だけクッキーを保管しておくようにしてありますが</span><span>、</span><span><b>expire</b></span><span><b>s</b></span><span>を調整してもっと長く保管させることもできます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00029.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>ここではhelo.jsのrouter.postでres</span><span>.</span><span><b>cooki</b></span><span><b>e</b></span><span>を使ってクッキーを保管し、router.getでreq</span><span>.</span><span><b>cookie</b></span><span><b>s</b></span><span>.lastdataからクッキーの値を取り出し表示する、ということを行なっているだけです。クッキーの利用は、Expressを使えばずいぶんと楽にできることがよくわかりますね！</span></p>
+<p>
+</p><div id="calibre_link-194"></div>
+</div>
+</div>
+<div id="calibre_link-105">
+<div>
+<table cellspacing="0" cellpadding="0" border="0"> 
+<tbody> 
+<tr> 
+<td> 
+
+<h1 id="calibre_link-195"><b><a id="calibre_link-86"><b></b></a><span><b>8. Node.js/ExpressでPostgreSQLを使おう</b></span></b></h1><p><span><b>Node.jsでは、データベースを利用するためのアドオンも用意されています。ここではPostgreSQLの利用について説明し、データベースを使ったアプリをHerokuにデプロイして動かしてみます。</b></span></p>
+<p>&nbsp;</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+
+
+</div>
+</div>
+<div id="calibre_link-95">
+<div>
+<h2 id="calibre_link-196"><b><a id="calibre_link-87"><b></b></a><span><b>Node.jsでのPostgreSQLの利用</b></span></b></h2><p><span>データベースは、Webアプリケーションの作成で非常に重要です。Node.jsでも、データベースを利用するための機能はあります。ただし、標準で用意されているのではなく、アドオンプログラムを追加して利用することになります。</span></p>
+<p>&nbsp;</p>
+<p><span>この種の開発でデータベースを利用するとき、考えなければならないのは「本番環境はどうなっているか」でしょう。ローカルで動いているだけではつまらないですから。</span></p>
+<p>&nbsp;</p>
+<p><span>ここでは、「HerokuでWebアプリをデプロイする」ということを目標に説明することにしましょう。そのためには、まず「Herokuのデータベース環境はどうなっているか」を知らなければいけませんね。</span></p>
+<p>&nbsp;</p>
+<p><span>Herokuの場合、標準</span><span>で</span><span><b>PosgreSQ</b></span><span><b>L</b></span><span>が対応しています。他のものも使えないことはないのですが、基本はPostgreSQLと考えてください。</span></p>
+<p>&nbsp;</p>
+<p><span>では、Node.jsアプリからPostgreSQLを利用するための準備を整えましょう。これは、PostgreSQLの設定と、Node.js側の設定が必要になります。なお、ここでは現時点での最新版であるPostgreSQL 9.4.1をベースに説明していきます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●PostgreSQLの用意</b></span></p>
+<p><span>当たり前ですが、ローカル環境にPostgreSQLをインストールしておく必要があります。以下のアドレスからプログラムをダウンロードし、インストールしておきましょう。「サーバーで動けばいいからいらないや」と思ってはいけません。ローカル環境にPostgreSQLがインストールされていないと後でHerokuの作業で問題が発生しますので、必ず用意してください。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>http://www.postgresql.org/download/</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><img src="images/00038.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>ここからDownloadのリンクをクリックし、次に現れる画面で「Interactive installer by EnterpriseDB」というところにある「Download the installer」リンクをクリックすると、EnterpriseDBサイトにあるPostgreSQLのインストーラダウンロードページに移動します。ここでインストーラを入手できます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00048.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span><b>●PrstgreSQLをインストールする</b></span></p>
+<p><span>ダウンロードしたインストーラを起動していストールを開始します。以下、Windows環境でのインストールについて説明しておきましょう。環境によっては、最初にVisual C++のランタイムインストールが自動的に開始されて驚くかもしれませんが、そのままインストールして下さい。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00008.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>ランタイムが用意されるとセットアップ画面に進みます。そのまま次に進んで下さい。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00065.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>インストール場所を設定する画面になります。これはデフォルトのままにしておきます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00074.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>データの保管場所を設定します。これもデフォルトのままでいいでしょう。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00000.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>スーパーユーザーのパスワードを入力します。同じパスワードを２回入力します。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00009.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>ポート番号を指定します。デフォルトでは5432になっています。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00019.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>データベースクラスタのロケールを指定します。デフォルトでは[Default locale]となっています。これもそのままでOKです。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00063.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>インストールの準備が整いました。次に進めばインストールを開始します。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00037.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>インストールを開始します。作業が終了するまでしばらく待ちましょう。「Completing the PostgreSQL Setup Wizard」の画面が現れたらインストール完了です。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00030.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>ちなみに「Stack Builder ......」のチェックをONにしてあると、スタックビルだというツールが自動的に起動します。これは追加のオプションなどをインストールするものです。今回は特に使いませんのでチェックをOFFにしておくか、そのまま終了しておきましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>※PostgreSQLの起動について</b></span></p>
+<p><span>PostgreSQLは、SQLサーバープログラムです。すなわち、バックグラウンドでサーバープログラムが実行されており、これにプログラム内からアクセスをして必要な情報などを取得します。ということは、「PostgreSQLのサーバープログラムが動いてないとデータベースが使えない」ということになります。</span></p>
+<p>&nbsp;</p>
+<p><span>インストールを行うと、その段階で自動的にサーバープログラムが実行されます。が、「どこでどうやって起動しているのかわからない」と不安になるかも知れません。PosgreSQLは、実は「サービス」として起動されます。</span></p>
+<p>&nbsp;</p>
+<p><span>タスクマネージャやサービス管理ツール（管理コンソール）などでサービスを見ると、「postgresql-○○」といったサービスが追加されていることがわかるでしょう。これが実行中だと、データベースが使える状態になっています。必要なくなれば、このサービスを停止するとデータベースは終了します。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00055.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span><b>●Node.jsの準備</b></span></p>
+<p><span>コマンドプロンプト／ターミナルからNode.jsのアプリケーションディレクトリにカレントディレクトリを移動ます。そして以下のようにコマンドを実行しておきます。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>npm install</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>これは既におなじみですね。既に必要なモジュールがアプリケーションに用意されているならこれは特に不要です。まだインストールがされていないならnpmでインストールをしておきましょう。続いて、PostgreSQL用のモジュールを組み込みます。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>npm install pg</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>「pg」が、PostgreSQLをNode.jsで利用するためのアドオンプログラムになります。これでpgと、これに必要なプログラム類がインストールされます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00072.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>これで、アプリケーションからPostgreSQLを利用するための準備が整いました。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-8">
+<div>
+<h2 id="calibre_link-197"><b><a id="calibre_link-88"><b></b></a><span><b>データベースの準備をする</b></span></b></h2><p><span>では、データベースにテーブルを作成しておきましょう。データベースへのアクセスには、いくつかの方法があります。１つは「pgAdmin4」という専用ツールを使う方法です。PostgreSQLがインストールされているフォルダ内の「pgAdmin4」フォルダ内にある「bin」フォルダの中に「pgAdmin4.exe」というプログラムがあります。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00073.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>これはビジュアルにデータベースの操作をする専用ツールです。これを使って、テーブルを作成したりデータの編集をすることもできます。が、データベースの構造などがけっこうわかりにくいので、慣れないと使いづらいかもしれません。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●psqlを起動する</b></span></p>
+<p><span>もっとシンプルなのは、「psql.exe」というクライアントプログラムを使う方法です。これはコマンドでデータベースを操作するものです。コマンドプロンプトまたはターミナルから、こんな具合に実行しましょう。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>psql データベース名</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>データベースは、デフォルトでは「postgres」が作成されていますので、「psql postges」と実行すればいいでしょう。実行するとパスワードを尋ねてきますので、インストール時に設定したものを入力します。これでPostgreSQLにログインし、SQLコマンドを実行できるようになります。</span></p>
+<p>&nbsp;</p>
+<p><span>なお、PostgreSQLをインストールしても、そのままでは環境変数PATHにPostgreSQLのパスは追加されません。ですから、そのままでは「psql」と実行してもエラーになるでしょう。psqlをフルパスで指定するか、手作業で環境変数PATHにPostgreSQLの「bin」フォルダのパス（C:\Program Files\PostgreSQL\9.4\bin）を追加するかしてください。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●テーブルを作成する</b></span></p>
+<p><span>では、データベースにテーブルを用意しましょう。ここではごく簡単なデータを保管するテーブル「mydata」を作成しておくことにします。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>create table mydata (</span></p>
+<p><span> id serial primary key,</span></p>
+<p><span> name char(50),</span></p>
+<p><span> mail char(100),</span></p>
+<p><span> memo char(255)</span></p>
+<p>);</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>ごく単純なものですね。プライマリキーのidと、テキストを保管するname, mail, memoといったフィールドがあります。これでテーブルの準備はできました。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-29">
+<div>
+<h2 id="calibre_link-198"><b><a id="calibre_link-89"><b></b></a><span><b>Expressのapp.jsを用意する</b></span></b></h2><p><span>では、スクリプトの作成に入りましょう。まずは、アプリケーションの基本部分となる</span><span>「</span><span><b>app.j</b></span><span><b>s</b></span><span>」からです。これは、基本的な処理は既に説明してありますので改めて説明する必要はないでしょう。</span></p>
+<p>&nbsp;</p>
+<p><span>今回は、トップページ（「/」アドレス）の他に、データ作成のフォームページ（「/add」アドレス）と、フォームを送信した時の処理（「/create」アドレス）を用意します。これら３つのアクションのためのルート情報の登録部分だけきちんと押さえておけば、あとはデフォルトで生成されるスクリプトをそのまま利用してありますので難しいものはなにもないでしょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・「routes」内のファイルのロード</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var add = require('./routes/add');</span></p>
+<p><span>var create = require('./routes/create');</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>ここでは、「routes」フォルダ内に「add.js」「create.js」というスクリプトを用意します。既にindexについては用意してありますので、その他にこの２つのスクリプトファイルを新たに追加するわけですね。それらを読み込み、変数に代入しておきます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・ルート設定</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>app.use('/add', add);</span></p>
+<p><span>app.use('/create', create);</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>add.jsに用意した「add」と、create.jsに用意した「create」を、/addと/createのURIに設定します。これにより、これらのアドレスにアクセスがあれば指定のスクリプトが呼び出されるようになります。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-120">
+<div>
+<h2 id="calibre_link-199"><b><a id="calibre_link-90"><b></b></a><span><b>indexでテーブルの一覧を表示する</b></span></b></h2><p><span>では、スクリプトを作成していきましょう。まずはトップページ（「/」アドレス）からです。これは、「routes」フォルダ内の「index.js」ファイルとして処理を用意します。表示用のテンプレートは、「views」フォルダ内に「index.ejs」として作成しておきます。</span></p>
+<p>&nbsp;</p>
+<p><span>それぞれのファイルのソースコードを掲載しておきましょう。記述して指定のフォルダ内にファイルを配置しておいてください。</span></p>
+<p>&nbsp;</p>
+<p><span><b>※index.ejs</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;!DOCTYPE html&gt;</span></p>
+<p><span>&lt;html&gt;</span></p>
+<p><span>  &lt;head&gt;</span></p>
+<p><span>&lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;</span></p>
+<p><span>&lt;link rel='stylesheet' href='<i><i>stylesheets</i></i>style.css' /&gt;</span></p>
+<p><span>  &lt;/head&gt;</span></p>
+<p><span>  &lt;body&gt;</span></p>
+<p><span>&lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;</span></p>
+<p><span>&lt;p&gt;Welcome to &lt;%= title %&gt;&lt;/p&gt;</span></p>
+<p><span>&lt;% if (data != null) { %&gt;</span></p>
+<p><span>&lt;table border="1"&gt;</span></p>
+<p><span>&lt;% for(var i=0; i &lt; data.length; i++){ %&gt;</span></p>
+<p><span>&lt;tr&gt;</span></p>
+<p><span>&lt;td width="200px"&gt;&lt;%= data[i].name %&gt;&lt;/td&gt;</span></p>
+<p><span>&lt;td width="200px"&gt;&lt;%= data[i].mail %&gt;&lt;/td&gt;</span></p>
+<p><span>&lt;td width="300px"&gt;&lt;%= data[i].memo %&gt;&lt;/td&gt;</span></p>
+<p><span>&lt;/tr&gt;</span></p>
+<p><span>&lt;% } %&gt;</span></p>
+<p><span>&lt;/table&gt;</span></p>
+<p><span>&lt;% } %&gt;</span></p>
+<p><span>  &lt;/body&gt;</span></p>
+<p><span>&lt;/html&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>※routes/index.js</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var express = require('express');</span></p>
+<p><span>var router = express.Router();</span></p>
+<p><span>var pg = require('pg');</span></p>
+<p>&nbsp;</p>
+<p><span>/* GET home page. */</span></p>
+<p><span>router.get('/', function(request, response, next) {</span></p>
+<p><span>var con</span><span>=</span><span>"tcp://利用者:パスワード@ホスト:ポート番号/データベース</span><span>"</span><span>;</span><span>//★</span></p>
+<p><span>pg.connect(con, function(err, client) {</span></p>
+<p><span>var query = client.query('select * from mydata;');</span></p>
+<p><span>var rows = [];</span></p>
+<p><span>query.on('row', function(row) {</span></p>
+<p><span>rows.push(row);</span></p>
+<p>});</p>
+<p><span>query.on('end', function(row,err) {</span></p>
+<p><span>response.render('index', {</span></p>
+<p><span>title: 'Express',</span></p>
+<p><span>data:rows</span></p>
+<p>});</p>
+<p>});</p>
+<p><span>query.on('error', function(error) {</span></p>
+<p><span>console.log("ERROR!!" + error);</span></p>
+<p><span>response.render('index', {</span></p>
+<p><span>title: title,</span></p>
+<p><span>data: null,</span></p>
+<p><span>message: "ERROR is occured!"</span></p>
+<p>});</p>
+<p>});</p>
+<p>});</p>
+<p>});</p><p><span>module.exports = router;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>このままでは動きませんよ！　★のテキストを、それぞれの環境に合わせて書き換えて下さい。デフォルトではデータベース名も管理者名もpostgresになっていますから、パスワードをhogeにしてあったならば、こんな感じに設定すればいいでしょう。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>"tcp://postgres:hoge@localhost:5432/postgres"</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>これで、mydataにあるデータを全て取得し、テーブルにまとめて表示します。ただし！　まだ/addと/createを作ってないので、この段階で実行してもうまく動かないでしょう。最後まで完成してから表示を確かめて下さい。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00082.jpeg" alt="" /></p>
+
+
+</div>
+</div>
+<div id="calibre_link-4">
+<div>
+<h2 id="calibre_link-200"><b><a id="calibre_link-91"><b></b></a><span><b>データベースアクセスの流れ</b></span></b></h2><p><span>では、ソースコードの説明をしましょう。Node.jsのpgを使ってデータベースアクセスを行う基本について順に説明しておきましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●データベースに接続する</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>pg.connect( 接続先 , コールバック関数 );</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>データベースへの接続は</span><span>、</span><span><b>pg.connec</b></span><span><b>t</b></span><span>というメソッドを使います。これは第1引数に接続先のアドレスを、第2引数には接続が開始されてから実行されるコールバック関数を指定します。サンプルのスクリプトでは、以下のように記述しています。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var con = "tcp://利用者:パスワード@ホスト:ポート番号/データベース";</span></p>
+<p><span>pg.connect(connectionString, function(err, client) {...接続時の処理...}</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>接続先は、tcpというプロトコルのテキストで用意します。利用者、パスワード、ホスト、ポート番号、データベースといった情報を一つにまとめて記述するので、書き方を間違えないように注意して下さい。</span></p>
+<p>&nbsp;</p>
+<p><span>connectは非同期関数で、接続が完了したところで引数の関数を呼び出して実行します。このコールバック関数は、２つの引数を用意します。第1引数にはエラーが発生した時の情報をまとめたオブジェクトが、また第2引数には接続したデータベースへのアクセスを管理す</span><span>る</span><span><b>Clien</b></span><span><b>t</b></span><span>というオブジェクトが返されます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●SQLクエリーを実行する</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>変数</span><span>=</span><span><b>client.quer</b></span><span><b>y</b></span><span>( クエリー文 );</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>接続したデータベースを操作するには、Clientの</span><span>「</span><span><b>quer</b></span><span><b>y</b></span><span>」メソッドを使います。これは、SQL文をデータベースに送って実行するためのものです。引数にはSQLのクエリーテキストを指定します。</span></p>
+<p>&nbsp;</p>
+<p><span>SQL文では</span><span>、</span><span><b>selec</b></span><span><b>t</b></span><span>のように値を取得する処理もありますが、こ</span><span>の</span><span><b>quer</b></span><span><b>y</b></span><span>メソッドそのもので返値を返すわけではないので注意が必要です。こ</span><span>の</span><span><b>quer</b></span><span><b>y</b></span><span>メソッドは、非同期でアクセスを行います。このため、実行結果となる返値でデータを受け取れるわけではないのです。</span></p>
+<p>&nbsp;</p>
+<p><span>では、何が返値として返されるのか？　それは、</span><span>「</span><span><b>Quer</b></span><span><b>y</b></span><span>」というオブジェクトです。こ</span><span>の</span><span><b>Qurer</b></span><span><b>y</b></span><span>には、処理の実行状況に応じて発生するイベントハンドラが用意されており、これを利用して処理を行うのです。</span></p>
+<p>&nbsp;</p>
+<p><span>サンプルのリストを見てみましょう。まず以下のようにしてselect文を実行し、そのQueryを変数に取得しています。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var query =</span><span><b>client.query</b></span><span>('select * from mydata;');</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>こ</span><span>の</span><span><b>quer</b></span><span><b>y</b></span><span>では、第2引数に実行後の処理をコールバック関数として指定することもできるのですが、ここでは単にクエリーを実行するだけの使い方で説明をします。――こ</span><span>の</span><span><b>quer</b></span><span><b>y</b></span><span>を実行後、返され</span><span>る</span><span><b>Quer</b></span><span><b>y</b></span><span>オブジェクトのイベントを設定します。このイベントは全部で3種類用意されています。それぞれ以下のようにして設定を行います。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・rowの取得イベント</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>query.on('row', function(row){......処理......} );</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>selectなどレコードを取得するクエリーを実行したとき、レコードを取得するごとにこのrowイベントが発生し処理が呼び出されます。引</span><span>数</span><span><b>ro</b></span><span><b>w</b></span><span>には、取得したレコードをオブジェクトにまとめたものが保管されます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・終了イベント</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>query.on('end', function(result){......処理......} );</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>すべての処理が完了したときに呼び出されます。引数には、クエリー実行に関する各種の情報をまとめ</span><span>た</span><span><b>Resul</b></span><span><b>t</b></span><span>オブジェクトが渡されます。</span></p>
+<p>&nbsp;</p>
+<p><span><b>・エラーイベント</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>query.on('error', function(error){......処理......} );</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>エラーが発生した際に呼び出されます。ただし</span><span>、</span><span><b>quer</b></span><span><b>y</b></span><span>メソッドを呼び出す際にコールバック関数を設定してあった場合は、そちらが優先され、このイベントは発生しないので注意ください。</span></p>
+<p>&nbsp;</p>
+<p><span>この３つのイベントを組み合わせることで、クエリー実行後の処理を構築できます。サンプルのスクリプトでは</span><span>、</span><span><b>ro</b></span><span><b>w</b></span><span>イベントで、取得され</span><span>た</span><span><b>ro</b></span><span><b>w</b></span><span>オブジェクトを配列に追加し保存しています。こうすることで、取得されたすべて</span><span>の</span><span><b>ro</b></span><span><b>w</b></span><span>データをひとまとめにできます。</span></p>
+<p>&nbsp;</p>
+<p><span>また、注目して欲しいのは、index.ejsのレンダリングのタイミングです。ここでは、</span><span><u>endイベントが発生したところでrenderで表示をレンダリングしている</u></span><span>ことがわかります（他、error時にも行なっていますが......）。このように、処理が完了したところで表示をレンダリングしないと、うまく結果を取り出して表示することができないので注意しましょう。</span></p>
+
+
+</div>
+</div>
+<div id="calibre_link-117">
+<div>
+<h2 id="calibre_link-201"><b><a id="calibre_link-92"><b></b></a><span><b>レコードの追加を行う</b></span></b></h2><p><span>続いて、レコードの追加を行う処理です。これは「routes」内に用意する「add.js」でフォームの表示を、「create.js」でフォーム送信後の処理（つまりフォームの内容からレコードを保存する処理）を実装します。また、「views」フォルダ内には、フォームを表示する「add.ejs」テンプレートファイルを用意する必要があるでしょう。</span></p>
+<p>&nbsp;</p>
+<p><span>下に３つのファイルの内容をまとめて掲載してあります。これらを参考にそれぞれのスクリプトを完成させてください。</span></p>
+<p>&nbsp;</p>
+<p><span><b>※views/add.ejs</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>&lt;!DOCTYPE html&gt;</span></p>
+<p><span>&lt;html&gt;</span></p>
+<p><span>  &lt;head&gt;</span></p>
+<p><span> &lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;</span></p>
+<p><span> &lt;link rel='stylesheet' href='<i><i>stylesheets</i></i>style.css' /&gt;</span></p>
+<p><span>  &lt;/head&gt;</span></p>
+<p><span>  &lt;body&gt;</span></p>
+<p><span> &lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;</span></p>
+<p><span> &lt;p&gt;&lt;%= msg %&gt;&lt;/p&gt;</span></p>
+<p><span> &lt;form method="post" action="/create"&gt;</span></p>
+<p><span> &lt;table&gt;</span></p>
+<p><span> &lt;tr&gt;&lt;td&gt;NAME:&lt;/td&gt;&lt;td&gt;&lt;input type="text"</span></p>
+<p><span> name="name"&gt;&lt;/td&gt;&lt;/tr&gt;</span></p>
+<p><span> &lt;tr&gt;&lt;td&gt;MAIL:&lt;/td&gt;&lt;td&gt;&lt;input type="text"</span></p>
+<p><span> name="mail"&gt;&lt;/td&gt;&lt;/tr&gt;</span></p>
+<p><span> &lt;tr&gt;&lt;td&gt;MEMO:&lt;/td&gt;&lt;td&gt;&lt;input type="text"</span></p>
+<p><span> name="memo"&gt;&lt;/td&gt;&lt;/tr&gt;</span></p>
+<p><span> &lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;input type="submit"&gt;&lt;/tr&gt;</span></p>
+<p><span> &lt;/table&gt;</span></p>
+<p><span> &lt;/form&gt;</span></p>
+<p><span>  &lt;/body&gt;</span></p>
+<p><span>&lt;/html&gt;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>※routes/add.js</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var express = require('express');</span></p>
+<p><span>var router = express.Router();</span></p>
+<p>&nbsp;</p>
+<p><span>/* add page. */</span></p>
+<p><span>router.get('/', function(request, response, next) {</span></p>
+<p><span>response.render('add',</span></p>
+<p>{</p>
+<p><span>title: 'Add Page',</span></p>
+<p><span>msg: 'please type data:'</span></p>
+<p>}</p>
+<p>);</p>
+<p>});</p><p><span>module.exports = router;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span><b>※routes/create.js</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var express = require('express');</span></p>
+<p><span>var router = express.Router();</span></p>
+<p><span>var pg = require('pg');</span></p>
+<p>&nbsp;</p>
+<p><span>/* add page. */</span></p>
+<p><span>router.post('/', function(request, response, next) {</span></p>
+<p><span>var name_str = request.body["name"];</span></p>
+<p><span>var mail_str = request.body["mail"];</span></p>
+<p><span>var memo_str = request.body["memo"];</span></p>
+<p>&nbsp;</p>
+<p><span>var con = "tcp://postgres:admin@localhost:5432/postgres";</span></p>
+<p><span>pg.connect(con, function(err, client) {</span></p>
+<p><span>var qstr = "insert into mydata (name,mail,</span></p>
+<p><span> memo) values($1, $2, $3);";</span></p>
+<p><span>var query = client.query(qstr,[name_str,</span></p>
+<p><span> mail_str, memo_str]);</span></p>
+<p><span>query.on('end', function(row,err) {</span></p>
+<p><span>response.redirect("/");</span></p>
+<p>});</p>
+<p><span>query.on('error', function(error) {</span></p>
+<p><span>console.log("ERROR!");</span></p>
+<p><span>response.render('index', {</span></p>
+<p><span>title: "ERROR",</span></p>
+<p><span>data: null,</span></p>
+<p><span>message: "ERROR is occured!"</span></p>
+<p>});</p>
+<p>});</p>
+<p>});</p>
+<p>});</p><p><span>module.exports = router;</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>これでプログラムは完成です。Node.jsを起動して、/addにアクセスしましょう。データを入力するフォームが表示されます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00007.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>フォームに記入して送信すると、それがレコードとしてテーブルに追加されます。作成後、indexにリダイレクトされるので、表示されるレコードを確認できます。</span></p>
+<p>&nbsp;</p>
+<p><img src="images/00003.jpeg" alt="" /></p>
+
+
+</div>
+</div>
+<div id="calibre_link-109">
+<div>
+<h2 id="calibre_link-202"><b><a id="calibre_link-93"><b></b></a><span><b>データ追加の処理の流れ</b></span></b></h2><p><span>今回のポイントは、create.jsです。ここにフォームから送信された際の処理がまとめられています。ではポイントを整理しましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●POSTの処理</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>router.post(......略......);</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>今回、create.jsでは、処理を組み込むのにrouter.getではなく「router.post」を使っています。POSTされた処理は、このpostメソッドを利用して処理を設定します。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●送信フォームの情報取得</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var name_str = request.body["name"];</span></p>
+<p><span>var mail_str = request.body["mail"];</span></p>
+<p><span>var memo_str = request.body["memo"];</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>送信されたフォームの値は、通常のNode.jsでのやり方とはちょっと違っています。requestの「body」に値がまとめられているのです。request.paramから取り出そうとするとエラーになるので注意しましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●レコードの追加</b></span></p>
+<p><span>レコードの追加も、基本的には先程のselectの処理と実は変わりありません。db.connectでデータベースに接続し、そのClientオブジェクトのqueryメソッドでSQLを実行する、という流れですね。単に実行するSQLの内容が変わっただけです。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>var qstr = "insert into mydata (name,mail,memo) values(</span><span>$1, $2, $3</span><span>);";</span><span>var query = client.query(qstr,[name_str, mail_str, memo_str]);</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>ここでは、このようにしてinsert文を実行しています。注目したいのは、valuesの後にある</span><span>「</span><span><b>$1, $2, $</b></span><span><b>3</b></span><span>」というもの。これは、queryを実行する際に値が渡される変数です。</span></p>
+<p>&nbsp;</p>
+<p><span>queryでは、第２引数に、[name_str, mail_str, memo_str]という配列が用意されていますね？　これらの値が、$1, $2, $3にそれぞれ代入されます。クエリー文のテキストに変数などの値を組み入れる場合は、このように$を使った変数を利用して下さい。</span></p>
+<p>&nbsp;</p>
+<p><span><b>●endイベント処理</b></span></p>
+<p><span>実行後、endイベントを使い、実行後にトップページにリダイレクトをしています。この部分ですね。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>query.on('end', function(row,err) {</span></p>
+<p><span> response.redirect("/");</span></p>
+<p>});</p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>リダイレクトは、Responseオブジェクトの</span><span>「</span><span><b>redirec</b></span><span><b>t</b></span><span>」を利用します。引数にはリダイレクト先のアドレスを指定するだけです。簡単ですね。</span></p>
+<p>&nbsp;</p>
+<p><span>実をいえば、データベースアクセスに関する機能は、これだけです。いや、もちろんオブジェクトにあるメソッドとか細々としたものはまだ残ってますが、基本的に「connectしてqueryする。後はイベントハンドラで処理すればおしまい」という流れさえわかれば、基本的なデータベースアクセスはたいてい実装できます。</span></p>
+<p>&nbsp;</p>
+<p><span>なにしろ、SQLをそのまま送るだけなんですから、「細々したことはSQL側でなんとかして！」ってことですね！</span></p>
+<p>
+</p><div id="calibre_link-203"></div>
+</div>
+</div>
+<div id="calibre_link-114">
+<div>
+<br id="calibre_link-204" /><p></p>
+<p>&nbsp;</p>
+<p><span><b>「Node.js ビギナーズガイド」</b></span></p>
+<p>&nbsp;</p>
+<p><span>2015年3月発行</span></p>
+<p><span>2016年10月第2刷</span></p>
+<p>&nbsp;</p>
+<p><span>著　者：掌田津耶乃</span></p>
+<p><span>発行者：Tuyano-Project</span></p>
+<p><span>©2015 SYODA-Tuyano</span></p>
+<p>&nbsp;</p>
+<p><span><b>著者プロフィール</b></span></p>
+<p><span>日本初のMac専門月刊誌「Mac+」の頃から主にMac系雑誌に寄稿する。ハイパーカードの登場により「ビギナーのためのプログラミング」に開眼。以後、Mac、Windows、Web、Android、iOSとあらゆるプラットフォームのプログラミングビギナーに向けた書籍を執筆し続ける。</span></p>
+<p><span>　</span></p>
+<p><span><b>プロフィールページ</b></span></p>
+<p><span>https://plus.google.com/+TuyanoSYODA/</span></p>
+<p><span>　</span></p>
+<p><span><b>著者運営サイト</b></span></p>
+<p><span>http://www.tuyano.com</span></p>
+<p><span>http://blog.tuyano.com</span></p>
+<p><span>http://libro.tuyano.com</span></p>
+<p><span>http://card.tuyano.com</span></p>
+<p><span>　</span></p>
+<p><span>ご意見・ご感想の送り先</span></p>
+<p><span>syoda@tuyano.com</span></p>
+</div>
+</div>
+
+
+
+
+<script>function myFunction(){document.getElementById("tateyoko").classList.toggle("tateread")}</script></body></html>

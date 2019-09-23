@@ -1,0 +1,3548 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What's New in SAS 9.4</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/mainday.css" title="default">
+<link rel="alternate stylesheet" href="/css/mainnight.css" title="alternate">
+<script type="text/javascript" src="/js/styleswitcher.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+</head>
+<body>
+<div class="novelpage">
+<div class="novelbody">
+<div id="tateyoko">
+<div id="_top"></div>
+<a href="/">🏠</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('default'); return false;">日</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">月</a>&emsp;
+<a href="#_top" onclick="myFunction()" style="cursor: pointer;">縦書き／横書き</a>
+<div id="calibre_link-4">
+<div>
+<div>
+<table class="noveltitle">
+<tr>
+<td colspan="2"><i><span><i>What's New in SAS 9.4</i></span></i></td>
+</tr>
+<tr>
+                    
+                    
+      </tr>
+<tr>
+<td colspan="2">SAS Institute</td>
+</tr>
+<tr>
+<td colspan="2">SAS Institute Inc. (2013)</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+</tr>
+</table>
+<div></div>
+</div>
+<div></div>
+</div>
+</div>
+
+
+
+<div id="calibre_link-49">
+<div>
+<div>The correct bibliographic citation for this manual is as follows:<span>
+<span>SAS Institute Inc.</span>
+<span>2013.</span>
+<span><b><i>What's New in SAS® 9.4.</i></b></span>
+<span>
+<span>Cary,</span>
+<span>NC:</span>
+</span>
+<span>SAS Institute Inc.</span>
+</span>
+</div>
+<div><b>What's New in SAS<span><b>®</b></span>
+ 9.4</b></div>
+<div>Copyright © 2013, SAS Institute Inc., Cary, NC, USA</div>
+<div>ISBN 978-1-61290-891-5 (electronic book)</div>
+<div>All rights reserved. Produced in the United States of America.</div>
+<div>
+<span><b>For a hard-copy book:</b></span>
+ No part of this publication may be reproduced, stored in a retrieval system, or transmitted, in any form or by any means, electronic, mechanical, photocopying, or otherwise, without the prior written permission of the publisher, SAS Institute Inc.</div>
+<div>
+<span><b>For a web download or e-book:</b></span>
+ Your use of this publication shall be governed by the terms established by the vendor at the time you acquire this publication.</div>
+<div>The scanning, uploading, and distribution of this book via the Internet or any other means without the permission of the publisher is illegal and punishable by law. Please purchase only authorized electronic editions and do not participate in or encourage electronic piracy of copyrighted materials. Your support of others' rights is appreciated.</div>
+<div>
+<span><b>U.S. Government Restricted Rights Notice:</b></span>
+ Use, duplication, or disclosure of this software and related documentation by the U.S. government is subject to the Agreement with SAS Institute and the restrictions set forth in FAR 52.227--19, Commercial Computer Software-Restricted Rights (June 1987).</div>
+<div>
+<span>SAS Institute Inc.,</span>
+<span>SAS Campus Drive,</span>
+<span>Cary,</span>
+<span>North Carolina</span>
+<span>27513</span>
+ .</div>
+<div>Electronic book 1,<span>7月</span>
+<span>2013年</span>
+</div>
+<div>SAS provides a complete selection of books and electronic products to help customers use SAS<sup>®</sup>
+ software to its fullest potential. For more information about our e-books, e-learning products, CDs, and hard-copy books, visit<a href="http://support.sas.com/bookstore" title="SAS Bookstore Web site">support.sas.com/bookstore</a>
+ or call 1-800-727-3228.</div>
+<div>
+<div><a id="calibre_link-123"></a>
+ SAS<sup>®</sup>
+ and all other SAS Institute Inc. product or service names are registered trademarks or trademarks of SAS Institute Inc. in the USA and other countries. ® indicates USA registration.</div>
+</div>
+<div>
+<div><a id="calibre_link-124"></a>
+ Other brand and product names are registered trademarks or trademarks of their respective companies.</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-40">
+<div>
+<h1><b><a id="calibre_link-125"><b></b></a>
+ このドキュメントについて</b></h1>
+<div>
+<h2><b>利用者</b></h2>
+<div><a id="calibre_link-126"></a>
+ このドキュメントには、SAS 9.4やSAS 9.4上で実行されるプロダクトの概要が記述されています。それぞれのプロダクトのトピックの終わりには、プロダクトドキュメントに含まれる、より詳細な新機能トピックへのリンクが用意されています。ドキュメントが保護され、新機能トピックが利用できない場合は、ソフトウェアプロダクトページへのリンクを代わりに用意し、詳細を確認できるようにしました。</div>
+<div><a id="calibre_link-127"></a>
+ SASプロダクトの情報を入手されたい場合は、SASの担当者までご連絡ください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-56">
+<div>
+<h1><b><a id="calibre_link-128"><b></b></a>
+ 1章: SAS 9.4について</b></h1>
+<div></div>
+<div>
+<div><b>
+<a href="#calibre_link-57"><b>SAS 9.4の概要</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-58"><b>SASの配置と管理</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-59"><b>モバイルデバイスからSASへのアクセス</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-60"><b>ハイパフォーマンス分析の使用</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-61"><b>ユーザーデータの管理</b></a>
+</b></div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-20">
+<div><a id="calibre_link-57"></a>
+<h1><b>SAS 9.4の概要</b></h1>
+<div><a id="calibre_link-129"></a>
+<div><a id="calibre_link-130"></a>
+ SAS 9.4には、各サイトのユーザーすべてに有益な機能が含まれています。<div>
+<ul>
+<li>
+<div><a id="calibre_link-131"></a>
+<div><a id="calibre_link-132"></a>
+ IT部門には、SAS 9.4は、簡易なアーキテクチャ、強化されたセキュリティ、より多くの配置オプションを提供します。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-133"></a>
+<div><a id="calibre_link-134"></a>
+ SAS管理者には、SAS 9.4は、新しい管理機能と管理ツールを提供します。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-135"></a>
+<div><a id="calibre_link-136"></a>
+ データ管理者向けに、DataFluxプロダクトの統合により、さらに包括的なデータ管理のソリューションが作り出されました。さらに、新しいプログラミング言語を使用して、データを操作し、さまざまなデータソースからリレーショナルデータにアクセスできます。新しいプログラミング言語を使用して、データベース上のデータを更新したり、さまざまなソースからリレーショナルデータにアクセスしたりできます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-137"></a>
+<div><a id="calibre_link-138"></a>
+ SASプログラマは、ハイパフォーマンス分析を使用して、大量データを迅速に分析できます。マルチスレッド機能も追加され、単一マシンの配置で分析が実行できるようになりました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-139"></a>
+<div><a id="calibre_link-140"></a>
+ ビジネスユーザーは、さまざまなモバイルデバイスからレポートが使用でき、必要なときに必要な情報が得られます。</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-55">
+<div><a id="calibre_link-58"></a>
+<h1><b>SASの配置と管理</b></h1>
+<div><a id="calibre_link-99"></a>
+<h2><b>クラウド配置によるソフトウェアの可用性の向上</b></h2>
+<div><a id="calibre_link-141"></a>
+<div><a id="calibre_link-142"></a>
+ SAS 9.4では、グローバルな組織のユーザーすべてがSASを使用できるように、パブリッククラウドおよびプライベートクラウド環境にてソフトウェアを配置、管理、保守するツールやテクノロジを提供します。イノベーションを進めらえるように、クラウド開発プラットフォームを提供します。クラウド環境では、コンピューティングキャパシティの拡大に対する需要にIT部門が迅速に対応でき、ビジネスの成長に合わせてソフトウェア環境を拡大することを容易にします。</div>
+<div><a id="calibre_link-143"></a>
+ また、SASでは、各サイトへの配置も、SAS Solutions OnDemandを使用してホストされたソリューションとしての配置も引き続きサポートします。</div>
+</div>
+</div>
+<div><a id="calibre_link-87"></a>
+<h2><b>SAS配置のコストおよび複雑さの軽減</b></h2>
+<div><a id="calibre_link-144"></a>
+<div><a id="calibre_link-145"></a>
+ SAS 9.4では、JBoss、WebSphere、WebLogicなどのWebアプリケーションサーバーは必要ありません。SAS 9.4には、SAS Web Application Serverと呼ばれる、中間層サーバーが埋め込まれています。このため、サードパーティのソフトウェアを購入して、統合し、保守やサポートをするために、時間と資金を費やす必要はありません。埋め込まれた中間層はまた、IT管理を簡易化し、クラウド環境へのSASの配置をサポートします。</div>
+</div>
+</div>
+<div><a id="calibre_link-146"></a>
+<h2><b>ハイパフォーマンス動作環境の使用</b></h2>
+<div><a id="calibre_link-147"></a>
+<div><a id="calibre_link-148"></a>
+ SAS Applicationsは、通常、大規模なデータセットの処理に使用されます。環境のパフォーマンスが高くなると、この処理にプラスに働きます。SAS 9.4では、64-ビットWindows動作環境の追加メモリと処理機能が活用されます。</div>
+</div>
+</div>
+<div><a id="calibre_link-101"></a>
+<h2><b>メタデータサーバーと中間層サーバーのクラスタリングによるダウンタイムの削減</b></h2>
+<div><a id="calibre_link-149"></a>
+<div><a id="calibre_link-150"></a>
+ SAS 9.4では、組織内のユーザーがソフトウェアをより利用しやすくするために、メタデータサーバーと中間層サーバーのクラスタリングをサポートします。メタデータサーバークラスタは、同一のメタデータサーバーとして構成される3つ以上のノードのグループです。サーバーがクラスタ化され、同一データのコピーを各サーバーで管理している場合は、データ損失の脅威は大幅に減少します。クラスタ内の1ノードに障害が起こった場合、ユーザーは残りのノードで作業が継続でき、システムのダウンタイムの可能性を縮小できます。結果的に、クラスタリングによってワークロードが分散され、パフォーマンスが向上する場合もあります。</div>
+</div>
+</div>
+<div><a id="calibre_link-81"></a>
+<h2><b>SAS Environment Managerを使用したSAS管理者の管理機能の拡張</b></h2>
+<div><a id="calibre_link-151"></a>
+<div><a id="calibre_link-152"></a>
+ SAS環境のWebベースのモニタリングソリューションである新しいSAS Environment Managerを使用すると、SAS管理者は管理機能を拡張できます。SAS Environment Managerを使用して、SAS Web Application Serverの管理やSAS Foundation Serverのモニタリングなどの、SASリソースの管理やモニタリングが行えます。モニタリングしたリソースのデータを収集して、メトリックスに基づきチャートを作成し、リソースの健全性と操作の包括的なビューを提供します。また、リソースの自動検出、ログイベントのモニタリング、アラートのレポートなどの機能も提供します。</div>
+</div>
+</div>
+<div><a id="calibre_link-91"></a>
+<h2><b>セキュリティの強化</b></h2>
+<div><a id="calibre_link-153"></a>
+<div><a id="calibre_link-154"></a>
+ SAS 9.4以降、<span>SAS/SECURE</span>
+ はBase SASに同梱されます。<span>SAS/SECURE</span>
+ の個別のライセンスは必要ありません。<span>SAS/SECURE</span>
+ は、業界標準の高度暗号化標準(AES)と64ビットのsaltを使用して、セキュリティオプションを拡張しています。</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-122">
+<div><a id="calibre_link-59"></a>
+<h1><b>モバイルデバイスからSASへのアクセス</b></h1>
+<div><a id="calibre_link-155"></a>
+<div><a id="calibre_link-156"></a>
+ SASレポートは、会議中、旅行中、または外出中の役員によって利用されることがあります。ビジネスプロフェッショナルのニーズを満たすために、SASレポートはモバイルデバイスから使用できるようになりました。SAS Output Delivery Systemの新しいODS EPUB出力先では、iPad、iPhone、またはiPodのApple iBooksアプリで最適に読める電子書籍形式でSASレポートを作成します。</div>
+<div><a id="calibre_link-157"></a>
+ ODSは、HTML5およびMicrosoft PowerPointへの出力もサポートするようになりました。</div>
+<div><a id="calibre_link-158"></a>
+ SAS Enterprise BI Serverのライセンスがある場合は、Mobile BIアプリを使用できるようになりました。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-104">
+<div><a id="calibre_link-60"></a>
+<h1><b>ハイパフォーマンス分析の使用</b></h1>
+<div><a id="calibre_link-159"></a>
+<h2><b>ハイパフォーマンス分析を使用した大量データの分析</b></h2>
+<div><a id="calibre_link-160"></a>
+<div><a id="calibre_link-161"></a>
+ 大量データを使用する分析モデルを開発する場合、SASは、分散環境での分析実行を可能にするIn-Memory分析を提供します。複数ノードが同じタスクを並列で処理するため、In-Memory分析ではパフォーマンスが大幅に向上します。<div id="calibre_link-162">SAS 9.4では、次の分野に特化した6つの新たなハイパフォーマンス分析プロダクトを使用できます。</div>
+<div>
+<ul>
+<li>
+<div><a id="calibre_link-163"></a>
+<div><a id="calibre_link-164"></a>
+ SAS High-Performance Statistics</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-165"></a>
+<div><a id="calibre_link-166"></a>
+ SAS High-Performance Data Mining</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-167"></a>
+<div><a id="calibre_link-168"></a>
+ SAS High-Performance Text Mining</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-169"></a>
+<div><a id="calibre_link-170"></a>
+ SAS High-Performance Forecasting</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-171"></a>
+<div><a id="calibre_link-172"></a>
+ SAS High-Performance Econometrics</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-173"></a>
+<div><a id="calibre_link-174"></a>
+ SAS High-Performance Optimization</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div><a id="calibre_link-175"></a>
+<h2><b>単一マシン配置でのマルチスレッド機能の使用</b></h2>
+<div><a id="calibre_link-176"></a>
+<div><a id="calibre_link-177"></a>
+ これらのプロダクトの分析プロシジャは、従来のSAS分析プロダクト(<span>SAS/STAT</span>
+ など)からも使用可能です。これらのSAS High-Performance Analyticsプロシジャは従来のSAS分析プロダクトから使用可能であるため、これらのハイパフォーマンス分析プロシジャを単一マシン配置で実行できるようになりました。<div>
+<ul>
+<li>
+<div><a id="calibre_link-178"></a>
+<div><a id="calibre_link-179"></a>
+ SAS Enterprise Miner</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-180"></a>
+<div><a id="calibre_link-181"></a>
+<span>SAS/ETS</span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-182"></a>
+<div><a id="calibre_link-183"></a>
+ SAS Forecast Server</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-184"></a>
+<div><a id="calibre_link-185"></a>
+<span>SAS/OR</span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-186"></a>
+<div><a id="calibre_link-187"></a>
+<span>SAS/STAT</span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-188"></a>
+<div><a id="calibre_link-189"></a>
+ SAS Text Miner</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-30">
+<div><a id="calibre_link-61"></a>
+<h1><b>ユーザーデータの管理</b></h1>
+<div><a id="calibre_link-190"></a>
+<h2><b>統合情報管理プラットフォームの構築</b></h2>
+<div><a id="calibre_link-191"></a>
+<div><a id="calibre_link-192"></a>
+ SASは、データクオリティ、データ統合、データガバナンスおよびマスタデータ管理ソリューションから成るDataFluxスイートを完全に統合しました。DataFluxブランドをSASに組み込むことで、分析や決定管理をサポートするデータ管理やガバナンスを超えた、より統合された情報管理アプローチをユーザーが構築するのに役立ちます。</div>
+<div><a id="calibre_link-193"></a>
+ DataFluxプロダクトは、いくつかはSASに名前が変更されましたが、それ以外も将来的には変更される予定です。たとえば、DataFlux Federation Serverは現在SAS Federation Serverです。個別にライセンスされるかわりに、DataFluxプロダクトは、その他のSASプロダクト同様、SASソフトウェア提供に統合されて含まれています。提供の変更は、ライセンスの更新に影響する可能性があります。</div>
+</div>
+</div>
+<div><a id="calibre_link-70"></a>
+<h2><b>DS2を使用した高度なデータ操作のIn-Databaseの実行</b></h2>
+<div><a id="calibre_link-194"></a>
+<div><a id="calibre_link-195"></a>
+ DS2は、高度なデータ操作およびアプリケーションに適した新しいSAS独自のプログラミング言語です。DS2はBase SASに含まれており、SAS DATAステップと一緒に使用されます。また、データ型、ANSI SQL型、プログラミング構造要素、ならびにユーザー定義のメソッドおよびパッケージもより多く含まれています。</div>
+<div><a id="calibre_link-196"></a>
+ SQLによる入力テーブルの事前処理ができるように、DS2のSETステートメントはFedSQL構文をサポートします。ランタイムで生成されるクエリは、DS2とサポートされている任意のデータベース間でデータを対話操作で交換できます。SAS In-Database Code Acceleratorを使用すると、DS2スレッド対応パッケージをデータベースで実行できます。</div>
+</div>
+</div>
+<div><a id="calibre_link-74"></a>
+<h2><b>SAS FedSQLの使用によるリレーショナルデータ管理の最適化</b></h2>
+<div><a id="calibre_link-197"></a>
+<div><a id="calibre_link-198"></a>
+ SAS FedSQLは、ANSI SQL:1999コア規格のSAS独自の実装です。これにより、新しいデータ型ならびに他のANSI 1999コア準拠機能および独自の拡張がサポートされます。FedSQLが提供するデータのアクセステクノロジにより、スケーラブルで、スレッド対応、ハイパフォーマンスな方法で、複数データソースにあるリレーショナルデータをアクセス、管理、共有できます。可能な場合、FedSQLクエリは、大規模な操作の問題を解決するためにマルチスレッドアルゴリズムを使用して最適化されます。</div>
+<div><a id="calibre_link-199"></a>
+ SAS FedSQLを使用すると、データソースごとに異なるSQLクエリを実行することなく、複数のデータソースにアクセスできます。同一のFedSQLクエリが複数のデータソースで使用され、結果は1つのテーブルに表示されます。FEDSQLプロシジャを使用すると、Base SASセッションからFedSQL言語ステートメントをサブミットできます。</div>
+</div>
+</div>
+<div><a id="calibre_link-200"></a>
+<h2><b>データアクセスの向上</b></h2>
+<div><a id="calibre_link-201"></a>
+<div><a id="calibre_link-202"></a>
+ SAS 9.4では、Oracle、DB2、およびTeradataへの<span>SAS/ACCESS</span>
+ エンジンが拡張され、READおよびWRITEのパフォーマンスが向上しました。さらに、2つの<span>SAS/ACCESS</span>
+ エンジンが追加されました。<div>
+<ul>
+<li>
+<div><a id="calibre_link-203"></a>
+<div><a id="calibre_link-204"></a>
+<span>SAS/ACCESS</span>
+ Interface to PostgreSQL</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-205"></a>
+<div><a id="calibre_link-206"></a>
+<span>SAS/ACCESS</span>
+ Interface to Vertica</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-114">
+<div>
+<h1><b><a id="calibre_link-207"><b></b></a>
+ 2章: Foundation SAS</b></h1>
+<div></div>
+<div>
+<div><b>
+<a href="#calibre_link-115"><b>Base SAS 9.4</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-73"><b>SAS/ACCESS 9.4 Interface to PC Files</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-116"><b>SAS/CONNECT 9.4</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-117"><b>SAS/GIS 9.4</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-118"><b>SAS/GRAPH 9.4</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-83"><b>SAS Grid Manager 9.4</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-119"><b>SAS/SHARE 9.4</b></a>
+</b></div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-50">
+<div><a id="calibre_link-115"></a>
+<h1><b>Base SAS 9.4</b></h1>
+<div><a id="calibre_link-71"></a>
+<h2><b>DS2言語</b></h2>
+<div><a id="calibre_link-208"></a>
+<div><a id="calibre_link-209"></a>
+ DS2は、高度なデータ操作およびアプリケーションに適した新しいSAS独自のプログラミング言語です。DS2はBase SASに組み込まれており、SAS DATAステップと併用されます。また、データ型、ANSI SQL型、プログラミング構造要素、ならびにユーザー定義のメソッドおよびパッケージもより多く含まれています。複数のDS2言語要素で埋め込みFedSQL構文が使用できます。実行時生成クエリでは、DS2と任意のサポートされているデータベースとの間で対話的にデータを交換できます。この機能によって入力テーブルのSQL前処理が可能になり、2つの言語の力を効果的に結合できるようになります。DS2プロシジャを使用すると、Base SASセッションからDS2言語ステートメントをサブミットできます。 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=ds2ref&amp;pubcode=66009&amp;id=titlepage" title="">SAS DS2 Language Reference</a>
+ と<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=proc&amp;pubcode=64787&amp;id=titlepage" title="">Base SAS Procedures Guide</a>
+ を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-64"></a>
+<h2><b>FedSQL言語</b></h2>
+<div><a id="calibre_link-210"></a>
+<div><a id="calibre_link-211"></a>
+ SAS FedSQLは、ANSI SQL:1999コア規格のSAS独自の実装です。これにより、新しいデータ型ならびに他のANSI 1999コア準拠機能および独自の拡張がサポートされます。FedSQLが提供するデータのアクセステクノロジにより、スケーラブルで、スレッド対応、ハイパフォーマンスな方法で、複数データソースにあるリレーショナルデータをアクセス、管理、共有できます。可能な場合、FedSQLクエリは、大規模な操作の問題を解決するためにマルチスレッドアルゴリズムを使用して最適化されます。FedSQLは、アプリケーションには、すべてのデータソースにおいて共通のSQL構文を提供します。つまり、FedSQLはベンダに依存しないSQLダイアレクトであり、データソースに固有のSQLダイアレクトでクエリをサブミットせずに各種データソースのデータにアクセスします。さらに、1つのFedSQLクエリで複数データソースのデータをターゲットとして、1つの結果テーブルを返すこともできます。FEDSQLプロシジャを使用すると、Base SASセッションからFedSQL言語ステートメントをサブミットできます。詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=fedsqlref&amp;pubcode=66010&amp;id=titlepage" title="">SAS FedSQL Language Reference</a>
+ と<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=proc&amp;pubcode=64787&amp;id=titlepage" title="">Base SAS Procedures Guide</a>
+ を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-93"></a>
+<h2><b>パフォーマンスの向上</b></h2>
+<div><a id="calibre_link-212"></a>
+<div><a id="calibre_link-213"></a>
+<div>
+<ul>
+<li>
+<div><a id="calibre_link-214"></a>
+<div><a id="calibre_link-215"></a>
+ 大量のデータをより効率的に処理するために、新しいシステムオプションでは、ページ境界でデータおよびユーティリティファイルを揃え、SASライブラリのページサイズをRAIDストライプと同じサイズに設定できます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-216"></a>
+<div><a id="calibre_link-217"></a>
+ ページサイズおよび論理レコード長のデフォルトサイズを決定する最適化プロセスが拡張されました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-218"></a>
+<div><a id="calibre_link-219"></a>
+ Scalable Performance Data Engine (SPD Engine)では、開いているSPD Engineファイルのキャッシュが可能です。</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div><a id="calibre_link-220"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lesysoptsref&amp;pubcode=64789&amp;id=titlepage" title="">SAS System Options: Reference</a>
+ 、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lrcon&amp;pubcode=64801&amp;id=titlepage" title="">SAS Language Reference: Concepts</a>
+ 、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=engspde&amp;pubcode=64755&amp;id=titlepage" title="">SAS Scalable Performance Data Engine: Reference</a>
+ を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-89"></a>
+<h2><b>セキュリティの強化</b></h2>
+<div><a id="calibre_link-221"></a>
+<div><a id="calibre_link-222"></a>
+<div>
+<ul>
+<li>
+<div><a id="calibre_link-223"></a>
+<div><a id="calibre_link-224"></a>
+<span>SAS/SECURE</span>
+ はSAS Systemのプロダクトで、現在はBase SASに組み込まれています。以前のリリースでは、<span>SAS/SECURE</span>
+ は、別々にライセンスされたアドオンプロダクトでした。<span>SAS/SECURE</span>
+ の個別ライセンスは必要なくなりました。この変更によって、すべての配置で強力な暗号化を行えるようになりました(輸入制限による禁止の場合を除く)。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-225"></a>
+<div><a id="calibre_link-226"></a>
+<span>SAS/SECURE</span>
+ では、業界標準の高度暗号化標準(AES)と64ビットのsaltを使用して、セキュリティを強化します。セキュリティをサポートするSAS言語コンポーネントでは、AES暗号化を使用して、SASデータを暗号化して保護します。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-227"></a>
+<div><a id="calibre_link-228"></a>
+ Metadata Repositoryのデータセットのセキュリティを強化するには、メタデータオブジェクトに関連付けられた物理ライブラリであるメタデータバウンドライブラリに配置します。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-229"></a>
+<div><a id="calibre_link-230"></a>
+ SASでは、大文字と小文字が混在するパスワード、および最大で100文字までのパスワードフレーズに対するIBM標準がサポートされます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-231"></a>
+<div><a id="calibre_link-232"></a>
+ SASログ機能では、<span>SAS/CONNECT</span>
+ Spawnerおよび暗号化アクティビティがサポートされます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-233"></a>
+<div><a id="calibre_link-234"></a>
+ メールのセキュリティが拡張されました。</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div><a id="calibre_link-235"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=secref&amp;pubcode=64866&amp;id=titlepage" title="">Encryption in SAS</a>
+ 、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=proc&amp;pubcode=64787&amp;id=titlepage" title="">Base SAS Procedures Guide</a>
+ 、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=logug&amp;pubcode=64877&amp;id=titlepage" title="">SAS Logging: Configuration and Programming Reference</a>
+ 、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lesysoptsref&amp;pubcode=64789&amp;id=titlepage" title="">SAS System Options: Reference</a>
+ を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-72"></a>
+<h2><b>SAS出力の拡張</b></h2>
+<div><a id="calibre_link-236"></a>
+<div><a id="calibre_link-237"></a>
+<div>
+<ul>
+<li>
+<div><a id="calibre_link-238"></a>
+<div><a id="calibre_link-239"></a>
+ Output Delivery System (ODS)のレポート作成インターフェイス(RWI)では、事前定義されたODSオブジェクトをDATAステップで作成、操作して、高度にカスタマイズされた出力を作成できます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-240"></a>
+<div><a id="calibre_link-241"></a>
+ 新しいODS出力先を使用すると、EPUB、HTML5およびMicrosoft PowerPointファイルを作成できます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-242"></a>
+<div><a id="calibre_link-243"></a>
+ ODS出力オブジェクトのテキストとリストをカスタマイズできます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-244"></a>
+<div><a id="calibre_link-245"></a>
+ ODS出力オブジェクトをページ上の位置に正確に配置したり、グリッド構造を使用した動的配置を行ったりすることができます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-246"></a>
+<div><a id="calibre_link-247"></a>
+ 新しいプロシジャでは、1つのステートメントで、テーブルテンプレートが作成され、入力データセットにバインドされます。テンプレートに名前を付けて、テンプレートストアに保存することもできます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-248"></a>
+<div><a id="calibre_link-249"></a>
+ システムオプションを設定すると、複数ページのGIFイメージとSVGファイルがアニメーション表示されます。</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div><a id="calibre_link-250"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=odsug&amp;pubcode=64856&amp;id=titlepage" title="">SAS Output Delivery System: User's Guide</a>
+ 、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lrcon&amp;pubcode=64801&amp;id=titlepage" title="">SAS Language Reference: Concepts</a>
+ 、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lesysoptsref&amp;pubcode=64789&amp;id=titlepage" title="">SAS System Options: Reference</a>
+ を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-75"></a>
+<h2><b>ODS統計グラフの拡張</b></h2>
+<div><a id="calibre_link-251"></a>
+<div><a id="calibre_link-252"></a>
+<div>
+<ul>
+<li>
+<div><a id="calibre_link-253"></a>
+<div><a id="calibre_link-254"></a>
+ ODS Graphicsプロダクトに、軸に沿ったテキストデータの行または列を作成する軸テーブルなど、複数の新しいプロットの種類が用意されました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-255"></a>
+<div><a id="calibre_link-256"></a>
+ グラフ出力の制御と拡張のために、多くのプロットレイアウト、パネルおよび軸のオプションが追加されました。たとえば、ODSスタイルテンプレートを変更せずにグループ値の表示属性をカスタマイズできるようになりました。また、グラフデータ属性のローテーションに色を優先させるパターンを指定することもできます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-257"></a>
+<div><a id="calibre_link-258"></a>
+ 新しいサブピクセル表示機能によって、折れ線グラフの曲線がより滑らかになり、棒グラフの間隔調整がより統一的になりました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-259"></a>
+<div><a id="calibre_link-260"></a>
+ ODS Graphicsプロダクトには、テキストを通常表示する余地がない場合にデータラベル、曲線ラベルおよび軸目盛値を調整または分割するための追加オプションが提供されました。データラベル位置指定アルゴリズムが向上し、データラベルとそのデータマーカーの位置指定が向上されました。さらに、複数のオブザベーションに同じ応答値がある場合、データマーカーを調整できるようになりました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-261"></a>
+<div><a id="calibre_link-262"></a>
+ ODS Graphics Designerには、データに基づいてさまざまなグラフを自動生成する自動チャート機能が導入されています。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-263"></a>
+<div><a id="calibre_link-264"></a>
+ ODS Graphicsプロダクトスイートには、Graph Template Language、ODS Graphicsプロシジャ、ODS Graphics Designer、ODS Graphics Editorが含まれます。</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div><a id="calibre_link-265"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=grstatug&amp;pubcode=65005&amp;id=titlepage" title="">SAS Graph Template Language: User's Guide</a>
+ 、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=grstatproc&amp;pubcode=64978&amp;id=titlepage" title="">SAS ODS Graphics: Procedures Guide</a>
+ 、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=grstatdesignug&amp;pubcode=64976&amp;id=titlepage" title="">SAS ODS Graphics Designer: User's Guide</a>
+ 、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=grstateditug&amp;pubcode=65047&amp;id=titlepage" title="">SAS ODS Graphics Editor: User's Guide</a>
+ を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-66"></a>
+<h2><b>データセットと変数のカスタマイズ属性の作成</b></h2>
+<div><a id="calibre_link-266"></a>
+<div><a id="calibre_link-267"></a>
+ データセットと変数の属性を作成し、拡張属性を使用して入力した情報を含めることができます。拡張属性はデータセットの一部であり、DATASETSプロシジャによって管理されます。データセットを処理するプロシジャ(CPORT、DOWNLOAD、SQLなど)では、拡張属性がサポートされます。詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lrcon&amp;pubcode=64801&amp;id=titlepage" title="">SAS Language Reference: Concepts</a>
+ を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-92"></a>
+<h2><b>SASセッション間のSAS環境の保持</b></h2>
+<div><a id="calibre_link-268"></a>
+<div><a id="calibre_link-269"></a>
+ Workライブラリのデータセットとカタログ、ならびにグローバルステートメント、マクロ変数およびシステムオプションの値をSASセッション間で保持できます。詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lrcon&amp;pubcode=64801&amp;id=titlepage" title="">SAS Language Reference: Concepts</a>
+ 、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lesysoptsref&amp;pubcode=64789&amp;id=titlepage" title="">SAS System Options: Reference</a>
+ 、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=proc&amp;pubcode=64787&amp;id=titlepage" title="">Base SAS Procedures Guide</a>
+ を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-77"></a>
+<h2><b>JavaScript Object Notation (JSON)の書き込み</b></h2>
+<div><a id="calibre_link-270"></a>
+<div><a id="calibre_link-271"></a>
+ SASデータセットは、JSON表現で外部ファイルに書き込まれます。詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=proc&amp;pubcode=64787&amp;id=titlepage" title="">Base SAS Procedures Guide</a>
+ を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-78"></a>
+<h2><b>JMPを使用したSASデータセットの表示</b></h2>
+<div><a id="calibre_link-272"></a>
+<div><a id="calibre_link-273"></a>
+ JMP Graph Builder iPadなどのJMPアプリケーションを使用すると、SASデータセットをJMPファイルに変換して表示できます。詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=proc&amp;pubcode=64787&amp;id=titlepage" title="">Base SAS Procedures Guide</a>
+ と<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lestmtsref&amp;pubcode=65040&amp;id=titlepage" title="">SAS Statements: Reference</a>
+ を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-94"></a>
+<h2><b>ストリームデータの処理</b></h2>
+<div><a id="calibre_link-274"></a>
+<div><a id="calibre_link-275"></a>
+<div>
+<ul>
+<li>
+<div><a id="calibre_link-276"></a>
+<div><a id="calibre_link-277"></a>
+ 入力ストリームのSASマクロ指定を含む任意のテキストが処理されるようになりました。ストリームのマクロコードは、展開してファイルに保存されます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-278"></a>
+<div><a id="calibre_link-279"></a>
+ ストリームレコード形式は、SFTPアクセス方式で処理されます。データは、イメージ(バイナリ)モードで転送されます。</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div><a id="calibre_link-280"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=proc&amp;pubcode=64787&amp;id=titlepage" title="">Base SAS Procedures Guide</a>
+ と<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lestmtsref&amp;pubcode=65040&amp;id=titlepage" title="">SAS Statements: Reference</a>
+ を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-95"></a>
+<h2><b>SharePointドキュメントライブラリへの書き込み</b></h2>
+<div><a id="calibre_link-281"></a>
+<div><a id="calibre_link-282"></a>
+ WebDAVアクセス方式を使用すると、SharePointドキュメントライブラリへのファイル書き込み、認証ドメインメタデータオブジェクトの名前指定、およびディレクトリの作成と削除を行えます。詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lestmtsref&amp;pubcode=65040&amp;id=titlepage" title="">SAS Statements: Reference</a>
+ を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-69"></a>
+<h2><b>ユーザーテキストの読み取り</b></h2>
+<div><a id="calibre_link-283"></a>
+<div><a id="calibre_link-284"></a>
+ DATAURLアクセス方式によって、文字およびURLエンコード文字、ならびにBASE64データが読み取られます。詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lestmtsref&amp;pubcode=65040&amp;id=titlepage" title="">SAS Statements: Reference</a>
+ を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-96"></a>
+<h2><b>ZIPファイルの読み取り</b></h2>
+<div><a id="calibre_link-285"></a>
+<div><a id="calibre_link-286"></a>
+ 新しいZIPアクセス方式によって、ZIPファイルが読み取られます。詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lestmtsref&amp;pubcode=65040&amp;id=titlepage" title="">SAS Statements: Reference</a>
+ を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-98"></a>
+<h2><b>タイムゾーンを使用した時間値および日時値の処理</b></h2>
+<div><a id="calibre_link-287"></a>
+<div><a id="calibre_link-288"></a>
+ SAS言語では、協定世界時(UTC)に基づくタイムゾーンがサポートされるようになりました。データセットとカタログのタイムスタンプでは、特定のタイムゾーンに基づいて時間を指定できます。特定のタイムゾーンを指定することも、地域を指定し、SASに夏時間を考慮してその地域の時間を決定させることもできます。詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lefunctionsref&amp;pubcode=64814&amp;id=titlepage" title="">SAS Functions and CALL Routines: Reference</a>
+ 、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lesysoptsref&amp;pubcode=64789&amp;id=titlepage" title="">SAS System Options: Reference</a>
+ 、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=nlsref&amp;pubcode=64811&amp;id=titlepage" title="">SAS National Language Support (NLS): Reference Guide</a>
+ を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-102"></a>
+<h2><b>データセットのロケール情報管理</b></h2>
+<div><a id="calibre_link-289"></a>
+<div><a id="calibre_link-290"></a>
+ データセットにロケール情報を含めた後に、そのデータセットを使用してSASのロケールを構成できます。新しいプロシジャでは、データセットが管理され、SASレジストリにロケール情報が書き込まれます。詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=nlsref&amp;pubcode=64811&amp;id=titlepage" title="">SAS National Language Support (NLS): Reference Guide</a>
+ を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-100"></a>
+<h2><b>出力に使用する言語の変更</b></h2>
+<div><a id="calibre_link-291"></a>
+<div><a id="calibre_link-292"></a>
+ システムオプションを使用して、SAS出力とSASログの言語を変更できます。詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=nlsref&amp;pubcode=64811&amp;id=titlepage" title="">SAS National Language Support (NLS): Reference Guide</a>
+ を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-65"></a>
+<h2><b>SASとSAS Applicationsについての詳細な監査とレポート</b></h2>
+<div><a id="calibre_link-293"></a>
+<div><a id="calibre_link-294"></a>
+<div>
+<ul>
+<li>
+<div><a id="calibre_link-295"></a>
+<div><a id="calibre_link-296"></a>
+ 新しいロガーは、ログ構成、SASデータセットへのアクセス、およびメタデータバウンドライブラリを監査します。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-297"></a>
+<div><a id="calibre_link-298"></a>
+ ARM_DSIOサブシステムには、データセット情報をレポートする新しいARMメトリックが提供されました。</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div><a id="calibre_link-299"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=logug&amp;pubcode=64877&amp;id=titlepage" title="">SAS Logging: Configuration and Programming Reference</a>
+ と<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=armref&amp;pubcode=64756&amp;id=titlepage" title="">SAS Interface to Application Response Measurement (ARM): Reference</a>
+ を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-85"></a>
+<h2><b>クラスタ化または単一SAS Metadata Serverの構成</b></h2>
+<div><a id="calibre_link-300"></a>
+<div><a id="calibre_link-301"></a>
+ SAS Metadata Serverは、クラスタ化されたメタデータサーバーまたは単一メタデータサーバーとして構成できます。詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lrmeta&amp;pubcode=64857&amp;id=titlepage" title="">SAS Logging: Configuration and Programming Reference</a>
+ を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-302"></a>
+<h2><b>追加情報</b></h2>
+<div><a id="calibre_link-303"></a>
+<div><a id="calibre_link-304"></a>
+<div id="calibre_link-305">詳細については、次のリソースを参照してください。</div>
+<div>
+<ul>
+<li>
+<div><a id="calibre_link-306"></a>
+<div><a id="calibre_link-307"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=basewn&amp;pubcode=66496&amp;id=basewn94" title="">New Base SAS 9.4 Features</a>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-308"></a>
+<div><a id="calibre_link-309"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=proc&amp;pubcode=64787&amp;id=procwhatsnew94" title="">What's New in Base SAS 9.4 Procedures</a>
+ -<span><i>Base SASプロシジャガイド</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-310"></a>
+<div><a id="calibre_link-311"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lesysoptsref&amp;pubcode=64789&amp;id=lesysoptsrefwhatsnew94" title="">What's New in Base SAS 9.4 System Options</a>
+ -<span><i>SASシステムオプション: リファレンス</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-312"></a>
+<div><a id="calibre_link-313"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lrcon&amp;pubcode=64801&amp;id=lrconwhatsnew94" title="">What's New in Base SAS 9.4 Language Concepts</a>
+ -<span><i>SAS言語リファレンス: 解説編</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-314"></a>
+<div><a id="calibre_link-315"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=engspde&amp;pubcode=64755&amp;id=engspdewhatsnew94" title="">What's New in SAS 9.4 Scalable Performance Data Engine</a>
+ -<span><i>SAS Scalable Performance Data Engine: Reference</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-316"></a>
+<div><a id="calibre_link-317"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=secref&amp;pubcode=64866&amp;id=secrefwhatsnew94" title="">What's New in Encryption in SAS 9.4</a>
+ -<span><i>SASの暗号化</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-318"></a>
+<div><a id="calibre_link-319"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=logug&amp;pubcode=64877&amp;id=logugwhatsnew94" title="">What's New in the SAS 9.4 Logging Facility</a>
+ -<span><i>SAS Logging: Configuration and Programming Reference</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-320"></a>
+<div><a id="calibre_link-321"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=odsug&amp;pubcode=64856&amp;id=odsugwhatsnew93" title="">What's New in the Output Delivery System</a>
+ -<span><i>SAS Output Delivery System: ユーザーガイド</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-322"></a>
+<div><a id="calibre_link-323"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=grstatgraph&amp;pubcode=65003&amp;id=grstatgraphwhatsnew94" title="">What's New in SAS 9.4 Graph Template Language</a>
+ -<span><i>SAS Graph Template Language: リファレンス</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-324"></a>
+<div><a id="calibre_link-325"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=grstatproc&amp;pubcode=64978&amp;id=grstatprocwhatsnew94" title="">What's New in SAS ODS Graphics Procedures 9.4</a>
+ -<span><i>SAS ODS Graphics: プロシジャガイド</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-326"></a>
+<div><a id="calibre_link-327"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=grstatdesignug&amp;pubcode=64976&amp;id=grstatdesignugwhatsnew94" title="">What's New in SAS 9.4 ODS Graphics Designer</a>
+ -<span><i>SAS ODS Graphics Designer: ユーザーガイド</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-328"></a>
+<div><a id="calibre_link-329"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=grstateditug&amp;pubcode=65047&amp;id=grstateditugwhatsnew94" title="">What's New in SAS 9.4 ODS Graphics Editor</a>
+ -<span><i>SAS ODS Graphics Editor: ユーザーガイド</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-330"></a>
+<div><a id="calibre_link-331"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lestmtsref&amp;pubcode=65040&amp;id=lestmtsrefwhatsnew94" title="">What's New in SAS 9.4 Statements</a>
+ -<span><i>SASステートメント: リファレンス</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-332"></a>
+<div><a id="calibre_link-333"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lefunctionsref&amp;pubcode=64814&amp;id=lefunctionsrefwhatsnew94" title="">What's New in SAS 9.4 Functions and CALL Routines</a>
+ -<span><i>SAS関数とCALLルーチン: リファレンス</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-334"></a>
+<div><a id="calibre_link-335"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=nlsref&amp;pubcode=64811&amp;id=nlsrefwhatsnew94" title="">What's New in SAS 9.4 National Language Support</a>
+ -<span><i>SAS National Language Support (NLS): Reference Guide</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-336"></a>
+<div><a id="calibre_link-337"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=armref&amp;pubcode=64756&amp;id=armrefwhatsnew94" title="">What's New in SAS 9.4 Application Response Measurement</a>
+ -<span><i>SAS Interface to Application Response Measurement (ARM): Reference</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-338"></a>
+<div><a id="calibre_link-339"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=lrmeta&amp;pubcode=64857&amp;id=lrmetawhatsnew94" title="">What's New in SAS 9.4 Language Interfaces to Metadata</a>
+ -<span><i>SAS Language Interfaces to Metadata</i></span>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-39">
+<div><a id="calibre_link-73"></a>
+<h1><b>
+<span><b>SAS/ACCESS</b></span>
+ 9.4 Interface to PC Files</b></h1>
+<div><a id="calibre_link-340"></a>
+<div><a id="calibre_link-341"></a>
+<span>SAS/ACCESS</span>
+ 9.4 Interface to PC Filesを使用して、PCファイルを元のソース形式とSASデータセット間で交換(インポートとエクスポート)できます。ファイルのネイティブPC形式とSASデータセット間の移動は、IMPORT/EXPORTプロシジャ、インポート/エクスポートウィザード、またはLIBNAMEステートメントを使用して行われます。</div>
+<div><a id="calibre_link-342"></a>
+<span>SAS/ACCESS</span>
+ 9.4では、Microsoft Excel XLSXファイルをサポートするために複数の拡張が行われました。たとえば、新しいMicrosoft Excel XLSXワークシートを既存のワークブックに追加したり、ワークブック内の既存のワークシートを更新したりできます。Excel XLSXファイルはUNIXに直接エクスポートできます。このリリースでは、DBMS=XLSXを指定すると、PC Files Serverにアクセスすることなく、直接、UNIX環境とMicrosoft Windows環境にあるExcelワークブックの読み取みと書き込みが行えます。</div>
+<div><a id="calibre_link-343"></a>
+ IMPORTおよびEXPORTプロシジャで使用されるステートメントのRANGE=、SHEET=、GETNAMES=、GUESSINGROWS=が更新されました。RANGE=およびSHEET=によるMicrosoft Excel XLSXファイルの名前の特殊文字の処理方法が変更されました。</div>
+<div><a id="calibre_link-344"></a>
+ EXPORTプロシジャでサポートされたENCRYPTKEY=オプションは、AES暗号化SASデータセットのエクスポートに必要なキー値を指定します。Base SAS ENCRYPTKEY=データセットオプションのサポートも追加されました。</div>
+<div><a id="calibre_link-345"></a>
+<span>SAS/ACCESS</span>
+ 9.4は、バージョン7以降の形式で保存されたJMPファイルからデータをインポートし、バージョン7以降の形式のJMPファイルにSASデータをエクスポートします。これらの新しいファイル形式のサポートによって、JMP Graph Builder iPadなどのアプリケーションからJMPファイルにアクセスできるようになります。<span>SAS/ACCESS</span>
+ 9.4では、32,767を超える変数を含むJMPファイルのインポートとエクスポートもサポートされます。JMP変数名の最大長は255文字です。</div>
+<div><a id="calibre_link-346"></a>
+<span>SAS/ACCESS</span>
+ ライセンスがなくても、JMPファイルに対してBase SAS IMPORTおよびEXPORTプロシジャを使用できるため、前述の情報はSAS 9.4にも適用されます。</div>
+<div><a id="calibre_link-347"></a>
+ 以前のSASリリースでは、JMPファイルのインポートとエクスポートにMETAステートメントが使用されていました。SAS 9.4では、このステートメントはサポートされなくなりました。かわりに、拡張属性が自動的に使用されます。拡張属性がファイル内にある場合、そのファイルのインポートまたはエクスポート時に、自動的に新しいファイルに転送されます。たとえば、拡張属性のあるJMPファイルをインポートすると、その属性は自動的に新しいSASデータセットに付加されます。</div>
+<div><a id="calibre_link-348"></a>
+<span>SAS/ACCESS</span>
+ 9.4から、Stataファイルをインポートする場合、複数のStata欠損値を読み込み、.aから.zまでやシングルドット(.)などの複数のSAS特殊欠損値に27欠損値までマッピングすることができます。</div>
+<div><a id="calibre_link-349"></a>
+ PC Files Serverを64ビットWindowsオペレーティングシステムにてMicrosoft WindowsサービスまたはWindowsアプリケーションとして操作できますた。これにより、サーバーがその64ビット機能を活用でき、より効率的な操作が可能になります。<span>SAS/ACCESS</span>
+ 9.4から、64ビットバージョンがデフォルトになります。</div>
+<div><a id="calibre_link-350"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=acpcref&amp;pubcode=64792&amp;id=acpcrefwhatsnew94" title="">What's New in SAS/ACCESS 9.4 Interface to PC Files</a>
+ (<span><i>SAS/ACCESS Interface to PC Files: Reference</i></span>
+ )を参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-48">
+<div><a id="calibre_link-116"></a>
+<h1><b>
+<span><b>SAS/CONNECT</b></span>
+ 9.4</b></h1>
+<div><a id="calibre_link-351"></a>
+<div><a id="calibre_link-352"></a>
+<span>SAS/CONNECT</span>
+ 9.4では、<span>SAS/CONNECT</span>
+ Spawnerを管理するための拡張ツールが提供されます。これには、新しいSpawner起動オプション、新しいSpawnerインターフェイス、およびどの動作環境でも同一の新しいSpawner実行可能ファイルが含まれます。<span>SAS/CONNECT</span>
+ は、拡張されたログとメッセージングのサポート、エンコードデータの拡張データ転送、複数の新しいBase SAS言語要素のサポート、UPLOADプロシジャとDOWNLOADプロシジャを使用する拡張属性のアップロードとダウンロードのサポートなどの機能を備えています。</div>
+<div><a id="calibre_link-353"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=connref&amp;pubcode=64802&amp;id=connrefwhatsnew94" title="SAS/CONNECT 9.4ドキュメントの新機能トピックへのリンク">What's New in SAS/CONNECT 9.4</a>
+ (<span><i>SAS/CONNECT User's Guide</i></span>
+ )を参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-19">
+<div><a id="calibre_link-117"></a>
+<h1><b>
+<span><b>SAS/GIS</b></span>
+ 9.4</b></h1>
+<div><a id="calibre_link-354"></a>
+<div><a id="calibre_link-355"></a>
+<span>SAS/GIS</span>
+ 9.4では、インポート機能が拡張され、2007年から現在までの米国勢調査局のTIGER (Topologically Integrated Geographic Encoding and Referencing)シェープファイル(.shp)を挿入できます。対話操作またはプログラムで最新の空間データを整理、分析できるようになりました。また、2007年より前の日付のTIGER RT (Record Type)ファイルも引き続き処理できます。</div>
+<div><a id="calibre_link-356"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=apdatgis&amp;pubcode=65034&amp;id=giswhatsnew94" title="SAS/GIS 9.4ドキュメントの新機能トピックへのリンク">What's New in SAS/GIS 9.4</a>
+ (<span><i>SAS/GIS: Spatial Data and Procedure Guide</i></span>
+ )を参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-54">
+<div><a id="calibre_link-118"></a>
+<h1><b>
+<span><b>SAS/GRAPH</b></span>
+ 9.4</b></h1>
+<div><a id="calibre_link-357"></a>
+<div><a id="calibre_link-358"></a>
+<div id="calibre_link-359">
+<span>SAS/GRAPH</span>
+ 9.4では、次の拡張が行われました。</div>
+<div>
+<ul>
+<li>
+<div><a id="calibre_link-360"></a>
+<div><a id="calibre_link-361"></a>
+ GEOCODEプロシジャで、米国以外の番地ジオコーディングがサポートされるようになりました。米国以外の番地ジオコーディングをサポートするために、新しいルックアップデータセットが用意され、既存のルックアップデータセットは再フォーマットされました。新しいインポートマクロプログラムの%GEOBASE2GEOCODE、および更新されたバージョンの%TIGER2GEOCODEは、SAS Maps Online Webサイトから入手できます。これらのマクロは、新しい形式のルックアップデータセットを作成します。新しいDIRECTION=オプションを使用して、northwestまたはNWのような、通りの方角名と略称を含む代替データセットを指定できます。新しいSTATE=オプションを使用して、FIPS数字コードではなく、州や地方の文字名を含む代替データセットを指定できます。STREETジオコーディング手法では、米国および米国以外の番地ジオコーディングをサポートするために、出力変数_MATCHED_および_NOTES_の値が追加されたり変更されたりしました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-362"></a>
+<div><a id="calibre_link-363"></a>
+ MAPS、MAPSSAS、およびMAPSGFKライブラリのマップデータセットが更新されました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-364"></a>
+<div><a id="calibre_link-365"></a>
+ GINSIDEプロシジャには2つの新しいオプションKEEPMAPVARSおよびDROPMAPVARSが提供され、マップデータセット変数を保持するか削除するかどうかを制御できます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-366"></a>
+<div><a id="calibre_link-367"></a>
+ GMAPプロシジャでは、新しいLATLON=オプションが追加され、Y変数とX変数ではなく、マップデータセットから未投影のLAT変数およびLONG変数を座標データに使用できます。新しいRESOLUTION=オプションは、あるレベル(値)の解像度変数を含むマップオブザベーションがGMAPプロシジャで使用されるようにします。新しいOSMオプション(プリプロダクション版)では、OpenStreetMapsスタイルを指定してマップデータをOSMマップに投影できます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-368"></a>
+<div><a id="calibre_link-369"></a>
+ GPROJECTプロシジャでは、LATLON=オプションが追加され、X変数とY変数ではなく、マップデータセットから未投影のLAT変数およびLONG変数を座標データに使用できます。新しいFROM=オプションとTO=オプションは、PROJ4投影を呼び出します。また、投影の座標系を指定できます。FROM=オプションとTO=オプションを併用することで、投影を置き換えることもできます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-370"></a>
+<div><a id="calibre_link-371"></a>
+ GREMOVEプロシジャの新しいDROPVARSオプションは、すべての入力データセット変数を出力マップデータセットから削除します。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-372"></a>
+<div><a id="calibre_link-373"></a>
+ GPLOTプロシジャの新しいCBASELINE=オプションは、プロットの参照線に使用する水平のベースラインの色を指定します。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-374"></a>
+<div><a id="calibre_link-375"></a>
+ GCHARTプロシジャに新しいオプションが提供されました。PPERCENT=オプションは、円グラフのスライスのラベルに表示されるパーセンテージのフォント、高さ、および色を変更します。PLABEL=オプション(円グラフのスライスのラベルのテキスト属性を制御)と組み合わせて使用すると、パーセンテージとテキストラベルを簡単に区別できるようになります。EXPLODE=ALLオプションは、円グラフの中心からすべてのスライスを外側に引き出します。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-376"></a>
+<div><a id="calibre_link-377"></a>
+ GKPIプロシジャでは、FORMAT=オプションはユーザー定義出力形式を受け入れます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-378"></a>
+<div><a id="calibre_link-379"></a>
+ SVGデバイスとGIFデバイスでアニメーションをサポートするようになりました。さらに、GIFデバイスはRGBAカラーモード(透過性)およびアンチエイリアシングもサポートするようになりました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-380"></a>
+<div><a id="calibre_link-381"></a>
+ 新しいTIFFデバイスとTIFFKデバイスは、TIFFイメージを生成し、RGBAカラーモードとCMYKカラーモードをそれぞれサポートします。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-382"></a>
+<div><a id="calibre_link-383"></a>
+ 新しいEMFDUALデバイスは、EMFレコードとEMF Plusレコードの両方を含むグラフィックファイルを作成します。RGBAカラー(透過性)がサポートされます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-384"></a>
+<div><a id="calibre_link-385"></a>
+ 新しい%SHORTCUT自動呼出しマクロでは、同じ名前の既存のユニバーサルプリンタにリンクされたショートカットデバイスを作成します。また、新しいユニバーサルプリンタとショートカットデバイスを定義し、そのデバイスをユニバーサルプリンタにリンクすることもできます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-386"></a>
+<div><a id="calibre_link-387"></a>
+ 注釈機能には複数の拡張点があります。IMGPATH変数は、WebページにあるグラフィックのURL場所を受け入れるようになりました。HTML=オプションを使用すると、LABEL関数で作成されるテキストラベルをアニメーション化できます。このオプションは、ARROW関数に追加されました。%CENTROIDマクロが拡張され、より正確な重心位置を返すようになりました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-388"></a>
+<div><a id="calibre_link-389"></a>
+ タイルグラフアプレットでは、1つ以上のカスタムメニュー項目をタイルグラフのポップアップメニューに追加できます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-390"></a>
+<div><a id="calibre_link-391"></a>
+ ツリービューアプレットでは、ダイアグラム内の各ノードに複数のドリルダウンリンクを割り当てられます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-392"></a>
+<div><a id="calibre_link-393"></a>
+ TITLEステートメントとFOOTNOTEステートメントは、ALT=オプションをサポートするようになり、タイトルやフットノートがリンクするURLの、またはタイトルやフットノート自体の、説明テキストを指定できるようになりました。</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div><a id="calibre_link-394"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=graphref&amp;pubcode=65004&amp;id=graphwhatsnew94" title="">What's New in SAS/GRAPH 9.4</a>
+ (<span><i>SAS/GRAPH: Reference</i></span>
+ )を参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-24">
+<div><a id="calibre_link-83"></a>
+<h1><b>SAS Grid Manager 9.4</b></h1>
+<div><a id="calibre_link-395"></a>
+<div><a id="calibre_link-396"></a>
+ SAS Grid Managerは、グリッドオプションセットおよびグリッド起動ワークスペースサーバーを提供します。グリッドオプションセットは、特定のユーザーやグループが特定のSASアプリケーションを使用するときに割り当てられる、グリッドオプション、SASオプション、および必要なグリッドリソースのコレクションです。グリッドオプションセットを使用して、グリッドジョブのオプションをアプリケーションユーザーにマップできます。このとき、各オプションの新しいSAS Application Serverコンテキスト作成や、アプリケーションユーザーからの入力は必要ありません。</div>
+<div><a id="calibre_link-397"></a>
+ グリッド起動ワークスペースサーバーを使用すると、SAS Grid Managerは新しいWorkspace Serverを起動してロードバランシングに使用できます。この機能では、グリッドの管理とポリシーをWorkspace Serverに適用できます。また、SAS Enterprise GuideなどのSAS ApplicationsがSASグリッドにジョブを送る方法が簡易化されます。</div>
+<div><a id="calibre_link-398"></a>
+ 詳細については、<a href="http://support.sas.com/software/products/gridmgr/index.html" title="http://support.sas.com/software/products/gridmgr/index.html">SAS Grid Manager</a>
+ のソフトウェアプロダクトページを参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-18">
+<div><a id="calibre_link-119"></a>
+<h1><b>
+<span><b>SAS/SHARE</b></span>
+ 9.4</b></h1>
+<div><a id="calibre_link-399"></a>
+<div><a id="calibre_link-400"></a>
+<span>SAS/SHARE</span>
+ 9.4機能であるメタデータバウンドライブラリサポート、新しいUSETRUSTEDUSERプロシジャオプション、SASデータセットとSASライブラリの拡張属性のサポートにより、セキュリティが拡張されました。また、ユーザーIDとパスワードの<span>SAS/SHARE</span>
+ 命名規則は、より長い名前(256文字以内)、大文字小文字混合、スペースおよび句読点を許可するように拡張されました。</div>
+<div><a id="calibre_link-401"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=shrref&amp;pubcode=64803&amp;id=shrrefwhatsnew94" title="SAS/SHAREドキュメントの新機能トピックへのリンク">What's New in SAS/SHARE 9.4</a>
+ (<span><i>SAS/SHARE User's Guide</i></span>
+ )を参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-108">
+<div>
+<h1><b><a id="calibre_link-402"><b></b></a>
+ 3章: 分析プロダクト</b></h1>
+<div></div>
+<div>
+<div><b>
+<a href="#calibre_link-109"><b>SAS High-Performance Risk 3.1</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-80"><b>SAS Enterprise Miner 12.3</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-110"><b>SAS/ETS 12.3</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-82"><b>SAS Forecast Server 12.3</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-111"><b>SAS Model Manager 12.3</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-90"><b>SAS/OR 12.3</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-84"><b>SAS Risk Dimensions 6.1</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-112"><b>SAS/STAT 12.3</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-86"><b>SAS Text Miner 12.3</b></a>
+</b></div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-113">
+<div><a id="calibre_link-109"></a>
+<h1><b>SAS High-Performance Risk 3.1</b></h1>
+<div><a id="calibre_link-403"></a>
+<div><a id="calibre_link-404"></a>
+ SAS High-Performance Risk 3.1はSAS 9.4で稼動し、次の機能が備わっています。<div>
+<ul>
+<li>
+<div><a id="calibre_link-405"></a>
+<div><a id="calibre_link-406"></a>
+ リスク分析の拡張(純額エクスポージャおよび担保付きエクスポージャの計算、ポートフォリオのストレステストやフィルタリング、拡張シナリオビルダ)</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-407"></a>
+<div><a id="calibre_link-408"></a>
+ HadoopおよびSAS LASRとの統合</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-409"></a>
+<div><a id="calibre_link-410"></a>
+ ユーザーインターフェイスの拡張(拡張された並べ替え機能、Microsoft Excelへのグラフのエクスポート機能、棒グラフのドリルダウン機能、ストレステストへの拡張)</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-411"></a>
+<div><a id="calibre_link-412"></a>
+ ハイパフォーマンス感度分析の機能</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-413"></a>
+<div><a id="calibre_link-414"></a>
+ パフォーマンスの向上</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div><a id="calibre_link-415"></a>
+ 詳細については、<a href="http://support.sas.com/software/products/hprisk/index.html" title="http://support.sas.com/software/products/hprisk/index.html">SAS High-Performance Risk</a>
+ のソフトウェアプロダクトページを参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-31">
+<div><a id="calibre_link-80"></a>
+<h1><b>SAS Enterprise Miner 12.3</b></h1>
+<div><a id="calibre_link-416"></a>
+<div><a id="calibre_link-417"></a>
+ SAS Enterprise Miner 12.3は、SAS9.4で稼動する新しいリリースです。このメジャーリリースでは、データマイニングエクスペリエンスを拡張するために、新しいツールと、既存ツールに対する重要な更新が含まれています。スケーラビリティの向上では、既存のパーソナルSASワークステーションまたはSAS Serverで使用される、複合データに対するハイパフォーマンスデータマイニングノードの学習機能に重点が置かれています。<div id="calibre_link-418">主要なデータマイニングツールに対する主な更新を次に示します。</div>
+<div>
+<ul>
+<li>
+<div><a id="calibre_link-419"></a>
+<div><a id="calibre_link-420"></a>
+ 相互接続されたリンクエンティティのネットワークとして表示された変換データのリンク分析</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-421"></a>
+<div><a id="calibre_link-422"></a>
+ ディシジョンツリーノードの更新</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="calibre_link-423">データマイニングアプリケーションの拡張機能を次に示します。</div>
+<div>
+<ul>
+<li>
+<div><a id="calibre_link-424"></a>
+<div><a id="calibre_link-425"></a>
+ 生存データマイニングノードでの時間依存共変量のサポート。ユーザーは左側切り捨て日付と打ち切り日付も設定できます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-426"></a>
+<div><a id="calibre_link-427"></a>
+ 増分応答ノードの処理水準選択。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-428"></a>
+<div><a id="calibre_link-429"></a>
+ SAS Credit Scoring for SAS Enterprise Minerの対話型グルーピングノードに対する、デフォルト時損失を含む間隔尺度のターゲット変数のサポート。</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div><a id="calibre_link-430"></a>
+ 既存のSAS Enterprise Minerデスクトップまたはサーバーでのスレッド並列処理にすべてのハイパフォーマンスデータマイニングノードが使用できるようになりました(追加ライセンス料金なし)。ハイパフォーマンスの<span><i>k</i></span>
+ -meansクラスター分析ノードとディシジョンツリーノードがSAS High-Performance Data Miningに追加されました。</div>
+<div><a id="calibre_link-431"></a>
+ 詳細については、<a href="http://support.sas.com/software/products/miner/index.html" title="http://support.sas.com/software/products/miner/index.html">SAS Enterprise Miner</a>
+ のソフトウェアプロダクトページを参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-105">
+<div><a id="calibre_link-110"></a>
+<h1><b>
+<span><b>SAS/ETS</b></span>
+ 12.3</b></h1>
+<div><a id="calibre_link-432"></a>
+<div><a id="calibre_link-433"></a>
+<span>SAS/ETS</span>
+ 12.3は<span>SAS/ETS</span>
+ ソフトウェアのメンテナンスリリースであり、SAS 9.4で稼働します。</div>
+<div><a id="calibre_link-434"></a>
+ さらに、SAS High-Performance Econometricsプロダクトの構成要素であるプロシジャを<span>SAS/ETS</span>
+ で単一マシンモードで使用できます。データの特性やモデルの複雑さによって異なりますが、類似したマルチスレッド対応でない<span>SAS/ETS</span>
+ 機能よりもパフォーマンスが向上する可能性があります。</div>
+<div><a id="calibre_link-435"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=etshpug&amp;pubcode=66412&amp;id=etshpug_intro_sect001" title="SAS/ETSドキュメントの概要情報へのリンク">Overview of SAS/ETS High-Performance Procedures</a>
+ (<span><i>
+<span><i>SAS/ETS</i></span>
+ User's Guide: High-Performance Procedures</i></span>
+ )を参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-21">
+<div><a id="calibre_link-82"></a>
+<h1><b>SAS Forecast Server 12.3</b></h1>
+<div><a id="calibre_link-436"></a>
+<div><a id="calibre_link-437"></a>
+ SAS Forecast Server 12.3はSAS 9.4で稼動し、Webインフラストラクチャに対する更新が行われています。SAS Forecast Serverは、現在はプロダクションのソフトウェアであるSAS Time Series Studioと統合されています。SAS Time Series Studioでは、タイムスタンプ付きデータを分析し、構造化することができます。SAS Time Series Studioからデータをエクスポートし、SAS Forecast Studioにインポートできます。</div>
+<div><a id="calibre_link-438"></a>
+ 詳細については、<a href="http://support.sas.com/software/products/forecast/index.html" title="http://support.sas.com/software/products/forecast/index.html">SAS Forecast Server</a>
+ のソフトウェアプロダクトページを参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-120">
+<div><a id="calibre_link-111"></a>
+<h1><b>SAS Model Manager 12.3</b></h1>
+<div><a id="calibre_link-439"></a>
+<div><a id="calibre_link-440"></a>
+ SAS Model Manager 12.3はSAS 9.4で稼動します。このリリースでの主要なテーマとして、1つのコントロールグループとしてプロジェクトを共同して管理する機能、追加のモデルクラスをサポートする機能、SAS Model Manager Workflow Consoleからこれまで以上のアクティビティを実行する機能があります。このメジャーリリースでの新しい機能と拡張により、次のタスクが実行できます。<div>
+<ul>
+<li>
+<div><a id="calibre_link-441"></a>
+<div><a id="calibre_link-442"></a>
+ 1つのコントロールグループ内に複数プロジェクトを作成して管理</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-443"></a>
+<div><a id="calibre_link-444"></a>
+ 1コントロールグループに含まれる全プロジェクトのチャンピオンモデルのパフォーマンスをモニタし、そのモデルをSAS Metadata Repositoryにパブリッシュ</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-445"></a>
+<div><a id="calibre_link-446"></a>
+ パフォーマンスモニタリングタスクのスケジュール</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-447"></a>
+<div><a id="calibre_link-448"></a>
+ パフォーマンスモニタリングタスクの定義時に、複数のデータソースと収集日を指定</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-449"></a>
+<div><a id="calibre_link-450"></a>
+ データベースへパブリッシュするモデルの管理</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-451"></a>
+<div><a id="calibre_link-452"></a>
+ マクロを使用したフォルダ、プロジェクトおよびバージョンの作成</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-453"></a>
+<div><a id="calibre_link-454"></a>
+ ワークフローアクティビティ内でのレポートの作成および表示</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-455"></a>
+<div><a id="calibre_link-456"></a>
+ ワークフローのプロセスフローダイアグラムの表示</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="calibre_link-457">さらに、SAS Model Manager 12.3は次の領域のサポートを提供します。</div>
+<div>
+<ul>
+<li>
+<div><a id="calibre_link-458"></a>
+<div><a id="calibre_link-459"></a>
+ SAS Enterprise Miner Random Forest (HPFOREST)と<span>SAS/ETS</span>
+ COUNTREGおよびSEVERITYモデル</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-460"></a>
+<div><a id="calibre_link-461"></a>
+ モデルのスコアリングや再学習時、チャンピオンモデルやチャレンジャモデルのパフォーマンスのモニタ時における複数のSAS Application Serverの使用</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div><a id="calibre_link-462"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=mdsug&amp;pubcode=65994&amp;id=mdsugwhatsnew94" title="SAS Model Managerドキュメントの新機能トピックへのリンク">What's New in SAS Model Manager 12.3</a>
+ (<span><i>SAS Model Manager: User's Guide</i></span>
+ )を参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-53">
+<div><a id="calibre_link-90"></a>
+<h1><b>
+<span><b>SAS/OR</b></span>
+ 12.3</b></h1>
+<div><a id="calibre_link-463"></a>
+<div><a id="calibre_link-464"></a>
+<span>SAS/OR</span>
+ 12.3は<span>SAS/OR</span>
+ ソフトウェアのメンテナンスリリースであり、SAS 9.4で稼働します。最も重要点は、並列ハイブリッド局所探索の最適化のためのPROC OPTLSOが追加されたことです。以前はPROC HPLSOという名前であったこのプロシジャは、SAS High-Performance Optimizationにのみ含まれていましたが、現在は<span>SAS/OR</span>
+ で単一マシンモードで使用できます。</div>
+<div><a id="calibre_link-465"></a>
+ 詳細については、<a href="http://support.sas.com/software/products/or/index.html" title="http://support.sas.com/software/products/or/index.html">SAS/OR</a>
+ のソフトウェアプロダクトページを参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-2">
+<div><a id="calibre_link-84"></a>
+<h1><b>SAS Risk Dimensions 6.1</b></h1>
+<div><a id="calibre_link-466"></a>
+<div><a id="calibre_link-467"></a>
+ SAS Risk Dimensions 6.1には、SAS High-Performance Risk 3.1およびSAS Risk Management for Banking 3.2をサポートするためのインフラストラクチャの変更が含まれます。</div>
+<div><a id="calibre_link-468"></a>
+ 詳細については、<a href="http://support.sas.com/software/products/riskdimen/index.html" title="http://support.sas.com/software/products/riskdimen/index.html">SAS Risk Dimensions</a>
+ のソフトウェアプロダクトページを参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-1">
+<div><a id="calibre_link-112"></a>
+<h1><b>
+<span><b>SAS/STAT</b></span>
+ 12.3</b></h1>
+<div><a id="calibre_link-469"></a>
+<div><a id="calibre_link-470"></a>
+<span>SAS/STAT</span>
+ 12.3は<span>SAS/STAT</span>
+ ソフトウェアのメンテナンスリリースであり、SAS 9.4で稼働します。</div>
+<div><a id="calibre_link-471"></a>
+ さらに、SAS High-Performance Statisticsプロダクトの構成要素であるプロシジャを<span>SAS/STAT</span>
+ で単一マシンモードで使用できます。データの特性やモデルの複雑さによって異なりますが、類似したマルチスレッド対応でない<span>SAS/STAT</span>
+ 機能よりもパフォーマンスが向上する可能性があります。また、これらのプロシジャには、HPGENSELECTプロシジャでは一般化線形モデルのモデル選択ができるなどの、新機能が用意されています</div>
+<div><a id="calibre_link-472"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=stathpug&amp;pubcode=66410&amp;id=stathpug_intro_sect001" title="SAS/STATドキュメントの概要情報へのリンク">Overview of SAS/STAT High-Performance Procedures</a>
+ (<span><i>
+<span><i>SAS/STAT</i></span>
+ User's Guide: High-Performance Procedures</i></span>
+ )を参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-23">
+<div><a id="calibre_link-86"></a>
+<h1><b>SAS Text Miner 12.3</b></h1>
+<div><a id="calibre_link-473"></a>
+<div><a id="calibre_link-474"></a>
+ SAS Text Miner 12.3には、ノードのパフォーマンスと結果が拡張されました。各種ダイアログボックスでテーブル情報のインポートに使用する、<span><b>インポート</b></span>
+ ボタンが<span><b>テーブルの置換</b></span>
+ と<span><b>テーブルの追加</b></span>
+ ボタンに置き換わりました。現在選択しているテーブルを置き換えるか、または現在選択しているテーブルに追加するかを選択できます。テキストルールビルダノードの結果には、新しいドキュメントルールテーブルとルール成功グラフが挿入されました。</div>
+<div><a id="calibre_link-475"></a>
+ SAS 9.4では、適切に有効化されたSAS ServerでSMPモードを使用できるため、プロセスフローダイアグラムにHP Text Minerノードを配置して、HPTMINEプロシジャとHPTMSCOREプロシジャを使用できます。プロセスフローダイアグラムのHP Text Minerノードを使用すると、多くの場合、マルチスレッド処理の得られます。詳細については、<span><i>SAS Enterprise Miner High-Performance Data Mining Node Reference</i></span>
+ のHP Text Miner Node章を参照してください。</div>
+<div><a id="calibre_link-476"></a>
+ 詳細については、<a href="http://support.sas.com/software/products/txtminer/index.html" title="http://support.sas.com/software/products/txtminer/index.html">SAS Text Miner</a>
+ のソフトウェアプロダクトページを参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-11">
+<div>
+<h1><b><a id="calibre_link-477"><b></b></a>
+ 4章: SAS Business Intelligenceプロダクト</b></h1>
+<div></div>
+<div>
+<div><b>
+<a href="#calibre_link-12"><b>SAS Add-In 6.1 for Microsoft Office</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-13"><b>SAS Enterprise Guide 6.1</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-14"><b>SAS 9.4 OLAP Server</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-15"><b>SAS Web Parts 6.1 for Microsoft SharePoint</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-16"><b>SAS Web Report Studio 4.4</b></a>
+</b></div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-52">
+<div><a id="calibre_link-12"></a>
+<h1><b>SAS Add-In 6.1 for Microsoft Office</b></h1>
+<div><a id="calibre_link-478"></a>
+<div><a id="calibre_link-479"></a>
+ SAS Add-In for Microsoft Officeは、SAS Visual Analytics 6.1と統合されています。 この統合により、SAS Add-Inを使用して、SAS Visual Analytics DesignerおよびSAS Visual Analytics Explorerで作成されたレポートを開いたり更新したりすることができます。SAS Visual Analyticsで作成されたお気に入りに対するアクセスと管理が行えます。Microsoft OfficeのSAS Add-Inでは、SAS Visual AnalyticsのHubに類似したビューも提供されます。このビューでは、お気に入りや最近開いたSAS Visual Analyticsレポートに簡単にアクセスしてコメントを作成できます。</div>
+<div><a id="calibre_link-480"></a>
+ 新しいスタンドアロンインストーラもSAS Add-In for Microsoft Officeに使用できます。新しいインストーラは非常に小容量であるため、Microsoft System Center Configuration Manager (SCCM)などの事前設定ツールを使用した場合は特に、分散配置でのインストールが容易になります。詳細については、<span><i>SAS Deployment Wizard and SAS Deployment Manager 9.4: User's Guide</i></span>
+ (<a href="http://support.sas.com/deploywizug94.html" title="">http://support.sas.com/deploywizug94.html</a>
+ )を参照してください。</div>
+<div><a id="calibre_link-481"></a>
+ 詳細については、<a href="http://support.sas.com/software/products/addin/index.html" title="http://support.sas.com/software/products/addin/index.html">SAS Add-In for Microsoft Office</a>
+ のソフトウェアプロダクトページを参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-103">
+<div><a id="calibre_link-13"></a>
+<h1><b>SAS Enterprise Guide 6.1</b></h1>
+<div><a id="calibre_link-482"></a>
+<div><a id="calibre_link-483"></a>
+ SAS Enterprise Guide 6.1は、SAS 9.4、9.3および9.2でサポートされています。このリリースでは、次の拡張が行われました。<div>
+<ul>
+<li>
+<div><a id="calibre_link-484"></a>
+<div><a id="calibre_link-485"></a>
+ SASハイパフォーマンスツールとの統合。また、SASハイパフォーマンスツールには、ハイパフォーマンスロジスティックおよびハイパフォーマンス線形回帰分析タスクが追加されました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-486"></a>
+<div><a id="calibre_link-487"></a>
+ 新しい<span><b>ログの要約</b></span>
+ ウィンドウによるプログラマの生産性向上。このウィンドウには、プログラム実行時に生成されたすべてのエラー、警告および注、ならびに関連する行番号および影響するコードのサンプルがリストされます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-488"></a>
+<div><a id="calibre_link-489"></a>
+ SASプログラムを分析して、国際化対応問題が発生する可能性があるかどうかを判断する機能。国際化対応は、プログラムを最適化して、プログラムを書き直さなくても任意の言語や地域に適合させられるようにするためのプロセスです。プログラムの国際化対応を分析すると、SAS Enterprise Guideで、影響を受ける可能性があるコードの行がリストされ、可能な場合は置換の候補が示されます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-490"></a>
+<div><a id="calibre_link-491"></a>
+ メモを使用して、プロセスフロー、またはプロセスフロー内の特定オブジェクトに情報を追加する機能。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-492"></a>
+<div><a id="calibre_link-493"></a>
+ 新しいスタンドアロンインストーラやアプリケーションストリーミングサポートなどの管理拡張。新しいインストーラは非常に小容量であるため、System Center Configuration Manager (SCCM)などの事前設定ツールを使用した場合は特に、分散配置でのインストールが容易になります。詳細については、<span><i>SAS Deployment Wizard and SAS Deployment Manager 9.4: User's Guide</i></span>
+ (<a href="http://support.sas.com/deploywizug94.html" title="">http://support.sas.com/deploywizug94.html</a>
+ )を参照してください。</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div><a id="calibre_link-494"></a>
+ 詳細については、<a href="http://support.sas.com/software/products/guide/index.html" title="http://support.sas.com/software/products/guide/index.html">SAS Enterprise Guide</a>
+ のソフトウェアプロダクトページを参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-62">
+<div><a id="calibre_link-14"></a>
+<h1><b>SAS 9.4 OLAP Server</b></h1>
+<div><a id="calibre_link-495"></a>
+<div><a id="calibre_link-496"></a>
+<div id="calibre_link-497">SAS 9.4では、SAS 9.4 OLAP Serverに次の新機能が追加されました。</div>
+<div>
+<ul>
+<li>
+<div><a id="calibre_link-498"></a>
+<div><a id="calibre_link-499"></a>
+ OLAPキューブ情報のレポートを生成する新しいOLAPCONTENTSプロシジャ</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-500"></a>
+<div><a id="calibre_link-501"></a>
+ SAS OLAP Serverオプションをバッチモードで設定する新しいOLAPCONFIGメソッド</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-502"></a>
+<div><a id="calibre_link-503"></a>
+ 更新されたOLAPOPERATEプロシジャ</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-504"></a>
+<div><a id="calibre_link-505"></a>
+ 新しいMDX Caseステートメント</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-506"></a>
+<div><a id="calibre_link-507"></a>
+ 計算されるメジャーの新しいVISUALTOTALS_BEHAVIORオプション</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div><a id="calibre_link-508"></a>
+ さらに、レポート生成時に、自動的に多言語キューブのプロパティが複数言語で更新されるようになりました。SQLRCマクロは、OLAPのSQLパススルー機能で使用できるようになりました。</div>
+<div><a id="calibre_link-509"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=olapug&amp;pubcode=65018&amp;id=olapugwhatsnew" title="SAS OLAP Serverドキュメントの新機能トピックへのリンク">What's New in SAS 9.4 OLAP Server</a>
+ (<span><i>SAS OLAP Server: User's Guide</i></span>
+ )を参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-26">
+<div><a id="calibre_link-15"></a>
+<h1><b>SAS Web Parts 6.1 for Microsoft SharePoint</b></h1>
+<div><a id="calibre_link-510"></a>
+<div><a id="calibre_link-511"></a>
+ Web Partsは、統合されたコントロールセットです。カスタマイズされ、動的コンテンツをWebサイトに提供するために使用します。Microsoft Windows SharePoint Servicesを使用することによって、SASコンテンツを直接Webサイトに追加できます。</div>
+<div><a id="calibre_link-512"></a>
+<div id="calibre_link-513">SAS Web Parts 6.1 for Microsoft SharePointでは、管理者がサイトのSharePointの接続プロファイルを作成できます。次の2種類のSAS Web Partsが提供されています。</div>
+<div>
+<ul>
+<li>
+<div><a id="calibre_link-514"></a>
+<div><a id="calibre_link-515"></a>
+ SAS Central Web Partには、最近開いたSAS Visual Analyticsレポートと、追加したお気に入りが表示されます。他のレポートも開くことができます。これらのレポートは、新しいWebブラウザに開かれます。</div>
+<div><a id="calibre_link-516"></a>
+<span><b>注:</b></span>
+ サイトにSAS Visual Analyticsがライセンスされている場合にのみ、SAS Central Web Partが使用可能です。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-517"></a>
+<div><a id="calibre_link-518"></a>
+ SAS Content Viewer Web Partでは、レポート、Stored Processの結果、ダッシュボードなどのSASコンテンツをSharePointサイトに追加できます。</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div><a id="calibre_link-519"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=wbptswssug&amp;pubcode=65702&amp;id=wbptswssugwhatsnew61" title="SAS Web Parts 6.1ドキュメントの新機能トピックへのリンク">What's New in SAS Web Parts 6.1 for Microsoft SharePoint</a>
+ (<span><i>SAS Web Parts for Microsoft SharePoint: User's Guide</i></span>
+ )を参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-107">
+<div><a id="calibre_link-16"></a>
+<h1><b>SAS Web Report Studio 4.4</b></h1>
+<div><a id="calibre_link-520"></a>
+<div><a id="calibre_link-521"></a>
+ SAS Web Report Studio 4.4は、サポートブラウザの追加に加えて、合計と小計が拡張されました。</div>
+<div><a id="calibre_link-522"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=citug&amp;pubcode=65926&amp;id=citugwhatsnew44" title="SAS Web Report Studio 4.4ドキュメントの新機能トピックへのリンク">What's New in SAS Web Report Studio 4.4</a>
+ (<span><i>SAS Web Report Studio: User's Guide</i></span>
+ )を参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-33">
+<div>
+<h1><b><a id="calibre_link-523"><b></b></a>
+ 5章: データ管理と統合</b></h1>
+<div></div>
+<div>
+<div><b>
+<a href="#calibre_link-34"><b>SAS/ACCESS 9.4 Interface for Relational Databases</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-35"><b>SAS Data Integration Studio 4.7</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-36"><b>SAS 9.4 Data Quality Server</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-37"><b>SAS Federation Server 3.2</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-38"><b>SAS Scalable Performance Data Server 4.8</b></a>
+</b></div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-0">
+<div><a id="calibre_link-34"></a>
+<h1><b>
+<span><b>SAS/ACCESS</b></span>
+ 9.4 Interface for Relational Databases</b></h1>
+<div><a id="calibre_link-524"></a>
+<div><a id="calibre_link-525"></a>
+ SAS 9.4では、2つの<span>SAS/ACCESS</span>
+ エンジンが追加されました。<div>
+<ul>
+<li>
+<div><a id="calibre_link-526"></a>
+<div><a id="calibre_link-527"></a>
+<span>SAS/ACCESS</span>
+ Interface to PostgreSQL</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-528"></a>
+<div><a id="calibre_link-529"></a>
+<span>SAS/ACCESS</span>
+ Interface to Vertica</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div><a id="calibre_link-530"></a>
+ これらの新しいエンジンは、LIBNAMEステートメントおよびSQLパススルー機能からエンジンへの直接、透過的なアクセスを提供します。LIBNAMEエンジンでサポートされている各種LIBNAMEステートメントオプションおよびデータセットオプションを使用して、SASに返されるデータを制御できます。</div>
+<div><a id="calibre_link-531"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=acreldb&amp;pubcode=65053&amp;id=acreldbwhatsnew94" title="SAS/ACCESS 9.4 Interface for Relational Databasesドキュメントの新機能トピックへのリンク">What's New in SAS/ACCESS 9.4 Interface for Relational Databases</a>
+ (<span><i>SAS/ACCESS for Relational Databases: Reference</i></span>
+ )を参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-41">
+<div><a id="calibre_link-35"></a>
+<h1><b>SAS Data Integration Studio 4.7</b></h1>
+<div><a id="calibre_link-532"></a>
+<div><a id="calibre_link-533"></a>
+ SAS Data Integration Studioジョブからサードパーティ製のWebクライアントにアクセスできるようになりました。この機能を使用すると、そのクライアントからプログラムを使用して情報にアクセスし、データ統合プロジェクトで使用できます。また、新しいコマンド行インターフェイスを介して一度に多くのジョブを配置することもできます。</div>
+<div><a id="calibre_link-534"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=etlug&amp;pubcode=65920&amp;id=etlugwhatsnew47" title="SAS Data Integration Studio 4.7 User’s Guideの新機能トピックへのリンク">What's New in SAS Data Integration Studio</a>
+ (<span><i>SAS Data Integration Studio: User's Guide</i></span>
+ )を参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-10">
+<div><a id="calibre_link-36"></a>
+<h1><b>SAS 9.4 Data Quality Server</b></h1>
+<div><a id="calibre_link-535"></a>
+<div><a id="calibre_link-536"></a>
+ SAS 9.3 Data Quality Serverは、SAS DataFluxから使用可能なDataFlux Data Management Platform (バージョン2.4以降)のジョブやサービスを管理、実行するプロシジャと関数を提供します。</div>
+<div><a id="calibre_link-537"></a>
+ "SAS DataFlux"という名前は、データクオリティ、データ統合、データガバナンス、マスタデータ管理ソリューションから成るDataFluxスイートがSASと完全に統合されていることを示します。DataFluxブランドをSASに組み込むことで、分析や決定管理をサポートするデータ管理やガバナンスを超えた、より統合された情報管理アプローチをユーザーが構築するのに役立ちます。</div>
+<div><a id="calibre_link-538"></a>
+ DataFluxプロダクトは、いくつかはSASに名前が変更されましたが、それ以外も将来的には変更される予定です。たとえば、DataFlux Federation Serverは現在SAS Federation Serverです。個別にライセンスされるかわりに、DataFluxプロダクトは、その他のSASプロダクト同様、SASソフトウェア提供に統合されて含まれています。提供の変更は、ライセンスの更新に影響する可能性があります。</div>
+<div><a id="calibre_link-539"></a>
+ SASがDataFluxプロダクトの統合によりリソースが変更され、SAS Data Qualityのユーザーに影響します。テクニカルサポート、ライセンス(新規と更新)およびダウンロード、ならびにドキュメントおよびトレーニングについては、<a href="http://support.sas.com" title="">SAS Support site</a>
+ のリソースを使用するようになりました。 MyDataFlux Portalは現在サポートされていません。</div>
+<div><a id="calibre_link-540"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=dqclref&amp;pubcode=65068&amp;id=dqclrefwhatsnew94" title="SAS Data Quality Server 9.4ドキュメントの新機能トピックへのリンク">What's New in SAS Data Quality Server</a>
+ (<span><i>SAS Data Quality Server: Reference</i></span>
+ )を参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-51">
+<div><a id="calibre_link-37"></a>
+<h1><b>SAS Federation Server 3.2</b></h1>
+<div><a id="calibre_link-541"></a>
+<h2><b>新しい名前</b></h2>
+<div><a id="calibre_link-542"></a>
+<div><a id="calibre_link-543"></a>
+ DataFlux Federation Serverは現在SAS Federation Serverです。この名前変更は、DataFluxプロダクトを、データクオリティ、データ統合、データガバナンス、マスタデータ管理ソリューションから成るSASスイートに統合した結果です。</div>
+<div><a id="calibre_link-544"></a>
+ SAS Federation Server 3.2は、SASの配信チャネルを介して使用できるようになりました。SAS Federation Serverの配置の詳細については、SASソフトウェアオーダーメール(SOE)を参照してください。</div>
+</div>
+</div>
+<div><a id="calibre_link-76"></a>
+<h2><b>In-Memoryデータストア</b></h2>
+<div><a id="calibre_link-545"></a>
+<div><a id="calibre_link-546"></a>
+ MDSは、SAS Federation Serverに実装可能なトランザクションIn-Memoryデータストアです。MDSドライバでは、FedSQL機能の大部分がサポートされます。MDSはメモリ内でのみ実行され、バックアップデータストアは作成されません。したがって、データベースの切断時やサーバーの再起動時に変更内容が失われます。</div>
+<div><a id="calibre_link-547"></a>
+ 最初のユーザーがデータベースに接続すると、データベースがメモリに作成されます。これはサーバーがシャットダウンされるか、データサービスまたはデータサービスに関連付けられたカタログが削除されるまで、メモリに残ります。</div>
+</div>
+</div>
+<div><a id="calibre_link-97"></a>
+<h2><b>権限キャッシュ</b></h2>
+<div><a id="calibre_link-548"></a>
+<div><a id="calibre_link-549"></a>
+ 権限キャッシュは、権限決定を効率化し、結果的にパフォーマンスを向上させるためのツールとして提供されています。権限キャッシュでは、SAS Federation Serverにサブミットされたステートメントまたは要求に適用された権限の取り込みと再使用を伴います。このため、内部システムテーブルのクエリが減少し、パフォーマンスが向上します。</div>
+</div>
+</div>
+<div><a id="calibre_link-550"></a>
+<h2><b>追加情報</b></h2>
+<div><a id="calibre_link-551"></a>
+<div><a id="calibre_link-552"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=fedsrvmgrag&amp;pubcode=65976&amp;id=whatsnew32" title="SAS Federation Serverドキュメントの新機能トピックへのリンク">What's New in SAS Federation Server 3.2</a>
+ (<span><i>SAS Federation Server: Administrator's Guide</i></span>
+ )を参照してください。</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-22">
+<div><a id="calibre_link-38"></a>
+<h1><b>SAS Scalable Performance Data Server 4.8</b></h1>
+<div><a id="calibre_link-553"></a>
+<div><a id="calibre_link-554"></a>
+ SAS 9.4には、SPD Serverに接続できる、新しいSAS Scalable Performance Data Serverエンジンが追加されました。SPD Serverのエクスペリエンスが高まり、規制関連の機能、IT関連の機能、エンドユーザー機能に次のような拡張サポートが提供されます。<div>
+<ul>
+<li>
+<div><a id="calibre_link-555"></a>
+<div><a id="calibre_link-556"></a>
+ 保存データの(AES-256)暗号化の拡張</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-557"></a>
+<div><a id="calibre_link-558"></a>
+ Windows 64-ビットサーバーのサポート</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-559"></a>
+<div><a id="calibre_link-560"></a>
+ SQLパフォーマンスの向上</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-561"></a>
+<div><a id="calibre_link-562"></a>
+ 新しいSPD Serverクラスタ機能(オンラインクラスタ管理および分散クラスタテーブルなど)</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div><a id="calibre_link-563"></a>
+ 詳細については、<a href="http://support.sas.com/software/products/spds/index.html" title="support.sas.comのソフトウェアプロダクトページへのリンク">SAS Scalable Performance Data Server</a>
+ のソフトウェアプロダクトページを参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-8">
+<div>
+<h1><b><a id="calibre_link-564"><b></b></a>
+ 6章: SAS In-Databaseプロダクト</b></h1>
+<div></div>
+<div>
+<div><b>
+<a href="#calibre_link-9"><b>SAS 9.4 In-Databaseプロダクト</b></a>
+</b></div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-3">
+<div><a id="calibre_link-9"></a>
+<h1><b>SAS 9.4 In-Databaseプロダクト</b></h1>
+<div><a id="calibre_link-565"></a>
+<div><a id="calibre_link-566"></a>
+ SAS 9.4から、SAS In-Database Code Acceleratorが追加されて、In-Database処理が拡張されました。SAS In-Database Code Acceleratorを使用して、DS2スレッドプログラムをデータベースにパブリッシュし、データベース内で並列にスレッドプログラムを実行できます。</div>
+<div><a id="calibre_link-567"></a>
+ NetezzaのIn-DatabaseスコアリングはSAS Embedded Processの追加により拡張されました。SAS Embedded Processは、Netezza内で実行されてデータを読み書きするSASサーバープロセスです。</div>
+<div><a id="calibre_link-568"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=indbug&amp;pubcode=65043&amp;id=indbugwhatsnew94" title="SAS 9.4 In-Databaseプロダクトドキュメントの新機能トピックへのリンク">What's New in the SAS 9.4 In-Database Products</a>
+ (<span><i>SAS In-Database Products: User's Guide</i></span>
+ )を参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-106">
+<div>
+<h1><b><a id="calibre_link-569"><b></b></a>
+ 7章: SAS Integration Technologies</b></h1>
+<div></div>
+<div>
+<div><b>
+<a href="#calibre_link-79"><b>SAS 9.4 Integration Technologies</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-88"><b>SAS Workflow Studio 1.3</b></a>
+</b></div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-121">
+<div><a id="calibre_link-79"></a>
+<h1><b>SAS 9.4 Integration Technologies</b></h1>
+<div><a id="calibre_link-570"></a>
+<div><a id="calibre_link-571"></a>
+<div id="calibre_link-572">SAS Integration Technologiesでは、次の拡張が行われました。</div>
+<div>
+<ul>
+<li>
+<div><a id="calibre_link-573"></a>
+<div><a id="calibre_link-574"></a>
+ SAS Stored Processには、全般的な拡張に加え、STPプロシジャとSAS Stored Process Web Applicationの新しい機能が実装されました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-575"></a>
+<div><a id="calibre_link-576"></a>
+ SAS BI Web Servicesでは、RESTful Webサービスが更新されました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-577"></a>
+<div><a id="calibre_link-578"></a>
+ SAS Publishing Frameworkには、循環整合性定数と拡張属性のサポートが追加されました。SharePointやWebDAVへパブリッシュする場合は、TKESSLを使用してSSL設定ができます。また、イベントのパブリッシュはサポートされなくなり、イベントのパブリッシュに関するドキュメントは削除されました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-579"></a>
+<div><a id="calibre_link-580"></a>
+ ディレクトリサービスでは、TLS_MODE_ONオプションおよびTLS_MODE_OFFオプションがLDAPS_OPEN CALLルーチンに新しく追加されました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-581"></a>
+<div><a id="calibre_link-582"></a>
+ アプリケーションメッセージングに新しいACTIVEMQファイルアクセス方式が提供されました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-583"></a>
+<div><a id="calibre_link-584"></a>
+ SAS Foundation Servicesのイベントブローカサービスが使用できなくなりました。</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div><a id="calibre_link-585"></a>
+ 詳細については、<a href="http://support.sas.com/software/products/inttech/index.html" title="http://support.sas.com/software/products/inttech/index.html">SAS Integration Technologies</a>
+ のソフトウェアプロダクトページを参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-28">
+<div><a id="calibre_link-88"></a>
+<h1><b>SAS Workflow Studio 1.3</b></h1>
+<div><a id="calibre_link-586"></a>
+<div><a id="calibre_link-587"></a>
+<div id="calibre_link-588">SAS Workflow Studio 1.3では、次の拡張が行われました。</div>
+<div>
+<ul>
+<li>
+<div><a id="calibre_link-589"></a>
+<div><a id="calibre_link-590"></a>
+ SAS Web Infrastructure Platformの権限と役割、およびWeb層の権限をサポートします。ランタイムアクセス制御はSASメタデータに依存せず、より細分化された権限をサポートするように更新されました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-591"></a>
+<div><a id="calibre_link-592"></a>
+ ワークフローテンプレートの所有者が個々のテンプレートの権限を指定できるダイアログボックスが新たに追加されました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-593"></a>
+<div><a id="calibre_link-594"></a>
+ 必須ポリシ―プロパティの検証など、ワークフローテンプレート検証が向上しました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-595"></a>
+<div><a id="calibre_link-596"></a>
+ 2つのバージョンのテンプレートのワークフローツリーを並べて表示するダイアログボックスが新たに追加されました。このダイアログボックスによって、2つのバージョンのテンプレートの違いを容易に評価できます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-597"></a>
+<div><a id="calibre_link-598"></a>
+ 新しいポリシー、JESジョブのサブミットを使用すると、SAS Job Execution Serviceに登録されたコードを実行できます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-599"></a>
+<div><a id="calibre_link-600"></a>
+ 新しいポリシーアクション、REST Web サービスの起動が追加されました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-601"></a>
+<div><a id="calibre_link-602"></a>
+ Web サービスの起動ポリシーの2つの新しいプロパティ、エラーコードとエラーメッセージは、潜在的なエラー条件に基づくビジネスロジックをサポートします。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-603"></a>
+<div><a id="calibre_link-604"></a>
+ タイマー式で日付データオブジェクトをサポートします。日付データオブジェクトを使用すると、ランタイムでの日時値の動的な使用ができます。さらに、日付データオブジェクトを使用することで、負の相対オフセットを入力して、そのデータオブジェクトが示す日付より前のアクションをトリガにすることが可能になります。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-605"></a>
+<div><a id="calibre_link-606"></a>
+ 意思決定ゲートウェイ式で新しいTODAY関数をサポートします。この関数は現在の日時システム値を取得します。また、この関数では、現在の日付からの特定の日付オフセットを指定できます。</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-5">
+<div>
+<h1><b><a id="calibre_link-607"><b></b></a>
+ 8章: SAS Intelligence Platform</b></h1>
+<div></div>
+<div>
+<div><b>
+<a href="#calibre_link-6"><b>SAS 9.4 Intelligence Platform</b></a>
+</b></div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-27">
+<div><a id="calibre_link-6"></a>
+<h1><b>SAS 9.4 Intelligence Platform</b></h1>
+<div><a id="calibre_link-608"></a>
+<div><a id="calibre_link-609"></a>
+ SAS 9.4では、SAS Intelligence Platformに次の拡張と変更が行われました。<div>
+<ul>
+<li>
+<div><a id="calibre_link-610"></a>
+<div><a id="calibre_link-611"></a>
+ SAS Environment Managerは、SAS配置の新しいモニタリングおよび管理システムです。リソースの自動検出、リモートシステムのモニタリング、個人用ダッシュボードと役割ベースダッシュボード、アラート、視覚化などの機能が実装されています。中間層やSAS Server層のサーバーに対する、Webベースの管理、操作、事前予防型のモニタリングを提供します。SAS Environment Managerには、エンタープライズレベルの操作機能を提供するために、VMwareのHypericテクノロジの一部が組み込まれています。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-612"></a>
+<div><a id="calibre_link-613"></a>
+ 中間層ソフトウェアとして含まれるSAS Web ServerはHTTPサーバーおよびSAS Web Application Serverとして使用されるため、サードパーティ製のWebアプリケーションサーバーは必要ありません。SAS Web Application Serverは、SAS Web Applicationsの実行にエンタープライズレベルの機能を提供する軽量サーバーです。SAS配置ツールはこれらのサーバーを自動的に構成できます。ツールによって、垂直クラスタリングと水平クラスタリング、HTTPロードバランシングの構成が簡易化されます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-614"></a>
+<div><a id="calibre_link-615"></a>
+ SASインフラストラクチャのコアコンポーネントである新しいMetadata Serverクラスタリング機能により、Metadata Serverの冗長性と高可用性が提供されます。サーバーのホストマシンに障害が起こった場合でも、クラスタリングによってサーバーは動作を継続できます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-616"></a>
+<div><a id="calibre_link-617"></a>
+ 新しい配置バックアップと復元ツールは、複数の階層やマシンにまたがるSASコンテンツをバックアップや復元するための統合された方法を提供します。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-618"></a>
+<div><a id="calibre_link-619"></a>
+ SASは、データクオリティ、データ統合、データガバナンスおよびマスタデータ管理ソリューションから成るDataFluxスイートを完全に統合しました。新しくSAS DataFluxプロダクトというブランドで、より統合された情報管理アプローチをユーザーが構築するのに役立ちます。SAS DataFluxプロダクトは、その他のSASプロダクト同様、SASソフトウェア提供に統合されて含まれています。これらの新しい提供は現在のSAS Enterprise Data Integration Serverの提供を置き換え、データ管理プロダクトの選択肢の幅をより広げられます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-620"></a>
+<div><a id="calibre_link-621"></a>
+ SAS管理コンソールまたはAUTHLIBプロシジャを使用して、SASデータをメタデータにバインドできます。SASからメタデータバインドデータへのすべてのアクセスは、メタデータレイヤのアクセス権限に従います。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-622"></a>
+<div><a id="calibre_link-623"></a>
+ SAS 9.4では、SAS Mobile BIを使用して、SAS Web Report Studioリレーショナルレポートの一部をモバイルデバイスで表示できます。また、デバイスのホワイトリストやブラックリストを使用することで、モバイルのアクセス許可を管理できます。</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div><a id="calibre_link-624"></a>
+ 詳細については、次の新機能トピックを参照してください。<div>
+<ul>
+<li>
+<div><a id="calibre_link-625"></a>
+<div><a id="calibre_link-626"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=biig&amp;pubcode=63852&amp;id=biigwhatsnew94" title="プロダクトドキュメントの新機能トピックへのリンク">What's New Installation and Configuration for the SAS 9.4 Intelligence Platform</a>
+ -<span><i>SAS Intelligence Platform: Installation and Configuration Guide</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-627"></a>
+<div><a id="calibre_link-628"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=bimig&amp;pubcode=63853&amp;id=bimigwhatsnew94" title="プロダクトドキュメントの新機能トピックへのリンク">What's New in Migration for the SAS 9.4 Intelligence Platform</a>
+ -<span><i>SAS Intelligence Platform: Migration Guide</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-629"></a>
+<div><a id="calibre_link-630"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=biasag&amp;pubcode=63854&amp;id=biasagwhatsnew94" title="プロダクトドキュメントの新機能トピックへのリンク">What's New in Application Server Administration for the SAS 9.4 Intelligence Platform</a>
+ -<span><i>SAS Intelligence Platform: Application Server Administration Guide</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-631"></a>
+<div><a id="calibre_link-632"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=bisag&amp;pubcode=64875&amp;id=bisagwhatsnew93" title="プロダクトドキュメントの新機能トピックへのリンク">What's New in System Administration for the SAS 9.4 Intelligence Platform</a>
+ -<span><i>SAS Intelligence Platform: System Administration Guide</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-633"></a>
+<div><a id="calibre_link-634"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=bidaag&amp;pubcode=65010&amp;id=bidaagwhatsnew94" title="プロダクトドキュメントの新機能トピックへのリンク">What's New in Desktop Application Administration for the SAS 9.4 Intelligence Platform</a>
+ -<span><i>SAS Intelligence Platform: Desktop Application Administration Guide</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-635"></a>
+<div><a id="calibre_link-636"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=bisecag&amp;pubcode=65011&amp;id=bisecagwhatsnew94" title="プロダクトドキュメントの新機能トピックへのリンク">What's New in Security Administration for the SAS 9.4 Intelligence Platform</a>
+ -<span><i>SAS Intelligence Platform: Security Administration Guide</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-637"></a>
+<div><a id="calibre_link-638"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=bimtag&amp;pubcode=65039&amp;id=bimtagwhatsnew94" title="プロダクトドキュメントの新機能トピックへのリンク">What's New in Middle-Tier Administration for the SAS 9.4 Intelligence Platform</a>
+ -<span><i>SAS Intelligence Platform: Middle-Tier Administration Guide</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-639"></a>
+<div><a id="calibre_link-640"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=bidsag&amp;pubcode=65041&amp;id=bidsagwhatsnew94" title="プロダクトドキュメントの新機能トピックへのリンク">What's New in Data Administration for the SAS 9.4 Intelligence Platform</a>
+ -<span><i>SAS Intelligence Platform: Data Administration Guide</i></span>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-641"></a>
+<div><a id="calibre_link-642"></a>
+<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=biwaag&amp;pubcode=65229&amp;id=biwaagwhatsnew94" title="プロダクトドキュメントの新機能トピックへのリンク">What's New in Web Application Administration for the SAS 9.4 Intelligence Platform</a>
+ -<span><i>SAS Intelligence Platform: Web Application Administration Guide</i></span>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-42">
+<div>
+<h1><b><a id="calibre_link-643"><b></b></a>
+ 9章: SAS Visual Analytics</b></h1>
+<div></div>
+<div>
+<div><b>
+<a href="#calibre_link-43"><b>SAS Visual Analytics 6.2</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-44"><b>SAS Theme Designer 4.1 for Flex</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-45"><b>SAS High-Performance Computing Management Console 2.1</b></a>
+</b></div>
+<div><b>
+<a href="#calibre_link-46"><b>SAS LASR Analytic Server 2.1</b></a>
+</b></div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-25">
+<div><a id="calibre_link-43"></a>
+<h1><b>SAS Visual Analytics 6.2</b></h1>
+<div><a id="calibre_link-644"></a>
+<div><a id="calibre_link-645"></a>
+ SAS Visual Analyticsは、Webベースのプロダクトです。SAS High-Performance Analyticsテクノロジを使用して、パターンやトレンドを検出するために大容量のデータを短時間で探索します。ここでは、SAS Visual Analytics 6.2での更新の一部を説明します。<div>
+<ul>
+<li>
+<div><a id="calibre_link-646"></a>
+<div><a id="calibre_link-647"></a>
+ SAS Visual Analyticsのホームページでは、テーブルを表示するようになりました。検索が拡張され、レポート、探索、Stored Process以外に、登録された種類のSASアイテムも対象となりました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-648"></a>
+<div><a id="calibre_link-649"></a>
+ SAS Visual Data Builderは、SAS LASR Analytic Serverの入力テーブルをサポートするようになりました。Greenplum Data Computing Applianceによるパフォーマンスの向上が実現しました。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-650"></a>
+<div><a id="calibre_link-651"></a>
+ SAS Visual Analytics Explorerでは、要因とシナリオ分析をサポートするように予測が拡張されました。集計メジャーの作成や、ディシジョンツリー分析の実行ができるようになりました。また、集計値の最大/最小値に基づいてデータをランク付けすることもできます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-652"></a>
+<div><a id="calibre_link-653"></a>
+ SAS Visual Analytics Designerの機能が拡張され、テーブルとグラフの新しい集計計算アイテムの作成、集計値の最大/最小値に基づいたデータへのフィルタ適用とランク付け、レポートのテーマの変更ができるようになりました。ターゲットレポート内の特定のセクションへのリンクを追加したり、レポートオブジェクト、テキストまたはイメージから別のレポートへのリンクを追加したりできます。レポートでの5つを超えるゲージをグループ化できます。</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-654"></a>
+<div><a id="calibre_link-655"></a>
+ SAS Visual Analytics Administratorを使用して、アクセス権限の条件を対話型エディタで定義できます。ブラックリストまたはホワイトリストを使用して、モバイルデバイスを管理できます。テーブルを登録できます。</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div><a id="calibre_link-656"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=vaug&amp;pubcode=66223&amp;id=vaugwhatsnew62" title="">What's New in SAS Visual Analytics 6.2</a>
+ (<span><i>SAS Visual Analytics: User's Guide</i></span>
+ )を参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-7">
+<div><a id="calibre_link-44"></a>
+<h1><b>SAS Theme Designer 4.1 for Flex</b></h1>
+<div><a id="calibre_link-657"></a>
+<div><a id="calibre_link-658"></a>
+ SAS Theme Designer 4.1 for Flexでは、SAS Corporateテーマがデフォルトテーマになりました。SAS Corporateテーマは更新され、新しいカラーパレットは濃紺色パレットベースになりました。</div>
+<div><a id="calibre_link-659"></a>
+ SAS Visual Analytics HubからSAS Theme Designer for Flexをアクセスしてカスタムテーマを作成できます。さらに、カスタムアプリケーションテーマがSAS Theme Designer for Flexで作成されるとき、レポートテーマが自動的に作成されます。これらのカスタムレポートテーマはSAS Visual Analyticsレポートで使用されます。</div>
+<div><a id="calibre_link-660"></a>
+ 詳細については、<a href="http://support.sas.com/documentation/cdlutility/cdlredirect.htm?locale=ja&amp;alias=flexthemedesignug&amp;pubcode=65290&amp;id=flexthemedesignugwhatsnew" title="Theme Designer for Flexドキュメントの新機能トピックへのリンク">What's New in SAS Theme Designer 4.1 for Flex</a>
+ (<span><i>SAS Theme Designer for Flex: User's Guide</i></span>
+ )を参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-17">
+<div><a id="calibre_link-45"></a>
+<h1><b>SAS High-Performance Computing Management Console 2.1</b></h1>
+<div><a id="calibre_link-661"></a>
+<div><a id="calibre_link-662"></a>
+ コンソールはマシングループをサポートするように拡張されました。SAS High-Performance Analytics環境にある全マシンではなく、マシンのグループを操作できるようになりました。同時コピー(<code><b>simcp</b></code>
+ )コマンドが拡張され、リターンコードをサポートします。リターンコードを使用して、スクリプトのエラーチェックが行えます。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-29">
+<div><a id="calibre_link-46"></a>
+<h1><b>SAS LASR Analytic Server 2.1</b></h1>
+<div><a id="calibre_link-663"></a>
+<div><a id="calibre_link-664"></a>
+ SAS LASR Analytic Serverは、ビッグデータの分析に使用されます。分析プラットフォームとして機能し、分散コンピューティング環境における高速で安全な、複数ユーザーによるIn-Memoryデータへのアクセスを可能にします。また、小規模なデータセットにも対応し、単一マシン構成も代替構成としてサポートします。</div>
+<div><a id="calibre_link-665"></a>
+ SAS Visual Analytics 6.2で使用可能な新機能をサポートするように拡張されています。また、分散SAS LASR Analytic Server配置では、メモリの使用制限を強制する制御を管理者に提供します。IMSTATプロシジャを使用して、管理者はIn-Memoryテーブルを管理できます。</div>
+<div><a id="calibre_link-666"></a>
+ 詳細については、<a href="http://support.sas.com/software/products/va/index.html" title="http://support.sas.com/software/products/va/index.html">SAS Visual Analytics</a>
+ のソフトウェアプロダクトページを参照してください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-47">
+<div>
+<h1><b><a id="calibre_link-667"><b></b></a>
+ 付録1: SAS 9.4で更新された他のプロダクト</b></h1>
+<div></div>
+<div><a id="calibre_link-668"></a>
+<div><a id="calibre_link-669"></a>
+<div id="calibre_link-670">次のプロダクトでは微細な更新や拡張が行われていますが、SAS9.4での実行を可能にすることが主な目的です。</div>
+<div>
+<ul>
+<li>
+<div><a id="calibre_link-671"></a>
+<div><a id="calibre_link-672"></a>
+ DataFlux Authentication Server 3.2</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-673"></a>
+<div><a id="calibre_link-674"></a>
+<span>SAS/ACCESS</span>
+ Interface to Aster</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-675"></a>
+<div><a id="calibre_link-676"></a>
+<span>SAS/ACCESS</span>
+ 9.4 Interface to DB2</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-677"></a>
+<div><a id="calibre_link-678"></a>
+<span>SAS/ACCESS</span>
+ 9.4 Interface to Greenplum</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-679"></a>
+<div><a id="calibre_link-680"></a>
+<span>SAS/ACCESS</span>
+ 9.4 Interface to Hadoop</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-681"></a>
+<div><a id="calibre_link-682"></a>
+<span>SAS/ACCESS</span>
+ 9.4 Interface to Netezza</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-683"></a>
+<div><a id="calibre_link-684"></a>
+<span>SAS/ACCESS</span>
+ 9.4 Interface to Oracle</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-685"></a>
+<div><a id="calibre_link-686"></a>
+<span>SAS/ACCESS</span>
+ 9.4 Interface to Teradata</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-687"></a>
+<div><a id="calibre_link-688"></a>
+ SAS AppDev Studio 4.4</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-689"></a>
+<div><a id="calibre_link-690"></a>
+<span>SAS/ASSIST</span>
+ 9.4</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-691"></a>
+<div><a id="calibre_link-692"></a>
+ SAS Data Surveyor for SAP</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-693"></a>
+<div><a id="calibre_link-694"></a>
+<span>SAS/EIS</span>
+ 9.4</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-695"></a>
+<div><a id="calibre_link-696"></a>
+ SAS Forecasting for Desktop 12.3</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-697"></a>
+<div><a id="calibre_link-698"></a>
+<span>SAS/IML</span>
+ 12.3</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-699"></a>
+<div><a id="calibre_link-700"></a>
+<span>SAS/IML</span>
+ Studio 12.3</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-701"></a>
+<div><a id="calibre_link-702"></a>
+ SAS Information Studio 4.4</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-703"></a>
+<div><a id="calibre_link-704"></a>
+ SAS Inventory Optimization 2.3</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-705"></a>
+<div><a id="calibre_link-706"></a>
+<span>SAS/QC</span>
+ 12.3</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-707"></a>
+<div><a id="calibre_link-708"></a>
+ SAS Simulation Studio 12.3</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-709"></a>
+<div><a id="calibre_link-710"></a>
+ SAS Strategy Management 5.5</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div><a id="calibre_link-711"></a>
+ SASプロダクトの情報を入手されたい場合は、SASの担当者までご連絡ください。</div>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-32">
+<div>
+<h1><b><a id="calibre_link-712"><b></b></a>
+ 推奨資料</b></h1>
+<div id="calibre_link-713">各プロダクトの新機能や拡張の詳細については、それぞれのプロダクトドキュメントの新機能トピックを参照してください。プロダクトドキュメントは次から入手できます。</div>
+<div>
+<ul>
+<li>
+<div><a id="calibre_link-714"></a>
+<div><a id="calibre_link-715"></a>
+ プロダクトドキュメントページ -<a href="http://support.sas.com/documentation" title="">http://support.sas.com/documentation</a>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-716"></a>
+<div><a id="calibre_link-717"></a>
+ プロダクト内で使用できるヘルプ</div>
+<div><a id="calibre_link-718"></a>
+<span><b>注:</b></span>
+ このドキュメントに掲載されているプロダクトすべてに対してライセンスされているとは限りません。この場合、すべてのSASプロダクトのヘルプにアクセスできない可能性があります。</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="calibre_link-719">SASナレッジを深めるために、次の書籍をお勧めします。これらの書籍には、エキスパートユーザーからの実例が紹介されています。</div>
+<div>
+<ul>
+<li>
+<div><a id="calibre_link-720"></a>
+<div><a id="calibre_link-721"></a>
+<a href="http://go.sas.com/read001" title="">The Little SAS Book: A Primer</a>
+ -<code><b>http://go.sas.com/read001</b></code>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-722"></a>
+<div><a id="calibre_link-723"></a>
+<a href="http://go.sas.com/read002" title="">The Little SAS Book for SAS Enterprise Guide</a>
+ -<code><b>http://go.sas.com/read002</b></code>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-724"></a>
+<div><a id="calibre_link-725"></a>
+<a href="http://go.sas.com/read003" title="">Output Delivery System: The Basics and Beyond</a>
+ -<code><b>http://go.sas.com/read003</b></code>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-726"></a>
+<div><a id="calibre_link-727"></a>
+<a href="http://go.sas.com/read004" title="">Custom Tasks for SAS Enterprise Guide Using Microsoft .NET</a>
+ -<code><b>http://go.sas.com/read004</b></code>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-728"></a>
+<div><a id="calibre_link-729"></a>
+<a href="http://go.sas.com/read005" title="">Data Quality for Analytics Using SAS</a>
+ -<code><b>http://go.sas.com/read005</b></code>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-730"></a>
+<div><a id="calibre_link-731"></a>
+<a href="http://go.sas.com/read006" title="">Statistical Graphics Procedures by Example: Effective Graphs Using SAS</a>
+ -<code><b>http://go.sas.com/read006</b></code>
+</div>
+</div>
+</li>
+<li>
+<div><a id="calibre_link-732"></a>
+<div><a id="calibre_link-733"></a>
+<a href="http://go.sas.com/read007" title="">Decision Trees for Analytics Using SAS Enterprise Miner</a>
+ -<code><b>http://go.sas.com/read007</b></code>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div>SASの刊行物の総一覧については、support.sas.com/bookstoreにてご確認ください。必要な書籍についてのご質問は、下記までお寄せください。</div>
+<div>SAS Books<br />
+SAS Campus Drive<br />
+Cary, NC 27513-2414<br />
+電話: 1-800-727-3228<br />
+ファクシミリ: 1-919-677-8166<br />
+電子メール:<a href="mailto:sasbook@sas.com">sasbook@sas.com</a>
+<br />
+Webアドレス:<a href="http://support.sas.com/bookstore">support.sas.com/bookstore</a>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-63">
+<h1><b>キーワード</b></h1>
+<h2><b>A</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-734" href="#calibre_link-64">ANSI SQL:1999コア規格</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-735" href="#calibre_link-65">ARM_DSIOサブシステム</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-736" href="#calibre_link-65">ARMメトリック</a>
+</dt>
+<dd></dd>
+</dl>
+<h2><b>C</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-737" href="#calibre_link-66">CPORTプロシジャ</a>
+</dt>
+<dd></dd>
+</dl>
+<h2><b>D</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-738">DataFlux</a>
+</dt>
+<dd>参照項目:<a href="#calibre_link-67">SAS DataFlux</a>
+<br />
+</dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-739" href="#calibre_link-36">DataFlux Data Management Platform</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-740">DataFlux Federation Server</a>
+</dt>
+<dd>参照項目:<a href="#calibre_link-68">SAS Federation Server</a>
+<br />
+</dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-741" href="#calibre_link-66">DATASETSプロシジャ</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-742" href="#calibre_link-69">DATAURLアクセス方式</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-743" href="#calibre_link-66">DOWNLOADプロシジャ</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-744" href="#calibre_link-70">DS2</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-745" href="#calibre_link-71">DS2言語</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-746" href="#calibre_link-71">DS2プロシジャ</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-747" href="#calibre_link-71">DSTRANSプロシジャ</a>
+</dt>
+<dd></dd>
+</dl>
+<h2><b>E</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-748" href="#calibre_link-72">EPUB</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-749" href="#calibre_link-73">EXPORTプロシジャ</a>
+</dt>
+<dd></dd>
+</dl>
+<h2><b>F</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-750">FedSQL</a>
+</dt>
+<dd>
+<a href="#calibre_link-74">SAS FedSQLの使用によるリレーショナルデータ管理の最適化</a>
+<br />
+<a href="#calibre_link-64">FedSQL言語</a>
+</dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-751" href="#calibre_link-71">FedSQL構文</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-752" href="#calibre_link-64">FEDSQLプロシジャ</a>
+</dt>
+<dd></dd>
+</dl>
+<h2><b>G</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-753" href="#calibre_link-75">Graph Template Language</a>
+</dt>
+<dd></dd>
+</dl>
+<h2><b>H</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-754" href="#calibre_link-72">HTML5</a>
+</dt>
+<dd></dd>
+</dl>
+<h2><b>I</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-755" href="#calibre_link-73">IMPORTプロシジャ</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-756" href="#calibre_link-76">In-Memoryデータストア</a>
+</dt>
+<dd></dd>
+</dl>
+<h2><b>J</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-757" href="#calibre_link-77">JavaScript Object Notation (JSON)</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-758" href="#calibre_link-73">JMP Graph Builder</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-759" href="#calibre_link-78">JMPグラフビルダー</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-760">JMPファイル</a>
+</dt>
+<dd>
+<a href="#calibre_link-78">JMPを使用したSASデータセットの表示</a>
+<br />
+<a href="#calibre_link-73">SAS/ACCESS 9.4 Interface to PC Files</a>
+</dd>
+</dl>
+<h2><b>M</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-761" href="#calibre_link-73">Microsoft Excelファイル</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-762">Microsoft PowerPoint</a>
+</dt>
+<dd></dd>
+<dt>
+<a href="#calibre_link-72">ファイルの作成</a>
+</dt>
+</dl>
+<h2><b>O</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-763" href="#calibre_link-75">ODS Graphics</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-764" href="#calibre_link-75">ODS Graphics Designer</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-765" href="#calibre_link-75">ODS Graphics Editor</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-766" href="#calibre_link-14">OLAPCONTENTSプロシジャ</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-767" href="#calibre_link-14">OLAPOPERATEプロシジャ</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-768" href="#calibre_link-14">OLAPキューブ</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-769" href="#calibre_link-72">Output Delivery System (ODS)</a>
+</dt>
+<dd></dd>
+</dl>
+<h2><b>P</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-770" href="#calibre_link-73">PC Files Server</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-771" href="#calibre_link-73">PCファイル</a>
+</dt>
+<dd></dd>
+</dl>
+<h2><b>S</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-772" href="#calibre_link-12">SAS Add-In for Microsoft Office</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-773" href="#calibre_link-79">SAS BI Web Service</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-774" href="#calibre_link-80">SAS Credit Scoring for SAS Enterprise Miner</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-775" href="#calibre_link-35">SAS Data Integration Studio</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-776" href="#calibre_link-36">SAS Data Quality Server</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-67" href="#calibre_link-36">SAS DataFlux</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-777">SAS Embedded Process</a>
+</dt>
+<dd>
+<a href="#calibre_link-70">DS2を使用した高度なデータ操作のIn-Databaseの実行</a>
+<br />
+<a href="#calibre_link-9">SAS 9.4 In-Databaseプロダクト</a>
+</dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-778" href="#calibre_link-13">SAS Enterprise Guide</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-779" href="#calibre_link-80">SAS Enterprise Miner</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-780" href="#calibre_link-81">SAS Environment Manager</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-68">SAS Federation Server</a>
+</dt>
+<dd>
+<a href="#calibre_link-36">SAS 9.4 Data Quality Server</a>
+<br />
+<a href="#calibre_link-37">SAS Federation Server 3.2</a>
+</dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-781" href="#calibre_link-82">SAS Forecast Server</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-782" href="#calibre_link-82">SAS Forecast Studio</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-783" href="#calibre_link-79">SAS Foundation Service</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-784" href="#calibre_link-83">SAS Grid Manager</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-785" href="#calibre_link-80">SAS High-Performance Data Mining</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-786" href="#calibre_link-84">SAS High-Performance Risk</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-787" href="#calibre_link-9">SAS In-Database Code Accelerator</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-788" href="#calibre_link-79">SAS Integration Technologies</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-789" href="#calibre_link-85">SAS Metadata Server</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-790" href="#calibre_link-14">SAS OLAP Server</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-791" href="#calibre_link-79">SAS Publishing Framework</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-792" href="#calibre_link-84">SAS Risk Management for Banking</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-793" href="#calibre_link-79">SAS Stored Process</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-794" href="#calibre_link-79">SAS Stored Process Web Application</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-795" href="#calibre_link-86">SAS Text Miner</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-796" href="#calibre_link-44">SAS Theme Designer for Flex</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-797" href="#calibre_link-82">SAS Time Series Studio</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-798">SAS Visual Analytics</a>
+</dt>
+<dd></dd>
+<dt>
+<a href="#calibre_link-12">統合</a>
+</dt>
+<dt>
+<a href="#calibre_link-12">レポート</a>
+</dt>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-799" href="#calibre_link-87">SAS Web Application Server</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-800" href="#calibre_link-16">SAS Web Report Studio</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-801" href="#calibre_link-88">SAS Workflow Studio</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-802" href="#calibre_link-89">SAS/CONNECT</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-803" href="#calibre_link-90">SAS/OR</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-804">SAS/SECURE</a>
+</dt>
+<dd>
+<a href="#calibre_link-91">セキュリティの強化</a>
+<br />
+<a href="#calibre_link-89">セキュリティの強化 [2]</a>
+</dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-805" href="#calibre_link-92">SAS環境</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-806" href="#calibre_link-13">SASハイパフォーマンスツール</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-807" href="#calibre_link-93">Scalable Performance Data Engine (SPD Engine)</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-808" href="#calibre_link-94">SFTPアクセス方式</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-809" href="#calibre_link-95">SharePointドキュメントライブラリ</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-810" href="#calibre_link-64">SQL構文</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-811" href="#calibre_link-14">SQLパススルー機能</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-812" href="#calibre_link-66">SQLプロシジャ</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-813" href="#calibre_link-79">STPプロシジャ</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-814" href="#calibre_link-73">Strataファイル</a>
+</dt>
+<dd></dd>
+</dl>
+<h2><b>W</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-815" href="#calibre_link-95">WebDAVアクセス方式</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-816" href="#calibre_link-92">Workライブラリ</a>
+</dt>
+<dd></dd>
+</dl>
+<h2><b>Z</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-817" href="#calibre_link-96">ZIP</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-818" href="#calibre_link-96">ZIPアクセス方式</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-819" href="#calibre_link-96">ZIPファイル</a>
+</dt>
+<dd></dd>
+</dl>
+<h2><b>あ</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-820">アクセス方式</a>
+</dt>
+<dd></dd>
+<dt>
+<a href="#calibre_link-69">DATAURL</a>
+</dt>
+<dt>
+<a href="#calibre_link-94">SFTP</a>
+</dt>
+<dt>
+<a href="#calibre_link-95">WebDAV</a>
+</dt>
+<dt>
+<a href="#calibre_link-96">ZIP</a>
+</dt>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-821" href="#calibre_link-79">アプリケーションメッセージング</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-822" href="#calibre_link-79">イベントブローカサービス</a>
+</dt>
+<dd></dd>
+</dl>
+<h2><b>か</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-823" href="#calibre_link-92">環境</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-824" href="#calibre_link-65">監査</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-825" href="#calibre_link-81">管理</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-826" href="#calibre_link-97">キャッシュ</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-827" href="#calibre_link-98">協定世界時(UTC)</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-828" href="#calibre_link-99">クラウド配置</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-829" href="#calibre_link-83">グリッドコンピューティング</a>
+</dt>
+<dd></dd>
+<dt>
+<a href="#calibre_link-83">SAS Enterprise Guide</a>
+</dt>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-830" href="#calibre_link-97">権限キャッシュ</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-831">言語</a>
+</dt>
+<dd>
+<a href="#calibre_link-100">出力に使用する言語の変更</a>
+<br />
+<a href="#calibre_link-14">SAS 9.4 OLAP Server</a>
+</dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-832" href="#calibre_link-89">高度暗号化標準(AES)</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-833" href="#calibre_link-13">国際化対応</a>
+</dt>
+<dd></dd>
+</dl>
+<h2><b>さ</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-834" href="#calibre_link-35">サードパーティクライアント</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-835">サーバー</a>
+</dt>
+<dd></dd>
+<dt>
+<a href="#calibre_link-101">クラスタリング</a>
+</dt>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-836" href="#calibre_link-101">サーバーのクラスタリング</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-837">セキュリティ</a>
+</dt>
+<dd>
+<a href="#calibre_link-91">セキュリティの強化</a>
+<br />
+<a href="#calibre_link-89">セキュリティの強化 [2]</a>
+</dd>
+</dl>
+<h2><b>た</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-838" href="#calibre_link-98">タイムゾーン</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-839">データ</a>
+</dt>
+<dd></dd>
+<dt>インポート</dt>
+<dd>
+<a href="#calibre_link-73">SAS/ACCESS 9.4 Interface to PC Files</a>
+<br />
+<a href="#calibre_link-82">SAS Forecast Server 12.3</a>
+</dd>
+<dt>エクスポート</dt>
+<dd>
+<a href="#calibre_link-73">SAS/ACCESS 9.4 Interface to PC Files</a>
+<br />
+<a href="#calibre_link-82">SAS Forecast Server 12.3</a>
+</dd>
+<dt>
+<a href="#calibre_link-94">ストリーム処理</a>
+</dt>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-840">データセット</a>
+</dt>
+<dd></dd>
+<dt>
+<a href="#calibre_link-78">JMPファイルへの変換</a>
+</dt>
+<dt>
+<a href="#calibre_link-102">ロケール情報</a>
+</dt>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-841" href="#calibre_link-35">データ統合</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-842" href="#calibre_link-80">データマイニング</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-843">テーマ</a>
+</dt>
+<dd></dd>
+<dt>
+<a href="#calibre_link-44">Flexアプリケーション</a>
+</dt>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-844" href="#calibre_link-79">ディレクトリサービス</a>
+</dt>
+<dd></dd>
+</dl>
+<h2><b>な</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-845" href="#calibre_link-94">入力ストリーム</a>
+</dt>
+<dd></dd>
+</dl>
+<h2><b>は</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-846">配置</a>
+</dt>
+<dd></dd>
+<dt>
+<a href="#calibre_link-99">クラウド</a>
+</dt>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-847" href="#calibre_link-93">パフォーマンスの向上</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-848" href="#calibre_link-96">ファイル</a>
+</dt>
+<dd></dd>
+<dt>
+<a href="#calibre_link-73">JMP</a>
+</dt>
+<dt>
+<a href="#calibre_link-73">Microsoft Excel</a>
+</dt>
+<dt>
+<a href="#calibre_link-73">Strata</a>
+</dt>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-849">プログラミング言語</a>
+</dt>
+<dd></dd>
+<dt>
+<a href="#calibre_link-74">DS2</a>
+</dt>
+<dt>
+<a href="#calibre_link-74">FedSQL</a>
+</dt>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-850">プロシジャ</a>
+</dt>
+<dd></dd>
+<dt>
+<a href="#calibre_link-66">CPORT</a>
+</dt>
+<dt>
+<a href="#calibre_link-66">DATASETS</a>
+</dt>
+<dt>
+<a href="#calibre_link-66">DOWNLOAD</a>
+</dt>
+<dt>
+<a href="#calibre_link-71">DS2</a>
+</dt>
+<dt>
+<a href="#calibre_link-73">EXPORT</a>
+</dt>
+<dt>
+<a href="#calibre_link-64">FEDSQL</a>
+</dt>
+<dt>
+<a href="#calibre_link-73">IMPORT</a>
+</dt>
+<dt>
+<a href="#calibre_link-14">OLAPCONTENTS</a>
+</dt>
+<dt>
+<a href="#calibre_link-14">OLAPOPERATE</a>
+</dt>
+<dt>
+<a href="#calibre_link-66">SQL</a>
+</dt>
+<dt>
+<a href="#calibre_link-79">STP</a>
+</dt>
+</dl>
+<h2><b>ま</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-851">メトリック</a>
+</dt>
+<dd></dd>
+<dt>
+<a href="#calibre_link-65">ARM</a>
+</dt>
+</dl>
+<h2><b>ら</b></h2>
+<dl>
+<dt>
+<a id="calibre_link-852">ライブラリ</a>
+</dt>
+<dd></dd>
+<dt>
+<a href="#calibre_link-95">SharePointドキュメント</a>
+</dt>
+<dt>
+<a href="#calibre_link-92">Work</a>
+</dt>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-853" href="#calibre_link-72">レポート作成インターフェイス(RWI)</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-854" href="#calibre_link-65">ログ</a>
+</dt>
+<dd></dd>
+</dl>
+<dl>
+<dt>
+<a id="calibre_link-855" href="#calibre_link-102">ロケール</a>
+</dt>
+<dd></dd>
+</dl>
+</div>
+
+
+<script>function myFunction(){document.getElementById("tateyoko").classList.toggle("tateread")}</script></body></html>

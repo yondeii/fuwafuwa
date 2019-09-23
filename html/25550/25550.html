@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zabbix 構築発展編(AWS編)</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/mainday.css" title="default">
+<link rel="alternate stylesheet" href="/css/mainnight.css" title="alternate">
+<script type="text/javascript" src="/js/styleswitcher.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+</head>
+<body>
+<div class="novelpage">
+<div class="novelbody">
+<div id="tateyoko">
+<div id="_top"></div>
+<a href="/">🏠</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('default'); return false;">日</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">月</a>&emsp;
+<a href="#_top" onclick="myFunction()" style="cursor: pointer;">縦書き／横書き</a>
+<div id="calibre_link-25">
+<div>
+<div>
+<table class="noveltitle">
+<tr>
+<td colspan="2"><i><span><i>Zabbix 構築発展編(AWS編)</i></span></i></td>
+</tr>
+<tr>
+                    
+                    
+      </tr>
+<tr>
+<td colspan="2">大木雅宏</td>
+</tr>
+<tr>
+<td colspan="2"> (2018)</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+</tr>
+</table>
+<div></div>
+</div>
+<div>
+<p>AWSを使用した発展的な構築</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="calibre_link-1">
+<h2><b>-目次-</b></h2>
+<a id="calibre_link-28"></a>
+<ul>
+<li>
+<a href="#calibre_link-2">第1章 はじめに</a>
+</li>
+<li>
+<ul>
+<li>
+<a href="#calibre_link-2">1.1 本書の概要</a>
+</li>
+<li>
+<a href="#calibre_link-3">1.2 環境について</a>
+</li>
+<li>
+<a href="#calibre_link-4">1.3 テスト環境構築</a>
+</li>
+<li>
+<a href="#calibre_link-5">1.4 AWSKeyPairの作り方</a>
+</li>
+<li>
+<a href="#calibre_link-6">1.5 Cloudformationを使用したWordpressサーバの作成</a>
+</li>
+<li>
+<a href="#calibre_link-7">1.6 監視対象サーバの登録</a>
+</li>
+<li>
+<a href="#calibre_link-8">1.7 Cloudformationを使用しての環境の削除方法</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<a href="#calibre_link-9">第2章 Zabbixエージェントを使ったログ監視</a>
+</li>
+<li>
+<ul>
+<li>
+<a href="#calibre_link-9">2.1 実行環境</a>
+</li>
+<li>
+<a href="#calibre_link-10">2.2 テンプレートの作成(Zabbixサーバ)</a>
+</li>
+<li>
+<a href="#calibre_link-11">2.3 アイテムの作成</a>
+</li>
+<li>
+<a href="#calibre_link-12">2.4 トリガーの作成</a>
+</li>
+<li>
+<a href="#calibre_link-13">2.5 AWSのネットワークACLについて</a>
+</li>
+<li>
+<a href="#calibre_link-14">2.6 実行環境構築の整備について</a>
+</li>
+<li>
+<a href="#calibre_link-15">2.7 プログラム作成</a>
+</li>
+<li>
+<a href="#calibre_link-16">2.8 アクションの作成</a>
+</li>
+<li>
+<a href="#calibre_link-17">2.9 AWSの情報の記述方法</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<a href="#calibre_link-18">第3章 CloudWatchとの連携</a>
+</li>
+<li>
+<ul>
+<li>
+<a href="#calibre_link-19">3.1 CloudWatchとの連携ための準備</a>
+</li>
+<li>
+<a href="#calibre_link-20">3.2 CloudWatch用テンプレートの作成</a>
+</li>
+<li>
+<a href="#calibre_link-21">3.3 CloudWatch用テンプレートの割当て</a>
+</li>
+<li>
+<a href="#calibre_link-22">3.4 CloudWatchとの連携確認</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<a href="#calibre_link-0">第4章 オートディスカバリ(AWS編)</a>
+</li>
+<li>
+<ul>
+<li>
+<a href="#calibre_link-23">4.1 ネットワークディスカバリ(Zabbixサーバから検索)</a>
+</li>
+<li>
+<a href="#calibre_link-24">4.2 Zabbixエージェントによる自動登録(Zabbixエージェント)</a>
+</li>
+</ul>
+</li>
+</ul>
+<div></div>
+</div>
+
+
+<div id="calibre_link-26"><div></div>
+<h1><b>第1章 はじめに</b></h1>
+<h2 id="calibre_link-2"><b>1.1 本書の概要</b></h2>
+<p>発展編(AWS編)では､基礎編に加えて､以下を説明します｡<br />
+主にAWSを対象としたZabbixとの連携を行います｡</p>
+<p>･オートディスカバリによる端末の自動検知</p>
+<p>･アクセスログの解析結果により､AWS APIでネットワークACLでアクセスをブロック</p>
+<p>･CloudwatchとZabbixとの連携</p>
+<h2 id="calibre_link-3"><b>1.2 環境について</b></h2>
+<p>この環境では､Zabbixサーバをローカルに設置し､AWS上のWEBサーバを監視します｡</p>
+<p>今回はt2.microインスタンスでWEBサーバとDBサーバを入れた1台を作成します｡</p>
+<p>このWEBサーバは検証で使用する目的のため、AWSのセキュリティグループなどを十分に考慮していない構成になっていますので、本番環境で使用しないでください。</p>
+<img src="images/000060.jpg" alt="01aws_env01.png" />
+<br />
+<p>また､本書ではAWSを主に扱うためAWSのアカウントがあることが前提条件です｡また､AWS上でWEBサーバを起動する必要があります｡</p>
+<p>本書では､Apache/PHP/MySQLを使用したWordpressサーバを対象にしています｡</p>
+<h2 id="calibre_link-4"><b>1.3 テスト環境構築</b></h2>
+<p>上記の環境は、これより説明する手順に沿って構築を行ってください。<br />
+ネットワークはdefault VPCを使用します｡</p>
+<p>特にVPCの削除などを操作されていない方はそのまま進めてください。消去されている方は､<a href="https://docs.aws.amazon.com/ja_jp/AmazonVPC/latest/UserGuide/default-vpc.html#create-default-vpc">Default VPCの復元</a>
+ を参考に復元して下さい｡</p>
+<h2 id="calibre_link-5"><b>1.4 AWSKeyPairの作り方</b></h2>
+<p>※ここではAWSのkey Pairが必要になります｡作成されていない方は下記の｢AWSKeyPairの作り方｣を参照してください。</p>
+<h3><b>AWS key PairはSSHでEC2サーバにログインするために必要となります｡</b></h3>
+<h3><b>(1) キーペアの選択1</b></h3>
+<p>AWSの一覧のメニューからEC2を選択します｡</p>
+<img src="images/000109.jpg" alt="01aws_key01.png" />
+<h3><b>(2) キーペアの選択2</b></h3>
+<p>EC2の画面が表示が表示されますので､左側のメニューからキーペアを選択します｡</p>
+<img src="images/000022.jpg" alt="01aws_key02.png" />
+<h3><b>(3) キーペアの作成1</b></h3>
+<p>キーペアーの作成をクリックします｡</p>
+<img src="images/000015.jpg" alt="01aws_key03.png" />
+<h3><b>(4) キーペアの作成2</b></h3>
+<p>キーペアー名に任意の名前を入力し､作成ボタンをクリックします｡</p>
+<img src="images/000088.jpg" alt="01aws_key04.png" />
+<h3><b>(5) キーペのアダウンロード</b></h3>
+<p>自動でダウンロードされます｡keyの作成は終了です｡</p>
+<h2 id="calibre_link-6"><b>1.5 Cloudformationを使用したWordpressサーバの作成</b></h2>
+<h3><b>(1) Cloudformationを使用したWordpress環境構築</b></h3>
+<p>Wordpress環境はCloudformationで構築します｡Cloudformationとは｢Infrastructure as Code｣と一般的には呼ばれ､予め記述されてたコードに沿ってサーバにソフトウェアをインストールしたり設定することが出来ます｡</p>
+<p>最初にCloudformationを開くと下記のような画面が表示されますので､githubにあるテンプレートファイル｢wordpress.yml｣をダウンロードして ｢新しいスタックの作成｣ボタンをクリックします｡</p>
+<a href="https://github.com/okimasahiro/zabbix_script/blob/master/wordpress.yml">Wordpress用テンプレートファイル</a>
+<br />
+<img src="images/000004.jpg" alt="01aws_cloudformation00.png" />
+<br />
+<h3><b>(2) テンプレートのアップロード</b></h3>
+<p>｢テンプレートをAmazonS3にアップロード｣を選択し､｢ファイルを選択｣ボタンをクリックしてダウンロードしたファイルを指定し､｢次へ｣をクリックします｡</p>
+<img src="images/000040.jpg" alt="01aws_cloudformation01.png" />
+<br />
+<h3><b>(3) パラメータの設定</b></h3>
+<p>下記の画面が出ますので､設定を行います｡｢KeyName｣ですが､sshアクセスする際に必要となります｡</p>
+<table>
+<tr>
+<th><b>DatabaseName</b></th>
+<th><b>DatabasePassword</b></th>
+<th><b>DatabaseUser</b></th>
+<th><b>Keyname</b></th>
+</tr>
+<tr>
+<td>Wordpress</td>
+<td>｢任意パスワード｣</td>
+<td>admin</td>
+<td>プルダウンより選択</td>
+</tr>
+</table>
+<img src="images/000048.jpg" alt="01aws_cloudformation03.png" />
+<br />
+<h3><b>(4) オプション設定</b></h3>
+<p>次のオプション画面は､何も入力せず｢次へ｣をクリックして下さい｡</p>
+<img src="images/000111.jpg" alt="01aws_cloudformation04.png" />
+<br />
+<h3><b>(5) 確認画面</b></h3>
+<p>確認画面が表示されますので｢作成｣をクリックして下さい｡</p>
+<h3><b>(6) 構築完了の確認</b></h3>
+<p>Cloudformationの概要画面が表示されますので､｢状況｣の部分が[CREATE_COMPLETE]となれば成功です｡</p>
+<img src="images/000032.jpg" alt="01aws_cloudformation05.png" />
+<br />
+<h3><b>(7) URLの取得</b></h3>
+<p>Cloudformationの「出力タブ」にURLが記載されています。</p>
+<img src="images/000070.jpg" alt="01aws_cloudformation06.png" />
+<br />
+<h3><b>(8) Wordpressのセットアップ1</b></h3>
+<p>上記のURLをクリックします｡ec2から始まる部分は各自の環境で読み替えて下さい｡</p>
+[例] http://ec2-VVVV-XXXX-YYYY-ZZZ.ap-northeast-1.compute.amazonaws.com/<br />
+<h3><b>(9) Wordpressのセットアップ2</b></h3>
+<p>あとは､Wordpressのセットアップ画面が走りますのでセットアップを行って下さい｡</p>
+<h3><b>※検証が全て終わったらCloudformationのメニューよりスタックを忘れずに消去して下さい｡EC2を個別に消すと全てが消せなくなる場合があります</b></h3>
+<h2 id="calibre_link-7"><b>1.6 監視対象サーバの登録</b></h2>
+<p>以上の操作で監視対象となるWEBサーバの構築が完了しましたので、Zabbixサーバに登録します。作成したWEBサーバのIPアドレスは以下を参照してください。<br />
+Zabbixサーバへの登録方法につきましては、基礎編で説明していますので、ここでは省略します。</p>
+<img src="images/000081.jpg" alt="01zabbix-attach.png" />
+<h2 id="calibre_link-8"><b>1.7 Cloudformationを使用しての環境の削除方法</b></h2>
+<h3><b>(1) Cloudformationの削除</b></h3>
+<p>このあと続けて検証を行っていきますが､必要がなくなった場合は､Cloudformationを使用して削除します｡Cloudformationで作成したスタックを選択して｢アクション｣から｢スタックの削除｣を選択します｡</p>
+<img src="images/000027.jpg" alt="01aws_delete_cloudformation01.png" />
+</div>
+
+
+<div id="calibre_link-27"><div></div>
+<h1><b>第2章 Zabbixエージェントを使ったログ監視</b></h1>
+<h2 id="calibre_link-9"><b>2.1 実行環境</b></h2>
+<h3><b>(1) ログ監視の流れ</b></h3>
+<p>Zabbixエージェントを使用したログ監視は前巻の基礎編でもまとめていますが、ここでは少し手法を変えて、スクリプトを使用した障害対応方法について説明します。</p>
+<p>今回想定するシュチュエーションは</p>
+<p>①Wordpressサーバのwp-login.phpに対して</p>
+<p>②1分間に30回以上のアクセス数があった場合に</p>
+<p>③不正アクセスのIPアドレス(条件に合致した1件のみ)を検知して</p>
+<p>④ネットワークACLの最大の値を調べ</p>
+<p>⑤不正アクセスのIPを(拒否)登録していきます｡</p>
+<p>※Wordpress以外の場合は、各々設定を読み替えてください。(それぞれにヒントは記載しておきます)</p>
+<p>ここで紹介するプログラムは全てgithub上にあります｡</p>
+<a href="https://github.com/okimasahiro/zabbix_script">GitHub上のプログラム</a>
+<h3><b>(2) Zabbix-agentの設定変更</b></h3>
+<p>今回の環境では、先ほど作成したWordPressのサーバで下記の設定が必要になります。<br />
+監視するログファイル(/var/log/httpd/access_log)がzabbixユーザでもアクセスできる場合は問題ありませんが、基本的に一般ユーザ(zabbixユーザ)でアクセスできませんので、zabbixユーザにroot権限を与えます。</p>
+<p>zabbixエージェントをrootで実行する設定方法は以下になります。</p>
+<blockquote># vi /etc/zabbix/zabbix_agentd.conf<br />
+<br />
+<span>下記のコメントアウトを外し、値を1に修正 ※Zabbixサーバと監視対象のWEBサーバで設定</span>
+<br />
+#AllowRoot=0<br />
+AllowRoot=<b><b>1</b></b>
+<br />
+<br />
+<span>Zabbixのコマンド実行を許可するために下記のコメントアウトを外し、値を1に修正<br />
+※こちらはZabbixサーバのみ</span>
+<br />
+#EnableRemoteCommands=0<br />
+EnableRemoteCommands=<b><b>1</b></b>
+<br />
+<br />
+<span>Zabbixのコマンド実行を許可するために下記のコメントアウトを外し、値を1に修正</span>
+<br />
+# service zabbix-agent start</blockquote>
+<h2 id="calibre_link-10"><b>2.2 テンプレートの作成(Zabbixサーバ)</b></h2>
+<h3><b>(1) テンプレートの作成</b></h3>
+<p>①Zabbixサーバでログ監視用のテンプレートを作成します。</p>
+<p>上部メニューの「設定」-「テンプレート」をクリックし、テンプレートリストの右上より「テンプレートの作成」をクリックします。</p>
+<img src="images/000069.jpg" alt="06zabbix_open_template-list.png" />
+<br />
+<p>②今回のテンプレート名は"LogMonitoring"としています。</p>
+<p>グループも合わせて新規で作成しましょう。</p>
+<p>入力を完了したら「追加」ボタンをクリックします。</p>
+<img src="images/000098.jpg" alt="06zabbix_make_template.png" />
+<br />
+<p>③画面が切り替わり、"テンプレートを追加しました"と表示されることを確認します。</p>
+<img src="images/000003.jpg" alt="06zabbix_check_template.png" />
+<br />
+<h2 id="calibre_link-11"><b>2.3 アイテムの作成</b></h2>
+<h3><b>(1) アイテムの作成</b></h3>
+<p>①次に、ログを監視するアイテムを作成します。</p>
+<p>画面を下にスクロールして、先ほど作成したテンプレート(LogMonitoring)の項目「アイテム」をクリックします。</p>
+<img src="images/000026.gif" alt="06zabbix_open_item.png" />
+<br />
+<p>②右上の「アイテムの作成」をクリックして、アイテムを新規に作成します。</p>
+<img src="images/000010.jpg" alt="06zabbix_create_item.png" />
+<br />
+<p>③今回作成するアイテムは､ZabbixエージェントからZabbixサーバに対してログを送信するというアクションを起こすタイプになります。そのため、タイプは"Zabbixエージェント(アクティブ)"を選択します。</p>
+<p>その他の設定値は以下の通りです。</p>
+<img src="images/000071.jpg" alt="06zabbix_open_item2.png" />
+<br />
+<br />
+<br />
+<br />
+<table>
+<tr>
+<th><b>名前</b></th>
+<td>不正アクセス監視</td>
+</tr>
+<tr>
+<th><b>タイプ</b></th>
+<td>Zabbixエージェント(アクティブ)</td>
+</tr>
+<tr>
+<th><b>キー</b></th>
+<td>log[/var/log/httpd/access_log,"POST /wp-login.php",us-ascii,,skip,] (※Github上にパラメータを記載しています。)</td>
+</tr>
+<tr>
+<th><b>データ型</b></th>
+<td>ログ</td>
+</tr>
+<tr>
+<th><b>更新間隔(秒)</b></th>
+<td>60</td>
+</tr>
+<tr>
+<th><b>アプリケーションの作成</b></th>
+<td>LogMonitoring</td>
+</tr>
+</table>
+<p>④「キー」の値は、欄の右の「選択」から参照可能です。「選択」ボタンをクリックします。</p>
+<img src="images/000025.gif" alt="06zabbix_select_item.png" />
+<br />
+<p>⑤新しく「標準のアイテム」というウィンドウが表示されますので、タイプを「zabbixエージェント(アクティブ)」に変更して次の項目をクリックします。</p>
+<blockquote>log[file,&lt;regexp&gt;,&lt;encoding&gt;,&lt;maxlines&gt;,&lt;mode&gt;,&lt;output&gt;]</blockquote>
+<p>
+<span>※似た名前がありますので注意して下さい</span>
+</p>
+<img src="images/000013.jpg" alt="06zabbix_log-get_item.png" />
+<br />
+<p>⑥クリックした「キー」情報が欄に入力された状態で、アイテムの入力画面に戻ります。</p>
+<img src="images/000039.jpg" alt="06zabbix_input_item.png" />
+<br />
+<p>入力されている「キー」情報の項目の意味は、以下の通りです。</p>
+<p>&lt;file&gt;に"/var/log/httpd/access_log"を、&lt;regexp&gt;に"POST /wp-login.php"キーワードとして該当するログ1行を取得するという内容ですので､キーの内容を</p>
+<blockquote>log[/var/log/httpd/access_log,"POST /wp-login.php",us-ascii,,skip,]</blockquote>
+に変更します｡(｢us-ascii,,skip｣の間には｢,,｣と2個続きます)<table>
+<tr>
+<th><b>file</b></th>
+<td>監視対象とするファイル名を絶対パスで指定</td>
+</tr>
+<tr>
+<th><b>regexp</b></th>
+<td>ログから検知するキーワードとなる文字列を入力(正規表現も使えます)</td>
+</tr>
+<tr>
+<th><b>encoding</b></th>
+<td>監視対象とするファイルの文字コードを指定</td>
+</tr>
+<tr>
+<th><b>maxlines</b></th>
+<td>1秒間にエージェントがZabbixサーバに送信する最大行数(zabbix_agentd.confのMaxLinesPerSecondの値を上書き)</td>
+</tr>
+<tr>
+<th><b>mode</b></th>
+<td>指定したログファイルを読込む(allは最初から、skipは最後からで、デフォルトはall)</td>
+</tr>
+<tr>
+<th><b>output</b></th>
+<td>ログを抽出して監視データとして収集(デフォルトでは行全体)</td>
+</tr>
+</table>
+<p>⑦入力が完了したら、「追加」ボタンをクリックします。</p>
+<img src="images/000064.jpg" alt="06zabbix_add_item.png" />
+<br />
+<p>⑧再びアイテム一覧画面に戻るので、先ほど作成した"ログの文字列監視"が追加されていることを確認します。</p>
+<img src="images/000090.jpg" alt="06zabbix_check_item.png" />
+<br />
+<h2 id="calibre_link-12"><b>2.4 トリガーの作成</b></h2>
+<h3><b>(1) トリガーの作成</b></h3>
+<p>①トリガー作成画面へ移動し､上部メニューから「トリガー」をクリックし、トリガーの作成に移ります。</p>
+<img src="images/000110.jpg" alt="02zabbix_make_trigger.png" />
+<br />
+<p>②右上の「トリガーの作成」をクリックします。</p>
+<img src="images/000020.jpg" alt="06zabbix_make_trigger2.png" />
+<br />
+<p>③トリガー設定情報の入力</p>
+<p>今回の想定では、1分間に30回のPOST(認証ログイン)があった場合に不正アクセスがあるとして、ステータスを"軽度の障害"にするというものです。そして、復旧条件としては、直近1分間のPOSTが5回以下になった時としています。</p>
+<p>この設定は参考値ですので、実運用においては、設置した環境に適した設定を行ってください。</p>
+<table>
+<tr>
+<th><b>名前</b></th>
+<td>ログ監視：ログの文字列監視(AWS連携)</td>
+</tr>
+<tr>
+<th><b>条件式</b></th>
+<td>({TRIGGER.VALUE}=0 and {LogMonitoring:log[/var/log/httpd/access_log,"POST /wp-login.php",us-ascii,,skip,].count(60)}&gt;=30) or ({TRIGGER.VALUE}=1 and {LogMonitoring:log[/var/log/httpd/access_log,"POST /wp-login.php",us-ascii,,skip,].count(60)}&gt;5) (※Github上にパラメータを記載しています。)</td>
+</tr>
+<tr>
+<th><b>深刻度</b></th>
+<td>軽度の障害</td>
+</tr>
+</table>
+<p>
+<span>【上記､条件式の説明】</span>
+</p>
+<p>トリガーの基となる｢アイテム｣をベースに、時間やカウントを等号・不等号で組み合わせます。</p>
+<p>Zabbixではトリガー条件を満たすと「障害」(True)と判断され、満たさなくなると「正常」(False)と判断されます。</p>
+<p>({TRIGGER.VALUE}は、値が0の時は「正常」で、値が1の時は「障害」という意味になります。)</p>
+<p>上記は{TRIGGER.VALUE}が正常値の状態(0)から60秒の間に30回以上の不正アクセスの場合は障害とみなします｡</p>
+<p>次に{TRIGGER.VALUE}が異常値の状態(障害時を示す1)から60秒間で5回以上の場合は､障害が発生し続けているという意味になります｡</p>
+<p>これは復旧条件の項目がないため｢障害が発生し続けている｣となります｡</p>
+<p>{LogMonitoring:log[/var/log/httpd/access_log,"POST /wp-login.php",us-ascii,,skip,,].count(60)}&gt;=30は、先程作成したアイテム(POST /wp-login.phpの文字列監視)が直近60秒に30回以上検知されたときに条件を満たすという意味になります。</p>
+<p>この2つはandでつながっているため、合わせると下記のような意味になります。</p>
+<p>●「正常」な状態にあって、かつ1分間に30回以上の"POST /wp-login.php"があった場合を不正アクセスとして判断する。</p>
+<p>次に、上記の式だけでは、一度障害と判断されると、その後障害として残り続けてしまう(復旧条件がない)ため、復旧条件式を追加します。</p>
+<p>復旧条件としては、</p>
+<p>●障害が発生していることを前提とするため{TRIGGER.VALUE}の値が1(障害発生中)で、1分間のアクセスが5回以下になった場合、0(「正常」)な状態とします。</p>
+<p>前者の障害と判断する条件と、後者の復旧と判断する条件を"or"で結ぶことで、条件式全体で1分間のアクセスが30回以上ならば障害とし、1分間のアクセスが5回以下になれば落ち着いたとして判断します。</p>
+<p>④アイテム名は右の「追加」ボタンから選択して、条件式を修正します。</p>
+<img src="images/000086.jpg" alt="02zabbix_add_conditional-expression_item.png" />
+<br />
+<p>⑤「追加」ボタンをクリックすると、「アクションの実行条件」という新しいウィンドウが開きます。</p>
+<p>アイテム欄右にある「選択」ボタンをクリックします。</p>
+<img src="images/000025.gif" alt="06zabbix_select_item.png" />
+<br />
+<p>⑥「アイテム」のウィンドウが新しく開きます。トリガー条件とするアイテムを選びますので、右上のグループから「Log Monitoring」を選び、<br />
+そこで表示されるアイテム「不正アクセス監視」をクリックします。</p>
+<img src="images/000076.jpg" alt="06zabbix_select-key_trigger.png" />
+<br />
+<p>⑦再び「アクションの実行条件」ウィンドウに戻ります。</p>
+<p>関数の欄から条件式を利用することもできますが、選択肢が多すぎて混乱するため、</p>
+<p>ここでは特に入力せずに進めてOKです。条件式はこの後の操作で修正します。</p>
+<p>アイテム欄には先ほど選択したアイテム名が入力されていますので、このまま「挿入」ボタンをクリックします。</p>
+<img src="images/000074.gif" alt="06zabbix_select_trigger.png" />
+<br />
+<p>⑧最初のトリガーの設定画面に戻りますので、条件式の内容を修正します。</p>
+<p>長々と文字が綴られているかと思いますが、これはログ監視アイテムのキーになります。</p>
+<p>トリガーはこのキーに結び付けられた条件式により、障害の有無を判断します。</p>
+<table>
+<tr>
+<th><b>条件式の修正前</b></th>
+<td>{LogMonitoring:log[/var/log/httpd/access_log,"POST /wp-login.php",us-ascii,,skip,].last()}=0</td>
+</tr>
+<tr>
+<th><b>条件式の修正後</b></th>
+<td>({TRIGGER.VALUE}=0 and {LogMonitoring:log[/var/log/httpd/access_log,"POST /wp-login.php",us-ascii,,skip,].count(60)}&gt;=30) or ({TRIGGER.VALUE}=1 and {LogMonitoring:log[/var/log/httpd/access_log,"POST /wp-login.php",us-ascii,,skip,].count(60)}&gt;5)</td>
+</tr>
+</table>
+<p>入力されていたキーの最後"last()}=0"を、"count(60)}&gt;30"に修正し、その他全体は前述の表を参照してコピペ・修正してください。</p>
+<p>この修正した"count(60)&gt;30"は、直近1分間(60秒)で監視対象のログに｢監視対象のキーワード｣の出現回数をカウントするという意味で、そのカウントが30より大きくなった場合(つまり直近1分間の内、ログイン失敗が30回あった場合)にトリガーを反応させるという動きになります。</p>
+<p>※Zabbixの障害は、設定したトリガーが条件を満たした場合に、設定されている深刻度を出力します。</p>
+<p>条件を満たさなくなった場合が正常化したという判断になります。</p>
+<p>⑨必要な情報を入力したら「追加」ボタンをクリックして、トリガー設定を登録します。</p>
+<img src="images/000053.jpg" alt="02zabbix_input_trigger.png" />
+<br />
+<p>⑩必要な情報を入力したら「追加」ボタンをクリックして、トリガー設定を登録します。</p>
+<img src="images/000052.jpg" alt="02zabbix_input_trigger02.png" />
+<h3><b>(4) 監視対象サーバへテンプレートをリンク</b></h3>
+<p>①トリガーの設定が完了したら、今度は動作の確認をします。<br />
+監視対象サーバに作成したテンプレートを割当てましょう。</p>
+<p>上部メニューの「設定」-「ホスト」をクリックし、監視対象サーバ名「zabbix-agent」をクリックします。</p>
+<img src="images/000075.jpg" alt="02zabbix_setting_host.png" />
+<br />
+<p>②次に、上部メニューの「テンプレート」をクリックします。<br />
+"新規テンプレートをリンク"項目から、右端の「選択」ボタンをクリックします。</p>
+<img src="images/000101.jpg" alt="02zabbix_select_template.png" />
+<br />
+<p>③新しくテンプレートウィンドウが開くので、右上のグループをクリックして、「LogMonitoring」を選択します。<br />
+一覧にログ監視テンプレート(LogMonitoring)が表示されますので、チェックを入れて、「選択」ボタンをクリックします。</p>
+<img src="images/000061.jpg" alt="02zabbix_select_template2.png" />
+<br />
+<p>④再びホストの画面に戻りますので、「新規テンプレートをリンク」項目の下にある青字のリンク「追加」をクリックします。</p>
+<img src="images/000035.jpg" alt="02zabbix_select_template3.png" />
+<br />
+<p>⑤「テンプレートとのリンク」項目に、「LogMonitoring」の名前が追加されましたら、「更新」ボタンをクリックして登録します。</p>
+<img src="images/000019.jpg" alt="02zabbix_select_template4.png" />
+<br />
+<p>⑥ ホストの一覧画面に戻りますので、設定が反映されたことを確認します。</p>
+<img src="images/000089.jpg" alt="02zabbix_select_template5.png" />
+<br />
+<h3><b>(5) ログの取得確認</b></h3>
+<p>①以上の設定が完了しましたら、「監視データ」-「最新データ」に移り、実際にログが取得できていることを確認します。<br />
+「ホスト」欄の「選択」ボタンをクリックします。</p>
+<img src="images/000112.jpg" alt="0201filter01.png" />
+<p>②新しくウィンドウが開きますので、WEBサーバにチェックを入れて「選択」ボタンをクリックします。</p>
+<img src="images/000008.jpg" alt="0201filter02.png" />
+<p>③先ほどの画面に戻りますので、「フィルタリング」ボタンをクリックします。</p>
+<img src="images/000046.jpg" alt="0201filter03.png" />
+<p>④アイテム一覧が表示されますので、LogMonitoringを確認し、ログが取得できていれば成功です。</p>
+<img src="images/000073.jpg" alt="0201filter04.png" />
+<h2 id="calibre_link-13"><b>2.5 AWSのネットワークACLについて</b></h2>
+<p>まずは､前提条件となる知識として､AWSでは､接続元のIPアドレスをブロックするために｢ネットワークACL｣というのが用意されています｡</p>
+<p>具体的には､AWSのサービスから｢VPC｣を選択して､セキュリティの｢ネットワークACL｣を選択します｡サーバが属するサブネットを選択し､</p>
+<p>そこの｢インバウンドルール｣にIPアドレスを入力することでブロックが可能です｡</p>
+<img src="images/000096.jpg" alt="03aws_network_acl01.png" />
+<br />
+<p>例えば192.168.0.1/32からのアドレスを全てブロックしたい場合は､下記のように｢ルール｣を一番若い番号に割当て｢全てのトラフィック｣を拒否にします｡ IPアドレスには､ネットワークアドレスを入れた形で入力します｡(/32や/24といった形で入力します)</p>
+<img src="images/000006.jpg" alt="03aws_network_acl02.png" />
+<br />
+<p>また､AWSにはACLの数に制限があります｡デフォルトは20ですので20個のACLが作成出来ます｡(AWSに対して申請することにより上限緩和は可能です)。</p>
+<a href="http://docs.aws.amazon.com/ja_jp/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html#vpc-limits-nacls">ネットワークACLの制限</a>
+<h2 id="calibre_link-14"><b>2.6 実行環境構築の整備について</b></h2>
+<p>ではここで実際にAWSとZabbixの連携の環境を整えて行きます｡</p>
+<h3><b>(1) IAMの設定</b></h3>
+<p>最初にここで提供するPythonプログラムはAWSのCloudwatchからCPUやメモリなどの値を取得してきます｡(直接Zabbixが取得するわけではありません)</p>
+<p>このPythonプログラムがZabbixに値を渡し､Zabbixがグラフ化を行ったりします｡</p>
+<p>AWSより何かしら値を取得したりするにはアクセスキーIDとシークレットアクセスキーというのが必要になります｡(IDとパスワードみたいなものです)</p>
+<p>このそれぞれのkeyを取得するためにはまずユーザを作る必要があります｡そのユーザに対してCloudwatchを閲覧する権限を付与します｡</p>
+<p>最初にAWSのメニュー画面でIAMを選択します｡</p>
+<img src="images/000031.jpg" alt="03aws_iam01.png" />
+<br />
+<h3><b>(2) ユーザを選択</b></h3>
+<p>左側のメニューからユーザを選択します｡</p>
+<img src="images/000058.jpg" alt="03aws_iam02.png" />
+<br />
+<h3><b>(3) ユーザ追加</b></h3>
+<p>ユーザ名を入力して､｢アクセスの種類｣で｢プログラムによるアクセス｣にチェックを入れて｢次のステップ:アクセス権限｣ボタンをクリックします。</p>
+<img src="images/000084.jpg" alt="03aws_iam03.png" />
+<br />
+<h3><b>(4) アクセス件の付与</b></h3>
+<p>① ｢既存のポリシーを直接アタッチ｣を選択して下の画面から｢CloudWatchReadOnlyAccess｣を選択します。</p>
+<img src="images/000104.jpg" alt="03aws_iam04.png" />
+<br />
+<p>② 引き続き｢AmazonS3FullAccess｣を選択します。</p>
+<img src="images/000087.jpg" alt="03aws_iam04-2.png" />
+<br />
+<p>③ 最後に｢AmazonVPCFullAccess｣を選択して｢次のステップ:確認｣をクリックします｡</p>
+<img src="images/000042.jpg" alt="03aws_iam04-3.png" />
+<br />
+<h3><b>(5) アクセスキーIDとシークレットアクセスキーのダウンロード</b></h3>
+<p>このまま確認を行いユーザを作成すると以下の画面に表示されます｡｢.CSVのダウンロード｣を選択するとkeyのダウンロードがされます｡</p>
+<p>画面でも確認が出来ます｡このアクセスキーIDとシークレットアクセスキーを記録しておいて下さい｡シークレットアクセスキーは｢表示｣をクリックすると表示されます｡</p>
+<img src="images/000051.jpg" alt="03aws_iam05.png" />
+<br />
+<h3><b>(6) ネットワークACLIDの調査</b></h3>
+<p>最初にブロックするネットワークACLIDを調べます。</p>
+<p>先程説明したAWSの画面の下記の部分でネットワークACLIDを取得できます。まずはこちらを書き留めます。</p>
+<img src="images/000093.jpg" alt="03aws_network_acl00.png" />
+<br />
+<h3><b>(7) インバウンドルールの調査</b></h3>
+<p>次にインバウンドのルールで「ルール#」の最大の値を調べます。ここで「*」しか無い場合は、AWSネットワークACLについてで説明した内容で下記のように入力してください。</p>
+<table>
+<tr>
+<td>ルール#</td>
+<td>タイプ</td>
+<td>プロトコル</td>
+<td>ポート範囲</td>
+<td>ソース</td>
+<td>許可/拒否</td>
+</tr>
+<tr>
+<td>100</td>
+<td>すべてのトラフィック</td>
+<td>すべて</td>
+<td>すべて</td>
+<td>0.0.0.0/0</td>
+<td>許可</td>
+</tr>
+</table>
+<p>Zabbixで検知後､AWSに対してコマンドを使用してネットワークACLにIPアドレスを登録します｡まずは､コマンドをインストールする設定を行います。</p>
+<p>今回は、Pythonを使ってAWSに対しての操作を行います。AWSにはAPIが用意されていてこのAPIを使えばインスタンス(サーバ)をAPI経由で起動させたり、停止させたり出来ます。</p>
+<a href="https://aws.amazon.com/jp/sdk-for-python/">AWS SDK for Python (Boto3)の公式ページ</a>
+<h3><b>(8) pipのインストール</b></h3>
+<p>
+<span>注) 以降Zabbixサーバで行います</span>
+</p>
+<p>pipはPython 2.7.9以降、Python 3.4以降のバージョンにはデフォルトでインストールされていますが､ 通常のCentos7の場合は､2.7.5がインストールされます｡(2018年5月13日時点)</p>
+<p>今回の操作では、Zabbixエージェントはrootとして動作します。(zabbix_agentd.confのAllowRootを"1"に設定した)ので、rootユーザで設定を行います。</p>
+<p>Zabbixサーバにログインしてpythonをインストールします｡その前にOSやアプケーションを最新にします。</p>
+<blockquote># yum -y update<br />
+# reboot</blockquote>
+<blockquote># yum -y install python<br />
+# python --version<br />
+Python 2.7.5<br />
+</blockquote>
+<p>次にpipをインストールします｡pipとはpythonのパッケージ管理システムです｡</p>
+<blockquote># pip --version<br />
+pip 9.0.1 from /usr/lib/python2.7/site-packages (python 2.7)<br />
+</blockquote>
+<p>上記のように何かしらのバージョンが出てきた場合は､pipのインストールは必要ありません｡</p>
+<p>何も出てこない場合は､下記のコマンドを実施してpipをインストールします｡</p>
+<blockquote># yum -y install wget<br />
+# wget https://bootstrap.pypa.io/get-pip.py<br />
+# python get-pip.py<br />
+</blockquote>
+<h3><b>(9) AWS SDK for Python (Boto3)のインストール(python)</b></h3>
+<p>AWS SDK for Python (Boto3)をインストールします｡</p>
+<blockquote># pip install boto3<br />
+･････<br />
+Successfully installed boto3-1.4.7 botocore-1.7.41 s3transfer-0.1.11<br />
+</blockquote>
+<p>ここで下記のようなpipのアップグレードのエラーが出ても今回は無視してください。</p>
+<blockquote>You are using pip version 9.0.1, however version 9.0.3 is available. You should consider upgradsing via the 'pip install --upgrade pip' command.</blockquote>
+<h3><b>(10) アクセスキーID と シークレットアクセスキーの設定</b></h3>
+<p>AWSを操作するためには先程､取得したアクセスキーIDとシークレットアクセスキーが必要になります｡</p>
+<p>Access Key とSecret Keyを取得したらサーバに設定を行います｡</p>
+<p>仮に下記のようなAccess KeyとSecret Keyが得られたとします｡</p>
+<table>
+<tr>
+<td>アクセスキーID</td>
+<td>シークレットアクセスキー</td>
+</tr>
+<tr>
+<td>AKIAIXXXXXXXXXXXXXXXXXXXX</td>
+<td>AB12345YYYYYYYYYYYYYYYYYYYYYYY</td>
+</tr>
+</table>
+<p>AWS CLIをインストールします。</p>
+<blockquote># pip install awscli --user</blockquote>
+<p>次にこの情報をコンソール上で入力します｡rootユーザで実行します｡</p>
+<blockquote># /root/.local/bin/aws configure<br />
+AWS Access Key ID [None]:<i><i>AKIAIXXXXXXXXXXXXXXXXXXXX</i></i>
+<br />
+AWS Secret Access Key [None]:<i><i>AB12345YYYYYYYYYYYYYYYYYYYYYYY</i></i>
+<br />
+Default region name [None]:<i><i>ap-northeast-1</i></i>
+<br />
+Default output format [None]:<br />
+</blockquote>
+<p>試しに､S3にバケットを作成して､コマンドを実行してみましょう｡一覧が取得出来たら成功です｡AWSの管理画面でS3上にバケットを作成しておいてください。<br />
+list_bucket.pyファイルは<a ref="https://github.com/okimasahiro/zabbix_script/blob/master/list_bucket.py">こちら</a>
+ にあります。</p>
+<blockquote>
+<span>#list_bucket.pyファイルを作成します。</span>
+<br />
+# vi list_bucket.py<br />
+import boto3<br />
+<br />
+s3 = boto3.client('s3')<br />
+response = s3.list_buckets()<br />
+<br />
+print(response)</blockquote>
+レスポンスがdict形式(辞書形式)で返ってきます。<blockquote>
+<span>#作成したファイルを実行します。</span>
+<br />
+# python list_bucket.py<br />
+<br />
+u'Owner': {u'DisplayName': 'hoge', u'ID': 'fe6d8acf4490e2403e2434348fac73bf5a26f9376efd5e9b21e92b1'}, u'Buckets': [{u'CreationDate': datetime.datetime(2017, 8, 26, 6, 42, 46, tzinfo=tzlocal()), u'Name': 'cf-templates-XXXXXX-ap-northeast-1'}, {u'CreationDate': datetime.datetime(2016, 11, 1, 4, 47, 6, tzinfo=tzlocal()), u'Name': 'kumo'}, {u'CreationDate': datetime.datetime(2017, 8, 16, 6, 0, 13, tzinfo=tzlocal()), u'Name': 'kshell'}, {u'CreationDate': datetime.datetime(2017, 11, 2, 1, 0, 15, tzinfo=tzlocal()), u'Name': 'klearning'}], 'ResponseMetadata': {'HTTPStatusCode': 200, 'RetryAttempts': 0, 'HostId': 'so8poQKa1ekKxxxxxxz/yyyyyyyyyyyyyyyyqYqTY6PP34DYpMojuvFPQQ=', 'RequestId': '3rerr32434sgts7AA', 'HTTPHeaders': {'x-amz-id-2': 'so8pSfrFRERRWRER#R94F6z/9ddfer312e43r43e4SpGhnUphDHSDFERER###"ESuvFPQQ=', 'server': 'AmazonS3', 'transfer-encoding': 'chunked', 'x-amz-request-id': 'BBBBBBBBBBBBBB', 'date': 'Wed, 08 Nov 2017 08:36:54 GMT', 'content-type': 'application/xml'}}}</blockquote>
+ずらずらと結果が出てきますが､上記のようにエラーがなくレスポンスらしきものが返ってきていればAPIでの接続は､OKだなと思って下さい｡<h2 id="calibre_link-15"><b>2.7 プログラム作成</b></h2>
+<h3><b>(1) プログラムの流れ</b></h3>
+<p>AWSとの接続が確認出来たところで､ネットワークACLでブロックするプログラムを作成します｡</p>
+<p>プログラムの流れとしては､</p>
+<p>1.Zabbixから引数(第1引数)で拒否するIPアドレスを受け取ります。</p>
+<p>2.現在のネットワークACLの最小の番号を取得します｡これが85であれば一旦99まで設定をクリアします。</p>
+<p>3.最小の番号を取得したらそのマイナス1の番号を計算します。</p>
+<p>4.計算した番号に拒否するIPアドスをDBに登録します。</p>
+<h3><b>(2) mysql-connectorのインストール</b></h3>
+<p>pythonからMySQLに接続するためのconnectorをインストールします。</p>
+<blockquote>
+<span># MySQLに接続するために必要なパッケージをインストール</span>
+<br />
+# yum -y install python-devel mysql-devel gcc epel-relase<br />
+# yum -y install msql-connector-python<br />
+# pip install mysqlclient<br />
+<br />
+Collecting mysqlclient<br />
+Using cached mysqlclient-1.3.12.tar.gz<br />
+Building wheels for collected packages: mysqlclient<br />
+Running setup.py bdist_wheel for mysqlclient ... done<br />
+Stored in directory: /root/.cache/pip/wheels/df/bb/60/bf7c315cbe163515db1c846e4ffa5557dd785c82e82f3492e8<br />
+Successfully built mysqlclient<br />
+Installing collected packages: mysqlclient<br />
+Successfully installed mysqlclient-1.3.12</blockquote>
+<p>ここでDBへの接続がPython経由で出来るかを確認します。Zabbixデータ・ベース内のユーザ情報を出力します。</p>
+<p>
+<a href="https://github.com/okimasahiro/zabbix_script/blob/master/block_ip.py">データベース接続プログラム</a>
+</p>
+<p>実行してみます。下記一覧が表示されたら成功です。</p>
+<blockquote># python db.py<br />
+(1L, 'Admin')<br />
+(2L, 'guest')<br />
+(3L, 'yamada')<br />
+</blockquote>
+<p>ではDBに接続して不正アクセスを検知してブロックします。もう一度、不正検知の条件を下記に記載します。</p>
+<p>・Wordpressのログイン画面(wp-login.php)に対して1分間に30回以上アクセスしたIPアドレスをブロックする。</p>
+<h3><b>(3) プログラム内容の修正</b></h3>
+<a href="https://github.com/okimasahiro/zabbix_script/blob/master/block_ip.py">ブロックプログラム</a>
+ の下記の内容を変更します｡ 下記の情報を変更します｡<blockquote>
+<span>##### 不正アクセス条件(各環境に合わせて変更してください) ######</span>
+<br />
+① 何秒おきにログを調査するか。これはZabbixの監視間隔と合わせます<br />
+TIMESTAMP = "600"<br />
+<br />
+② 監視対象ファイルです。もし、Wordpress以外の場合は、ここに不正アクセスからブロックしたいアクセスするhtmlファイル名などを記載してください<br />
+BLOCKWORD = "wp-login.php"<br />
+<br />
+③ 上記の①の「TIMESTAMP」で設定した間に「BLOCKWORD」へのアクセスが以下の「ATNUM」で設定した数量以上あった場合ブロックします。<br />
+今回は、テストで動かしますのでここは小さな数を入力すれば良いでしょう<br />
+ATNUM = "5"<br />
+<br />
+⑤Zabbixデータベース関連変数(各環境に合わせて変更してください)<br />
+DBUSER = "zabbix"<br />
+DBPASS = ""<br />
+</blockquote>
+<h3><b>(5) プログラムの設置</b></h3>
+上記の設定が完了後､ /usr/local/binにblock_ip.pyという名前で設置します｡<h3><b>(6) プログラムの使用方法</b></h3>
+<p>まずは、「BLOCKWORD」で記載した(今回はWordpressのwp-login.php)に対して、「ATNUM」以上のアクセスしてみましょう。</p>
+次に実際に実行します。<br />
+(1)ネットワークACLIDの調査で調べた「ネットワークACLID」<br />
+(2)インバウンドルールで調査した「ルール」の最大の値を使います。<blockquote>使い方は # python block_ip.py [ネットワークACLID]　[インバウンドルールの最大値] です。<br />
+(例) # python block_ip.py acl-123abc 100</blockquote>
+プログラムが正常に実行できない場合は、Zabbixエージェントからログが送られているかを確認します。Zabbixサーバ側でDBにアクセスします<blockquote>[ec2-user@ip-10-1-0-192 ~]# mysql -uroot -p<br />
+Enter password:<br />
+Welcome to the MariaDB monitor. Commands end with ; or \g.<br />
+Your MariaDB connection id is 307452<br />
+Server version: 5.5.56-MariaDB MariaDB Server<br />
+<br />
+MariaDB [(none)]&gt; select * from zabbix.history_log;<br />
+Empty set (0.00 sec)<br />
+</blockquote>
+<p>上記のようにEmptyとなった場合は、エージェント側からログが送られていませんのでエージェントの設定を見直してください。</p>
+<h3><b>(7) 確認</b></h3>
+<p>まずは、ブラウザから不正アクセスと認識されブロックされていることを確認します。(WEBが見られなくなります)</p>
+<p>次にAWS側の「インバウンドルール」を見てみます。IPアドレスが登録されていることが確認できるかと思います。<br />
+追加されたACLは削除してください。</p>
+<h2 id="calibre_link-16"><b>2.8 アクションの作成</b></h2>
+<h3><b>(1) アクションの作成</b></h3>
+<p>①AWSと連携するため、作成したトリガーに対するアクションの作成を行います｡<br />
+「設定」-「アクション」から「イベントソース」が「トリガー」になっていることを確認して「アクションの作成」をクリックします｡</p>
+<img src="images/000014.jpg" alt="06zabbix_action1.png" />
+<br />
+<p>②次に、アクションの「名前」を入力します。<br />
+今回作成するアクションでは、「ログ監視：ログの文字列監視(AWS連携)」トリガーのみ反応させたいと思いますので、「アクションの実行条件」をクリックします。</p>
+<table>
+<tr>
+<th><b>名前</b></th>
+<td>ネットワークACLの制限(AWS連携)</td>
+</tr>
+</table>
+<img src="images/000056.jpg" alt="02zabbix_aws_action01.png" />
+<br />
+<p>③「アクションの実行条件」タブに切り替え後、項目「新規条件」にトリガー名"ログ監視：ログの文字列監視(AWS連携)"を入力して"追加"文字をクリックします。<br />
+この時、「新規条件」は、"トリガー名"-"含まれる"となっていることを確認してください。この条件により、作成しているアクションはこのトリガー限定となります。</p>
+<br />
+<img src="images/000091.jpg" alt="02zabbix_aws_action02.png" />
+<br />
+<p>④項目「アクションの実行条件」のラベルCに設定が追加れていることを確認し、「アクションの実行内容」タブをクリックします。</p>
+<img src="images/000079.jpg" alt="02zabbix_aws_action03.png" />
+<br />
+<p>⑤「アクションの実行内容」では、「アクションの実行条件」で設定した条件を満たした場合に実行するアクションを設定します。</p>
+<p>項目「アクションの実行内容」の「新規」をクリックします。</p>
+<img src="images/000102.jpg" alt="02zabbix_aws_action04.png" />
+<br />
+<p>⑥項目「実行内容の詳細」が拡張され、各種設定項目が表示されます。<br />
+今回は、スクリプトを実行しますので、「実行内容のタイプ」プルダウンメニューから"リモートコマンド"を選択します。<br />
+項目「ターゲットリスト」では対象となるホストを選択します。(手順は後述します。)<br />
+項目「コマンド」には、先ほど作成したAWS連携スクリプトを配置したパスを入力します。</p>
+<br />
+<table>
+<tr>
+<th><b>実行内容のタイプ</b></th>
+<td>リモートコマンド</td>
+</tr>
+<tr>
+<th><b>コマンド</b></th>
+<td>/bin/python /usr/local/bin/block_ip.py acl-XXXXXXXX(※1) 100(※2)<br />
+<br />
+※1 ACL IDを入力<br />
+※2 ACLルールの最大No.を入力</td>
+</tr>
+</table>
+<br />
+<img src="images/000085.jpg" alt="02zabbix_aws_action04-2.png" />
+<br />
+<p>項目「ターゲットリスト」の"新規"をクリックすると、枠が拡張されますので、「ターゲット」プルダウンメニューから"ホスト"を選択します。次に、「選択」ボタンをクリックします。</p>
+<img src="images/000043.jpg" alt="02zabbix_aws_action05.png" />
+<p>新しくウィンドウが表示されますので、右上のグループから"Zabbix servers"を選び、"Zabbix server"(今回のスクリプトはZabbix server上で動作)にチェックを入れて、「選択」ボタンをクリックします。</p>
+<img src="images/000107.jpg" alt="02zabbix_aws_action06.png" />
+<p>"Zabbix server"が選択されていることを確認し、"追加"文字をクリックします。</p>
+<img src="images/000059.jpg" alt="02zabbix_aws_action07.png" />
+<p>項目「ターゲットリスト」に選択したホスト名が追加されていることを確認し、"追加"文字をクリックします。(※「追加」ボタンではありません。)</p>
+<img src="images/000113.jpg" alt="02zabbix_aws_action08.png" />
+<p>⑦「アクションの実行内容」に設定した内容が反映されたことを確認し、「追加」ボタンをクリックします。</p>
+<img src="images/000005.jpg" alt="02zabbix_aws_action09.png" />
+<br />
+<p>⑧アクションの一覧画面に戻りますので、設定したアクションが追加されたことを確認します。</p>
+<img src="images/000044.jpg" alt="02zabbix_aws_action10.png" />
+<br />
+<p>以上の設定により、AWS上の対象サーバに不正アクセスがあった場合は、設定した条件(今回は1分間に30回のアクセス)をしきい値としてZabbixが自動的にAWSと連携してアクセスを禁止することができるようになりました。</p>
+<h2 id="calibre_link-17"><b>2.9 AWSの情報の記述方法</b></h2>
+<h3><b>(1) ホストのマクロを利用する方法</b></h3>
+<p>これまでの手順では、アクションで実行するコマンドに直接ACL ID情報や、ACLルールの最大数を記述していますが、それ以外の方法として、ホストのマクロを利用する方法があります。<br />
+「設定」-「ホスト」から監視対象のホストをクリックし、「マクロ」タブで設定が可能です。 次の例では、ユーザー設定として、"{$ACLID}"と"{$MAXACLRULE}"を作っています。</p>
+<img src="images/000018.jpg" alt="02zabbix_aws_action11.png" />
+<br />
+<p>ここで注意する点としては、スクリプトを実行するサーバはZabbix serverですが、アクションの元となるトリガーを持っているホストは監視対象サーバのため、マクロを設定するホストはAWSのサーバの方になります。</p>
+<h3><b>(2) コマンドの記述方法</b></h3>
+<p>アクションの実行内容のコマンド欄への記述の仕方は以下のようになります。先ほどはACL ID/ACLルール数の情報を、ユーザー設定で作成した"{$ACLID}"と"{$MAXACLRULE}"に置き換えています。</p>
+<img src="images/000029.jpg" alt="02zabbix_aws_action12.png" />
+<br />
+<p>以上で､AWSと連携したログ監視の設定が完了です｡</p>
+</div>
+
+
+<div id="calibre_link-18"><div></div>
+<h1><b>第3章 CloudWatchとの連携</b></h1>
+<p>サーバの情報はEC2にインストールしたZabbixエージェントから取得する方法もありますが、Zabbixのアイテムで外部キーを使用することでCloudWatchから情報を取得することも可能になります。<br />
+<br />
+ここでは、すでにZabbix上にはAWSの監視対象ホストが登録されていて、またzabbixユーザーがCloudWatchにアクセスできる状態を前提として、ZabbixとCloudWatchとを連携する方法について説明します。</p>
+<h2 id="calibre_link-19"><b>3.1 CloudWatchとの連携ための準備</b></h2>
+<h3><b>(1) AWS CLIスクリプトの作成</b></h3>
+<p>はじめに、Zabbixの外部キーを使用するAWS CLIを使ったスクリプトを作成します。 この例では、インスタンスのCPU使用率を取得するスクリプトになっています。</p>
+<p>以下のスクリプト内の[Name=InstalceId,Value=i-XXXXXXX」の部分のValueの値はAWSコンソールのEC2の一覧よりZabbix-AgentのinstanceIDを取得します。</p>
+<img src="images/000023.jpg" alt="03aws_instanceid.png" />
+<br />
+<blockquote>[Zabbixサーバで実施します]<br />
+<span>データ整形に必要なjqをインストール</span>
+<br />
+$ su -<br />
+# yum -y install epel-release<br />
+# yum -y install jq<br />
+<br />
+<span>"/usr/lib/zabbix/externalscripts"ディレクトリにスクリプトを配置</span>
+<br />
+# cd /usr/lib/zabbix/externalscripts<br />
+# vi aws_cloudwatch.sh<br />
+<br />
+#!/bin/sh<br />
+<br />
+export AWS_ACCESS_KEY_ID=AKIAIXXXXXXXXXXXXXXXXXXXX<br />
+export AWS_SECRET_ACCESS_KEY=AB12345YYYYYYYYYYYYYYYYYYYYYYY<br />
+export AWS_DEFAULT_REGION=ap-northeast-1<br />
+<br />
+/bin/aws cloudwatch get-metric-statistics --namespace AWS/EC2 --metric-name CPUUtilization --start-time `date --iso-8601=seconds --date "1 minute ago"` --end-time `date --iso-8601=seconds` --period 300 --statistics Average --dimensions Name=InstanceId,Value=i-XXXXXXXXXXXXXXXXX |jq -r '.Datapoints[].Average'<br />
+<br />
+<span>※取得間隔(--period 300)は検証に応じて適宜変更してください。</span>
+<br />
+<br />
+<span>注)スクリプト内にAWSのキー情報を記載しますので、取扱いに注意してください</span>
+</blockquote>
+<blockquote>
+<span>作成したスクリプトに実行権限を付与</span>
+<br />
+# chmod +x aws_cloudwatch.sh</blockquote>
+<h3><b>(2) AWS CLIスクリプトの動作確認</b></h3>
+<p>①作成したスクリプトの動作確認を行います。<br />
+スクリプトでは直近5分間のCPU使用率を取得する設定にしていますが、検証を容易にするため、CloudWatchの詳細モニタリングを有効化にします。下記はZabbix Agentのインスタンスで行います。<br />
+<br />
+<span>注) CloudWatchの詳細モニタリングを有効化すると、別途料金が発生しますので注意してください。<br />
+<br />
+</span>
+ EC2ダッシュボードの「インスタンス」から、Zabbix Agentのインスタンスを選択して、右クリックします。「ClouWatchのモニタリング」ー「詳細モニタリングを有効化」を選択します。</p>
+<img src="images/000057.jpg" alt="04aws_cloudwatch_enable.png" />
+<p>②次に、スクリプトを直接実行して結果を確認します。(結果が出てこない場合は時間を置いて再度実行してみてください)</p>
+<br />
+<blockquote># cd /usr/lib/zabbix/externalscripts<br />
+<br />
+<span>スクリプトを実行すると以下のような結果が表示されます。</span>
+<br />
+# ./aws_cloudwatch.sh<br />
+0.033333333333322<br />
+<br />
+[補足説明]<br />
+スクリプトの最後の"|jq -r '.Datapoints[].Average'"部分を削除すると、json形式で下記のように上記のスクリプトの詳細が見られます。<br />
+<br />
+# ./aws_cloudwatch.sh<br />
+{<br />
+"Datapoints": [<br />
+{<br />
+"Timestamp": "2018-05-22T21:41:00Z",<br />
+"Average": 0.169491525423671,<br />
+"Unit": "Percent"<br />
+}<br />
+],<br />
+"Label": "CPUUtilization"<br />
+}<br />
+<br />
+</blockquote>
+<h2 id="calibre_link-20"><b>3.2 CloudWatch用テンプレートの作成</b></h2>
+<p>スクリプトの準備ができましたので、CloudWatch用のテンプレートを作成します。</p>
+<h3><b>(1) テンプレートの作成</b></h3>
+<p>①「設定」-「テンプレート」から、右上の「テンプレートの作成」ボタンをクリックします。</p>
+<img src="images/000094.jpg" alt="04aws_cloudwatch_template01.png" />
+<p>②「テンプレート名」欄に"AWS_CloudWatch"、「新規グループ作成」欄に"AWS-EC2"と入力して、「追加ボタン」ボタンをクリックします。</p>
+<table>
+<tr>
+<th><b>テンプレート名</b></th>
+<td>AWS_CloudWatch</td>
+</tr>
+<tr>
+<th><b>新規グループ作成</b></th>
+<td>AWS-EC2</td>
+</tr>
+</table>
+<br />
+<img src="images/000082.jpg" alt="04aws_cloudwatch_template02.png" />
+<p>③先ほどのテンプレート一覧に戻りますので、"AWS_CloudWatch"が作成されたことを確認します。</p>
+<img src="images/000045.jpg" alt="04aws_cloudwatch_template03.png" />
+<h3><b>(2) CloudWatch用アイテムの作成</b></h3>
+<p>①次に、CloudWatchからデータを取得するためのアイテムを作成します。<br />
+「AWS_CloudWatch」の"アイテム"をクリックします。</p>
+<img src="images/000103.jpg" alt="04aws_cloudwatch_template04.png" />
+<br />
+<br />
+<p>②「アイテム」の画面に移りましたら、右上の「アイテムの作成」ボタンをクリックします。</p>
+<img src="images/000108.jpg" alt="04aws_cloudwatch_template05.png" />
+<br />
+<br />
+<p>③「アイテム」の設定画面では、以下の項目を入力します。<br />
+今回の特徴としては、選ぶタイプが「外部チェック」になることです。「キー」は前節で作成したスクリプト名を入力することで、コマンドの実行結果がZabbixに連携されることになります。</p>
+<img src="images/000016.jpg" alt="04aws_cloudwatch_template06.png" />
+<br />
+<br />
+<p>入力が完了しましたら「追加」ボタンをクリックします。</p>
+<img src="images/000077.jpg" alt="04aws_cloudwatch_template07.png" />
+<table>
+<tr>
+<th><b>名前</b></th>
+<td>CPUUtilization</td>
+</tr>
+<tr>
+<th><b>タイプ</b></th>
+<td>外部チェック</td>
+</tr>
+<tr>
+<th><b>キー</b></th>
+<td>aws_cloudwatch.sh</td>
+</tr>
+<tr>
+<th><b>単位</b></th>
+<td>%</td>
+</tr>
+<tr>
+<th><b>更新間隔</b></th>
+<td>300</td>
+</tr>
+<tr>
+<th><b>アプリケーションの作成</b></th>
+<td>AWS-EC2</td>
+</tr>
+</table>
+<br />
+<p>④先ほどの「アイテム」の一覧画面に戻りますので、"CPUUtilization"が作成されていることを確認してください。</p>
+<img src="images/000041.jpg" alt="04aws_cloudwatch_template08.png" />
+<br />
+<h2 id="calibre_link-21"><b>3.3 CloudWatch用テンプレートの割当て</b></h2>
+<h3><b>(1) テンプレートの割当て</b></h3>
+<p>①「設定」-「テンプレート」から、テンプレートの一覧を表示して、監視対象ホスト名をクリックします。</p>
+<img src="images/000055.jpg" alt="04aws_cloudwatch_template09.png" />
+<p>②「テンプレート」から、「新規テンプレートをリンク」欄右の「選択」ボタンをクリックします。</p>
+<img src="images/000067.jpg" alt="04aws_cloudwatch_template10.png" />
+<p>③「テンプレート」から、「新規テンプレートをリンク」欄右の「選択」ボタンをクリックします。</p>
+<img src="images/000080.jpg" alt="04aws_cloudwatch_template10-1.png" />
+<p>④また「テンプレート」の画面に戻りますので、「新規テンプレートをリンク」欄下の"追加"文字をクリックします。</p>
+<img src="images/000092.jpg" alt="04aws_cloudwatch_template10-2.png" />
+<p>⑤「テンプレートとのリンク」欄に"AWS_CloudWatch"が追加されたことを確認し、「更新」ボタンをクリックします。</p>
+<img src="images/000047.jpg" alt="04aws_cloudwatch_template10-3.png" />
+<p>⑥「ホスト」の一覧画面に戻りますので、欄に"AWS_CloudWatch"が追加されたことを確認します。</p>
+<img src="images/000001.jpg" alt="04aws_cloudwatch_template10-4.png" />
+<h2 id="calibre_link-22"><b>3.4 CloudWatchとの連携確認</b></h2>
+<h3><b>(1) 最新データの確認</b></h3>
+<p>①「監視データ」-「最新データ」から、作成したアイテムの値が取得できていることを確認します。<br />
+「ホスト」欄右の「選択」ボタンをクリックします。</p>
+<img src="images/000049.jpg" alt="04aws_cloudwatch_template10-5.png" />
+<p>②新しくウィンドウが表示されますので、右上の「グループ」に注意して、監視対象ホストにチェックを入れ、「選択」ボタンをクリックします。</p>
+<img src="images/000024.jpg" alt="04aws_cloudwatch_template10-6.png" />
+<p>③「ホスト」欄に監視対象ホスト名が追加されますので、「フィルタリング」ボタンをクリックします。</p>
+<img src="images/000030.jpg" alt="04aws_cloudwatch_template10-7.png" />
+<p>④監視対象ホストの情報が表示されますので、テンプレートで作成した「AWS-EC2」の"CPUUtilization"で値が取得できていることを確認します。</p>
+<img src="images/000054.jpg" alt="04aws_cloudwatch_template10-8.png" />
+<br />
+<br />
+<h3><b>[補足説明]</b></h3>
+<p>今回は参考としてCloudWatchとの連携はCPU使用率のみを扱いましたが、スクリプトに記述するパラメータを変更することで、それ以外の情報も取得することが可能です。詳細はAWS CLIの公式ドキュメントを参照してください。<br />
+また、他にもAWS用のテンプレートやZabbix-CloudWatch間の連携スクリプトを作成し、GitHub上で公開されている方もいらっしゃいます。こちらも参考にされてはいかがでしょうか。</p>
+</div>
+
+
+<div id="calibre_link-0"><div></div>
+<h1><b>第4章 オートディスカバリ(AWS編)</b></h1>
+<p>この章では、これまでの内容と少し変わって、監視対象となるホストやネットワーク機器を自動で登録するための手順について説明します。手動での登録は、台数が少ない場合にはそれほど大きな手間はかかりませんが、AWSでAuto Scalingを利用するとなかなか厄介になってきます。そこで、Zabbixの機能を利用して、監視対象の自動登録を行います。</p>
+<h2 id="calibre_link-23"><b>4.1 ネットワークディスカバリ(Zabbixサーバから検索)</b></h2>
+<p>監視対象の自動登録の方法は、</p>
+<p>① Zabbixサーバから探しに行く方法</p>
+<p>② Zabbixエージェントが自発的に存在を申請する方法</p>
+<p>の2種類あります。まずはZabbixサーバが探しに行く方法ついて説明します。</p>
+これら方法はシンプルで簡単ですが、探索のためのパケットとサーバ側の負荷がディスカバリの範囲に比例して増えていきますので、範囲(IPのレンジ)を限定して使用することに注意してください。<h3><b>(1) ディスカバリルールの表示</b></h3>
+<p>ローカルネットワークに存在する監視対象を探すディスカバリルールは、Zabbixをインストールした時点で参考となるルールが作成されています。</p>
+<p>そこで、このルールを利用して、ディスカバリ機能を有効にします。</p>
+「設定」-「ディスカバリ」と表示し、作成されているディスカバリルール"Local network"をクリックします。<img src="images/000011.jpg" alt="02network_discovery01.png" />
+<br />
+<h3><b>(2) ディスカバリルールの修正</b></h3>
+<p>デフォルトの設定では、"IPアドレスの範囲"で指定されたIPアドレスに対して探索をかける内容になっています。</p>
+<p>その際、監視対象のホストはZabbixエージェントの"system.uname"をキー情報として探索します。</p>
+<p>また、監視対象が固有であるという情報は、IPアドレスで判断する内容になっています。</p>
+<p>今回はこのまま設定を流用し、探索するIPアドレスの範囲を設定します。(今回のVPCでは"10.1.0.0/24"の範囲)。</p>
+<p>修正後は設定を有効化するため、"有効"にチェックを入れて、「更新」ボタンをクリックします。</p>
+<img src="images/000078.jpg" alt="02network_discovery02.png" />
+<br />
+<br />
+[上記の説明]<table>
+<tr>
+<th><b>IPアドレスの範囲欄の記述方法</b></th>
+<td>10.1.0.1-254<br />
+<br />
+(参考)複数のIPアドレスを範囲に含める記述<br />
+<br />
+例1) カンマ区切り<br />
+192.168.1.1, 192.168.2.2, ...(複数のIPアドレスをカンマで区切る)<br />
+<br />
+例2) 範囲指定<br />
+192.168.1.1-254 ...(ハイフンでIPアドレスの範囲を指定する)<br />
+<br />
+例3) ネットマスク 192.168.1.0/24 ...(IPアドレスの最後にネットマスクを使用する)</td>
+</tr>
+</table>
+<br />
+<h3><b>(3) ディスカバリルールの確認</b></h3>
+<p>「更新」ボタンをクリックすると、初めのディスカバリルールの一覧画面に戻りますので、修正した内容が正しいことを確認します。</p>
+<img src="images/000037.jpg" alt="02network_discovery03.png" />
+<br />
+<p>注)公式ドキュメントでは、Ver.2.2までは1つのIPアドレスに対して複数のディスカバリルールが存在すると</p>
+<p>予期せぬエラーが発生するおそれがあるため、設定を避けるようにと注意事項が記載されています。</p>
+<p>Ver.2.4以上にはその記載はありませんが、念のためディスカバリルールが重複しないように注意してください。</p>
+<h3><b>(4) アクションの表示</b></h3>
+<p>次に、ディスカバリで新しい監視対象が見つかった場合に実行するアクションを設定します。<br />
+「設定」-「アクション」と表示し、右上の"イベントソース"のプルダウンから、ディスカバリを選択します。<br />
+こちらもディスカバリルールと同様に、最初からサンプルとなるルールが作成されていますので、"Auto discovery Linux servers."をクリックします。</p>
+<img src="images/000036.jpg" alt="02network_discoveryaction01.png" />
+<br />
+<h3><b>(5) アクションの修正</b></h3>
+<p>"Auto discovery Linux servers."の設定画面に切り替わりますので、「アクション」タブの「有効」にチェックを入れ、そのまま「アクションの実行条件」タブをクリックします。</p>
+<img src="images/000007.jpg" alt="02network_discoveryaction02.png" />
+<br />
+<br />
+<br />
+<h3><b>(6) アクションの実行条件の確認</b></h3>
+<p>①「アクションの実行条件」タブでは、ディスカバリで新しい監視対象が見つかったときに実行するアクションを設定します。<br />
+デフォルトの設定では、アクションの実行条件が3つ作成されています。</p>
+<img src="images/000028.jpg" alt="02network_discoveryaction03.png" />
+<br />
+<p>このデフォルトの設定では、以下の3つの条件(ラベルA、B、C)を満たした際にアクションを起こすという内容になっています。</p>
+<br />
+<table>
+<tr>
+<th><b>ラベル</b></th>
+<td>名前</td>
+<td>備考</td>
+</tr>
+<tr>
+<th><b>ラベルA</b></th>
+<td>"受信した値 含まれる Linux"</td>
+<td>(2)「ディスカバリルールの修正」で使用したキー情報"system.uname"に"Linux"という文字列が含まれているかどうかを判断します。<br />
+<br />
+"system.uname"ではこのような情報を取得しています。デフォルトの設定では、最初の"Linux"の文字列を引っ掛けていることになります。<br />
+<br />
+<b><b>Linuxip-10-1-0-253 4.9.27-14.31.amzn1.x86_64 #1 SMP Wed May 10 01:58:40 UTC 2017 x86_64</b></b>
+</td>
+</tr>
+<tr>
+<th><b>ラベルB</b></th>
+<td>"ディスカバリのステータス=Up"</td>
+<td>ディスカバリルールで見つかった機器がUp(稼働している)かどうかを判断します。</td>
+</tr>
+<tr>
+<th><b>ラベルC</b></th>
+<td>"サービスのタイプ=Zabbixエージェント"</td>
+<td>ディスカバリに応答したサービスを判断します。<br />
+(2)「ディスカバリルールの修正」で設定したチェック項目から、Zabbixエージェント以外にもHTTPやSSHやSNMPなどを選ぶことができます。</td>
+</tr>
+</table>
+<p>②ここは設定を変更せずに、「アクションの実行内容」タブをクリックします</p>
+<img src="images/000072.jpg" alt="02network_discoveryaction04.png" />
+<br />
+<h3><b>(7) アクションの実行内容の確認</b></h3>
+<p>①「アクションの実行内容」タブでは、ディスカバリで新しい監視対象が見つかり、「アクションの実行条件」を満たした場合に起こすアクションを設定します。</p>
+<p>デフォルトでは、見つけた監視対象をホストグループ"Linux servers"に追加し、テンプレート"Template OS Linux"を追加する内容になっています。</p>
+<p>割り当てられるアクションは、ホストグループの追加やテンプレートの作成などの他、メッセージを送信することもできます。</p>
+<p>ここでは例としてディスカバリで見つかった監視対象があったときにメールを送信する設定を行います。</p>
+<p>「アクションの実行内容」の"新規"文字をクリックします。</p>
+<img src="images/000062.jpg" alt="02network_discoveryaction05.png" />
+<br />
+<br />
+<p>②"新規"文字をクリックすると、"実行内容の詳細"枠が表示されます。</p>
+<p>デフォルトで"実行内容のタイプ"にメッセージの送信が選択されていますので、続けて送信先の設定を行います。</p>
+<p>"ユーザーグループに送信"欄の"追加"文字をクリックします。</p>
+<p>※送り先のユーザー/ユーザーグループ/メールサーバの設定手順については、<b><b>
+<i><b><i>前著の手順</i></b></i>
+</b></b>
+ で説明しているため省略します。</p>
+<img src="images/000105.jpg" alt="02network_discoveryaction06.png" />
+<br />
+<p>③"追加"をクリックすると、新たに"ユーザーグループ"のポップアップウィンドウが表示されますので、"Support Group"にチェックを入れ、「選択」ボタンをクリックします。</p>
+<img src="images/000012.jpg" alt="02network_discoveryaction07.png" />
+<br />
+<br />
+<p>④画面が戻りますので、"実行内容の詳細"にある"ユーザーグループに送信"に先程選択した"Support Group"が表示されていることを確認して、"追加"文字をクリックします。<br />
+ここで「更新」ボタンをクリックしてしまうと、"実行内容の詳細"で選択した内容が反映されませんので注意してください。</p>
+<img src="images/000021.jpg" alt="02network_discoveryaction08.png" />
+<br />
+<br />
+<p>⑤「アクションの実行内容」タブに戻りますので、"ユーザーグループにメッセージを送信"の設定が反映されていることを確認し、「更新」ボタンをクリックします。</p>
+<img src="images/000066.jpg" alt="02network_discoveryaction09.png" />
+<br />
+<br />
+<p>⑥「アクション」一覧画面に戻り、設定した内容が問題ないことを確認します。<br />
+これでZabbixサーバからのディスカバリ設定は完了です。</p>
+<h3><b>(3) ディスカバリ結果の確認</b></h3>
+<p>ディスカバリの設定完了後しばらく待ち、「設定」-「ホスト」から監視対象ホストが追加されていることを確認します。(ディスカバリで発見された監視対象ホストは、デフォルトで"Discovered hosts"ホストグループに追加されます。)<br />
+<br />
+AWSでは割り当てられるIPレンジが広いため、全てに対応させようとするとネットワーク負荷が増加してしまいますので、ディスカバリ間隔を十分にあけるか、もしくは限られたネットワーク内で使用するなど注意してください。</p>
+<img src="images/000034.jpg" alt="02network_discoveryaction10.png" />
+<br />
+<br />
+<h2 id="calibre_link-24"><b>4.2 Zabbixエージェントによる自動登録(Zabbixエージェント)</b></h2>
+<p>監視対象のもう一つの自動登録方法として、Zabbixエージェントを使用する方法について説明します。<br />
+この方法はZabbixエージェントがZabbixサーバに対して自己申告しますので、前節のような手法と違い、ネットワークへの負荷を削減することができます。</p>
+<h3><b>(1) 自動登録アクションの表示</b></h3>
+<p>監視対象を自動登録するには、「設定」−「アクション」で自動登録のアクションを作成します。ディスカバリの設定とことなり、自動登録アクションのデフォルト設定はありませんので、"イベントソース"のプルダウンから、"自動登録"を選択して、「アクションの作成」ボタンをクリックします。</p>
+<img src="images/000083.jpg" alt="02network_auto_host_add01.png" />
+<br />
+<h3><b>(2) 自動登録アクションの作成</b></h3>
+<p>①「アクション」タブでは、自動登録時にメールを送信する場合のメッセージ内容を修正できます。画像では「名前」欄に"監視対象の自動登録"と入力しています。<br />
+設定は変更せず、「アクションの実行条件」タブをクリックします。</p>
+<img src="images/000063.jpg" alt="02network_auto_host_add02.png" />
+<br />
+<br />
+<table>
+<tr>
+<th><b>名前</b></th>
+<td>監視対象の自動登録</td>
+</tr>
+</table>
+<p>②「アクションの実行条件」タブでは、"新規条件"から"ホストメタデータ"を選び、"web"と入力して"追加"の文字をクリックします。</p>
+<img src="images/000000.jpg" alt="02network_auto_host_add03.png" />
+<br />
+<p>ここで入力したホストメタデータの"web"は、自動登録を行うためのキーワードになります。ここのキーワードは、Zabbixエージェント(zabbix_agentd.conf)で設定することができます。<br />
+操作は監視対象ホストの端末コンソールに移りまして、"zabbix_agentd.conf"を編集します。</p>
+<blockquote>$ sudo vi /etc/zabbix/zabbix_agentd.conf<br />
+<br />
+<span>Hostname項目を無効化</span>
+<br />
+#Hostname=<br />
+<br />
+<span>HostnameItemを有効化</span>
+<br />
+HostnameItem=system.hostname<br />
+<br />
+※設定値"system.hostname"は、Zabbixエージェントが取得する管理対象のホスト名を意味しています。<br />
+これで自動登録時に、見つかった監視対象はホスト名で登録されます。<br />
+<br />
+<span>HostMetadataを有効化</span>
+<br />
+HostMetadata=web<br />
+<br />
+※これは自動登録のアクション実行条件に使用する"ホストメタデータ"になります。</blockquote>
+<p>zabbix_agentd.conf修正後は、zabbix-agentのサービスを再起動します。</p>
+<blockquote>$ sudo systemctl restart zabbix-agent<br />
+$ sudo systemctl status zabbix-agent<br />
+<span>●</span>
+ zabbix-agent.service - Zabbix Agent<br />
+Loaded: loaded (/usr/lib/systemd/system/zabbix-agent.service; enabled; vendor preset: disabled)<br />
+Active: active (running) since 土 2018-03-10 01:13:05 UTC; 6s ago</blockquote>
+<p>③"アクションの実行条件"の欄に設定が追加されますので、そのまま「アクションの実行内容」をクリックします。</p>
+<img src="images/000068.jpg" alt="02network_auto_host_add04.png" />
+<br />
+<p>④「アクションの実行内容」タブでは、自動登録する条件を満たした場合に起こすアクションを設定します。<br />
+ここでは、ホストの追加、ホストグループの追加とテンプレートの追加を設定します。<br />
+"アクション実行内容"の"新規"文字をクリックします。</p>
+<img src="images/000017.jpg" alt="02network_auto_host_add05.png" />
+<br />
+<p>⑤"実行内容の詳細"欄が新たに表示されますので、"実行内容のタイプ"プルダウンメニューをクリックして、"ホストを追加"を選択します。その後、"追加"文字をクリックします。</p>
+<img src="images/000106.jpg" alt="02network_auto_host_add07.png" />
+<br />
+<p>⑥"アクションの実行内容"にホストを追加設定が反映されますので、続けて"新規"文字をクリックします。</p>
+<img src="images/000033.jpg" alt="02network_auto_host_add08.png" />
+<br />
+<p>⑦次に、"実行内容のタイプ"でをクリックして、ホストグループに追加"を選択します。<br />
+"ホストグループ"欄の「選択」ボタンをクリックします。</p>
+<img src="images/000099.jpg" alt="02network_auto_host_add11.png" />
+<br />
+<p>⑧新しくウィンドウが表示されますので、"Linux servers"をチェックして、「選択」ボタンをクリックします。</p>
+<img src="images/000050.jpg" alt="02network_auto_host_add12.png" />
+<br />
+<p>⑨再び「アクションの実行内容」タブ画面に戻りますので、ホストグループが選択されているのを確認して、"追加"文字をクリックします。</p>
+<img src="images/000038.jpg" alt="02network_auto_host_add13.png" />
+<br />
+<p>⑩最後のテンプレート追加の設定もこれまでと同様に、"アクションの実行内容"の"新規"文字をクリックして、"実行内容のタイプ"から"テンプレートとのリンクを作成"を選び、"テンプレート"欄の「選択」ボタンをクリックします。</p>
+<img src="images/000065.jpg" alt="02network_auto_host_add16.png" />
+<br />
+<p>⑪新しくウィンドウが表示されますので、"Template OS Linux"をチェックして、「選択」ボタンをクリックします。</p>
+<img src="images/000002.jpg" alt="02network_auto_host_add17.png" />
+<br />
+<p>⑫再び「アクションの実行内容」タブ画面に戻りますので、"Template OS Linux"が選択されていることを確認して、"追加"文字をクリックします。</p>
+<img src="images/000097.jpg" alt="02network_auto_host_add18.png" />
+<br />
+<p>⑬3つのアクションの実行内容が登録されていることを確認して、「追加」ボタンをクリックします。</p>
+<img src="images/000009.jpg" alt="02network_auto_host_add19.png" />
+<br />
+<p>⑭アクションの一覧画面に戻りますので、監視対象の自動登録設定が追加されていることを確認します。ディスカバリと違い、Zabbixエージェントのアクションは頻度が高いため、問題がなければすぐにホストの一覧に追加されます。</p>
+<img src="images/000095.jpg" alt="02network_auto_host_add21.png" />
+<br />
+<p>⑮今回は自動登録の条件にHostMetadataの値"web"を使用しましたが、例えばAuto Scalingで使用するインスタンスに"web"や"db"など設定しておけば、サーバに合わせて使用するテンプレートや登録するグループなどを分けて登録することができます。</p>
+<h3><b>(3) 自動登録アクションの確認</b></h3>
+<p>自動登録アクションの設定完了後しばらくすると「設定」-「ホスト」から監視対象ホストが追加されます。<br />
+<br />
+AWSでの注意点としましては、セキュリティグループでZabbixエージェント⇒Zabbixサーバの通信にはTCP/IPの10051ポートを、 Zabbixサーバ⇒ZabbixエージェントにはTCP/IPの10050ポートが開放状態で有ることを確認してください。</p>
+<table>
+<tr>
+<th><b>通信の方向</b></th>
+<th><b>ポート</b></th>
+</tr>
+<tr>
+<td>Zabbixサーバ =&gt; Zabbixエージェント</td>
+<td>10050</td>
+</tr>
+<tr>
+<td>Zabbixエージェント =&gt; Zabbixサーバ</td>
+<td>10051</td>
+</tr>
+</table>
+<p>以上で、自動登録アクションの設定は完了です。</p>
+</div>
+
+
+<script>function myFunction(){document.getElementById("tateyoko").classList.toggle("tateread")}</script></body></html>

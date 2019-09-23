@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unity 5 ゲーム開発はじめの一歩 ThinkIT Books</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/mainday.css" title="default">
+<link rel="alternate stylesheet" href="/css/mainnight.css" title="alternate">
+<script type="text/javascript" src="/js/styleswitcher.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+</head>
+<body>
+<div class="novelpage">
+<div class="novelbody">
+<div id="tateyoko">
+<div id="_top"></div>
+<a href="/">🏠</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('default'); return false;">日</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">月</a>&emsp;
+<a href="#_top" onclick="myFunction()" style="cursor: pointer;">縦書き／横書き</a>
+<div id="calibre_link-21">
+<div>
+<div>
+<table class="noveltitle">
+<tr>
+<td colspan="2"><i><span><i>Unity 5 ゲーム開発はじめの一歩 ThinkIT Books</i></span></i></td>
+</tr>
+<tr>
+                    
+                    
+      </tr>
+<tr>
+<td colspan="2">古波倉 正隆</td>
+</tr>
+<tr>
+<td colspan="2"> (2016)</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+</tr>
+</table>
+<div></div>
+</div>
+<div></div>
+</div>
+</div>
+
+
+
+<div id="calibre_link-15">
+<div><h1 id="calibre_link-46"><b>Unity 5ゲーム開発はじめの一歩(Think IT Books)</b></h1><h2><b>古波倉 正隆</b></h2><h3><b>株式会社インプレス</b></h3></div></div>
+<div id="calibre_link-6">
+<h1 id="calibre_link-47"><b><a id="calibre_link-48"><b></b></a>免責事項</b></h1>
+<ul>
+<li>本書は、インプレスが運営するWebメディア「Think IT」で、「Unity 5で取り組むゲーム開発はじめの一歩」として連載された技術解説記事を電子書籍およびオンデマンド書籍として再編集したものです。</li>
+<li>本書の内容は、執筆時点までの情報を基に執筆されています。紹介したWebサイトやアプリケーション、サービスは変更される可能性があります。</li>
+<li>本書の内容によって生じる、直接または間接被害について、著者ならびに弊社では、一切の責任を負いかねます。</li>
+<li>本書中の会社名、製品名、サービス名などは、一般に各社の登録商標、または商標です。なお、本書では©、®、TMは明記していません。</li>
+</ul>
+</div>
+<div id="calibre_link-36">
+<h1 id="calibre_link-49"><b><a id="calibre_link-50"><b></b></a>はじめに</b></h1>
+<p>個人や企業でゲームを製作する際、何かしらのゲームエンジンを利用するケースが増えています。ゲームエンジンは各種コンピュータゲームの製作に共通して必要な機能をパッケージ化したもので、自然落下や衝突判定を自動計算する物理演算、3Dモデルをゲーム内に表示するレンダラー、ゲーム内で音楽や効果音を流すオーディオなどが含まれています。</p>
+<p>代表的なゲームエンジンとして、Unity Technologies社のUnity、Epic GamesのUnreal Engine、Chukong Technologies社のCocos2d-xなどが挙げられます。</p>
+<p>本書では、Unityの無料で使用できる最新版「Unity 5 Personal Edition」を利用して、実際にコイン落としゲームを製作しながらUnityのさまざまな機能を体験していただきたいと思います。</p>
+<p>なお、本書で作成するコイン落としゲームのサンプルコードは、筆者のGitHub（<a href="https://github.com/masalinkinpark/Unity-CoinPusher-Tutorial">https://github.com/masalinkinpark/Unity-CoinPusher-Tutorial</a>）で公開しています。また、ブックインプレス<a href="http://book.impress.co.jp/books/1115101110">http://book.impress.co.jp/books/1115101110</a>）からすべてダウンロードできます。</p>
+</div>
+<div id="calibre_link-45">
+<div id="calibre_link-51"></div><h1 id="calibre_link-52"><b><a id="calibre_link-53"><b></b></a><span><b>第1章　</b></span>新しくなったUnity</b></h1>
+<p>第1章では、Unityの基礎知識と最新版Unity 5の新機能、第２章以降のゲーム製作に先立ってUnity 5のインストール方法を解説します。</p>
+</div>
+<div id="calibre_link-32">
+<h2 id="calibre_link-54"><b><a id="calibre_link-55"><b></b></a><span><b>1.1　</b></span>Unityとは？</b></h2>
+<p>Unityは2D、3Dを問わずにゲームを製作でき、また様々なプラットフォームに対応できるゲームエンジンで、WindowsやMac OS Xに対応しています。</p>
+<p>3Dゲームを製作・プレイする際には「グラフィックボード」と呼ばれるグラフィック専用のハードウェアがほぼ必須ですが、Unityはグラフィックボードが搭載されていないPCでもそれなりには動作します（あるに越したことはないですが）。</p>
+<p>Unityでゲームを製作すればiOSやAndroid、PC（Windows/Mac/Linux）だけでなくPS3・PS4やWii Uなどのコンシューマ機にも対応できます。今年の4月13、14日に開催されたUnityの開発者イベント「Unite 2015 Tokyo」では、New Nintendo 3DSにも対応することが発表されました（コンシューマ機への対応に関しては、各コンシューマ機の開発会社とライセンス契約を行う必要があります）。</p>
+<p><strong><b>ユニティ・テクノロジーズ、Newニンテンドー3DSのサポートを発表 ― ユニティ・テクノロジーズ・ジャパンー</b></strong><br /><a href="http://japan.unity3d.com/blog/press/20150413">http://japan.unity3d.com/blog/press/20150413</a></p>
+<p>また、Unityの標準機能として「アセットストア」と呼ばれる3Dモデルの素材やUnityのプラグインなどをダウンロードできます。プログラムを組み立てることはできても素材を準備できない開発者は、アセットストアからさまざまな素材をダウンロードしてゲームに組み込むことができます（ダウンロードできる素材やプラグインには有料のものもあります）。</p>
+</div>
+<div id="calibre_link-22">
+<h2 id="calibre_link-56"><b><a id="calibre_link-57"><b></b></a><span><b>1.2　</b></span>Unity 4からUnity 5へ</b></h2>
+<p>2015年3月4日、Unity Technologiesは最新版のUnity 5を発表しました。Unity 5の発表に伴い、Unity 4から有料版と無料版の名称が、次のように変更されました（表1.1）。</p>
+<div id="calibre_link-58">
+<p><b>表1.1: Unity 5の無料版／有料版の名称（Unity 4との比較）</b></p>
+<table>
+<tr><th></th><th>無料版</th><th>有料版</th></tr>
+<tr><td>Unity 4</td><td>Free</td><td>Pro</td></tr>
+<tr><td>Unity 5</td><td>Personal Edition</td><td>Professional Edition</td></tr>
+</table>
+</div>
+<p>Unity 5 Personal Edition（以下、Unity 5 Personal）には、機能的にも大きな変更点があります。Unity 4 Proでしか利用できなかった各種機能が無料で利用できるようになったことです。本連載で製作するサンプルゲームには無料になった機能を利用しませんが、Unity 5 Personalでどのようなことが可能になったのか、いくつか抜粋して簡単に紹介します。なお、各機能の紹介で使用している一部の画像はUnity公式のDocumentationより引用しています。</p>
+<h3><b><a id="calibre_link-59"><b></b></a><span><b>1.2.1　</b></span>オクルージョンカリング</b></h3>
+<p>Unityは、カメラから見えないオブジェクト（物体）も実は裏では描画されています。3Dゲームはオブジェクトの数が多ければ多いほどコンピュータの処理が重くなります。図1.1を見てください。図1.1はシーンの全体（Scene）と、カメラが映し出している画面（Camera Preview）を映し出している画面です。</p>
+<div id="calibre_link-60">
+<img src="images/00101.jpeg" alt="オクルージョンカリングOff時のゲームシーンの様子" />
+<p><b>
+図1.1: オクルージョンカリングOff時のゲームシーンの様子
+</b></p>
+</div>
+<p>Camera Previewに映し出されているのはオブジェクトのごく一部ですが、実際にはたくさんのオブジェクトが存在しており、そのすべてがSceneに描画されています。オクルージョンカリングを適用すると図1.2のようになり、カメラで映し出されていないオブジェクトを描画しないようにすることができます。図1.2では、カメラに映っている範囲のオブジェクトは描画され、カメラに映っていない範囲のオブジェクトは描画されていないことがわかります。</p>
+<div id="calibre_link-61">
+<img src="images/00072.jpeg" alt="オクルージョンカリングOn時のゲームシーンの様子" />
+<p><b>
+図1.2: オクルージョンカリングOn時のゲームシーンの様子
+</b></p>
+</div>
+<p>この機能では、オブジェクトの描画数を抑えることによってコンピュータの処理を軽減させることができます。</p>
+<h3><b><a id="calibre_link-62"><b></b></a><span><b>1.2.2　</b></span>LOD（Level Of Detail）</b></h3>
+<p>3Dモデルのポリゴン数が多くなればなるほどコンピュータの処理が重くなっていきます。例えば、カメラの近くに建物の3Dモデルがあるとします。カメラが近ければ、建物の細かい構造を見ることができます（図1.3）。</p>
+<div id="calibre_link-63">
+<img src="images/00011.jpeg" alt="カメラに最も近いときの3Dモデル" />
+<p><b>
+図1.3: カメラに最も近いときの3Dモデル
+</b></p>
+</div>
+<p>しかし、カメラから遠くなればなるほど建物の細かい構造まで描画する必要はなくなりますが、カメラが遠くなっても裏では建物の3Dモデルの細かい構造まで描画しています。細かい構造を描画しても見えないのであれば、LODを使用して建物の構造を大雑把にすることで描画処理を軽くできます（図1.4）。</p>
+<div id="calibre_link-64">
+<img src="images/00010.jpeg" alt="カメラから離れたときの3Dモデル" />
+<p><b>
+図1.4: カメラから離れたときの3Dモデル
+</b></p>
+</div>
+<p>この機能を使用するには、1つの3Dモデルに対して細かく作られた3Dモデルと大雑把に作られた3Dモデルの2つが必要になりますが、カメラの距離によって描画する3Dモデルを切り替えられるようになるので、コンピュータの処理を軽減できます。</p>
+<h3><b><a id="calibre_link-65"><b></b></a><span><b>1.2.3　</b></span>レンダーテクスチャ</b></h3>
+<p>カメラに映し出されている映像をテクスチャとして使用することができる機能です（図1.5）。</p>
+<div id="calibre_link-66">
+<img src="images/00022.jpeg" alt="レンダーテクスチャを画面中央上のオブジェクトに適用" />
+<p><b>
+図1.5: レンダーテクスチャを画面中央上のオブジェクトに適用
+</b></p>
+</div>
+<p>図1.5では、カメラで映し出されている映像が、画面中央上にあるオブジェクトに映しだされています。</p>
+<h3><b><a id="calibre_link-67"><b></b></a><span><b>1.2.4　</b></span>ネイティブコードプラグインのサポート</b></h3>
+<p>Unityでゲーム開発に使用できる言語はC#とJavaScriptです。CやC++、Javaなどの言語ではUnityのプログラムを記述できませんが、これらの言語で記述されたプログラムをUnityから呼び出すことは可能です。</p>
+<p>Unity 4 Freeではこの機能は制限されていましたが、Unity 5 Personalからは無料で使用できます。これにより、サウンドのネイティブプラグイン「CRI・ミドルウェア ADX2 LE」がUnity 5 Personalでも使用できるようになりました。</p>
+<p>ADX2 LEの機能の一部として、イントロ付きBGMのループ処理が簡単にできることが挙げられます。イントロ付きBGMとは、イントロ→メイン→メイン→......と最初だけイントロ部を流して、その後はメインをループで流すようなBGMです。Unity標準のループ機能でイントロ付きBGMを流すと、イントロ→メイン→イントロ→メイン......とループします。Unityでイントロ付きBGMを実装するには一工夫必要ですが、ADX2 LEを組み込むことで簡単にイントロ付きBGMを利用することができます。</p>
+<p><strong><b>Unity 5無償版で「ADX2 LE」が使用できるようになりました！―CRI・ミドルウェア ADX2 LEブログ―</b></strong><br /><a href="http://blog.cri-mw.co.jp/adx2le/?p=368">http://blog.cri-mw.co.jp/adx2le/?p=368</a></p>
+<p>他にも様々な機能が解禁されましたが、すべてを紹介できませんので、各自で確認してみてください。</p>
+<p><strong><b>Unity 5 Personal Edition－Unity 公式－</b></strong><br /><a href="http://unity3d.com/jp/unity/personal-edition">http://unity3d.com/jp/unity/personal-edition</a></p>
+</div>
+<div id="calibre_link-8">
+<h2 id="calibre_link-68"><b><a id="calibre_link-69"><b></b></a><span><b>1.3　</b></span>Unity 5のインストールとアカウントの作成</b></h2>
+<p>それでは、実際にUnity 5 Personalを使用するために、インストールしてみましょう。なお、筆者はMacを利用しているので、Windowsユーザーの方々とは若干見た目が異なります。あらかじめご了承ください（インストールの方法は変わりません）。また、Unity 5のインストール時にはインターネット環境が必須となりますので、通信環境の良いところで作業を行なってください。</p>
+<p>まずは、下記のURLからUnity 5をダウンロードしてください。</p>
+<p><strong><b>Unity公式ページ</b></strong><br /><a href="http://unity3d.com/jp/get-unity/update">http://unity3d.com/jp/get-unity/update</a></p>
+<p>ダウンロードが終わったら、ダウンロードファイルをクリックします。クリックすると、図1.6の「Software License Agreement」画面が表示されます。Unityに関する規約が記述されているので、ひと通り確認してから画面右下の［Continue］ボタンをクリックしてください。</p>
+<div id="calibre_link-70">
+<img src="images/00033.jpeg" alt="「Software License Agreement」画面" />
+<p><b>
+図1.6: 「Software License Agreement」画面
+</b></p>
+</div>
+<p>次に、「Unity component selection」画面が表示されます。ここでは、Unity 5本体をインストールするついでに、様々なコンポーネントも追加できます。インストールしたいコンポーネントにチェックを入れて、画面右下の［Continue］ボタンをクリックしてください（図1.7）。もしハードディスク容量に余裕があれば、すべてのコンポーネントをインストールしておくことをおすすめします。</p>
+<div id="calibre_link-71">
+<img src="images/00077.jpeg" alt="「Unity component selection」画面" />
+<p><b>
+図1.7: 「Unity component selection」画面
+</b></p>
+</div>
+<p>最新のUnity 5.3ではインストールするcomponentを細かく選べるようになっています。Unity上でゲーム作成する部分ではそのまま「Continue」をクリックしても良いですが、iOSや Android向けにアプリをリリースしたい場合は、「Android/iOS Build Support 」にチェックマークを付けてください（図1.8）。</p>
+<div id="calibre_link-72">
+<img src="images/00056.jpeg" alt="Unity 5.3での「Unity component selection」画面" />
+<p><b>
+図1.8: Unity 5.3での「Unity component selection」画面
+</b></p>
+</div>
+<p>続いて、「Select a Destination」画面が表示されます。ここではインストール先を選択します。任意のインストール先を選択して［Continue］ボタンをクリックしてください（図1.9）。</p>
+<div id="calibre_link-73">
+<img src="images/00003.jpeg" alt="「Select a Destination」画面" />
+<p><b>
+図1.9: 「Select a Destination」画面
+</b></p>
+</div>
+<p>これで、Unity 5のインストールが開始されます。このとき、図1.7、図1.8でチェックを入れたコンポーネントがインストールされます（図1.10）。</p>
+<div id="calibre_link-74">
+<img src="images/00086.jpeg" alt="Unity 5と選択したコンポーネントをインストール中の画面" />
+<p><b>
+図1.10: Unity 5と選択したコンポーネントをインストール中の画面
+</b></p>
+</div>
+<p>インストールが終了すると、図1.11の画面が表示されます。これでUnity 5のインストールが完了しました。</p>
+<div id="calibre_link-75">
+<img src="images/00099.jpeg" alt="Unity 5のインストールが完了" />
+<p><b>
+図1.11: Unity 5のインストールが完了
+</b></p>
+</div>
+<p>無事にインストールができたら、早速Unity 5を起動してみましょう。Unity 5の初回起動時には、「Activate your license」画面が表示され、「Unity 5 Professional Edition」と「Unity 5 Personal Edition」のどちらを利用するか問われます。ここでは、無料で利用できる「Unity 5 Personal Edition」を選択して［OK］ボタンをクリックします（図1.12）。</p>
+<div id="calibre_link-76">
+<img src="images/00000.jpeg" alt="「Activate your license」画面" />
+<p><b>
+図1.12: 「Activate your license」画面
+</b></p>
+</div>
+<p>Unityのログイン画面（図1.13）が表示されます。Unityアカウントの入力を求められるので、アカウントをお持ちの方はアカウント（メールアドレス）とパスワードを入力しましょう。アカウントをお持ちでない方は、ここでアカウントを作成します。</p>
+<div id="calibre_link-77">
+<img src="images/00069.jpeg" alt="Unity のログイン画面" />
+<p><b>
+図1.13: Unity のログイン画面
+</b></p>
+</div>
+<p>まず、図1.13の画面下部にある［Create Account］ボタンをクリックします。Unityアカウントの作成画面（図1.14）が表示されるので、アカウント名とメールアドレス、パスワードを登録します。設定するパスワードには以下のような条件があり、これらをすべて満たしていなければいけません。</p>
+<ul>
+<li>8文字以上</li>
+<li>大文字の英字を含める</li>
+<li>小文字の英字を含める</li>
+<li>数字を含める</li>
+</ul>
+<p>クリアした条件にはチェックが付くので、すべての項目にチェックが付くように入力しましょう。すべての入力が完了したら、［OK］ボタンをクリックしてください。</p>
+<div id="calibre_link-78">
+<img src="images/00019.jpeg" alt="Unityアカウントの作成画面" />
+<p><b>
+図1.14: Unityアカウントの作成画面
+</b></p>
+</div>
+<p>登録が終了すると、登録したメールアドレスに図1.15のような確認のメールが届きます。メール本文の［Confirm email］をクリックすることで、Unityを使用できる状態になります。</p>
+<div id="calibre_link-79">
+<img src="images/00032.jpeg" alt="登録したメールアドレスに届く内容" />
+<p><b>
+図1.15: 登録したメールアドレスに届く内容
+</b></p>
+</div>
+<div>
+<p>なお、メール本文の［Confirm email］をクリックせずに、「Unityが使えない！」という状況に陥るケースが多々ありますので要注意です。必ず登録したメールアドレスにUnityからメールが届いたことを確認し、［Confirm email］をクリックしてください。</p>
+</div>
+<p>メール本文の［Confirm email］をクリックするとログイン画面（図1.13）に戻るので、先ほど登録した内容でログインしましょう（図1.16）。</p>
+<div id="calibre_link-80">
+<img src="images/00044.jpeg" alt="アカウント登録後に再度ログイン画面に戻る" />
+<p><b>
+図1.16: アカウント登録後に再度ログイン画面に戻る
+</b></p>
+</div>
+<p>新規にアカウントを登録した方は、ここでUnityからいくつかアンケートがありますので、回答してください。回答が終了すると、図1.17のように「Start using Unity」と表示されます。これで、すべての操作は完了です。</p>
+<div id="calibre_link-81">
+<img src="images/00027.jpeg" alt="アンケート終了後に表示される画面" />
+<p><b>
+図1.17: アンケート終了後に表示される画面
+</b></p>
+</div>
+<p>おめでとうございます！これでUnity 5 Personalが利用できるようになりました。</p>
+<p>第２章では、実際にUnity 5 Personalを操作しながら、サンプルのコインプッシャー（コイン落とし）ゲームを製作していきます。</p>
+</div>
+<div id="calibre_link-40">
+<div id="calibre_link-82"></div><h1 id="calibre_link-83"><b><a id="calibre_link-84"><b></b></a><span><b>第2章　</b></span>Unity5でコインプッシャーゲームを作ろう（前編）</b></h1>
+<p>第2章からは前編・中編・後編の3章に渡ってUnity5を使った実際のゲーム製作を解説していきます。</p>
+<p>なお、本書執筆時のバージョンはUnity 5.1でしたが、2016年1月6日現在ではUnity 5.3がリリースされています。ここで製作するコインプッシャーゲームはUnity 5.3でも動作することを確認しています。</p>
+<p>第2〜4章で製作するのは「コインプッシャーゲーム」です。皆さんもゲームセンターのメダルコーナーでよく見かけると思いますが、あらかじめフィールド上に配置されている大量のコインを、「プッシャー」と呼ばれる往復運動を繰り返す台を利用して当たり口へと落とすゲームです。完成のイメージは図2.1のようになります。</p>
+<div id="calibre_link-85">
+<img src="images/00068.jpeg" alt="筆者が作成したコインプッシャーゲーム" />
+<p><b>
+図2.1: 筆者が作成したコインプッシャーゲーム
+</b></p>
+</div>
+<p>本章では、Unityの基本操作とコインプッシャーゲームの基礎部分の製作方法を解説します。具体的には、以下のことを習得します。</p>
+<ol>
+<li value="1">新規プロジェクトの作成</li>
+<li value="2">Unityの基本操作を学ぶ（画面の見方、操作方法）</li>
+<li value="3">コインプッシャーの土台を作る（オブジェクトをシーン上に生成）</li>
+<li value="4">コインに物理演算を加える（インスペクタでRigidbodyを付けてみる）</li>
+<li value="5">ゲームの視点を調整する（MainCameraの調整）</li>
+<li value="6">コインに色をつける（マテリアルの作成と貼り付け）</li>
+<li value="7">作成したシーンを保存</li>
+</ol>
+<p>それでは、さっそくコインプッシャーゲームの製作を始めましょう。</p>
+</div>
+<div id="calibre_link-29">
+<h2 id="calibre_link-86"><b><a id="calibre_link-87"><b></b></a><span><b>2.1　</b></span>新規プロジェクトの作成</b></h2>
+<p>まず、プロジェクトを新規作成します。Unity5を起動するとプロジェクトの管理画面が表示されるので、画面右上にある青いボタン［NewProject］をクリックしてください（図2.2）。</p>
+<div id="calibre_link-88">
+<img src="images/00021.jpeg" alt="プロジェクトの管理画面" />
+<p><b>
+図2.2: プロジェクトの管理画面
+</b></p>
+</div>
+<p>図2.3の画面が表示されるので、任意のプロジェクト名とプロジェクトの保存場所を決定してください。そして、画面左下の［3D］［2D］という項目では［3D］を選びましょう。これらを設定したら、右下の青いボタン［Createproject］をクリックします。これで新規プロジェクトが作成できました。</p>
+<div id="calibre_link-89">
+<img src="images/00096.jpeg" alt="プロジェクトの新規作成" />
+<p><b>
+図2.3: プロジェクトの新規作成
+</b></p>
+</div>
+</div>
+<div id="calibre_link-12">
+<h2 id="calibre_link-90"><b><a id="calibre_link-91"><b></b></a><span><b>2.2　</b></span>Unityの基本操作を学ぶ（画面の見方、操作方法）</b></h2>
+<p>ゲーム製作を進める前に、Unityの基本的な操作を解説します。まず、エディタ画面の右上にあるボタンが［Default］になっているかどうかを確認してください（図2.4）。ここでUnityのエディタのレイアウトをどのようにするか選ぶことができます。本書ではDefaultで解説・製作していきます。</p>
+<div id="calibre_link-92">
+<img src="images/00088.jpeg" alt="エディタのレイアウトの確認" />
+<p><b>
+図2.4: エディタのレイアウトの確認
+</b></p>
+</div>
+<p>Unityのエディタ画面は、いくつかのウィンドウから構成されています（図2.5）。</p>
+<div id="calibre_link-93">
+<img src="images/00023.jpeg" alt="エディタのレイアウト" />
+<p><b>
+図2.5: エディタのレイアウト
+</b></p>
+</div>
+<h3><b><a id="calibre_link-94"><b></b></a><span><b>2.2.1　</b></span>Project（プロジェクト）</b></h3>
+<p>ゲームで使用する素材（3Dモデルや音、画像などの全ての素材）やスクリプトを保存する場所です。</p>
+<h3><b><a id="calibre_link-95"><b></b></a><span><b>2.2.2　</b></span>Scene（シーン）</b></h3>
+<p>ゲームの中にオブジェクトをどのように配置するか、また配置したオブジェクトを直接移動したり回転させたりといった作業ができる場所です。</p>
+<h3><b><a id="calibre_link-96"><b></b></a><span><b>2.2.3　</b></span>Hierarchy（ヒエラルキー）</b></h3>
+<p>Unityでは、「シーン」という単位でゲームシーンを製作していきます。ヒエラルキーウィンドウには、そのシーンの中で使用されているオブジェクトの一覧を表示します。ここでは、シーンに含まれているゲーム再生時のカメラ（MainCamera）と光源（DirectionalLight）の2つのオブジェクトが表示されています。</p>
+<h3><b><a id="calibre_link-97"><b></b></a><span><b>2.2.4　</b></span>CameraPreview（カメラプレビュー）</b></h3>
+<p>ゲーム再生時の視点です。MainCameraの位置を変更すると、CameraPreviewが変化します。</p>
+<h3><b><a id="calibre_link-98"><b></b></a><span><b>2.2.5　</b></span>Inspector（インスペクタ）</b></h3>
+<p>オブジェクトに物理演算を付加する「Rigidbody」などの各種機能を追加できます。また、シーン上に配置されているオブジェクトの場所や大きさを直接数値で設定できます。</p>
+<h3><b><a id="calibre_link-99"><b></b></a><span><b>2.2.6　</b></span>TransformTools（トランスフォームツールズ）（図2.6）</b></h3>
+<p>シーン内のオブジェクトを直接操作できるツールです。左から順番に説明します（カッコ書きのアルファベットはショートカットキーです）。</p>
+<div id="calibre_link-100">
+<img src="images/00105.jpeg" alt="TransformTools" />
+<p><b>
+図2.6: TransformTools
+</b></p>
+</div>
+<div id="calibre_link-101">
+<p><b>表2.1:</b></p>
+<table>
+<tr><th>Hand（Q）</th><td>シーン内をマウスで移動</td></tr>
+<tr><th>Translate（W）</th><td>オブジェクトをシーン内で移動</td></tr>
+<tr><th>Rotate（E）</th><td>オブジェクトを回転</td></tr>
+<tr><th>Scale（R）</th><td>オブジェクトを拡大・縮小</td></tr>
+<tr><th>Rect（T）</th><td>オブジェクトを面で拡大・縮小</td></tr>
+</table>
+</div>
+<p>なお、Handを選択時に［alt］キーを押しながらドラッグすると「手」のマークが「目」のマークに切り替わり、シーンの見る角度を変更できます。</p>
+<h3><b><a id="calibre_link-102"><b></b></a><span><b>2.2.7　</b></span>Play/Pause/StepButtons（プレイ/ポーズ/ステップボタン）（図2.7）</b></h3>
+<p>ゲームの動作を制御するボタンです。左から順番に説明します（カッコ書きのアルファベットはショートカットキーです）。</p>
+<div id="calibre_link-103">
+<img src="images/00048.jpeg" alt="Play/Pause/StepButtons" />
+<p><b>
+図2.7: Play/Pause/StepButtons
+</b></p>
+</div>
+<div id="calibre_link-104">
+<p><b>表2.2:</b></p>
+<table>
+<tr><th>Play（Win［Ctrl］+［P］、Mac［command］+［P］）</th><td>ゲームを再生</td></tr>
+<tr><th>Pause（Win［Shift］+［Ctrl］+［P］、Mac［Shift］+［command］+［P］）</th><td>ゲームを一時停止</td></tr>
+<tr><th>Step（Win［alt］+［Ctrl］+［P］、Mac［alt］+［command］+［P］）</th><td>ゲームを1コマ単位（1フレーム単位）で再生</td></tr>
+</table>
+</div>
+</div>
+<div id="calibre_link-44">
+<h2 id="calibre_link-105"><b><a id="calibre_link-106"><b></b></a><span><b>2.3　</b></span>コインプッシャーの土台を作る（オブジェクトをシーン上に生成）</b></h2>
+<p>それでは、Unity上にコインプッシャーの土台を作ってみましょう。エディタ画面左のヒエラルキーウィンドウで［Hierarchy］→［Create］→［3DObject］→［Cube］を選択します（図2.8）。</p>
+<div id="calibre_link-107">
+<img src="images/00053.jpeg" alt="Cubeの生成" />
+<p><b>
+図2.8: Cubeの生成
+</b></p>
+</div>
+<p>シーンウィンドウ内に立方体（Cube）が生成されます。Cubeを選択して、インスペクタウィンドウでCubeのScale（大きさ）をX=5、Y=1、X=5に設定して土台を平たくしましょう（図2.9）。</p>
+<div id="calibre_link-108">
+<img src="images/00002.jpeg" alt="インスペクタでCubeの大きさを変更した結果" />
+<p><b>
+図2.9: インスペクタでCubeの大きさを変更した結果
+</b></p>
+</div>
+<p>しかし、「Cube」という名前のままでは、シーンウィンドウにオブジェクトを配置していくにつれて、どれがコインプッシャーの土台なのか分かりにくくなってしまいます（図2.10）。オブジェクトを配置するときは、同時に名前も付けてあげるようにしましょう。</p>
+<div id="calibre_link-109">
+<img src="images/00095.jpeg" alt="それぞれのオブジェクトに名前を付けなかった結果" />
+<p><b>
+図2.10: それぞれのオブジェクトに名前を付けなかった結果
+</b></p>
+</div>
+<p>オブジェクトの名前はインスペクタウィンドウで変更するか（図2.11）、ヒエラルキーウィンドウに表示されているオブジェクト名の上で右クリックして表示される［Rename］を選択すると変更できます（図2.12）。</p>
+<div id="calibre_link-110">
+<img src="images/00055.jpeg" alt="インスペクタウィンドウでの名前の変更" />
+<p><b>
+図2.11: インスペクタウィンドウでの名前の変更
+</b></p>
+</div>
+<div id="calibre_link-111">
+<img src="images/00085.jpeg" alt="ヒエラルキーウィンドウでの名前の変更" />
+<p><b>
+図2.12: ヒエラルキーウィンドウでの名前の変更
+</b></p>
+</div>
+</div>
+<div id="calibre_link-27">
+<h2 id="calibre_link-112"><b><a id="calibre_link-113"><b></b></a><span><b>2.4　</b></span>コインに物理演算を加える（Rigidbodyを付ける）</b></h2>
+<p>次にコインを作成していきます。土台を作ったときと同じ要領で［Hierarchy］→［Create］→［3DObject］→［Cylinder］を選択してください。シーンウィンドウに円柱のオブジェクトが作成されるので、コインの形にするために厚さを薄くします。円柱を選択して、インスペクタウィンドウでScaleをX=1、Y=0.1、Z=1に設定しましょう（図2.13）。また、オブジェクトの名前も「Coin」に変更しておきます。</p>
+<div id="calibre_link-114">
+<img src="images/00058.jpeg" alt="コインを生成" />
+<p><b>
+図2.13: コインを生成
+</b></p>
+</div>
+<p>続いて、このコインに物理演算を付加します。コインのインスペクタウィンドウ下部にある［AddComponent］をクリックして表示されるメニューから［Physics］→［Rigidbody］を選択すると、コインにRigidbodyが付加されます（図2.14）。</p>
+<div id="calibre_link-115">
+<img src="images/00012.jpeg" alt="CoinにRigidbodyを付けたあとのインスペクタ" />
+<p><b>
+図2.14: CoinにRigidbodyを付けたあとのインスペクタ
+</b></p>
+</div>
+<p>Rigidbodyはオブジェクトに物理演算を適用するための機能です。これを追加するだけで、自然落下運動などの物理運動を再現してくれます。</p>
+<p>それでは、Rigidbodyを付けるとどうなるかを実際に確認してみます。再生ボタンをクリックすると、コインが土台に向かって落ちていきます。そこでもう一度、CoinのRigidbodyを見てみましょう。Rigidbodyの中にある「UseGravity」で、オブジェクトに重力をかけるかどうかを選択できます。図2.14ではチェックが付いているので、オブジェクトに重力がかかり自然落下するようになっています。</p>
+<p>しかし、自然落下したのは良いのですが、何か不自然です。コインが土台に対して少し浮いている状態で止まってしまいました（図2.15）。</p>
+<div id="calibre_link-116">
+<img src="images/00076.jpeg" alt="再生すると不自然に浮くコイン" />
+<p><b>
+図2.15: 再生すると不自然に浮くコイン
+</b></p>
+</div>
+<p>ここで、コインだけに注目してみましょう。コインを選択した状態を見てみると、コインの回りに球のような形で緑の枠が表示されています（図2.16）。この緑の枠は、コインの「当たり判定」を示しています。</p>
+<div id="calibre_link-117">
+<img src="images/00091.jpeg" alt="コインの当たり判定" />
+<p><b>
+図2.16: コインの当たり判定
+</b></p>
+</div>
+<p>当たり判定とは、オブジェクトが他のオブジェクトと接触したかどうかを判定するための機能です。コインの当たり判定が球のような形になっており、コインの見た目と当たり判定が一致しないためにこのような現象が起こっています。</p>
+<p>そこで、コインの形状と一致するように当たり判定を調整します。まず、SphereColliderを削除します。インスペクタウィンドウの「CapsuleCollider」の右にある歯車アイコンをクリックして、［RemoveComponent］を選択します（図2.17）。</p>
+<div id="calibre_link-118">
+<img src="images/00093.jpeg" alt="CapsuleColliderを削除" />
+<p><b>
+図2.17: CapsuleColliderを削除
+</b></p>
+</div>
+<p>そして、コインにRigidbodyを付けたのと同じ要領でコインのインスペクタウィンドウ下部から［AddComponent］→［Physics］→［MeshCollider］を選択し、［Convex］にチェックを入れてください。これで、コインと当たり判定が同じ形になりました（図2.18）。</p>
+<div id="calibre_link-119">
+<img src="images/00049.jpeg" alt="コインの当たり判定とコインの形状が一致した" />
+<p><b>
+図2.18: コインの当たり判定とコインの形状が一致した
+</b></p>
+</div>
+<p>この状態で再生ボタンを押すと、今度は正しく土台にコインが接地するようになります（図2.19）。</p>
+<div id="calibre_link-120">
+<img src="images/00087.jpeg" alt="土台とコインが正しく接地する" />
+<p><b>
+図2.19: 土台とコインが正しく接地する
+</b></p>
+</div>
+<div>
+<p>動作を確認したら、もう一度再生ボタンを押して再生を止めるクセを付けておきましょう。再生中にオブジェクトを移動・生成してから再生を止めると、移動・生成がされなかったことになります。動作を確認し終わったあとは、忘れずに再生を止めてください。</p>
+</div>
+</div>
+<div id="calibre_link-17">
+<h2 id="calibre_link-121"><b><a id="calibre_link-122"><b></b></a><span><b>2.5　</b></span>ゲームの視点を調整する（MainCameraの調整）</b></h2>
+<p>ヒエラルキーウィンドウの「MainCamera」を調整することでゲームの視点を調整できます。現在の視点は土台の高さとほとんど同じになっています（図2.20）。</p>
+<div id="calibre_link-123">
+<img src="images/00052.jpeg" alt="調整前のカメラの位置" />
+<p><b>
+図2.20: 調整前のカメラの位置
+</b></p>
+</div>
+<p>これをもう少し上から見下ろすように、カメラの位置を調整してみましょう。ヒエラルキーウィンドウのMainCameraをクリックして、トランスフォームツールズの「Translate」（左から2番目）をクリックします。MainCameraから矢印が出てきますので、この矢印をドラッグすることでカメラを移動できます。</p>
+<p>まず、カメラをy軸の正の方向に動かしてカメラの位置を上げ、土台とカメラが近づくようにカメラをz軸方向に移動させます。そして、トランスフォームツールズの「Rotate」（左から3番目）をクリックします。今度はMainCameraに3色の円が描かれます。この円をクリックしながら移動させることでカメラの角度を変更できます（図2.21）。土台がカメラの中心になるようにx軸に回転させてみましょう。カメラ位置の調整前後で、見え方が変化したことが分かると思います。</p>
+<div id="calibre_link-124">
+<img src="images/00040.jpeg" alt="トランスフォームツールズ：rotateクリック時" />
+<p><b>
+図2.21: トランスフォームツールズ：rotateクリック時
+</b></p>
+</div>
+<div id="calibre_link-125">
+<img src="images/00104.jpeg" alt="調整後のカメラの位置" />
+<p><b>
+図2.22: 調整後のカメラの位置
+</b></p>
+</div>
+</div>
+<div id="calibre_link-3">
+<h2 id="calibre_link-126"><b><a id="calibre_link-127"><b></b></a><span><b>2.6　</b></span>コインに色をつける（マテリアルの作成と貼り付け）</b></h2>
+<p>土台とコインの色が両方とも「白」で見辛いので、コインに色を付けて見やすくしましょう。みなさんはコインの色といったら何色を思い浮かべるでしょうか。筆者はやはり「黄色」のイメージです。そこで、コインの色を黄色に変えてみます。</p>
+<p>まず、プロジェクトウィンドウで［Project］→［Create］→［Material］を選択すると（図2.23）、Assetsフォルダの中に「NewMaterial」というマテリアルのファイルが作成されるので、名前を「Coin」に変更します（図2.24）。</p>
+<div id="calibre_link-128">
+<img src="images/00016.jpeg" alt="マテリアルの作成" />
+<p><b>
+図2.23: マテリアルの作成
+</b></p>
+</div>
+<div id="calibre_link-129">
+<img src="images/00038.jpeg" alt="マテリアルの作成後、Assetsの中にcoinマテリアルが現れる" />
+<p><b>
+図2.24: マテリアルの作成後、Assetsの中にcoinマテリアルが現れる
+</b></p>
+</div>
+<p>次に、Coinマテリアルを選択してインスペクタウィンドウの「MainMaps」にある「Albedo」の右隣の白色部分をクリックして、好きな色を設定しましょう（図2.25）。</p>
+<div id="calibre_link-130">
+<img src="images/00065.jpeg" alt="マテリアルのインスペクタ" />
+<p><b>
+図2.25: マテリアルのインスペクタ
+</b></p>
+</div>
+<p>色を設定したら、Coinのマテリアルファイルをドラッグ&amp;ドロップでCoinに貼り付けます。すると、シーン上のコインが設定した色に変更されます。なお、ドラッグ&amp;ドロップで貼り付けるには、以下の3種類の方法があります（図2.26）。</p>
+<ol>
+<li value="1">CoinマテリアルをヒエラルキーウィンドウのCoinにドラッグ&amp;ドロップ</li>
+<li value="2">CoinマテリアルをシーンウィンドウのCoinにドラッグ&amp;ドロップ</li>
+<li value="3">CoinマテリアルをCoinのインスペクタウィンドウにドラッグ&amp;ドロップ</li>
+</ol>
+<div id="calibre_link-131">
+<img src="images/00109.jpeg" alt="マテリアルをドラッグ&amp;ドロップで貼り付ける方法" />
+<p><b>
+図2.26: マテリアルをドラッグ&amp;ドロップで貼り付ける方法
+</b></p>
+</div>
+<p>これで、オブジェクトに色を付けられるようになりました。</p>
+</div>
+<div id="calibre_link-19">
+<h2 id="calibre_link-132"><b><a id="calibre_link-133"><b></b></a><span><b>2.7　</b></span>作成したシーンを保存</b></h2>
+<p>最後にこれまでの作業を保存しておきましょう。メニューバーから［File］→［SaveScene］を選択してください。ショートカットキーはWinが［Ctrl］+［S］、Macは［command］+［S］です。これで編集したシーンを保存できます（図2.27）。</p>
+<div id="calibre_link-134">
+<img src="images/00005.jpeg" alt="Sceneの保存方法（メニューバーから選択する場合）" />
+<p><b>
+図2.27: Sceneの保存方法（メニューバーから選択する場合）
+</b></p>
+</div>
+<p>保存する際は名前を付ける必要がありますが、筆者は「CoinGame.unity」と名付けました。保存すると、Assetsフォルダの中に「CoinGame」というUnityのロゴが付いたファイルが作成されます（図2.28）。これがシーンファイルです。いつUnityやパソコンがフリーズしても良いように、編集した度に保存することを心がけてください。</p>
+<div id="calibre_link-135">
+<img src="images/00009.jpeg" alt="シーン保存後、Unityロゴのファイルが生成される" />
+<p><b>
+図2.28: シーン保存後、Unityロゴのファイルが生成される
+</b></p>
+</div>
+<p>これで、Unityの基本操作ができるようになりました。第3章からは、Unityのスクリプトを書いて行きます。</p>
+</div>
+<div id="calibre_link-1">
+<div id="calibre_link-136"></div><h1 id="calibre_link-137"><b><a id="calibre_link-138"><b></b></a><span><b>第3章　</b></span>コインプッシャーゲームを作ろう（中編）</b></h1>
+<p>第2章に引き続き、コインプッシャーゲームを製作していきます。第2章ではUnity 5の基本操作を解説しながらコインを作成し、それに物理的な挙動を付けました。本章ではスクリプトを記述して、ゲームオブジェクトの挙動を制御してみます。</p>
+<p>なお、本書で作成するコイン落としゲームのサンプルコードは、筆者のGitHub（<a href="https://github.com/masalinkinpark/Unity-CoinPusher-Tutorial">https://github.com/masalinkinpark/Unity-CoinPusher-Tutorial</a>）で公開しています。また、ブックインプレス<a href="http://book.impress.co.jp/books/1115101110">http://book.impress.co.jp/books/1115101110</a>）からすべてダウンロードできます。</p>
+<p>スクリプトについて説明する前に、コインプッシャーゲームで使用されるゲームオブジェクトの名前と役割を図3.1のように定義します。</p>
+<div id="calibre_link-139">
+<img src="images/00071.jpeg" alt="それぞれのゲームオブジェクトの名前" />
+<p><b>
+図3.1: それぞれのゲームオブジェクトの名前
+</b></p>
+</div>
+<div id="calibre_link-140">
+<p><b>表3.1:</b></p>
+<table>
+<tr><th>スポーナー</th><td>コインを生成するオブジェクト。PCの［←］［→］キーで移動、［スペース］キーでコインを生成</td></tr>
+<tr><th>ウォール</th><td>コインが土台とプッシャーから落ちないようにするオブジェクト</td></tr>
+<tr><th>プッシャー</th><td>コインを押し出すためのオブジェクト</td></tr>
+</table>
+</div>
+<p>実際にUnityのスクリプトを記述してゲーム再生中にゲームオブジェクトを制御していきますが、具体的には、以下のことを習得します。</p>
+<ul>
+<li>プッシャーをスクリプトで動かす（スクリプトの基本）</li>
+<li>コインを落とすためのスポーナーを作る（スポーナーの移動を実装）</li>
+<li>コインをPrefab化して同じ物を生成する（Prefabの方法、Instantiate関数で生成）</li>
+<li>スポーナーがウォールより外に行かないようにする（スクリプトで移動を制限）</li>
+</ul>
+</div>
+<div id="calibre_link-5">
+<h2 id="calibre_link-141"><b><a id="calibre_link-142"><b></b></a><span><b>3.1　</b></span>プッシャーを作ろう</b></h2>
+<p>プッシャーをスクリプトで動かす前に、まずはプッシャーを作りましょう。第2章「コインプッシャーの土台を作る（オブジェクトをシーン上に生成）」の項を参考に、プッシャーを作成して土台から少しはみ出すように設置します（図3.2）。そして、名前も「Pusher」に変更しておきましょう。</p>
+<p>プッシャーの大きさは、土台と同じ大きさ（X=5、Y=1、X=5）に設定しています。また、土台とプッシャーが同じ色だと見にくくなってしまうので、マテリアルで好きな色を付けておきましょう（色の付け方は第2章「コインに色をつける（マテリアルの作成と貼り付け）」の項を参照）。</p>
+<div id="calibre_link-143">
+<img src="images/00074.jpeg" alt="プッシャーを追加" />
+<p><b>
+図3.2: プッシャーを追加
+</b></p>
+</div>
+<p>そして、Pusherのインスペクタウィンドウ下部にある［Add Component］をクリックすると表示されるメニューから［Physics］→［Rigidbody］を選択し、Rigitboby内の「Use Gravity」のチェックマークを外してください。これでプッシャーに重力が掛からなくなり、自然落下しなくなります。</p>
+<p>さらに「is Kinematic」にチェックマークを付けてください（図3.3）。チェックマークを付けると、そのオブジェクトは他のオブジェクトからの衝突や力を受けても影響されません。スクリプトを記述したときのみ、そのオブジェクトを操作できます。</p>
+<div id="calibre_link-144">
+<img src="images/00054.jpeg" alt="プッシャーのインスペクタウィンドウ" />
+<p><b>
+図3.3: プッシャーのインスペクタウィンドウ
+</b></p>
+</div>
+</div>
+<div id="calibre_link-34">
+<h2 id="calibre_link-145"><b><a id="calibre_link-146"><b></b></a><span><b>3.2　</b></span>スクリプトを記述してみよう</b></h2>
+<p>プッシャーが作成できたので、早速スクリプトを記述していきます。まず、［Project］→［Create］→［C#Script］と選択してスクリプトを作成しましょう（図3.4）。Assetsフォルダに「C#」と書かれたファイルが作成されるので、名前を「PusherScript」と名付けます（図3.5）。</p>
+<div id="calibre_link-147">
+<img src="images/00079.jpeg" alt="プロジェクトビューからC#スクリプトを作成する" />
+<p><b>
+図3.4: プロジェクトビューからC#スクリプトを作成する
+</b></p>
+</div>
+<div id="calibre_link-148">
+<img src="images/00017.jpeg" alt="C#スクリプト作成後のプロジェクトビュー" />
+<p><b>
+図3.5: C#スクリプト作成後のプロジェクトビュー
+</b></p>
+</div>
+<p>作成したPusherScriptをダブルクリックすると「MonoDevelop」というエディタが起動します。これはUnityのインストール時に同梱されているエディタで、MonoDevelopを使用してスクリプトを記述していきます（図3.6）。</p>
+<div id="calibre_link-149">
+<img src="images/00084.jpeg" alt="PusherScriptを開くと「MonoDevelop」エディタが起動" />
+<p><b>
+図3.6: PusherScriptを開くと「MonoDevelop」エディタが起動
+</b></p>
+</div>
+<p>スクリプトを開くとStart関数とUpdate関数がありますが、この2つはUnityのスクリプトを記述する上で重要な関数です。</p>
+<p>Start関数はスクリプトが呼び出された時に、初めの1回のみ呼ばれる関数です。初期設定などはこの関数内に記述していきます。</p>
+<p>Update関数は、毎フレーム呼び出される関数です。操作の受け付けや時間経過で動くオブジェクトはこの関数内に記述していきます。</p>
+<p>フレームとは、ゲーム内での時間の単位を表す用語です。例えば、「ストリートファイター」などの格闘ゲームでは、1秒間当たり60枚の画像を切り替えることで映像として見せています。この場合、画像1枚当たりの表示時間は1/60秒となります。また、1秒当たり60枚の画像を切り替えるとき、60fps（Frame Per Second）とも表現されます。</p>
+<p>今回は使用しませんが、Update関数とよく似た関数でFixedUpdate関数もあります。物理演算に関わる部分を記述する場合、公式ではFixedUpdate関数内に記述することが推奨されていますが、今回はUpdate関数ですべて実装していきます。</p>
+<p><strong><b>UpdateandFixedUpdate －Unity公式－</b></strong><br /><a href="https://unity3d.com/jp/learn/tutorials/modules/beginner/scripting/update-and-_xedupdate">https://unity3d.com/jp/learn/tutorials/modules/beginner/scripting/update-and-_xedupdate</a></p>
+<p>それでは、実際にプッシャーを動かすスクリプトを書いていきましょう（リスト3.1）。なお、ソース内のコメントにて、どのようなコードを記述しているかを説明しています。</p>
+<div>
+<p><b>リスト3.1: プッシャーを動かすスクリプト</b></p>
+<pre>using UnityEngine;
+using System.Collections;
+
+public class PusherScript : MonoBehaviour {
+    Vector3 initPosition;
+    Vector3 newPosition;
+
+    // Use this for initialization
+    void Start () {
+        /*
+        このスクリプトを付けたゲームオブジェクト（this）の
+        トランスフォームコンポーネント（transform）の
+        位置（position）をinitPositionに格納している。
+        */
+        initPosition = this.transform.position;
+    }
+
+    // Update is called once per frame
+    void Update () {
+        /*
+        プッシャーが反復運動するよう、フレーム毎に位置を更新している。
+        ここでは、z軸方向に反復運動するようにしている。
+        反復運動の移動モデルはsin関数である。
+        */
+        newPosition = new Vector3 (initPosition.x,
+                                   initPosition.y,
+                                   initPosition.z + Mathf.Sin (Time.time));
+        /*
+            Start関数内ではthis.transform.positionにてゲームオブジェクトの
+            トランスフォームコンポーネントの情報を取得していた。
+            トランスフォームコンポーネント以外のコンポーネントは
+            GetComponent()の様に取得する必要がある（Unity5から）。
+        */
+        this.GetComponent&lt;Rigidbody&gt;().MovePosition(newPosition);
+    }
+}
+</pre>
+</div>
+<p>コードを記述し終えたら、Unityの画面に戻ってください。そして、PusherScriptをドラッグ＆ドロップでプッシャーに貼り付け、画面上部の［Play］ボタンをクリックしてみましょう。プッシャーが反復運動するようになります。このように、ゲームシーンにスクリプトを付けたゲームオブジェクトが存在すると、そのスクリプトで記述されたプログラムが実行されます。</p>
+<p>Rigidbodyコンポーネントには、MovePositionだけでなく力を加えるAddForce関数など様々な関数があります。どのようなことができるのかは、Unityの公式ドキュメントで調べることができます。ぜひ一度、下記リンクのUnity公式スプリクトリファレンスに目を通してみてください。</p>
+<p><strong><b>Rigidbody －Unity公式スクリプトリファレンス－</b></strong><br /><a href="http://docs.unity3d.com/ja/current/ScriptReference/Rigidbody.html">http://docs.unity3d.com/ja/current/ScriptReference/Rigidbody.html</a></p>
+</div>
+<div id="calibre_link-23">
+<h2 id="calibre_link-150"><b><a id="calibre_link-151"><b></b></a><span><b>3.3　</b></span>コインを落とすためのスポーナーを作る（スポーナーの移動の実装）</b></h2>
+<p>次に、コインを落とすためのスポーナーを作成していきます。プッシャーを作成した同じ要領で、今度はプッシャーよりも上側（Y軸正方向）に適当な3Dオブジェクトを作成して配置しましょう。筆者はCubeでスポーナーを作り、「Spawner」と名付けました。</p>
+<p>スポーナーを作成したら、まずはSpawnerのインスペクタウィンドウにあるBox Colliderの歯車アイコンをクリックし、表示される中から［Remove Component］を選択して当たり判定をなくしてください。そして［Add Component］→［Physics］→［Rigidbody］を選択し、Rigidbodyの「Use Gravity」からチェックマークを外してください。</p>
+<p>最後に、Rigidbodyの「Constraints」で移動や回転を制限します。ConstraintsのFreeze Position（Rotation）では、チェックマークを付けた部分は物理演算で移動（回転）しなくなります。例えば、Freeze Positionの「Z」にチェックマークを付けると、オブジェクトが物理演算でZ軸方向に移動しなくなります。</p>
+<p>このスポーナーはX軸方向だけに移動すれば良いので、Freeze Positionの「Y」と「Z」にチェックマークを付けます。また、スポーナーは回転することもないので、Freeze Rotationの「X」「Y」「Z」すべてにチェックマークを付けましょう（図3.7）。</p>
+<div id="calibre_link-152">
+<img src="images/00110.jpeg" alt="Spawnerの配置とインスペクタウィンドウの設定" />
+<p><b>
+図3.7: Spawnerの配置とインスペクタウィンドウの設定
+</b></p>
+</div>
+<p>これで準備が整いました。それでは、Rigidbobyコンポーネントを使ってSpawnerをキー入力で移動させるスクリプトを記述していきます（リスト3.2）。PusherScriptを作成した要領で今度は「SpawnerScript」ファイルを作成し、ダブルクリックしてMonoDevelopを起動します。</p>
+<div>
+<p><b>リスト3.2: スポーナーを移動させるスクリプト</b></p>
+<pre>using UnityEngine;
+using System.Collections;
+
+public class SpawnerScript : MonoBehaviour {
+
+    float moveSpeed = 2.0f;
+    Rigidbody rb;
+    void Start () {
+        // スクリプトを付けたゲームオブジェクトのRigidbodyコンポーネントを取得する
+        rb = this.GetComponent&lt;Rigidbody&gt;();
+    }
+    void Update () {
+        /*
+         * Inputクラスは入力システムに関する関数が含まれている。
+         * GetAxisでPCの矢印キーの入力を受け付けることができる。
+         * "Horizontal"だと、左右の矢印キーの入力を受け付け、"Vertical"だと
+           上下の矢印キーの入力を受け付けるようになる。
+         * http://docs.unity3d.com/ja/current/ScriptReference/Input.GetAxis.html
+         */
+        float x = Input.GetAxis ("Horizontal");
+
+        // キー入力された際の移動する向きを決める。
+        // 今回はx軸方向に移動させたい
+        Vector3 direction = new Vector3 (x, 0, 0);
+
+        // velocity(速度)に代入することによって、このオブジェクトの移動速度が決定される
+        rb.velocity = direction * moveSpeed;
+    }
+</pre>
+</div>
+<p>記述し終えたらSpawnerにSpawnerScriptを貼り付け、画面上部の［Play］ボタンをクリックしてみましょう。PCの［←］［→］キーでスポーナーが動くようになりました。</p>
+</div>
+<div id="calibre_link-13">
+<h2 id="calibre_link-153"><b><a id="calibre_link-154"><b></b></a><span><b>3.4　</b></span>コインをPrefab化して同じ物を生成する（Prefabの方法、Instantiate関数で生成）</b></h2>
+<p>コインプッシャーゲームでは、コインは1枚だけでなく、たくさん出てきます。そこで、最初に作成したコインを再利用したいと考えるのではないでしょうか。</p>
+<p>Unityには、オブジェクトを再利用するために「Prefab」という重要な機能があります。コインをPrefab化することで、まったく同じ形状、同じコンポーネントを持ったコインを生成できるようになります。</p>
+<p>Prefab化する方法は簡単です。ヒエラルキーウィンドウにあるコインをプロジェクトウィンドウ内にドラッグ＆ドロップするだけです（図3.8）。Prefab化したあと、プロジェクトウィンドウにコインの形をしたファイルができました。これでPrefab化に成功です（図3.9）。</p>
+<div id="calibre_link-155">
+<img src="images/00018.jpeg" alt="ドラッグ＆ドロップで簡単にPrefab化できる" />
+<p><b>
+図3.8: ドラッグ＆ドロップで簡単にPrefab化できる
+</b></p>
+</div>
+<div id="calibre_link-156">
+<img src="images/00042.jpeg" alt="Prefab化されたコインがプロジェクトウィンドウに表示される" />
+<p><b>
+図3.9: Prefab化されたコインがプロジェクトウィンドウに表示される
+</b></p>
+</div>
+<p>それでは、［スペース］キーを押すとコインが生成されるスクリプトを記述していきます。先ほど編集したSpawnerScriptを再度開き、追加部分を打ち込んでください（リスト3.3）。</p>
+<p></p>
+<div>
+<p><b>リスト3.3: コインをPrefab化して同じ物を生成するスクリプト（追加部分のみ）</b></p>
+<pre>（中略）
+
+   float moveSpeed = 2.0f;
+   Rigidbody rb;
+
+   /* 追加
+    * public で変数宣言をすると、インスペクタ上に項目が表示される。
+    * ここではcoin という変数がインスペクタ上で表示される。
+    */
+   public GameObject coin;
+
+   /* 追加ここまで*/
+
+   void Start () {
+       // スクリプトを付けたゲームオブジェクトのRigidbodyコンポーネントを取得する
+       rb = this.GetComponent&lt;Rigidbody&gt;();
+   }
+
+   void Update () {
+
+（中略）
+
+       rb.velocity = direction * moveSpeed;
+
+       /* 追加
+        * スペースキーが押されたときにcoinを生成する。
+        * 第一引数は生成するオブジェクト、第二引数は生成する場所、
+          第三引数は生成する角度
+        */
+       if (Input.GetKeyDown("space")) {
+           Instantiate(coin,this.transform.position,this.transform.rotation);
+       }
+       /* 追加ここまで*/
+   }
+}
+</pre>
+</div>
+<p>記述を終えたらUnityエディタに戻り、Spawnerインスペクタ内のSpawn Script（Script）を見てみましょう。「Script」の下に「Coin」という項目が追加されています。Unityのスクリプト内で宣言したpublic変数はインスペクタウィンドウに表示されます。変数の型によっては数字を打ち込めたり、ゲームオブジェクトをドラッグ＆ドロップで設定することもできます。それでは、Spawner Scriptの「Coin」部分に、先ほどPrefab化したコインをドラッグ＆ドロップで設定してみましょう（図3.10）。</p>
+<div id="calibre_link-157">
+<img src="images/00067.jpeg" alt="Spawnerの配置とインスペクタウィンドウ" />
+<p><b>
+図3.10: Spawnerの配置とインスペクタウィンドウ
+</b></p>
+</div>
+<p>これで、コインをSpawnerScriptのCoinに紐付けすることができました。ゲームを再生して［スペース］キーを押すと、スポーナーからコインが落ちてくるようになります。</p>
+</div>
+<div id="calibre_link-18">
+<h2 id="calibre_link-158"><b><a id="calibre_link-159"><b></b></a><span><b>3.5　</b></span>スポーナーがウォールより外に行かないようにする（スクリプトで移動を制限）</b></h2>
+<p>まずは、プッシャーゲームに必要なウォール（壁）を土台につけていきましょう。ウォールはこれまで通りに［Hierarchy］→［Create］→［3D Object］→［Cube］から作り、土台の左右と奥に設置します（図3.11）。奥のウォールには「Wall」、左右のウォールにはそれぞれ「LeftWall」「RightWall」と名付けました。</p>
+<div id="calibre_link-160">
+<img src="images/00014.jpeg" alt="ウォールを作成して土台の左右と奥に設置" />
+<p><b>
+図3.11: ウォールを作成して土台の左右と奥に設置
+</b></p>
+</div>
+<p>次に、今の状態ではスポーナーが左右のウォールよりも外側に移動できてしまうので、ウォールの外側には移動できないようにスポーナーの移動範囲をスクリプトで制限していきます。SpawnerScriptを開き、リスト3.4の追加部分を打ち込みましょう。</p>
+<div>
+<p><b>リスト3.4: スポーナーの移動範囲をスクリプトで制限するスクリプト（追加部分のみ）</b></p>
+<pre>（中略）
+
+   public GameObject coin;
+
+   /* 追加
+    * シーンに置いたLeftWall 、RightWall をこのスクリプトで使用する。
+    * また、それぞれのx 座標の変数も準備しておく。
+    */
+   public GameObject leftWall;
+   public GameObject rightWall;
+   float leftWallPositionX;
+   float rightWallPositionX;
+   /* 追加ここまで*/
+
+   void Start () {
+       // スクリプトを付けたゲームオブジェクトのRigidbodyコンポーネントを取得する
+       rb = this.GetComponent&lt;Rigidbody&gt;();
+       // 追加:leftWall とrightWall のx 座標を取得
+       leftWallPositionX = leftWall.transform.position.x;
+       rightWallPositionX = rightWall.transform.position.x;
+       // 追加ここまで
+
+       /* 追加
+        * scoreText内にあるScoreScriptをgetComponentで取ってくる。
+        * これで、ScoreScript内にてpublicで宣言した関数を利用できるようになる。
+        */
+       scoreS = scoreText.GetComponent&lt;ScoreScript&gt;();
+   }
+
+   // Update is called once per frame
+   /* 追加ここまで*/
+
+   void Update () {
+
+       /* 追加
+        * Mathf.Clamp である変数の最小値と最大値を設定することができる。
+        * 第一引数は設定したい変数、第二引数は最小値、第三引数は最大値である。
+        * Spawner の移動できるx 座標範囲をleftWallPosition のx 座標から、rightWallPostion のx 座標の範囲にしている。
+        */
+       Vector3 currentPosition = this.transform.position;
+       currentPosition.x = Mathf.Clamp(currentPosition.x,
+                                       leftWallPositionX,
+                                       rightWallPositionX);
+       this.transform.position = currentPosition;
+       /* 追加ここまで*/
+
+（中略）
+
+       if (Input.GetKeyDown("space")) {
+           Instantiate(coin,this.transform.position,this.transform.rotation);
+       }
+   }
+}
+</pre>
+</div>
+<p>リスト3.4では、publicな変数としてleftWall、rightWallを宣言しました。記述が終わったら、LeftWallとRightWallをヒエラルキーウィンドウからAssetsフォルダにドラッグ＆ドロップします。さらに、SpawnerインスペクタウィンドウのSpawnerScriptにLeftWallとRightWallの項目が追加されているので、設置した左右のウォールをドラッグ＆ドロップで設定します（図3.12）。</p>
+<div id="calibre_link-161">
+<img src="images/00006.jpeg" alt="SpawnerScriptのインスペクタウィンドウ" />
+<p><b>
+図3.12: SpawnerScriptのインスペクタウィンドウ
+</b></p>
+</div>
+<p>画面上部の［Play］ボタンをクリックしてみましょう。これで、スポーナーがウォールより外側に移動しなくなりました。</p>
+<p>これで基本的なコインプッシャーゲームの仕組みは完成です。第4章では、ゲーム製作の総仕上げに入っていきます。</p>
+</div>
+<div id="calibre_link-24">
+<div id="calibre_link-162"></div><h1 id="calibre_link-163"><b><a id="calibre_link-164"><b></b></a><span><b>第4章　</b></span>Unity5でコインプッシャーゲームを作ろう（後編）</b></h1>
+<p>第3章までコインプッシャーゲームを製作してきましたが、第4章ではいよいよ仕上げに入ります。ゲームのメインとなるコインの動作に関するスクリプトを中心に記述していきます。</p>
+<p>本章では、以下のことを習得します。</p>
+<ul>
+<li>テキスト（コインの枚数）を表示してみる（uGUIの利用）</li>
+<li>コインの枚数を増減させる（Textをスクリプトで制御、他のGameObjectに付けたスクリプトを呼ぶ）</li>
+<li>コインが土台から落ちたときの処理（Tagの利用）</li>
+<li>コインが土台から落ちて加点したときに効果音を鳴らす</li>
+<li>Assetを利用して、ステージを飾ってみよう（Asset Storeの利用）</li>
+</ul>
+</div>
+<div id="calibre_link-38">
+<h2 id="calibre_link-165"><b><a id="calibre_link-166"><b></b></a><span><b>4.1　</b></span>テキスト（コインの枚数）を表示してみる（uGUIの利用）</b></h2>
+<p>Unity 4.6から実装されたUnityのUIシステムです。このUIシステムは正式名称ではないのですが、「uGUI」という名称が使用されていることがほとんどなので、本書でも「uGUI」という名称で紹介していきます。</p>
+<p>それでは、uGUIを使用してコイン枚数を表示できるようにしましょう。ヒエラルキーウィンドウから［Create］→［UI］→［Text］を選択してください（図4.1）。「Canvas」というオブジェクトができ、その下に「Text」というオブジェクトができます。このTextオブジェクトを「ScoreText」と名付けます（図4.2）。</p>
+<div id="calibre_link-167">
+<img src="images/00029.jpeg" alt="uGUIのTextの追加" />
+<p><b>
+図4.1: uGUIのTextの追加
+</b></p>
+</div>
+<div id="calibre_link-168">
+<img src="images/00030.jpeg" alt="Textオブジェクトを「ScoreText」と名付ける" />
+<p><b>
+図4.2: Textオブジェクトを「ScoreText」と名付ける
+</b></p>
+</div>
+<p>uGUIではCanvas上にボタンやテキスト、画像を並べてUIを製作していきます。それでは、作ったScoreTextをダブルクリックしてみましょう。ゲームシーンの中に、現在製作中のコインプッシャーゲームとCanvasが共存しています。ここで、ScoreTextが白枠内へ収まるように、設置したい場所に配置してください。筆者は今回、白枠内左下にコインの枚数を表示するようにしました。なお、白枠はゲーム実行時のウィンドウサイズと同じ大きさになっています（図4.3）。</p>
+<div id="calibre_link-169">
+<img src="images/00081.jpeg" alt="uGUIの配置（白枠の左下に配置）" />
+<p><b>
+図4.3: uGUIの配置（白枠の左下に配置）
+</b></p>
+</div>
+<p>ScoreText設置時は文字が小さく、文字色も黒で見難いかと思われるので、文字を大きくかつ文字色も変更しましょう。ScoreTextのInspectorで、「Font size」を見やすいサイズに変更します。なお、フォントを大きくしすぎると先ほどまで表示されていた「New Text」が表示されなくなってしまうと思います（図4.4）。これは、ScoreTextのテキストサイズが表示される枠内に収まりきらなかったためです。</p>
+<p>そこで、Paragraph内の「Best Fit」にチェックマークを付けましょう。これにより、自動的に枠の大きさをフォントサイズに合わせて変更してくれます（図4.5）。</p>
+<div id="calibre_link-170">
+<img src="images/00045.jpeg" alt="フォントを大きくすると文字が表示されなくなる" />
+<p><b>
+図4.4: フォントを大きくすると文字が表示されなくなる
+</b></p>
+</div>
+<div id="calibre_link-171">
+<img src="images/00080.jpeg" alt="ScoreTextのインスペクタウィンドウ" />
+<p><b>
+図4.5: ScoreTextのインスペクタウィンドウ
+</b></p>
+</div>
+<p>［Game］タブをクリックして、実際にScoreTextがどのように配置されているか見てみましょう（図4.6）。</p>
+<div id="calibre_link-172">
+<img src="images/00034.jpeg" alt="［Game］タブに切り替えてScoreTextがどのように配置されているか確認" />
+<p><b>
+図4.6: ［Game］タブに切り替えてScoreTextがどのように配置されているか確認
+</b></p>
+</div>
+<p></p>
+</div>
+<div id="calibre_link-25">
+<h2 id="calibre_link-173"><b><a id="calibre_link-174"><b></b></a><span><b>4.2　</b></span>コインの枚数を増減させる（Textをスクリプトで制御。他のGameObjectに付けたスクリプト内の関数を呼ぶ）</b></h2>
+<p>ここからは、スポーナーからコインを生成する際に、コインの表示を減らすスクリプトを書いていきます。なお、ここではコインの枚数を「スコア」と表現します。</p>
+<p>まず、［Project］→［Create］→［C#Script］と選択して「ScoreScript」という名前でC#スクリプトを作りましょう。そして、このScoreScriptをドラッグ＆ドロップでScoreTextに貼り付けてください。</p>
+<p>それでは、スクリプトを記述していきます。ScoreScriptをダブルクリックしてエディタを開き、リスト1のように記述しましょう。</p>
+<div>
+<p><b>リスト4.1: ScoreScript.cs</b></p>
+<pre>using UnityEngine;
+using System.Collections;
+/*
+ * Textの文字列やフォントの大きさをスクリプトで変更する際には、
+ * using UnityEngine.UI;を記述する必要がある。
+ */
+using UnityEngine.UI;
+
+public class ScoreScript : MonoBehaviour {
+
+    /*
+     * Scoreの初期値(最初に持っているコインの枚数)を
+     * インスペクタ上から設定できるようにpublic 変数で宣言しておく
+     */
+    public int initScore;
+    int currentScore;
+    Text scoreText;
+
+    void Start () {
+        currentScore = initScore;
+        scoreText = this.GetComponent&lt;Text&gt;();
+        printScore(initScore);
+    }
+
+    // スコアを減点する関数
+    public void subScore(int n) {
+        currentScore -= n;
+        printScore(currentScore);
+    }
+
+    // スコアを加点する関数
+    public void addScore(int n) {
+        currentScore += n;
+        printScore(currentScore);
+    }
+
+    void printScore(int n) {
+        /*
+         * ScoreTextのTextに整数を代入する。
+         * scoreText.textはstring型(文字列)を受け取るが、nはint型(整数)なので、
+         * nをstring型に変換してあげる必要がある。
+         */
+        scoreText.text = n.ToString();
+    }
+}
+</pre>
+</div>
+<p>また、subScore関数とaddScore関数はScore以外のスクリプトから呼び出せるようにしたいです。具体的に言えば、スポーナーからコインが生成されるときに、スコアからコインを生成した枚数分だけ減点するようにしたいところです。</p>
+<p>そこで、Spawnerに貼りつけたSpawnerScriptから、ScoreTextに貼りつけたScoreScriptのsubScore関数を呼び出せるようにしてみましょう。ProjectウィンドウのAssets内から前回作成したSpawnerScriptを開き、リスト2のように記述を追加してください。</p>
+<div>
+<p><b>リスト4.2: SpawnerScript.cs</b></p>
+<pre>using UnityEngine;
+using System.Collections;
+
+public class SpawnerSrcipt : MonoBehaviour {
+
+    float moveSpeed = 2.0f;
+    Rigidbody rb;
+    /* 追加
+     * public で変数宣言をすると、インスペクタ上に項目が表示される。
+     * ここではcoin という変数がインスペクタ上で表示される。
+     */
+    public GameObject coin;
+
+    /*
+     * シーンに置いたLeftWall 、RightWall をこのスクリプトで使用する。
+     * また、それぞれのx 座標の変数も準備しておく。
+     */
+    public GameObject leftWall;
+    public GameObject rightWall;
+    float leftWallPositionX;
+    float rightWallPositionX;
+
+    // scoreTextをインスペクタ上に表示させる
+    public GameObject scoreText;
+    ScoreScript scoreS;
+
+    void Start () {
+        // スクリプトを付けたゲームオブジェクトのRigidbodyコンポーネントを取得する
+        rb = this.GetComponent&lt;Rigidbody&gt;();
+        // leftWall とrightWall のx 座標を取得
+        leftWallPositionX = leftWall.transform.position.x;
+        rightWallPositionX = rightWall.transform.position.x;
+
+        /*
+         * scoreText内にあるScoreScriptをgetComponentで取ってくる。
+         * これで、ScoreScript内にてpublicで宣言した関数を利用できるようになる。
+         */
+        scoreS = scoreText.GetComponent&lt;ScoreScript&gt;();
+    }
+
+    // Update is called once per frame
+    void Update () {
+
+        /*
+         * Mathf.Clamp である変数の最小値と最大値を設定することができる。
+         * 第一引数は設定したい変数、第二引数は最小値、第三引数は最大値である。
+         * Spawner の移動できるx 座標範囲をleftWallPosition のx座標から、rightWallPostion のx 座標の範囲にしている。
+         */
+        Vector3 currentPosition = this.transform.position;
+        currentPosition.x = Mathf.Clamp(currentPosition.x,
+                                        leftWallPositionX,
+                                        rightWallPositionX);
+        this.transform.position = currentPosition;
+
+        /*
+         * Inputクラスは入力システムに関する関数が含まれている。
+         * GetAxisでPCの矢印キーの入力を受け付けることができる。
+         * "Horizontal"だと、左右の矢印キーの入力を受け付け、"Vertical"だと
+           上下の矢印キーの入力を受け付けるようになる。
+         * http://docs.unity3d.com/ja/current/ScriptReference/Input.GetAxis.html
+         */
+        float x = Input.GetAxis ("Horizontal");
+
+        // キー入力された際の移動する向きを決める。
+        // 今回はx軸方向に移動させたい
+        Vector3 direction = new Vector3 (x, 0, 0);
+
+        // velocity(速度)に代入することによって、このオブジェクトの移動速度が決定される
+        rb.velocity = direction * moveSpeed;
+
+        /*
+         * スペースキーが押されたときにcoin を生成する。
+         * 第一引数は生成するオブジェクト、第二引数は生成する場所、第三引数は生成する角度
+         */
+        if (Input.GetKeyDown("space")) {
+            Instantiate(coin,this.transform.position,this.transform.rotation);
+            // スペースキーが押されたら、スコアを1点減点させる
+            scoreS.subScore(1);
+        }
+    }
+}
+</pre>
+</div>
+<p>スクリプトを記述した後は、SpawnerのインスペクタウィンドウにあるSpawner Scriptに「Score Text」という項目が出現しているので、そこにScoreTextをドラッグ＆ドロップします。ここまで完了したら、ゲームを実行してみましょう。スペースキーを押すたびにスコアが減少していきます（図4.7）。</p>
+<div id="calibre_link-175">
+<img src="images/00013.jpeg" alt="左下に設置したScoreTextが減点されていく様子" />
+<p><b>
+図4.7: 左下に設置したScoreTextが減点されていく様子
+</b></p>
+</div>
+</div>
+<div id="calibre_link-10">
+<h2 id="calibre_link-176"><b><a id="calibre_link-177"><b></b></a><span><b>4.3　</b></span>コインが土台から落ちたときの処理（Tagの利用）</b></h2>
+<p>ここまでの操作で、スポーナーからコインが生成されたときにスコアが減点される様子を確認できました。次は、コインが土台から落ちた時にスコアを増加させてみましょう。ここでは、ほとんどのコインプッシャーゲームと同様に、土台より手前にコインが落ちたらスコアを増加するようにします。</p>
+<p>まずは、シーンビューで土台の下に受け皿を設置しましょう。［Hierarchy］→［Create］→［3DObject］→［Cube］と選択して受け皿を作成します。CubeのScaleは土台に合わせてX=5、Y=1、X=5に設定し、名前を付けましょう。筆者は「Saucer」と名付けました（図4.8）。</p>
+<div id="calibre_link-178">
+<img src="images/00090.jpeg" alt="Saucerの設置" />
+<p><b>
+図4.8: Saucerの設置
+</b></p>
+</div>
+<p>次に、この受け皿にコインが乗ったらスコアを2増加し、受け皿に乗ったコインを消す処理を記述します。先ほどと同じように［Project］→［Create］→［C#Script］と選択して「SaucerScript」という名前でC#スクリプトを作り、リスト3のように書いていきましょう。そして、SaucerScriptをドラッグ＆ドロップでSaucerに貼りつけます。</p>
+<div>
+<p><b>リスト4.3: SaucerScript.cs</b></p>
+<pre>using UnityEngine;
+using System.Collections;
+
+public class SaucerScript : MonoBehaviour {
+
+    void OnCollisionEnter(Collision colObject) {
+    // Saucerと衝突したオブジェクト(colObject)の「名前」が"Coin"だったときに、
+    // 衝突したオブジェクトを消す(Destroy)
+        if (colObject.gameObject.name == "Coin") {
+            Destroy(colObject.gameObject);
+        }
+    }
+}
+</pre>
+</div>
+<p>ここで、再度ゲームを実行してみましょう。スペースキーを押しても生成されたコインが消えません。これは、SpawnerScriptでInstantiate関数を使用してオブジェクトを生成すると、オブジェクト名の後ろに（Clone）と付いてしまうからです（本来はInstantiate後に名前を変更することも可能）。</p>
+<p>そうなると、if文内のCoinとオブジェクト名が一致しなくなってしまい、受け皿とぶつかってもコインが消えません（図4.9）。そのため、別の方法で名前を一致させてコインが消えるようにする必要があります。</p>
+<div id="calibre_link-179">
+<img src="images/00028.jpeg" alt="Saucerに衝突してもCoin（Clone）が消えない" />
+<p><b>
+図4.9: Saucerに衝突してもCoin（Clone）が消えない
+</b></p>
+</div>
+<p>そこで、タグ機能を使います。タグ機能を使うと、CoinとCoin（Clone）を同じオブジェクトに分類分けすることができます。</p>
+<p>タグ機能は、複数のゲームオブジェクトを分類するために使用します。例えば、敵キャラクターが「ゴブリン」「スライム」「ドラゴン」と3体いたとして、タグを使うとこれら3体をまとめて「Enemy」と設定できます。</p>
+<p>それでは、プロジェクトウィンドウのAssets内にある「Coin」をクリックしてください。続いてInspectorの「Coin」とオブジェクト名が表示されている下にある「Tag」の［Untagged］という項目をクリックし、［AddTag...］を選択します（図4.10）。</p>
+<div id="calibre_link-180">
+<img src="images/00024.jpeg" alt="Tagを設定する場所" />
+<p><b>
+図4.10: Tagを設定する場所
+</b></p>
+</div>
+<p>インスペクタウィンドウが「Tags＆Layers」という表示に変わり、ここでユーザが定義してタグを作ることができます。「Tags」が「List is Empty」になっているはずなので、［＋］を押して新しいタグを作ります。作成したTagに「Coin」と名付けて（図4.11）、プロジェクトウィンドウのAssets内にあるCoinの［Tag］を「Coin」に変更しましょう（図4.12）。</p>
+<div id="calibre_link-181">
+<img src="images/00050.jpeg" alt="Tagの編集ウィンドウ（Coinタグ作成後）" />
+<p><b>
+図4.11: Tagの編集ウィンドウ（Coinタグ作成後）
+</b></p>
+</div>
+<div id="calibre_link-182">
+<img src="images/00020.jpeg" alt="Coinの［Tag］を「Coin」に変更" />
+<p><b>
+図4.12: Coinの［Tag］を「Coin」に変更
+</b></p>
+</div>
+<p>ここまでの設定に合わせて、SaucerScriptも書き直します（リスト4）。</p>
+<p></p>
+<div>
+<p><b>リスト4.4: SaucerScript.csを修正（コインが消えるスクリプトを追加）</b></p>
+<pre>using UnityEngine;
+using System.Collections;
+
+public class SaucerScript : MonoBehaviour {
+
+    void OnCollisionEnter(Collision colObject) {
+        // 変更 ：Saucerと衝突したオブジェクトの「タグ」が"Coin"だったときに、
+        // 衝突したオブジェクトを消す(Destroy)
+        if (colObject.gameObject.tag == "Coin") {
+            Destroy(colObject.gameObject);
+        }
+    }
+}
+</pre>
+</div>
+<p>これで、受け皿にコインが落ちた時に消えるようになりました。続けて、受け皿にコインが落ちたときにスコアが2点加点されるスクリプトを追加します（リスト5）。</p>
+<div>
+<p><b>リスト4.5: SaucerScript.csを修正（スコアを加点するスクリプトを追加）</b></p>
+<pre>using UnityEngine;
+using System.Collections;
+
+public class SaucerScript : MonoBehaviour {
+
+    // 追加:scoreTextをインスペクタ上に表示させる
+    public GameObject scoreText;
+    ScoreScript scoreS;
+
+    void Start() {
+        scoreS = scoreText.GetComponent&lt;ScoreScript&gt;();
+    }
+
+    void OnCollisionEnter(Collision colObject) {
+        if (colObject.gameObject.tag == "Coin") {
+            Destroy(colObject.gameObject);
+            // 追加
+            scoreS.addScore(2);
+        }
+    }
+}
+</pre>
+</div>
+<p>スクリプトを修正したら、ヒエラルキーウィンドウ内の「ScoreText」を、SaucerのインスペクタウィンドウにあるSaucerScriptの「ScoreText」にドラッグ＆ドロップすることを忘れないでください。</p>
+<p>これで、コインプッシャーゲームがひと通り完成しました！</p>
+</div>
+<div id="calibre_link-43">
+<h2 id="calibre_link-183"><b><a id="calibre_link-184"><b></b></a><span><b>4.4　</b></span>コインが土台から落ちて加点したときに効果音を鳴らす</b></h2>
+<p>ゲームがひと通り完成したところで、少しアレンジしてみましょう。コインをゲットしたときに効果音を鳴らします。効果音が鳴るタイミングは、先ほど実装した「コインが受け皿に落ちたとき」です。</p>
+<p>まず、効果音をフリーのサイト、もしくは自前で準備してください。準備した素材をUnityのプロジェクトに追加する方法は、入れたい素材をプロジェクトウィンドウにドラッグ＆ドロップして取り込むだけです（図4.13）。</p>
+<div id="calibre_link-185">
+<img src="images/00103.jpeg" alt="効果音をドラッグ＆ドロップでUnityプロジェクトに追加" />
+<p><b>
+図4.13: 効果音をドラッグ＆ドロップでUnityプロジェクトに追加
+</b></p>
+</div>
+<p>追加した効果音ファイルは波形のアイコンで表示されます。波形のアイコンが音に関するファイルになります。</p>
+<p>それでは、取り込んだ効果音を鳴らすための準備をしましょう。まず、Saucerのインスペクタウィンドウから［Add Component］→［Audio］→［Audio Source］を選択して、インスペクタウィンドウに「Audio Source」を付けます。次に、Audio Source内の「AudioClip」に取り込んだ効果音をドラッグ＆ドロップします。なお、「Play On Awake」のチェックマークは外してください（図4.14）。</p>
+<div id="calibre_link-186">
+<img src="images/00036.jpeg" alt="Saucerのインスペクタウィンドウの状態（Audio Source追加後）" />
+<p><b>
+図4.14: Saucerのインスペクタウィンドウの状態（Audio Source追加後）
+</b></p>
+</div>
+<p>ここから、SaucerScriptにコインが落ちたときに音を鳴らすスクリプトを追加します（リスト6）。</p>
+<div>
+<p><b>リスト4.6: SaucerScript.csを修正（効果音を鳴らすスクリプトを追加）</b></p>
+<pre>using UnityEngine;
+using System.Collections;
+
+public class SaucerScript : MonoBehaviour {
+
+    // 追加：scoreTextをインスペクタ上に表示させる
+    public GameObject scoreText;
+    ScoreScript scoreS;
+
+    AudioSource getSE;
+
+    void Start() {
+        scoreS = scoreText.GetComponent&lt;ScoreScript&gt;();
+        // 追加 ：Saucerに付けたAudioSourceコンポーネントをとってくる
+        getSE = this.GetComponent&lt;AudioSource&gt;();
+    }
+
+    void OnCollisionEnter(Collision colObject) {
+        if (colObject.gameObject.tag == "Coin") {
+            Destroy(colObject.gameObject);
+            scoreS.addScore(2);
+            // 追加 ：PlayOneShotでAudioClipに入れた音を一度だけ鳴らす
+            getSE.PlayOneShot(getSE.clip);
+        }
+    }
+}
+</pre>
+</div>
+<p>これで、コインが受け皿に落ちたときに効果音が鳴るようにできました。</p>
+</div>
+<div id="calibre_link-26">
+<h2 id="calibre_link-187"><b><a id="calibre_link-188"><b></b></a><span><b>4.5　</b></span>アセットストアを利用してステージを飾ってみよう（AssetStoreの利用）</b></h2>
+<p>Unity社が提供する「アセットストア」では、ゲーム製作に利用できる3Dモデルや音源、画像などをダウンロードできます（無料・有料）。どのような素材があるか、実際にアセットストアを覗いてみましょう。メニューバーから［Window］→［Asset Store］を選択すると（図4.15）、別ウィンドウで画面が表示されます。これがアセットストアです。画面右側にある「3Dモデル」「アニメーション」「エディタ拡張」「オーディオ」などから、さまざまな素材や拡張を購入することができます（図4.16）。</p>
+<div id="calibre_link-189">
+<img src="images/00037.jpeg" alt="メニューバーから「アセットストア」を開く" />
+<p><b>
+図4.15: メニューバーから「アセットストア」を開く
+</b></p>
+</div>
+<div id="calibre_link-190">
+<img src="images/00060.jpeg" alt="「アセットストア」のトップページ" />
+<p><b>
+図4.16: 「アセットストア」のトップページ
+</b></p>
+</div>
+<p>アセットストアから素材をダウンロードするには、アセットストアにログインしなければなりません。アセットストアの右上にある［ログイン］から、第1章で作成したUnityのアカウントを使ってログインしましょう。</p>
+<p>無事にログインできたら、自分の欲しい素材や拡張を探します。例えば、コインのアセットが欲しい場合は、画面右上の検索欄（Asset Storeをサーチする）に「Coin」と打ち込みます。このとき、日本語だとほとんど出てこないので、英語で検索してください。</p>
+<p>検索結果を見ると、他の製作者が作ったコインがたくさん表示されます（図4.17）。ここから無料のものを選んでダウンロードしてみるのも良し、有料のアセットを購入してみるのも良いでしょう。</p>
+<div id="calibre_link-191">
+<img src="images/00089.jpeg" alt="「Coin」の検索結果" />
+<p><b>
+図4.17: 「Coin」の検索結果
+</b></p>
+</div>
+<p>ここでは、「Gold Coins」という無料で利用できるアセットをダウンロードして、コインプッシャーゲームのプロジェクトに入れてみます。</p>
+<p>検索結果から「Gold Coins」をクリックし、遷移した画面で［ダウンロード］を押すとダウンロードが始まります（図4.18）。ダウンロードが終了すると、図4.19のようなウィンドウが表示されます。</p>
+<div id="calibre_link-192">
+<img src="images/00007.jpeg" alt="「Gold Coins」のダウンロードページ" />
+<p><b>
+図4.18: 「Gold Coins」のダウンロードページ
+</b></p>
+</div>
+<div id="calibre_link-193">
+<img src="images/00111.jpeg" alt="ダウンロードの終了画面" />
+<p><b>
+図4.19: ダウンロードの終了画面
+</b></p>
+</div>
+<p>ここで［import］ボタンをクリックすると、アセットがUnityのプロジェクト内に取り込まれます。ダウンロードしたGold Coinsをさっそくコインプッシャーゲームに利用してみました（図4.20）。見た目にも、より本物のゲームらしくなったのではないでしょうか。</p>
+<div id="calibre_link-194">
+<img src="images/00046.jpeg" alt="コインプッシャーゲームに「Gold Coins」を適用してみた" />
+<p><b>
+図4.20: コインプッシャーゲームに「Gold Coins」を適用してみた
+</b></p>
+</div>
+<p>ここまで、3章にわたってコインプッシャーゲームを製作してきました。お疲れ様でした。皆さんも、上手に製作できたでしょうか？</p>
+<p>なお、本書で紹介した機能はごく一部で、Unityにはまだまだたくさんの機能があります。幸いにも多くの情報がネット上にありますので、目的に応じて実装方法を調べ、さまざまなジャンルのゲーム製作にもチャレンジしてみてください。</p>
+</div>
+<div id="calibre_link-16">
+<div id="calibre_link-195"></div><h1 id="calibre_link-196"><b><a id="calibre_link-197"><b></b></a><span><b>第5章　</b></span>uGUIの簡単な使い方</b></h1>
+<p>本章ではUnity 4.6から追加された「UnityUI」（以下、uGUI）について、少し掘り下げて解説します。uGUIは、Unity上でGUIの構築を助けてくれる機能です。第4章ではスコアを表示するためにuGUIを使用しましたが、その機能をほとんど使用していませんでした。</p>
+<p>本章では、以下のことを習得します。</p>
+<ul>
+<li>UIの設置とアンカーの設定</li>
+<li>Buttonを押したときにイベントを発生させる</li>
+<li>UIに使用する画像の取り込みと設定</li>
+</ul>
+</div>
+<div id="calibre_link-0">
+<h2 id="calibre_link-198"><b><a id="calibre_link-199"><b></b></a><span><b>5.1　</b></span>第4章で設置したGUIの仕様</b></h2>
+<p>第4章では、コインプッシャーゲームのスコアを表示するテキストUI（ScoreText）をuGUIで作成しましたが（図5.1）、その機能を十二分に発揮できる実装とは言えないものでした。お気づきの読者もいらっしゃるかと思いますが、ScoreTextを設置後にゲームの画面解像度を変更すると、スコアが画面外にはみ出てしまいます（図5.2、図5.3）。</p>
+<div id="calibre_link-200">
+<img src="images/00070.jpeg" alt="ゲーム画面左下にScoreを配置" />
+<p><b>
+図5.1: ゲーム画面左下にScoreを配置
+</b></p>
+</div>
+<div id="calibre_link-201">
+<img src="images/00073.jpeg" alt="ここでは左下隅にScoreが設置されている（第4章の状態）" />
+<p><b>
+図5.2: ここでは左下隅にScoreが設置されている（第4章の状態）
+</b></p>
+</div>
+<div id="calibre_link-202">
+<img src="images/00008.jpeg" alt="画面解像度を変更するとテキストが中央に寄ってしまう" />
+<p><b>
+図5.3: 画面解像度を変更するとテキストが中央に寄ってしまう
+</b></p>
+</div>
+<p>これでは解像度を変えるたびにUIがバラバラになってしまいます。そこで、ゲームを複数の解像度に対応できるように、UIの設定を行ないましょう。</p>
+</div>
+<div id="calibre_link-28">
+<h2 id="calibre_link-203"><b><a id="calibre_link-204"><b></b></a><span><b>5.2　</b></span>UIを作成する前の設定</b></h2>
+<p>新たにプロジェクトを作成して「Canvas」を設定します。新たにプロジェクトを作成するとヒエラルキーウィンドウには「Main Camera」と「Directional Light」しか存在しません。CanvasはUIを作成するときに自動生成されます。まず、ヒエラルキーウィンドウから［create］→［UI］→［Button］をクリックして、新しく作られたボタンをシーンウィンドウの好きな場所に配置してください。そしてヒエラルキーウィンドウで新しく生成されたCanvasをクリックして、CanvasのインスペクタウィンドウでCanvas Scaler（Sdripts）のUI Scale Modeを「ScaleWithScreenSize」に変更します（図5.4）。</p>
+<div id="calibre_link-205">
+<img src="images/00108.jpeg" alt="UI Scale ModeをScale With Screen Sizeに変更" />
+<p><b>
+図5.4: UI Scale ModeをScale With Screen Sizeに変更
+</b></p>
+</div>
+<p>Scale With Screen Sizeでは、ゲーム画面のサイズに合わせてCanvas下のボタンや文字が拡大・縮小されます（図5.5、図5.6）。</p>
+<div id="calibre_link-206">
+<img src="images/00039.jpeg" alt="Scale With Screen Size変更後にゲーム画面サイズを変えてみる（その1）" />
+<p><b>
+図5.5: Scale With Screen Size変更後にゲーム画面サイズを変えてみる（その1）
+</b></p>
+</div>
+<div id="calibre_link-207">
+<img src="images/00063.jpeg" alt="Scale With Screen Size変更後にゲーム画面サイズを変えてみる（その2）" />
+<p><b>
+図5.6: Scale With Screen Size変更後にゲーム画面サイズを変えてみる（その2）
+</b></p>
+</div>
+<p></p>
+</div>
+<div id="calibre_link-20">
+<h2 id="calibre_link-208"><b><a id="calibre_link-209"><b></b></a><span><b>5.3　</b></span>UIの設置とアンカーの設定</b></h2>
+<p>それでは、実際に空のプロジェクトにUIを作成していきましょう。今回はボタン1つと数字（Text）を用意し、ボタンをクリックすると数字が10ずつ増えていく機能を追加します。まず、プロジェクトにボタンと数字を設置していきます。筆者はゲーム画面左上隅にボタン、右下隅に数字を設置しました（図5.7）。しかし、設置するだけでは画面の解像度によってボタンの配置が意図しないものになってしまいます（図5.8）。</p>
+<div id="calibre_link-210">
+<img src="images/00102.jpeg" alt="ゲーム画面左上隅にボタン、右下隅に数字を設置" />
+<p><b>
+図5.7: ゲーム画面左上隅にボタン、右下隅に数字を設置
+</b></p>
+</div>
+<div id="calibre_link-211">
+<img src="images/00066.jpeg" alt="ゲーム画面の解像度を変更するとボタンと数字の位置が変わってしまう" />
+<p><b>
+図5.8: ゲーム画面の解像度を変更するとボタンと数字の位置が変わってしまう
+</b></p>
+</div>
+<p>そこで「アンカー」を使用してUIを意図した場所へ配置できるように設定します。アンカーはUIを設置する際の基準点を設定する機能です。初期設定ではゲーム画面の真ん中を基準にUIが配置されるようになっています。まず、ヒエラルキーウィンドウのButtonをクリックして、ButtonのInspectorを見てみましょう（図5.9）。Rect Transformにある図5.10のアイコンをクリックしてみてください。</p>
+<div id="calibre_link-212">
+<img src="images/00078.jpeg" alt="ButtonのInspector内にあるRect Transform" />
+<p><b>
+図5.9: ButtonのInspector内にあるRect Transform
+</b></p>
+</div>
+<div id="calibre_link-213">
+<img src="images/00059.jpeg" alt="Rect Transformに表示されているアイコン" />
+<p><b>
+図5.10: Rect Transformに表示されているアイコン
+</b></p>
+</div>
+<p>図5.11のような画面が表示されます。ここでは、アンカーを設定する場所を指定します。ボタンは左上隅に設置したいので、左上に設定します（図5.12）。</p>
+<div id="calibre_link-214">
+<img src="images/00031.jpeg" alt="アンカーの初期状態はゲーム画面の真ん中" />
+<p><b>
+図5.11: アンカーの初期状態はゲーム画面の真ん中
+</b></p>
+</div>
+<div id="calibre_link-215">
+<img src="images/00100.jpeg" alt="アンカーを左上隅に設定" />
+<p><b>
+図5.12: アンカーを左上隅に設定
+</b></p>
+</div>
+<p>ボタンと同様にテキストの位置をアンカーで右下隅に設定します。アンカーを設定したあとそれぞれを配置し直すと（図5.13）、ゲーム画面の縦横比が変更されても左上隅にボタン、右下隅にテキストが配置され、意図したとおりのレイアウトになりました（図5.14、図5.15）。</p>
+<div id="calibre_link-216">
+<img src="images/00047.jpeg" alt="ボタンと数字のアンカーを設定後、それぞれの位置を調整" />
+<p><b>
+図5.13: ボタンと数字のアンカーを設定後、それぞれの位置を調整
+</b></p>
+</div>
+<div id="calibre_link-217">
+<img src="images/00106.jpeg" alt="ゲーム画面の解像度が変更されても左上隅にボタンが設置される（その1）" />
+<p><b>
+図5.14: ゲーム画面の解像度が変更されても左上隅にボタンが設置される（その1）
+</b></p>
+</div>
+<div id="calibre_link-218">
+<img src="images/00064.jpeg" alt="ゲーム画面の解像度が変更されても左上隅にボタンが設置される（その2）" />
+<p><b>
+図5.15: ゲーム画面の解像度が変更されても左上隅にボタンが設置される（その2）
+</b></p>
+</div>
+<p>作成したゲームはさまざまな端末で動かすと思いますが、各端末間で解像度や画面の縦横比は異なる場合が多いです。そのためuGUIを使用する際はアンカーを正しく設定し、なるべくUIのレイアウトが崩れないようにしてください。</p>
+</div>
+<div id="calibre_link-4">
+<h2 id="calibre_link-219"><b><a id="calibre_link-220"><b></b></a><span><b>5.4　</b></span>ボタンをクリックしたときにイベントを発生させる</b></h2>
+<p>次に、ボタンをクリックするとテキストの数字が10ずつ増えるようにしたいと思います。まず、テキストに数字を増加させるための下準備として、リスト1のスクリプトを記述します。記述できたら、スクリプトをヒエラルキーウィンドウのButtonにあるTextへドラッグ＆ドロップしましょう。</p>
+<div>
+<p><b>リスト5.1: NumCounter.cs</b></p>
+<pre>using UnityEngine; using UnityEngine.UI;
+using System.Collections;
+public class NumCounter : MonoBehaviour {
+
+    Text numText;
+    int initNum = 0;
+    int currentNum;
+
+    void Start () {
+        numText = this.GetComponent&lt;Text&gt;();
+        /* ゲーム起動時に initNum = 0 を設定してテキストで表示する*/
+        UpdateText(initNum);
+        currentNum = initNum;
+    }
+
+    /* 引数に渡された数値をテキストに反映させる */
+    void UpdateText(int n) {
+        numText.text = n.ToString();
+    }
+
+    /* ボタンを押した時に呼ぶ関数 */
+    public void AddNum(int n) {
+        currentNum += n;
+        UpdateText(currentNum);
+    }
+}
+</pre>
+</div>
+<p>ヒエラルキーウィンドウでButtonをクリックして、Inspectorを見てください。Button（Script）内に「OnClick（）」という項目があります（図5.16）。これは「このボタンが押された時にOnClickで設定した関数を呼び出す」ものです。</p>
+<div id="calibre_link-221">
+<img src="images/00015.jpeg" alt="Buttonインスペクタの最下部にOnClick（）がある" />
+<p><b>
+図5.16: Buttonインスペクタの最下部にOnClick（）がある
+</b></p>
+</div>
+<p>つまり、先程のNumCounter.cs（リスト1）内にあるAddNum関数をここに設定すれば、ボタンをクリックしたときに数値を変化させることができます。ヒエラルキーウィンドウのNum（Text）をインスペクタウィンドウのOnClick内にドラッグ&amp;ドロップしてください（図5.17）。</p>
+<div id="calibre_link-222">
+<img src="images/00082.jpeg" alt="Num（Text）をButtonのOnClickにドラッグ&amp;ドロップ" />
+<p><b>
+図5.17: Num（Text）をButtonのOnClickにドラッグ&amp;ドロップ
+</b></p>
+</div>
+<p>そして、このボタンを有効にするために「Off」から「Editor And Runtime」に変更してください。「No Function」と表示されているトグルからは、呼び出せるNum（Text）内の関数を選択することができます（図5.18）。</p>
+<div id="calibre_link-223">
+<img src="images/00035.jpeg" alt="No FunctionをクリックするとNum（Text）で使用できる関数の一覧が表示される" />
+<p><b>
+図5.18: No FunctionをクリックするとNum（Text）で使用できる関数の一覧が表示される
+</b></p>
+</div>
+<p>Num（Text）に貼りつけたNumCounterが一覧にあることを確認できます。［NumCounter］→［AddNum（int）］をクリック（図5.19）するとNumCounter.AddNumの下に文字入力ができるようになるので、「10」と入力しましょう（図5.20）。</p>
+<div id="calibre_link-224">
+<img src="images/00097.jpeg" alt="［AddNum（int）］をクリック" />
+<p><b>
+図5.19: ［AddNum（int）］をクリック
+</b></p>
+</div>
+<div id="calibre_link-225">
+<img src="images/00004.jpeg" alt="OnClickでNum（Text）のNumCounter.AddNumにアクセス" />
+<p><b>
+図5.20: OnClickでNum（Text）のNumCounter.AddNumにアクセス
+</b></p>
+</div>
+<p>これで、ボタンをクリックすると表示される数字が10増える機能を実装できました（図5.21）。</p>
+<div id="calibre_link-226">
+<img src="images/00098.jpeg" alt="ボタンをクリックすると右下に設置した数字が10ずつ増える" />
+<p><b>
+図5.21: ボタンをクリックすると右下に設置した数字が10ずつ増える
+</b></p>
+</div>
+</div>
+<div id="calibre_link-42">
+<h2 id="calibre_link-227"><b><a id="calibre_link-228"><b></b></a><span><b>5.5　</b></span>自前で用意した画像をボタンの画像にする</b></h2>
+<p>ボタンをデフォルトとは違う見た目にしたい場合、使用したい画像をいったんUnityプロジェクトに取り込み、画像の設定を変更する必要があります（図5.22）。プロジェクトに画像を取り込むには、取り込みたい画像をUnityのプロジェクト内にドラッグ＆ドロップします。</p>
+<p></p>
+<div id="calibre_link-229">
+<img src="images/00062.jpeg" alt="使用したい画像をUnityのプロジェクトに取り込む" />
+<p><b>
+図5.22: 使用したい画像をUnityのプロジェクトに取り込む
+</b></p>
+</div>
+<p>次に、プロジェクトのAssetsフォルダ内にある画像をクリックして、その画像のInspectorを見ます。Texture Typeは初期値が「Texture」となっているので、「Sprite（2D and UI）」に変更して［Apply］ボタンをクリックしてください（図5.23）。これで、ボタンの画像に設定する準備ができました。</p>
+<div id="calibre_link-230">
+<img src="images/00061.jpeg" alt="取り込んだ画像のTexture Typeを「Sprite（2D and UI）」に変更" />
+<p><b>
+図5.23: 取り込んだ画像のTexture Typeを「Sprite（2D and UI）」に変更
+</b></p>
+</div>
+<p>それでは、ButtonのInspectorを見ていきます。インスペクタウィンドウでimage（Script）のSource Imageに先程Sprite（2D and UI）に変更した画像をドラッグ&amp;ドロップしてください（図5.24）。</p>
+<div id="calibre_link-231">
+<img src="images/00043.jpeg" alt="ButtonのInspectorでImage（Script）に取り込んだ画像をドラッグ&amp;ドロップ" />
+<p><b>
+図5.24: ButtonのInspectorでImage（Script）に取り込んだ画像をドラッグ&amp;ドロップ
+</b></p>
+</div>
+<p>これで、図5.25のようにボタンの見た目が先程用意した画像に変更されました（画像内では＋10の文字色を白に変更しています）。</p>
+<div id="calibre_link-232">
+<img src="images/00025.jpeg" alt="ボタンの見た目が取り込んだ画像に変更された" />
+<p><b>
+図5.25: ボタンの見た目が取り込んだ画像に変更された
+</b></p>
+</div>
+<p>uGUIには、本章で紹介した機能以外にもテキストを入力することができる「InputField」や、スクロールバーを実装できる「Scrollbar」など、たくさんの機能があります。ぜひ皆さん自身で色々と触ってみて、それらの機能を確かめてみてください。</p>
+<p>次章では、複数人で1つのUnityプロジェクトを管理する方法について解説します。</p>
+</div>
+<div id="calibre_link-14">
+<div id="calibre_link-233"></div><h1 id="calibre_link-234"><b><a id="calibre_link-235"><b></b></a><span><b>第6章　</b></span>複数人で1つのUnityプロジェクトを管理するには</b></h1>
+<p>第6章では、複数人で1つのゲームを製作する際に必要となるバージョン管理システムと、実際にUnityプロジェクトを管理する方法について解説します。</p>
+</div>
+<div id="calibre_link-33">
+<h2 id="calibre_link-236"><b><a id="calibre_link-237"><b></b></a><span><b>6.1　</b></span>複数人でUnityプロジェクトを製作していくには（GameJamでの例）</b></h2>
+<p>複数人でゲーム製作をするときは、作業分担をして進めていくと思います。その例として、2日間で1グループ1つのゲームを製作する「GameJam」というイベント（ハッカソン）が挙げられます。</p>
+<p>「GameJam」では1グループあたり5～7人（※場所によって変動する）がプログラマー2人、2Dグラフィック2人、3Dグラフィック1人、サウンド1人で役割分担をしています。</p>
+<p>では、グループ全員で1つのプロジェクトを完成させるためには、どのようにファイルを管理すれば良いのでしょうか？ オススメは、「バージョン管理システム」を利用することです。</p>
+</div>
+<div id="calibre_link-41">
+<h2 id="calibre_link-238"><b><a id="calibre_link-239"><b></b></a><span><b>6.2　</b></span>バージョン管理システムとは</b></h2>
+<p>バージョン管理システムは、プロジェクトのスクリプトや素材などの変更履歴を記録・追跡するためのシステムです。スクリプトを変更したとき、「いつ」「誰が」「どのように変更したのか」をすべて見ることができます。最新バージョンのスクリプトで不具合等が発生した際には、過去のスクリプトの状態に戻すことも可能です。</p>
+<p>また、複数人で同じスクリプトを編集しても、マージ（統合）させることができます。これまでに著者が参加・開催してきたGameJamでは、下記のような3種類の方法で管理しているケースが見受けられました。</p>
+<ul>
+<li>SkypeやDropboxでスクリプトや素材を送る</li>
+<li>Unityアセットサーバーを利用したバージョン管理</li>
+<li>Gitを利用したバージョン管理</li>
+</ul>
+<p>それぞれのケースでどのように管理していたのかを、簡単に説明します。</p>
+<h3><b><a id="calibre_link-240"><b></b></a><span><b>6.2.1　</b></span>SkypeやDropboxでスクリプトや素材を送る</b></h3>
+<p>グループにバージョン管理システムを利用したことのない人がいる場合に、この方法を採るグループもありましたが、あまりオススメできません。</p>
+<p>SkypeやDropboxでファイルを受け渡ししたグループは、ゲーム製作時間のほとんどが、プロジェクトをマージ（結合）させる時間に取られていました。また、GameJamの途中経過で同じファイルを何度も送る場面も出てきていました（ゲームがどこまで動かせる状態なのかを何度か確認していた）。その度に同じファイル名のスクリプトや素材を送っていたため、いつ送ったのが最新バージョンのものか非常にわかりづらくなっていたのです。</p>
+<p>さらに、素材を正しく受け渡しできたとしても、スクリプトと素材の依存関係（スクリプト内でpublic変数として宣言したGameObjectの設定など）を結合先で正しく設定し直さなければならないので、二度手間になってしまいます。</p>
+<h3><b><a id="calibre_link-241"><b></b></a><span><b>6.2.2　</b></span>Unityアセットサーバーを利用したバージョン管理</b></h3>
+<p>Unityアセットサーバーは、Unityが公式で用意していたバージョン管理システムです。Unity上のGUIで利用でき、バージョン管理システムを簡単に利用できるアセットでした（有料）。しかし、現在では過去の製品となっており、Unity社もメンテナンスを行っていないとのことです（公式より）。</p>
+<p><strong><b>アセットサーバー（チームライセンス）－ Unity Documentation</b></strong><br /><a href="http://docs.unity3d.com/ja/current/Manual/AssetServer.html">http://docs.unity3d.com/ja/current/Manual/AssetServer.html</a></p>
+<h3><b><a id="calibre_link-242"><b></b></a><span><b>6.2.3　</b></span>Gitを利用したバージョン管理</b></h3>
+<p>これまでのGameJamで多く利用されているバージョン管理システムです。Gitは複数人で同じプロジェクトを編集する用途に向いており、コマンドを利用するだけでプロジェクトを最新の状態にすることができます。</p>
+<p>欠点としては、バージョン管理システムを利用したことのない人がグループにいると、まずバージョン管理について説明しなければならない場合がほとんどなので、GameJam序盤では少々時間を取られてしまいます。</p>
+<p>しかし、バージョン管理システムはGameJamなどのゲーム製作イベントだけでなく、様々なIT企業でも利用されているため、使い方を覚えることをオススメします。</p>
+</div>
+<div id="calibre_link-30">
+<h2 id="calibre_link-243"><b><a id="calibre_link-244"><b></b></a><span><b>6.3　</b></span>GitでUnityのプロジェクトを管理する（version管理時のUnityの各種設定）</b></h2>
+<p>Gitには様々なコマンドがあります。プロジェクト管理を行う前に、まず最低限押さえておきたいコマンドを紹介します。</p>
+<div id="calibre_link-245">
+<p><b>表6.1:</b></p>
+<table>
+<tr><th>クローン（clone）</th><td>サーバ上にあるバージョン管理を行なっているプロジェクトをローカル（自分自身のPC）に保存</td></tr>
+<tr><th>コミット（commit）</th><td>プロジェクト内に新しく追加した素材やファイルの変更点をローカルで保存</td></tr>
+<tr><th>プッシュ（push）</th><td>コミットした内容をサーバ上のプロジェクトにアップ</td></tr>
+<tr><th>プル（pull）</th><td>他のプロジェクト編集者の変更点をローカルに保存</td></tr>
+<tr><th>リセット（Reset）</th><td>自分自身が変更したファイルを変更前の状態に戻す</td></tr>
+<tr><th>マージ（merge）</th><td>プルで他人のコミットと自分のコミットが被った（競合した）場合に、どちらのコミットが正しいのかを選択</td></tr>
+</table>
+</div>
+<p>他にもコマンドはたくさんありますが、最低限でも上記のコマンドを覚えておけば、Gitを未経験のままGameJamに参加してもスムーズにバージョン管理を利用できるでしょう。</p>
+<h3><b><a id="calibre_link-246"><b></b></a><span><b>6.3.1　</b></span>外部サービス（GitHub、Bitbucket）を利用する際の注意点</b></h3>
+<p>バージョン管理システムを利用する際、自分でサーバを建てることもできますが、アカウントを登録するだけで「GitHub」や「Bitbucket」といった外部のバージョン管理システムを利用できます。</p>
+<p>これらのサービスを利用すると、全世界にプロジェクト等を公開できる「パブリックリポジトリ」と、アクセス権限がある人以外は見ることのできない「プライベートリポジトリ」の二種類のリポジトリを作成することができます。</p>
+<p>なお、Unityのプロジェクトでこれらのサービスを利用する際には、プライベートリポジトリが作成可能かどうかを確認してください。例えば、Unityのアセットストアで購入した有料のアセットを含むプロジェクトをパブリックリポジトリで全世界に公開してしまうと、購入したアセットが無料で全世界の人々にダウンロードされてしまいます。アセットストアで購入したものや、他の人に利用されたくない素材がUnityプロジェクト内に含まれている場合は、必ずプライベートリポジトリを利用してください。</p>
+<p>余談ですが、無料でバージョン管理システムを利用したいのであればBitbucketをオススメします。理由として、無料ユーザでもプライベートリポジトリが利用できるからです。GitHubでプライベートリポジトリを利用する場合は料金が発生します（学生アカウントを取得すればプライベートリポジトリを利用可能）。</p>
+<p>前置きが長くなりましたが、ここからは実際にGitでUnityのプロジェクトを管理する方法を説明していきます。</p>
+<h3><b><a id="calibre_link-247"><b></b></a><span><b>6.3.2　</b></span>Unityでの設定</b></h3>
+<p>複数人でバージョン管理システムを利用する際には、まずプロジェクトを編集するUnityのバージョンを合わせましょう。そして、UnityプロジェクトをGitでバージョン管理するにはUnity側で少し設定が必要になります。Unityプロジェクトを編集する全員が以下の設定を行ってください。実際にUnityを操作しながら説明します。メニューバーから［Edit］→［Project Settings］→［Editor］を選択すると、インスペクタウィンドウに「Editor Settings」が表示されます（図6.1）。また、Editor Settingsの初期値は図6.2のようになっています。</p>
+<div id="calibre_link-248">
+<img src="images/00094.jpeg" alt="「Editor Settings」を表示" />
+<p><b>
+図6.1: 「Editor Settings」を表示
+</b></p>
+</div>
+<div id="calibre_link-249">
+<img src="images/00107.jpeg" alt="「Editor Settings」の初期値" />
+<p><b>
+図6.2: 「Editor Settings」の初期値
+</b></p>
+</div>
+<p>ここで、「Editor Settings」内の「Version Control」を［Hidden Meta Files］から［Visible Meta Files］に、「Asset Serialization」を［Mixed］から［Force Text］に変更します（図6.3）。この2つの項目を変更することで、コミット時にファイルやスクリプトが競合を起こしても修正可能な状態にできます。</p>
+<div id="calibre_link-250">
+<img src="images/00001.jpeg" alt="「Editor Settings」の設定の変更" />
+<p><b>
+図6.3: 「Editor Settings」の設定の変更
+</b></p>
+</div>
+<p>=== Gitでの設定続いて、Git側の設定です。Gitでバージョン管理を行なう際には、まず管理対象としないファイルを.Gitignoreに設定します。.Gitignoreにリスト1の項目を追加してください。</p>
+<div>
+<p><b>リスト6.1: .Gitignoreに管理対象としないファイルを設定</b></p>
+<pre>Library
+Temp
+Build
+Obj
+*.pidb
+*.unityproj
+*.sln
+*.userprefs
+*.swp
+*.csproj
+</pre>
+</div>
+</div>
+<div id="calibre_link-9">
+<h2 id="calibre_link-251"><b><a id="calibre_link-252"><b></b></a><span><b>6.4　</b></span>Unityプロジェクトを編集するときの注意</b></h2>
+<p>ここでは、GitでUnityプロジェクトを編集するときの注意点をTips的に紹介します。</p>
+<h3><b><a id="calibre_link-253"><b></b></a><span><b>6.4.1　</b></span>同名のファイルを上書きしたい場合</b></h3>
+<p>一度組み込んだ画像や3Dモデルなどのモデル素材に修正があり、同じファイル名で上書きしたい場合は、Unityエディタ外でファイルを上書きしてください（図6.4）。</p>
+<div id="calibre_link-254">
+<img src="images/00057.jpeg" alt="同じファイル名の上書きはUnity外で" />
+<p><b>
+図6.4: 同じファイル名の上書きはUnity外で
+</b></p>
+</div>
+<p>Unityエディタ上で同じファイルを取り込むと、上書きではなく同じファイル名に数字が追加された名前になってしまいます（図6.5）。</p>
+<div id="calibre_link-255">
+<img src="images/00051.jpeg" alt="同じファイルをUnityエディタに取り込むとファイル名に数字が付く" />
+<p><b>
+図6.5: 同じファイルをUnityエディタに取り込むとファイル名に数字が付く
+</b></p>
+</div>
+<p>=== エディタ外でファイルの移動・ファイルの改名をする場合Unityエディタ上でファイルを移動・改名する場合は特に問題ないのですが、もしエディタ外でファイルを移動・改名する場合は（ファイル名）.metaも移動・改名してください（図6.6）。</p>
+<div id="calibre_link-256">
+<img src="images/00075.jpeg" alt="Unityエディタ外でファイルを移動する場合（.metaファイルも移動させる）" />
+<p><b>
+図6.6: Unityエディタ外でファイルを移動する場合（.metaファイルも移動させる）
+</b></p>
+</div>
+<p>=== Gitでプロジェクトを更新する前に保存Gitでプロジェクトを更新する前には、必ずシーンやプロジェクトを保存しましょう。プロジェクトの保存は、メニューバーから［File］→［Save Project］で行えます（図6.7）。</p>
+<div id="calibre_link-257">
+<img src="images/00026.jpeg" alt="Unity プロジェクトの保存方法" />
+<p><b>
+図6.7: Unity プロジェクトの保存方法
+</b></p>
+</div>
+<p>プロジェクトを保存することで、Unityプロジェクト内の.metaファイルが更新されます。</p>
+<p>=== 複数人で1つのシーンを編集しない複数人で1つのシーンを編集してしまうと、マージが非常に困難となります。Unity 5では「Smart Merge」と呼ばれる機能が追加されており、シーンの結合が以前よりも簡単に行えるようになりました。</p>
+<p><strong><b>Smart Merge－Unity Documentation</b></strong><br /><a href="http://docs.unity3d.com/ja/current/Manual/SmartMerge.html">http://docs.unity3d.com/ja/current/Manual/SmartMerge.html</a></p>
+<p>GameJamなどのイベントでは作業時間が非常に限られているため、できるだけマージ作業に時間を取られたくありません。そこで、筆者が参加したGameJamではどのように作業を行なったのかを書き留めておきたいと思います。</p>
+<p>そのGameJamでは7名のメンバーでゲームを製作しました。そのうちUnity内で作業を行なったメンバーは4人（残り時間によって若干変動）で、以下の作業分担をしました。</p>
+<ul>
+<li>ゲームのコア部分を製作</li>
+<li>ゲームのステージを製作</li>
+<li>ゲーム内に現れるキャラクターの移動・動きを製作</li>
+<li>タイトル・エンディングなどを製作</li>
+</ul>
+<p>上3つはゲーム部分を製作する作業です。だからと言ってこれら3つの作業を1つのシーンで編集してしまうと、後でマージせざるを得なくなってしまいます。</p>
+<p>そこで、メインとなるゲームシーンとは別に、各個人でテスト用のシーンを作成して、そこでそれぞれの作業を行ないました。このようにすれば、後でシーンをマージする必要がありません（他の人のテスト用シーンを編集しないように注意！）。</p>
+<p>また、「メインとなるゲームシーンは1人だけが触る」と決めておいたほうが良いです。「そのゲームシーンを触れるのはプログラムのリーダーだけ」等、プロジェクト製作前に決定しておきましょう。</p>
+</div>
+<div id="calibre_link-39">
+<h2 id="calibre_link-258"><b><a id="calibre_link-259"><b></b></a><span><b>6.5　</b></span>まとめ</b></h2>
+<p>最後に、Gitを利用したUnityのプロジェクト管理を行なう際の注意点をまとめておきます。複数人での開発では、これらのことに気をつけて進めてみてください。</p>
+<h5><b><a id="calibre_link-260"><b></b></a>Unityプロジェクトをバージョン管理するときに必要な設定<br /><b></b></b></h5>
+<ul>
+<li>Unityで「Project Setting」を設定し直す</li>
+<li>Gitでバージョン管理に含めないファイルを.Gitignoreに設定</li>
+</ul>
+<h5><b><a id="calibre_link-261"><b></b></a>Unityプロジェクトのバージョン管理時に気をつけること<br /><b></b></b></h5>
+<ul>
+<li>Unityエディタ外での操作（ファイル上書き、ファイル名変更・移動）</li>
+<li>Gitでプロジェクトを更新する前にシーンとプロジェクトを保存（複数人で1つのシーンを編集しない）</li>
+</ul>
+<p>次章では、日本各地で開催されているゲーム製作イベントやコンテスト等の様子を紹介します。これらのイベントやコンテストを通じて、ゲーム製作現場の熱を感じていただきたいと思います。また、ゲーム製作に興味のある方は、ぜひ本書で学んだことを活かして、イベントやコンテストへ参加できるようになってください。</p>
+</div>
+<div id="calibre_link-7">
+<div id="calibre_link-262"></div><h1 id="calibre_link-263"><b><a id="calibre_link-264"><b></b></a><span><b>第7章　</b></span>全国各地で盛り上がりを見せるゲーム開発イベント</b></h1>
+<p>第7章では少し趣向を変えて、日本各地で開催されているゲーム開発イベントについて紹介します。前章までに学んだ3Dゲーム製作のノウハウやチーム開発におけるバージョン管理の知識を駆使して「もっとゲーム開発を楽しみたい！」とお考えの皆さんには、本章の解説を通してイベントの雰囲気を体感し、ぜひ実際に参加していただければと思います。</p>
+<p>ゲーム開発イベントには、大きく分けて2つあります。1つは、その場で組まれた即席チームでゲームを開発するイベント「Game Jam」、もう1つは、開発したゲームを投稿するコンテスト形式のイベントです。</p>
+</div>
+<div id="calibre_link-37">
+<h2 id="calibre_link-265"><b><a id="calibre_link-266"><b></b></a><span><b>7.1　</b></span>全国各地で行われている「Game Jam」</b></h2>
+<p>ここでは、Game Jamについてイベント全般の流れに沿って解説していきます。Game Jamのイベント名がいくつか出てきますが、全般の流れを解説後に紹介します。</p>
+<p>第5章でも少し触れたGame Jamは、基本的に「2日間で1本のゲームを製作する」イベントです。学生やゲーム開発のプロたちが混合で1つのチームを結成し、チームによるゲーム開発を行います。</p>
+<p>Game Jamにはプログラマー、2D／3Dグラフィック、サウンド、プランナーなど様々な専門分野の人が参加し、協力しながらチームとして1本のゲームを製作します。製作するゲームのジャンルはそれぞれのグループに任せる形になりますが、ほとんどのGame Jamでは共通のテーマが決められています。</p>
+<p>それでは、Game Jamがどのようなイベントなのかを詳しく紹介していきましょう。</p>
+<h3><b><a id="calibre_link-267"><b></b></a><span><b>7.1.1　</b></span>Game Jamの主なタイムライン</b></h3>
+<p>Game Jamは、様々な会場で開催されます。大学や専門学校、企業内オフィスで開催されたこともありました。そのため、24時間開いている会場もあれば、建物のセキュリティ上「入館は20時まで」と決められている場所もあります。</p>
+<p>表は24時間出入り自由な会場で開催された「Global Game Jam 2015 in 琉球大学」のタイムラインです。どの会場で開催される場合でも、大枠はこのようなタイムラインになっています。会場によっては、中間発表の回数を増やしたりすることもあります。</p>
+<div id="calibre_link-268">
+<p><b>表7.1: 「Global Game Jam 2015 in 琉球大学」のタイムライン</b></p>
+<table>
+<tr><th></th><th>時間</th><th>内容</th></tr>
+<tr><td>1日目</td><td>9:00</td><td>開場</td></tr>
+<tr><td></td><td>9:30</td><td>開会式・テーマ発表・グループ編成</td></tr>
+<tr><td></td><td>10:00</td><td>Game Jam開始</td></tr>
+<tr><td></td><td>14:00</td><td>企画発表</td></tr>
+<tr><td></td><td>18:00</td><td>中間発表</td></tr>
+<tr><td>2日目</td><td>15:00</td><td>※ゲームアップロード</td></tr>
+<tr><td></td><td>15:30</td><td>発表（終わり次第試遊会）</td></tr>
+<tr><td></td><td>18:40</td><td>閉会式</td></tr>
+<tr><td></td><td>19:00</td><td>全日程終了</td></tr>
+</table>
+</div>
+<h3><b><a id="calibre_link-269"><b></b></a><span><b>7.1.2　</b></span>製作テーマの発表</b></h3>
+<p>Game Jamでは、様々なテーマに沿ってゲームを製作していきますが、テーマが発表されるのは開催当日です。これまでにどのようなテーマが出題されたのか、「Global Game Jam」を例に、ここ数年のテーマを挙げてみましょう。</p>
+<h4><b><a id="calibre_link-270"><b></b></a>Global Game Jam 2013テーマ</b></h4>
+<p><strong><b>「心臓の音（音のみ）」</b></strong><br /><a href="https://www.youtube.com/watch?v=h_lTq6XL-AE">https://www.youtube.com/watch?v=h_lTq6XL-AE</a></p>
+<h4><b><a id="calibre_link-271"><b></b></a>Global Game Jam 2014テーマ</b></h4>
+<p><strong><b>「We don't see things as they are, we see them as we are.」</b></strong><br /><a href="https://www.youtube.com/watch?v=z2w9VIMDN5o">https://www.youtube.com/watch?v=z2w9VIMDN5o</a></p>
+<h4><b><a id="calibre_link-272"><b></b></a>Global Game Jam 2015 テーマ</b></h4>
+<p><strong><b>「WHAT DO WE DO NOW?」</b></strong><br /><a href="https://www.youtube.com/watch?v=N1W5VxdNyNk">https://www.youtube.com/watch?v=N1W5VxdNyNk</a></p>
+<p>いずれも抽象度の高いテーマとなっています。これをどのように解釈するかは各チームに委ねられています。チームメンバー各自がテーマから思いついたことを挙げて話し合い、まとまった方針に沿ってゲームを製作していくことになります。</p>
+<h3><b><a id="calibre_link-273"><b></b></a><span><b>7.1.3　</b></span>チーム決め</b></h3>
+<p>Game Jamでは、誰と同じチームになるか当日まで分かりません。そのため、知人・友人で参加しても初対面の人たちとチームを組むことも多くなりますが、チームの組み方には次の2パターンがあります。</p>
+<ul>
+<li>事前に作られた企画に対してイベント当日に賛同者を募る</li>
+<li>事前アンケートを考慮してチームを編成</li>
+</ul>
+</div>
+<div id="calibre_link-2">
+<h2 id="calibre_link-274"><b><a id="calibre_link-275"><b></b></a><span><b>7.2　</b></span>事前に作られた企画に対してイベント当日に賛同者を募る</b></h2>
+<p>「Oculus Game Jam 2014」で採用された方法です。このGame JamではVR（Virtual Reality）ヘッドマウントディスプレイ「Oculus Rift」を利用するため、参加者は事前に「どのようなコンテンツを作るのか」をアイディアシートに書き込みます（図7.1）。</p>
+<p>そして、イベント当日にどのようなアイディアかを短時間で発表してもらい、全アイディアに対して「このアイディアは面白そう!」というアンケートを取ります。アンケートで選ばれた上位数アイディアに各個人が製作したいゲームのチームへ行くような流れです。</p>
+<div id="calibre_link-276">
+<img src="images/00092.jpeg" alt="「Oculus Game Jam 2014」で実際に使われたアイディアシート（Google Sheet）" />
+<p><b>
+図7.1: 「Oculus Game Jam 2014」で実際に使われたアイディアシート（Google Sheet）
+</b></p>
+</div>
+<p></p>
+<h3><b><a id="calibre_link-277"><b></b></a><span><b>7.2.1　</b></span>事前アンケートを考慮してチームを編成</b></h3>
+<p>琉球大学を会場に開催されるほとんどのGame Jamはこの方式を採っています。参加登録時に自分の役割（プログラマー、3D／2Dグラフィック、サウンド、プランナーなど）を1つ以上選択してもらい、その役割に対してどれぐらいの経験があるかを記述してもらいます。</p>
+<p>IGDA 琉球大学では、参加者へ専門分野や経験年数のアンケートを取り、なるべく全チームが公平になるように編成します。さらに、なるべく1チームの構成メンバーは所属の学校・会社が被らないようにしています。なるべく新しい人々と1つのゲームを製作することで新しい考え方や技術が他のコミュニティにも広がってほしい、そしてそれらが融合し発展してほしい、という想いからこのような形を採っています。</p>
+<h3><b><a id="calibre_link-278"><b></b></a><span><b>7.2.2　</b></span>様々なGame Jam</b></h3>
+<p>Game Jamは全国各地で開催されています。ここですべてを列挙することはできませんが、規模の大きなGame Jamを紹介します。</p>
+<h4><b><a id="calibre_link-279"><b></b></a>Global Game Jam</b></h4>
+<p>「Global Game Jam」（以下、GGJ）は、全世界で同日同時間、同テーマでゲームを製作するイベントで、ギネス記録を持つ世界最大のGame Jamです。</p>
+<p>初開催の2009年から年々規模が大きくなり、2014年には世界72の国・地域で488会場が設置され、23,198人が参加しました。日本では北海道から沖縄まで20会場が設置され、約600名が参加者しています。2015年も大盛況のうちに終了しましたが、日本でGGJ 2015を開催した会場は以下のWebサイトから確認できます。</p>
+<p><strong><b>GGJ2015 日本の会場一覧－Global Game Jam JAPAN</b></strong><br /><a href="http://ggj.igda.jp/sites-list/">http://ggj.igda.jp/sites-list/</a></p>
+<p>なお、GGJ 2016の開催日は2016年1月29、30、31日に決定しました。興味のある方は、公式サイト（英語）がありますので、そちらを参照してください。</p>
+<p><strong><b>「Global Game Jam」公式サイト</b></strong><br /><a href="http://globalgamejam.org/">http://globalgamejam.org/</a></p>
+<h4><b><a id="calibre_link-280"><b></b></a>福島Game Jam</b></h4>
+<p>「福島Game Jam」は、NPO法人「IGDA日本」が2011年から毎年夏に開催しているGame Jamです。</p>
+<p>2011年3月に発生した東日本大震災により東北三県は多大な被害を受けてしまいましたが、デジタルゲーム産業を含むIT/ICT産業は復興途上にある被災地で有望視されている産業の1つであり、風評被害などを受けません。復興に寄与することを目的として開催されているGame Jamと言えます。</p>
+<p>2015年は8月22、23日に開催され、世界5の国・地域でメインと連携会場含め18会場が設置され、551名が参加者しました。</p>
+<p><strong><b>東北ITコンセプト「福島GameJam 2015」公式サイト</b></strong><br /><a href="http://fgj.igda.jp/">http://fgj.igda.jp/</a></p>
+<h4><b><a id="calibre_link-281"><b></b></a>Oculus Game Jam</b></h4>
+<p>「Oculus Game Jam」は、常名 隆司氏が主宰で2013年から開催しているGame Jamです。このイベントはこれまで紹介したGame Jamとは少し異なり、必ずVRヘッドマウントディスプレイを使用したコンテンツを製作します。</p>
+<p>VRヘッドマウントディスプレイの代表例として、Oculusの「Oculus Rift」、SCEの「Project Morpheus」、Samsungの「Gear VR」などが挙げられます。また、Game Jamと名付けられていますが、VRを使用したコンテンツであれば何でもOKです。</p>
+<p>2014年度は東京2会場、大阪1会場、沖縄1会場の計4会場で開催されました。開催時期は毎年11月で、2015年度も11月末に東京1会場、大阪1会場、広島1会場、沖縄1会場で開催されました。</p>
+<p><strong><b>企画提案書－「Oculus Game Jam in Japan 2014」</b></strong><br /><a href="http://www.slideshare.net/takashijona/oculus-gamejam-proposal">http://www.slideshare.net/takashijona/oculus-gamejam-proposal</a></p>
+</div>
+<div id="calibre_link-31">
+<h2 id="calibre_link-282"><b><a id="calibre_link-283"><b></b></a><span><b>7.3　</b></span>誰でも参加できるゲームコンテスト</b></h2>
+<p>実際にゲームを製作しているほとんどの人たちが「このゲームをどこに出そうか？」「どこかで公開できないかな？」などと考えていると思います。現在であれば、個人で公開できる場として同人イベントやApp Store、Google Playなど、様々なマーケットがありますので、それほど苦労しないでしょう。</p>
+<p>また、Unityをはじめ多くのゲームエンジンが個人で利用できるようになってから様々なゲームコンテストが始まり、個人でのゲーム製作も盛んになってきていることが窺えます。</p>
+<p>そこで、ここでは定期的に開催されているゲームコンテストをいくつか紹介します。もしかすると、筆者も把握していないゲームコンテストがあるかもしれません。皆さんもどこかでゲームコンテスト開催のお知らせ等を見聞きした場合は、ぜひ「こういうゲームコンテストがあるよ」と筆者までご連絡いただければと思います。</p>
+<p>なお、各コンテストのレギュレーションに関しては、各自公式サイトよりご確認ください。</p>
+<h3><b><a id="calibre_link-284"><b></b></a><span><b>7.3.1　</b></span>ニコニコ自作ゲームフェス</b></h3>
+<p>「ニコニコ自作ゲームフェス」は、「ニコニコ動画」の株式会社ドワンゴが主宰するゲームコンテストで、2013年ごろから開催されています。</p>
+<p>ニコニコ自作ゲームフェスは「ゲームを作るひと」「遊ぶひと」「二次創作をするひと」をつなぎ、個人で作ったゲームがもっと多くのひとにプレイされるようになることを目指すお祭りです（公式ブログより抜粋）。</p>
+<p>また、優秀作品には大賞が、その他の作品にも選考委員特別賞などが贈られ、自作ゲームを応援する各企業が選考する協賛賞では、それぞれの作品に商品が贈られます。コンテストでの応募手順にはゲーム紹介動画の作成・投稿も含まれているので、今までどのような作品が投稿されたのかをすべて見ることができます。</p>
+<p><strong><b>ニコニコ自作ゲームフェス5受賞作品のコメント発表！－ニコニコインフォ</b></strong><br /><a href="http://blog.nicovideo.jp/niconews/ni054591.html">http://blog.nicovideo.jp/niconews/ni054591.html</a></p>
+<p>なお、「ニコニコ自作ゲームフェス6」への作品募集が始まっています（現在、応募は締め切られています）。応募資格等は不問なので、自作したゲームがどのように評価されるのか、ぜひ投稿してみてはいかがでしょうか。</p>
+<p><strong><b>ニコニコ自作ゲームフェス2016応募要項－ニコニコインフォ</b></strong><br /><a href="http://blog.nicovideo.jp/niconews/ni055284.html">http://blog.nicovideo.jp/niconews/ni055284.html</a></p>
+<h3><b><a id="calibre_link-285"><b></b></a><span><b>7.3.2　</b></span>Unityインターハイ</b></h3>
+<p>「Unityインターハイ」は、Unity Technologies Japanが主宰するゲームコンテストで、2014年から開催されています。</p>
+<p>日本全国の高校生や高専生、小中学生向けのゲーム開発の全国大会で、Unityを利用したオリジナルゲームを製作し全国優勝を目指します。</p>
+<p>予選を通過した場合は、製作したゲームの発表会が東京で開催されます。また、予選を通過した場合、開発メンバーが発表会へ参加する際の往復交通費をUnity Technologies Japanが負担してくれるとのことです。また2016年も開催されると予想されます。</p>
+<p>プログラミング教育が盛り上がっている昨今、このようなイベントも開催されているので、高校生以下の学生や兄弟姉妹がいらっしゃる方は、本イベントを目標にすることをアドバイスしてみてはいかがでしょうか。</p>
+<p><strong><b>Unityインターハイ公式サイト</b></strong><br /><a href="http://inter-high.unity3d.jp/">http://inter-high.unity3d.jp/</a></p>
+<h3><b><a id="calibre_link-286"><b></b></a><span><b>7.3.3　</b></span>ゲームクリエイター就職大作戦</b></h3>
+<p>「ゲームクリエイター就職大作戦」もUnity Technologies Japanが主宰するゲームコンテストで、Unityインターハイ同様に2014年から開催されています。</p>
+<p>本イベントはプロのゲーム開発者を志望する学生やアマチュア開発者を対象としたゲーム開発コンテストです。優秀なゲーム開発者を見つけ出したい企業と、スキルを磨いてゲーム開発会社に就職したい若手開発者を結びつけることを目的としています。</p>
+<p>応募資格は企業に正規雇用されていない25歳以下の社会人、もしくは就職活動を控えている学生・就職活動中の学生であることです。予選通過者はUnityインターハイと同様に東京で発表会があり、往復交通費もUnity Technologies Japanが負担します。</p>
+<p><strong><b>ゲームクリエイター就職大作戦</b></strong><br /><a href="http://daisakusen.unity3d.jp/">http://daisakusen.unity3d.jp/</a></p>
+<p>本章では、ゲーム開発をテーマにした各種のイベントについて紹介しました。ハードウェアやソフトウェアの目まぐるしい進化により、個人でゲームを開発したり、開発したゲームをリリースしたりすることが以前よりも容易になり、たくさんのコンテストも開催されるようになりました。本章の内容が、これからUnityによるゲーム製作を始めたいと考えている人たちのモチベーションになり、またすでに始めている人たちにはもっとたくさんのゲーム製作に取り組むきっかけになればと思います。</p>
+</div>
+<div id="calibre_link-35">
+<h1 id="calibre_link-287"><b><a id="calibre_link-288"><b></b></a>著者紹介</b></h1>
+<dl>
+<dt><b>古波倉 正隆</b></dt>
+<dd></dd>
+</dl>
+<p>琉球大学大学院、IGDA 琉球大学代表</p>
+<p>2歳の頃から叔父の影響でファミコンを触り始める。5歳の頃に初代ぷよぷよにハマり、そこからゲーム好きが開花。ノベルゲーム以外の幅広いジャンルをプレイしてきた。 大学ではゲーム開発者向けコミュニティ IGDA琉球大学 を設立し、ゲーム開発者向けに講演会やゲームジャムを開催している。 好きなゲームは KOEI 三国志・信長シリーズ、KONAMI 系音ゲなどなど。 個人ブログ（masakoha's room） : http://www.masakoha.com/</p>
+<p></p>
+<h3><b><a id="calibre_link-289"><b></b></a>スタッフ</b></h3>
+<ul>
+<li>山本 宗宏（紙面レイアウトデザイン）</li>
+<li>田中 佑佳（表紙デザイン）</li>
+<li>伊藤 隆司（Web連載編集）</li>
+</ul>
+</div>
+<div id="calibre_link-11">
+<h1 id="calibre_link-290"><b><a id="calibre_link-291"><b></b></a>奥付</b></h1>
+<p></p>
+<div>
+<img src="images/00041.jpeg" alt="" />
+</div>
+<p></p>
+<p>●本書の内容に関するご質問は、書名・ISBN・お名前・電話番号と、該当するページや具体的な質問内容、お使いの動作環境などを明記のうえ、インプレスカスタマーセンターまでメールまたは封書にてお問い合わせください。電話やFAX等でのご質問には対応しておりません。なお、本書の範囲を超える質問に関しましてはお答えできませんのでご了承ください。<br /></p>
+<p>●落丁・乱丁本はお手数ですがインプレスカスタマーセンターまでお送りください。送料弊社負担にてお取り替えさせていただきます。但し、古書店で購入されたものについてはお取り替えできません。<br /></p>
+<p>■読者の窓口　　　　　　　　　　　　　　　　　　　　　 ■書店／販売店のご注文窓口<br />インプレスカスタマーセンター　　　　　　　　　　　　　　株式会社インプレス 受注センター<br />〒101-0051 東京都千代田区神田神保町一丁目105番地　　　TEL　048-449-8040<br />TEL　03-6837-5016　／　FAX　03-6837-5023　　　　FAX　048-449-8041<br />info@impress.co.jp<br /><br /></p>
+<p>Unity 5ゲーム開発はじめの一歩（Think IT Books）<br /></p>
+<p>2016年3月1日　初版発行<br /><br />著　者　古波倉 正隆<br />発行人　土田 米一<br />発行所　株式会社インプレス<br />　　　　〒101-0051　東京都千代田区神田神保町一丁目105番地<br />　　　　TEL　03-6837-4635（出版営業統括部）<br />　　　　ホームページ　<a href="http://book.impress.co.jp/">http://book.impress.co.jp/</a><br /></p>
+<p>本書は著作権法上の保護を受けています。本書の一部あるいは全部について（ソフトウェア及びプログラムを含む）、株式会社インプレスから文書による許諾を得ずに、いかなる方法においても無断で複写、複製することは禁じられています。<br /></p>
+<p>Copyright © 2016 Masataka Kohagura. All rights reserved.<br /><br />印刷所　京葉流通倉庫株式会社<br /><br />ISBN978-4-8443-8012-2　C3055<br />Printed in Japan</p>
+</div>
+
+
+
+
+<script>function myFunction(){document.getElementById("tateyoko").classList.toggle("tateread")}</script></body></html>

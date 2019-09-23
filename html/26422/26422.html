@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JavaScriptで正規表現のニガテを克服するための本</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/mainday.css" title="default">
+<link rel="alternate stylesheet" href="/css/mainnight.css" title="alternate">
+<script type="text/javascript" src="/js/styleswitcher.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+</head>
+<body>
+<div class="novelpage">
+<div class="novelbody">
+<div id="tateyoko">
+<div id="_top"></div>
+<a href="/">🏠</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('default'); return false;">日</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">月</a>&emsp;
+<a href="#_top" onclick="myFunction()" style="cursor: pointer;">縦書き／横書き</a>
+<div id="calibre_link-111">
+<div>
+<div>
+<table class="noveltitle">
+<tr>
+<td colspan="2"><i><span><i>JavaScriptで正規表現のニガテを克服するための本</i></span></i></td>
+</tr>
+<tr>
+                    
+                    
+      </tr>
+<tr>
+<td colspan="2">五十嵐肇</td>
+</tr>
+<tr>
+<td colspan="2"> (2016)</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+</tr>
+</table>
+<div></div>
+</div>
+<div></div>
+</div>
+</div>
+
+
+
+<div {http://www.idpf.org/2007/ops}type="frontmatter" id="calibre_link-30">
+<nav id="calibre_link-110" {http://www.idpf.org/2007/ops}type="toc">
+<h1 id="calibre_link-112"><b><u>目次</u></b></h1>
+<ol>
+<li value="1">
+<a href="#calibre_link-31">はじめに</a>
+</li>
+<li value="2">
+<a href="#calibre_link-32">本書の対象者について</a>
+</li>
+<li value="3">
+<a href="#calibre_link-33">免責</a>
+</li>
+<li value="4">
+<a href="#calibre_link-34">Chapter１．正規表現基礎知識</a>
+<ol>
+<li value="1">
+<a href="#calibre_link-35">１－１．正規表現とは</a>
+</li>
+<li value="2">
+<a href="#calibre_link-36">１－２．JavaScriptで行う正規表現</a>
+</li>
+<li value="3">
+<a href="#calibre_link-37">１－３．オプション</a>
+</li>
+</ol>
+</li>
+<li value="5">
+<a href="#calibre_link-38">Chapter２．メタ文字を用いた検索</a>
+<ol>
+<li value="1">
+<a href="#calibre_link-39">２－１．単一の文字を検索　"."</a>
+</li>
+<li value="2">
+<a href="#calibre_link-40">２－２．文字や数字を検索　"\w"</a>
+</li>
+<li value="3">
+<a href="#calibre_link-41">２－３．文字や数字以外を検索　"\W"</a>
+</li>
+<li value="4">
+<a href="#calibre_link-42">２－４．数字を検索　"\d"</a>
+</li>
+<li value="5">
+<a href="#calibre_link-43">２－５．数字以外を検索　"\D"</a>
+</li>
+<li value="6">
+<a href="#calibre_link-44">２－６．ラインフィードを検索　"\n"</a>
+</li>
+<li value="7">
+<a href="#calibre_link-45">２－７．キャリッジリターンを検索　"\r"</a>
+</li>
+<li value="8">
+<a href="#calibre_link-46">２－８．タブ文字を検索　"\t"</a>
+</li>
+<li value="9">
+<a href="#calibre_link-47">２－９．改ページを検索　"\f"</a>
+</li>
+<li value="10">
+<a href="#calibre_link-48">２－１０．空白を検索　"\s"</a>
+</li>
+<li value="11">
+<a href="#calibre_link-49">２－１１．空白以外を検索　"\S"</a>
+</li>
+<li value="12">
+<a href="#calibre_link-50">２－１２．単語の境目を検索　"\b"</a>
+</li>
+<li value="13">
+<a href="#calibre_link-51">２－１３．単語の境目以外を検索　"\B"</a>
+</li>
+<li value="14">
+<a href="#calibre_link-52">２－１４．nullを検索　"\0"</a>
+</li>
+<li value="15">
+<a href="#calibre_link-53">まとめ</a>
+</li>
+</ol>
+</li>
+<li value="6">
+<a href="#calibre_link-54">Chapter３．数量詞を用いた検索</a>
+<ol>
+<li value="1">
+<a href="#calibre_link-55">３－１．先頭を検索　"^"</a>
+</li>
+<li value="2">
+<a href="#calibre_link-56">３－２．末尾を検索　"$"</a>
+</li>
+<li value="3">
+<a href="#calibre_link-57">３－３．特定の値が後に続いている文字列を検索　"(?=xxx)"</a>
+</li>
+<li value="4">
+<a href="#calibre_link-58">３－４．特定の値が後に続いていない文字列を検索　"(?!xxx)"</a>
+</li>
+<li value="5">
+<a href="#calibre_link-59">３－５．値のn回の繰り返しを検索　"{n}"</a>
+</li>
+<li value="6">
+<a href="#calibre_link-60">３－６．値のn回以上の繰り返しを検索　"{n,}"</a>
+</li>
+<li value="7">
+<a href="#calibre_link-61">３－７．値のn回以上、m回以下の繰り返しを検索　"{n,m}"</a>
+</li>
+<li value="8">
+<a href="#calibre_link-62">３－８．値の1回以上の繰り返しを検索　"+"</a>
+</li>
+<li value="9">
+<a href="#calibre_link-63">３－９．値の0回以上の繰り返しを検索　"*"</a>
+</li>
+<li value="10">
+<a href="#calibre_link-64">３－１０．値の0回もしくは1回の繰り返しを検索　"?"</a>
+</li>
+<li value="11">
+<a href="#calibre_link-65">３－１１．指定したどちらかに該当するか検索　"|"</a>
+</li>
+<li value="12">
+<a href="#calibre_link-66">３－１２．グループ化　"( )"</a>
+</li>
+<li value="13">
+<a href="#calibre_link-67">まとめ</a>
+</li>
+</ol>
+</li>
+<li value="7">
+<a href="#calibre_link-68">Chapter４．ブラケットを用いた検索</a>
+<ol>
+<li value="1">
+<a href="#calibre_link-69">４－１．いずれかの文字を検索　"[ ]"</a>
+</li>
+<li value="2">
+<a href="#calibre_link-70">４－２．いずれかの文字以外を検索　"[^ ]"</a>
+</li>
+<li value="3">
+<a href="#calibre_link-71">４－３．指定した範囲の値を検索　"[x-y]"</a>
+</li>
+<li value="4">
+<a href="#calibre_link-72">４－４．指定した範囲の値以外を検索　"[^x-y]"</a>
+</li>
+<li value="5">
+<a href="#calibre_link-73">まとめ</a>
+</li>
+</ol>
+</li>
+<li value="8">
+<a href="#calibre_link-74">Chapter５．正規表現実践編</a>
+<ol>
+<li value="1">
+<a href="#calibre_link-75">５－１．メールアドレスの検索</a>
+</li>
+<li value="2">
+<a href="#calibre_link-76">５－２．電話番号の検索</a>
+</li>
+<li value="3">
+<a href="#calibre_link-77">５－３．URLの検索</a>
+</li>
+<li value="4">
+<a href="#calibre_link-78">５－４．日付の検索</a>
+</li>
+<li value="5">
+<a href="#calibre_link-79">５－５．時刻の検索</a>
+</li>
+<li value="6">
+<a href="#calibre_link-80">５－６．全角文字だけの検索</a>
+</li>
+<li value="7">
+<a href="#calibre_link-81">５－７．HTMLタグの検索</a>
+</li>
+<li value="8">
+<a href="#calibre_link-82">５－８．後方参照を利用した検索</a>
+</li>
+<li value="9">
+<a href="#calibre_link-83">５－９．グループマッチによる参照を利用した置換</a>
+</li>
+<li value="10">
+<a href="#calibre_link-84">５－１０．特定のパターンを含まない行の検索</a>
+</li>
+</ol>
+</li>
+<li value="9">
+<a href="#calibre_link-85">おわりに</a>
+</li>
+</ol>
+</nav>
+</div>
+<div {http://www.idpf.org/2007/ops}type="frontmatter" id="calibre_link-109">
+<p></p>
+<p></p></div>
+<div id="calibre_link-98">
+<h2 id="calibre_link-115"><b><u>はじめに</u></b></h2>
+<p>知らなくてもコーディング出来るけど、知ってりゃ「賢く」コーディング出来る。<br />
+使いこなせれば時間の節約にもなるし、スマートなロジックが書ける、そしてカッコいい。<br />
+それが正規表現です。<br />
+テキスト文書の検索など、プログラミング以外の用途も案外あったりします。<br />
+にも関わらず、案外この正規表現を「ニガテ」としている人が多いと筆者は感じでいます。<br />
+まぁ、ググれば大抵の情報は拾えるこのご時世、わざわざ記憶しないでもいつでも情報を引っ張り出せますし、この手の情報なんて腐るほど出てきますからね。</p>
+<p>しかーし！<br />
+やっぱ、<span><b><i>華麗に正規表現を使いこなしてこそ、真のエンジニアと呼べる</i></b></span>のではないでしょうか！？<br />
+逆に言えば、<span><b><i>正規表現も使いこなせないで何がエンジニアじゃ、エンジニアを名乗るんじゃねぇ！</i></b></span>てな意見も聞いたり聞かなかったり。<br />
+何にせよ、他人にソース見られた際に、カッコ悪い検索ロジック書いてたら超恥ずかしいですよね！</p>
+<p>と言う訳で、本書は「<span><b><i>正規表現がニガテな人</i></b></span>」向けに、JavaScriptを使って色々と説明するために描き下ろしてみました。<br />
+何でPHPとかPerlじゃなくてJavaScriptなのかって？<br />
+答えは簡単、それらは既に世の中にたくさんあるからです。<br />
+んでもって、JavaScriptはブラウザさえあれば開発者コンソールでいくらでも動作確認出来るからです！</p>
+<p>正直に言いますと、筆者も長いこと正規表現がニガテでした。<br />
+あえて目を逸らしていた感もあります。<br />
+「これじゃダメだ！」って一念発起しても、中々思うように覚えられずにイライラしたこともあります。<br />
+だからこそ分かるのですが、<span><b><i>正規表現の学習に近道はありません</i></b></span>。<br />
+何度も考えて、書いて、動かして・・・その繰り返しで身に付くモノだと思います。<br />
+ですので、本書で学んだ内容は実際に自分でも書いてみて、色々なパターンで納得が行くまで動かすようにしてみましょう。<br />
+習得スピードが驚くほど向上しますので、騙されたと思って是非実践してみてください。<br />
+本書が正規表現のニガテ克服のキッカケになるよう、心から祈っています！</p>
+<p>2016年10月吉日　Kinky-Do 五十嵐肇</p>
+</div>
+<div id="calibre_link-90">
+<h2 id="calibre_link-116"><b><u>本書の対象者について</u></b></h2>
+<p>本書のメインはあくまでも「<span><b><i>正規表現</i></b></span>」なので、JavaScriptそのものについての説明は基本的に行いません。<br />
+各種文法や制御文、オブジェクトの生成やリテラル表記など、最低限の知識を持った人を対象とする内容になっていますので、予めご了承くださいませ。<br />
+とは言うものの、JavaScript部分はそれほど難しい内容は扱わないので、「初心者」じゃなければ大丈夫だと思います。<br />
+どうしてもわからない部分があれば、何とかググッて付いて来てください！</p>
+<p>また、あくまでも「<span><b><i>ニガテ克服</i></b></span>」を目的とした本なので、既にバリバリ正規表現を使いこなしている人にとっての有益な情報や新発見はほとんど無いと思います。<br />
+そして、筆者的に「重要じゃない」と判定を下したモノについては、一応触れはしつつも<span><b><i>かなり雑に扱っている</i></b></span>箇所もございます。<br />
+予めご了承くださいませ。</p>
+<p>最後に、本書のサンプルソースは全部Google Chrome（Win、Mac、ChromeOS）で動作確認しています。<br />
+基本的には他のブラウザでも問題無く動作し、「動作結果」そのものは同じになるはずですが、出力結果の「見え方」に若干差異が出る可能性があります。<br />
+ですので、実際に自分で書いて動かしてみる場合も、特にコダワリがなければChromeの利用をオススメします。</p>
+</div>
+<div id="calibre_link-12">
+<h2 id="calibre_link-117"><b><u>免責</u></b></h2>
+<p>本書で扱う例文は、「console.log」を使わずにブラウザの開発者コンソールへの直接入力実行で出力することを前提にしている箇所が大半を締めています。<br />
+例文がムダに冗長になってしまうことを避けるため、また本書のそもそもの趣旨から「正規表現とマッチング結果」を理解することを第一としているため、このようなスタイルになっています。<br />
+なお、文脈によっては「console.log」を使用している箇所もありますが、ケースバイケースで使い分けていることを予めご理解ください。</p>
+<p>また、JavaScript以外の言語や環境（ツール）によっては、パターンの書き方が本書で扱っている表記と異なるモノが存在します。<br />
+本書で学んだ知識をJavaScript以外で披露する際には、この旨ご注意ください。</p>
+</div>
+<div id="calibre_link-102">
+<h2 id="calibre_link-118"><b><u>Chapter１．正規表現基礎知識</u></b></h2>
+<h3 id="calibre_link-35"><b><u>１－１．正規表現とは</u></b></h3>
+<p>正規表現ってのは、一言で言うならば「<span><b><i>文字列をパターンで表すためのルール</i></b></span>」と言ったところでしょうか。<br />
+要するに「<span><b><i>文字列に対して高度な検索を行うための手段</i></b></span>」ですね。<br />
+では、一体これは何に役立つのでしょうか？<br />
+本当にわざわざ労力を割いて覚えるほどのシロモノなのでしょうか？<br />
+もちろん答えは「Yes」です。<br />
+じゃなきゃこんな本書いてません。</p>
+<p>例えば、「何千文字の文章の中で、URLのルールに則った文字列を全て抜き出す」みたいな処理を実装するとしましょう。<br />
+バカ正直にプログラミングしようとすると、中々に厄介なロジックを組まなきゃなりませんね。<br />
+何らかのエディタで検索を行う場合でも、「http://」とか「https://」を検索してから、その後に続く値がURLとして成り立っているかチェックする・・・ような作業になると思います。<br />
+また、Web開発現場であれば、HTMLやPHPなどのソースファイルに対して「特定のHTMLタグ全てに同じ変更を加えたい」みたいなケースもあると思います。<br />
+これも、目で確認するベースの作業だと時間も掛かるし、見落としの原因にもなります。<br />
+ソースのサイズが大きければ大きいほど、その危険性が跳ね上がるのは言うまでもありません。<br />
+「では一体どうすればいいのか？」<br />
+その答えが<span><b><i>正規表現</i></b></span>な訳ですよ。</p>
+<p>正規表現は、「こんなルールに則った文字列を全部抜き出したい！」なんていう場合に絶大な効果を発揮してくれるシロモノです。<br />
+先に例を挙げた「URL」や「HTMLタグ」なんて、まさに正規表現の大好物なのです。<br />
+わざわざ面倒くさい検索ロジックやチェックロジックなんて書かなくたって、<span><b><i>チョチョイとパターンを指定してズバッと結果を抜き出せる</i></b></span>訳ですよ。<br />
+どうでしょう、想像しただけでもワクワクして来ますよね？<br />
+使いこなしたくなって来ますよね？<br />
+<span><b><i>だがしかし！</i></b></span><br />
+正規表現マスターへの道のりは決して甘いモノではありません。<br />
+日常生活では縁のないような表記、ルールを覚えて行かなければ使いこなすのは夢のまた夢です。<br />
+最初は中々覚えられずにヤキモキするかもしれませんが、苦労の先に待っている多大な恩恵を得るためにも、どうか挫けないでください。<br />
+成長への近道は無いモノだと考え、何度も何度も繰り返し実践していれば、いずれ必ず使いこなせるようになるはずです。<br />
+険しい道のりではありますが、<span><b><i>一緒に頑張りましょう</i></b></span>！</p>
+<p></p>
+<p></p></div>
+<div id="calibre_link-23">
+<h3 id="calibre_link-119"><b><u>１－２．JavaScriptで行う正規表現</u></b></h3>
+<p>JavaScriptでは、「<span><b><i>RegExpオブジェクト</i></b></span>」で正規表現を扱います。※ちなみにRegExpの元ネタは「Regular Expression」です<br />
+RegExpオブジェクトはコンストラクタとリテラル表記のどちらからでも生成出来ますが、一般的にはリテラル表記が好まれますので、特にコダワリが無ければリテラル表記を使うようにしてください。</p>
+<p><span><b>例）コンストラクタ表記</b></span></p>
+<p><br />
+<span>var</span> regexp =<span>new</span> RegExp('ABC');<br />
+<br /></p>
+<p><span><b>例）リテラル表記　※オススメ</b></span></p>
+<p><br />
+<span>var</span> regexp =<i><i>ABC</i></i>;<br />
+<br /></p>
+<p>次に、正規表現を用いた検索ですが、これはRegExpオブジェクトのメソッドを使うほかに、Stringオブジェクトのメソッドを使う方法もあります。<br />
+「こっちじゃなきゃダメ！」みたいなことは無いので、好きな方を使ってください。</p>
+<p><span><b>例）検索の実行</b></span></p>
+<p><br />
+<span>var</span> val = 'ABCDE';<br />
+<br />
+<span>// RegExpオブジェクトのメソッドを使う</span><br />
+console.log(/BC/.exec(val));<span>// ["BC", index: 1, input: "ABCDE"]</span><br />
+<br />
+<span>// Stringオブジェクトのメソッドを使う</span><br />
+console.log(val.match(/BC/));<span>// ["BC", index: 1, input: "ABCDE"]</span><br />
+<br /></p>
+</div>
+<div id="calibre_link-108">
+<h3 id="calibre_link-120"><b><u>１－３．オプション</u></b></h3>
+<p>JavaScriptでは、以下の検索オプションが利用可能です。<br />
+厳密には「正規表現そのもの」についての説明では無いですが、せっかくなのでこれぐらいはザザっと触れておきます。</p>
+<table border="1">
+<tbody>
+<tr>
+  <td>オプション</td>
+
+  <td>意味</td>
+</tr>
+<tr>
+  <td>g</td>
+
+  <td>グローバル検索</td>
+</tr>
+<tr>
+  <td>i</td>
+
+  <td>大文字と小文字を区別しない検索</td>
+</tr>
+<tr>
+  <td>m</td>
+
+  <td>複数行検索</td>
+</tr>
+<tr>
+  <td>y</td>
+
+  <td>特定の位置からの検索</td>
+</tr>
+</tbody>
+</table>
+<p>なお、オプションの指定方法は二通りありますが、本書では基本的にリテラル表記のみ扱います。</p>
+<p><span><b>例）オプションの指定</b></span></p>
+<p><br />
+<span>// コンストラクタで指定する</span><br />
+<span>var</span> regexp1 =<span>new</span> RegExp('ABC', 'g');<br />
+<br />
+<span>// リテラルで指定する</span><br />
+<span>var</span> regexp2 =<i><i>ABC</i></i>g;<br />
+<br /></p>
+<p>■gオプション<br />
+通常の検索では該当する値が最初に見付かった時点で処理を終了しますが、gオプションを指定すると該当する全ての値を取得出来るようになります。</p>
+<p><span><b>例）gオプションを使った検索</b></span></p>
+<p><br />
+<span>// 通常の検索</span><br />
+'ABC_ABC_ABC'.match(<i><i>ABC</i></i>);<span>// ["ABC"]</span><br />
+<br />
+<span>// gオプションを使った検索</span><br />
+'ABC_ABC_ABC'.match(<i><i>ABC</i></i>g);<span>// ["ABC", "ABC", "ABC"]</span><br />
+<br /></p>
+<p>■iオプション<br />
+通常の検索では大文字と小文字は区別して扱われますが、iオプションを指定すると区別しないで検索するようになります。</p>
+<p><span><b>例）iオプションを使った検索</b></span></p>
+<p><br />
+<span>// 通常の検索</span><br />
+'ABC'.match(/abc/);<span>// null</span><br />
+<br />
+<span>// iオプションを使った検索</span><br />
+'ABC'.match(/abc/i);<span>// ["ABC"]</span><br />
+<br /></p>
+<p>■mオプション<br />
+mオプションを指定すると、改行コードを含む文字列を検索する際に、改行コードを文字として扱わずに検索するようになります。</p>
+<p><span><b>例）mオプションを使った検索</b></span></p>
+<p><br />
+<span>// 通常の検索</span><br />
+'ABC\nDEF'.match(/^D/);<span>// null</span><br />
+<br />
+<span>// mオプションを使った検索</span><br />
+'ABC\nDEF'.match(/^D/m);<span>// ["D"]</span><br />
+<br /></p>
+<p>詳しい説明は後述しますが、「<span><b><i>^</i></b></span>」は「先頭」を意味します。<br />
+例では、対象文字列の「<span><b><i>D</i></b></span>」は先頭に書かれていないので、通常では検索に該当しません。<br />
+しかし、mオプションを指定すると対象文字列は「２行の文字列」として扱われるようになり、２行目は「<span><b><i>D</i></b></span>」から始まるため、検索に該当するようになります。<br />
+少しヤヤコシイかもしれませんが、これは文字列と言うより「文章」を検索する際に割りと出番があるオプションなので、ちゃんと理解しておきましょう。</p>
+<p>■yオプション<br />
+yオプションを指定すると、検索を任意の位置から始めることが出来ます。<br />
+なお、検索位置はRegExpオブジェクトのlastIndexプロパティで指定します。</p>
+<p><span><b>例）yオプションを使った検索</b></span></p>
+<p><br />
+<span>var</span> exp =<i><i>ABC</i></i>y;<br />
+console.log(exp.lastIndex);<span>// lastIndexの初期値は0</span><br />
+console.log(exp.test('ABC'));<span>// true</span><br />
+<br />
+exp.lastIndex = 1;<span>// 2文字目から検索するように</span><br />
+console.log(exp.test('ABC'));<span>// false</span><br />
+'ABC'.match(exp);<span>// ["ABC"]</span><br />
+<br /></p>
+<p>例を見てわかる通り、yオプションはStringオブジェクトのメソッドでは有効にならない点に注意してください。</p>
+<p>■オプションを組み合わせる<br />
+オプションは、続けて書くことによって組み合わせることが出来ます。</p>
+<p><span><b>例）オプションを組み合わせる</b></span></p>
+<p><br />
+<span>// gオプションとiオプションを組み合わせる</span><br />
+'ABC_abc_ABC'.match(<i><i>ABC</i></i>gi);<span>// ["ABC", "abc", "ABC"]</span><br />
+<br /></p>
+<p>さて、本Chapterはこれで終わりです。<br />
+JavaScriptで正規表現を扱う方法についてはこれでバッチリだと思いますので、次のChapterからはいよいよ本格的に「<span><b><i>正規表現の書き方</i></b></span>」についての説明となります。<br />
+クドいかもしれませんが、とにかく<span><b><i>考えて、書いて、動かして</i></b></span>、頭と体に叩き込んでくださいね！</p>
+</div>
+<div id="calibre_link-11">
+<h2 id="calibre_link-121"><b><u>Chapter２．メタ文字を用いた検索</u></b></h2>
+<p>メタ文字とは、<span><b><i>正規表現において特別な意味を持つ文字</i></b></span>のことで、メタキャラクタとも呼ばれることもあります。<br />
+パッと見たくさんの種類があってゲンナリしますが、規則を理解してしまえば記憶するべき情報は実はそれほど多くありません。<br />
+ちなみに、メタ文字そのものを検索したい場合は、検索する値を「\」でエスケープする必要があります。</p>
+<p><span><b>例）メタ文字を検索する</b></span></p>
+<p><br />
+'?!?!?!'.match(/\?/g);<span>// ["?", "?", "?"]</span><br />
+<br /></p>
+</div>
+<div id="calibre_link-96">
+<h3><b><u>２－１．単一の文字を検索　"."</u></b></h3>
+<p>何らかの単一文字を検索するにはピリオド（.）を使います。<br />
+なお、改行や行の終端は対象となりません。<br />
+また、連続でピリオドを記述した場合は、「記述した数分連続した文字」が検索対象となります。</p>
+<p><span><b>例）単一文字の検索</b></span></p>
+<p><br />
+<span>// 一つ記述</span><br />
+'ABC'.match(/./);<span>// ["A"]</span><br />
+'ABC'.match(/./g);<span>// ["A", "B", "C"]</span><br />
+<br />
+<span>// 連続して記述</span><br />
+'ABC'.match(/../);<span>// ["AB"]</span><br />
+'ABC'.match(/../g);<span>// ["AB"]</span>  ①<br />
+'ABCD'.match(/../);<span>// ["AB"]</span><br />
+'ABCD'.match(/../g);<span>// ["AB", "CD"]</span><br />
+<br />
+<span>// 組み合わせて記述</span><br />
+'ABCD'.match(/A./);<span>// ["AB"]</span><br />
+'ABCD'.match(/.D/);<span>// ["CD"]</span><br />
+<br />
+<span>// 何も該当しない場合</span><br />
+'ABC'.match(/..../);<span>// null</span><br />
+<br />
+<span>// 全角文字や記号も対象となる</span><br />
+'あ１!?*/-_'.match(/./g);<span>// ["あ", "１", "!", "?", "*", "/", "-", "_"]</span><br />
+<br /></p>
+<p>あまり難しいことは無いと思いますが、例の①の部分については少し注意してください。<br />
+一見すると、gオプションを指定しているため["AB", 'BC"]と言う結果が得られそうですが、「B」はあくまでも「A」と連続している文字として扱われるため、例の通りの結果となります。</p>
+</div>
+<div id="calibre_link-91">
+<h3><b><u>２－２．文字や数字を検索　"\w"</u></b></h3>
+<p>何らかの文字や数字を検索するには「<b><b>\w</b></b>」を使います。<br />
+このパターンでは<br />
+<span>・半角のa～z</span><br />
+<span>・半角のA～Z</span><br />
+<span>・半角の0～9</span><br />
+<span>・半角のアンダースコア（_）</span><br />
+が検索対象となります。<br />
+要するに、「半角英数字とアンダースコア」ってことです。<br />
+一般的に英単語はこれらの文字で構成されると思うので、とりあえず「<span><b><i>w</i></b></span>」は「<span><b><i>word</i></b></span>」の頭文字と覚えておきましょう。<br />
+ちなみに、連続で「<b><b>\w</b></b>」を記述した場合は、ピリオドと同じく「記述した数分連続した値」が検索対象となります。</p>
+<p><span><b>例）文字や数字の検索</b></span></p>
+<p><br />
+<span>// 一つ記述</span><br />
+'Aa1'.match(/\w/);<span>// ["A"]</span><br />
+'Aa1'.match(/\w/g);<span>// ["A", "a", "1"]</span><br />
+<br />
+<span>// 連続して記述</span><br />
+'Aa1'.match(/\w\w/);<span>// ["Aa"]</span><br />
+'Aa1'.match(/\w\w/g);<span>// ["Aa"]</span><br />
+'Aa1_'.match(/\w\w/);<span>// ["Aa"]</span><br />
+'Aa1_'.match(/\w\w/g);<span>// ["Aa", "1_"]</span><br />
+<br />
+<span>// 組み合わせて記述</span><br />
+'Aa1_'.match(/\w\w_/);<span>// ["a1_"]</span><br />
+'Aa1_'.match(/a\w\w/);<span>// ["a1_"]</span><br />
+<br />
+<span>// 全角文字やアンダースコア以外の記号は対象とならない</span><br />
+'あ１!?*/-_'.match(/\w/g);<span>// ["_"]</span><br />
+<br /></p>
+<p>例の通り、対象となる値以外はピリオドと何ら変わりありません。<br />
+が、強いて注意点を挙げるのであれば、「正規表現の記述に混乱しないでください」ってところでしょうか。<br />
+ぶっちゃけ「<b><b>/\w\w/g</b></b>」みたいな記述って、慣れるまではなんじゃこりゃ状態ですよね。<br />
+正規表現を知らない人であれば、何かのオマジナイにしか見えないかもしれません。<br />
+実際の開発で正規表現を使う場合、記述のヤヤコシさはこんなモンじゃないので、今のうちに何度も書いて慣れておきましょう。</p>
+</div>
+<div id="calibre_link-8">
+<h3><b><u>２－３．文字や数字以外を検索　"\W"</u></b></h3>
+<p>何らかの文字や数字「以外」を検索するには「<b><b>\W</b></b>」を使います。<br />
+２－２で説明した「<b><b>\w</b></b>」と真逆の結果を得るためのパターンですね。<br />
+もうお気付きでしょうが、<span><b><i>メタ文字を大文字にすると、小文字とは真逆の結果を得る</i></b></span>ことになります。</p>
+<p><span><b>例）文字や数字以外の検索</b></span></p>
+<p><br />
+<span>// 一つ記述</span><br />
+'A!_?'.match(/\W/);<span>// ["!"]</span><br />
+'A!_?'.match(/\W/g);<span>// ["!", "?"]</span><br />
+<br />
+<span>// 連続して記述</span><br />
+'A!?*'.match(/\W\W/);<span>// ["!?"]</span><br />
+'A!?*/'.match(/\W\W/);<span>// ["!?"]</span><br />
+'A!?*/'.match(/\W\W/g);<span>// ["!?", "*/"]</span><br />
+<br />
+<span>// 組み合わせて記述</span><br />
+'A!?*/'.match(/\w\W/);<span>// ["A!"]</span><br />
+'A!?*/'.match(/\W\?/);<span>// ["!?"]</span><br />
+<br />
+<span>// 全角文字やアンダースコア以外の記号が対象となる</span><br />
+'あ１!?*/-_'.match(/\W/g);<span>// ["あ", "１", "!", "?", "*", "/", "-"]</span><br />
+<br /></p>
+<p>これに関しては特に注意点は無いですね。<br />
+<span><b><i>メタ文字は大文字と小文字で意味が逆転する、結果も正反対になる</i></b></span>ってことを覚えておいてください。</p>
+</div>
+<div id="calibre_link-97">
+<h3><b><u>２－４．数字を検索　"\d"</u></b></h3>
+<p>半角の数字「だけ」を検索するには「<b><b>\d</b></b>」を使います。<br />
+「<span><b><i>d</i></b></span>」は「<span><b><i>digit character</i></b></span>」の頭文字と覚えておきましょう。<br />
+また、使い方や注意すべき点は基本的に「<b><b>\w</b></b>」と同じです。</p>
+<p><span><b>例）数字の検索</b></span></p>
+<p><br />
+<span>// 一つ記述</span><br />
+'A12'.match(/\d/);<span>// ["1"]</span><br />
+'A12'.match(/\d/g);<span>// ["1", "2"]</span><br />
+<br />
+<span>// 連続して記述</span><br />
+'A12'.match(/\d\d/);<span>// ["12"]</span><br />
+'A1234'.match(/\d\d/);<span>// ["12"]</span><br />
+'A1234'.match(/\d\d/g);<span>// ["12", "34"]</span><br />
+<br /></p>
+</div>
+<div id="calibre_link-107">
+<h3><b><u>２－５．数字以外を検索　"\D"</u></b></h3>
+<p>半角の数字「以外」を検索するには「<b><b>\D</b></b>」を使います。<br />
+大文字の表記なので、「<b><b>\d</b></b>」と真逆の結果が得られます。</p>
+<p><span><b>例）数字以外の検索</b></span></p>
+<p><br />
+<span>// 一つ記述</span><br />
+'A1B'.match(/\D/);<span>// ["A"]</span><br />
+'A1B'.match(/\D/g);<span>// ["A", "B"]</span><br />
+<br />
+<span>// 連続して記述</span><br />
+'AB1'.match(/\D\D/);<span>// ["AB"]</span><br />
+'ABCD1'.match(/\D\D/);<span>// ["AB"]</span><br />
+'ABCD1'.match(/\D\D/g);<span>// ["AB", "CD"]</span><br />
+<br /></p>
+</div>
+<div id="calibre_link-95">
+<h3><b><u>２－６．ラインフィードを検索　"\n"</u></b></h3>
+<p>ラインフィード（改行文字）を検索するには「<b><b>\n</b></b>」を使います。<br />
+コレは「<span><b><i>newline</i></b></span>」の「<span><b><i>n</i></b></span>」です。</p>
+<p><span><b>例）ラインフィードの検索</b></span></p>
+<p><br />
+<i><i>
+</i></i>.test('hoge\nfuga');<span>// true</span><br />
+<br /></p>
+</div>
+<div id="calibre_link-25">
+<h3><b><u>２－７．キャリッジリターンを検索　"\r"</u></b></h3>
+<p>キャリッジリターン（復帰文字）を検索するには「<b><b>\r</b></b>」を使います。<br />
+コレは「<span><b><i>carriage return</i></b></span>」の「<span><b><i>r</i></b></span>」です。</p>
+<p><span><b>例）キャリッジリターンの検索</b></span></p>
+<p><br />
+<i><i>
+</i></i>.test('hoge\rfuga');<span>// true</span><br />
+<br /></p>
+</div>
+<div id="calibre_link-18">
+<h3><b><u>２－８．タブ文字を検索　"\t"</u></b></h3>
+<p>タブ文字を検索するには「<b><b>\t</b></b>」を使います。<br />
+コレは「<span><b><i>tab</i></b></span>」の「<span><b><i>t</i></b></span>」です。</p>
+<p><span><b>例）タブ文字の検索</b></span></p>
+<p><br />
+<i><i>	</i></i>.test('hoge\tfuga');<span>// true</span><br />
+<br /></p>
+</div>
+<div id="calibre_link-19">
+<h3><b><u>２－９．改ページを検索　"\f"</u></b></h3>
+<p>改ページを検索するには「<b><b>\f</b></b>」を使います。<br />
+コレは「<span><b><i>form feed</i></b></span>」の「<span><b><i>f</i></b></span>」です。</p>
+<p><span><b>例）改ページの検索</b></span></p>
+<p><br />
+<i><i></i></i>.test('hoge\ffuga');<span>// true</span><br />
+<br /></p>
+</div>
+<div id="calibre_link-3">
+<h3><b><u>２－１０．空白を検索　"\s"</u></b></h3>
+<p>空白を検索するには「<b><b>\s</b></b>」を使います。<br />
+「<span><b><i>s</i></b></span>」は「<span><b><i>space</i></b></span>」の頭文字と覚えておきましょう。<br />
+なお、ここで言う「空白」とは<br />
+<span>・半角／全角スペース</span><br />
+<span>・タブ</span><br />
+<span>・改行</span><br />
+<span>・改ページ</span><br />
+を指します。</p>
+<p><span><b>例）空白の検索</b></span></p>
+<p><br />
+<span>// 一つ記述</span><br />
+'A B'.match(/\s/);<span>// [" "]</span><br />
+'A \tB'.match(/\s/g);<span>// [" ", "        "]</span><br />
+<br />
+<span>// 連続して記述</span><br />
+'A\t\tB'.match(/\s\s/);<span>// ["                "]</span><br />
+' \t \tA'.match(/\s\s/);<span>// ["         "]</span><br />
+' \t \tA'.match(/\s\s/g);<span>// ["         ", "         "]</span><br />
+<br /></p>
+<p>特に注意点は無いのですが、半角／全角スペースだけではなく、タブや改行なども対象となることを忘れないようにしましょう。</p>
+</div>
+<div id="calibre_link-21">
+<h3><b><u>２－１１．空白以外を検索　"\S"</u></b></h3>
+<p>空白「以外」を検索するには「<b><b>\S</b></b>」を使います。<br />
+大文字の表記なので、「<b><b>\s</b></b>」と真逆の結果が得られます。</p>
+<p><span><b>例）空白以外の検索</b></span></p>
+<p><br />
+<span>// 一つ記述</span><br />
+'A B'.match(/\S/);<span>// ["A"]</span><br />
+'A \tB'.match(/\S/g);<span>// ["A", "B"]</span><br />
+<br />
+<span>// 連続して記述</span><br />
+'\t\tAB'.match(/\S\S/);<span>// ["AB"]</span><br />
+' \tABCD'.match(/\S\S/);<span>// ["AB"]</span><br />
+' \tABCD'.match(/\S\S/g);<span>// ["AB", "CD"]</span><br />
+<br /></p>
+</div>
+<div id="calibre_link-28">
+<h3><b><u>２－１２．単語の境目を検索　"\b"</u></b></h3>
+<p>文字列中の単語の境目を検索するには「<b><b>\b</b></b>」を使います。<br />
+「単語の境目」とは、単語を構成する文字（<span><b><i>a～z、A～Z、0～9、_</i></b></span>）とそれ以外の文字との境目のことです。<br />
+今回はこれまで説明して来たモノ達と若干毛色が違うと感じるかもしれませんが、まずはジックリと例を見てみましょう。<br />
+ちなみに、「<span><b><i>b</i></b></span>」は「<span><b><i>word boundary</i></b></span>」の「b」です。</p>
+<p><span><b>例）単語の境目の検索</b></span></p>
+<p><br />
+<span>// 「This」に含まれる「is」は単語の境目ではない</span>  ①<br />
+'This IS a pen!'.match(/\bis/);<span>// null</span><br />
+'This IS a pen!'.match(/\bis/i);<span>// ["IS"]</span><br />
+<br />
+<span>// 「!」は単語構成文字ではない</span>  ②<br />
+'This IS a pen!'.match(/pen\b/);<span>// ["pen"]</span><br />
+'This IS a pen!'.match(/pen\b!/);<span>// ["pen!"]</span><br />
+<br />
+<span>// 行頭に区切りはあるが、行末には無い</span>  ③<br />
+'This IS a pen!'.match(/\bT/);<span>// ["T"]</span><br />
+'This IS a pen!'.match(/!\b/);<span>// null</span><br />
+<br /></p>
+<p>例では「This IS a pen!」と言う文字列を検索対象としています。<br />
+この文字列に存在する「境目」は以下の通りです。<br />
+<span>・行頭と「T」の間</span><br />
+<span>・「s」とスペースの間</span><br />
+<span>・スペースと「I」の間</span><br />
+<span>・「S」とスペースの間</span><br />
+<span>・「a」と前後のスペースの間</span><br />
+<span>・スペースと「p」の間</span><br />
+<span>・「n」と「!」の間</span><br />
+これを念頭に置いてみると、例の結果はスンナリと受け入れられると思います。<br />
+①は比較的分かりやすいと思いますが、②なんて初見だと「？？？」でしょう。<br />
+でも、冒頭で説明した「単語を構成する文字」の定義に沿って考えてもらえれば納得してもらえますよね？<br />
+ちなみに、③については「ああ、そう言うモンなのね」って感じで覚えておいてください。</p>
+</div>
+<div id="calibre_link-26">
+<h3><b><u>２－１３．単語の境目以外を検索　"\B"</u></b></h3>
+<p>単語の境目「以外」を検索するには「<b><b>\B</b></b>」を使います。<br />
+大文字の表記なので、「<b><b>\b</b></b>」と真逆の結果が得られます。<br />
+ぶっちゃけ「こんな検索何に使うんだよ・・・」って思うかもしれませんが、いつか役に立つかもしれないと思って例ぐらいは見ておいてください。<br />
+※単語の一部に含まれる（単語ではない）マッチを探す、みたいな感じで使えるみたいです</p>
+<p><span><b>例）単語の境目以外の検索</b></span></p>
+<p><br />
+<span>// 「This」の「is」」は単語の境目ではない</span><br />
+'This IS a pen!'.match(/\Bis/i);<span>// ["is"]</span><br />
+'This IS a pen!'.match(/\BIS/);<span>// null</span><br />
+<br />
+<span>// 「!」は単語構成文字ではない</span><br />
+'This IS a pen!'.match(/pen\B/);<span>// null</span><br />
+'This IS a pen!'.match(/pen\B!/);<span>// null</span><br />
+<br />
+<span>// 行頭に区切りはあるが、行末には無い</span><br />
+'This IS a pen!'.match(/\BT/);<span>// null</span><br />
+'This IS a pen!'.match(/!\B/);<span>// ["!"]</span><br />
+<br /></p>
+</div>
+<div id="calibre_link-0">
+<h3><b><u>２－１４．nullを検索　"\0"</u></b></h3>
+<p>null文字を検索するには「<b><b>\0</b></b>」を使います。<br />
+イマイチ使いドコロはわからないですが、無理やり例を載せておきます。</p>
+<p><span><b>例）nullの検索</b></span></p>
+<p><br />
+'abcAB\u0000CaBc'.match(/ab/gi);<span>// ["ab", "AB", "aB"]</span><br />
+'abcAB\u0000CaBc'.match(/ab\0/gi);<span>// ["AB"]</span><br />
+<br /></p>
+</div>
+<div id="calibre_link-89">
+<h3><b><u>まとめ</u></b></h3>
+<p>メタ文字を用いた検索パターン、いかがでしたでしょうか。<br />
+見て来た通りたくさんの種類がありますが、とりあえずは以下を覚えちゃえばOKです。<br />
+<span><b><b>・「.」は単一文字</b></b></span><br />
+<span><b><b>・「\w」は半角英数字とアンダースコア（word）</b></b></span><br />
+<span><b><b>・「\d」は半角数値（digit character）</b></b></span><br />
+<span><b><b>・「\s」は各種スペース（space）</b></b></span><br />
+<span><b><b>・「\b」は単語の区切り（word boundary）</b></b></span><br />
+<span><b><b>・アルファベットを大文字にすると真逆になる</b></b></span><br />
+残りはぶっちゃけどうでもいいです！<br />
+「\n」とか「\t」は比較的出番が多いですけど、プログラマーなら馴染みの深い値なので、わざわざ改めて記憶するまでも無いと思いますし。<br />
+と言う訳で、まずは上述した6つの規則を頭に叩き込んでおきましょう！</p>
+<p></p>
+<p></p></div>
+<div id="calibre_link-5">
+<h2 id="calibre_link-122"><b><u>Chapter３．数量詞を用いた検索</u></b></h2>
+<p>メタ文字の次は数量詞です。<br />
+あまり馴染みの無い言葉かもしれませんが、定義としては「数量を示す単語または句」らしいです。<br />
+うん、やっぱ<span><b><i>よくわからないかもしれないですね</i></b></span>！<br />
+まぁ語源はどうでもいいとして、ここから難易度（と言うかヤヤコシさ）がジワジワと増してくるので、心して読み進めてください。<br />
+なお、メタ文字と同じく、数量詞もそのものを検索する場合はエスケープが必要です。</p>
+<p><span><b>例）数量詞を検索する</b></span></p>
+<p><br />
+'^$^'.match(/\^/g);<span>// ["^", "^"]</span><br />
+<br /></p>
+<p>・・・デキの悪い顔文字みたいで力が抜けますね。</p>
+</div>
+<div id="calibre_link-94">
+<h3><b><u>３－１．先頭を検索　"^"</u></b></h3>
+<p>文字列の「先頭」を検索するには「<b><b>^</b></b>」を使います。<br />
+<span><b><i>mオプション</i></b></span>を加えると、改行直後の値も対象になります。</p>
+<p><span><b>例）先頭の検索	</b></span></p>
+<p><br />
+'This is a pen!'.match(/^This/);<span>// ["This"]</span><br />
+'This is a pen!'.match(/^is/);<span>// null</span>  ①<br />
+<br />
+<span>// オプションを指定する</span><br />
+'This is a pen!\nThis is a ball!'.match(/^This/g);<span>// ["This"]</span>  ②<br />
+'This is a pen!\nThis is a ball!'.match(/^This/gm);<span>// ["This", "This"]</span><br />
+<br />
+<span>// 他のパターンと組み合わせる</span><br />
+'This is a pen!'.match(/^This\s../);<span>// ["This is"]</span><br />
+<br />
+<span>// 先頭だけ置き換えてみる</span><br />
+'This is a pen.This is a ball.'.replace(/^This/, 'That');<span>// "That is a pen.This is a ball."</span><br />
+<br /></p>
+<p>基本的にヤヤコシいことは無いと思いますが、とりあえず2点ほどポイントを。<br />
+①では「is」は文字列の先頭では無いためヒットしません。<br />
+また、②ではgオプションを指定しているものの、mオプションを指定していないため改行コードが「文字」として扱われ、後半の「This」はヒットしません。</p>
+</div>
+<div id="calibre_link-13">
+<h3><b><u>３－２．末尾を検索　"$"</u></b></h3>
+<p>文字列の「末尾」を検索するには「<b><b>$</b></b>」を使います。<br />
+<span><b><i>mオプション</i></b></span>を加えると、改行直前の値も対象になります。</p>
+<p><span><b>例）末尾の検索</b></span></p>
+<p><br />
+'This is a pen!'.match(/pen!$/);<span>// ["pen!"]</span><br />
+'This is a pen!'.match(/is$/);<span>// null</span><br />
+<br />
+<span>// オプションを指定する</span><br />
+'This is a pen!\nThis is a ball!'.match(/!$/g);<span>// ["!"]</span>  ①<br />
+'This is a pen!\nThis is a ball!'.match(/!$/gm);<span>// ["!", "!"]</span><br />
+<br />
+<span>// 他のパターンと組み合わせる</span><br />
+'This is a pen!'.match(/\spen!$/);<span>// [" pen!"]</span><br />
+<br />
+<span>// 末尾だけ置き換えてみる</span><br />
+'This is a pen.This is a pen.'.replace(/pen.$/, 'ball.');<span>// "This is a pen.This is a ball."</span><br />
+<br /></p>
+<p>基本的に３－１の「<b><b>^</b></b>」とポイントは同じです。<br />
+①についても、改行やmオプションの考え方は「<b><b>^</b></b>」と全く同じなので、改めての説明は不要でしょう！</p>
+</div>
+<div id="calibre_link-99">
+<h3><b><u>３－３．特定の値が後に続いている文字列を検索　"(?=xxx)"</u></b></h3>
+<p>例えば「JavaScript」と「javaScript」が混在している文字列があるとして、これを「JavaScript」に統一したいとします。<br />
+こんな時は「<b><b>(?=xxx)</b></b>」を使います。<br />
+ちなみに、このパターンを「<span><b><i>先読み</i></b></span>」と言います。</p>
+<p><span><b>例）先読みの検索その１</b></span></p>
+<p><br />
+'JavaScript javaScript java'.replace(/java(?=Script)/, 'Java');<span>// "JavaScript JavaScript java"</span>  ①<br />
+<br />
+'Java java jaVa jaba'.match(/ja(?=va)/gi);<span>// ["Ja", "ja", "ja"]</span>  ②<br />
+<br /></p>
+<p>冒頭で例えたモノの答えが①です。<br />
+「java」の後に「Script」と続いている部分だけが対象となっていることがわかると思います。<br />
+②ではオプションを指定してみました。<br />
+gオプションはともかく、iオプションが「ja」にも「va」にも効いてるのがミソです。</p>
+<p>さて、ここら辺からちょっとずつヤヤコシ度が増し初めて来てると思います。<br />
+なので、もう一丁例を載せておきましょう。<br />
+ちゃんと理解出来ているか、今のうちにとことん確認しておいてください。</p>
+<p><span><b>例）先読みの検索その２</b></span></p>
+<p><br />
+'123456'.match(/123(?=456)/);<span>// ["123"]</span><br />
+'123'.match(/123(?=456)/);<span>// null</span><br />
+'ABCDEFG'.match(/ABC(?=CDEFG)/);<span>// null</span><br />
+'ABCDEFG'.match(/ABC(?=DEFG)/);<span>// ["ABC"]</span><br />
+'ABCDEFG'.match(/ABC(?=DE)/);<span>// ["ABC"]</span><br />
+'ABAbABAbABaB'.match(/A(?=B)/g);<span>// ["A", "A", "A"]</span><br />
+'ABAbABAbABaB'.match(/A(?=B)/gi);<span>// ["A", "A", "A", "A", "A", "a"]</span><br />
+<br /></p>
+</div>
+<div id="calibre_link-20">
+<h3><b><u>３－４．特定の値が後に続いていない文字列を検索　"(?!xxx)"</u></b></h3>
+<p>さて、お次は「先読み」の真逆パターン「<span><b><i>否定先読み</i></b></span>」です。<br />
+このパターンは「<b><b>(?!xxx)</b></b>」を使います。<br />
+これはメタ文字の時にも多数出てきた「真逆パターン」なので、まずは一気に例を読み進めてしましょう。</p>
+<p><span><b>例）否定先読みの検索</b></span></p>
+<p><br />
+'JavaScript javaScript java'.replace(/java(?!Script)/, 'Java');<span>// "JavaScript javaScript Java"</span>  ①<br />
+<br />
+'Java java jaVa jAba'.match(/ja(?!va)/gi);<span>// ["jA"]</span>  ②<br />
+<br />
+'123456'.match(/123(?!456)/);<span>// null</span><br />
+'123'.match(/123(?!456)/);<span>// ["123"]</span><br />
+'ABCDEFG'.match(/ABC(?!CDEFG)/);<span>// ["ABC"]</span><br />
+'ABCDEFG'.match(/ABC(?!DEFG)/);<span>// null</span><br />
+'ABCDEFG'.match(/ABC(?!DE)/);<span>// null</span><br />
+'ABAbABAbABaB'.match(/A(?!B)/g);<span>// ["A", "A"]</span><br />
+'ABAbABAbABaB'.match(/A(?!B)/gi);<span>// null</span><br />
+<br /></p>
+<p>あえてパターン指定以外は３－３の例と全て同じにしてみました。<br />
+モノの見事に真逆の結果となっていることがわかると思います。<br />
+例えば①では、「java」の後に「Script」と続かない値として、対象文字列の末尾にある「java」のみが対象となっています。<br />
+また、②では大文字小文字を無視した状態で「ja」の後に「va」が続かない値として、「jAba」のみが対象となっています。</p>
+<p>どうでしょう、３－３の「先読み」がちゃんと理解出来ていれば、今回の「否定先読み」問題なく理解出来ると思います。<br />
+逆に「・・・？」な点が少しでもあるのであれば、ここで焦らずに３－３に戻って、「先読み」と「否定先読み」をセットでトコトン見直してみてください。</p>
+</div>
+<div id="calibre_link-106">
+<h3><b><u>３－５．値のn回の繰り返しを検索　"{n}"</u></b></h3>
+<p>何らかの値の<span><b><i>n</i></b></span>回の繰り返しを検索するには「<b><b>{n}</b></b>」を使います。<br />
+このパターンでは、<span><b><i>n回以上でも以下でもなく、n回の場合のみを対象</i></b></span>とします。</p>
+<p><span><b>例）n回の繰り返しの検索</b></span></p>
+<p><br />
+'JavaaaaScript'.match(/a{5}/);<span>// null</span>  ①<br />
+'JavaaaaScript'.match(/a{4}/);<span>// ["aaaa"]</span>  ②<br />
+'JavaaaaScript'.match(/a{3}/);<span>// ["aaa"]</span>  ③<br />
+'JavaaaaScript'.match(/a{2}/);<span>// ["aa"]</span><br />
+'JavaaaaScript'.match(/a{1}/);<span>// ["a"]</span><br />
+'JavaaaaScript'.match(/a{0}/);<span>// [""]</span>  ④<br />
+<br />
+<span>// オプションを指定する</span><br />
+'JavaaaaScript'.match(/a{2}/g);<span>// ["aa", "aa"]</span><br />
+'JavaaaaScript'.match(/a{1}/g);<span>// ["a", "a", "a", "a", "a"]</span>  ⑤<br />
+<br />
+<span>// 繰り返し対象を複数文字にする場合</span><br />
+'JS JS JS JS JS'.match(/JS\s{2}/g);<span>// null</span>  ⑥<br />
+'JS JS JS JS JS'.match(/(JS\s){2}/g);<span>// ["JS JS ", "JS JS "]</span>  ⑦<br />
+<br />
+<span>// 「文字列＋文字の繰り返し」を検索する</span><br />
+'JavaaaScript JavaaaaScript'.match(/Javaa{3}/g);<span>// ["Javaaaa"]</span>  ⑧<br />
+<br />
+<span>// 全角文字も対象となる</span><br />
+'あいいいいうえお'.match(/あい{3}/);<span>// ["あいいい"]</span><br />
+<br /></p>
+<p>さて、順を追ってポイントを説明しましょう。<br />
+まず①ですが、これは「a」が5回連続している部分が無いため、結果がnullになっています。<br />
+次に②と③は、それぞれ「a」が4回、3回続く部分がヒットしています。<br />
+続くa{2}とa{1}のパターンも同様です。<br />
+そして④は、「0回の繰り返し」をパターン指定しており、結果として空文字が返却されています。<br />
+このように「0」を指定するとnullではなく空文字が返却されるので、注意してください。<br />
+さらに⑤は、このパターンでは先頭から2文字目の「a」もヒットしていることに注意してください。<br />
+「1回の繰り返し」＝「ただの1文字」になるってことです。</p>
+<p>ここで1度区切ります。<br />
+これまでの内容はバッチリですか？<br />
+もし納得行かない部分があれば、実際に動かして「完璧に」納得してから続きを読み進めてください。</p>
+<p>では後半戦です。<br />
+これまで説明したパターンは「単一文字の繰り返し」をパターンとしていましたが、次は「複数文字の繰り返し」です。<br />
+まず⑥ですが、この検索では結果がnullになっています。<br />
+ここでは<span><b><i>「JS＋半角スペース」が2回繰り返す</i></b></span>と言うパターン表したつもりなのですが、実際には<span><b><i>「JS」＋「半角スペース2回」</i></b></span>と言う指定になっています。<br />
+これを意図通りに表したのが⑦で、繰り返し指定したい部分をカッコで囲って<span><b><i>グループ化</i></b></span>しています。<br />
+実は、「<b><b>{n}</b></b>」は「<span><b><i>記述した直前の値の繰り返し</i></b></span>」を指定するためのパターンなので、複数の値を指定したい場合は<span><b><i>グループ化</i></b></span>が必要になるのです。<br />
+※グループ化については３−１２で改めて説明します<br />
+正規表現には他にも様々な繰り返しパターンが存在しますが、基本的には全て同じ考え方になります。<br />
+そして、最後の⑧ですが、これは「特定の文字」＋「値の繰り返し」を指定しています。<br />
+このパターンでは<span><b><i>「Java」の後に「aが3回」</i></b></span>と言う意味になるため、文字列後半の「JavaaaaScript」だけがヒットしています。</p>
+<p>少し長くなりましたけど大丈夫ですか？？<br />
+ここから先、様々な「繰り返し」が続きますが、頭の中でゴチャゴチャにならないよう十分に注意してください。<br />
+繰り返し検索の実用性は間違いなくトップクラスなので、<span><b><i>超重要</i></b></span>だと言うことを肝に銘じましょう！</p>
+</div>
+<div id="calibre_link-9">
+<h3><b><u>３－６．値のn回以上の繰り返しを検索　"{n,}"</u></b></h3>
+<p>何らかの値の<span><b><i>n</i></b></span>回以上の繰り返しを検索するには「<b><b>{n,}</b></b>」を使います。<br />
+早速例を見て行きましょう。</p>
+<p><span><b>例）n回以上の繰り返しの検索</b></span></p>
+<p><br />
+'JavaaaaScript'.match(/a{1,}/);<span>// ["a"]</span><br />
+'JavaaaaScript'.match(/a{1,}/g);<span>// ["a", "aaaa"]</span><br />
+'JavaaaaScript'.match(/a{2,}/);<span>// ["aaaa"]</span><br />
+'JS JS JS JS JS'.match(/JS\s{2,}/g);<span>// null</span><br />
+'JS JS JS JS JS'.match(/(JS\s){2,}/g);<span>// ["JS JS JS JS "]</span><br />
+'ABC ABBC ABBBC ABB'.match(/AB{2,}C/g);<span>// ["ABBC", "ABBBC"]</span>  ①<br />
+<br /></p>
+<p>基本的に、３－５で説明した「<b><b>{n}</b></b>」が理解出来ていれば、①以外は特別な説明は不要でしょう。<br />
+そして①ですが、これは「<span><b><i>Aの後にBが2回以上続き、その後にCと続く</i></b></span>」と言うパターンです。<br />
+<span><b><i>繰り返しの後に続く文字</i></b></span>を指定してみたってだけで、特別難しいってことも無いと思います。<br />
+とりあえず、ここでは「<b><b>{n,}</b></b>」と書いたら「<span><b><i>何回以上</i></b></span>」と言う意味になると言うことを頭に叩き込んで、次に進んでしましましょう。</p>
+</div>
+<div id="calibre_link-27">
+<h3><b><u>３－７．値のn回以上、m回以下の繰り返しを検索　"{n,m}"</u></b></h3>
+<p>何らかの値の<span><b><i>n</i></b></span>回以上、<span><b><i>m</i></b></span>回以下の繰り返しを検索するには「<b><b>{n,m}</b></b>」を使います。<br />
+今回も今までの繰り返しパターンと同じノリで行けます。</p>
+<p><span><b>例）n回以上m回以下の繰り返しの検索</b></span></p>
+<p><br />
+'JavaScript'.match(/Java{1,2}/);<span>// ["Java"]</span><br />
+'JavaScript'.match(/Java{2,3}/);<span>// null</span><br />
+'JavaaaScript'.match(/Javaa{2,3}/);<span>// ["Javaaa"]</span><br />
+'JavaaaScript'.match(/Javaa{3,4}/);<span>// null</span><br />
+<br />
+'JS JS JS JS JS'.match(/JS\s{1,2}/g);<span>// ["JS ", "JS ", "JS ", "JS "]</span><br />
+'JS JS JS JS JS'.match(/(JS\s){2,3}/g);<span>// ["JS JS JS "]</span><br />
+'ABC ABBC ABBBC ABB'.match(/AB{1,2}C/g);<span>// ["ABC", "ABBC"]</span><br />
+'ABC ABBC ABBBC ABB'.match(/AB{0,3}C/g);<span>// ["ABC", "ABBC", "ABBBC"]</span><br />
+'ABC ABBC ABBBC ABB'.match(/AB{3,2}C/g);<span>// エラー</span>  ①<br />
+<br /></p>
+<p>どうでしょう。<br />
+基本的に、「<b><b>{n}</b></b>」と「<b><b>{n,}</b></b>」を理解していれば何の問題も無いと思います。<br />
+なお、注意すべき点としては①で挙げた通り、「以上」と「以下」の指定が逆転している場合はエラーとなってしまう点です。<br />
+また、「以上」「以下」は言葉の通り「<span><b><i>&gt;=</i></b></span>」と「<span><b><i>&lt;=</i></b></span>」なので、この点も正しく覚えておきましょう。</p>
+</div>
+<div id="calibre_link-22">
+<h3><b><u>３－８．値の1回以上の繰り返しを検索　"+"</u></b></h3>
+<p>何らかの値の1回以上の繰り返しを検索するには「<b><b>+</b></b>」を使います。<br />
+先に説明した「<b><b>{1,}</b></b>」と同じ意味合いになりますが、記述が簡潔になるため、「1回以上」の繰り返しを対象とする場合はこちらを使うようにしましょう。</p>
+<p><span><b>例）1回以上の繰り返しの検索</b></span></p>
+<p><br />
+'JavaaaaScript'.match(/a{1,}/);<span>// ["a"]</span><br />
+'JavaaaaScript'.match(/a+/);<span>// ["a"]</span><br />
+'JavaaaaScript'.match(/a{1,}/g);<span>// ["a", "aaaa"]</span><br />
+'JavaaaaScript'.match(/a+/g);<span>// ["a", "aaaa"]</span><br />
+<br /></p>
+</div>
+<div id="calibre_link-1">
+<h3><b><u>３－９．値の0回以上の繰り返しを検索　"*"</u></b></h3>
+<p>何らかの値の0回以上の繰り返しを検索するには「<b><b>*</b></b>」を使います。<br />
+「0回以上」って言うと何かビミョーな感じがしますけど、要するに「<span><b><i>あっても無くてもヒットする</i></b></span>」ってことです。<br />
+ちなみに、これも先に説明した「<b><b>{0,}</b></b>」と同じ意味合いになりますが、0回以上の繰り返しを指定するならば記述が簡潔なこちらを使うようにしましょう。</p>
+<p><span><b>例）0回以上の繰り返しの検索</b></span></p>
+<p><br />
+'JavaScript'.match(/Javaa{0,}/);<span>// ["Java"]</span><br />
+'JavaScript'.match(/Javaa*/);<span>// ["Java"]</span><br />
+'JavaaScript'.match(/Javaa{0,}/);<span>// ["Javaa"]</span><br />
+'JavaaScript'.match(/Javaa*/);<span>// ["Javaa"]</span><br />
+'JavaaaScript'.match(/Javaa{0,}/);<span>// ["Javaaa"]</span><br />
+'JavaaaScript'.match(/Javaa*/);<span>// ["Javaaa"]</span><br />
+<br /></p>
+</div>
+<div id="calibre_link-17">
+<h3><b><u>３－１０．値の0回もしくは1回の繰り返しを検索　"?"</u></b></h3>
+<p>何らかの値の0回、または1回の繰り返しを検索するには「<b><b>?</b></b>」を使います。<br />
+これまた微妙な表現になっていますが、要するに「<span><b><i>存在しないか、1回だけ出現するか</i></b></span>」ってことです。<br />
+一応、このパターンも「繰り返し」に分類されます。</p>
+<p><span><b>例）0回、または1回のみ出現の検索</b></span></p>
+<p><br />
+'JavaScript Java Script Java\t\tScript'.match(/Java\s?Script/g);<span>// ["JavaScript", "Java Script"]</span><br />
+'http:// https:// httpss://'.match(/https?:\/\//g);<span>// ["http://", "https://"]</span><br />
+<br /></p>
+<p>ここまで読み進めて来た人にとっては、何も難しいことは無いですよね！<br />
+ただ、ここで一つ覚えておいて欲しいことがあります。<br />
+この「?」は、<span><b><i>記述直前に存在する値によって全く異なる意味合いになる</i></b></span>んです。<br />
+具体的には、３－８と３－９で説明した「<b><b>*</b></b>」や「<b><b>+</b></b>」などの後に書くと、「<span><b><i>最短マッチ</i></b></span>」（最短一致とも言う）と呼ばれる検索を意味することになります。<br />
+この最短マッチについてはChapter５で具体例と共に触れますので、ひとまず今は「<span><b><i>?を*や+など、一部の数量詞に続けて書くと特殊な意味合いになってしまう</i></b></span>」と言うことを覚えておいてください。</p>
+</div>
+<div id="calibre_link-86">
+<h3><b><u>３－１１．指定したどちらかに該当するか検索　"|"</u></b></h3>
+<p>これはいわゆる「<span><b><i>OR検索</i></b></span>」のことで、「<b><b>|</b></b>」を使用します。<br />
+OR検索そのものは馴染み深いと思うので、例を見てもらうのが手っ取り早いでしょう。</p>
+<p><span><b>例）OR検索</b></span></p>
+<p><br />
+'JavaScript VBScript javascript vbscript'.match(/(java|vb)Script/);<span>// null</span><br />
+'JavaScript VBScript javascript vbscript'.match(/(java|vb)script/g);<span>// ["javascript", "vbscript"]</span><br />
+<br />
+<span>// 繰り返しと組み合わせてみる</span><br />
+'java vb javascript vbscript'.match(/(java|vb)\w+/g);<span>// ["javascript", "vbscript"]</span><br />
+'java vb javascript vbscript'.match(/(java|vb)\w*/g);<span>// ["java", "vb", "javascript", "vbscript"]</span><br />
+<br />
+<span>// グループ化しない場合とする場合</span>  ①<br />
+'cat cut can'.match(/ca|ut/g);<span>// ["ca", "ut", "ca"]</span><br />
+'cat cut can'.match(/c(a|u)t/g);<span>// ["cat", "cut"]</span><br />
+<br /></p>
+<p>このパターンは、各種繰り返しと並んで非常に出番の多いモノになります。<br />
+また、「～～または～～を検索する」とか「～～または～～の場合は全てXXXに置換する」なんてパターンを使いこなせると、テキスト文書の編集などでも役立つ場合が多いと思います。<br />
+是非、様々なシーンで積極的に使うようにしましょう。</p>
+<p>ちなみに、①の挙動だけは注意が必要になります。<br />
+他の数量詞が「<span><b><i>記述した直前の値に対して有効</i></b></span>」なのに対して、この<span><b><i>OR検索は正規表現リテラル内全体に効果が及びます</i></b></span>。<br />
+なので、一部だけをOR検索する場合はグループ化は必須だと言うことを覚えておいてください。</p>
+</div>
+<div id="calibre_link-104">
+<h3><b><u>３－１２．グループ化　"( )"</u></b></h3>
+<p>数量詞のトリはグループ化です。<br />
+今までの説明で既に使って来てますが、グループ化には「<b><b>( )</b></b>」を使います。<br />
+通常、数量詞は<span><b><i>記述した直前の値に対して有効</i></b></span>になりますが、このグループ化を使えば「<span><b><i>任意のまとまった値</i></b></span>」を対象とすることが出来ます。</p>
+<p><span><b>例）グループ化その１</b></span></p>
+<p><br />
+'ﾄﾞｩｰﾝ! ﾄﾞｩﾄﾞｩｰﾝ! ﾄﾞｩﾄﾞｩﾄﾞｩｰﾝ!'.match(/ﾄﾞｩ+/g);<span>// ["ﾄﾞｩ", "ﾄﾞｩ", "ﾄﾞｩ", "ﾄﾞｩ", "ﾄﾞｩ", "ﾄﾞｩ"]</span><br />
+'ﾄﾞｩｰﾝ! ﾄﾞｩﾄﾞｩｰﾝ! ﾄﾞｩﾄﾞｩﾄﾞｩｰﾝ!'.match(/(ﾄﾞｩ)+/g);<span>// ["ﾄﾞｩ", "ﾄﾞｩﾄﾞｩ", "ﾄﾞｩﾄﾞｩﾄﾞｩ"]</span><br />
+<br /></p>
+<p>・・・何だか脳内でも読み上げたくないような例題になりましたが、前者と後者で違いは明白ですよね。<br />
+前者は、<span><b><i>「ﾄﾞ」の後に「ｩ」が１回以上繰り返される</i></b></span>と言うパターンになっています。<br />
+「+」が「ｩ」に対してのみ効いているからです。<br />
+そして、後者は<span><b><i>「ﾄﾞｩ」が１回以上繰り返される</i></b></span>と言うパターンになっています。<br />
+グループ化により、「ﾄﾞｩ」に対して「+」が効いているからです。<br />
+どうでしょう、別に難しい話ではないですよね？<br />
+例えば、四則演算で計算の優先順位を付ける際にカッコで囲ったりすると思いますけど、イメージとしてはそれと同じように捉えてもらって構いません。</p>
+<p>ちなみに、まだ終わりではありません。<br />
+グループ化にはもう一つ重要なポイントがあります。<br />
+それは「グループ化を含んだパターンを指定した場合、マッチした部分のうちさらにその<span><b><i>グループ化した部分だけを個別に取得する</i></b></span>」と言うことです。<br />
+言葉だと非常に理解し難いと思うので、例を見てみましょう。</p>
+<p><span><b>例）グループ化その２</b></span></p>
+<p><br />
+<span>// グループ化なし</span><br />
+'http://hoge.com'.match(/.+\/\/hoge\.com/);<span>// ["http://hoge.com"]</span><br />
+'aabbccdd'.match(/ab+c/);<span>// ["abbc"]</span><br />
+<br />
+<span>// グループ化あり</span><br />
+'http://hoge.com'.match(/.+\/\/hoge(\.com)/);<span>// ["http://hoge.com", ".com"]</span><br />
+'aabbccdd'.match(/a(b+)c/);<span>// ["abbc", "bb"]</span><br />
+<br />
+<span>// グループ化を複数使用</span><br />
+'aabbccdd'.match(/a(b+)c*(d+)/);<span>// "abbccdd", "bb", "dd"]</span><br />
+<br /></p>
+<p>どうでしょう、例を見てもらえればグループ化による「<span><b><i>グループ化した部分だけを個別に取得する</i></b></span>」と言う動きがよくわかると思います。<br />
+グループ化を含んだパターンを指定した場合、match関数が返す配列の２番目（indexが1）以降の要素に、まさに「<span><b><i>グループ化した値</i></b></span>」そのものが格納されていますよね。<br />
+この動きを正しく理解していないと、グループ化を使った際に思わぬ落とし穴にハマる可能性がありますので、十分に注意するようにしてください。</p>
+</div>
+<div id="calibre_link-6">
+<h3><b><u>まとめ</u></b></h3>
+<p>数量詞を用いた検索パターン、いかがでしたでしょうか。</p>
+<p>メタ文字と比べると、正規表現の<span><b><i>何かと厄介でヤヤコシイ一面</i></b></span>が見えてきたと思います。<br />
+何が厄介って、<span><b><i>色々な記号の意味を記憶しておかないといけない</i></b></span>ってことですよね。<br />
+特に繰り返し系なんて、似たようなのがいくつもあって、結構ゴチャゴチャになると思います。<br />
+なので、この際ここで<span><b><i>完璧に記憶しちゃいましょう！</i></b></span><br />
+とりあえず一覧にしてみますね。</p>
+<p></p>
+<p><p></p><p>  </p><p></p><p>  </p><p></p><p>  </p><p></p><p>  </p><p></p><p>  </p><p></p><p>  </p><p></p><p>  </p><p></p><p>  </p><p></p><p>  </p><p></p><p>  </p><p></p><p>  </p><p></p><p>  </p><table border="1">
+<tbody>
+<tr>
+  <td>記号</td>
+<td>意味</td>
+</tr>
+<tr>
+  <td>^</td>
+<td>先頭</td>
+</tr>
+<tr>
+  <td>$</td>
+<td>末尾</td>
+</tr>
+<tr>
+  <td>(?=)</td>
+<td>先読み</td>
+</tr>
+<tr>
+  <td>(?!)</td>
+<td>否定先読み</td>
+</tr>
+<tr>
+  <td>{}</td>
+<td>指定回数の繰り返し</td>
+</tr>
+<tr>
+  <td>{,}</td>
+<td>from～to回の繰り返し（to省略可）</td>
+</tr>
+<tr>
+  <td>+</td>
+<td>1回以上の繰り返し</td>
+</tr>
+<tr>
+  <td>*</td>
+<td>0回以上の繰り返し</td>
+</tr>
+<tr>
+  <td>?</td>
+<td>存在しないか、１回だけ出てくるか</td>
+</tr>
+<tr>
+  <td>|</td>
+<td>OR</td>
+</tr>
+<tr>
+  <td>()</td>
+<td>グループ化</td>
+</tr>
+</tbody>
+</table>
+</p><p>　一覧で見ると、やっぱ色々ありますよね。<br />
+コイツらはメタ文字と違って<span><b><i>略語の由来</i></b></span>みたいな覚え方が出来ないので、頑張って記憶するしかないってのが本気で厄介です。<br />
+と言う訳で。<br />
+<span>・初めてここまで読み進めた人</span><br />
+<span><span>→自信があろうがなかろうが、全員<span><b><i>このChapterの先頭まで戻ってもう１回全部読んでください</i></b></span></span></span><br />
+<span>・２回目以降だけど、正直なところまだモヤっとしてる人</span><br />
+<span><span>→改めてこのChapterの先頭まで戻って<span><b><i>納得行くまで読んでください</i></b></span></span></span><br />
+<span>・もう何回も読んだぜ、任せろ！って人</span><br />
+<span><span>→おめでとうございます、次のChapterに進んでください</span></span></p>
+<p></p>
+<p></p></div>
+<div id="calibre_link-93">
+<h2 id="calibre_link-123"><b><u>Chapter４．ブラケットを用いた検索</u></b></h2>
+<p>メタ文字、数量詞の次は<span><b><i>ブラケット</i></b></span>です。<br />
+そう、JavaScriptエンジニアにとっては何かと馴染みのある、あのブラケット（<span><b><i>[ ]</i></b></span>）です。<br />
+ブラケットを使うと、主に「範囲」についてのパターンを表すことができます。<br />
+ちなみに、メタ文字や数量詞と同じく、ブラケットもそのものを検索する場合もエスケープが必要になります。</p>
+<p><span><b>例）ブラケットを検索する</b></span></p>
+<p><br />
+'[Hello]'.match(/\[\w+\]/g);<span>// ["[Hello]"]</span><br />
+<br /></p>
+</div>
+<div id="calibre_link-105">
+<h3><b><u>４－１．いずれかの文字を検索　"[ ]"</u></b></h3>
+<p>指定したいずれかの文字を検索するには「<b><b>[ ]</b></b>」を使います。<br />
+コレがブラケットの基本です。</p>
+<p><span><b>例）指定した文字の検索</b></span></p>
+<p><br />
+'JavaScript'.match(/[act]/g);<span>// ["a", "a", "c", "t"]</span><br />
+<br /></p>
+<p>何かもう、<span><b><i>今更感プンプン</i></b></span>ですね。<br />
+ここまで読み進めてる人にとっては、パターンの意味さえ説明しちゃえばそれ以上の説明は不要でしょう。<br />
+と言う訳で、とっとと次に行きますよ次に！</p>
+</div>
+<div id="calibre_link-7">
+<h3><b><u>４－２．いずれかの文字以外を検索　"[^ ]"</u></b></h3>
+<p>指定したいずれかの文字「以外」を検索するには「<b><b>[^ ]</b></b>」を使います。<br />
+要するに、メタ文字の時によく見かけた「真逆パターン」です。</p>
+<p><span><b>例）指定した文字以外の検索</b></span></p>
+<p><br />
+'JavaScript'.match(/[^act]/g);<span>// ["J", "v", "S", "r", "i", "p"]</span><br />
+<br /></p>
+<p>先頭を表す数量詞と同じ記号を使うので、その点にだけ注意しておきましょう。</p>
+</div>
+<div id="calibre_link-87">
+<h3><b><u>４－３．指定した範囲の値を検索　"[x-y]"</u></b></h3>
+<p>ある範囲の値を検索するには「<b><b>[x-y]</b></b>」を使います。<br />
+コレはブラケットを使った検索の中でも、特に利用シーンが多いパターンになります。</p>
+<p>ここで言う範囲とは、「0～9」とか「a～z」とか「A～Z」とかです。<br />
+例えば「1～4の数値だけ抜き出したい！」みたいな時は[1-4]って書く感じです。<br />
+範囲の指定は数字と英字を跨ぐことも可能ですが、<span><b><i>ハイフンの前後はアスキーコード順となる必要がある</i></b></span>ため、このような場合は「<span><b><i>数字→英大文字→英小文字</i></b></span>」と言う順番で記述します。<br />
+ちなみに、アスキーコードでは「9とAの間」や「Zとaの間」に一部記号が含まれているため、厳密なチェックを行いたい場合は数字、英大文字、英小文字をそれぞれ分けて記述するようにしましょう。<br />
+※ブラケットの中に「<b><b>\w</b></b>」や「<b><b>\d</b></b>」等のメタ文字を含めることもできますが、ヤヤコシクなる上に実用性も高くないため、ここでは触れません</p>
+<p><span><b>例）指定した範囲の値の検索</b></span></p>
+<p><br />
+'0123456789abcdeABCDE'.match(/[1-4]/g);<span>// ["1", "2", "3", "4"]</span><br />
+'0123456789abcdeABCDE'.match(/[1-4a-c]/g);<span>// ["1", "2", "3", "4", "a", "b", "c"]</span>  ①<br />
+'0123456789abcdeABCDE'.match(/[1-3ab-d]/g);<span>// ["1", "2", "3", "a", "b", "c", "d"]</span>  ②<br />
+'0123456789abcdeABCDE'.match(/[a-d-e]/g);<span>// ["a", "b", "c", "d", "e"]</span>  ③<br />
+'0123456789abcdeABCDE'.match(/[1-2a-b]/gi);<span>// ["1", "2", "a", "b", "A", "B"]</span><br />
+'0123456789abcdeABCDE'.match(/[c-g]/g);<span>// ["c", "d", "e"]</span><br />
+'0123456789abcdeABCDE'.match(/[x-z]/g);<span>// null</span><br />
+'0123456789abcdeABCDE'.match(/[5-4]/g);<span>// エラー</span>  ④<br />
+'0123456789abcdeABCDE'.match(/[c-a]/g);<span>// エラー</span><br />
+'0369abcXYZ'.match(/[0-Z]/g);<span>// ["0", "3", "6", "9", "X", "Y", "Z"]</span><br />
+'0369abcXYZ'.match(/[A-z]/g);<span>// ["a", "b", "c", "X", "Y", "Z"]</span><br />
+'0369abcXYZ'.match(/[a-Z]/g);<span>// エラー</span>  ⑤<br />
+'0369abcXYZ'.match(/[0-z]/g);<span>// ["0", "3", "6", "9", "a", "b", "c", "X", "Y", "Z"]</span><br />
+<br /></p>
+<p>このパターンには、いくつか注意点があります。<br />
+まず①では、範囲指定を複数繋げて書いてます。<br />
+こんな感じに書けるのね、と覚えておいてください。<br />
+次に②ですが、これは「1～3」と「a」と「b～d」と言うパターンになっています。<br />
+「ab-～d」ではなく「a」と「b-d」と解釈されると言うことです。<br />
+そして、③については意味があるか無いかは別として、このように書けなくもないと言うことを表してみました。<br />
+まぁ、大人しく「a-e」って書けって話ですが。<br />
+最後に、④や⑤では「範囲が逆転するとエラーになる」と言うことを表しています。<br />
+⑤の場合、先に触れたアスキーコード順の関係で「範囲が逆転している」扱いとなります。</p>
+<p>こんなところですかね。<br />
+例で表したパターン以外でも「こんな感じにしたらどうなるのか？」と気になることがあるならば、もう<span><b><i>今すぐにでも</i></b></span>ブラウザのコンソールで試してみてください。</p>
+</div>
+<div id="calibre_link-92">
+<h3><b><u>４－４．指定した範囲の値以外を検索　"[^x-y]"</u></b></h3>
+<p>ある範囲の値「以外」を検索するには「<b><b>[^x-y]</b></b>」を使います。<br />
+要するに、４－３の「真逆パターン」です。</p>
+<p><span><b>例）指定した範囲以外の値の検索</b></span></p>
+<p><br />
+'0123456789abcdeABCDE'.match(/[^a-c^2-9]/gi);<span>// ["0", "1", "d", "e", "D", "E"]</span>  ①<br />
+'0123456789abcdeABCDE'.match(/[^a-c2-9]/gi);<span>// ["0", "1", "d", "e", "D", "E"]</span>  ②<br />
+'0123456789abcdeABCDE'.match(/[a-c^2-4]/g);<span>// ["2", "3", "4", "a", "b", "c"]</span>  ③<br />
+'0123456789abcdeABCDE'.match(/[^5-4]/g);<span>// エラー</span><br />
+'0123456789abcdeABCDE'.match(/[^c-a]/g);<span>// エラー</span><br />
+<br /></p>
+<p>注意点は①～③ですね。<br />
+①と②が同じ結果になっている点、③では「<span><b><i>^</i></b></span>」が効いていない点にそれぞれ注意してください。<br />
+なお、厳密には「効いていない」ではなく、文字列としての「<span><b><i>^</i></b></span>」を対象とする意味合いになります。</p>
+<p><span><b>例）「^」を途中に書いた場合</b></span></p>
+<p><br />
+'0123456789^abcdeABCDE'.match(/[a-c^2-4]/g);<span>// ["2", "3", "4", "^", "a", "b", "c"]</span><br />
+<br /></p>
+</div>
+<div id="calibre_link-15">
+<h3><b><u>まとめ</u></b></h3>
+<p>ブラケットを使った検索パターンは、覚えるのにそんなに苦労しないと想います。<br />
+<span>・値を列挙すれば「いずれかに該当する」</span><br />
+<span>・値をハイフンで繋げれば「範囲に該当する」</span><br />
+<span>・先頭に「<span><b><i>^</i></b></span>」をつければ「否定」</span><br />
+この3つさえ覚えてしまえばOKな訳です。<br />
+楽勝ですね！<br />
+とは言いつつも、イザ本格的なパターンを書こうとするとかなりの頻度でコイツらのお世話になるので、決して油断なさらぬよう。</p>
+<p>さて。<br />
+このブラケットの説明を持って、一旦基礎的な話は終わりになります。<br />
+メタ文字、数量詞、ブラケットのそれぞれの使い方については、もうバッチリだと信じます。<br />
+<span><b><i>し・か・し！</i></b></span><br />
+ぶっちゃけ、<span><b><i>これらを覚えたからって実際にバリバリと正規表現を使いこなせるなんてことは１００００％ありません</i></b></span>！！<br />
+今はまだ、RPGで例えるならば「<span><b><i>魔王討伐の挨拶を王様に済ませて、最低レベルの武器防具と激安の軍資金を受け取った</i></b></span>」的な段階です。<br />
+そう、戦いはこれから始まるってことです！<br />
+（某国民的ゲームを知らない人はゴメンナサイ）</p>
+<p>と言う訳で。<br />
+次のChapterでは、具体的な検索パターンにモリモリと触れます。<br />
+ここまでに学んだ「ベースとなる知識」があれば、正規表現の具体例に触れることによって一気にレベルが上がることウケアイです。<br />
+さぁ張り切って行きましょう！</p>
+</div>
+<div id="calibre_link-16">
+<h2 id="calibre_link-124"><b><u>Chapter５．正規表現実践編</u></b></h2>
+<h3 id="calibre_link-75"><b><u>５－１．メールアドレスの検索</u></b></h3>
+<p>さて、実践編のトップバッターはメールアドレスの検索です。<br />
+「なんでいきなりこんなに複雑そうなヤツを持って来るんだ！」ってブーイングを頂戴しそうですが、あくまでも「わざと」ですので！<br />
+<span><b><i>獅子は千尋の谷に我が子をナントヤラ</i></b></span>と言いますが、これに習ってまずは「甘くないんだぞ！」と言うことを体感してもらおうかなーと。<br />
+あ、ちなみに実際のライオンは谷に落ちた我が子を助け出すみたいですけど、<span><b><i>今はどうでもいい</i></b></span>ですねそんなこと！</p>
+<p>と言う訳で本題です。<br />
+メールアドレスと言うのは、一般的に次のようなルールに則った形式になります。<br />
+<span>・アカウント部とドメイン部が「@」で連結されている</span><br />
+<span>・アカウント部の先頭は半角英数字のいずれかである</span><br />
+<span>・アカウント部の2文字目以降は半角英数字か「.」「-」「_」のいずれかである（必須ではない）</span><br />
+<span>・ドメイン部の先頭は半角英数字のいずれかである</span><br />
+<span>・ドメイン部の2文字目以降は半角英数字か「.」「-」「_」のいずれかである</span><br />
+こんなところでしょうか。<br />
+本来であれば他にももっと細かいことを気にするべきかもしれませんが、一旦これぐらいにしておきます。<br />
+これ以上ルールを設けると、それこそトップバッターとしてはあり得ないぐらいの複雑さになってしまいますゆえ。<br />
+なので、まずは上述したルールに適合すれば「メールアドレス」と扱う前提で話を進めます。<br />
+では早速定義したルールを一つ一つ正規表現のパターンにして行きましょう。</p>
+<p><b><b>■アカウント部とドメイン部が「@」で連結されている</b></b><br />
+　「@」はメールアドレスには無くてはならない文字です。<br />
+人間が目でメールアドレスチェックを行う場合に、真っ先に探す文字だとも思います。<br />
+なので、いっそ次のようなパターンで十分では？と言う意見もたまに耳にします。</p>
+<p><br />
+.+@.+<span>// 「@」前後に何らかの文字が1文字以上</span><br />
+<br /></p>
+<p>まさに<span><b><i>極論</i></b></span>ですね！<br />
+本当にちょっとしたチェックだけすればいいってケースであれば、これでもいいのかもしれません。<br />
+とは言え、（特に業務システム開発では）こんなチェックで許されるのは稀なので、実際にはもっと厳密なチェックを実装しなければなりません。<br />
+あ、ちなみに「@で連結されている」ことをパターンに含めるには「然るべき位置に@を記述すればよい」なんてことは、今更改めて説明する必要は全く無いですよね？</p>
+<p><b><b>■アカウント部の先頭は半角英数字のいずれかである</b></b><br />
+　ついに今まで覚えた知識の出番です。<br />
+まず、<span><b><i>先頭</i></b></span>を意味するのは「<b><b>^</b></b>」でした。<br />
+そして、<span><b><i>半角英数字のいずれか</i></b></span>は「<b><b>[a-zA-Z0-9]</b></b>」となります。<br />
+と言うことは、この部分のパターン指定は次のようになります。</p>
+<p><br />
+^[a-zA-Z0-9]<span>// 先頭が半角英数字</span><br />
+<br /></p>
+<p><b><b>■アカウント部の2文字目以降は半角英数字か「.」「-」「_」のいずれかである（必須ではない）</b></b><br />
+　お次はコイツです。<br />
+まず、<span><b><i>半角英数字か「.」「-」「_」のいずれか</i></b></span>は「<b><b>[a-zA-Z0-9\.-_]</b></b>」でOKです。<br />
+「.」は忘れずにエスケープします。<br />
+そして、必須ではないと言うことは「<span><b><i>0回以上の繰り返し</i></b></span>」とも言えるので、これを指定するには「*」でした。<br />
+と言う訳で、この部分のパターンは次の通りです。</p>
+<p><br />
+[a-zA-Z0-9\.-_]*<span>// 半角英数字か「.」「-」「_」が0回位上繰り返す</span><br />
+<br /></p>
+<p>ちなみに「<b><b>[\w\.-]</b></b>」でもイケますが、ここでは見た目的に分かりやすい方を採用してみました。</p>
+<p><b><b>■ドメイン部の先頭は半角英数字のいずれかである</b></b><br />
+　ドンドン行きましょう。<br />
+<span><b><i>ドメイン部の先頭が半角英数字のいずれか</i></b></span>は「<b><b>[a-zA-Z0-9]</b></b>」ですね。<br />
+先頭１文字にマッチすればいいので、他に考慮はいらなそうです。<br />
+よって、この部分は次の通りとなります。</p>
+<p><br />
+[a-zA-Z0-9]<span>// 半角英数字のいずれか</span><br />
+<br /></p>
+<p><b><b>■ドメイン部の2文字目以降は半角英数字か「.」「-」「_」のいずれかである</b></b><br />
+　ラストはコイツです。<br />
+まず、<span><b><i>半角英数字か「.」「-」「_」のいずれか</i></b></span>は先にも出てきた「<b><b>[a-zA-Z0-9\.-_]</b></b>」です。<br />
+そして、ドメイン部が1文字なんてことはあり得ない＝ドメイン部の2文字目以降は必須と言うことで、ここも「<span><b><i>+</i></b></span>」を使います。<br />
+よって、この部分は次の通りとなります。</p>
+<p><br />
+[a-zA-Z0-9\.-_]+<span>// 半角英数字か「.」「-」「_」が1回以上繰り返す</span><br />
+<br /></p>
+<p><b><b>■仕上げ</b></b><br />
+　さて、各々のルールを全て正規表現のパターンにしてみましたので、それぞれをガッチャンコしてみましょう。<br />
+こんな感じになります。</p>
+<p><br />
+^[a-zA-Z0-9][a-zA-Z0-9\.-_]*@[a-zA-Z0-9][a-zA-Z0-9\.-_]+<br />
+<br /></p>
+<p>おお・・・なんか、もの凄く正規表現っぽいですね！<br />
+実際にどんな感じに動くのか、例で確認してみましょう。</p>
+<p><span><b>例）メールアドレスチェックその１</b></span></p>
+<p><br />
+<span>var</span> exp = /^[a-zA-Z0-9][a-zA-Z0-9\.-_]*@[a-zA-Z0-9][a-zA-Z0-9\.-_]+/;<br />
+<br />
+console.log(exp.test('abc@example.com'));<span>// true</span><br />
+console.log(exp.test('abc@'));<span>// false</span><br />
+console.log(exp.test('@example.com'));<span>// false</span><br />
+console.log(exp.test('あいう@example.com'));<span>// false</span><br />
+console.log(exp.test('.abc@example.com'));<span>// false</span><br />
+console.log(exp.test('abc@-example.com'));<span>// false</span><br />
+<br /></p>
+<p>どうでしょう、立派に機能してくれてますね！<br />
+ですが、冒頭でも軽く触れた通り、このパターンでは実際のシステムに組み込むにはちょっと心許ないレベルのルールでしかチェックしてくれません。<br />
+次の例を見てみましょう。</p>
+<p><span><b>例）メールアドレスチェックその２</b></span></p>
+<p><br />
+<span>var</span> exp = /^[a-zA-Z0-9][a-zA-Z0-9\.-_]*@[a-zA-Z0-9][a-zA-Z0-9\.-_]+/;<br />
+<br />
+console.log(exp.test('abc@example'));<span>// true</span><br />
+console.log(exp.test('abc@example.com.jp'));<span>// true</span><br />
+<br /></p>
+<p>うーん、って感じですね、<br />
+そう、今使ってるパターンだと、ドメイン部の「.」について全く考慮が出来ていないのです。<br />
+いくら最低限のチェックとは言え、せめてこれぐらいは対応したいモノです。<br />
+と言う訳で、少しパターンを改造してみましょう。<br />
+改造点は次の通りとします。<br />
+<span>・ドメイン部の2文字目以降には必ず「.」が「一つ」含まれること</span><br />
+<span>・「.」で終わらないこと</span></p>
+<p>では、実際にどのような変更を入れるのか、改造前と後で比較してみましょう。</p>
+<p><br />
+前：  ^[a-zA-Z0-9][a-zA-Z0-9\.-_]*@[a-zA-Z0-9][a-zA-Z0-9\.-_]+<br />
+後：  ^[a-zA-Z0-9][a-zA-Z0-9\.-_]*@[a-zA-Z0-9][a-zA-Z0-9-_]*\.[a-zA-Z]{2,}$<br />
+<br /></p>
+<p>まず、ドメイン部後半の「<b><b>[a-zA-Z0-9\.-_]+</b></b>」を「<b><b>[a-zA-Z0-9-_]*</b></b>」に変えてみました。<br />
+そして、その後に「\.」を追加しています。<br />
+更にその後に「<b><b>[a-zA-Z]{2,}</b></b>」を追加しています。<br />
+トドメに最後は「<b><b>$</b></b>」で締めてます。<br />
+これにより、<br />
+<span>・2文字目以降は半角英数字か「-」か「_」が「0回以上繰り返す」こと</span><br />
+<span>・2文字目以降の半角英数字か「-」か「_」の0回以上繰り返しの後に「.」が存在すること</span><br />
+<span>・「.」の後には半角英字が2文字以上続くこと</span><br />
+<span>・「.」とそれに続く２文字以上の値で終わること</span><br />
+これらを実現しました。<br />
+早速例で動作を確認してみましょう。</p>
+<p><span><b>例）メールアドレスチェックその３</b></span></p>
+<p><br />
+<span>var</span> exp = /^[a-zA-Z0-9][a-zA-Z0-9\.-_]*@[a-zA-Z0-9][a-zA-Z0-9-_]*\.[a-zA-Z]{2,}$/;<br />
+<br />
+console.log(exp.test('abc@example.com'));<span>// true</span><br />
+console.log(exp.test('abc@'));<span>// false</span><br />
+console.log(exp.test('@example.com'));<span>// false</span><br />
+console.log(exp.test('あいう@example.com'));<span>// false</span><br />
+console.log(exp.test('.abc@example.com'));<span>// false</span><br />
+console.log(exp.test('abc@-example.com'));<span>// false</span><br />
+console.log(exp.test('abc@example'));<span>// false</span><br />
+console.log(exp.test('abc@example.com.jp'));<span>// false</span><br />
+<br /></p>
+<p>うん、ちゃんと動いてますね。<br />
+だいぶパターンの値が長くなってしまいましたけど、一つ一つを分けて考えてみれば難しいところは無いと思います。<br />
+ここまで学んできた通り、正規表現の表記ルールは何百通りもある訳ではないので、結局は基礎さえ抑えておけばあとは「慣れ」だと言うことなのです！</p>
+<p>・・・と、ここでキレイに締めて次の説明に移れればよかったのですが、このままじゃ有識者の方々に袋叩きにされそうなので、もう少し補足します。<br />
+えーと、<span><b><i>先に書いたメールアドレスチェックのパターンは忘れてくださいっ！！</i></b></span><br />
+「ふざけるな！」の大合唱が聞こえてきそうですが、あくまでも「実践的なパターン」に触れることと「パターンを考える手順」を学ぶための説明だったと理解してくだせぇ。。。</p>
+<p>それでですね。<br />
+実は、全てのメールアドレスを正規表現でチェックするための「完璧」なパターンは存在しないと言われています。（それこそ、先に書いた「@だけでいいんじゃね」って話にも繋がります）<br />
+世の実力者たちの間では、もう本気で「正規表現でメールアドレスのチェックをするのは諦めよう」なんて意見も徐々に目立つようになって来たとか来ないとか・・・。<br />
+また、詳しいことはググッてもらえればと思いますが、例えばHTML5の<span><b><i>input[type=email]</i></b></span>で動作するバリデーションは次の通りなんですけど、これは「この要件は、電子メールの構文を定義するRFC5322に対して意図的に違反 (willful violation) している」となってたりするのです。<br />
+要するに、HTML5ですらメアド仕様策定団体の定める通りの実装を諦めているってことですよね。</p>
+<p><br />
+<span>// HTML5のinput[type=email] で動くバリデーション</span><br />
+^[a-zA-Z0-9.!#$%&amp;'<i><i>+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)</i></i>$<br />
+<br /></p>
+<p>まぁ、こう言う訳なので、完璧なメールアドレスチェックは諦めようってことです(笑)<br />
+実際の開発で実装しなきゃならない場合は、とりあえず先に書いた<span><b><i>HTML5のバリデーションパターンをパクって</i></b></span>おけば問題ありませんので。<br />
+また、繰り返しになりますが、ここではあくまでも「実践的なパターンに触れてみる」「考えてみる」ってことで割りきってくださいね！<br />
+何か最後は盛大に脱線した感もありますけど、ナンダカンダで「今まで学んで来た知識があれば実践的なパターンも読めるぞ！」って自信は持ってもらえたのではないでしょうか。<br />
+きっと、いや、<span><b><i>絶対に</i></b></span>そのはずです！</p>
+</div>
+<div id="calibre_link-4">
+<h3 id="calibre_link-125"><b><u>５－２．電話番号の検索</u></b></h3>
+<p>メールアドレスの検索では初っ端から盛大に脱線しましたが、ここからはちゃんと「実際に使えるパターン」を取り扱います。<br />
+今回の対象は電話番号です。</p>
+<p>さて、まずは今回も電話番号のルールから考えてみましょう。<br />
+とりあえず最初はハイフンを含めない形式を「正」とすると、次のようになります。<br />
+<span>・「0」から始まる</span><br />
+<span>・10桁～11桁の半角数値である</span><br />
+ハイフンを含めないとこんなモンですね。<br />
+まぁ、厳密には市街局番のチェックとかも必要かもしれませんけど、流石に正規表現でコレをやる人はいないと思います。<br />
+なので、まずは先の2つにルールついて考えてみましょう。<br />
+「0から始まって、かつ10桁か11桁の半角数値である」と言うことは、「先頭は0で、それ以降に9桁～10桁の半角数値が続く、それ以降何も続かない」と言い換えられます。<br />
+ですので、<br />
+<span>・先頭が「0」　→　「<b><b>^0</b></b>」</span><br />
+<span>・9桁～10桁の半角数値が続く　→　「<b><b>\d{9,10}</b></b>」</span><br />
+<span>・それ以降何も続かない　→　「<b><b>$</b></b>」</span><br />
+これらを連結すると、次の通りになります。</p>
+<p><br />
+^0\d{9,10}$<span>// 0から始まる10桁～11桁の数値</span><br />
+<br /></p>
+<p>んまぁ簡単ですこと！<br />
+早速例で動きを確認してみましょう。</p>
+<p><span><b>例）電話番号チェック（ハイフンなし）</b></span></p>
+<p><br />
+<span>var</span> exp =<i><i>^0\d{9,10}$</i></i>;<br />
+<br />
+console.log(exp.test('0300000000'));<span>// true</span><br />
+console.log(exp.test('0300000000x'));<span>// false</span><br />
+console.log(exp.test('0120000000'));<span>// true</span><br />
+console.log(exp.test('0450000000'));<span>// true</span><br />
+console.log(exp.test('09000000000'));<span>// true</span><br />
+console.log(exp.test('9000000000'));<span>// false</span><br />
+<br /></p>
+<p>もう見たママの結果ですね。<br />
+ちなみに、「0」から始まることを必須としないのであれば、「<b><b>^\d{10,11}$</b></b>」みたいな感じでもイケます。<br />
+要件次第ですね。</p>
+<p>では次に、ハイフンを含めるパターンについて考えてみましょう。<br />
+<span>・「0」から始まる</span><br />
+<span>・「0」の後に1桁〜3桁の数値、その後にハイフンが続く</span><br />
+<span>・1つ目のハイフンの後に3桁または4桁の数値が続き、更にその後にハイフンが続く</span><br />
+<span>・2つめのハイフンの後には3桁〜4桁の数値が続き、それ以降は値が続かない</span><br />
+とりあえずこんなところでしょうか。<br />
+特に目新しいパターンは無さそうなので、一気に整形してみます。</p>
+<p><br />
+<span>// ハイフン付き電話番号パターン</span><br />
+^0\d{1,3}-\d{3,4}-\d{3,4}$<br />
+<br /></p>
+<p>見ての通り、「決まった桁数の半角数値のあとにハイフンが続く」と言うパターンになっているだけです。　<br />
+何も難しいことはないですね！<br />
+と言う訳で、最後に動作の例を見て次のパターンに進んでしまいましょう。</p>
+<p><span><b>例）電話番号チェック（ハイフンあり）</b></span></p>
+<p><br />
+<span>var</span> exp =<i><i>^0\d{1,3}-\d{3,4}-\d{3,4}$</i></i>;<br />
+<br />
+console.log(exp.test('03-0000-0000'));<span>// true</span><br />
+console.log(exp.test('03-0000-0000x'));<span>// false</span><br />
+console.log(exp.test('0120000-000'));<span>// true</span><br />
+console.log(exp.test('045-000-0000'));<span>// true</span><br />
+console.log(exp.test('0900000-0000'));<span>// true</span><br />
+console.log(exp.test('90-0000-0000'));<span>// false</span><br />
+<br /></p>
+<p>あ、そう言えば。<br />
+言わずもがな、このパターンはもっと簡略化して、郵便番号チェックに改造することができますので。<br />
+一応載せるだけ載せておきますね。</p>
+<p><br />
+^\d{3}-\d{4}$<span>// 3桁の数値、ハイフン、4桁の数値</span><br />
+<br /></p>
+</div>
+<div id="calibre_link-101">
+<h3 id="calibre_link-126"><b><u>５－３．URLの検索</u></b></h3>
+<p>URLは非常に冗長な値になる場合がありますが、比較的検索し易い部類に入ります。<br />
+では早速URLのルールを考えてみましょう。<br />
+<span>・「http」か「https」で始まる</span><br />
+<span>・「://」と続く</span><br />
+<span>・それ以降は何らかの半角英数字、または「/:%#$&amp;?()~.=+-_」のいずれかで構成される</span><br />
+そこまで厳密なチェックを必要としない場合は、これぐらいで十分だと思います。<br />
+なので一旦ここでパターンにしてみましょう。<br />
+※ちなみに2016年10月現在では全角文字がURLに含まれる場合もありますが、今回は考慮しないこととします</p>
+<p><b><b>■「http」か「https」で始まる</b></b><br />
+　これ、サクッと「<b><b>^(http|https)</b></b>」って書いてもいいんですけどね？<br />
+もっと少ない記述で表せると思いませんか？<br />
+そう、こんな感じに。</p>
+<p><br />
+^https?<span>// 「http」の後に「s」が0回以上続く値から始まる</span><br />
+<br /></p>
+<p>絶対にこっちの方がスマートですよね！</p>
+<p><b><b>■何らかの半角英数字、または「/:%#$&amp;?()~.=+-_」のいずれかで構成される</b></b><br />
+　これはブラケットで対象の値を囲って、それらが繰り返し現れるって形にしちゃえばOKですね。<br />
+そしてブラケットの中身ですが、まず「<b><b>\w</b></b>」で半角英数字とアンスコは表現出来ます。<br />
+んでもって、残りの記号は列挙してしまえばいいだけなのですが、要所要所でエスケープが必要なことに注意しましょう。<br />
+と言う訳で、次のようになります。</p>
+<p><br />
+[\w/:%#\$&amp;\?\(\)~\.=\+\-]+$<span>// 指定した値で構成される</span><br />
+<br /></p>
+<p><b><b>■仕上げ</b></b><br />
+　では、個々に作ったパターンをくっつけてみましょう。</p>
+<p><br />
+^https?:\/\/[\w/:%#\$&amp;\?\(\)~\.=\+\-]+$<span>// 「http」か「https」で始まり、「://」以降は指定した値で構成</span><br />
+<br /></p>
+<p>エスケープがたくさんあって若干読みにくいかもしれませんが、落ち着いて一つ一つ見ていけばなんてこと無いパターンになっていると思います。<br />
+次に、いつも通り例で動きを確認してみます。</p>
+<p><span><b>例）URLチェック</b></span></p>
+<p><br />
+<span>var</span> exp =<i><i>^https?:\</i></i>\/[\w/:%#\$&amp;\?\(\)~\.=\+\-]+$/;<br />
+<br />
+console.log(exp.test('https://www.hoge.co.jp/'));<span>// true</span><br />
+console.log(exp.test('http://www.hoge.co.jp/'));<span>// true</span><br />
+console.log(exp.test('ｈｔｔｐ://www.hoge.co.jp/'));<span>// false</span><br />
+console.log(exp.test('http://www.hoge.co.jp/@'));<span>// false</span><br />
+console.log(exp.test('http:/www.hoge.co.jp/'));<span>// false</span><br />
+console.log(exp.test('ttp://www.hoge.co.jp/'));<span>// false</span><br />
+<br /></p>
+<p>はい、ちゃんと動いてますね。<br />
+URLの検索パターンについては、これで十分だと思います。<br />
+が、強いて挙げるとするならば、場合によっては「特定のドメインだけを対象とする」なんてことは考えられます。<br />
+とは言え、その際には「://」のあとに「<b><b>www.</b></b>」とかドメイン名を書けばいいだけっぽいので、特に難しいことは無さそうです。</p>
+<p><span><b>例）URLチェック（ドメイン固定）</b></span></p>
+<p><br />
+<span>// 「hoge」ドメインのみを対象とする（「www.」は任意扱い）</span><br />
+<span>var</span> exp =<i><i>^https?:\</i></i>\/(www\.)?hoge\.[\w/:%#\$&amp;\?\(\)~\.=\+\-]+$/;<br />
+<br />
+console.log(exp.test('https://www.hoge.co.jp/'));<span>// true</span><br />
+console.log(exp.test('http://www.hoge.co.jp/'));<span>// true</span><br />
+console.log(exp.test('https://www.fuga.co.jp/'));<span>// false</span><br />
+console.log(exp.test('http://www.fuga.co.jp/'));<span>// false</span><br />
+console.log(exp.test('http://hoge.co.jp/'));<span>// true</span><br />
+<br /></p>
+<p>さて、これで特定のドメインだけを対象とする正規表現が出来上がりましたが・・・。<br />
+もしかしたら既にお気付きの方もいらっしゃるかもしれませんが、実はこの正規表現、ちょっとミスがあります。<br />
+例えば次のようなURLをチェックしてみると・・・</p>
+<p><br />
+<span>// 「hoge」ドメインのみを対象とする（「www.」は任意扱い）</span><br />
+<span>var</span> exp =<i><i>^https?:\</i></i>\/(www\.)?hoge\.[\w/:%#\$&amp;\?\(\)~\.=\+\-]+$/;<br />
+<br />
+console.log(exp.test('https://hoge.hige.co.jp/'));<span>// true</span><br />
+<br /></p>
+<p>はい、このように「サブドメインがhogeで、ドメインがhogeでない」URLまで対象になってしまいます。<br />
+ではどうすればいいのか、といいますと・・・<br />
+実は、現在の「ドメイン名hoge＋任意のトップレベルドメイン」を対象とする形のままでは、この現象を回避することは困難です。<br />
+ですが、「任意のトップレベルドメイン」を条件から除外することができれば、より厳密な検索が可能となります。<br />
+例えば、「トップレベルドメインが.co.jpである」ということが確定している前提であれば、次のような形でのURLチェックが可能です。</p>
+<p><br />
+<span>// 「hoge.co.jp」ドメインのみを対象とする（「www.」は任意扱い）</span><br />
+<span>var</span> exp =<i><i>^https?:\</i></i>\/(www\.)?hoge\.co\.jp\/$/;<br />
+<br />
+console.log(exp.test('https://www.hoge.co.jp/'));<span>// true</span><br />
+console.log(exp.test('http://www.hoge.co.jp/'));<span>// true</span><br />
+console.log(exp.test('https://www.fuga.co.jp/'));<span>// false</span><br />
+console.log(exp.test('http://www.fuga.co.jp/'));<span>// false</span><br />
+console.log(exp.test('http://hoge.co.jp/'));<span>// true</span><br />
+console.log(exp.test('https://hoge.hige.co.jp/'));<span>// false</span><br />
+<br /></p>
+</div>
+<div id="calibre_link-103">
+<h3 id="calibre_link-127"><b><u>５－４．日付の検索</u></b></h3>
+<p>「日付」と言っても様々なフォーマットがありまあすが、ここではシステム的によく使う「YYYY/MM/DD」形式と「YYYY-MM-DD」形式を扱うことにします。<br />
+意外と見た目以上に考慮すべき点があるので、油断なさらぬよう。<br />
+まずルールからですが、ここで扱うフォーマットのどちらも「区切り」の記号が違うだけで、他に差はありません。<br />
+<span>・4桁の半角数値（年部）</span><br />
+<span>・2桁の半角数値（月部）</span><br />
+<span>・2桁の半角数値（日部）</span><br />
+<span>・3つのパーツがそれぞれ記号で区切られる</span><br />
+これらが最低限のルールですね。<br />
+しなしながら、これだと考えるまでもなく終わってしまうので、次のルールも加えてみましょう。<br />
+<span>・月は1~12、0埋め有無は問わない</span><br />
+<span>・日は1~31、0埋め有無は問わない</span><br />
+<span>・日付としての妥当性（11月31日とか、うるう年とか）は問わない</span><br />
+おお、少し厄介になった感じがしますね！<br />
+それでは、今回は年月日のそれぞれのパーツごとにパターンを考えてみましょう。</p>
+<p><b><b>■年部</b></b><br />
+　年部については、特に難しい考慮不要ですね。<br />
+4桁の半角数値であればOKってことにしちゃいましょう。（3桁の年を正とするケースは早々ないでしょう）<br />
+と言う訳で、次の通りになります。</p>
+<p><br />
+\d{4}<span>// 半角数値が4回</span><br />
+<br /></p>
+<p>なお、上記の正規表現はこの後月・日の正規表現と組み合わせる為のパーツですので、このまま使うと「4桁の数値を含むなんかの文字列」を全部検索してしまいます。<br />
+そのため、単独で使う場合には「^」と「$」をそれぞれ前後に配置して厳密に検索する、などの工夫が必要になります。<br />
+※ネタばれになりますが、今回の場合、この後説明する月・日のパーツと組み合わせたのち、その全体を「^」「$」で囲って厳密な正規表現になります。</p>
+<p><b><b>■月部</b></b><br />
+　1~12のいずれかで、1桁の場合は0埋めを問わない、と。<br />
+これは一気に考えようとすると厄介なので、とりあえず「1～9」と「10～12」で分けて考えましょうか。<br />
+まずは「1～9」です。<br />
+キーポイントとなる「0埋めを問わない」と言うのは、言い換えれば「0が0回または1回の繰り返し」となります。<br />
+こう考えると、とたんに簡単になったと思います。<br />
+後は「1～9」の範囲指定をするだけなので、この部分は「<b><b>0?[1-9]</b></b>」となります。<br />
+次は「10～12」です。<br />
+これはつい勢いで「<b><b>[10-12]</b></b>」って書きたくなってしまうところですが、一度冷静になればNGだと言うことはわかりますよね？（わからない人は回れ右してChapter４に出戻ってください）<br />
+正解は「<b><b>1[0-2]</b></b>」です。<br />
+十の位は「1」固定で、一の位が「0～2」ってことですね。<br />
+さて、分けて考えた分の答えが各々出揃ったので、最後にまとめてみましょう。<br />
+これらは各々のいずれかに該当すればいいので、最終的な結果は次の通りとなります。</p>
+<p><br />
+0?[1-9]|1[0-2]<span>// 1～12（0埋めは問わない）</span><br />
+<br /></p>
+<p>こちらも年部の正規表現パーツと同様で、単独で使う場合は次の例のように「^」「$」で囲んであげましょう。</p>
+<p><br />
+^0?[1-9]|1[0-2]$<span>// 月部分だけで使う場合</span><br />
+<br /></p>
+<p><b><b>■日部</b></b><br />
+　これは月部の応用でイケますね。<br />
+月の場合は「0～9」と「10～12」で考えたところを、日の場合は「0～9」「10～19」「20～29」「30～31」で考えればいいだけです。<br />
+なので、さっさと答えを確認しちゃいましょう。</p>
+<p><br />
+0?[1-9]|1[0-9]|2[0-9]|3[01]<span>// 1～31（0埋めは問わない）</span><br />
+<br /></p>
+<p>ちなみに、このパターンは「10〜19」と「20〜29」をまとめて次にように書くことも出来ます。<br />
+記述量が少なくなるため、正規表現に慣れている人にとってはこの書き方の方が好まれるかもしれません。</p>
+<p><br />
+0?[1-9]|[12][0-9]|3[01]<span>// 10〜19と20〜29をまとめた書き方</span><br />
+<br /></p>
+<p>しつこいですが(笑)、こちらも年・月のパーツと同様に、1～31日を検索する正規表現として単独で使用する場合は次の例のようにしてください。</p>
+<p><br />
+^0?[1-9]|[12][0-9]|3[01]$<span>// 日付部分だけで使う場合</span><br />
+<br /></p>
+<p><b><b>■仕上げ</b></b><br />
+　さぁ年月日のそれぞれのパターンが出揃いました。<br />
+で、早速くっつけてみたいところですが、これはバカ正直に連結しただけじゃダメです。<br />
+年月日のそれぞれのパーツが個々に扱われるよう「グループ化」しておかないと全く期待通りに動かないので、注意してくださいね。（とりあえず、グループ化しないと「|」の動きがメチャクチャになるってことは、容易に想像出来るかと）</p>
+<p><br />
+×  ^\d{4}-0?[1-9]|1[0-2]-0?[1-9]|1[0-9]|2[0-9]|3[01]$<br />
+○  ^\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|1[0-9]|2[0-9]|3[01])$<br />
+○  ^\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])$<br />
+<br />
+※YYYY-MM-DDの場合<br />
+<br /></p>
+<p>思いのほか長いパターンになりましたね。<br />
+指定桁数と数値であることだけを担保するのであれば半分ぐらいの長さのパターンで済みますが、それじゃあまりにも味気ないと思うので、やっぱ「日付」を対象とするならばこれぐらいはやっておきたいモノです。<br />
+なお、日付としての「妥当性」までを考慮し出すと正規表現の手には負えないと思うので、大人しくプログラムに任せるのが吉です。<br />
+では、最後に例で動きを確認しておきましょう。</p>
+<p><span><b>例）日付チェック</b></span></p>
+<p><br />
+<span>// YYYY-MM-DDパターン</span><br />
+<span>var</span> exp1 =<i><i>^\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|1[0-9]|2[0-9]|3[01])$</i></i>;<br />
+console.log(exp1.test('2016-09-07'));<span>// true</span><br />
+console.log(exp1.test('2016-9-7'));<span>// true</span><br />
+console.log(exp1.test('2016-9-07'));<span>// true</span><br />
+console.log(exp1.test('2016-09-7'));<span>// true</span><br />
+console.log(exp1.test('2016-13-01'));<span>// false</span><br />
+console.log(exp1.test('2016-01-32'));<span>// false</span><br />
+console.log(exp1.test('2016-01'));<span>// false</span><br />
+console.log(exp1.test('2016/09/07'));<span>// false</span><br />
+<br />
+<span>// YYYY/MM/DDパターン</span><br />
+<span>var</span> exp2 =<i><i>^\d{4}\</i></i>(0?[1-9]|1[0-2])\/(0?[1-9]|1[0-9]|2[0-9]|3[01])$/;<br />
+console.log(exp2.test('2016/09/07'));<span>// true</span><br />
+console.log(exp2.test('2016/9/7'));<span>// true</span><br />
+console.log(exp2.test('2016/9/07'));<span>// true</span><br />
+console.log(exp2.test('2016/09/7'));<span>// true</span><br />
+console.log(exp2.test('2016/13/01'));<span>// false</span><br />
+console.log(exp2.test('2016/01/32'));<span>// false</span><br />
+console.log(exp2.test('2016/01'));<span>// false</span><br />
+console.log(exp2.test('2016-09-07'));<span>// false</span><br />
+<br />
+<span>// 別パターン</span><br />
+<span>var</span> exp1_1 =<i><i>^\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])$</i></i>;<br />
+<span>var</span> exp2_1 =<i><i>^\d{4}\</i></i>(0?[1-9]|1[0-2])\/(0?[1-9]|[12][0-9]|3[01])$/;<br />
+console.log(exp1_1.test('2016-09-07'));<span>// true</span><br />
+console.log(exp2_1.test('2016/09/07'));<span>// true</span><br />
+<br /></p>
+<p>最後に、ここまで使用してきたパターンは全て「<span><b><i>[0-9]</i></b></span>」の部分を「<b><b>\d</b></b>」に変えても同じ結果になります。<br />
+少しでもスッキリした方がいいか、全体的に同じような記述の方がいいか、好みに応じて使い分けてください。</p>
+<p><br />
+<span>// 両者は同じ結果になります</span><br />
+^\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|1[0-9]|2[0-9]|3[01])$<br />
+^\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|1\d|2\d|3[01])$<br />
+<br /></p>
+</div>
+<div id="calibre_link-14">
+<h3 id="calibre_link-128"><b><u>５－５．時刻の検索</u></b></h3>
+<p>日付の検索の次と言えば、やはり「時刻」の検索でしょう。<br />
+ここでは「HH24:MI:SS」フォーマットを扱うことにして、早速ルールを考えてみます。<br />
+<span>・1～2桁の半角数値（時部）</span><br />
+<span>・1～2桁の半角数値（分部）</span><br />
+<span>・1～2桁の半角数値（秒部）</span><br />
+<span>・3つのパーツがそれぞれ「:」で区切られる</span><br />
+<span>・時は0~23、0埋め有無は問わない</span><br />
+<span>・分は0~59、0埋め有無は問わない</span><br />
+<span>・秒は0~59、0埋め有無は問わない</span><br />
+こんなところでしょうか。<br />
+正直「日付」とあまり変わらないと思うので、今回は一気にパターン作ってしまいましょう。</p>
+<p><br />
+<span>// HH24:MI:SS検索パターン</span><br />
+^(0?[1-9]|1[0-9]|2[0-3]):(0?[1-9]|[0-5][0-9]):(0?[1-9]|[0-5][0-9])$<br />
+<br /></p>
+<p>はい、見ての通りです！<br />
+時、分、秒をそれぞれ分けて考えさえすれば、何も難しい点は無いと思います。<br />
+ササっと例を確認してから次に進んでしまいましょう。</p>
+<p><span><b>例）時刻チェック</b></span></p>
+<p><br />
+<span>var</span> exp =<i><i>^(0?[1-9]|1[0-9]|2[0-3]):(0?[1-9]|[0-5][0-9]):(0?[1-9]|[0-5][0-9])$</i></i>;<br />
+<br />
+console.log(exp.test('12:34:56'));<span>// true</span><br />
+console.log(exp.test('1:12:01'));<span>// true</span><br />
+console.log(exp.test('9::7:12'));<span>// false</span><br />
+console.log(exp.test('24:11:11'));<span>// false</span><br />
+console.log(exp.test('12:12'));<span>// false</span><br />
+console.log(exp.test('111:11:11'));<span>// false</span><br />
+<br /></p>
+<p>なお、言うまでもないかもしれませんが、５－４と同じく「<b><b>[0-9]</b></b>」の部分を「<b><b>\d</b></b>」に変えても同じ結果になります。</p>
+<p><br />
+<span>// 両者は同じ結果になります</span><br />
+^(0?[1-9]|1[0-9]|2[0-3]):(0?[1-9]|[0-5][0-9]):(0?[1-9]|[0-5][0-9])$<br />
+^(0?[1-9]|1\d|2[0-3]):(0?[1-9]|[0-5]\d):(0?[1-9]|[0-5]\d)$<br />
+<br /></p>
+</div>
+<div id="calibre_link-100">
+<h3 id="calibre_link-129"><b><u>５－６．全角文字だけの検索</u></b></h3>
+<p>今回はちょっとした<span><b><i>Tips</i></b></span>みたいなノリになります。<br />
+案外活用場面はあると思うので、とりあえず「暗記」しちゃいましょうか！</p>
+<p>で、本題なのですが、「全角文字を探す」＝「1バイト文字ではないものを探す」と考えるのが世のスタンダードです。<br />
+全ての全角文字を対象に、なんてことはあり得ないですからね。<br />
+それでは、実際にどう書くのか見てみましょう。</p>
+<p><br />
+[^\x00-\x7Eｧ-ﾝﾞﾟ]+<span>// 半角文字以外</span><br />
+<br /></p>
+<p>「何やら見慣れないメタ文字が！？」と思った人、正解です。<br />
+本書では「<b><b>\x</b></b>」には触れていないですからね。<br />
+コレは、16進数を検索するためのメタ文字になります。（興味がある人はググッてください！）<br />
+んでもって、このパターンでは文字コードを利用して「半角文字以外」を実現していると言うカラクリになっています。<br />
+まず「<b><b>\x01-\x7E</b></b>」では半角カナ以外の半角値を文字コードで範囲指定していて、次の「<b><b>ｧ-ﾝﾞﾟ</b></b>」では半角カナを範囲指定、そして最終的にそれら「以外」を対象としている訳です。<br />
+理解しちゃえば単純なカラクリですが、非常に便利なので是非覚えておいてくださいね。</p>
+<p><span><b>例）全角チェックその１</b></span></p>
+<p><br />
+<span>// 全角文字が含まれているか</span><br />
+<span>var</span> exp1 =<i><i>[^\x00-\x7Eｧ-ﾝﾞﾟ]</i></i>;<br />
+<br />
+<span>// 全角文字だけか</span><br />
+<span>var</span> exp2 =<i><i>^[^\x00-\x7Eｧ-ﾝﾞﾟ]+$</i></i>;<br />
+<br />
+console.log(exp1.test('あいうえお'));<span>// true</span><br />
+console.log(exp1.test('アイウエオ'));<span>// true</span><br />
+console.log(exp1.test('ｱｲｳｴｵ'));<span>// false</span><br />
+console.log(exp1.test('aiueo'));<span>// false</span><br />
+console.log(exp1.test('aiuえお'));<span>// true</span><br />
+<br />
+console.log(exp2.test('あいうえお'));<span>// true</span><br />
+console.log(exp2.test('アイウエオ'));<span>// true</span><br />
+console.log(exp2.test('ｱｲｳｴｵ'));<span>// false</span><br />
+console.log(exp2.test('aiueo'));<span>// false</span><br />
+console.log(exp2.test('aiuえお'));<span>// false</span><br />
+<br /></p>
+<p>ちなみに、このパターンはもっとシンプルに書くことも出来ます。<br />
+やっていること（半角値以外を対象とする）は基本的に同じなので、覚えやすい方を暗記しておきましょう。<br />
+ちなみに筆者は前者が好きです。</p>
+<p><span><b>例）全角チェックその２</b></span></p>
+<p><br />
+<span>// 全角文字が含まれているか</span><br />
+<span>var</span> exp1 =<i><i>[^ -~｡-ﾟ]</i></i>;<br />
+<br />
+<span>// 全角文字だけか</span><br />
+<span>var</span> exp2 =<i><i>^[^ -~｡-ﾟ]+$</i></i>;<br />
+<br />
+console.log(exp1.test('あいうえお'));<span>// true</span><br />
+console.log(exp1.test('アイウエオ'));<span>// true</span><br />
+console.log(exp1.test('ｱｲｳｴｵ'));<span>// false</span><br />
+console.log(exp1.test('aiueo'));<span>// false</span><br />
+console.log(exp1.test('aiuえお'));<span>// true</span><br />
+<br />
+console.log(exp2.test('あいうえお'));<span>// true</span><br />
+console.log(exp2.test('アイウエオ'));<span>// true</span><br />
+console.log(exp2.test('ｱｲｳｴｵ'));<span>// false</span><br />
+console.log(exp2.test('aiueo'));<span>// false</span><br />
+console.log(exp2.test('aiuえお'));<span>// false</span><br />
+<br /></p>
+<p>なお、「<b><b>[^\x00-\x7Eｧ-ﾝﾞﾟ]+</b></b>」と「<b><b>[^ -~｡-ﾟ]</b></b>」では、厳密にはマッチ対象に差があったりします。<br />
+前者では一部の半角カナ（｡｢｣､･ｦ）がマッチ対象になり、後者では制御コード類がマッチ対象になります。<br />
+もしこれらを全部完璧に排除する必要がある場合は、次のパターンを使いましょう。（通常は先に紹介したどちらかで十分だと思います）</p>
+<p><br />
+[^\x01-\x7E\xA1-\xDF]<span>// 制御コードも半角カナも全部排除！</span><br />
+<br /></p>
+</div>
+<div id="calibre_link-2">
+<h3 id="calibre_link-130"><b><u>５－７．HTMLタグの検索</u></b></h3>
+<p>HTMLタグの検索は、プログラミングの過程で多々出番があるかと思います。<br />
+本書冒頭でも例を挙げましたが、開発中のソースファイルに対して「特定のHTMLタグ全てに同じ変更を加えたい」なんてことはザラです。<br />
+こんな時、正規表現を駆使して一気に対象を特定しちゃえばどれだけ効率が良いかは説明するまでもないでしょう。</p>
+<p>ちなみに、この「HTMLタグの検索」はある程度割り切ってしまわないとドエラいことになってしまいますので、その点を踏まえた上でルールを考えてみましょう。<br />
+<span>・「<span><b><i>&lt;</i></b></span>」と「<span><b><i>&gt;</i></b></span>」で囲まれている</span><br />
+<span>・属性値はシングルクォートかダブルクォートで囲まれている</span><br />
+「HTMLタグの記述」そのものに特化して考えたらこんな所でしょうか。（タグの仕様云々に踏み込むともっと色々とありますけど、キリが無いので）<br />
+そして、今回はパターンの内容アリきで、色々と詳しいことを考えて行きたいと思います。<br />
+今回採用するパターンは次の通りです。</p>
+<p><br />
+&lt;(".*?"|'.*?'|[^'"])*?&gt;<span>// HTMLタグ用のパターン</span><br />
+<br /></p>
+<p>恐らく大半の読者さんはまだこのパターンを正確に読み解けないはずです。<br />
+なぜなら、このパターンには「<span><b><i>最短マッチ</i></b></span>」が使われているからです！<br />
+そう、３－１０で頭出しした、「?」を使った「<span><b><i>最短マッチ</i></b></span>」です。（覚えてますか？）<br />
+通常、「<span><b><i>+</i></b></span>」や「<span><b><i>*</i></b></span>」などを使った正規表現は「<span><b><i>可能な限り長い文字列をマッチさせよう</i></b></span>」と動作します。（こっちは「最長マッチ」と呼ばれます）<br />
+しかし、それぞれの記号の後に「?」を付けることにより正反対の動作、「<span><b><i>パターンにマッチする最も短い値</i></b></span>」を対象とするようになります。<br />
+これが「<span><b><i>最短マッチ</i></b></span>」です。<br />
+（英語サイトの翻訳結果から、最長マッチを「<span><b><i>貪欲</i></b></span>」、最短マッチを「<span><b><i>非貪欲</i></b></span>」と表現するケースもあります）<br />
+具体例を見てみましょう。</p>
+<p><span><b>例）最長マッチと最短マッチ</b></span></p>
+<p><br />
+<span>var</span> url = 'http://hoge.jp/hoge/fuga/boo/';<br />
+<br />
+<span>// 最長マッチ</span><br />
+url.match(/^http:\/\/hoge.jp\/(.*)\//);<span>// ["http://hoge.jp/hoge/fuga/boo/", "hoge/fuga/boo"]</span><br />
+<br />
+<span>// 最短マッチ</span><br />
+url.match(/^http:\/\/hoge.jp\/(.*?)\//);<span>// ["http://hoge.jp/hoge/", "hoge"]</span><br />
+<br /></p>
+<p>最長マッチと最短マッチの違いは一目瞭然ですね。<br />
+パターンにマッチする値のうち、「<span><b><i>可能な限り値を長く扱う</i></b></span>」と「<span><b><i>最小限に留める</i></b></span>」の違いがよくわかると思います。<br />
+最短マッチは、例えばエディタで「条件にマッチする値を全て置換したい！」なんてケースで活躍することが多いので、必ず覚えておきましょう。</p>
+<p>では、本題に戻ります。<br />
+「最短マッチ」を念頭に置いて、改めてHTMLの検索パターンを見てみましょう。</p>
+<p><br />
+&lt;(".*?"|'.*?'|[^'"])*?&gt;<span>// HTMLタグ用のパターン</span><br />
+<br /></p>
+<p>このパターンは、カッコの中身から一つ一つ読み解くと理解しやすいと思います。<br />
+カッコの中には、次の3つのパターンが「|」で連結されています。<br />
+<span>".*?"　→　ダブルクォートの中に何らかの文字が含まれている</span><br />
+<span>'.*?'　→　シングルクォートの中に何らかの文字が含まれている</span><br />
+<span>[^'"]　→　シングルクォート、ダブルクォート以外の何らかの文字</span><br />
+ダブル／シングルクォートのパターンで「<span><b><i>最短マッチ</i></b></span>」を使っている理由は、これが無いと思った通りに「クォートで囲まれている」部分を扱えないからです。（注１）<br />
+そして、これら3つのパターンをグループ化して、「&lt;」と「&gt;」の間にそれらのいずれかが「0回以上存在する」値をHTMLタグとして扱うと言う意味になっています。<br />
+ちなみに、これだと「<span><b><i>&lt;&gt;</i></b></span>」と言う値もHTMLタグとして扱うことになるので、これがイヤな場合は後ろから3文字目の「*」を「+」に変えれば解消します。<br />
+それでは、最後に例を見てみましょう。</p>
+<p><span><b>例）HTMLタグの除去</b></span></p>
+<p><br />
+<span>var</span> html =<br />
+'&lt;!DOCTYPE html&gt;' +<br />
+'&lt;html&gt;' +<br />
+'&lt;head&gt;' +<br />
+'&lt;meta charset="utf-8"&gt;' +<br />
+'&lt;title&gt;サンプル&lt;/title&gt;' +<br />
+'&lt;/head&gt;' +<br />
+'&lt;body&gt;' +<br />
+'&lt;p&gt;JavaScript!!&lt;/p&gt;' +<br />
+'&lt;/body&gt;' +<br />
+'&lt;/html&gt;'<br />
+<br />
+console.log(html.replace(/&lt;(".*?"|'.*?'|[^'"])*?&gt;/g, ''));<span>// サンプルJavaScript!!</span><br />
+<br /></p>
+<p>今回は本書の趣旨であるJavaScriptで例を書いてみましたが、ほとんどの場合は何らかのエディタで使うことが多いと思います。<br />
+気になる人は、正規表現が使えるエディタに何らかのHTMLソースを用意して、このパターンを使って対象を空文字に置換してみてください。<br />
+魔法のように、全てのHTMLタグ部のみが消えてくれるはずです。</p>
+<p>（注１）<br />
+要するに、「&lt;div id="div1" class="cls1"&gt;」と言うHTMLタグに対して検索を行った場合に、<br />
+<span>".*?"　→　「&lt;div id=<span><b><i><span><b><i><u>"div1"</u></i></b></span></i></b></span> class=<span><b><i><span><b><i><u>"cls1"</u></i></b></span></i></b></span>&gt;」</span><br />
+<span>".*"　→　「&lt;div id=<span><b><i><span><b><i><u>"div1" class="cls1"</u></i></b></span></i></b></span>&gt;」</span><br />
+こうなると言うことです。（下線部が検索にヒットする部分を表しています）<br />
+ちなみに、グループ化カッコの後方の「*」でも最短マッチを使っていますが、これがないと、<br />
+<span>".*?"　→　「<span><b><i><span><b><i><u>&lt;div&gt;</u></i></b></span></i></b></span>abcde<span><b><i><span><b><i><u>&lt;/div&gt;</u></i></b></span></i></b></span>」</span><br />
+<span>".*"　→　「<span><b><i><span><b><i><u>&lt;div&gt;abcde&lt;/div&gt;</u></i></b></span></i></b></span>」</span><br />
+こんな感じでタグで囲まれている文字列部分までマッチ対象になってしまいます。<br />
+なお、先に説明したHTMLタグ検索を最短マッチを使わずに実現するなら<br />
+<b><b>&lt;("[^"]*"|'[^']*'|[^'"&lt;&gt;])*&gt;</b></b><br />
+このような力技でイケますが、特別な理由が無い限りは大人しく最短マッチを使うのが吉でしょう。</p>
+</div>
+<div id="calibre_link-24">
+<h3 id="calibre_link-131"><b><u>５－８．後方参照を利用した検索</u></b></h3>
+<p>３－１２で「<span><b><i>グループ化を含んだパターンを指定した場合、マッチした部分のうちさらにそのグループ化した部分だけを個別に取得する</i></b></span>」という話をしました。<br />
+で、実はこの「<span><b><i>マッチした部分のうちさらにそのグループ化した部分</i></b></span>」を、特殊なメタ文字を使うことで「<span><b><i>同じ正規表現パターンの中で参照する</i></b></span>」ことが出来たりします。<br />
+言葉の説明だと多分かなりの人が「？？？」だと思いますので、次の例を見てください。</p>
+<p><span><b>例）特定のタグに囲まれた部分の検索</b></span></p>
+<p><br />
+<span>// 見出しタグに囲まれた部分を除去</span>  ①<br />
+<span>var</span> html1 =<br />
+'&lt;body&gt;' +<br />
+'&lt;h1&gt;見出し１&lt;/h1&gt;' +<br />
+'&lt;h2&gt;見出し２&lt;/h2&gt;' +<br />
+'&lt;h2&gt;ミス&lt;/h3&gt;' +<br />
+'&lt;h3&gt;見出し３&lt;/h3&gt;' +<br />
+'&lt;h4&gt;見出し４&lt;/h4&gt;' +<br />
+'&lt;h5&gt;見出し５&lt;/h5&gt;' +<br />
+'&lt;h6&gt;見出し６&lt;/h6&gt;' +<br />
+'&lt;/body&gt;';<br />
+console.log(html1.replace(/&lt;(h[1-6])&gt;.*?&lt;\/\1&gt;/g, ''));<span>// &lt;body&gt;&lt;h2&gt;ミス&lt;/h3&gt;&lt;/body&gt;</span><br />
+<br />
+<span>// &lt;tr&gt;と&lt;td&gt;、または&lt;tr&gt;と&lt;th&gt;の入れ子を除去</span><br />
+<span>var</span> html2 =<br />
+'&lt;table&gt;' +<br />
+'&lt;tr&gt;&lt;/tr&gt;' +<br />
+'&lt;tr&gt;&lt;th&gt;ヘッダ&lt;/th&gt;&lt;/tr&gt;' +<br />
+'&lt;tr&gt;&lt;td&gt;セル１&lt;/td&gt;&lt;/tr&gt;' +<br />
+'&lt;tr&gt;&lt;td&gt;セル２&lt;/td&gt;&lt;/tr&gt;' +<br />
+'&lt;/table&gt;';<br />
+console.log(html2.replace(/&lt;(tr)&gt;&lt;(th|td)&gt;.*?&lt;\/\2&gt;&lt;\/\1&gt;/g, ''));<span>// &lt;table&gt;&lt;tr&gt;&lt;/tr&gt;&lt;/table&gt;</span><br />
+<br /></p>
+<p>まぁ例を見ても「なんじゃこりゃ！」ですよね、間違いなく(笑)<br />
+実は、正規表現内で「<b><b>\1、\2、...、\n</b></b>」（nには正の整数が入ります）と記述することで、「<span><b><i>正規表現内で左から数えてn番目のカッコで括られたグループにマッチする文字列</i></b></span>」を参照し、正規表現のパターンとして利用することが出来るのです。<br />
+例えば①では、「<span><b><i>&lt;&gt;に囲まれたh1～h6のタグをグループとしてマッチ</i></b></span>」させ、ここで「<span><b><i>マッチした文字列（h1～h6のいずれか）が、間に別の文字列を挟んで再度マッチする</i></b></span>」というパターンを使うことで、特定の開始タグ～終了タグで囲まれた範囲を検索しています。<br />
+ちなみに、このような検索手法を「<span><b><i>後方参照</i></b></span>」と言います。<br />
+後方参照を利用した検索自体はそれほど出番が多いわけではないですが、次に説明する「<span><b><i>グループマッチによる参照を利用した置換</i></b></span>」と組み合わせることで応用の幅が大きく広がります。</p>
+</div>
+<div id="calibre_link-29">
+<h3 id="calibre_link-132"><b><u>５－９．グループマッチによる参照を利用した置換</u></b></h3>
+<p>一つ前で説明した後方参照は、「<span><b><i>グループ化でのマッチ箇所」を「同一正規表現内で検索のパターン</i></b></span>」として利用するものでした。<br />
+今回は、この後方参照と同様に、「<span><b><i>グループ化でのマッチ箇所を置換文字列からも参照することが出来る</i></b></span>」というお話です。</p>
+<p><span><b>例）カンマ区切りのデータを並べ替える</b></span></p>
+<p><br />
+<span>var</span> csv =<br />
+'1,太郎,20160923,山田\n' +<br />
+'2,次郎,20160924,川井\n' +<br />
+'3,三郎,20160925,池畑\n';<br />
+<br />
+console.log(csv.replace(/^(\d),(.*?),(\d+),(.*?)$/gm, '$1,$3,$4,$2'));<br />
+<span>// 1,20160923,山田,太郎</span><br />
+<span>// 2,20160924,川井,次郎</span><br />
+<span>// 3,20160925,池畑,三郎</span><br />
+<br /></p>
+<p>replace関数第2引数の置換文字列内で「<b><b>$1、$2、...、$n</b></b>」（nには正の整数が入ります）、と記述することで、「<span><b><i>正規表現内で左から数えてn番目のカッコで括られたグループにマッチする文字列</i></b></span>」を参照し、「<span><b><i>置換文字列の一部として利用する</i></b></span>」ことが出来ます。<br />
+この例では、「<span><b><i>カンマで区切られたデータを各々グループとしてマッチさせて、ここでマッチした各データを置換文字列内で参照、最終的にカンマで区切られたデータの順番を並べ替える</i></b></span>」処理を行っています。<br />
+コレ、メチャクチャ実用性が高いと思いませんか？<br />
+プログラミング以外にも活躍の場が腐るほどあると思いますので、是が非でもここで覚えておいてください。</p>
+<p>また、このテクニックを後方参照検索と組み合わせることで、次のようなことも可能となります。</p>
+<p><span><b>例）見出しタグを&lt;h1&gt;に統一</b></span></p>
+<p><br />
+<span>var</span> html =<br />
+'&lt;body&gt;\n' +<br />
+'&lt;h1&gt;見出し１&lt;/h1&gt;本文１&lt;/br&gt;\n' +<br />
+'&lt;h2&gt;見出し２&lt;/h2&gt;&lt;b&gt;本文２&lt;/b&gt;\n' +<br />
+'&lt;h3&gt;見出し３&lt;/h3&gt;&lt;u&gt;本文３&lt;/u&gt;\n' +<br />
+'&lt;/body&gt;';<br />
+<br />
+console.log(html.replace(/&lt;(h[2-3])&gt;(.*?)&lt;\/\1&gt;/g, '&lt;h1&gt;$2&lt;/h1&gt;'));<br />
+<span>// &lt;body&gt;</span><br />
+<span>// &lt;h1&gt;見出し１&lt;/h1&gt;本文１&lt;/br&gt;</span><br />
+<span>// &lt;h1&gt;見出し２&lt;/h1&gt;&lt;b&gt;本文２&lt;/b&gt;</span><br />
+<span>// &lt;h1&gt;見出し３&lt;/h1&gt;&lt;u&gt;本文３&lt;/u&gt;</span><br />
+<span>// &lt;/body&gt;</span><br />
+<br /></p>
+<p>後方参照検索で「<span><b><i>特定のタグに囲まれた部分をマッチさせつつ、マッチした各文字列を置換文字列の部品として組み合わせる</i></b></span>」ことで、「<span><b><i>特定パターンのタグに囲まれた範囲を残しつつ、タグ部分だけを置き換える</i></b></span>」という処理を実現しています。<br />
+このように、グループマッチによる「<span><b><i>参照</i></b></span>」を利用することで、データの精査やタグの解析等、より一層複雑な処理を正規表現一つで実現できます。<br />
+３－１２で紹介した際には深く踏み込んだ解説をしませんでしたが、このような「<span><b><i>参照</i></b></span>」を利用した複雑な検索や置換こそ、「<span><b><i>グループ化の真骨頂</i></b></span>」と言えるでしょう。</p>
+</div>
+<div id="calibre_link-10">
+<h3 id="calibre_link-133"><b><u>５－１０．特定のパターンを含まない行の検索</u></b></h3>
+<p>３－４で説明した「<span><b><i>否定先読み</i></b></span>」を応用することで、「<span><b><i>特定のパターンを含まない行</i></b></span>」を検索することが出来ます。<br />
+なお、これが本書で扱う最後のトピックスとなりますが、それに相応しいラスボス級の難易度になっていると思いますので、心して例を読んでみてください。</p>
+<p><span><b>例）特定のパターンを含まない行の除去</b></span></p>
+<p><br />
+<span>// "★"を含まない行を除去する</span><br />
+<span>var</span> log1 =<br />
+'[2016-09-23 19:00:03.010] execute start\n' +<br />
+'[2016-09-23 19:00:03.013] loop start\n' +<br />
+'[2016-09-23 19:00:03.508] ★ x = 10\n' +<br />
+'[2016-09-23 19:00:03.519] loop end\n' +<br />
+'[2016-09-23 19:00:03.524] loop start\n' +<br />
+'[2016-09-23 19:00:04.061] ★ x = 20\n' +<br />
+'[2016-09-23 19:00:04.071] loop end\n' +<br />
+'[2016-09-23 19:00:04.146] execute end';<br />
+<br />
+console.log(log1.replace(/^(?!.*★).*$/gm, ''));<br />
+<span>//</span><br />
+<span>//</span><br />
+<span>// [2016-09-23 19:00:03.508] ★ x = 10</span><br />
+<span>//</span><br />
+<span>//</span><br />
+<span>// [2016-09-23 19:00:04.061] ★ x = 20</span><br />
+<span>//</span>   ←"★"を含まない行は空行に置換されています<br />
+<br />
+<span>// "error"と"warn"を含まない行を除去する</span><br />
+<span>var</span> log2 =<br />
+'[2016-09-23 19:30:22.360][error] file not found.\n' +<br />
+'[2016-09-23 19:30:22.360][warn] process skipped.\n' +<br />
+'[2016-09-23 19:30:22.360][info] file name = null\n' +<br />
+'[2016-09-23 19:30:22.360][system] system message 1\n' +<br />
+'[2016-09-23 19:30:22.360][error] data load failed.';<br />
+<br />
+console.log(log2.replace(/^(?!.*(error|warn)).*$/gm, ''));<br />
+<span>// [2016-09-23 19:30:22.360][error] file not found.</span><br />
+<span>// [2016-09-23 19:30:22.360][warn] process skipped.</span><br />
+<span>//</span><br />
+<span>//</span><br />
+<span>// [2016-09-23 19:30:22.360][error] data load failed.</span><br />
+<br /></p>
+<p>ここで使用しているパターンの「<span><b><i>キモ</i></b></span>」は次のようになっています。</p>
+<p>また、このテクニックを後方参照検索と組み合わせることで、次のようなことも可能となります。</p>
+<p><br />
+^(?!.*<span><u>&lt;pattern&gt;</u></span>).*$<span>// &lt;pattern&gt;を含まない行を検索</span><br />
+<br /></p>
+<p>これは、「行の先頭から0文字以上の任意文字列の後に特定のパターン&lt;pattern&gt;が続く文字列、ではないもの」を否定先読みかつ最長マッチで検索し、さらにそれ以降の行末までの文字列を.*$で検索する、という形になっています。<br />
+パターンの長さの割にはメチャクチャ色々なことをしていますね。<br />
+とは言え、パターンの一つ一つを分解して整理して行けば、きっと答えに辿り着けると思います。<br />
+<span>・行の先頭　→　「<span><b><i>^</i></b></span>」</span><br />
+<span>・「0文字以上の任意の文字列」　→　「<span><b><i>.*</i></b></span>」</span><br />
+みたいな。<br />
+いやぁ、まさに本書の<span><b><i>集大成</i></b></span>って感じですね！</p>
+<p>ちなみに、この検索はJavaScriptのプログラム内で登場することはほぼありません。<br />
+主な使いドコロとしては、「<span><b><i>テキストエディタ等で大量のデータやログの中から特定の情報だけを抽出する</i></b></span>」ような場合でしょうね。<br />
+例えば先の例のように、「<span><b><i>数行あるログの中から目印として"★"を付けている行だけを抽出する</i></b></span>」みたいな場合、テキストエディタでは正規表現で「<span><b><i>"★"を含む行</i></b></span>」を検索することは出来ますが、「<span><b><i>置換等でその行だけを取り出す</i></b></span>」ということは出来ません。<br />
+そこで逆転の発想として、「<span><b><i>"★"を含まない行</i></b></span>」を空行に置換してしまう、という方法を取ります。<br />
+テキストエディタでログを開いて、先の例で出てきた「<span><b><i>"★"を含まない行</i></b></span>」を検索するパターンを使用して空行への置換を行うと、置換後に残るのは「<span><b><i>"★"を含む行</i></b></span>」と「<span><b><i>置換された空行</i></b></span>」だけになります。<br />
+あとは空行部分も「<span><b><i>\n\n</i></b></span>」→「<span><b><i>\n</i></b></span>」等として置換して消してしまえば、最後には「<span><b><i>"★を含む行</i></b></span>」だけが残ってくれます。<br />
+CSVやタブ区切りのデータであれば、Excelに張り付けてフィルタリングする等の様々な手段が選べますが、固定長データやログデータではそういう訳にはいきません。<br />
+その場合は、今説明したように「<span><b><i>テキストエディタと正規表現を駆使して特定のデータを抽出する技</i></b></span>」を覚えておくと大変役立ちます。<br />
+日々の業務の中でさり気な～くこんなことをしていれば、多分周りの人から「<span><b><i>あの人、正規表現マスターじゃね？</i></b></span>」みたいに噂されること間違い無しでしょう！</p>
+</div>
+<div id="calibre_link-88">
+<h2 id="calibre_link-134"><b><u>おわりに</u></b></h2>
+<p>本書を書き終えて、改めて思いました。<br />
+やっぱ本を書き上げるのって<span><b><i>もの凄くシンドイ</i></b></span>ですね！！<br />
+構想練って、ターゲット層を決めて、お題目まとめて、あとはひたすら書き綴る・・・ってな具合な訳ですよ。<br />
+また、電子書籍ってのは無料のブログや日記と違って読者サマからお金を頂戴するので、適当な内容や嘘を掲載する訳には行かず、それはそれは神経を使う作業なのであります。<br />
+じゃあ何で書いているのか。<br />
+まぁ正直なところで<span><b><i>お小遣い稼ぎ</i></b></span>ってのはありますが、今となってはそれ以上に「ありがとう！」「役に立った！」の声が素直に嬉しいからです。（ホントですよ？）<br />
+Amazonで★5のレビューと共に感謝やお褒めの言葉を頂戴すると、この上ない喜びを感じる次第であります。<br />
+それが今後の執筆への何よりのモチベーションになりますので、どうか皆様何卒ヨロシクお願いいたします(笑)</p>
+<p>さて、少し前置き（？）が長くなりましたが。<br />
+本書を読み終えたアナタ、無事に正規表現のニガテは克服出来ましたでしょうか？<br />
+本編でも何度か触れている通り、いきなり「もうバッチリだぜ！」「使いこなしてみせるぜ！」ってのはだいぶ無理があると思いますが、まずは「ニガテ意識」を克服さえ出来れば勝ったも同然だと思います。<br />
+ニガテを感じなければ、出番がある度に率先して正規表現のパターンを考えるようになり、それが今後の成長をガシガシと促してくれるはずです。<br />
+アナタのこれから先のエンジニアライフが、正規表現をお供に従えてより良いものになりますよう。</p>
+<p>次はどんなネタで執筆するか？そもそも執筆自体するのか？まだ完全なるノープランではありますが、きっとまたフラっと何かを書き始めると思いますので、その時はどうぞご贔屓に。<br />
+最後になりますが、本書を読んで下さった全ての人にお礼申し上げます(｀･ω･´)ゞ</p>
+</div>
+
+
+
+
+<script>function myFunction(){document.getElementById("tateyoko").classList.toggle("tateread")}</script></body></html>

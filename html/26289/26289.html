@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linux／7／XP／OSX on a NetBook</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/mainday.css" title="default">
+<link rel="alternate stylesheet" href="/css/mainnight.css" title="alternate">
+<script type="text/javascript" src="/js/styleswitcher.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+</head>
+<body>
+<div class="novelpage">
+<div class="novelbody">
+<div id="tateyoko">
+<div id="_top"></div>
+<a href="/">🏠</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('default'); return false;">日</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">月</a>&emsp;
+<a href="#_top" onclick="myFunction()" style="cursor: pointer;">縦書き／横書き</a>
+<div id="calibre_link-32">
+<div>
+<div>
+<table class="noveltitle">
+<tr>
+<td colspan="2"><i><span><i>Linux／7／XP／OSX on a NetBook</i></span></i></td>
+</tr>
+<tr>
+                    
+                    
+      </tr>
+<tr>
+<td colspan="2">誌璃空ユウ</td>
+</tr>
+<tr>
+<td colspan="2">Silic Planning (2015)</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+</tr>
+</table>
+<div></div>
+</div>
+<div></div>
+</div>
+</div>
+
+
+
+<div id="calibre_link-37">
+<h1 id="calibre_link-43"><b>Linux／7／XP／OSX on a NetBook</b></h1>
+<p>　本書の内容は、2009年頃、ネットブック（MSI-U100Plus）上で、Windows7 と OSX と Linux とでトリプルブート環境を構築しようとしていた頃の覚え書きが元になっています。<br />
+　当時、Ubuntu 9.04 をインストールする際、区画のフォーマットのみコマンドラインから手動で行ってみたら（←理由は不明）インストール後も MBR（マスターブートレコード）の区画設定が残っていたので、そのままトリプルブート環境を構築し、画像（<a href="http://usilic.ddns.net/u100quad/u100tripple.jpg"><u>http://usilic.ddns.net/u100quad/u100tripple.jpg</u></a>
+ ）をネットに投稿したのが始まりです。<br />
+</p>
+<div><img src="images/000006.jpg" />
+</div>
+<p>　その後、表題の顔ぶれでクワッドブート環境まで構築したところで興味が失せて以来、放置していた覚え書きを見直して出版したのが本書となっております。<br />
+　OSX-USB（OSX インストール USB）の作成手順については<a href="https://www.google.co.jp/?ion=1&amp;espv=2#q=u100+snow+leopard"><u>関連サイト</u></a>
+ に情報があるので、そちらを参照してください。<br />
+</p>
+<p>誌璃空ユウ</p>
+</div>
+
+
+<div id="calibre_link-12">
+<h2 id="calibre_link-44"><b>　目次</b></h2>
+<p>
+<a href="#calibre_link-13"><u>はじめに</u></a>
+<br />
+</p>
+<p>　第１章　<a href="#calibre_link-14"><u>注意点</u></a>
+<br />
+　第２章　<a href="#calibre_link-15"><u>必要な物</u></a>
+<br />
+　第３章　<a href="#calibre_link-16"><u>Mac で下準備</u></a>
+<br />
+　第４章　<a href="#calibre_link-1"><u>Mac OSX</u></a>
+<br />
+　第５章　<a href="#calibre_link-17"><u>Windows XP</u></a>
+<br />
+　第６章　<a href="#calibre_link-18"><u>Ubuntu 9.04</u></a>
+<br />
+　第７章　<a href="#calibre_link-2"><u>Mint 17.3</u></a>
+<br />
+　第８章　<a href="#calibre_link-19"><u>Xubuntu 16.04</u></a>
+<br />
+　第９章　<a href="#calibre_link-20"><u>Zorin OS 11</u></a>
+<br />
+　第<span>10</span>
+ 章　<a href="#calibre_link-3"><u>Windows 7</u></a>
+<br />
+　第<span>11</span>
+ 章　<a href="#calibre_link-21"><u>区画修復</u></a>
+<br />
+　第<span>12</span>
+ 章　<a href="#calibre_link-22"><u>OSX Bootloader</u></a>
+<br />
+　第<span>13</span>
+ 章　<a href="#calibre_link-23"><u>SP1 導入</u></a>
+<br />
+</p>
+<p>
+<a href="#calibre_link-24"><u>付録</u></a>
+<br />
+</p>
+<p>　第１章　<a href="#calibre_link-8"><u>BIOS ブート</u></a>
+<br />
+　第２章　<a href="#calibre_link-7"><u>UEFI Windows</u></a>
+<br />
+　第３章　<a href="#calibre_link-11"><u>UEFI ブート</u></a>
+<br />
+</p>
+<p>
+<a href="#calibre_link-25"><u>おわりに</u></a>
+<br />
+<a href="#calibre_link-26"><u>奥付</u></a>
+<br />
+</p>
+</div>
+
+
+<div id="calibre_link-28">
+<h2 id="calibre_link-13"><b>　はじめに</b></h2>
+<p>　横書き文書の試作をかねて、市場ではもう見かけないネットブックの名機 MSI-U100Plus を例に、Ubuntu／Windows 7／Windows XP／Mac OSX でマルチブート環境を構築するための手順書を作ってみた。<br />
+　自作機でも HDD の容量が Legacy BIOS で扱える範囲なら U100 と同じ手順でインストールできる。それを越える場合、マザーボードが UEFIブートをサポートするかどうかで区画設定が変わってくるので、３種類のマザーボードを例にとって環境を構築してみた。詳しくは「<a href="#calibre_link-24">付録</a>
+ 」まで。<br />
+</p>
+<p>誌璃空ユウ</p>
+</div>
+
+
+<div id="calibre_link-34">
+<h2 id="calibre_link-14"><b>　注意点</b></h2>
+<div>
+<p>①　Windows XP の AHCI モードでは、対象チップセット用のドライバ（MSI-U100Plus では<strong><b>IATA89CD.EXE</b></strong>
+ ）が必要<br />
+</p>
+<p>②　継続して他の OS を使用する場合、Ubuntu 9.04 終了時は『シャットダウン』推奨（「<a href="#calibre_link-25">おわりに</a>
+ 」参照）<br />
+</p>
+<p>③　Windows XP は４番目の区画、Ubuntu 9.04 はそれ以前の区画にのみ、インストール可能<br />
+</p>
+<p>④　マルチブート環境構築後、Windows 7 への SP1（Service Pack 1）導入および Windows 10 へのアップグレードを行うには、Windows インストール直後のイメージファイル（「<a href="#calibre_link-3">Windows 7</a>
+ ⑪」の mbr.dd）が必要<br />
+</p>
+<p>⑤　次章の ISO ファイルを USB メモリで運用する場合、HDD が /dev/sdb のデバイスファイルに割り当てられる場合があるので注意<br />
+</p>
+<p>⑥　本稿では OSX インストール先の HDD デバイス名を /dev/disk0 と見なしているので、そうでない時は読み替えが必要<br />
+</p>
+</div>
+<p>　</p>
+</div>
+
+
+<div id="calibre_link-31">
+<h2 id="calibre_link-15"><b>　必要な物</b></h2>
+<div>
+<p>①　MSI-U100Plus（以下 U100）<br />
+</p>
+<p>②　Windows 7（7-DVD）<br />
+</p>
+<p>③　Windows XP（XP-CD）<br />
+</p>
+<p>④　<a href="http://old-releases.ubuntu.com/releases/9.04"><u>Ubuntu 9.04</u></a>
+ （Ubuntu-CD）<br />
+</p>
+<p>⑤　<a href="http://lubuntu.jp.uptodown.com/ubuntu/"><u>Lubuntu 16.04</u></a>
+ （Lubuntu-DVD）<br />
+</p>
+<p>⑥　<a href="http://xubuntu.jp.uptodown.com/ubuntu/"><u>Xubuntu 16.04</u></a>
+ （Xubuntu-DVD）<br />
+</p>
+<p>⑦　<a href="http://zorin-os.com/download10.html"><u>Zorin OS 11</u></a>
+ （Zorin-DVD）<br />
+</p>
+<p>⑧　<a href="http://linuxmint.com/"><u>Mint 17.3</u></a>
+ （Mint-DVD）<br />
+</p>
+<p>⑨　USB 8GB メモリ（OSX-USB）<br />
+</p>
+<p>⑩　USB DVD ドライブ<br />
+</p>
+<p>⑪　Mac<br />
+</p>
+</div>
+<p>　</p>
+</div>
+
+
+<div id="calibre_link-27">
+<h2 id="calibre_link-16"><b>　Mac で下準備</b></h2>
+<div>
+<p>①　OSX-USB（OSX インストール USB）作成<br />
+</p>
+<p>②　<a href="https://downloadcenter.intel.com/download/17882"><u>インテル® ダウンロード・センター</u></a>
+ から<strong><b>IATA89CD.exe</b></strong>
+ をダウンロード後、OSX-USB のトップフォルダへコピー<br />
+</p>
+<p>③　以後の作業は U100 へ<br />
+</p>
+</div>
+<p>　</p>
+</div>
+
+
+<div id="calibre_link-5">
+<h2 id="calibre_link-1"><b>　Mac OSX</b></h2>
+<div>
+<p>①　U100 を起動 → [DEL] キーで BIOS を起動 →『Advanced』→『AHCI Mode』→『Enable』<br />
+</p>
+<p>②　（推奨）『Boot』→『Set Boot Priority』→『Boot Option #1』→『USB CD/DVD Rom』<br />
+</p>
+<p>③　[F10] →『Yes』<br />
+</p>
+<p>④　OSX-USB で『Mac OS X Install DVD』から起動 →『主に日本語を使用する』→『ユーティリティ』→『ターミナル...』<br />
+</p>
+<p>⑤　'df|grep disk0' [Enter]（〝|〟← [Shift]＋']'）の結果が<br />
+</p>
+</div>
+<p>　　/dev/disk0s<i><i>2</i></i>
+ ...<br />
+　　/dev/disk0s3 ...<br />
+　　/dev/disk0s5 ...<br />
+　　/dev/disk0s8 ...<br />
+　　/dev/disk0s<i><i>9</i></i>
+ ...<br />
+</p>
+<div>
+<p>　　の場合は下記を実行<br />
+</p>
+</div>
+<p>　　# /dev/disk0 に接続されているすべての区画をマウント解除<br />
+　　for part in {<i><i>2..9</i></i>
+ }; do umount /dev/disk0s$part 2&gt;/dev/null; done # 〝{〟← [Shift]＋'＠'、〝}〟← [Shift]＋'['）<br />
+<br />
+　　# disk0 の区画がマウントされていない事を確認<br />
+　　df|grep disk0<br />
+</p>
+<div>
+<p>⑥　⑫まで完了している場合は下記を順に実行、そうでなければ⑨へ<br />
+</p>
+</div>
+<p>　　# ⑤の結果が『/dev/disk0s<i><i>5</i></i>
+ ...... /Volumes/Mac OSX』だった場合<br />
+　　dd if=/usr/standalone/i386/boot1h of=/dev/disk0s<i><i>5</i></i>
+<br />
+<br />
+　　#『Mac OSX』区画と『Windows 7』区画をマウント<br />
+　　diskutil mount Mac\ OSX # 〝\〟← ']'<br />
+　　diskutil mount WINDOWS\ 7<br />
+<br />
+　　# 起動ファイル等を『Mac OSX』区画へコピー<br />
+　　cp /usr/standalone/i386/boot /Volumes/Mac\ OSX/<br />
+　　cp /usr/standalone/i386/boot0 /Volumes/Mac\ OSX/usr/standalone/i386/<br />
+　　cp /usr/standalone/i386/boot1h /Volumes/Mac\ OSX/usr/standalone/i386/<br />
+　　cp -R /Extra /Volumes/Mac\ OSX/ # ← 'cp -R /Extra/ /Volumes/......' はＮＧ<br />
+<br />
+　　# XP 用 AHCI ドライバファイルを『Windows 7』区画へコピー<br />
+　　cp /IATA89CD.exe /Volumes/WINDOWS\ 7/<br />
+<br />
+　　#『Windows XP』区画にブートフラグを設定<br />
+　　fdisk -e /dev/disk0<br />
+　　flag 4<br />
+　　p<br />
+</p>
+<div>
+<p>⑦　『#:』の列の『4:』の区画が『＊』になっていることを確認後 'w' [Enter] 'y' [Enter] 'q' [Enter] → 'reboot' [Enter]<br />
+</p>
+<p>⑧　（必須）[DEL] で BIOS画面へ →『Advanced』→『AHCI Mode』→『Disable』→ [F10] →『Yes』→ 次章へ<br />
+</p>
+<p>⑨　下記を実行<br />
+</p>
+</div>
+<p>　　# MBR をゼロクリア<br />
+　　dd if=/dev/zero of=/dev/disk0 bs=512 count=1 # 〝=〟← '^'<br />
+　　[Alt]＋'q'<br />
+</p>
+<div>
+<p>⑩　『ユーティリティ』→『ディスクユーティリティ...』→ HDD を選択 →『パーティション』→『現在の設定』→『8 パーティション』で以下のように設定<br />
+</p>
+</div>
+<p>　　『名称未設定 1』→ 'W<ruby>I<rt>名</rt>
+</ruby>
+ NDO<ruby>W<rt>前</rt>
+</ruby>
+ S 7'　／『<ruby>MS-DOS (FAT)<rt>フォーマット</rt>
+</ruby>
+ 』／<ruby>'25'<rt>サイズ :</rt>
+</ruby>
+ GB<br />
+　　『名称未設定 2』→ 'UBUNTU'／『MS-DOS (FAT)』／ '20' GB<br />
+　　『名称未設定 3』→ 'WINDOWS XP'／『MS-DOS (FAT)』／ '25' GB<br />
+　　『名称未設定 4』→ 'Mac OSX'／『Mac OS 拡張 (ジャーナリング)』／ '25' GB<br />
+　　『名称未設定 5』→ 'LINUX SWAP'／『MS-DOS (FAT)』／ '5.04' GB<br />
+　　『名称未設定 6』→ 'MINT'／『MS-DOS (FAT)』／ '20' GB<br />
+　　『名称未設定 7』→ 'XUBUNTU'／『MS-DOS (FAT)』／ '20' GB<br />
+　　『名称未設定 8』→ 'ZORIN'／『MS-DOS (FAT)』／ '20' GB<br />
+</p>
+<div>
+<p>⑪　ディスクユーティリティ終了 →『Mac OS X インストーラ』→『続ける』→『同意する』→『Mac OSX』区画を選択→『カスタマイズ』→『インストール』<br />
+</p>
+<p>⑫　『インストールに失敗しました』（← Chameleon-2.0-RC4-r684 の場合）→『再起動』→ ④へ<br />
+</p>
+</div>
+<p>　</p>
+</div>
+
+
+<div id="calibre_link-30">
+<h2 id="calibre_link-17"><b>　Windows XP</b></h2>
+<div>
+<p>①　XP-CD で起動 →『C:パーティション4:WINDOWS XP[FAT32]』→『NTFS ファイル システムを使用してパーティションをフォーマット (クイック)』<br />
+</p>
+<p>②　インストール完了後、『スタート』→『ファイル名を指定して実行』→ 'regedit' [Enter] →『HKEY_LOCAL_MACHINE』→『SYSTEM』→『CurrentControlSet』→『Control』→『TimeZoneInformation』→『編集』→『新規』→『DWORD 値』→ 'RealTimeIsUniversal' [Enter][Enter] '1' →『OK』<br />
+</p>
+<p>③　『スタート』→『コンピューター』→『WINDOWS 7』の区画のドライブ名を確認（以下は『<i><i>F:</i></i>
+ 』の場合） →『スタート』→『ファイル名を指定して実行』→ 'cmd' [Enter] → '<i><i>F:</i></i>
+ ' [Enter] → 'IATA89CD -A -A -P<i><i>F:</i></i>
+ ￥' [Enter] →『ファイルの抽出が完了しました。』のメッセージが表示されたら『OK』<br />
+</p>
+<p>④　『コントロールパネル』→『パフォーマンスとメンテナンス』→『システム』→『ハードウェア』→『デバイスマネージャ』→『IDE ATA/ATAPIコントローラ』→『標準デュアル チャネル PCI IDE コントローラ』を右クリック →『ドライバの更新』→『いいえ、今回は接続しません』→『次へ』→『一覧または特定の場所からインストールする』→『次へ』→『検索しないで、インストールするドライバを選択する』→『次へ』→『ディスク使用』→『参照』→『マイ コンピュータ』→『WINDOWS 7』→『winall』→『Driver』→『iaAHCI』→『ＯＫ』→『Intel(R) ICH7M/MDH SATA AHCI Controller』→『次へ』→『はい』→『完了』→『はい』<br />
+</p>
+<p>⑤　[DEL] で BIOS を起動 →『Advanced』→『AHCI Mode』→『Enable』→ [F10] →『Yes』→ 次章へ<br />
+</p>
+</div>
+<p>　</p>
+</div>
+
+
+<div id="calibre_link-40">
+<h2 id="calibre_link-18"><b>　Ubuntu 9.04</b></h2>
+<div>
+<p>①　Ubuntu-CD で起動 →『日本語』→『コンピュータに変更を加えないでUbuntuを使ってみる』<br />
+</p>
+<p>②　デスクトップ画面が出たら『Applications』→『Accessories』→『Terminal』で下記を実行後、『インストール』のアイコンを右クリック →『Open』<br />
+</p>
+</div>
+<p>　　# MBR 待避<br />
+　　sudo mount /dev/sda1 /mnt<br />
+　　sudo dd if=/dev/sda of=/mnt/xp.dd bs=512 count=1<br />
+　　sudo umount /mnt<br />
+</p>
+<div>
+<p>③　『ようこそ』→『日本語』→『進む』→『どこにお住まいですか？』→『進む』→『キーボードレイアウト』→『進む』（『Umount partitions that are in use?』のウインドウが表示されたら『はい』）<br />
+</p>
+<p>④　『ディスクの準備』→『どこに Ubuntu 9.04 をインストールしますか？』→『手動でパーティションを設定する』→『進む』<br />
+</p>
+<p>⑤　『/dev/sda3 fat32 ......』行を選択後、『パーティションを編集』→『利用方法:』→『ext4 ジャーナリングファイルシステム』／『パーティションの初期化:』→ チェック／『マウントポイント:』→『/』→『OK』<br />
+</p>
+<p>⑥　『/dev/sda6 fat32 ......』行を選択後、『パーティションを編集』→『利用方法:』→『スワップ領域』→『OK』→『進む』<br />
+</p>
+<p>⑦　『あなたは誰ですか？』を設定後、『進む』→『ドキュメントと設定のインポート』→『進む』→『インストール準備完了』の『以下のパーティションは初期化されます:』が下記のようになっている事を確認後、『インストール』<br />
+</p>
+</div>
+<p>　　SCSI1 (0,0,0) (sda) のパーティション 3 を ext4 に<br />
+　　SCSI1 (0,0,0) (sda) のパーティション 6 を スワップ に<br />
+</p>
+<div>
+<p>⑧　『インストールが完了しました』のウィンドウが表示されたら『Terminal』で下記を実行<br />
+</p>
+</div>
+<p>　　# UTC 時刻に設定<br />
+　　sudo vi /target/etc/default/rcS<br />
+　　:%s/UTC=no/UTC=yes/<br />
+　　:wq<br />
+<br />
+　　# OSX ブートローダ GRUB Legacy 用ダミーエントリ<br />
+　　sudo vi /target/boot/grub/menu.lst<br />
+　　/[Tab]0<br />
+　　lxasaved[Esc]<br />
+　　:%s/hiddenmenu/#hiddenmenu/<br />
+　　Go<br />
+　　title[Tab][Tab]for OSX Bootloader<br />
+　　root[Tab][Tab](hd0,<i><i>0</i></i>
+ ) # ←『EFI』区画 No.-1<br />
+　　savedefault<br />
+　　makeactive<br />
+　　chainloader[Tab]+1<br />
+　　[Esc]:wq<br />
+<br />
+　　# MBR 復旧<br />
+　　sudo mount /dev/sda1 /mnt<br />
+　　sudo dd if=/mnt/xp.dd of=/dev/sda<br />
+</p>
+<div>
+<p>⑨　メニューバーのネットワークアイコンが<br />
+</p>
+</div>
+<div><img src="images/000000.jpg" />
+</div>
+<div>
+<p>　　『No network connection』の場合は⑰へ<br />
+</p>
+</div>
+<div><img src="images/000003.jpg" />
+</div>
+<div>
+<p>　　『Wired network connection 'Auto eth0' active』の場合は下記を実行<br />
+</p>
+</div>
+<p>　　# MBR に GRUB Legacy をインストール<br />
+　　sudo grub<br />
+　　root (hd0,<i><i>2</i></i>
+ ) # ←『Ubuntu 9.04』区画 No.-1<br />
+　　setup (hd0)<br />
+　　quit<br />
+　　sudo reboot<br />
+</p>
+<div>
+<p>⑩　『Ubuntu 9.04, kernel 2.6.28-11-generic』で起動 → メニューバーの『System』→『Preferences』→『Keyboard』→『Layouts』→『Layout Options...』→『Ctrl key position』→『Swap Ctrl and CapsLock』<br />
+</p>
+<p>⑪　メニューバーの『Applications』→『Accessories』→『Terminal』<br />
+</p>
+<p>⑫　下記を実行するか、または 'sudo -s' [Enter] → ⑭へ（途中『Information available』のウインドウが表示されたら『Close』）<br />
+</p>
+</div>
+<p>　　# シェルスクリプト（内容は⑭）をダウンロード後実行<br />
+　　cd /tmp<br />
+　　wget http://usilic.ddns.net/u100quad/0904.sh<br />
+　　sudo sh 0904.sh<br />
+</p>
+<div>
+<p>⑬　『続行しますか [Y/n]?』→ [Enter] →『続行しますか [Y/n]?』→ [Enter] → ⑮へ<br />
+</p>
+<p>⑭　下記を実行<br />
+</p>
+</div>
+<p>　　# リポジトリ修正<br />
+　　if [ -z "`fgrep -e 'old-releases' /etc/apt/sources.list`" ]; then<br />
+　　　　sed -i -e 's/jp.archive.ubuntu.com\|archive.ubuntu.com\|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list<br />
+　　　　echo &gt;&gt; /etc/apt/sources.list<br />
+　　　　echo 'deb http://archive.ubuntulinux.jp/ubuntu-ja hardy/' &gt;&gt; /etc/apt/sources.list<br />
+　　　　echo 'deb http://archive.ubuntulinux.jp/ubuntu-ja hardy-ja/' &gt;&gt; /etc/apt/sources.list<br />
+　　fi<br />
+<br />
+　　# 日本語フォント／compiz 設定<br />
+　　cd /opt<br />
+　　wget http://archive.ubuntulinux.jp/ubuntu-ja/hardy/ubuntu-ja-keyring_2005.09.28_all.deb<br />
+　　wget http://usilic.ddns.net/u100quad/compiz.profile<br />
+　　dpkg -i ubuntu-ja-keyring_2005.09.28_all.deb<br />
+　　apt-get update<br />
+　　apt-get install ipamonafont compizconfig-settings-manager fusion-icon emerald gparted ntpdate<br />
+　　ntpdate -b ntp.ubuntu.com<br />
+<br />
+　　# gdisk インストール<br />
+　　cd /opt<br />
+　　apt-get install uuid-dev libncurses5-dev libncursesw5-dev libpopt-dev g++<br />
+　　wget http://ftp.jp.debian.org/debian/pool/main/g/gdisk/gdisk_0.8.10.orig.tar.gz<br />
+　　tar xfz gdisk_0.8.10.orig.tar.gz<br />
+　　cd gptfdisk-0.8.10/<br />
+　　make<br />
+　　install cgdisk fixparts gdisk gdisk_test.sh sgdisk /usr/local/sbin<br />
+</p>
+<div>
+<p>⑮　メニューバーの『System』→『Preferences』→『CompizConfig 設定マネージャ』→『設定』→『インポート』→『File System』→『opt』→『compiz.profile』→『Open』<br />
+</p>
+<p>⑯　メニューバーの『System』→『Administration』→『Language Support』→『Install』→ ログインパスワード入力 →『Close』<br />
+</p>
+<p>⑰　メニューバー右端の電源ボタンをクリック →『Shut Down...』→『Shut Down』（←『Restart...』すると、HDD によっては、「<a href="#calibre_link-2">Mint 17.3</a>
+ ③」で区画修復ができなくなるので注意）<br />
+</p>
+<p>⑱　次章へ<br />
+</p>
+</div>
+<p>　</p>
+</div>
+
+
+<div id="calibre_link-41">
+<h2 id="calibre_link-2"><b>　Mint 17.3</b></h2>
+<div>
+<p>①　Mint-DVD で起動 → 画面最下行の『Terminal』を起動後、'df /cdrom' [Enter] でインストーラのデバイス名を確認（『/dev/sda1 ...... /cdrom』となっていたら、下記の全〝/dev/sda〟を〝/dev/sdb〟に読み替え）<br />
+</p>
+</div>
+<p>　　# GPT区画を検証<br />
+　　sudo gdisk /dev/sda<br />
+</p>
+<div>
+<p>②　その時のメッセージが以下の場合は、そのまま 'q' [Enter] → ④へ<br />
+</p>
+</div>
+<div><img src="images/000009.jpg" />
+</div>
+<div>
+<p>③　以下のようになっていたら '2' [Enter] 'w' [Enter] 'y' [Enter] → 'sudo reboot' [Enter] → ①へ<br />
+</p>
+</div>
+<div><img src="images/000014.jpg" />
+</div>
+<div>
+<p>④　デスクトップの『Install Linux Mint』アイコンを右クリック →『Open』<br />
+</p>
+<p>⑤　『ようこそ』→『日本語』→『続ける』→『Linux Mint のインストール準備』→『続ける』<br />
+</p>
+<p>⑥　『インストールの種類』→『それ以外』→『続ける』→『/dev/sda5 hfs+ ...... Mac OS X』の下の『空き領域』をダブルクリック →『利用方法:』→『予約済み BIOS ブート領域』→『OK』<br />
+</p>
+<p>⑦　『/dev/sda7 fat32 ......』をダブルクリック →『利用方法:』→『ext4 ジャーナリングファイルシステム』／『パーティションの初期化:』→ チェック／『マウントポイント:』→『/』→『OK』→『インストール』<br />
+</p>
+<p>⑧　『どこに住んでいますか？』→『続ける』→『キーボードレイアウト』→『続ける』→『あなたの情報を入力してください』を入力後、『続ける』<br />
+</p>
+<p>⑨　『インストールが完了しました』のウィンドウを移動<br />
+</p>
+</div>
+<div><img src="images/000008.jpg" />
+</div>
+<div>
+<p>⑩　『Terminal』で下記を実行<br />
+</p>
+</div>
+<p>　　# MBR 復旧<br />
+　　sudo mount /dev/sda1 /mnt<br />
+　　sudo dd if=/mnt/xp.dd of=/dev/sda<br />
+　　sudo reboot<br />
+</p>
+<div>
+<p>⑪　次章へ<br />
+</p>
+</div>
+<p>　</p>
+</div>
+
+
+<div id="calibre_link-39">
+<h2 id="calibre_link-19"><b>　Xubuntu 16.04</b></h2>
+<div>
+<p>①　Xubuntu-DVD で起動 →『日本語』→『インストールせずにXubuntuを使ってみる』<br />
+</p>
+<p>②　デスクトップ画面が出たらメニューから『ターミナルエミュレーター』を起動 → 'df /cdrom' [Enter]（インストーラのデバイス名を確認）<br />
+</p>
+<p>③　インストール先を８番目の区画に設定する以外は「<a href="#calibre_link-2">Mint 17.3</a>
+ 」と同じ（『予約済み BIOS ブート領域』の設定は不要）<br />
+</p>
+<p>④　『インストールが完了しました』のウィンドウが表示されたら『ターミナルエミュレーター』で下記を実行<br />
+</p>
+</div>
+<p>　　# MBR 復旧<br />
+　　sudo mount /dev/sda1 /mnt<br />
+　　sudo dd if=/mnt/xp.dd of=/dev/sda<br />
+　　sudo reboot<br />
+</p>
+<div>
+<p>⑤　次章へ<br />
+</p>
+</div>
+<p>　</p>
+</div>
+
+
+<div id="calibre_link-33">
+<h2 id="calibre_link-20"><b>　Zorin OS 11</b></h2>
+<div>
+<p>①　Zorin-DVD で起動 →『English』→『Try Zorin OS without installing』<br />
+</p>
+<p>②　『Zorin Menu』→『System Tools』→『Terminal』で 'df /cdrom' [Enter]（インストーラのデバイス名を確認）<br />
+</p>
+<p>③　デスクトップの『Install Zorin OS』アイコンを右クリック →『Open』→『Welcome』→『English』<br />
+</p>
+<p>④　インストール先を９番目の区画に設定する以外は「<a href="#calibre_link-2">Mint 17.3</a>
+ 」と同じ（『予約済み BIOS ブート領域』の設定は不要）<br />
+</p>
+<p>⑤　『Installation complete』のウィンドウが表示されたら『Terminal』で下記を実行<br />
+</p>
+</div>
+<p>　　# MBR 復旧<br />
+　　sudo mount /dev/sda1 /mnt<br />
+　　sudo dd if=/mnt/xp.dd of=/dev/sda<br />
+　　sudo reboot<br />
+</p>
+<div>
+<p>⑥　次章へ<br />
+</p>
+</div>
+<p>　</p>
+</div>
+
+
+<div id="calibre_link-29">
+<h2 id="calibre_link-3"><b>　Windows 7</b></h2>
+<div>
+<p>①　OSX-USB で『Mac OS X Install DVD』から起動 →『主に日本語を使用する』→『ユーティリティ』→『ターミナル』で下記を実行<br />
+</p>
+</div>
+<p>　　#『Windows 7』区画にブートフラグを設定<br />
+　　fdisk -e /dev/disk0<br />
+　　flag 2<br />
+　　p<br />
+</p>
+<div>
+<p>②　『#』の列の『2:』の区画が『＊』になっていることを確認後 'w' [Enter] 'y' [Enter] 'q' [Enter] → 'reboot' [Enter]<br />
+</p>
+<p>③　7-DVD で起動 →『Windows のインストール場所を選択してください。』→『ディスク 0 パーティション 2: WINDOWS 7』→『ディスク 0 パーティション 2 に Windows をインストールすることはできません』→『ドライブ オプション』→『フォーマット』→『OK』→『次へ』<br />
+</p>
+<p>④　『スタート』→『プログラムとファイルの検索』→ 'regedit' [Enter] →『はい』→『HKEY_LOCAL_MACHINE』→『SYSTEM』→『CurrentControlSet』→『Control』→『TimeZoneInformation』→『編集』→『新規』→『DWORD(32 ビット)値』→ 'RealTimeIsUniversal' [Enter][Enter] '1' →『OK』<br />
+</p>
+<p>⑤　『スタート』→『コンピューター』→『ローカルディスク(C:)』を右クリック →『名前の変更』→ 'Windows 7' [Enter] →『続行』→『ローカルディスク(D:)』を右クリック →『名前の変更』→ 'Windows XP' [Enter] →『続行』<br />
+</p>
+<p>⑥　（任意）Windows 10 へアップグレード →『ｴｸｽﾌﾟﾛｰﾗｰ』のアイコンをクリック →『ﾛｰｶﾙﾃﾞｨｽｸ(C:)』を右クリック →『名前の変更』→ 'Windows 10' [Enter] →『続行』→ [Win]＋'r' [Enter] →『はい』→『HKEY_LOCAL_MACHINE』→『SYSTEM』→『CurrentControlSet』→『Control』→『TimeZoneInformation』→『編集』→『新規』→『DWORD(32 ビット)値』→ 'RealTimeIsUniversal' [Enter][Enter] → '1' →『OK』<br />
+</p>
+<p>⑦　『スタート』→『再起動』<br />
+</p>
+<p>⑧　Mint-DVD で起動 →『Menu』→『System Settings』（←上から３番目）→『Hardware』→『Keyboard』→『Layouts』→『＋』→ 検索欄に 'Japanese' →『Japanese』を選択 →『Add』→『English(US)』を選択 →『−』<br />
+</p>
+<p>⑨　『Options...』→『Ctrl key position』→『Swap Ctrl and Caps Lock』<br />
+</p>
+<p>⑩　画面最下行の『Terminal』で 'df /cdrom' [Enter]（インストーラのデバイス名を確認）<br />
+</p>
+<p>⑪　下記を実行<br />
+</p>
+</div>
+<p>　　#『Windows 7』環境の MBR イメージを待避（「<a href="#calibre_link-23">SP1 導入</a>
+ 」で使用）<br />
+　　sudo mount /dev/sda1 /mnt<br />
+　　sudo dd if=/dev/sda of=/mnt/mbr.dd bs=512 count=1<br />
+　　sudo umount /mnt<br />
+<br />
+　　#『Mint』区画をマウント<br />
+　　sudo mount /dev/sda<i><i>7</i></i>
+ /mnt<br />
+<br />
+　　# タイムゾーン設定（UTC へ）<br />
+　　sudo vi /mnt/etc/default/rcS<br />
+　　:%s/UTC=no/UTC=yes/<br />
+　　:wq<br />
+<br />
+　　# キーボード設定（[Ctrl] と [Caps Lock] を入れ替え）<br />
+　　sudo vi /mnt/etc/default/keyboard<br />
+　　:%s/XKBOPTIONS=""/XKBOPTIONS="ctrl:swapcaps"/<br />
+　　:wq<br />
+<br />
+　　# 前回の起動 OS の位置を保存<br />
+　　sudo vi /mnt/etc/defalut/grub<br />
+　　:%s/GRUB_DEFAULT=0/GRUB_DEFAULT=saved/<br />
+　　oGRUB_SAVEDEFAULT=true[Esc]:wq<br />
+<br />
+　　# 区画のラベルを設定<br />
+　　sudo e2label /dev/sda3 "Ubuntu 9.04"<br />
+　　sudo e2label /dev/sda7 "Mint 17.3"<br />
+　　sudo e2label /dev/sda8 "Xubuntu 16.04"<br />
+　　sudo e2label /dev/sda9 "Zorin OS 11"<br />
+<br />
+　　# 区画のタイプを『Linux filesystem』へ<br />
+　　sudo gdisk /dev/sda<br />
+　　p<br />
+　　t<br />
+　　3<br />
+　　8300（or [Enter]）<br />
+　　t<br />
+　　7<br />
+　　8300<br />
+　　t<br />
+　　8<br />
+　　8300<br />
+　　t<br />
+　　9<br />
+　　8300<br />
+　　p<br />
+</p>
+<div><img src="images/000005.jpg" />
+</div>
+<div>
+<p>⑫　各 Linux区画のコードが 8300 になっている事を確認後、'w' [Enter] 'y' [Enter]<br />
+</p>
+<p>⑬　下記を実行<br />
+</p>
+</div>
+<p>　　# Ubuntu 9.04 および OSX ブートローダ用エントリを設定<br />
+　　sudo vi /mnt/etc/grub.d/40_custom<br />
+　　Go<br />
+　　menuentry "GRUB Legacy" {<br />
+　　　insmod part_gpt<br />
+　　　insmod ext2<br />
+　　　set root='hd0,gpt<i><i>3</i></i>
+ ' # ←『Ubuntu 9.04』区画 No.<br />
+　　　savedefault<br />
+　　　chainloader +1<br />
+　　}<br />
+<br />
+　　menuentry "OSX Bootloader" {<br />
+　　　insmod part_gpt<br />
+　　　insmod hfsplus<br />
+　　　set root='hd0,gpt<i><i>5</i></i>
+ ' # ←『OSX』区画 No.<br />
+　　　savedefault<br />
+　　　chainloader /usr/standalone/i386/boot0<br />
+　　}<br />
+　　[Esc]:wq<br />
+</p>
+<div>
+<p>⑭　次章の⑪へ<br />
+</p>
+</div>
+<p>　</p>
+</div>
+
+
+<div id="calibre_link-4">
+<h2 id="calibre_link-21"><b>　区画修復</b></h2>
+<div>
+<p>①　U100 で GRUB2 が起動しない場合は④へ<br />
+</p>
+<p>②　『Windows 7 (loader) (on /dev/sda2)』で正常起動できる場合は次章へ<br />
+</p>
+<p>③　『Ubuntu 9.04 (9.04) (on /dev/sda3)』で起動後⑤へ<br />
+</p>
+<p>④　Ubuntu-CD で起動<br />
+</p>
+<p>⑤　『アプリケーション』→『アクセサリ』→『端末』（または『Applications』→『Accessories』→『Terminal』）で下記を実行<br />
+</p>
+</div>
+<p>　　# MBR 復旧<br />
+　　sudo mount /dev/sda1 /mnt<br />
+　　sudo dd if=/mnt/mbr.dd of=/dev/sda # 〝=〟← '^'<br />
+　　sudo halt # ← 電源が落ちなければ電源ボタン長押しで電源OFF<br />
+</p>
+<div>
+<p>⑥　Mint-DVD で起動 → 画面最下行の『Terminal』を起動後、'df /cdrom' [Enter]（インストーラのデバイス名を確認）<br />
+</p>
+<p>⑦　下記を実行<br />
+</p>
+</div>
+<p>　　# GPT区画を検証<br />
+　　sudo gdisk /dev/sda<br />
+</p>
+<div>
+<p>⑧　その時のメッセージが「<a href="#calibre_link-2">Mint 17.3</a>
+ ②」の場合は、そのまま 'q' [Enter] → ⑩へ<br />
+</p>
+<p>⑨　「<a href="#calibre_link-2">Mint 17.3</a>
+ ③」のようになっていたら '2' [Enter] 'w' [Enter] 'y' [Enter] → 'sudo reboot' [Enter] →⑥へ<br />
+</p>
+<p>⑩　'sudo mount /dev/sda7 /mnt' [Enter] で『Mint』区画をマウント<br />
+</p>
+<p>⑪　下記を実行<br />
+</p>
+</div>
+<p>　　#『Mint』区画へ chroot<br />
+　　for dir in proc dev sys; do sudo mount --bind /$dir /mnt/$dir; done<br />
+　　sudo chroot /mnt<br />
+<br />
+　　# Mint の GRUB2 を MBR へ再インストール<br />
+　　grub-install /dev/sda # ← 要確認 'df /cdrom' [Enter]<br />
+　　update-grub # HDD が /dev/sda でない時は GRUB2 画面のデバイス名表示も変わるので、その時は『Linux Mint 17.3 ......』で起動後、再度 'update-grub' [Enter] を<br />
+　　reboot<br />
+</p>
+<div>
+<p>⑫　次章へ<br />
+</p>
+</div>
+<p>　　</p>
+</div>
+
+
+<div id="calibre_link-9">
+<h2 id="calibre_link-22"><b>　OSX Bootloader</b></h2>
+<div>
+<p>①　『GRUB Legacy』で起動できる場合は⑤へ<br />
+</p>
+<p>②　『Ubuntu 9.04 (9.04) (on /dev/sda3)』で起動<br />
+</p>
+<p>③　『アプリケーション』→『アクセサリ』→『端末』（または『Applications』→『Accessories』→『Terminal』）で下記を実行<br />
+</p>
+</div>
+<p>　　# PBR に GRUB Legacy をインストール<br />
+　　sudo grub<br />
+　　root (hd0,<i><i>2</i></i>
+ )　# ←『Ubuntu 9.04』区画 No.-1<br />
+　　setup (hd0,<i><i>2</i></i>
+ )<br />
+　　quit<br />
+　　sudo reboot<br />
+</p>
+<div>
+<p>④　『GRUB Legacy』を起動<br />
+</p>
+<p>⑤　『for OSX Bootloader』を起動<br />
+</p>
+<p>⑥　エラーが出たら [Enter]<br />
+</p>
+</div>
+<p>（マルチブート環境の構築はここまで）<br />
+　</p>
+</div>
+
+
+<div id="calibre_link-35">
+<h2 id="calibre_link-23"><b>　SP1 導入</b></h2>
+<div>
+<p>①　Mint-DVD で起動 → デスクトップ画面が出たら、画面最下行の『Terminal』を起動後、'df /cdrom' [Enter]（インストーラのデバイス名を確認）<br />
+</p>
+<p>②　下記を実行<br />
+</p>
+</div>
+<p>　　#「<a href="#calibre_link-3">Windows 7</a>
+ ⑪」で待避した<strong><b>mbr.dd</b></strong>
+ で MBR（『Windows7』環境）を復旧<br />
+　　sudo mount /dev/sda1 /mnt<br />
+　　sudo dd if=/mnt/mbr.dd of=/dev/sda<br />
+　　sudo reboot<br />
+</p>
+<div>
+<p>③　Windows で起動後、SP1 をインストール（または OS をアップグレード）<br />
+</p>
+<p>④　「<a href="#calibre_link-21">区画修復</a>
+ 」へ<br />
+</p>
+</div>
+<p>『Linux／7／XP／OSX on a NetBook』完<br />
+　</p>
+</div>
+
+
+<div id="calibre_link-10">
+<h2 id="calibre_link-24"><b>　付録</b></h2>
+<p>　ここでは、下記の３種類の自作機で 4TB HDD（WD40EURX）にマルチブート環境を構築してみた。OS は、Windows（7/10）、Ubuntu（9.04/Mint 17.3/Lubuntu 16.04/Zorin OS 11）、OSX（10.7/10.10）の各64bit版を使用している（Windows XP は、64bit版が手元にないので未検証）。<br />
+<br />
+①　<a href="#calibre_link-8">BIOS ブート</a>
+ 　（GA-P43-ES3G＋Core2Quad-Q9550S）<br />
+②　<a href="#calibre_link-7">UEFI Windows</a>
+ （GA-H67M-D2-B3＋Corei5-2500K）<br />
+③　<a href="#calibre_link-11">UEFI ブート</a>
+ 　（GA-Z87X-UD3H＋Corei5-4570S）<br />
+<br />
+　OSX-USB を『USB』のディスク名で作成し、区画設定は<a href="http://www.tonymacx86.com/resources/unibeast-5-2-0.260/"><u>Unibeast 5.2.0</u></a>
+ ＋OSX 10.7（①）／10.10（②③）のディスクユーティリティで、OSX のインストールは、①／②／③がそれぞれ Unibeast 5.2.0＋OSX 10.7／Unibeast 5.2.0＋OSX 10.10／<a href="http://www.tonymacx86.com/resources/unibeast-6-2-0.314/"><u>Unibeast 6.2.0</u></a>
+ ＋<a href="http://osdn.jp/projects/sfnet_cloverefiboot/downloads/Installer/Clover_v2.3k_r3543.zip/"><u>Clover_v2.3k_r3543</u></a>
+ ＋OSX 10.10 で行った（Unibeast および Clover の詳細は<a href="https://www.google.co.jp/?ion=1&amp;espv=2#q=yosemite%20osx86"><u>OSx86 関連サイト</u></a>
+ 参照）。<br />
+<br />
+　①の Windows インストールでは、『Windows』区画の容量が大き過ぎると、『......新しいパーティションを作成できなかったか、既にあるパーティションがみつかりませんでした......』と出て先へ進めなくなる。1TB でも不可なので 500GB に設定した。<br />
+<br />
+　②の場合、Windows 以外の OS が UEFI ブートでは起動しないため（←③で構築した全OS-UEFIブートHDD で確認）、BIOS ブートでインストールを行った。OSX も UEFI-Clover では起動せず、2TB 以降の領域からも起動できないので『Windows』区画の容量も①と同様 500GB としてある。<br />
+　区画のフォーマットを Windows 系に設定すれば『Mac OS 拡張 (ジャーナリング)』の時のような空き領域は生成されないが、②のマザーボードでは、４番目の『mint』区画以降の領域に『MS-DOS』区画があると Windows インストール中、２度目の再起動時にカーソルブリンクで停止するので『exFAT』に統一した。<br />
+　起動については、Windows が UEFI-Clover、他の BIOSブートOS は『Exit Clover』で一旦 Clover を終えたあとの GRUB2 で起動するようにした。<br />
+<br />
+　②と③の Windows は UEFI ブートでインストールを行った。<br />
+　『Windows』区画の削除と再割り当ての過程で『MSR(予約済み)』区画が新たに生成される際、各区画のフォーマット設定によっては、『MSR(予約済み)』区画の前に『システム』区画（Windows 10 では、その前に『回復』区画）が生成されてインストールできなくなる。試行では、各区画を適切に設定した場合でも Clover 起動の OSX インストーラでフォーマットを行うと失敗するので、その作業のみ UniBeast 5.2.0＋OSX 10.10（①では 10.7）のディスクユーティリティで行った。<br />
+　最初の４区画内に『MS-DOS』または『exFAT』区画があると『......選択されたディスクにはMBRパーティションがあります。EFIシステムでは、GPTディスクのみにWindowsをインストールできます......』と出てインストールできなくなるため、最初の３区画のみ『Mac OS 拡張 (ジャーナリング)』に設定した。<br />
+　③のブートローダは Mint の GRUB2、OSX は UEFI-Clover で起動する。<br />
+<br />
+　次章以降では、それぞれのケースについて個別に作業手順をまとめてみた。<br />
+</p>
+</div>
+
+
+<div id="calibre_link-0">
+<h2 id="calibre_link-8"><b>　BIOS ブート</b></h2>
+<div>
+<p>①　OSX-USB（Unibeast 5.2.0＋OSX 10.7）で『USB』から起動<br />
+</p>
+<p>②　『主に日本語を使用する』→『ユーティリティ』→『ターミナル...』→ /dev/disk0 に接続されているすべての区画をマウント解除（「<a href="#calibre_link-1">Mac OSX</a>
+ ⑤」参照）したのち下記を実行<br />
+</p>
+</div>
+<p>　　# MBR をゼロクリア<br />
+　　dd if=/dev/zero of=/dev/disk0 bs=512 count=1 # 〝=〟← '^'<br />
+　　[Alt]＋'q'<br />
+</p>
+<div>
+<p>③　『主に日本語を使用する』→『ユーティリティ』→『ディスクユーティリティ』→『7 パーティション』で以下のように設定後、再起動<br />
+</p>
+</div>
+<p>　　『名称未設定 1』→ 'WINDOWS'／『MS-DOS (FAT)』 ／ '500' GB<br />
+　　『名称未設定 2』→ 'ubuntu'／『Mac OS 拡張 (ジャーナリング)』／ '20' GB<br />
+　　『名称未設定 3』→ 'Mac OSX'／『Mac OS 拡張 (ジャーナリング)』／ '3.38' TB<br />
+　　『名称未設定 4』→ 'linux swap'／『Mac OS 拡張 (ジャーナリング)』／ '10' GB<br />
+　　『名称未設定 5』→ 'mint'／『Mac OS 拡張 (ジャーナリング)』／ '30' GB<br />
+　　『名称未設定 6』→ 'lubuntu'／『Mac OS 拡張 (ジャーナリング)』／ '30' GB<br />
+　　『名称未設定 7』→ 'zorin'／『Mac OS 拡張 (ジャーナリング)』／ '30' GB<br />
+</p>
+<div>
+<p>④　Windows-DVD（7 or 10）で起動 →『Windows のインストール場所を選択してください。』<br />
+</p>
+<p>⑤　（Windows 10：） 『ドライブ 0 パーティション 2: WINDOWS』→『フォーマット』→『次へ』<br />
+</p>
+<p>⑥　（Windows 7：）『ディスク 0 パーティション 2: WINDOWS』→『ドライブ オプション』→『フォーマット』→『次へ』<br />
+</p>
+<p>⑦　インストールが終わったら Windows の設定を行ったのち再起動<br />
+</p>
+<p>⑧　OSX-USB（Unibeast 5.2.0＋OSX 10.7）で『USB』から起動 →『主に日本語を使用する』→『ユーティリティ』→『ターミナル...』で下記を実行<br />
+</p>
+</div>
+<p>　　# インストーラのルートを書き込み可へ<br />
+　　mount -uw /<br />
+<br />
+　　#『EFI』区画をマウント<br />
+　　mkdir /tmp/EFI<br />
+　　mount -t msdos /dev/disk0s1 /tmp/EFI<br />
+<br />
+　　# MBR 待避<br />
+　　dd if=/dev/disk0 of=/tmp/EFI/mbr.dd bs=512 count=1<br />
+</p>
+<div>
+<p>⑨　ターミナルを終了 →『Mac OS X インストール』→『続ける』→『同意する』→『Mac OSX』区画を選択 →『インストール』→ 再起動 → OSX-USB（Unibeast 5.2.0＋OSX 10.7）で『USB』から起動<br />
+</p>
+<p>⑩　『主に日本語を使用する』→『ユーティリティ』→『ターミナル...』で下記を実行<br />
+</p>
+</div>
+<p>　　# 起動ファイル等を『OSX』区画へコピー<br />
+　　cp /usr/standalone/i386/boot /Volumes/OSX/<br />
+　　cp /usr/standalone/i386/boot0 /Volumes/OSX/usr/standalone/i386/<br />
+　　cp /usr/standalone/i386/boot1h /Volumes/OSX/usr/standalone/i386/<br />
+　　cp -R /Extra /Volumes/OSX/　# ← 'cp -R /Extra/ /Volumes/......' はＮＧ<br />
+<br />
+　　#『OSX』区画のデバイス名を確認<br />
+　　df /Volumes/OSX<br />
+</p>
+<div>
+<p>⑪　/dev/disk0 に接続されているすべての区画をマウント解除したのち、下記を順に実行<br />
+</p>
+</div>
+<p>　　# disk0 の区画がマウントされていない事を確認<br />
+　　df|grep disk0<br />
+<br />
+　　# ⑩の最後で確認したデバイス名が『/dev/disk0s5』だった場合<br />
+　　dd if=/usr/standalone/i386/boot1h of=/dev/disk0s5<br />
+　　reboot<br />
+</p>
+<div>
+<p>⑫　Ubuntu 9.04 をインストール<br />
+</p>
+<p>⑬　他の Linux系OS のインストールでは、gdisk による区画検証（「<a href="#calibre_link-2">Mint 17.3</a>
+ ①」）および MBR の書き戻し（「<a href="#calibre_link-2">Mint 17.3</a>
+ ⑩」）は不要、インストール順も任意<br />
+</p>
+<p>⑭　『Linux Mint 17.3 ......』で起動後、『Terminal（または端末）』で下記を設定<br />
+</p>
+</div>
+<p>　　# 区画コードの設定および下記区画 No.を確認（「<a href="#calibre_link-3">Windows 7</a>
+ ⑫」）<br />
+　　sudo gdisk /dev/sda<br />
+　　......<br />
+<br />
+　　sudo vi /etc/grub.d/40_custom<br />
+　　Go<br />
+　　menuentry "GRUB Legacy" {<br />
+　　　insmod part_gpt<br />
+　　　insmod ext2<br />
+　　　set root='hd0,gpt<i><i>3</i></i>
+ ' # ←『Ubuntu 9.04』区画 No.<br />
+　　　savedefault<br />
+　　　chainloader +1<br />
+　　}<br />
+<br />
+　　menuentry "OSX Bootloader" {<br />
+　　　insmod part_gpt<br />
+　　　insmod hfsplus<br />
+　　　set root='hd0,gpt<i><i>4</i></i>
+ ' # ←『OSX』区画 No.<br />
+　　　savedefault<br />
+　　　chainloader /usr/standalone/i386/boot0<br />
+　　}<br />
+　　[Esc]:wq<br />
+<br />
+　　#『EFI』区画をマウント<br />
+　　sudo mount /dev/sda1 /mnt<br />
+<br />
+　　# ⑧で待避した MBR を復旧<br />
+　　sudo dd if=/mnt/mbr.dd of=/dev/sda<br />
+<br />
+　　# MBR に GRUB2 をインストール<br />
+　　sudo grub-install /dev/sda<br />
+　　sudo update-grub<br />
+　　sudo reboot<br />
+</p>
+<div>
+<p>⑮　『Ubuntu 9.04 (9.04) (on /dev/sda3)』で起動 → メニューバーの『Applications』→『Accessories』→『Terminal』で下記を実行<br />
+</p>
+</div>
+<p>　　# OSX ブートローダ GRUB Legacy 用ダミーエントリ<br />
+　　sudo vi /boot/grub/menu.lst<br />
+　　/[Tab]0<br />
+　　lxasaved[Esc]<br />
+　　:%s/hiddenmenu/#hiddenmenu/<br />
+　　Go<br />
+　　title[Tab][Tab]for OSX Bootloader<br />
+　　root[Tab][Tab](hd0,<i><i>0</i></i>
+ ) # ←『EFI』区画 No.-1<br />
+　　savedefault<br />
+　　makeactive<br />
+　　chainloader[Tab]+1<br />
+　　[Esc]:wq<br />
+<br />
+　　# PBR に GRUB Legacy をインストール<br />
+　　sudo grub<br />
+　　root (hd0,<i><i>2</i></i>
+ )　# ←『Ubuntu 9.04』区画 No.-1<br />
+　　setup (hd0,<i><i>2</i></i>
+ )<br />
+　　quit<br />
+　　sudo reboot<br />
+</p>
+<div>
+<p>⑯　『GRUB Legacy』で起動 →『for OSX Bootloader』→ エラーが出たら [Enter]（要待機）<br />
+</p>
+<p>⑰　GRUB2 で OS を選択<br />
+</p>
+</div>
+<p>　</p>
+</div>
+
+
+<div id="calibre_link-38">
+<h2 id="calibre_link-7"><b>　UEFI Windows</b></h2>
+<div>
+<p>①　<strong><b>Clover_v2.3k_r3543.zip</b></strong>
+ を解凍後、<strong><b>Clover_v2.3k_r3543.pkg</b></strong>
+ を OSX-USB（Unibeast 5.2.0＋OSX 10.10）のトップフォルダへコピー<br />
+</p>
+<p>②　BIOS を起動 →『Advanced BIOS Features』→『CD/DVD Boot Option』→『EFI』→ [F10] →『Yes』<br />
+</p>
+<p>③　OSX-USB（Unibeast 5.2.0＋OSX 10.10）で『USB』から起動 →「<a href="#calibre_link-8">BIOS ブート</a>
+ ②」を実行<br />
+</p>
+<p>④　『主に日本語を使用する』→『ユーティリティ』→『ディスクユーティリティ』→『7 パーティション』で以下のように設定後、再起動<br />
+</p>
+</div>
+<p>　　『名称未設定 1』→ 'windows'／『Mac OS 拡張 (ジャーナリング)』／ '500' GB<br />
+　　『名称未設定 2』→ 'linux swap'／『Mac OS 拡張 (ジャーナリング)』／ '10' GB<br />
+　　『名称未設定 3』→ 'OSX'／『Mac OS 拡張 (ジャーナリング)』／ '500' TB<br />
+　　『名称未設定 4』→ 'mint'／『exFAT』／ '30' GB<br />
+　　『名称未設定 5』→ 'lubuntu'／『exFAT』／ '30' GB<br />
+　　『名称未設定 6』→ 'zorin'／『exFAT』／ '30' GB<br />
+　　『名称未設定 7』→ 'data'／『exFAT』／ '2.9' TB<br />
+</p>
+<div>
+<p>⑤　Windows-DVD で起動 →『Windows のインストール場所を選択してください。』<br />
+</p>
+<p>⑥　（Windows 10：）『ドライブ 0 パーティション 2』→『削除』→『このパーティションには、PC の製造元からの重要なファイルやアプリが......』→『OK』→『ドライブ 0 の割り当てられていない領域』→『新規』→『適用』→『Windows のすべての機能が正常に動作するように......』→『OK』→『ドライブ 0 パーティション 3』→『次へ』<br />
+</p>
+<p>⑦　（Windows ７：）『ディスク 0 パーティション 2』→『ドライブ オプション』→『削除』→『パーティションには、リカバリ ファイル、システム ファイル、または......』→『OK』→『ディスク 0 未割り当て領域』→『新規』→『適用』→『Windows のすべての機能が正常に動作するように......』→『OK』→『ディスク 0 パーティション 3』→『次へ』<br />
+</p>
+<p>⑧　インストールが終わったら Windows の設定を行ったのち再起動後、BIOS を起動<br />
+</p>
+<p>⑨　『Advanced BIOS Features』→『CD/DVD Boot Option』→『NON EFI』→ [F10] →『Yes』<br />
+</p>
+<p>⑩　OSX-USB（Unibeast 5.2.0＋OSX 10.10）で『USB』から起動 →『主に日本語を使用する』→『OS X Installer』→『続ける』→『続ける』→『同意する』→『OSX』区画を選択 →『続ける』→ 再起動<br />
+</p>
+<p>⑪　OSX-USB（Unibeast 5.2.0＋OSX 10.10）で『USB』から起動 →「<a href="#calibre_link-8">BIOS ブート</a>
+ ⑩〜⑪」を実行<br />
+</p>
+<p>⑫　Linux系OS（gdisk による区画検証および MBR の書き戻しは不要、インストール順も任意）のうち、最初にインストールする OS でスワップおよび BIOSGRUB 領域を設定（......『インストールの種類』→『それ以外』→『続ける』→『/dev/sda4 hfs+ ...... 10000 MB ......』をスワップ領域、その下の『空き領域 ...... 134 MB』を『予約済み BIOS ブート領域』へ）<br />
+</p>
+<p>⑬　OSX-USB（Unibeast 5.2.0＋OSX 10.10）で『OSX』から起動 → 設定が済んでデスクトップが出たら USB アイコンを右クリック後『開く』→<strong><b>Clover_v2.3k_r3543.pkg</b></strong>
+ をダブルクリック →『OK』→『システム環境設定』→『セキュリティとプライバシー』→『このまま開く』→『続ける』→『続ける』→『カスタマイズ』→『UEFIブート用にインストール』にチェック →『Drivers64UEFI』にチェック →『インストール』→『閉じる』→ 再起動<br />
+</p>
+<p>⑭　『Clover Boot Manager』→『Exit Clover』→『Linux Mint 17.3 ......』で起動後、『Terminal（または端末）』で下記を設定（MBR イメージの待避および復旧は不要）<br />
+</p>
+</div>
+<p>　　# 区画コードの設定および下記区画 No.を確認（「<a href="#calibre_link-3">Windows 7</a>
+ ⑫」）<br />
+　　sudo gdisk /dev/sda<br />
+　　......<br />
+<br />
+　　sudo vi /etc/grub.d/40_custom<br />
+　　Go<br />
+　　menuentry "OSX Bootloader" {<br />
+　　　insmod part_gpt<br />
+　　　insmod hfsplus<br />
+　　　set root='hd0,gpt<i><i>5</i></i>
+ ' # ←『OSX』区画 No.<br />
+　　　savedefault<br />
+　　　chainloader /usr/standalone/i386/boot0<br />
+　　}<br />
+　　[Esc]:wq<br />
+<br />
+　　# MBR に GRUB2 をインストール<br />
+　　sudo grub-install /dev/sda<br />
+　　sudo update-grub<br />
+　　sudo reboot<br />
+</p>
+<div>
+<p>⑮　Windows を起動する場合はアイコン（『Boot Microsoft EFI boot menu from EFI』）をクリック、他の OS は『Exit Clover』で一旦 Clover を抜けたのち GRUB2 で OS を選択<br />
+</p>
+</div>
+<p>　</p>
+</div>
+
+
+<div id="calibre_link-6">
+<h2 id="calibre_link-11"><b>　UEFI ブート</b></h2>
+<div>
+<p>①　「<a href="#calibre_link-7">UEFI Windows</a>
+ ①」で<strong><b>Clover_v2.3k_r3543.zip</b></strong>
+ を解凍後、<strong><b>Clover_v2.3k_r3543.pkg</b></strong>
+ を OSX-USB（Unibeast 6.2.0＋UEFI-Clover＋OSX 10.10）のトップフォルダへコピー<br />
+</p>
+<p>②　BIOS を起動 →『Advanced BIOS Features』→『Windows 8 Features』を『Other OS』→ [F10] →『保存して設定終了』<br />
+</p>
+<p>③　OSX-USB（Unibeast 5.2.0＋OSX 10.10）で『USB』から起動 →「<a href="#calibre_link-8">BIOS ブート</a>
+ ②」を実行<br />
+</p>
+<p>④　『主に日本語を使用する』→『ユーティリティ』→『ディスクユーティリティ』→『6 パーティション』で以下のように設定後、再起動<br />
+</p>
+</div>
+<p>　　『名称未設定 1』→ 'windows'／『Mac OS 拡張 (ジャーナリング)』／ '2.9' TB<br />
+　　『名称未設定 2』→ 'linux swap'／『Mac OS 拡張 (ジャーナリング)』／ '10' GB<br />
+　　『名称未設定 3』→ 'OSX'／『Mac OS 拡張 (ジャーナリング)』／ '1.0' TB<br />
+　　『名称未設定 4』→ 'MINT'／『MS-DOS (FAT)』／ '30' GB<br />
+　　『名称未設定 5』→ 'LUBUNTU'／『MS-DOS (FAT)』／ '30' GB<br />
+　　『名称未設定 6』→ 'ZORIN'／『MS-DOS (FAT)』／ '30' GB<br />
+</p>
+<div>
+<p>⑤　Windows-DVD で起動 →『Windows のインストール場所を選択してください。』<br />
+</p>
+<p>⑥　（Windows 10：）『ドライブ 0 パーティション 2』→『削除』→『このパーティションには、PC の製造元からの重要なファイルやアプリが......』→『OK』→『ドライブ 0 の割り当てられていない領域』→『新規』→『適用』→『Windows のすべての機能が正常に動作するように......』→『OK』→『ドライブ 0 パーティション 3』→『次へ』<br />
+</p>
+<p>⑦　（Windows ７：）『ディスク 0 パーティション 2』→『ドライブ オプション』→『削除』→『パーティションには、リカバリ ファイル、システム ファイル、または......』→『OK』→『ディスク 0 未割り当て領域』→『新規』→『適用』→『Windows のすべての機能が正常に動作するように......』→『OK』→『ディスク 0 パーティション 3』→『次へ』<br />
+</p>
+<p>⑧　インストールが終わったら Windows の設定を行ったのち再起動<br />
+</p>
+<p>⑨　OSX-USB（Unibeast 6.2.0＋UEFI-Clover＋OSX 10.10）で『Boot Mac OS X from USB』から起動 →『主に日本語を使用する』→『OS X Installer』→『続ける』→『続ける』→『同意する』→『OSX』を選択 →『続ける』→ 再起動<br />
+</p>
+<p>⑩　OSX-USB（Unibeast 6.2.0＋UEFI-Clover＋OSX 10.10）で『Boot Mac OS X from OSX』から起動 → 設定が済んでデスクトップが出たら USB アイコンを右クリック後『開く』→<strong><b>Clover_v2.3k_r3543.pkg</b></strong>
+ をダブルクリック →『OK』→『システム環境設定』→『セキュリティとプライバシー』→『このまま開く』→『続ける』→『続ける』→『カスタマイズ』→『UEFIブート用にインストール』にチェック →『Drivers64UEFI』にチェック →『インストール』→『閉じる』<br />
+</p>
+<p>⑪　⑩で開いた USB ウインドウをクリック→『ファイル』→『新規 Finder ウインドウ』→『アプリケーション』→『ユーティリティ』→『ターミナル』で 'df /Volumes/USB' [Enter] の結果が、『/dev/disk<i><i>1</i></i>
+ s2 ...... /Volumes/USB』の場合、下記を実行<br />
+</p>
+</div>
+<p>　　mkdir /tmp/EFI<br />
+　　sudo mount -t msdos /dev/disk<i><i>1</i></i>
+ s1 /tmp/EFI<br />
+　　sudo cp -Rv /tmp/EFI/EFI/CLOVER/kexts/10.10/ /Volumes/ESP/EFI/CLOVER/kexts/10.10　# ← 'cp -Rv /tmp/....../10.10 /Volumes/......' はＮＧ<br />
+　　sudo reboot<br />
+</p>
+<div>
+<p>⑫　「<a href="#calibre_link-7">UEFI Windows</a>
+ ⑫」を実行<br />
+</p>
+<p>⑬　[DEL] で BIOS を起動後、『Boot Sequence』で『ubuntu（......）』を『１』に設定後、再起動<br />
+</p>
+<p>⑭　『Linux Mint 17.3 ......』で起動後、『Terminal（または端末）』で下記を設定（MBR イメージの待避および復旧は不要）<br />
+</p>
+</div>
+<p>　　# 区画コードの設定（「<a href="#calibre_link-3">Windows 7</a>
+ ⑫」）<br />
+　　sudo gdisk /dev/sda<br />
+　　......<br />
+<br />
+　　#『EFI』区画の UUID をチェック<br />
+　　sudo grub-probe --target=fs_uuid /boot/efi/EFI/Boot/BOOTX64.efi<br />
+　　□□□□-□□□□ # マウスで範囲指定 →『編集』→『コピー』<br />
+<br />
+　　sudo vi /etc/grub.d/40_custom<br />
+　　Go<br />
+　　menuentry "OSX Bootloader" {<br />
+　　　search --fs-uuid --set=root □□□□-□□□□ #『編集』→『貼り付け』<br />
+　　　savedefault<br />
+　　　chainloader /EFI/Boot/BOOTX64.efi<br />
+　　}<br />
+　　[Esc]:wq<br />
+<br />
+　　# EFI に GRUB2 をインストール<br />
+　　sudo grub-install /dev/sda<br />
+　　sudo update-grub<br />
+　　sudo reboot<br />
+</p>
+<div>
+<p>⑮　GRUB2 で OS を選択<br />
+</p>
+</div>
+<p>『付録』完<br />
+　</p>
+</div>
+
+
+<div id="calibre_link-36">
+<h2 id="calibre_link-25"><b>　おわりに</b></h2>
+<p>　今回のインストールでは、MBR を書き戻すとどうなるか試してみた。　<br />
+　手元の U100 では、内蔵 HDD を 320G へ換装したまま作業していたので気づかずにいたが、<a href="http://usilic.ddns.net/u100quad/cover.jpg"><u>表紙</u></a>
+ にある compiz 3D デスクトップの GParted 画面作成のため 160G へ戻してインストールしてみると、電源投入直後の Windows XP（以下 XP） が、『コンピュータ ディスク ハードウェア構成の問題のため、Windows を起動できませんでした...』となる。<br />
+</p>
+<div><img src="images/000012.jpg" />
+</div>
+<p>　gdisk で調べても、「<a href="#calibre_link-2">Mint 17.3</a>
+ ②」のようになっていて異常は見当たらず、一旦 Ubuntu 9.04（以下 9.04）を起動すれば、以後はリブートも含め、電源を落とさない限り XP も普通に起動するので、試しに稼働中のシステム内ではなく、電源 OFF 後の〝Mint-DVD 版〟gdisk により（稼働外から）/dev/sda を調べてみたところ、今度は、「<a href="#calibre_link-2">Mint 17.3</a>
+ ③」のエラーになった（ちなみに、「<a href="#calibre_link-18">Ubuntu 9.04</a>
+ ⑰」で『Shut Down...』の代わりに『Restart...』としてしまうと、「<a href="#calibre_link-2">Mint 17.3</a>
+ ③」の gdisk でエラーが検出されず、区画の修復ができなくなる。「<a href="#calibre_link-21">区画修復</a>
+ ⑤」の電源OFF も同じ理由から）。<br />
+　ここで「<a href="#calibre_link-2">Mint 17.3</a>
+ ③」のエラーを修復してみると、電源投入後の XP も他の OS 同様、普通に起動するようになり嬉しさのあまりあれこれ遊んでいたら、肝心の GParted の起動の際に下記のメッセージが出て<br />
+</p>
+<div><img src="images/000011.jpg" />
+</div>
+<p>GRUB2 自体、立ち上がらなくなってしまった（「<a href="#calibre_link-21">区画修復</a>
+ 」で復旧）。さらに 9.04 を『再起動』で終えた場合、今度は Mint版 GParted が<br />
+</p>
+<div><img src="images/000015.jpg" />
+</div>
+<p>のエラーに次いで下記のような警告メッセージを出力するようになる。<br />
+</p>
+<div><img src="images/000010.jpg" />
+</div>
+<p>　いずれも『無視』を選択しておけば問題ないが、うっかり『Fix』してしまうと Windows区画が起動できなくなる（「<a href="#calibre_link-21">区画修復</a>
+ 」で復旧）。『再起動』の代わりに『シャットダウン』で 9.04 を終えるようにすれば、Mint版 GParted も上記のメッセージを表示しなくなるので〝うっかり『Fix』ミス〟は回避できるかもしれないが、9.04版 GParted だけはやはり例外で GRUB2 が死ぬので念のため。<br />
+　検証では、前者の場合、GRUB2 は起動するので症状としては軽微だが、後者（GRUB2 起動不能）が一度も起きていない状態で上記メッセージを二つとも『Fix』してしまうと、「<a href="#calibre_link-2">Mint 17.3</a>
+ ③」のエラーが出なくなり区画の修復ができなくなってしまう。その結果、電源投入後の XP 起動障害（← 9.04 起動で解消後、電源OFF で再発）が直せなくなる一方、9.04版 GParted の方はエラーメッセージが出なくなって GRUB2 も死ななくなる（GPT 未対応なのは XP の方なので、運用上はこちらの方が安全かもしれないが......）。<br />
+　なお手元の 1TB、500GB、320GB の各HDD では、区画修復を促す gdisk のメッセージ（「<a href="#calibre_link-2">Mint 17.3</a>
+ ③」）自体、最初から現れず、以上の不具合も生じない。<br />
+<br />
+　U100 の場合、9.04 以外の compiz が正常に表示されない。<br />
+</p>
+<div><img src="images/000002.jpg" />
+</div>
+<p>　9.04（以降の Ubuntu はブートローダに GRUB2 を採用）の GRUB Legacy で『for OSX Bootloader』エントリを実行しておかないと GRUB2 の『OSX Bootloader』が機能しないため、9.04 もそのまま残す事にした。それ以外の Ubuntu系OS のうち、Zorin OS 11 インストーラでは、『日本語』に設定すると、Lubuntu 同様区画設定表示の一部が画面からはみ出してしまうので今回は使用言語『English』でインストールを行った。<br />
+</p>
+<div><img src="images/000001.jpg" />
+</div>
+<p>　U100 に限らず BIOS ブートの Windows では、更新プログラム実行の際、そのつど「<a href="#calibre_link-23">SP1 導入</a>
+ ①」の手順に従って MBR を書き戻さなくてはならないが、Windows がメイン使用なら、「<a href="#calibre_link-23">SP1 導入</a>
+ ③」実行後の Windows 環境のまま、USB 等にインストールした GRUB2 を立ち上げれば他の OS も起動する事ができる（「<a href="#calibre_link-2">Mint 17.3</a>
+ ①」で下記のようなメッセージが出る場合、「<a href="#calibre_link-21">区画修復</a>
+ ⑪」で 'grub-install /dev/sda' [Enter] とやれば〝GRUB2-USB〟の作成は可能）。<br />
+</p>
+<div><img src="images/000013.jpg" />
+</div>
+<p>　自作機については、最近 Clover の存在を知って容量 2TB オーバー HDD の章も新たに加えてみた。<br />
+　検証に使用した GA-H67M-D2-B3 は、ハイブリッド EFI テクノロジーとかを備え、3TB 以上の HDD からの起動も可能なはずなのに、「<a href="#calibre_link-11">UEFI ブート</a>
+ 」の章でマルチブート環境をセットアップした HDD を取り付けても Windows 以外の OS が起動しない部分で最初にハマった。<br />
+　いっそ Windows も BIOS ブートにしてしまえば他の OS 同様 GRUB2 から起動できるので話は簡単だが、それだと 2TB 以降のエリアにアクセスできなくなる。幸い Clover 自体は起動するので、最初に UEFI-Clover を立ち上げて、Windows 以外の BIOSブートOS は、一旦 Clover を抜けた上で GRUB2 から起動する事にした。<br />
+<br />
+　UEFI ブートの検証で最初に使用したマザーボードは、エンコマシンとして運用していた ASRock H97 Pro4 だが、OSX 10.10 がすんなりインストールでき、半年間、何の不具合も起きなかったマシンも、検証のための再起動を何度か繰り返すうちに、U100 ではもしかしたら数百回は起動しているかもしれない BIOS MENU（ASRockも[F11]）が早々にダメになり（← Enter Setup か Default Boot しか選べない）、BIOS にもバグがあるらしく、UEFI ブートを指定したはずの DVD メディアが、実際は BIOS ブートで起動しているのに気づくまでの間、しばらくハマった（光学ドライブ前面の Eject ボタンで一旦出し入れすると認識する）。<br />
+<br />
+　UEFI ブートの場合、Windows なら『Press any key to boot from CD or DVD...』のメッセージが出て、Linux系なら言語選択画面の代わりに GRUB2 が立ち上がるらしいのに気づいた頃、ASRock が突然起動しなくなったため、やむなく USB 3.0 ドライバの不具合で使用を控えていた GA-Z87X-UD3H に USB 2.0 ボードを搭載した上で急きょ検証マシンに転用したところ、こちらにも動作に不可解な点があって、「<a href="#calibre_link-7">UEFI Windows</a>
+ 」と同じ構成の区画設定だと、マシン起動の際、マザーボードのロゴ画面で凍結して BIOS へも入れなくなってしまう。HDD を外して USB で繋げてみると、4TB のはずの HDD 容量が 1.8TB、最後の 2.9TB の『data』区画が空き領域になっていた。<br />
+</p>
+<div><img src="images/000007.jpg" />
+</div>
+<p>　やむを得ず区画を切り直して今のような構成にしてある。原因は未だに分からない。<br />
+　動作には今のところ異常ないので壊れる前に検証はこの辺で休ませようかなと。<br />
+　試行の際は At your own risk でよろしく。_O_<br />
+</p>
+<p>誌璃空ユウ</p>
+</div>
+
+
+<div id="calibre_link-42">
+<p id="calibre_link-26"><b>Linux／7／XP／OSX on a NetBook</b></p>
+<p>誌璃空ユウ<a href="https://twitter.com/USilic"><u>＠USilic</u></a>
+</p>
+<p>2015年03月23日　初　版<br />
+2015年04月23日　第２版<br />
+MBR クリアおよび区画のブートフラグ設定を OSX で実行<br />
+Zorin OS 9／Lubuntu 14.10／Mint 17 をインストール<br />
+区画修復の章を追加<br />
+GRUB2 に対応<br />
+2015年04月30日　第３版<br />
+「<a href="#calibre_link-25">おわりに</a>
+ 」修正<br />
+2015年05月17日　第４版<br />
+誤字・脱字修正<br />
+2015年06月21日　第５版<br />
+表題と紹介文追加<br />
+画像の追加と差し替え<br />
+一部の語句と改行修正<br />
+2015年08月10日　第６版<br />
+「GRUB 修復」「<a href="#calibre_link-22">Mac OSX Bootloader</a>
+ 」の章見出しを<br />
+それぞれ「MBR 修復」「<a href="#calibre_link-22">OSX Bootloader</a>
+ 」へ変更<br />
+「GRUB2 復旧」「<a href="#calibre_link-23">SP1 導入</a>
+ 」の章を追加<br />
+Windows 7 のインストール順を変更<br />
+〝GRUB-PC〟の表記を修正<br />
+一部の語句と改行修正<br />
+リンクの表記を変更<br />
+2015年08月16日　第７版<br />
+「<a href="#calibre_link-18">Ubuntu 9.04</a>
+ ④」を修正<br />
+「<a href="#calibre_link-3">Windows 7</a>
+ ①」を修正<br />
+2016年07月03日　第８版<br />
+『Windows 7』と『Ubuntu 9.04』区画入れ替え<br />
+U100 インストール手順一部変更<br />
+自作機へのインストール手順追加<br />
+MBR イメージファイルを『EFI』区画へ保存<br />
+『for OSX Bootloader』をダミーエントリへ<br />
+「MBR 修復」「GRUB2 復旧」の章を削除<br />
+</p>
+</div>
+
+
+<script>function myFunction(){document.getElementById("tateyoko").classList.toggle("tateread")}</script></body></html>
