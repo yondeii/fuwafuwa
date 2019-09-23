@@ -1,0 +1,2181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>幕末日本の風景 AI Color Series</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/mainday.css" title="default">
+<link rel="alternate stylesheet" href="/css/mainnight.css" title="alternate">
+<script type="text/javascript" src="/js/styleswitcher.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+</head>
+<body>
+<div class="novelpage">
+<div class="novelbody">
+<div id="tateyoko">
+<div id="_top"></div>
+<a href="/">🏠</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('default'); return false;">日</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">月</a>&emsp;
+<a href="#_top" onclick="myFunction()" style="cursor: pointer;">縦書き／横書き</a>
+<div id="calibre_link-79">
+<div>
+<div>
+<table class="noveltitle">
+<tr>
+<td colspan="2"><i><span><i>幕末日本の風景 AI Color Series</i></span></i></td>
+</tr>
+<tr>
+                    
+                    
+      </tr>
+<tr>
+<td colspan="2">Pearbook編集部</td>
+</tr>
+<tr>
+<td colspan="2">Pearbook (2018)</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+</tr>
+</table>
+<div></div>
+</div>
+<div></div>
+</div>
+</div>
+
+
+
+<div id="calibre_link-62" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-123">
+<div>
+<p>
+<span id="calibre_link-124">1</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-125">
+<div>
+<p>
+<span id="calibre_link-126">本書は、オーストリア人の写真家、ライムント・フォン・シュティルフリート</span>
+<span id="calibre_link-127">（Raimund</span>
+<span id="calibre_link-128">von</span>
+<span id="calibre_link-129">Stillfried</span>
+<span id="calibre_link-130">）の写真集"Views</span>
+<span id="calibre_link-131">and</span>
+<span id="calibre_link-132">Costumes</span>
+<span id="calibre_link-133">of</span>
+<span id="calibre_link-134">Japan"（1862年）</span>
+<span id="calibre_link-135">を、ディープラーニングによってカラー化し、再編成したものです。ディープラー</span>
+<span id="calibre_link-136">ニングには、可能な限り実際の色を再現できるよう50万枚の画像データを学習</span>
+<span id="calibre_link-137">させています。着色の自動処理には、学習データからディープラーニングが手軽</span>
+<span id="calibre_link-138">にできると話題の「keras」を使用しています。</span>
+</p>
+<p><span id="calibre_link-139"></span>
+</p>
+<p>
+<span id="calibre_link-140">元々世界を放浪していたシュティルフリートは、アメリカで写真術を学びます。</span>
+<span id="calibre_link-141">その後、オーストリアの商人と日本を訪れ、そのまま横浜に居を構えました。</span>
+<span id="calibre_link-142">同時期に横浜にいたフェリーチェ・ベアト（Felice</span>
+<span id="calibre_link-143">Beato。代表作"Views</span>
+<span id="calibre_link-144">of</span>
+<span id="calibre_link-145">Japan"）に師事し、本格的に写真術を身につけます。その後、独立し、日本人</span>
+<span id="calibre_link-146">の着色技士（後に明治時代のカラー写真家として有名になった日下部金兵衛）を</span>
+<span id="calibre_link-147">雇って、撮影した写真を着色し、豪華な装飾を施した写真集としてヨーロッパで</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-148">
+<div>
+<p>
+<span id="calibre_link-149"><b>はじめに</b></span>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-33" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-150">
+<div>
+<p>
+<span id="calibre_link-151">2</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-152">
+<div>
+<p>
+<span id="calibre_link-153">販売していたといいます。後にオーストリアに帰国したシュティルフリートは、</span>
+<span id="calibre_link-154">宮廷画家として働きました。</span>
+</p>
+<p>
+<span id="calibre_link-155">"Views</span>
+<span id="calibre_link-156">and</span>
+<span id="calibre_link-157">Costumes</span>
+<span id="calibre_link-158">of</span>
+<span id="calibre_link-159">Japan"で使用されている写真技術には、19世紀後半</span>
+<span id="calibre_link-160">に一般的に使用された</span>
+<span id="calibre_link-161">"Albumen</span>
+<span id="calibre_link-162">silver</span>
+<span id="calibre_link-163">print（鶏卵紙）"というプリント技法</span>
+<span id="calibre_link-164">が使われています。当時の横浜では、この鶏卵紙を用いた白黒写真に人の手で着</span>
+<span id="calibre_link-165">色した「カラー」写真がよく販売されており、外国人観光客向けのお土産として</span>
+<span id="calibre_link-166">人気がありました。</span>
+</p>
+<p><span id="calibre_link-167"></span>
+</p>
+<p>
+<span id="calibre_link-168">本書に収められた写真は、江戸時代末期（1860年代初頭）の日本を写したもの</span>
+<span id="calibre_link-169">です。被写体は、神社仏閣、お城などの建物や人物などです。これらの写真はす</span>
+<span id="calibre_link-170">でにいくらかの彩色が施されたものではありますが、もともと着色されていた色</span>
+<span id="calibre_link-171">は薄く、部分的であり、また経年劣化による色褪せもあります。そこで、ディー</span>
+<span id="calibre_link-172">プラーニングを用いて、より美しい彩色へ蘇らせました。当時に近い色で蘇る写</span>
+<span id="calibre_link-173">真をお楽しみください。</span>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-107">
+<div id="calibre_link-174"><img src="images/000014.jpg" alt="" width="643" height="452" />
+</div>
+</div>
+
+
+<div id="calibre_link-118" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-175"><img src="images/000145.jpg" alt="" width="1075" height="756" />
+</div>
+<div id="calibre_link-176">
+<div>
+<p>
+<span id="calibre_link-177"><b>カラー写真</b></span>
+</p>
+</div>
+</div>
+<div id="calibre_link-178">
+<div>
+<p>
+<span id="calibre_link-179"><b>前編</b></span>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-47" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-180"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-181"><img src="images/000141.jpg" alt="" width="1075" height="756" />
+</div>
+<div id="calibre_link-182">
+<div>
+<p>
+<span id="calibre_link-183">5</span>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-20" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-184"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-185"><img src="images/000149.jpg" alt="" width="1075" height="756" />
+</div>
+<div id="calibre_link-186">
+<div>
+<p>
+<span id="calibre_link-187">6</span>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-38" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-188"><img src="images/000033.jpg" alt="" width="1075" height="756" />
+</div>
+<div id="calibre_link-189">
+<div>
+<p>
+<span id="calibre_link-190">7</span>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-55" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-191"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-192"><img src="images/000045.jpg" alt="" width="1075" height="756" />
+</div>
+<div id="calibre_link-193">
+<div>
+<p>
+<span id="calibre_link-194">8</span>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-73" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-195"><img src="images/000130.jpg" alt="" width="1075" height="756" />
+</div>
+<div id="calibre_link-196">
+<div>
+<p>
+<span id="calibre_link-197">9</span>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-92" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-198"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-199"><img src="images/000127.jpg" alt="" width="1075" height="756" />
+</div>
+<div id="calibre_link-200">
+<div>
+<p>
+<span id="calibre_link-201">10</span>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-3" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-202"><img src="images/000105.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-203">
+<div>
+<p>
+<span id="calibre_link-204">11</span>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-53" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-205"><img src="images/000019.jpg" alt="" width="697" height="709" />
+</div>
+<div id="calibre_link-206"><img src="images/000047.jpg" alt="" width="726" height="709" />
+</div>
+<div id="calibre_link-207">
+<div>
+<p>
+<span id="calibre_link-208">12</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-209"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-40" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-210"><img src="images/000047.jpg" alt="" width="726" height="709" />
+</div>
+<div id="calibre_link-211"><img src="images/000179.jpg" alt="" width="697" height="709" />
+</div>
+<div id="calibre_link-212">
+<div>
+<p>
+<span id="calibre_link-213">13</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-214"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-37" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-215"><img src="images/000159.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-216">
+<div>
+<p>
+<span id="calibre_link-217">14</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-218"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-71" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-219"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-220"><img src="images/000123.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-221">
+<div>
+<p>
+<span id="calibre_link-222">15</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-223"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-69" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-224"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-225"><img src="images/000090.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-226">
+<div>
+<p>
+<span id="calibre_link-227">16</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-228"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-88" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-229"><img src="images/000008.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-230">
+<div>
+<p>
+<span id="calibre_link-231">17</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-232"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-106" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-233"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-234"><img src="images/000119.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-235">
+<div>
+<p>
+<span id="calibre_link-236">18</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-237"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-26" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-238"><img src="images/000037.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-239">
+<div>
+<p>
+<span id="calibre_link-240">19</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-241"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-7" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-242"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-243"><img src="images/000084.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-244">
+<div>
+<p>
+<span id="calibre_link-245">20</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-246"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-10" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-247"><img src="images/000010.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-248">
+<div>
+<p>
+<span id="calibre_link-249">21</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-250"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-81" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-251"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-252"><img src="images/000012.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-253">
+<div>
+<p>
+<span id="calibre_link-254">22</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-255"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-97" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-256"><img src="images/000087.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-257">
+<div>
+<p>
+<span id="calibre_link-258">23</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-259"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-101" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-260"><img src="images/000133.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-261">
+<div>
+<p>
+<span id="calibre_link-262">24</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-263"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-29" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-264"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-265"><img src="images/000117.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-266">
+<div>
+<p>
+<span id="calibre_link-267">25</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-268"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-87" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-269"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-270"><img src="images/000066.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-271">
+<div>
+<p>
+<span id="calibre_link-272">26</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-273"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-42" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-274"><img src="images/000140.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-275">
+<div>
+<p>
+<span id="calibre_link-276">27</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-277"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-58" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-278"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-279"><img src="images/000034.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-280">
+<div>
+<p>
+<span id="calibre_link-281">28</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-282"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-76" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-283"><img src="images/000171.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-284">
+<div>
+<p>
+<span id="calibre_link-285">29</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-286"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-89" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-287"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-288"><img src="images/000118.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-289">
+<div>
+<p>
+<span id="calibre_link-290">30</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-291"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-114" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-292"><img src="images/000000.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-293">
+<div>
+<p>
+<span id="calibre_link-294">31</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-295"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-5" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-296"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-297"><img src="images/000007.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-298">
+<div>
+<p>
+<span id="calibre_link-299">32</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-300"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-19" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-301"><img src="images/000030.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-302">
+<div>
+<p>
+<span id="calibre_link-303">33</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-304"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-22" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-305"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-306"><img src="images/000092.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-307">
+<div>
+<p>
+<span id="calibre_link-308">34</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-309"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-77" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-310"><img src="images/000060.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-311">
+<div>
+<p>
+<span id="calibre_link-312">35</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-313"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-56" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-314"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-315"><img src="images/000176.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-316">
+<div>
+<p>
+<span id="calibre_link-317">36</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-318"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-85" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-319"><img src="images/000081.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-320">
+<div>
+<p>
+<span id="calibre_link-321">37</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-322"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-102" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-323"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-324"><img src="images/000192.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-325">
+<div>
+<p>
+<span id="calibre_link-326">38</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-327"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-24" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-328"><img src="images/000112.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-329">
+<div>
+<p>
+<span id="calibre_link-330">39</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-331"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-14" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-332"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-333"><img src="images/000028.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-334">
+<div>
+<p>
+<span id="calibre_link-335">40</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-336"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-68" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-337"><img src="images/000135.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-338">
+<div>
+<p>
+<span id="calibre_link-339">41</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-340"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-46" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-341"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-342"><img src="images/000055.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-343">
+<div>
+<p>
+<span id="calibre_link-344">42</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-345"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-64" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-346"><img src="images/000165.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-347">
+<div>
+<p>
+<span id="calibre_link-348">43</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-349"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-111" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-350"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-351"><img src="images/000182.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-352">
+<div>
+<p>
+<span id="calibre_link-353">44</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-354"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-120" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-355"><img src="images/000190.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-356">
+<div>
+<p>
+<span id="calibre_link-357">45</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-358"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-95" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-359"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-360"><img src="images/000113.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-361">
+<div>
+<p>
+<span id="calibre_link-362">46</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-363"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-8" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-364"><img src="images/000026.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-365">
+<div>
+<p>
+<span id="calibre_link-366">47</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-367"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-105" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-368"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-369"><img src="images/000131.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-370">
+<div>
+<p>
+<span id="calibre_link-371">48</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-372"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-41" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-373"><img src="images/000052.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-374">
+<div>
+<p>
+<span id="calibre_link-375">49</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-376"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-65" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-377"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-378"><img src="images/000161.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-379">
+<div>
+<p>
+<span id="calibre_link-380">50</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-381"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-93" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-382"><img src="images/000075.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-383">
+<div>
+<p>
+<span id="calibre_link-384">51</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-385"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-119" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-386"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-387"><img src="images/000138.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-388">
+<div>
+<p>
+<span id="calibre_link-389">52</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-390"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-50" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-391"><img src="images/000184.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-392">
+<div>
+<p>
+<span id="calibre_link-393">53</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-394"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-49" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-395"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-396"><img src="images/000169.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-397">
+<div>
+<p>
+<span id="calibre_link-398">54</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-399"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-74" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-400"><img src="images/000126.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-401">
+<div>
+<p>
+<span id="calibre_link-402">55</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-403"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-104" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-404"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-405"><img src="images/000193.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-406">
+<div>
+<p>
+<span id="calibre_link-407">56</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-408"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-45" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-409"><img src="images/000070.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-410">
+<div>
+<p>
+<span id="calibre_link-411">57</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-412"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-30" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-413"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-414"><img src="images/000029.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-415">
+<div>
+<p>
+<span id="calibre_link-416">58</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-417"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-80" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-418"><img src="images/000098.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-419">
+<div>
+<p>
+<span id="calibre_link-420">59</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-421"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-96" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-422"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-423"><img src="images/000056.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-424">
+<div>
+<p>
+<span id="calibre_link-425">60</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-426"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-18" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-427"><img src="images/000163.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-428">
+<div>
+<p>
+<span id="calibre_link-429">61</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-430"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-94" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-431"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-432"><img src="images/000079.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-433">
+<div>
+<p>
+<span id="calibre_link-434">62</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-435"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-21" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-436"><img src="images/000080.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-437">
+<div>
+<p>
+<span id="calibre_link-438">63</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-439"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-59" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-440"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-441"><img src="images/000107.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-442">
+<div>
+<p>
+<span id="calibre_link-443">64</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-444"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-75" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-445"><img src="images/000025.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-446">
+<div>
+<p>
+<span id="calibre_link-447">65</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-448"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-44" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-449"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-450"><img src="images/000132.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-451">
+<div>
+<p>
+<span id="calibre_link-452">66</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-453"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-110" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-454"><img src="images/000157.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-455">
+<div>
+<p>
+<span id="calibre_link-456">67</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-457"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-112" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-458"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-459"><img src="images/000162.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-460">
+<div>
+<p>
+<span id="calibre_link-461">68</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-462"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-84" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-463"><img src="images/000189.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-464">
+<div>
+<p>
+<span id="calibre_link-465">69</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-466"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-12" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-467"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-468"><img src="images/000188.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-469">
+<div>
+<p>
+<span id="calibre_link-470">70</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-471"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-67" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-472"><img src="images/000042.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-473">
+<div>
+<p>
+<span id="calibre_link-474">71</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-475"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-0" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-476"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-477"><img src="images/000021.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-478">
+<div>
+<p>
+<span id="calibre_link-479">72</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-480"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-51" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-481"><img src="images/000175.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-482">
+<div>
+<p>
+<span id="calibre_link-483">73</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-484"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-109" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-485"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-486"><img src="images/000049.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-487">
+<div>
+<p>
+<span id="calibre_link-488">74</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-489"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-35" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-490"><img src="images/000116.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-491">
+<div>
+<p>
+<span id="calibre_link-492">75</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-493"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-60" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-494"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-495"><img src="images/000074.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-496">
+<div>
+<p>
+<span id="calibre_link-497">76</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-498"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-15" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-499"><img src="images/000058.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-500">
+<div>
+<p>
+<span id="calibre_link-501">77</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-502"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-115" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-503"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-504"><img src="images/000102.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-505">
+<div>
+<p>
+<span id="calibre_link-506">78</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-507"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-13" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-508"><img src="images/000065.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-509">
+<div>
+<p>
+<span id="calibre_link-510">79</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-511"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-36" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-512"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-513"><img src="images/000167.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-514">
+<div>
+<p>
+<span id="calibre_link-515">80</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-516"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-6" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-517"><img src="images/000128.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-518">
+<div>
+<p>
+<span id="calibre_link-519">81</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-520"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-1" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-521"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-522"><img src="images/000154.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-523">
+<div>
+<p>
+<span id="calibre_link-524">82</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-525"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-116" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-526"><img src="images/000050.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-527">
+<div>
+<p>
+<span id="calibre_link-528">83</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-529"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-27" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-530"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-531"><img src="images/000181.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-532">
+<div>
+<p>
+<span id="calibre_link-533">84</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-534"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-99" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-535"><img src="images/000011.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-536">
+<div>
+<p>
+<span id="calibre_link-537">85</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-538"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-57" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-539"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-540"><img src="images/000015.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-541">
+<div>
+<p>
+<span id="calibre_link-542">86</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-543"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-4" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-544"><img src="images/000143.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-545">
+<div>
+<p>
+<span id="calibre_link-546">87</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-547"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-17" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-548"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-549"><img src="images/000036.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-550">
+<div>
+<p>
+<span id="calibre_link-551">88</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-552"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-34" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-553"><img src="images/000002.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-554">
+<div>
+<p>
+<span id="calibre_link-555">89</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-556"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-52" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-557"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-558"><img src="images/000170.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-559">
+<div>
+<p>
+<span id="calibre_link-560">90</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-561"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-70" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-562"><img src="images/000136.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-563">
+<div>
+<p>
+<span id="calibre_link-564">91</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-565"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-90" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-566"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-567"><img src="images/000108.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-568">
+<div>
+<p>
+<span id="calibre_link-569">92</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-570"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-108" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-571"><img src="images/000076.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-572">
+<div>
+<p>
+<span id="calibre_link-573">93</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-574"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-2" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-575"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-576"><img src="images/000129.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-577">
+<div>
+<p>
+<span id="calibre_link-578">94</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-579"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-91" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-580"><img src="images/000013.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-581">
+<div>
+<p>
+<span id="calibre_link-582">95</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-583"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-31" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-584"><img src="images/000072.jpg" alt="" width="957" height="756" />
+</div>
+<div id="calibre_link-585"><img src="images/000044.jpg" alt="" width="1075" height="709" />
+</div>
+<div id="calibre_link-586">
+<div>
+<p>
+<span id="calibre_link-587">96</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-588"><img src="images/000041.jpg" alt="" width="1689" height="110" />
+</div>
+</div>
+
+
+<div id="calibre_link-54" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-589"><img src="images/000151.jpg" alt="" width="1075" height="756" />
+</div>
+<div id="calibre_link-590">
+<div>
+<p>
+<span id="calibre_link-591"><b>オリジナル写真</b></span>
+</p>
+</div>
+</div>
+<div id="calibre_link-592">
+<div>
+<p>
+<span id="calibre_link-593"><b>後編</b></span>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-16" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-594">
+<div>
+<p>
+<span id="calibre_link-595">98</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-596"><img src="images/000125.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-597"><img src="images/000095.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-598"><img src="images/000068.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-599"><img src="images/000038.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-86" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-600">
+<div>
+<p>
+<span id="calibre_link-601">99</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-602"><img src="images/000003.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-603"><img src="images/000172.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-604"><img src="images/000137.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-605"><img src="images/000059.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-103" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-606">
+<div>
+<p>
+<span id="calibre_link-607">100</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-608"><img src="images/000096.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-609"><img src="images/000053.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-610"><img src="images/000020.jpg" alt="" width="344" height="327" />
+</div>
+<div id="calibre_link-611"><img src="images/000088.jpg" alt="" width="344" height="327" />
+</div>
+<div id="calibre_link-612"><img src="images/000153.jpg" alt="" width="344" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-121" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-613">
+<div>
+<p>
+<span id="calibre_link-614">101</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-615"><img src="images/000005.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-616"><img src="images/000164.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-617"><img src="images/000071.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-618"><img src="images/000039.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-11" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-619">
+<div>
+<p>
+<span id="calibre_link-620">102</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-621"><img src="images/000124.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-622"><img src="images/000109.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-623"><img src="images/000018.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-624"><img src="images/000114.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-28" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-625">
+<div>
+<p>
+<span id="calibre_link-626">103</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-627"><img src="images/000110.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-628"><img src="images/000054.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-629"><img src="images/000006.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-630"><img src="images/000185.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-48" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-631">
+<div>
+<p>
+<span id="calibre_link-632">104</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-633"><img src="images/000158.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-634"><img src="images/000046.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-635"><img src="images/000016.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-636"><img src="images/000177.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-66" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-637">
+<div>
+<p>
+<span id="calibre_link-638">105</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-639"><img src="images/000147.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-640"><img src="images/000120.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-641"><img src="images/000089.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-642"><img src="images/000064.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-82" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-643">
+<div>
+<p>
+<span id="calibre_link-644">106</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-645"><img src="images/000035.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-646"><img src="images/000103.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-647"><img src="images/000168.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-648"><img src="images/000004.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-98" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-649">
+<div>
+<p>
+<span id="calibre_link-650">107</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-651"><img src="images/000106.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-652"><img src="images/000073.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-653"><img src="images/000048.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-654"><img src="images/000101.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-117" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-655">
+<div>
+<p>
+<span id="calibre_link-656">108</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-657"><img src="images/000180.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-658"><img src="images/000148.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-659"><img src="images/000174.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-660"><img src="images/000156.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-9" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-661">
+<div>
+<p>
+<span id="calibre_link-662">109</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-663"><img src="images/000067.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-664"><img src="images/000142.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-665"><img src="images/000104.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-666"><img src="images/000187.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-25" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-667">
+<div>
+<p>
+<span id="calibre_link-668">110</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-669"><img src="images/000194.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-670"><img src="images/000023.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-671"><img src="images/000077.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-672"><img src="images/000051.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-43" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-673">
+<div>
+<p>
+<span id="calibre_link-674">111</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-675"><img src="images/000091.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-676"><img src="images/000031.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-677"><img src="images/000078.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-678"><img src="images/000121.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-61" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-679">
+<div>
+<p>
+<span id="calibre_link-680">112</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-681"><img src="images/000173.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-682"><img src="images/000152.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-683"><img src="images/000093.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-684"><img src="images/000099.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-78" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-685">
+<div>
+<p>
+<span id="calibre_link-686">113</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-687"><img src="images/000186.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-688"><img src="images/000061.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-689"><img src="images/000166.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-690"><img src="images/000134.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-100" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-691">
+<div>
+<p>
+<span id="calibre_link-692">114</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-693"><img src="images/000085.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-694"><img src="images/000082.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-695"><img src="images/000191.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-696"><img src="images/000057.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-63" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-697">
+<div>
+<p>
+<span id="calibre_link-698">115</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-699"><img src="images/000062.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-700"><img src="images/000027.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-701"><img src="images/000032.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-702"><img src="images/000083.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-23" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-703">
+<div>
+<p>
+<span id="calibre_link-704">116</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-705"><img src="images/000144.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-706"><img src="images/000160.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-707"><img src="images/000086.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-708"><img src="images/000115.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-113" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-709">
+<div>
+<p>
+<span id="calibre_link-710">117</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-711"><img src="images/000003.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-712"><img src="images/000003.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-713"><img src="images/000017.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-714"><img src="images/000100.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-715"><img src="images/000150.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-716"><img src="images/000063.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-72" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-717">
+<div>
+<p>
+<span id="calibre_link-718">118</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-719"><img src="images/000043.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-720"><img src="images/000139.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-721"><img src="images/000111.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-722"><img src="images/000178.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-32" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-723">
+<div>
+<p>
+<span id="calibre_link-724">119</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-725"><img src="images/000003.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-726"><img src="images/000003.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-727"><img src="images/000097.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-728"><img src="images/000022.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-729"><img src="images/000183.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-730"><img src="images/000155.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-122" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-731">
+<div>
+<p>
+<span id="calibre_link-732">120</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-733"><img src="images/000001.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-734"><img src="images/000146.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-735"><img src="images/000069.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-736"><img src="images/000094.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-83" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-737">
+<div>
+<p>
+<span id="calibre_link-738">121</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-739"><img src="images/000003.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-740"><img src="images/000003.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-741"><img src="images/000003.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-742"><img src="images/000003.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-743"><img src="images/000003.jpg" alt="" width="436" height="327" />
+</div>
+<div id="calibre_link-744"><img src="images/000009.jpg" alt="" width="436" height="327" />
+</div>
+</div>
+
+
+<div id="calibre_link-39" lang="ja-JP" {http://www.w3.org/XML/1998/namespace}lang="ja-JP">
+<div id="calibre_link-745"><img src="images/000122.jpg" alt="" width="543" height="1" />
+</div>
+<div id="calibre_link-746"><img src="images/000040.jpg" alt="" width="136" height="73" />
+</div>
+<div id="calibre_link-747">
+<div>
+<p>
+<span id="calibre_link-748">刊行日　　　　　</span>
+<span id="calibre_link-749">2018</span>
+<span id="calibre_link-750">年</span>
+<span id="calibre_link-751">11</span>
+<span id="calibre_link-752">月</span>
+<span id="calibre_link-753">29</span>
+<span id="calibre_link-754">日</span>
+</p>
+<p>
+<span id="calibre_link-755">カラー化、編集　</span>
+<span id="calibre_link-756">Pearbook</span>
+<span id="calibre_link-757">編集部</span>
+</p>
+<p>
+<span id="calibre_link-758">発行　　　　　　</span>
+<span id="calibre_link-759">Pearbook</span>
+</p>
+<p>
+<span id="calibre_link-760">©</span>
+<span id="calibre_link-761">2018</span>
+<span id="calibre_link-762">Pearbook</span>
+</p>
+<p>
+<span id="calibre_link-763">http://pearbook.jp/</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-764">
+<div>
+<p>
+<span id="calibre_link-765">本書は正確性につとめましたが、本書の内容についてなんらかの保証をするものではなく、内</span>
+<span id="calibre_link-766">容に基づくいかなる結果についての責任を負いません。</span>
+</p>
+<p>
+<span id="calibre_link-767">本書はカラー化に伴い著作権法上の保護を受けています、本書の一部または全部について編集</span>
+<span id="calibre_link-768">者の許諾を得ずにいかなる方法においても無断で複写、複製することは禁じられています。</span>
+</p>
+</div>
+</div>
+<div id="calibre_link-769">
+<div>
+<p>
+<span id="calibre_link-770">※</span>
+</p>
+<p>
+<span id="calibre_link-771">※</span>
+</p>
+</div>
+</div>
+</div>
+
+
+<script>function myFunction(){document.getElementById("tateyoko").classList.toggle("tateread")}</script></body></html>
