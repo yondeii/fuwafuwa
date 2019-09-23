@@ -1,0 +1,2272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>何となくJavaScriptを書いていた人が一歩先に進むための本</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/mainday.css" title="default">
+<link rel="alternate stylesheet" href="/css/mainnight.css" title="alternate">
+<script type="text/javascript" src="/js/styleswitcher.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+</head>
+<body>
+<div class="novelpage">
+<div class="novelbody">
+<div id="tateyoko">
+<div id="_top"></div>
+<a href="/">🏠</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('default'); return false;">日</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">月</a>&emsp;
+<a href="#_top" onclick="myFunction()" style="cursor: pointer;">縦書き／横書き</a>
+<div id="calibre_link-85">
+<div>
+<div>
+<table class="noveltitle">
+<tr>
+<td colspan="2"><i><span><i>何となくJavaScriptを書いていた人が一歩先に進むための本</i></span></i></td>
+</tr>
+<tr>
+                    
+                    
+      </tr>
+<tr>
+<td colspan="2">五十嵐肇 &amp; 多良間斎</td>
+</tr>
+<tr>
+<td colspan="2"> (2016)</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+</tr>
+</table>
+<div></div>
+</div>
+<div></div>
+</div>
+</div>
+
+
+
+<div id="calibre_link-1">
+<div><b><u>目次</u></b></div>
+<div><b>Chapter１．イントロダクション
+<div><b><a href="#calibre_link-2"><b>１−１．はじめに</b></a></b></div>
+<div><b><a href="#calibre_link-3"><b>１−２．本書の対象者</b></a></b></div>
+<div><b><a href="#calibre_link-4"><b>１−３．サンプルソースについて</b></a></b></div>
+</b></div>
+<div><b>Chapter２．基礎のおさらいをしよう！
+<div><b><a href="#calibre_link-5"><b>２−１．そもそもJavaScriptの基礎ってなんぞや？</b></a></b></div>
+<div><b><a href="#calibre_link-6"><b>２−２．JavaScriptの文法をおさらいしよう！</b></a>
+<div><b><a href="#calibre_link-7"><b>２−２−１．基本的な記述ルール</b></a></b></div>
+<div><b><a href="#calibre_link-8"><b>２−２−２．変数宣言</b></a></b></div>
+<div><b><a href="#calibre_link-9"><b>２−２−３．命名規則</b></a></b></div>
+</b></div>
+<div><b><a href="#calibre_link-10"><b>２−３．データ型をおさらいしよう！</b></a>
+<div><b><a href="#calibre_link-11"><b>２−３−１．数値リテラル</b></a></b></div>
+<div><b><a href="#calibre_link-12"><b>２−３−２．文字列リテラル</b></a></b></div>
+<div><b><a href="#calibre_link-13"><b>２−３−３．配列リテラル</b></a></b></div>
+<div><b><a href="#calibre_link-14"><b>２−３−４．オブジェクトリテラル</b></a></b></div>
+<div><b><a href="#calibre_link-15"><b>２−３−５．関数リテラル</b></a></b></div>
+</b></div>
+<div><b><a href="#calibre_link-16"><b>２−４．演算子をおさらいしよう！</b></a>
+<div><b><a href="#calibre_link-17"><b>２−４−１．算術演算子</b></a></b></div>
+<div><b><a href="#calibre_link-18"><b>２−４−２．代入演算子</b></a></b></div>
+<div><b><a href="#calibre_link-19"><b>２−４−３．比較演算子</b></a></b></div>
+<div><b><a href="#calibre_link-20"><b>２−４−４．論理演算子</b></a></b></div>
+</b></div>
+<div><b><a href="#calibre_link-21"><b>２−５．制御文をおさらいしよう！</b></a>
+<div><b><a href="#calibre_link-22"><b>２−５−１．単純な分岐処理〜if命令〜</b></a></b></div>
+<div><b><a href="#calibre_link-23"><b>２−５−２．多岐にわたる分岐処理〜switch命令〜</b></a></b></div>
+<div><b><a href="#calibre_link-24"><b>２−５−３．条件式によって処理を繰り返す〜while／do...while命令〜</b></a></b></div>
+<div><b><a href="#calibre_link-25"><b>２−５−４．指定回数だけ処理を繰り返す〜for命令〜</b></a></b></div>
+<div><b><a href="#calibre_link-26"><b>２−５−５．配列内の要素を順番に処理する〜for...in命令〜</b></a></b></div>
+<div><b><a href="#calibre_link-27"><b>２−５−６．ループを制御する〜break／continue命令、ラベル構文〜</b></a></b></div>
+<div><b><a href="#calibre_link-28"><b>２−５−７．例外処理〜try...catch...finally命令〜</b></a></b></div>
+</b></div>
+</b></div>
+<div><b>Chapter３．オブジェクトを理解しよう！
+<div><b><a href="#calibre_link-29"><b>３−１．JavaScriptにおけるオブジェクトとは？</b></a></b></div>
+<div><b><a href="#calibre_link-30"><b>３−２．プロパティとメソッド</b></a></b></div>
+<div><b><a href="#calibre_link-31"><b>３−３．new演算子</b></a></b></div>
+<div><b><a href="#calibre_link-32"><b>３−４．独自のコンストラクタを定義する</b></a></b></div>
+<div><b><a href="#calibre_link-33"><b>３−５．オブジェクトとプリミティブ型</b></a></b></div>
+<div><b><a href="#calibre_link-34"><b>３−６．オブジェクトは動的な存在である</b></a></b></div>
+<div><b><a href="#calibre_link-35"><b>３−７．Objectオブジェクト</b></a></b></div>
+<div><b><a href="#calibre_link-36"><b>３−８．Globalオブジェクト</b></a></b></div>
+<div><b><a href="#calibre_link-37"><b>３−９．nullとundefined</b></a></b></div>
+</b></div>
+<div><b>Chapter４．関数の理解を深めよう！
+<div><b><a href="#calibre_link-38"><b>４−１．関数を制する者は世界を制す</b></a></b></div>
+<div><b><a href="#calibre_link-39"><b>４−２．関数の定義方法</b></a></b></div>
+<div><b><a href="#calibre_link-40"><b>４−３．変数のスコープ</b></a></b></div>
+<div><b><a href="#calibre_link-41"><b>４−４．argumentsオブジェクト</b></a></b></div>
+<div><b><a href="#calibre_link-42"><b>４−５．引数に名前を付ける</b></a></b></div>
+<div><b><a href="#calibre_link-43"><b>４−６．高階関数</b></a></b></div>
+<div><b><a href="#calibre_link-44"><b>４−７．スコープチェーン</b></a></b></div>
+<div><b><a href="#calibre_link-45"><b>４−８．クロージャ</b></a></b></div>
+</b></div>
+<div><b>Chapter５．プロトタイプを知っておこう！
+<div><b><a href="#calibre_link-46"><b>５−１．プロトタイプとは</b></a></b></div>
+<div><b><a href="#calibre_link-47"><b>５−２．prototypeプロパティ</b></a></b></div>
+<div><b><a href="#calibre_link-48"><b>５−３．プロトタイプチェーン</b></a></b></div>
+</b></div>
+<div><b>Chapter６．ES6(ECMAScript6)の新機能を覗いてみよう！
+<div><b><a href="#calibre_link-49"><b>６−１．ECMAScriptとは</b></a></b></div>
+<div><b><a href="#calibre_link-50"><b>６−２．ブロックスコープの宣言</b></a></b></div>
+<div><b><a href="#calibre_link-51"><b>６−３．定数の宣言</b></a></b></div>
+<div><b><a href="#calibre_link-52"><b>６−４．テンプレート文字列</b></a></b></div>
+<div><b><a href="#calibre_link-53"><b>６−５．分割代入</b></a></b></div>
+<div><b><a href="#calibre_link-54"><b>６−６．for...of</b></a></b></div>
+<div><b><a href="#calibre_link-55"><b>６−７．引数のデフォルト値</b></a></b></div>
+<div><b><a href="#calibre_link-56"><b>６−８．可変長引数</b></a></b></div>
+<div><b><a href="#calibre_link-57"><b>６−９．アロー関数</b></a></b></div>
+<div><b><a href="#calibre_link-58"><b>６−１０．オブジェクトリテラルの進化</b></a></b></div>
+<div><b><a href="#calibre_link-59"><b>６－１１．クラスの定義</b></a></b></div>
+</b></div>
+<div><b>Chapter７．終わりに
+<div><b><a href="#calibre_link-60"><b>７．終わりに</b></a></b></div>
+</b></div>
+</div>
+<div id="calibre_link-118">
+<div id="calibre_link-134"></div><h2 id="calibre_link-2"><b><u>Chapter１．イントロダクション</u></b></h2>
+<h3 id="calibre_link-135"><b><u>１−１．はじめに</u></b></h3>
+<p>JavaScriptって、不思議な言語ですよね。<br />
+  多少の知識があれば、誰でもある程度はプログラミング出来ます。<br />
+  しかし、突き詰めようすると、とたんに理解し辛い難解な代物となります。</p>
+<p>筆者も、十余年のエンジニア生活の中で、若い頃はわりといい加減にJavaScriptに接して来ました。<br />
+  それでも、サーバサイドの開発がメインだった時代では、大して問題はありませんでした。<br />
+  しかし時代は変わり、フロントエンドの開発が重視されるようになった昨今、JavaScriptの重要性は、年々確実に増しています。</p>
+<p>・・・それなのに。<br />
+<strong><b>何で、どこの現場もフロントエンド周りの教育に力を注がないんですかね！？</b></strong><br />
+<strong><b>HTMLやCSSもそうですけど、コーディングさせるなら、まずはちゃんとJavaScriptの教育をしないとダメじゃないですか！</b></strong><br />
+<strong><b>DBやフレームワークもそりゃ大事ですけど、ユーザーにリアルに接するのはフロントエンドじゃないですか！</b></strong><br />
+<strong><b>フロントエンドには専門職がいる？</b></strong><br />
+<strong><b>甘い！</b></strong><br />
+<strong><b>そんなこと言ってられるの、一部のお金持ち企業だけですから！！</b></strong><br />
+<strong><b>こんなことだから、海外からは日本製のWebサイトはレベルがひ（ｒｙ</b></strong></p>
+<p><br /></p>
+<p>と言うわけ(？)なので、いっちょ本を書き起こしてみました。<br />
+  今まで何とな〜くJavaScriptを書いていた人たちに、是非その先の世界へ進んでもらいたいのです。<br />
+  JavaScriptは、ある程度の理解が進むと、とたんに楽しくなって来ます。<br />
+  是非、その喜びを味わってみてください。</p>
+<p>この本をお買い上げいただいたのも、きっと何かの縁。 一緒にJavaScriptの奥深い世界に足を踏み入れてみましょう。</p>
+<p>2016年5月吉日　Kinky-Do 五十嵐肇</p>
+<div id="calibre_link-136"></div>
+</div>
+<div id="calibre_link-87">
+<div id="calibre_link-137"></div><h3 id="calibre_link-3"><b><u>１−２．本書の対象者</u></b></h3>
+<p>本書は主に以下のような方を対象としています。<br />
+<span>・今まで何となくノリと勢いでJavaScriptを書いて来た人</span><br />
+<span>・文法と演算子、制御文ぐらいは抑えているけど・・・と言う人</span><br />
+<span>・もっと深くJavaScriptのことを知りたい人</span><br />
+<span>・JavaやC#など、他のオブジェクト指向言語のある程度の知識、経験がある人</span></p>
+<p>逆に、上記のいずれにも該当しない人には、全くオススメいたしません。<br />
+  本書では、JavaScriptの基本中の基本の部分については、本当におさらい程度にしか触れません。<br />
+  また、ブラウザオブジェクトについては一切触れません。<br />
+  最後に、JavaScriptの全てを本書で学べる訳ではありません。（当たり前ですが！）<br />
+  予めご了承ください。</p>
+<div id="calibre_link-139"></div>
+</div>
+<div id="calibre_link-129">
+<div id="calibre_link-140"></div><h3 id="calibre_link-4"><b><u>１−３．サンプルソースについて</u></b></h3>
+<p>本書で扱っているサンプルソースは、主に以下の環境で動作確認を行っております。<br />
+<span>・MaxOS X 10.11.1</span><br />
+<span>・Windows 10 Home　バージョン：1511</span><br />
+<span>・Chrome最新版</span></p>
+<p>上記以外の環境では、一部正常に動作しない場合や、サンプルとは違った結果が得られる場合がありますので、ご注意ください。<br />
+また、サンプルソースの出力結果は全てコメントアウトで表していますので、そちらもご注意ください。</p>
+<div id="calibre_link-142"></div>
+</div>
+<div id="calibre_link-70">
+<div id="calibre_link-143"></div><h2 id="calibre_link-5"><b><u>Chapter２．基礎のおさらいをしよう！</u></b></h2>
+<h3 id="calibre_link-144"><b><u>２−１．そもそもJavaScriptの基礎ってなんぞや？</u></b></h3>
+<p>一言で「基礎」と言っても、明確な定義はありません。<br />
+  そこで、本書では「基礎」の定義を以下のようにしています。<br />
+<span>・記述ルール（文法）</span><br />
+<span>・データ型</span><br />
+<span>・演算子</span><br />
+<span>・制御文</span></p>
+<p>まずは、これらについておさらいをします。<br />
+  言葉通り「おさらい」なので、モノによってはあまり深いところまでは触れません。<br />
+  基礎のキの字までの詳細がガッツリ必要な方は、既に世に出回っている星の数ほどの書籍の中から、目的に沿った好きな一冊をお選びください。<br />
+  また、「基礎なんて完璧だぜ」と言う方は、Chapter2は読み飛ばして頂いても結構でございます。</p>
+<div id="calibre_link-145"></div>
+</div>
+<div id="calibre_link-91">
+<div id="calibre_link-146"></div><h3 id="calibre_link-6"><b><u>２−２．JavaScriptの文法をおさらいしよう！</u></b></h3>
+<p>JavaScriptの文法は、さほど難しいものではありません。<br />
+  いくつかのルールに則ってしまえば、割りとアッサリ動きます。<br />
+  また、更にいくつかのルールは省略可能だったりもします。<br />
+  これらについては、言葉でツラツラ説明するよりも、まずは例を見てサッとおさらいしてしまいましょう。</p>
+<p><span><b>例：２−２−①</b></span></p>
+<p><br />
+<span>var</span> hoge = '';  ①<br />
+fuga = 123<br />
+<br />
+<span>//これはコメント</span>  ②<br />
+<br />
+<span>/*</span>  ③<br />
+<span>これも</span><br />
+<span>コメント</span><br />
+<span>*/</span><br />
+<br />
+fuga = '今日は' +  ④<br />
+                  'いい天気' + 'ですね'<br />
+                  ;<br />
+<br />
+<br /></p>
+<p>① 変数は var で宣言します。付けなくても宣言出来ますが、特別な理由が無い限り必ず付けるようにしましょう。<br />
+  また、文末にはセミコロン（;）を付けます。これまた省略可能ですが、こちらは<span><b><i>必ず</i></b></span>付けるようにしましょう。</p>
+<p>② 単行のコメントアウトは // です。</p>
+<p>③ 複数行のコメントアウトは /* 〜〜 */ です。</p>
+<p>④ 最低限のルールに則っていれば、改行はやりたい放題です。<br />
+  とりあえず、<span><b><i>リテラルの途中で改行する</i></b></span>なんて言うトンデモ行動に出なければ問題無いです。</p>
+<div id="calibre_link-148"></div>
+</div>
+<div id="calibre_link-102">
+<div id="calibre_link-149"></div><h4 id="calibre_link-7"><b><u>２−２−１．基本的な記述ルール</u></b></h4>
+<p>JavaScriptの記述ルールは、大きく分けると以下の通りとなります。<br />
+<span>・大文字小文字は区別する</span><br />
+<span>・センテンス内の空白と改行は無視される</span><br />
+<span>・センテンスの区切りにはセミコロンを付ける</span></p>
+<p>まず、大文字と小文字の区別については説明不要だと思います。</p>
+<p><span><b>例：２−２−②</b></span></p>
+<p><br />
+hoge = 'fuga';<br />
+Hoge = 'foo';<br />
+<br />
+console.log(hoge);<span>// fuga</span><br />
+console.log(Hoge);<span>// foo</span><br />
+<br /></p>
+<p>仮に納得行かない人がいたとしても、こう言うモンだと思って諦めてください。</p>
+<p>次に、センテンス内の空白と改行についてです。<br />
+  こちらは、他の言語に慣れた人のうち、一部の人にとっては違和感を覚えるかもしれません。<br />
+  とは言え、難しいことは一切無いと思います。</p>
+<p><span><b>例：２−２−③</b></span></p>
+<p><br />
+<span>var</span> hoge = 'fuga';<span>// OK</span><br />
+<span>var</span> num = 10;<span>// OK</span><br />
+<span>var</span> val =<br />
+    'foo';<span>// OK</span><br />
+<br />
+<span>var</span> ho ge = '';<span>// NG</span><br />
+<span>var</span> boo = 'abc<span>// NG</span><br />
+    def';<br />
+<br /></p>
+<p>とりあえず、<br />
+<span>・文の中で空白やタブなどの空白文字と改行は自由に挿入可能</span><br />
+<span>・単語やリテラルの中に空白や改行を入れることは不可能</span><br />
+  と覚えておきましょう。</p>
+<p>最後に文末のセミコロンについてです。<br />
+  JavaScriptでは、文末にセミコロンが付いていなくても<span><b><i>ある程度勝手に文脈を判断して、文末にセミコロンが付いているものとして扱ってくれます</i></b></span>。<br />
+  まぁ、考え様によっては便利っちゃ便利なんですけど、細かいことは抜きにして、絶対に文末にはセミコロンを付けるように徹底しましょう。<br />
+  セミコロンを省略するデメリットは多々あっても、メリットはほぼ皆無です。<br />
+  ファイルサイズを1バイトでも減らしたいとか、そんな切ない事情でも無い限り、必ず付けるようにしましょう！</p>
+<div id="calibre_link-151"></div>
+</div>
+<div id="calibre_link-72">
+<div id="calibre_link-152"></div><h4 id="calibre_link-8"><b><u>２−２−２．変数宣言</u></b></h4>
+<p>JavaScriptでの変数宣言は、基本的に<span><b><i>var命令</i></b></span>で行います。<br />
+  前述の通り、var命令は省略可能ですが、これを付けておかないと思わぬ動作に苦しめられる可能性があります。<br />
+  以下に例を記します。</p>
+<p><span><b>例：２−２−④</b></span></p>
+<p><br />
+<span>// グローバル変数を宣言する</span><br />
+val = 'Global！';<br />
+<br />
+<span>function</span> getValue(){<br />
+<span>// ローカル変数を宣言する？</span><br />
+    val = 'Local！';<br />
+<span>return</span> val;<br />
+}<br />
+console.log(getValue());<span>// Local！</span><br />
+console.log(val);<span>// Local！</span><br />
+<br /></p>
+<div id="calibre_link-154"></div>
+</div>
+<div id="calibre_link-111">
+<div id="calibre_link-155"></div><p><span><b>例：２−２−⑤</b></span></p>
+<p><br />
+<span>// グローバル変数を宣言する</span><br />
+<strong><b>var</b></strong> val = 'Global！';<br />
+<br />
+<span>function</span> getValue(){<br />
+<span>// ローカル変数を宣言する</span><br />
+<strong><b>var</b></strong> val = 'Local！';<br />
+<span>return</span> val;<br />
+}<br />
+console.log(getValue());<span>// Local！</span><br />
+console.log(val);<span>// Global！</span><br />
+<br /></p>
+<p>ソースを見れば、差は一目瞭然ですね！<br />
+  JavaScriptでは<span><b><i>「var命令を使わずに宣言した変数はすべてグローバル変数とみなす」</i></b></span>と言うルールがあります。<br />
+  逆に言えば、ローカル変数を宣言するには、var命令は絶対に欠かせないと言うことでもあります。<br />
+  前述の例：２−２−④では、getValue()関数の中で<span><b><i>ローカル変数</i></b></span>としてval変数を宣言したつもりのところ、var命令が付いていないがために、<br />
+<span><b><i>既に宣言されているグローバル変数(val)に対しての代入</i></b></span>として解釈されてしまったわけです。</p>
+<p>この仕様は、規模が大きくなればなるほど、開発を進めて行く中で大問題に発展する恐れがあります。<br />
+  jsファイルに切り出したソースをいくつもインポートするようなケースを考えてみると、その危険性は説明するまでもないと思います。<br />
+  ですので、もうこの際、どのような開発ケースでも必ず以下のように徹底しましょう。<br />
+<span><b><i>「変数宣言は必ずvar命令を使うこと！！！」</i></b></span><br />
+  コーディング規約レベルでこのように定めておけば、複数人で開発をするようなケースでも無用なトラブルを一つ避けることができます。<br />
+  また、あなた個人で開発を行うケースでも、ウッカリミスを一つ減らせることでしょう。</p>
+<p>ちなみに。<br />
+  ES6（ECMAScript6）では、var命令の他に<span><b><i>let命令</i></b></span>と<span><b><i>const命令</i></b></span>言うものが存在します。<br />
+  これらも考慮し出すと、一気に話がヤヤコシクなる上に、現状ではES6の普及も完璧とは決して言えません。<br />
+  ですので、一旦ここでは触れないことにします。<br />
+  ※ES6については、本書後半で軽く触れますので、そちらを参考にしてください</p>
+<div id="calibre_link-157"></div>
+</div>
+<div id="calibre_link-125">
+<div id="calibre_link-158"></div><h4 id="calibre_link-9"><b><u>２−２−３．命名規則</u></b></h4>
+<p>JavaScriptの変数名、関数名のルールは以下の通りです。<br />
+<span>・半角のアルファベット、半角の数値、半角のアンダースコア、半角のドル記号で構成されること</span><br />
+<span>・数値で始まらないこと</span><br />
+<span>・予約語で無いこと</span></p>
+<p>何ら難しいことはないですね。<br />
+  他の言語と比べても、ほとんど違和感は無いと思います。<br />
+  なお、予約語の種類についての詳細は、本書では割愛します。<br />
+  調べたい人は「<span><b><i>JavaScript　予約語</i></b></span>」でググれば山のように情報が出てきますので、それらを参照してください。</p>
+<div id="calibre_link-160"></div>
+</div>
+<div id="calibre_link-120">
+<div id="calibre_link-161"></div><h3 id="calibre_link-10"><b><u>２−３．データ型をおさらいしよう！</u></b></h3>
+<p>まず最初に確認しておきます。<br />
+  JavaScriptは、「データ型を意識しなくていい言語」なのではなく、「<span><b><i>データ型について非常に寛容な言語</i></b></span>」です。<br />
+  もっと言うと、データ型について正しく理解していないと、使いこなすなんて絶対不可能な言語です。<br />
+  ここら辺、結構勘違いしている人が居ますので、仮にあなたもそうであれば、今すぐ考えを改めてから以下を読み進めてください。</p>
+<p>JavaScriptのデータ型は、大きく基本型（プリミティブ型）と参照型に分類されます。<br />
+  基本型には以下の種類があります。<br />
+<span>・真偽値（true／false）を扱うための<span><b><i>boolean</i></b></span></span><br />
+<span>・数値を扱うための<span><b><i>number</i></b></span></span><br />
+<span>・文字列を扱うための<span><b><i>string</i></b></span></span><br />
+<span>・null値を扱うための<span><b><i>null</i></b></span></span><br />
+<span>・未定義値を扱うための<span><b><i>undefined</i></b></span></span></p>
+<p>また、参照型には主に以下の種類があります。<br />
+<span>・配列を扱うための<span><b><i>array</i></b></span></span><br />
+<span>・オブジェクトを扱うための<span><b><i>object</i></b></span></span><br />
+<span>・関数を扱うための<span><b><i>function</i></b></span></span></p>
+<p>基本型と参照型の違いは、簡単に言ってしまえば<br />
+<span><b><i>「値そのものを扱うのか、値の格納されているアドレスを扱うのか」</i></b></span><br />
+  です。<br />
+  この概念は、他の言語の考え方と何ら違いはありません。</p>
+<p>しかし、関数を扱うための<span><b><i>function</i></b></span>に関しては、他の言語経験者の多くを悩ませる一因だと思います。<br />
+  関数については、別項で詳細に触れますので、ここでは詳細は割愛します。<br />
+  とりあえず、<span><b><i>JavaScriptでは関数もデータ型の一種である</i></b></span>と言うことに、無理やりでもいいので慣れておいてください。</p>
+<p>なお、<span><b><i>データ型に格納出来る値そのもの、または値の表現方法</i></b></span>のことを<span><b><i>リテラル</i></b></span>と言います。<br />
+  リテラルを正しく理解することは、JavaScriptを理解する上で欠かせない要素の一つです。</p>
+<div id="calibre_link-163"></div>
+</div>
+<div id="calibre_link-86">
+<div id="calibre_link-164"></div><h4 id="calibre_link-11"><b><u>２−３−１．数値リテラル</u></b></h4>
+<p>JavaScriptの数値リテラルは、整数リテラルと浮動小数点リテラルに分類されます。<br />
+  また、整数リテラルには10進数、8進数、16進数のそれぞれのリテラルがあります。</p>
+
+
+<table border="1" cellspacing="0">
+<tbody><tr>
+<td colspan="2"></td>
+<td>例</td>
+<td>補足</td>
+</tr>
+<tr>
+<td rowspan="3">整数リテラル</td>
+<td>10進数リテラル</td>
+<td>100、1、0など</td>
+<td>日常的に表現する値</td>
+</tr>
+<tr>
+<td>8進数リテラル</td>
+<td>0600、0655、0777など</td>
+<td>頭に<span><b><i>0</i></b></span>を付ける</td>
+</tr>
+<tr>
+<td>16進数リテラル</td>
+<td>0xFFff11、0xCC55BBなど</td>
+<td>頭に<span><b><i>0x</i></b></span>を付ける</td>
+</tr>
+<tr>
+<td colspan="2">不動小数点リテラル</td>
+<td>1.1、3.14e5など</td>
+<td>指数表現も可能</td>
+</tr>
+</tbody></table>
+<div id="calibre_link-166"></div>
+</div>
+<div id="calibre_link-128">
+<div id="calibre_link-167"></div><h4 id="calibre_link-12"><b><u>２−３−２．文字列リテラル</u></b></h4>
+<p>文字列リテラルは、シングルクォート（'）またはダブルクォート（"）で値を囲みます。<br />
+  JavaScriptでは、他の多くの言語と異なり、シングルとダブルのどちらのクォーテーションでも文字列を表現出来ます。<br />
+  前後の対応関係が取れている限り、特にどちらでないとダメ、と言うことはありません。<br />
+  また、文字列の中にシングル／ダブルクォートを含める場合は、文字列中に使用するクォートとは逆のクォートで囲むか、文字列中のクォートを<span><b><i>¥</i></b></span>でエスケープする必要があります。</p>
+<p><span><b>例：２−３−①</b></span></p>
+<p><br />
+'こんにちは！'<br />
+"こんばんわ！"<br />
+"He's Hero!"<br />
+'He¥'s Hero!'<br />
+<br /></p>
+<p>ちなみに、筆者的には<span><b><i>基本的にシングルクォートの利用をオススメ</i></b></span>いたします。<br />
+  ※HTMLを含む文字列を生成する際に便利なため</p>
+<div id="calibre_link-169"></div>
+</div>
+<div id="calibre_link-93">
+<div id="calibre_link-170"></div><h4 id="calibre_link-13"><b><u>２−３−３．配列リテラル</u></b></h4>
+<p>配列リテラルは、カンマで区切った値をブラケット（[]）で囲った形式で表します。<br />
+  それぞれの要素にはインデックス番号をキーにアクセスします。<br />
+  インデックス番号は、0、1、2・・・と0から始まります。</p>
+<p><span><b>例：２−３−②</b></span></p>
+<p><br />
+<span>var</span> arr =<br />
+        ['java', 'JavaScript', 'HTML'];<br />
+console.log(arr[1]);<span>// JavaScript</span><br />
+<br /></p>
+<p>また、多次元配列を定義したい場合は、単純に配列要素を入れ子にして定義すればOKです。</p>
+<p><span><b>例：２−３−③</b></span></p>
+<p><br />
+<span>var</span> arr =<br />
+      ['java', 'JavaScript',<br />
+          ['HTML', 'CSS'] ];<br />
+console.log(arr[2][0]);<span>// HTML</span><br />
+<br /></p>
+<div id="calibre_link-172"></div>
+</div>
+<div id="calibre_link-105">
+<div id="calibre_link-173"></div><h4 id="calibre_link-14"><b><u>２−３−４．オブジェクトリテラル</u></b></h4>
+<p>オブジェクトとは、<span><b><i>名前をキーにしてアクセスすることが可能</i></b></span>な配列のような存在です。<br />
+  ハッシュ、連想配列と呼ばれることもあります。<br />
+  通常の配列に比べて、任意の名前でプロパティ(配列で言うところの要素)にアクセス出来るため、データの視認性や可読性が高くなります。<br />
+  ※オブジェクトについての詳しいことは、後のチャプターでガッツリ触れます</p>
+<p>オブジェクトリテラルは、中括弧（{}）とコロン｛:｝を使って表記します。<br />
+  また、各プロパテイへのアクセスは、ドット演算子を用いる方法と、ブラケット構文を用いる方法の2種類があります。</p>
+<p><span><b>例：２−３−④</b></span></p>
+<p><br />
+<span>var</span> obj = { a:1, b:2, c:3};<br />
+console.log(obj.a);<span>// 1</span><br />
+console.log(obj['b']);<span>// 2</span><br />
+<br /></p>
+<p>ブラケット構文は、記述が冗長になるデメリットがありますが、ドット演算子では利用できない名称のプロパティを扱えます。<br />
+  また、プロパティ名を変数にすることも可能です。</p>
+<p><span><b>例：２−３−⑤</b></span></p>
+<p><br />
+<span>var</span> obj = {};<br />
+obj['123'] = '123';<br />
+obj['999'] = '999';<br />
+<br />
+<span>var</span> val = '999';<br />
+<br />
+console.log(obj['123']);<span>// 123</span><br />
+console.log(obj[val]);<span>// 999</span><br />
+<br /></p>
+<p>ドット演算子では、数字から始まるプロパティ名を扱えません。<br />
+  また、変数を用いた動的なプロパティアクセスも出来ません。<br />
+  とは言え、通常は、可読性の高いドット演算子を使うようにしていて問題無いでしょう。</p>
+<div id="calibre_link-175"></div>
+</div>
+<div id="calibre_link-103">
+<div id="calibre_link-176"></div><h4 id="calibre_link-15"><b><u>２−３−５．関数リテラル</u></b></h4>
+<p>前述した通り、JavaScriptでは関数もデータ型の一種となります。<br />
+  よって、関数リテラルと言う概念も存在します。<br />
+  関数リテラルは他のリテラルと違って複雑な要素が多いため、おさらいレベルで触れるのではなく、別項で詳細に扱います。</p>
+<div id="calibre_link-178"></div>
+</div>
+<div id="calibre_link-69">
+<div id="calibre_link-179"></div><h3 id="calibre_link-16"><b><u>２−４．演算子をおさらいしよう！</u></b></h3>
+<p>JavaScriptの演算子は、以下の種類に分類されます。<br />
+<span>・算術演算子</span><br />
+<span>・代入演算子</span><br />
+<span>・比較演算子</span><br />
+<span>・論理演算子</span><br />
+<span>・ビット演算子</span><br />
+<span>・その他</span></p>
+<p>本書では、一般的な開発シーンでの利用が特に多い算術、代入、比較のそれぞれの演算子と、論理演算子の一部について取り扱います。</p>
+<div id="calibre_link-181"></div>
+</div>
+<div id="calibre_link-126">
+<div id="calibre_link-182"></div><h4 id="calibre_link-17"><b><u>２−４−１．算術演算子</u></b></h4>
+<p>算術演算子は、標準的な四則演算をはじめ、数学的な演算を行います。</p>
+
+
+<table border="1" cellspacing="0">
+<tbody><tr>
+<td>演算子</td>
+<td>説明</td>
+<td colspan="2">例</td>
+</tr>
+<tr>
+<td>+</td>
+<td>数値の加算</td>
+<td>1 + 1</td>
+<td><span>// 2</span></td>
+</tr>
+<tr>
+<td>-</td>
+<td>数値の減算</td>
+<td>8 - 5</td>
+<td><span>// 3</span></td>
+</tr>
+<tr>
+<td>*</td>
+<td>数値の乗算</td>
+<td>2 * 4</td>
+<td><span>// 8</span></td>
+</tr>
+<tr>
+<td>/</td>
+<td>数値の除算</td>
+<td>10 / 2</td>
+<td><span>// 5</span></td>
+</tr>
+<tr>
+<td>%</td>
+<td>数値の剰余</td>
+<td>10 % 4</td>
+<td><span>// 2</span></td>
+</tr>
+<tr>
+<td>++</td>
+<td>前置加算</td>
+<td>x = 3; a = ++x;</td>
+<td><span>// aは4</span></td>
+</tr>
+<tr>
+<td>++</td>
+<td>後置加算</td>
+<td>x = 3; a = x++;</td>
+<td><span>// aは3</span></td>
+</tr>
+<tr>
+<td>--</td>
+<td>前置減算</td>
+<td>x = 3; a = --x;</td>
+<td><span>// aは2</span></td>
+</tr>
+<tr>
+<td>--</td>
+<td>後置減算</td>
+<td>x = 3; a = x--;</td>
+<td><span>// aは3</span></td>
+</tr>
+</tbody></table>
+<p>算術演算子は、見た目にもわかりやすく、直感的に利用できるものがほとんどです。<br />
+  しかし、一部の演算子は、利用シーンによって若干の注意が必要になります。</p>
+<p>まず、加算演算子（+）です。<br />
+  加算演算子の挙動は、オペランド（演算対象の変数やリテラル）のデータ型によって異なります。<br />
+<span>・オペランドが双方とも数値の場合は加算</span><br />
+<span>・オペランドが片一方でも文字列の場合は文字列連結</span><br />
+  具体的には例で理解してください。</p>
+<p><span><b>例：２−４−①</b></span></p>
+<p><br />
+console.log(10 + 100);<span>// 110</span><br />
+console.log('10' + 100);<span>// 10100</span><br />
+console.log(10 + '9');<span>// 109</span><br />
+<br /></p>
+<p>次に、前置後置加算と前置後置減算ですが、これらについては特にJavaScriptがゆえの注意点はありません。<br />
+  前述した表の例をよく見て、その挙動を理解しておいてください。</p>
+<p>最後に、小数点を含む演算について説明します。<br />
+  JavaScriptは、数値の演算を内部的には２進数で行っているため、ごく当たり前の計算に誤差が生じます。</p>
+<p><span><b>例：２−４−②</b></span></p>
+<p><br />
+console.log(0.2 * 3);<br />
+<span>// 0.6000000000000001</span><br />
+<br /></p>
+<p>この挙動の対策としては、<span><b><i>値を一旦整数にしてから演算を行い、演算結果を小数点に戻す</i></b></span>ようにすると正しい結果が得られます。</p>
+<p><span><b>例：２−４−③</b></span></p>
+<p><br />
+console.log(((0.2<i><i> 10)</i></i> 3) / 10);<br />
+<span>// 0.6</span><br />
+<br /></p>
+<div id="calibre_link-184"></div>
+</div>
+<div id="calibre_link-79">
+<div id="calibre_link-185"></div><h4 id="calibre_link-18"><b><u>２−４−２．代入演算子</u></b></h4>
+<p>代入演算子は、変数に値をセット（代入）するために使用します。<br />
+  JavaScriptで利用可能な、主な代入演算子は以下の通りです。</p>
+
+
+<table border="1" cellspacing="0">
+<tbody><tr>
+<td>演算子</td>
+<td>概要</td>
+<td>例</td>
+</tr>
+<tr>
+<td>=</td>
+<td>値を代入する</td>
+<td>x = 10;</td>
+</tr>
+<tr>
+<td>+=</td>
+<td>左辺と右辺の値を加算した値を代入する</td>
+<td>x = 10; x += 5;<br />
+<span>// xは15</span></td>
+</tr>
+<tr>
+<td>-=</td>
+<td>左辺と右辺の値を減算した値を代入する</td>
+<td>x = 10; x -= 5;<br />
+<span>// xは5</span></td>
+</tr>
+<tr>
+<td>*=</td>
+<td>左辺と右辺の値を乗算した値を代入する</td>
+<td>x = 10; x *= 2;<br />
+<span>// xは20</span></td>
+</tr>
+<tr>
+<td>/=</td>
+<td>左辺と右辺の値を除算した値を代入する</td>
+<td>x = 10; x /= 2;<br />
+<span>// xは5</span></td>
+</tr>
+<tr>
+<td>%=</td>
+<td>左辺と右辺の値を除算した余りを代入する</td>
+<td>x = 10; x %= 3;<br />
+<span>// xは1</span></td>
+</tr>
+<tr>
+<td>&amp;=</td>
+<td>左辺の値を右辺の値で論理積演算した結果を代入する</td>
+<td>x = 10; x &amp;= 5;<br />
+<span>// xは0</span></td>
+</tr>
+<tr>
+<td>|=</td>
+<td>左辺の値を右辺の値で論理和演算した結果を代入する</td>
+<td>x = 10; x |= 5;<br />
+<span>// xは15</span></td>
+</tr>
+<tr>
+<td>^=</td>
+<td>左辺の値を右辺の値で排他的論理和演算した結果を代入する</td>
+<td>x = 10; x ^=5;<br />
+<span>// xは15</span></td>
+</tr>
+<tr>
+<td>&lt;&lt;=</td>
+<td>左辺の値を右辺の値分左シフトした結果を代入する</td>
+<td>x = 10; x &lt;&lt;=2;<br />
+<span>// xは40</span></td>
+</tr>
+<tr>
+<td>&gt;&gt;=</td>
+<td>左辺の値を右辺の値分右シフトした結果を代入する</td>
+<td>x = 10; x &gt;&gt;=2;<br />
+<span>// xは2</span></td>
+</tr>
+</tbody></table>
+<p>論理演算系とシフト演算系の演算子に関しては、本書では詳細には触れません。<br />
+  また、それら以外の演算子についても、別段説明不要でしょう。<br />
+  JavaScriptがゆえの注意点と言うものは、特にありません。</p>
+<div id="calibre_link-187"></div>
+</div>
+<div id="calibre_link-121">
+<div id="calibre_link-188"></div><h4 id="calibre_link-19"><b><u>２−４−３．比較演算子</u></b></h4>
+<p>比較演算子は、その名の通り左辺と右辺の値を比較し、結果をtrue／falseで返却します。<br />
+  JavaScriptで利用可能な、主な比較演算子は以下の通りです。</p>
+
+
+<table border="1" cellspacing="0">
+<tbody><tr>
+<td>演算子</td>
+<td>概要</td>
+<td>例</td>
+</tr>
+<tr>
+<td>==</td>
+<td>左辺と右辺の値が等しい場合にtrueを返す</td>
+<td>1 == 1<br />
+<span>// true</span></td>
+</tr>
+<tr>
+<td>!=</td>
+<td>左辺と右辺の値が等しくない場合にtrueを返す</td>
+<td>1 != 1<br />
+<span>// false</span></td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>左辺が右辺より小さい場合にtrueを返す</td>
+<td>1 &lt; 2<br />
+<span>// true</span></td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>左辺が右辺以下の場合にtrueを返す</td>
+<td>5 &lt;= 5<br />
+<span>// true</span></td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>左辺が右辺より大きい場合にtrueを返す</td>
+<td>1 &gt; 2<br />
+<span>// false</span></td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>左辺が右辺以上の場合にtrueを返す</td>
+<td>2 &gt;= 3<br />
+<span>// false</span></td>
+</tr>
+<tr>
+<td>===</td>
+<td>左辺と右辺の値が同じ、かつデータ型も同じ場合にtrueを返す</td>
+<td>7 === 7<br />
+<span>// true</span></td>
+</tr>
+<tr>
+<td>!==</td>
+<td>左辺と右辺の値、データ型のいずれかが異なる場合にtrueを返す</td>
+<td>7 !== 7<br />
+<span>// false</span></td>
+</tr>
+<tr>
+<td>?:</td>
+<td>条件演算子（三項演算子）</td>
+<td>var i=1; (i==1) ? 'A' : 'B'<br />
+<span>// A</span></td>
+</tr>
+</tbody></table>
+<p>比較演算子も、わりと直感的に使えるものがほとんどだと思います。<br />
+  条件演算子（三項演算子）も他の言語と概念は全く同じです。<br />
+  しかし、等価比較（==）と同値比較（===）の違いだけは、完璧に理解しておきましょう。</p>
+<p>まず等価比較（==）ですが、これの仕様を言葉で表すのであれば<br />
+<span><b><i>「例えオペランドの型が異なっていても、何とか等価として見なすことは可能か試みる」</i></b></span><br />
+  こんな感じになります。<br />
+  まぁ、言葉で表すとやっぱアレなので、例を見てもらうのが一番でしょう。</p>
+<p><span><b>例：２−４−④</b></span></p>
+<p><br />
+console.log(1 == true);<span>// true</span><br />
+console.log(1 == '1');<span>// true</span><br />
+<br />
+<span>var</span> arr1 = ['JavaScript', 'HTML', 'css'];<br />
+<span>var</span> arr2 = ['JavaScript', 'HTML', 'css'];<br />
+console.log(arr1 == arr2);<span>// false</span><br />
+<br /></p>
+<p>ソースにしちゃえば、何てこと無いですね。<br />
+  1、'1'、trueは全て<span><b><i>型変換すれば等価として見なせる</i></b></span>ので、等価比較の結果はtrueとなります。<br />
+  しかし、配列の場合だと<span><b><i>変数の実態は参照先のアドレスとなる</i></b></span>ため、データ上はどうやっても等価としては見なせません。<br />
+  よって、等価比較の結果はfalseとなる訳です。</p>
+<div id="calibre_link-190"></div>
+</div>
+<div id="calibre_link-75">
+<div id="calibre_link-191"></div><p>次に同値比較（===）です。<br />
+  こちらは等価比較（==）とは異なり、「何とか等価として見なせるか」なんて言うことは一切しません。<br />
+  単純に値もデータ型も同じ場合のみ、trueとして扱います。</p>
+<p><span><b>例：２−４−⑤</b></span></p>
+<p><br />
+console.log(1 === true);<span>// false</span><br />
+console.log(1 === '1');<span>// false</span><br />
+<br /></p>
+<p>JavaScriptはデータ型に寛容過ぎるがゆえに、時としてこの寛容さが思いもよらないバグの温床になり得ます。<br />
+  なので、あえて等価としての判断を行いたい場合以外は、<span><b><i>基本的には同値比較を使うクセを付けておくことをオススメ</i></b></span>します。</p>
+<div id="calibre_link-193"></div>
+</div>
+<div id="calibre_link-133">
+<div id="calibre_link-194"></div><h4 id="calibre_link-20"><b><u>２−４−４．論理演算子</u></b></h4>
+<p>論理演算子とは、複数の条件式や論理値を論理的に結合し、その結果をtrue／falseで返却します。<br />
+  前述した比較演算子と組み合わせると、より複雑な比較を行うことが出来ます。<br />
+  JavaScriptで利用可能な論理演算子は以下の通りです。</p>
+
+
+<table border="1" cellspacing="0">
+<tbody><tr>
+<td>演算子</td>
+<td>概要</td>
+<td>例</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>左右の式が共にtrueの場合にtrueを返す</td>
+<td>10 === '10' &amp;&amp; 'AAA' == 'AAA'<br />
+<span>// false</span></td>
+</tr>
+<tr>
+<td>||</td>
+<td>左右の式のどちらかがtrueの場合にtrueを返す</td>
+<td>10 === '10' || 'AAA' == 'AAA'<br />
+<span>// true</span></td>
+</tr>
+<tr>
+<td>!</td>
+<td>式がfalseの場合はtrueを返す</td>
+<td>!(10 === '10')<br />
+<span>// true</span></td>
+</tr>
+</tbody></table>
+<p>「&amp;&amp;」や「||」は、他の言語だと<span><b><i>AND</i></b></span>とか<span><b><i>OR</i></b></span>って表現する場合もありますが、意味の違いはありません。<br />
+  ただ、「&amp;&amp;」と「||」は「<span><b><i>左辺だけが評価され、右辺が評価されない</i></b></span>」ケースがあると言うことを忘れないようにしてください。<br />
+  例えば「&amp;&amp;」の場合、左辺がfalseと評価されたら右辺は評価されません。<br />
+  「||」は、左辺がtrueと評価されたら右辺は評価されません。<br />
+  この概念は「<span><b><i>サーキット評価</i></b></span>」とか「<span><b><i>サーキット演算</i></b></span>」とか「<span><b><i>短絡演算</i></b></span>」とか呼ばれています。<br />
+  使いこなすと、よりスマートな記述が出来るようになる場合があるので、<span><b><i>もっと具体的に知りたい人はググッてください</i></b></span>(笑) 
+</p></div>
+<div id="calibre_link-94">
+<h3 id="calibre_link-21"><b><u>２−５．制御文をおさらいしよう！</u></b></h3>
+<p>さて、本書のおさらいシリーズもこれで最後となります。<br />
+  サクっと知識の見直しをしてしまいましょう。<br />
+  どれを取っても特別難しいことは無いはずです。</p>
+<div id="calibre_link-197"></div>
+</div>
+<div id="calibre_link-97">
+<div id="calibre_link-198"></div><h4 id="calibre_link-22"><b><u>２−５−１．単純な分岐処理〜if命令〜</u></b></h4>
+<p>どんなプログラムを書くにせよ、必ずと言っていいほど登場する制御命令ですね。<br />
+  if命令の構文は以下の通りです。</p>
+<p>&nbsp;</p>
+<p><br />
+<span>if</span> (条件式１) {<br />
+    条件式１がtrueの場合に実行する処理<br />
+} [<span>else if</span> (条件式２) {<br />
+    条件式２がtrueの場合に実行する処理<br />
+} [<span>else</span> {<br />
+    全ての条件式がfalseの場合に実行する処理<br />
+}]]<br />
+<br /></p>
+<p>はい、何も難しいことはございません。<br />
+  いくつか注意点やポイントを挙げるとすれば、<br />
+<span>・中括弧（｛｝）は、処理が単行の場合に限り省略可能だけど、<span><b><i>絶対に省略しないように</i></b></span></span><br />
+<span>・条件パターン（elseやelseif）を複数書いた場合、実行されるのは最初に合致した部分のみ</span><br />
+<span>・何個も何個もelseifを書くぐらいならば、switch命令を使うことも検討すべき！</span><br />
+  これぐらいでしょう。</p>
+<div id="calibre_link-200"></div>
+</div>
+<div id="calibre_link-82">
+<div id="calibre_link-201"></div><h4 id="calibre_link-23"><b><u>２−５−２．多岐にわたる分岐処理〜switch命令〜</u></b></h4>
+<p>いくつもの条件で分岐させたい場合、if命令よりもswitch命令の方が適しています。<br />
+  switch命令の構文は以下の通りです。</p>
+<p>&nbsp;</p>
+<p><br />
+<span>switch</span> (式) {<br />
+<span>case</span> 値１:<br />
+    「式＝値１」の場合に実行される処理<br />
+  [<span>case</span> 値ｎ:<br />
+    「式＝値ｎ」の場合に実行される処理<br />
+  [<span>default</span> :<br />
+    全ての値が式に合致しない場合に実行される処理]]<br />
+}<br />
+<br /></p>
+<p>条件分岐は、書こうと思えばif〜elseif〜elseで全て書けるのですが、条件が多い場合は断然こちらを利用すべきです。<br />
+  なお、switch命令を使う際の注意点としては<br />
+  「caseブロックの終わりにbreak文を書かないと、それ以降の処理が続けて実行されてしまう」<br />
+  これぐらいだと思います。<br />
+  あえてこの挙動を逆手に取った記述をする場合以外は、<span><b><i>break命令は必ず書く</i></b></span>ようにしましょう。</p>
+<div id="calibre_link-203"></div>
+</div>
+<div id="calibre_link-67">
+<div id="calibre_link-204"></div><h4 id="calibre_link-24"><b><u>２−５−３．条件式によって処理を繰り返す〜while／do...while命令〜</u></b></h4>
+<p>条件に応じて処理を分岐させたい場合、JavaScriptではwhile／do...while命令を使います。<br />
+  それぞれの構文は以下の通りです。</p>
+<p>&nbsp;</p>
+<p><br />
+<span>while</span>(条件式) {<br />
+    条件式がtrueである間、繰り返す処理<br />
+}<br />
+<br />
+<span>do</span> {<br />
+    条件式がtrueである間、繰り返す処理<br />
+}<span>while</span>(条件式);  ※ 文末のセミコロンに注意<br />
+<br /></p>
+<p>両者の違いは、while命令はループの最初で条件式を判定するのに対して、do...whileはループの最後に処理を判定する点です。<br />
+  要するに、do...whileの場合、条件式がどんな結果であれ必ず1回は処理が実行されるのに対し、whileは条件にマッチしなければ一度も処理が実行されません。<br />
+  用途に応じて使い分けてください。</p>
+<p>なお、while／do...while命令を使う場合、条件判定にミスると無限ループに陥る場合があります。<br />
+  使用には十分に注意してください。</p>
+<div id="calibre_link-206"></div>
+</div>
+<div id="calibre_link-124">
+<div id="calibre_link-207"></div><h4 id="calibre_link-25"><b><u>２−５−４．指定回数だけ処理を繰り返す〜for命令〜</u></b></h4>
+<p>あらかじめ決まった回数の繰り返し処理を行う場合は、for命令の出番です。<br />
+  構文は以下の通りです。</p>
+<p>&nbsp;</p>
+<p><br />
+<span>for</span> (初期化式; ループ継続条件; 増減式) {<br />
+    繰り返す処理<br />
+}<br />
+<br /></p>
+<p>JavaScriptのfor命令は、<span><b><i>カンマ演算子</i></b></span>と合わせて利用することにより、複雑な記述を書くことが出来ます。<br />
+  ちなみに、カンマ演算子は<span><b><i>左右の式を続けて実行するための演算子</i></b></span>です。</p>
+<p><span><b>例：２−５−①</b></span></p>
+<p><br />
+<span>for</span> (<span>var</span> i = 1, j = 1; i &lt; 3; i++, j++) {<br />
+    console.log('i + j = ' + (i + j) );<br />
+}<br />
+    ↓↓<br />
+i + j = 2<br />
+i + j = 4<br />
+<br /></p>
+<div id="calibre_link-209"></div>
+</div>
+<div id="calibre_link-78">
+<div id="calibre_link-210"></div><p>for命令も、while／do...while命令と同様に、ループ継続条件式を誤って記述すると無限ループに陥る可能性がありますので、十分に注意してください。</p>
+<div id="calibre_link-212"></div>
+</div>
+<div id="calibre_link-89">
+<div id="calibre_link-213"></div><h4 id="calibre_link-26"><b><u>２−５−５．配列内の要素を順番に処理する〜for...in命令〜</u></b></h4>
+<p>for...in命令は、指定された配列や連想配列、オブジェクト配下の要素やメンバに対して順に処理を行います。<br />
+  構文は以下の通りです。</p>
+<p>&nbsp;</p>
+<p><br />
+<span>for</span> (仮変数<span>in</span> 配列とかオブジェクト) {<br />
+    繰り返す処理<br />
+}<br />
+<br /></p>
+<p><span><b><i>仮変数</i></b></span>には、配列やオブジェクトなどから取り出された要素のインデックス番号やキー名、メンバ名が格納されます。<br />
+  仮変数に格納された値はfor...inブロック内で参照可能です。<br />
+  と、言葉で説明してもイマイチだと思うので、以下の例で挙動を確認してみてください。</p>
+<p><span><b>例：２−５−②</b></span></p>
+<p><br />
+<span>var</span> member = ['たろう', 'じろう', 'さぶろう'];<br />
+<span>for</span> (<span>var</span> m<span>in</span> member) {<br />
+    console.log('名前は' + m);<br />
+}<br />
+    ↓↓<br />
+名前は0<br />
+名前は1<br />
+名前は2<br />
+<span>// 配列の場合、仮変数に格納されるのはインデックス番号となります</span><br />
+<br />
+<span>var</span> member = ['たろう', 'じろう', 'さぶろう'];<br />
+<span>for</span> (<span>var</span> m<span>in</span> member) {<br />
+    console.log('名前は' + member[m]);<br />
+}<br />
+    ↓↓<br />
+名前はたろう<br />
+名前はじろう<br />
+名前はさぶろう<br />
+<br />
+<span>var</span> square = {width:100, height:200};<br />
+<span>for</span> (<span>var</span> s<span>in</span> square) {<br />
+    console.log(s + ' = ' + square[s]);<br />
+}<br />
+    ↓↓<br />
+width = 100<br />
+height = 200<br />
+<span>// 連想配列の場合、仮変数に格納されるのはキー名となります</span><br />
+<br />
+<span>var</span> company =<span>new</span> Object();<br />
+company.name = 'Kinky-Do';<br />
+company.director = 'igarashi';<br />
+<span>for</span> (<span>var</span> c<span>in</span> company) {<br />
+    console.log(c + 'は' + company[c]);<br />
+}<br />
+        ↓↓<br />
+nameはKinky-Do<br />
+directorはigarashi<br />
+<span>// オブジェクトの場合、仮変数に格納されるのはメンバ名となります</span><br />
+<br /></p>
+<p>さて、例を理解された方であれば、「この命令、あまり意味無いのでは・・・」と思われたかもしれません。<br />
+  そうなんです、for...in命令はインデックス番号やキー名などを取り出すだけなので、あんまりコードがシンプルになりません。<br />
+  例えば、Javaのfor-each文と似ているからって、同じノリで使うと非常に切ない思いをすることでしょう。。。<br />
+  なので、この命令は、連想配列やオブジェクトのキー名、メンバ名を走査するような用途に限り、使用するのがいいと思います。</p>
+<div id="calibre_link-215"></div>
+</div>
+<div id="calibre_link-74">
+<div id="calibre_link-216"></div><h4 id="calibre_link-27"><b><u>２−５−６．ループを制御する〜break／continue命令、ラベル構文〜</u></b></h4>
+<p>ループ処理を任意のタイミングで抜ける場合は、break命令を使います。<br />
+  また、現在のループをスキップして次のループを行いたい場合は、continue命令を使います。<br />
+  最後に、ネストされたループを一気に抜けたい場合は、ラベル構文を使います。<br />
+  これらについては、一気に例で確認しちゃいましょう。</p>
+<p><span><b>例：２−５−③</b></span></p>
+<p><br />
+<span>for</span> (<span>var</span> i = 0; i &lt; 100; i ++) {<br />
+<span>// iが2以上になったらループを抜ける</span><br />
+<span>if</span> (i &gt;= 2) {<br />
+<span>break</span>;<br />
+    }<br />
+    console.log(i);<br />
+}<br />
+    ↓↓<br />
+0<br />
+1<br />
+<br />
+<span>for</span> (<span>var</span> i = 0; i &lt; 5; i ++) {<br />
+<span>// iが3以外の場合はスキップする</span><br />
+<span>if</span> (i != 3){<br />
+<span>continue</span>;<br />
+    }<br />
+    console.log(i);<br />
+}<br />
+    ↓↓<br />
+3<br />
+<br />
+lbl:<span>for</span> (<span>var</span> i = 1; i &lt; 1000; i++) {<br />
+<span>for</span> (<span>var</span> t = 1; t &lt; 10; t++) {<br />
+<span>var</span> v = i * t;<br />
+<span>// vが5以上になったらネストされたループを脱出する</span><br />
+<span>if</span> (v &gt; 5) {<br />
+  <span>break</span> lbl;<br />
+        }<br />
+    console.log(v);<br />
+    }<br />
+}<br />
+    ↓↓<br />
+1<br />
+2<br />
+3<br />
+4<br />
+5<br />
+<br /></p>
+<div id="calibre_link-218"></div>
+</div>
+<div id="calibre_link-131">
+<div id="calibre_link-219"></div><h4 id="calibre_link-28"><b><u>２−５−７．例外処理〜try...catch...finally命令〜</u></b></h4>
+<p>JavaScriptで例外処理を行う場合は、try...catch...finally命令を使います。<br />
+  構文は以下の通りです。</p>
+<p>&nbsp;</p>
+<p><br />
+<span>try</span> {<br />
+    例外が発生する可能性がある処理<br />
+}<span>catch</span>( 例外を受け取る変数 ) {<br />
+    例外が発生した場合に実行する処理<br />
+} [<span>finally</span> {<br />
+    最終的に実行される処理<br />
+}]<br />
+<br /></p>
+<p>複雑なプログラムになって来ると、何だかんだで予期しない動作をしてしまうケースが多々あります。<br />
+  とは言え、例外処理はオーバーヘッドの高い処理なので、むやみやたらと使用するのも問題です。<br />
+  可能な限り、例外処理が本当に必要なのかを検討してから実装するよう心がけましょう。</p>
+<div id="calibre_link-221"></div>
+</div>
+<div id="calibre_link-113">
+<div id="calibre_link-222"></div><p>なお、JavaScriptでも、他の言語と同様に意図的に例外を発生させることが可能です。<br />
+  この場合は<span><b><i>throw</i></b></span>命令を使用します。<br />
+  構文は以下の通りです。</p>
+<p>&nbsp;</p>
+<p><br />
+<span>throw</span><span>new</span> Error(エラーメッセージ)<br />
+<br /></p>
+<div id="calibre_link-224"></div>
+</div>
+<div id="calibre_link-63">
+<div id="calibre_link-225"></div><h2 id="calibre_link-29"><b><u>Chapter３．オブジェクトを理解しよう！</u></b></h2>
+<h3 id="calibre_link-226"><b><u>３−１．JavaScriptにおけるオブジェクトとは？</u></b></h3>
+<p>基礎のおさらいも終わったことですし、いよいよ本格的に理解を深めていく工程に移りたいと思います。<br />
+  まずは一発目として、JavaScriptにおけるオブジェクトについて、徹底的に理解を深めてください。<br />
+  「JavaScriptを理解する」＝「オブジェクトを理解する」と表現しても過言ではないぐらいに、JavaScriptにおけるオブジェクトは重要なキーワードになります。<br />
+  「冒頭から何を大げさな・・・」と思われる方もいらっしゃるかもしれません。<br />
+  しかし、JavaScriptの世界においては、<span><b><i>オブジェクトが絶対的な存在</i></b></span>です。<br />
+  ここでは、<span><b><i>ほぼ全ての「モノ」がオブジェクトであるか、オブジェクトの如く振る舞う</i></b></span>のです。</p>
+<div id="calibre_link-227"></div>
+</div>
+<div id="calibre_link-81">
+<div id="calibre_link-228"></div><h3 id="calibre_link-30"><b><u>３−２．プロパティとメソッド</u></b></h3>
+<p>オブジェクトは、プロパティとメソッドで構成されます。<br />
+<span><b><i>オブジェクトの状態や特性を表す</i></b></span>のがプロパティです。<br />
+  また、<span><b><i>オブジェクトのプロパティとして格納されている関数</i></b></span>が、メソッドです。</p>
+<p>例えば、以下のようなオブジェクトを定義したとします。</p>
+<p><span><b>例：３−２−①</b></span></p>
+<p><br />
+<span>var</span> human = {};<br />
+human.name = 'igarashi';<span>// 名前</span><br />
+human.age = 35;<span>// 年齢</span><br />
+human.sex = 'M';<span>// 性別</span><br />
+human.getInfo =<span>function</span>(){<br />
+<span>return</span> human.name + ' ' + human.age + ' ' + human.sex;<span>// 情報を連結して返却</span><br />
+}<br />
+console.log(human.getInfo());<span>// igarashi 35 M</span><br />
+<br /></p>
+<div id="calibre_link-230"></div>
+</div>
+<div id="calibre_link-66">
+<div id="calibre_link-231"></div><p>nameとage、sexはプロパティです。<br />
+  humanオブジェクトの特性を表していますね。<br />
+  getInfoがメソッドです。<br />
+  プロパティに関数が格納されています。</p>
+<p>ちなみに、次のような記述でも全く同じ結果が得られます。</p>
+<p><span><b>例：３−２−②</b></span></p>
+<p><br />
+<span>var</span> human = {<br />
+    name: 'igarashi',<br />
+    age: 35,<br />
+    sex: 'M',<br />
+    getInfo:<span>function</span>() {<br />
+<span>return</span> human.name + ' ' + human.age + ' ' + human.sex;<br />
+    }<br />
+}<br />
+console.log(human.getInfo());<span>// igarashi 35 M</span><br />
+<br /></p>
+<p>まぁ、ここまでは特に難しい話ではないと思います。<br />
+  本番は次からです(笑)</p>
+<div id="calibre_link-233"></div>
+</div>
+<div id="calibre_link-123">
+<div id="calibre_link-234"></div><h3 id="calibre_link-31"><b><u>３−３．new演算子</u></b></h3>
+<p>JavaScriptでオブジェクトを生成する場合は、new演算子を使用します。<br />
+  リテラル表記でオブジェクトを生成した場合も、実際にはnew演算子が実行された場合と同等の結果が得られます。</p>
+<p><span><b>例：３−３−①</b></span></p>
+<p><br />
+<span>var</span> obj1 =<span>new</span> Object();<br />
+<span>var</span> obj2 = {};<br />
+<br />
+console.log(obj1);<span>// Object {}</span><br />
+console.log(obj2);<span>// Object {}</span><br />
+<br /></p>
+<p>例：３−３−①では、obj1もobj2も共に空っぽのオブジェクトを生成しています。<br />
+  一般的には、記述量が少ないリテラル表記が好まれる傾向にあるようです。</p>
+<p>さて、ではnew演算子とは何者なのでしょうか。<br />
+  答えは「オブジェクトをインスタンス化するための演算子」<span><b><i>ではありません</i></b></span>。<br />
+  実は、「<span><b><i>オブジェクトのインスタンスを返却しなさい！とコンストラクタに命令する</i></b></span>」ための演算子なのです。<br />
+  以下に一つ例を挙げてみます。</p>
+<p><span><b>例：３−３−②</b></span></p>
+<p><br />
+<span>var</span> myFunc =<span>function</span>() {<br />
+    this.prop1 = 'bar';<br />
+    this.prop2 = 'foo';<br />
+    this.method =<span>function</span>(){<br />
+<span>return</span> this.prop1 + this.prop2;<br />
+    }<br />
+}<br />
+<br />
+<span>var</span> obj1 =<span>new</span> myFunc();<br />
+<span>var</span> obj2 = myFunc();<br />
+<br />
+console.log(obj1.method());<span>// barfoo</span><br />
+console.log(obj2.method());<span>// エラーになる</span><br />
+<br /></p>
+<p>例：３−３−②で、new演算子を使った場合とそうで無い場合の、実行結果の違いは明白だと思います。<br />
+  では、違いが生じる原因は何なのでしょうか？<br />
+  もう一つ例を挙げてみましょう。</p>
+<div id="calibre_link-236"></div>
+</div>
+<div id="calibre_link-106">
+<div id="calibre_link-237"></div><p><span><b>例：３−３−③</b></span></p>
+<p><br />
+<span>var</span> myFunc =<span>function</span>() {<br />
+    this.prop1 = 'bar';<br />
+<span>// 省略</span><br />
+}<br />
+<br />
+<span>var</span> obj1 =<span>new</span> myFunc();<br />
+<span>var</span> obj2 = myFunc();<br />
+<br />
+console.log(obj1);<span>// myFunc {prop1: "bar"}</span><br />
+console.log(obj2);<span>// undefined</span><br />
+<br /></p>
+<p>あらビックリ。<br />
+  obj2は何とundefinedになってました。<br />
+  そりゃあmyFuncのメンバにアクセス出来ない訳ですね。<br />
+  しかし、なぜundefinedになっているんでしょうか。<br />
+  そう、答えはnew演算子にあります。</p>
+<p>まず、myFuncに代入している無名関数に着目してください。<br />
+  return文が明記されていません。<br />
+  通常、JavaScriptの関数は、return文が明示的に指定されていない場合、自動的に呼び出し元にはundefinedが返却されます。<br />
+  しかし、<span><b><i>new演算子を用いて呼び出された場合は、return文が書かれていようがいまいが、自動的にオブジェクトのインスタンスが返却される</i></b></span>のです！<br />
+  この仕様を理解した上で、前述のmyFuncの例を見直せば、その動作に納得してもらえるかと思います。</p>
+<p>obj1は、new演算子を使っているので、myFuncに格納されている無名関数で生成されるインスタンスが返却されました。<br />
+  しかし、obj2はnew演算子を使っていないため、myFuncに格納されている無名関数を呼び出しただけになります。<br />
+  そして、呼び出した無名関数はreturn文が書かれていないため、undefinedが返却されたのです。<br />
+  せっかくなので、この挙動をもっと分かりやすくした例を挙げてみます。</p>
+<div id="calibre_link-239"></div>
+</div>
+<div id="calibre_link-88">
+<div id="calibre_link-240"></div><p><span><b>例：３−３−④</b></span></p>
+<p><br />
+<span>var</span> myFunc =<span>function</span>() {<br />
+    this.prop1 = 'bar';<br />
+<span>return</span> 'boo';<br />
+}<br />
+<br />
+<span>var</span> obj1 =<span>new</span> myFunc();<br />
+<span>var</span> obj2 = myFunc();<br />
+<br />
+console.log(obj1);<span>// myFunc {prop1: "bar"}</span><br />
+console.log(obj2);<span>// boo</span><br />
+<br /></p>
+<p>通常はこんなreturn文は書かないのですが、今回は説明のためにあえて付与してみました。<br />
+  例：３−３−④を見れば、今まで説明して来た<br />
+<span>・new演算子を用いて呼び出された場合は、return文が書かれていようがいまいが、自動的にオブジェクトのインスタンスが返却される</span><br />
+<span>・new演算子を用いない場合は、ただの関数呼び出しになっている</span><br />
+  この2点について、より理解出来ると思います。</p>
+<div id="calibre_link-242"></div>
+</div>
+<div id="calibre_link-73">
+<div id="calibre_link-243"></div><h3 id="calibre_link-32"><b><u>３−４．独自のコンストラクタを定義する</u></b></h3>
+<p>new演算子の説明で例を書いた通り、JavaScriptでは独自のコンストラクタを自由に定義出来ます。<br />
+  既に確認していると思いますが、コンストラクタは関数です。<br />
+  new演算子の説明で利用したコンストラクタは、あくまで必要最低限の構成でしたので、ここではもっと現実的な例を挙げてみます。</p>
+<p><span><b>例：３−４−①</b></span></p>
+<p><br />
+<span>var</span> Member =<span>function</span>(firstName, lastName, age) {<br />
+    this.firstName = firstName;<br />
+    this.lastName = lastName;<br />
+    this.age = age;<br />
+    this.getInfo =<span>function</span>() {<br />
+<span>return</span> '氏名：' + this.lastName + ' ' + this.firstName + '(' + this.age + '歳)';<br />
+    }<br />
+}<br />
+<br />
+<span>var</span> igarashi =<span>new</span> Member('肇', '五十嵐', 35);
+console.log(igarashi.getInfo());<span>// 氏名：五十嵐 肇(35歳)</span>
+<br />
+<br /></p>
+<p>ここで、非常に重要なのはthisキーワードの使い方です。<br />
+  通常、JavaScriptでは、関数内で呼び出す<span><b><i>this</i></b></span>は関数呼び出し元のオブジェクトを参照します。<br />
+  しかし、<span><b><i>new演算子を使ってインスタンス化した場合、thisはそのインスタンス自身を指します</i></b></span>。<br />
+  この仕様により、オブジェクト指向っぽい記述が可能になっています。</p>
+<p><span><b>例：３−４−②</b></span></p>
+<p><br />
+<span>var</span> Member =<span>function</span>(firstName, lastName, age) {<br />
+    this.firstName = firstName;<br />
+    this.lastName = lastName;<br />
+    this.age = age;<br />
+    this.getInfo =<span>function</span>() {<br />
+<span>return</span> '氏名：' + this.lastName + ' ' + this.firstName + '(' + this.age + '歳)';<br />
+    }<br />
+}<br />
+<br />
+<span>var</span> igarashi =<span>new</span> Member('肇', '五十嵐', 35);<br />
+<span>var</span> tarama =<span>new</span> Member('斎', '多良間', 37);<br />
+<br />
+console.log(igarashi.getInfo());<span>// 氏名：五十嵐 肇(35歳)</span><br />
+console.log(tarama.getInfo());<span>// 氏名：多良間 斎(37歳)</span><br />
+<br /></p>
+<div id="calibre_link-245"></div>
+</div>
+<div id="calibre_link-130">
+<div id="calibre_link-246"></div><h3 id="calibre_link-33"><b><u>３−５．オブジェクトとプリミティブ型</u></b></h3>
+<p>さて、オブジェクトのインスタンス化に関する基本を学んだところで、次は別の視点からオブジェクトについて理解を深めて行きます。<br />
+  「何でここでプリミティブ型が出てくるの？」と疑問を感じた方、安心してください。誤記ではありません。</p>
+<p>さて、本書前半のおさらいで触れたように、JavaScriptには以下の種類のプリミティブ型が存在します。<br />
+<span>・真偽値（true／false）を扱うための<span><b><i>boolean</i></b></span></span><br />
+<span>・数値を扱うための<span><b><i>number</i></b></span></span><br />
+<span>・文字列を扱うための<span><b><i>string</i></b></span></span><br />
+<span>・null値を扱うための<span><b><i>null</i></b></span></span><br />
+<span>・未定義値を扱うための<span><b><i>undefined</i></b></span></span></p>
+<p>プリミティブ型は、その名の通り「<span><b><i>通常は</i></b></span>」値そのものです。<br />
+  例えば、stringはただの文字列ですし、numberもただの数値です。<br />
+  しかし、あくまでも「<span><b><i>通常は</i></b></span>」なのです。<br />
+  実はnumber、string、booleanのそれぞれは、場合によっては「値そのもの」ではなく、<span><b><i>一時的に「オブジェクト」になっている</i></b></span>ケースがあります。<br />
+  ・・・なーんて言葉で説明してもチンプンカンプンですよね。<br />
+  なので、ちょっとした例を挙げてみます。</p>
+<p><span><b>例：３−５−①</b></span></p>
+<p><br />
+<span>var</span> num = 999;<br />
+<span>var</span> num2 =<span>new</span> Number(999);<br />
+<br />
+console.log(<span>typeof</span> num);<span>// number</span><br />
+console.log(<span>typeof</span> num2);<span>// object</span><br />
+<br />
+console.log(num.toString());<span>// 999</span><br />
+console.log(num2.toString());<span>// 999</span><br />
+<br /></p>
+<p>まず、typeofの結果を見てみましょう。（typeofは値の型を調べるための演算子です）<br />
+  num2は、new演算子を使ってNumberコンストラクタ呼び出したため、Numberオブジェクトのインスタンス（object）が格納されていることがわかります。<br />
+  逆に、numは数値リテラルを代入しただけなので、プリミティブ型（number）になっています。</p>
+<p>では、次にそれぞれの変数のtoString()の実行結果を見てみましょう。<br />
+  なんと、プリミティブ型であるnumも、toString()を呼び出せています。<br />
+  実はここで先ほど説明した「一時的にオブジェクトになる」カラクリが動いています。</p>
+<p>number、string、booleanのプリミティブ型には、それぞれラッパーオブジェクトが存在します。<br />
+<span><b><i>JavaScriptのプリミティブ型は、オブジェクトとして振る舞おうとした際に、バックグラウンドでそれぞれの型に応じたラッパーオブジェクトが生成されます。</i></b></span><br />
+  「オブジェクトとして振る舞う」とは、例えばメソッドを呼び出したり、プロパティを取得しようとした場合です。<br />
+  そして、オブジェクトとしての振る舞いが完了すると、バックグラウンドで生成されたラッパーオブジェクトは破棄され、値は元のプリミティブ型に戻ります。<br />
+  この仕様を理解すると、このチャプターの冒頭で説明した「<span><b><i>ほぼ全てのモノがオブジェクトであるか、オブジェクトの如く振る舞う</i></b></span>」と言う意味が理解出来るのでは、と思います。</p>
+<p>ちなみに、nullとundefinedはこの限りではありません。<br />
+  コイツらはラッパーオブジェクトを持っていないため、いつ何時でもプリミティブな存在となります。<br />
+  なので、あくまでも「ほぼ全てのモノが・・・」と言う表現になる訳です。</p>
+<div id="calibre_link-248"></div>
+</div>
+<div id="calibre_link-112">
+<div id="calibre_link-249"></div><h3 id="calibre_link-34"><b><u>３−６．オブジェクトは動的な存在である</u></b></h3>
+<p>JavaScriptにおけるオブジェクトの重要さを理解したところで、次はオブジェクトの「<span><b><i>やりたい放題さ</i></b></span>」について触れてみます。<br />
+  これは、多くの他言語経験者を混乱させる最大の要因とも言われる要素なので、逆にJavaScriptエンジニアにとっては是が非でも極めたいところです。</p>
+<p>まずは以下の例を見てください。</p>
+<p><span><b>例：３−６−①</b></span></p>
+<p><br />
+<span>String</span>.myFunc =<span>function</span>(){<br />
+<span>return</span> 'hoge';<br />
+}<br />
+<br />
+console.log(String.myFunc());<span>// hoge</span><br />
+<br /></p>
+<p>なんと、ネイティブなStringオブジェクトにメソッドを追加しちゃいました！<br />
+  ちょっと他の言語じゃ考えられないですよね。<br />
+  だがしかし、JavaScriptではこんな自由奔放なコーディングも可能なのです！<br />
+  まさに<span><b><i>やりたい放題</i></b></span>！</p>
+<p>・・・とは言ってもですね、むやみやたらにやる訳にも行かないのです。<br />
+  特に、複数人での開発や、未来に自分とは別の誰かがメンテするケースを想像してみてください。<br />
+  色々とゾっとしませんか？<br />
+  例え完璧にドキュメントやコメントを残したとしても、間違いなく混乱が生じるはずです。<br />
+  ですので、極力ネイティブオブジェクトへの変更は避けるようにしましょう。<br />
+  ネイティブなオブジェクトは、用意されたままの状態であることが、余計な問題を引き起こさないためのベストプラクティスです。<br />
+  「出来ること」と「やった方がいいこと」は分けて考えましょうね。</p>
+<p>と、エラく前置きが長くなりましたが、いよいよここでのお題目、「オブジェクトは動的な存在である」ことを説明して行きたいと思います。<br />
+  JavaScriptでは、同じオブジェクトでも、いつ何時でも内容が同じとは限りません。<br />
+  例：３−６−①でも説明した通り、ネイティブオブジェクトですらも、いつでも同じ内容とは限りません。<br />
+  せっかくなので、非常にシンプルな例を見ていきましょう。</p>
+<p><span><b>例：３−６−②</b></span></p>
+<p><br />
+<span>var</span> obj = {<br />
+    prop1 : 'bar',<br />
+    prop2 : 'foo'<br />
+}<br />
+<br />
+console.log(obj.prop1);<span>// bar</span><br />
+<br />
+<span>delete</span> obj.prop1;<span>// プロパティを削除</span><br />
+<br />
+console.log(obj.prop1);<span>// undefined</span><br />
+<br /></p>
+<p>かなり極端な例ですが、要するにこう言うことです。<br />
+  JavaScriptでは、一度宣言したオブジェクトに対して、後からいくらでも動的に変更が加えられるのです。<br />
+  繰り返しになりますが、<span><b><i>同じオブジェクトでも、いつ何時でも内容が同じとは限らない</i></b></span>と言うことをしっかりと覚えておいてください。</p>
+<div id="calibre_link-251"></div>
+</div>
+<div id="calibre_link-95">
+<div id="calibre_link-252"></div><h3 id="calibre_link-35"><b><u>３−７．Objectオブジェクト</u></b></h3>
+<p>Objectオブジェクトは、全てのオブジェクトのベースとなる存在です。<br />
+  つまり、Objectオブジェクトは他のオブジェクトに対して、共通的な性質や機能を提供します。<br />
+  また、Objectオブジェクトをインスタンス化することにより、匿名オブジェクト（無名オブジェクトとも言う）を定義することも可能です。<br />
+  ※本Chapter冒頭の例：３−２−①を参照<br />
+  再利用することが無い、その場限りの利用で済むようなケースであれば、わざわざ「クラス」のような存在にしなくてもこの匿名オブジェクトで十分でしょう。</p>
+<p>なお、匿名オブジェクトはObjectオブジェクト以外にも、Arrayのようなネイティブなオブジェクトからも定義出来ます。</p>
+<p><span><b>例：３−７−①</b></span></p>
+<p><br />
+<span>var</span> obj =<span>new</span> Array();<br />
+obj.val = 'hoge';<br />
+console.log(obj.val);<span>// hoge</span><br />
+<br /></p>
+<div id="calibre_link-254"></div>
+</div>
+<div id="calibre_link-80">
+<div id="calibre_link-255"></div><p>３−６で触れた「やりたい放題さ」を理解していれば、別に不思議なことではありませんね。<br />
+  しかし、これもまた「出来るから」と言っても「やった方がいい」ことではありません。<br />
+  こんなことをしても全く意味が無いので、匿名オブジェクトを定義する場合は、常にObjectオブジェクトから定義するようにしましょう。</p>
+<div id="calibre_link-257"></div>
+</div>
+<div id="calibre_link-64">
+<div id="calibre_link-258"></div><h3 id="calibre_link-36"><b><u>３−８．Globalオブジェクト</u></b></h3>
+<p>JavaScriptには、Globalオブジェクトと言うものが存在します。<br />
+  このオブジェクトは、他のネイティブオブジェクトと違って、インスタンス化したりメソッドを呼び出したりすることが出来ません。</p>
+<p><span><b>例：３−８−①</b></span></p>
+<p><br />
+<span>var</span> global =<span>new</span> Global();<span>// こんなことは出来ません</span><br />
+<br />
+Global.xxxx();<span>// こんなことも出来ません</span><br />
+<br /></p>
+<p>では、Globalオブジェクトは一体何者なのでしょうか？<br />
+  言葉で表現するのであれば、「グローバル変数やグローバル関数を扱うための便宜的なオブジェクト」です。<br />
+  関数配下に属さないトップレベルの変数や関数を、特別に意識しないで利用できるようにしてくれるもの・・・ってなところでしょうか。</p>
+<div id="calibre_link-260"></div>
+</div>
+<div id="calibre_link-114">
+<div id="calibre_link-261"></div><p><span><b>例：３−８−②</b></span></p>
+<p><br />
+<span>var</span> num = 10;<br />
+console.log(<span><b><i>isNaN</i></b></span>(num));<span>// こんな感じで使える（isNaNがグローバル関数）</span><br />
+<br /></p>
+<p>Globalオブジェクトは、スクリプトエンジンが初期化される時に自動的に生成され、その時点でこのオブジェクトの持つメンバが使用可能になります。<br />
+  主なメンバは以下の通りです。</p>
+
+
+<table border="1" cellspacing="0">
+<tbody><tr>
+<td>メンバ</td>
+<td>概要</td>
+</tr>
+<tr>
+<td>NaN</td>
+<td>数値ではない（Not a Number の意）</td>
+</tr>
+<tr>
+<td>Infinity</td>
+<td>無限大</td>
+</tr>
+<tr>
+<td>undefined</td>
+<td>未定義値</td>
+</tr>
+<tr>
+<td>isFinite(val)</td>
+<td>有限値であるかどうか（NaNや無限大でない）</td>
+</tr>
+<tr>
+<td>isNaN(val)</td>
+<td>数値で無いかどうか</td>
+</tr>
+<tr>
+<td>String(val)</td>
+<td>文字列型に変換する</td>
+</tr>
+<tr>
+<td>Number(val)</td>
+<td>数値型に変換する</td>
+</tr>
+<tr>
+<td>Boolean(val)</td>
+<td>真偽型に変換する</td>
+</tr>
+<tr>
+<td>parseInt(val)</td>
+<td>文字列を整数値に変換する</td>
+</tr>
+<tr>
+<td>parseFloat(val)</td>
+<td>文字列を浮動小数点値に変換する</td>
+</tr>
+<tr>
+<td>escape(val)</td>
+<td>文字列をエスケープする</td>
+</tr>
+<tr>
+<td>unescape(val)</td>
+<td>エスケープされた文字列を戻す</td>
+</tr>
+<tr>
+<td>encodeURIComponent(val)</td>
+<td>文字列をURIエンコードする</td>
+</tr>
+<tr>
+<td>decodeURIComponent(val)</td>
+<td>文字列をURIデコードする</td>
+</tr>
+<tr>
+<td>eval(val)</td>
+<td>式や値を評価する</td>
+</tr>
+</tbody></table>
+<div id="calibre_link-263"></div>
+</div>
+<div id="calibre_link-71">
+<div id="calibre_link-264"></div><h3 id="calibre_link-37"><b><u>３−９．nullとundefined</u></b></h3>
+<p>本Chapterの最後に、nullとundefinedについて触れておきます。<br />
+  何気に、この両者を混同してたり勘違いしている人に結構出会うので、それぞれしっかり理解しておきましょう。</p>
+<p>まずは<strong><b>null</b></strong>ですが、コイツはいわゆる「<span><b><i>何もない</i></b></span>」ことを意味します。<br />
+  もっと言うと、<span><b><i>意図的に何もない状態だと言うことを表す</i></b></span>ために利用します。<br />
+  これに対し、<strong><b>undefined</b></strong>はその名の通り「<span><b><i>未定義</i></b></span>」であることを意味します。<br />
+<span><b><i>変数を宣言したけど値を代入していない、return文を書いていない関数を呼び出した、存在しないプロパティにアクセスした・・・</i></b></span>など、結構様々な場面で出くわします。</p>
+<p>両者の決定的な違いは、その値を「<span><b><i>意識的に使っているかどうか</i></b></span>」になります。<br />
+  基本的に、nullは自前でセットしない限りは遭遇しません。<br />
+  逆に、undefinedはウッカリミスで頻繁に出くわしやがります。<br />
+  「コードが思った通りに動かなくてデバッグしてたら、変数に期待値ではなく<span><b><i>undefined</i></b></span>が入ってた！」<br />
+  「よくよく見たら、変数名が微妙に間違ってた！」<br />
+  なんて経験、大多数のJavaScriptエンジニアが持っていると思います。</p>
+<p>さて、いかがでしょうか。<br />
+  とりあえず、両者の「<span><b><i>違い</i></b></span>」や「<span><b><i>意味</i></b></span>」は理解出来ましたか？<br />
+  それぞれがどんな意味を持っているかを正しく理解していれば、例えば「オブジェクトの状態によって処理を分ける」ようなケースで、より正しい条件式が書けるようになると思います。<br />
+  これだけでも、十分に<span><b><i>レベルアップした</i></b></span>と言えるでしょう。<br />
+  なお、イマイチ理解出来ていないなぁ・・・って人は、今は以下のように頭に叩き込んでおいてください。<br />
+  「<span><b><i>nullはわざわざ何もないことを宣言した状態！undefinedはまだ何もしていない状態！</i></b></span>」<br />
+  最悪、これだけでも<span><b><i>事故は防げる</i></b></span>と思います！</p>
+<div id="calibre_link-266"></div>
+</div>
+<div id="calibre_link-96">
+<div id="calibre_link-267"></div><h2 id="calibre_link-38"><b><u>Chapter４．関数の理解を深めよう！</u></b></h2>
+<h3 id="calibre_link-268"><b><u>４−１．関数を制する者は世界を制す</u></b></h3>
+<p>JavaScriptの世界において、オブジェクトと並ぶもう一つの最重要キーワードが<span><b><i>関数</i></b></span>です。<br />
+  Chapter２で触れた通り、<span><b><i>JavaScriptの世界では関数もデータ型の一種</i></b></span>なので、これがまた他言語経験者を混乱させます。<br />
+  オブジェクトもそうでしたが、ここからはより一層JavaScriptの独自世界にドップリと浸かることになりますので、一度気合いを入れ直してから読み進めるようにしてください。</p>
+<div id="calibre_link-269"></div>
+</div>
+<div id="calibre_link-107">
+<div id="calibre_link-270"></div><h3 id="calibre_link-39"><b><u>４−２．関数の定義方法</u></b></h3>
+<p>JavaScriptは、三種類の方法で関数を定義出来ます。<br />
+<span>・function命令</span><br />
+<span>・Functionコンストラクタ</span><br />
+<span>・関数リテラル</span><br />
+  この中で、Functionコンストラクタでの宣言は<span><b><i>ぶっちゃけ使う必要が無い</i></b></span>ので、本書では解説を省略します。</p>
+<p>まず、function命令での定義を見て行きましょう。<br />
+  これは、恐らく最も慣れ親しまれている定義方法だと思います。</p>
+<p><span><b>例：４−２−①</b></span></p>
+<p><br />
+<span>function</span> addNumber(num1, num2) {<br />
+<span>return</span> num1 + num2;<br />
+}<br />
+<br />
+console.log(addNumber(1, 2));<span>// 3</span><br />
+<br /></p>
+<p>こちらの定義方法については、特筆すべき点はありません。<br />
+  他の言語と同じような感覚で利用できると思います。</p>
+<p>次に、関数リテラルでの定義です。<br />
+  一気にJavaScriptの独自世界に突入します。</p>
+<p><span><b>例：４−２−②</b></span></p>
+<p><br />
+<span>var</span> addNumber =<span>function</span>(num1, num2) {<br />
+<span>return</span> num1 + num2;<br />
+};<br />
+<br />
+console.log(addNumber(1, 2));<span>// 3</span><br />
+<br /></p>
+<p>見ての通り、何と<span><b><i>関数を変数に代入</i></b></span>しています。（今まで散々例に出してますが・・・）<br />
+  しかも、変数に代入出来ると言うことは、その変数を<span><b><i>別の関数の引数や戻り値にすることも可能</i></b></span>なのです！<br />
+  この概念は、これから先にイヤって言うほど出てきますので、今は詳細には触れません。<br />
+  とりあえずは「こんなことが出来るんだ」と言うことを覚えておいてください。</p>
+<div id="calibre_link-272"></div>
+</div>
+<div id="calibre_link-84">
+<div id="calibre_link-273"></div><h3 id="calibre_link-40"><b><u>４−３．変数のスコープ</u></b></h3>
+<p>JavaScriptの変数は、定義した位置によってスコープが決まります。<br />
+<span>・関数の外で定義　→　グローバル変数</span><br />
+<span>・関数の中で定義　→　ローカル変数</span><br />
+  はい、別に難しいことはないですね。<br />
+  だがしかし！<br />
+  Chapter２の「２−２−２．変数宣言」で説明した、<span><b><i>var命令</i></b></span>に関するルールだけは要注意です！<br />
+  忘れちゃった人は、今一度読み返しておいてください。</p>
+<p>次に、ローカル変数の有効範囲について触れておきましょう。 以下の例を見てください。</p>
+<p><span><b>例：４−３−①</b></span></p>
+<p><br />
+<span>var</span> val = 'Global！';<br />
+<br />
+<span>function</span> getVal() {<br />
+<strong><b>console.log(val);＊</b></strong><span>// undefined</span><br />
+<span>var</span> val = 'Local!';<br />
+<span>return</span> val;<br />
+}<br />
+<br />
+console.log(getVal());<span>// Local!</span><br />
+console.log(val);<span>// Global!</span><br />
+<br /></p>
+<p>こちら、違和感を感じる方が少なからず居るだろうと思います。<br />
+  getVal関数のログ出力結果が、何故にundefinedやねん、と。<br />
+  なぜこんな結果になるかと言いますと、<br />
+<span>・JavaScriptの<span><b><i>ローカル変数は関数全体で有効</i></b></span>となる</span><br />
+<span>・＊の時点では既に「val」変数が<span><b><i>ローカル変数として解釈されている</i></b></span></span><br />
+<span>・＊の時点ではまだローカル変数「val」の<span><b><i>var命令が実行されていない</i></b></span></span><br />
+  よって、出力結果がundefinedになっている、と言ったカラクリです。</p>
+<p>まぁ、ヤヤコシイですよね！<br />
+  この動きを本質的に理解しようとすると、関数の評価のタイミングなど上級者ライクな理解が必要になって来ます。<br />
+  とは言え、この手の問題（と言うか仕様）は、単純にローカル変数とグローバル変数の命名規則でも整備しておけば、アッサリと解決する訳でありまして。<br />
+  変数宣言の場所にも注意すれば、更に言うことなしです。<br />
+  なので、このような複雑な仕様については、まずはコーディングの工夫で極力避けるようにしましょう。</p>
+<div id="calibre_link-275"></div>
+</div>
+<div id="calibre_link-110">
+<div id="calibre_link-276"></div><h3 id="calibre_link-41"><b><u>４−４．argumentsオブジェクト</u></b></h3>
+<p>さて、Chapter３では<span><b><i>オブジェクトの「やりたい放題さ」</i></b></span>に触れましたが、ここでは<span><b><i>関数の「やりたい放題さ」</i></b></span>に触れてみます。<br />
+  以下の例を見てください。</p>
+<p><span><b>例：４−４−①</b></span></p>
+<p><br />
+<span>function</span> showVal(val) {<br />
+    console.log(val);<br />
+}<br />
+<br />
+showVal();<span>// undefined</span><br />
+showVal('bar');<span>// bar</span><br />
+showVal('hoge', 'foo');<span>// hoge</span><br />
+<br /></p>
+<p>他言語経験者にとっては、何とも頭が痛くなるような実行結果ですね。<br />
+  ３種類の呼び出しパターンの全てが正常に結果を得ています。<br />
+  そう、JavaScriptでは、<span><b><i>関数呼び出しの際に引数のチェックが行われない</i></b></span>のです。<br />
+  しかし、これでは困るケースがあります。<br />
+  関数が引数を定義している場合、それらを使用して処理を行うことが大前提なので、せめてチェックぐらいは自前で用意したいものです。</p>
+<p>そんな時に役に立つのが、<span><b><i>argumentsオブジェクト</i></b></span>です。<br />
+  argumentsオブジェクトは、<span><b><i>呼び出し元から渡された引数を管理</i></b></span>しているオブジェクトで、<span><b><i>関数本体のスコープ内で利用可能</i></b></span>です。<br />
+  関数に引数が定義されていようがいまいが、多かろうが少なかろうが、<span><b><i>関数実行時に渡された全ての引数をこのオブジェクトで管理</i></b></span>しています。<br />
+  早速例を見てみましょう。</p>
+<p><span><b>例：４−４−②</b></span></p>
+<p><br />
+<span>var</span> addFunc =<span>function</span>() {<br />
+    console.log(arguments[0] + arguments[1]);<br />
+}<br />
+<br />
+addFunc(1, 2);<span>// 3</span><br />
+<br /></p>
+<p>例：４−４−②では、addFunc関数自体には引数を定義していないものの、呼び出し時に渡された値がちゃんとargumentsオブジェクトに格納されていることが分かると思います。<br />
+  ちなみに、このargumentsオブジェクトは<span><b><i>lengthプロパティ</i></b></span>を持っているので、次の例のような引数チェックをすることも出来ます。</p>
+<p><span><b>例：４−４−③</b></span></p>
+<p><br />
+<span>var</span> addFunc =<span>function</span>(val1, val2) {<br />
+    if (arguments.length != 2) {<br />
+<span>throw new</span> Error('引数が不正です！');<br />
+    }<br />
+    console.log(val1 + val2);<br />
+}<br />
+<br />
+addFunc(10, 10);<span>// 20</span><br />
+addFunc(1);<span>// 例外発生</span><br />
+<br /></p>
+<p>また、このlengthプロパティを使えば、いわゆる可変長の引数を持つ関数も手軽に作れます。</p>
+<div id="calibre_link-278"></div>
+</div>
+<div id="calibre_link-62">
+<div id="calibre_link-279"></div><p><span><b>例：４−４−④</b></span></p>
+<p><br />
+<span>var</span> addFunc =<span>function</span>() {<br />
+<span>var</span> result = 0;<br />
+<span>for</span> (<span>var</span> i = 0; i &lt; arguments.length; i++) {<br />
+        result += arguments[i];<br />
+    }<br />
+    console.log(result);<br />
+}<br />
+<br />
+addFunc(1, 1);<span>// 2</span><br />
+addFunc(1, 2, 3, 4, 5);<span>// 15</span><br />
+<br /></p>
+<p>いかがでしょうか。<br />
+  argumentsオブジェクトを使いこなせば、自分で作れる関数の幅がグッと広がるでしょう。<br />
+  なお、言うまでも無いでしょうけど、例４−４−②〜④で紹介した関数は、実用するには<span><b><i>引数の型をチェックしたりエラーハンドリングしたり</i></b></span>しないとお話になりませんので、あしからず。</p>
+<div id="calibre_link-281"></div>
+</div>
+<div id="calibre_link-115">
+<div id="calibre_link-282"></div><h3 id="calibre_link-42"><b><u>４−５．引数に名前を付ける</u></b></h3>
+<p>JavaScriptでは、引数に名前を付けておき、呼び出し時に明示的に指定することが出来ます。<br />
+  名前付きの引数を使うことによって、引数の数が多くなっても可読性が落ちないようにしたり、引数の順番を自由に変更したり出来るようになります。<br />
+  使い方は以下の通りです。</p>
+<p><span><b>例：４−５−①</b></span></p>
+<p><br />
+<span>function</span> showInfo(args) {<br />
+<span>var</span> name = args.name;<br />
+<span>var</span> age = args.age;<br />
+<br />
+    console.log(name + ' ' + age);<br />
+}<br />
+<br />
+showInfo({ name: 'iga', age: 35});<span>// iga 35</span><br />
+showInfo({ age: 37, name: 'tara'});<span>// tara 37</span><br />
+<br /></p>
+<p>これぐらいのボリュームだとあまり恩恵を感じられないでしょうが、仮に引数が10個ぐらい存在するケースを想像すると、その絶大な効力が理解できるかと思います。</p>
+<div id="calibre_link-284"></div>
+</div>
+<div id="calibre_link-92">
+<div id="calibre_link-285"></div><h3 id="calibre_link-43"><b><u>４−６．高階関数</u></b></h3>
+<p>高階関数とは、<span><b><i>関数自身を引数や戻り値として扱う関数</i></b></span>のことです。<br />
+  何だか言葉にするとヤヤコシイですが、今まで何回か触れてきたようにJavaScriptでは、<span><b><i>関数もデータ型の一種</i></b></span>だと言うことを思い返してみてください。<br />
+  データ型の一種であるため、関数を変数に代入できましたよね。<br />
+  これと同様に、関数を別の関数の引数や戻り値に設定出来るのです。<br />
+  で、そう言った性質を持つ関数のことを、高階関数と言う訳です。<br />
+  早速例を見て行きましょう。</p>
+<p><span><b>例：４−６−①</b></span></p>
+<p><br />
+<span>function</span> higherOrder (values, fnc) {<br />
+<span>for</span> (<span>var</span> val<span>in</span> values) {<br />
+        fnc(values[val]);<br />
+    }<br />
+}<br />
+higherOrder([1,3,5],<span>function</span>(val){ console.log(val)});<span>// 1 , 3 , 5と順にコンソールに表示される</span><br />
+<br /></p>
+<p>ここでは、関数の引数に関数を指定する例を挙げてみました。<br />
+  ※関数を戻り値にする例は、後ほど関数の最難関「<span><b><i>クロージャ</i></b></span>」で触れるので、ここでは一旦置いておきます<br />
+  関数の引数を関数にするメリットは、引数として渡す関数を自由に差し替えることが出来ることです。<br />
+  引数が差し替えられることを前提にした関数設計を行うと、より柔軟で汎用性の高い関数が作れるようになるでしょう。</p>
+<div id="calibre_link-287"></div>
+</div>
+<div id="calibre_link-108">
+<div id="calibre_link-288"></div><h3 id="calibre_link-44"><b><u>４−７．スコープチェーン</u></b></h3>
+<p>いよいよ関数の説明も終盤戦です。<br />
+  ここで触れる<span><b><i>スコープチェーン</i></b></span>と次に触れる<span><b><i>クロージャ</i></b></span>は、多くのJavaScriptビギナー達を返り討ちにしてきた、言わば「<span><b><i>脱初心者への最終試練</i></b></span>」的な存在です。<br />
+  今までの内容が町内会の草野球レベルだとすると、一気にここから大学リーグのレベルになるぐらいの差があるかもしれません。（プロ野球レベルには程遠いですが）<br />
+  ですので、<span><b><i>一度で理解しようとせず、何度も何度も学んで</i></b></span>みてください。<br />
+  そして、必ず<span><b><i>自分でコーディングして、納得の行くまで理解を深めて</i></b></span>みてください。<br />
+  それが<span><b><i>脱初心者、一歩先に進むためのベストプラクティスである</i></b></span>と言うことを、決して忘れないでください。</p>
+<p>・・・と言うわけで、本題に入ります。<br />
+  最終試練の一角、スコープチェーンです。</p>
+<p>まず、スコープチェーンとは、<span><b><i>JavaScriptがどんな順序で変数やプロパティを参照するか</i></b></span>・・・を取り決めたルール、だと考えてください、<br />
+  そして、このスコープチェーンを理解する第一歩として、<span><b><i>Callオブジェクト</i></b></span>なるモノから理解して行きましょう。</p>
+<p>Callオブジェクトとは、<span><b><i>関数を呼び出す度に内部的に生成されるオブジェクト</i></b></span>で、関数内のローカル変数を管理します。<br />
+  通常、コーディングの際にCallオブジェクトを意識する必要はありません。<br />
+  しかし、スコープチェーンを理解するためには、Callオブジェクトの存在はしっかりと理解しておく必要があります。<br />
+  なぜなら、<span><b><i>スコープチェーンとは、GlobalオブジェクトとCallオブジェクトを、生成した順に連結したリスト</i></b></span>のようなモノだからです。<br />
+  このリストのようなモノは、<span><b><i>一番最初に生成されるGlobalオブジェクトを末端とし、Callオブジェクトが生成される度にその先端に紐付けている</i></b></span>ようなイメージになります。<br />
+  そして、JavaScriptの変数解決の仕組みは、この<span><b><i>リストの先頭から順に辿って、一番最初に見つかった値を採用する</i></b></span>仕組みとなっています。</p>
+<p>では、ここまでの説明を頭に叩き込んだ上で、次の例を見てみましょう。</p>
+<div id="calibre_link-290"></div>
+</div>
+<div id="calibre_link-76">
+<div id="calibre_link-291"></div><span><b>例：４−７−①</b></span>
+<table>
+<tbody><tr>
+<td rowspan="5"><strong><b>C</b></strong></td>
+<td></td>
+<td></td>
+<td><span>var</span> x = 'Global';<br />
+<span>var</span> y = 'Global';</td>
+</tr>
+<tr>
+<td rowspan="3"><strong><b>B</b></strong>
+</td>
+<td></td>
+<td><span>function</span> outerFunc(){<br />
+<span>var</span> x = 'Local Outer';
+</td>
+</tr>
+<tr>
+<td><strong><b>A</b></strong></td>
+<td><span>function</span> innerFunc(){<br />
+<span>var</span> x = 'Local Inner';<br />
+<br />
+<span>// Local Inner</span>  ①<br />
+        console.log(x);<br />
+<br />
+<span>// Global</span>  ②<br />
+        console.log(y);<br />
+<br />
+<span>// undefined</span>  ③<br />
+        console.log(z);<br />
+    }<br /></td>
+</tr>
+<tr>
+<td></td>
+<td><span>// Local Outer</span>  ④<br />
+    console.log(x);<br />
+    innerFunc();<br />
+}</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><span>// Global</span>  ⑤<br />
+console.log(x);<br />
+outerFunc();</td>
+</tr>
+<tr>
+<td colspan="6">
+<br />
+A:innerFuncのCallオブジェクトのスコープ
+</td>
+</tr>
+<tr>
+<td colspan="6">
+B:outerFuncのCallオブジェクトのスコープ
+</td>
+</tr>
+<tr>
+<td colspan="6">
+C:Globalオブジェクトのスコープ
+</td>
+</tr>
+</tbody></table>
+<p>例：４−７−①では、以下のようなスコープチェーンが生成されています。</p>
+<p><img alt="" src="images/00000.jpeg" /></p>
+<p>それでは、例の中の①〜⑤について、それぞれどのような変数解決が行われているか見て行きましょう。</p>
+<p>①はinnerFunc内に記述されているため、変数解決はinnerFuncのCallオブジェクトからスタートします。<br />
+        そして、innerFuncのCallオブジェクトにはxが存在します。<br />
+        よって、①の時点でのxは「Local Inner」となります。</p>
+<p>②もinnerFunc内に記述されています。<br />
+        しかし、innerFuncのCallオブジェクトにはyが存在しません。<br />
+        スコープチェーンを辿り、次のouterFuncのCallオブジェクトを見ても、yは存在しません。<br />
+        更にスコープチェーンを辿り、Globalオブジェクトを見ると、yが存在しました。<br />
+        よって、②の時点でのyは「Global」になります。</p>
+<p>③もinnerFuncに記述されています。<br />
+        しかし、innerFuncのCallオブジェクト、outerFuncのCallオブジェクト、Globalオブジェクトと辿っても、どこにもzは存在しません。<br />
+        よって、③の時点でのzは存在しない扱いとなり、undefinedになっています。</p>
+<p>④はouterFuncに記述されているため、変数解決はouterFuncのCallオブジェクトからスタートします。<br />
+        そして、outerFuncのCallオブジェクトにはxが存在します。<br />
+        よって、④の時点でのxは「Local Outer」となります。</p>
+<p>⑤は関数の外に記述されているため、変数解決はGlobalオブジェクトからスタートします。<br />
+        そして、Globalオブジェクトにはxが存在します。<br />
+        よって、⑤の時点でのxは「Global」となります。</p>
+<p>いかがでしょうか？<br />
+        Callオブジェクトの存在を意識できれば、案外理解しやすい気がしませんか？<br />
+        なお、いまいち納得が行かない人は、例４−７−①を自由に改変し、気の済むまで色々なケースを試してみてください。</p>
+<div id="calibre_link-293"></div>
+</div>
+<div id="calibre_link-98">
+<div id="calibre_link-294"></div><h3 id="calibre_link-45"><b><u>４−８．クロージャ</u></b></h3>
+<p>ついにここまで辿り着きました。<br />
+        いよいよ「<span><b><i>脱初心者への最終試練</i></b></span>」のラスボス、クロージャです。<br />
+        コイツをちゃんと理解出来れば、あなたは晴れて<span><b><i>脱初心者</i></b></span>することでしょう。<br />
+        そして、堂々と「<span><b><i>JavaScript中級者</i></b></span>」を名乗っていいと思います。<br />
+        ここから先、相当長くなりますが、めげずに張り切って行きましょう！</p>
+<p>クロージャとは、言葉で定義するのであれば「ローカル変数を参照している、関数の中に定義している関数」です。　※結構無理やり定義しています<br />
+        いやー、チンプンカンプンですよね！<br />
+        とは言え、言葉にすると本当にこんなモノなのです。<br />
+        なので、今回も早速例を見てみましょう。</p>
+<div id="calibre_link-296"></div>
+</div>
+<div id="calibre_link-61">
+<div id="calibre_link-297"></div><p><span><b>例：４－８－①</b></span></p>
+<p><br />
+<span>function</span> closure(initVal) {<br />
+<span>var</span> count = initVal;<br />
+<br />
+<span>var</span> innerFunc =<span>function</span>() {<br />
+<span>return</span> ++count;<br />
+    };<br />
+<span>return</span> innerFunc;<br />
+}<br />
+<br />
+<span>var</span> myClosure = closure(100);<br />
+console.log(myClosure());<span>// 101</span><br />
+console.log(myClosure());<span>// 102</span><br />
+console.log(myClosure());<span>// 103</span><br />
+<br /></p>
+<p>馴染みの無い人にとっては、非常に奇っ怪な動きに感じられるかもしれません。<br />
+        しかし、まさにコレがクロージャなのです。<br />
+        「<span><b><i>ローカル変数を参照している、関数の中に定義している関数</i></b></span>」の定義に則って考えてみると、<br />
+        ローカル変数・・・count<br />
+        countを参照している、関数の中に定義している関数・・・innerFunc関数<br />
+        となります。<br />
+        よって、クロージャの実態は、この例だとinnerFunc関数ってことになります。<br />
+        では、次に、なぜmyClosure()を呼び出す度に結果がインクリメントされているのか、この謎を解き明かして行きましょう。</p>
+<p>通常、関数の中で定義されているローカル変数は、関数の処理が終わるとその時点で破棄されます。<br />
+        関数の実行が終われば、もうどこからも呼び出されることが無いため、領域を解放されてしまう訳です。<br />
+        しかし、例４−８−①の場合は、ローカル変数（count）を参照している関数（innerFunc）が返却されるため、innerFunc関数そのものはmyClosureに格納されます。<br />
+        そして、myClosureはグローバル変数であるため、Globalオブジェクトが存在し続ける限り解放されることはありません。<br />
+        要するに、この例では、<span><b><i>myClosureがローカル変数（count）を参照し続けている</i></b></span>ことになります。<br />
+        その結果、<span><b><i>ローカル変数countは、myClosureが有効な限り破棄されない</i></b></span>のです。<br />
+        これがmyClosure()を呼び出す度に結果がインクリメントされるカラクリです。<br />
+        closure関数を呼び出す際に渡した値（100）がローカル変数（count）に代入され、以降myClosure()が呼び出される度にインクリメントされているのです。</p>
+<p>いかがでしょうか？<br />
+        おぼろげながらにクロージャの仕組みが見え始めて来ましたか？<br />
+        頭がゴチャゴチャになってしまった人は、この時点で一度自分でサンプルソースを書いて色々試してみるといいでしょう。</p>
+<p>では次に、完璧に理解するための仕上げとして、例４−８−①の内容に<span><b><i>スコープチェーン</i></b></span>の概念を加えて整理してみましょう。<br />
+        なお、「４−７．スコープチェーン」で説明した<span><b><i>Callオブジェクトの役割を忘れてしまった人は、必ず先に読み返しておいてください！！！</i></b></span></p>
+<p>例４−８−①では、以下のようにスコープチェーンが生成されています。</p>
+<p><img alt="" src="images/000003.gif" /></p>
+<p>このスコープチェーンは、innerFunc関数が有効である間は保持され続けます。<br />
+        また、innerFunc関数はmyClosureに格納されるため、closure関数が終了しても破棄されません。（closure関数のCallオブジェクトも、innerFunc関数のCallオブジェクトが参照し続けるため、同様に破棄されません）<br />
+        この結果、closure関数の終了後には以下のようなことが起こります。<br />
+<span>・スコープチェーンが破棄されない</span><br />
+<span>・と言うことは、innerFunc関数のCallオブジェクトも破棄されない</span><br />
+<span>・であれば、Callオブジェクトに管理されているローカル変数（count）も破棄されない</span><br />
+<span>・ローカル変数（count）は破棄されないので、closure関数呼び出し時に代入された値（100）が残ったまま</span><br />
+<span>・これらの結果、myClosure()が呼び出されるたびに、ローカル変数（count）がインクリメントされる　※myClosureの実態はinnerFunc関数であり、この関数はcountをインクリメントして返却する関数だからです</span></p>
+<p>いかがでしょうか！<br />
+        これがクロージャの仕組みです！<br />
+        心から厄介な存在ではありますが、<span><b><i>スコープチェーンとCallオブジェクトの概念をちゃんと理解していれば、こちらも必ず理解出来るはず</i></b></span>です。<br />
+        例４−８−①での一番の疑問点は、「何で、myClosure()が呼び出されるたびに、戻り値がカウントアップするの？」だと思いますが、スコープチェーンとCallオブジェクトを理解していれば、むしろ当然の動作だと思えるはずです。</p>
+<p>ここまでの説明でクロージャがいまいち理解出来ていない人は、是非「４−７．スコープチェーン」から読み返してみましょう。<br />
+        通しで考えてみてもらえれば、必ず納得してもらると思います。<br />
+        そして、理解出来た人は、本当におめでとうございます！<br />
+        ここまで長く険しい道のりだったと思います。</p>
+<div id="calibre_link-299"></div>
+</div>
+<div id="calibre_link-116">
+<div id="calibre_link-300"></div><p>だがしかし！（しつこい）<br />
+<span><b><i>まだクロージャの説明は終わっていません！</i></b></span><br />
+        だって、まだクロージャの使い所を思い描けていないですよね？<br />
+        ね！？</p>
+<p>と言うわけで、いよいよクロージャの説明も最終段階です。<br />
+        あと少し頑張りましょう！<br />
+        以下の例を見てください。</p>
+<p><span><b>例：４－８－②</b></span></p>
+<p><br />
+<span>function</span> closure(initVal) {<br />
+<span>var</span> count = initVal;<br />
+<span>var</span> innerFunc =<span>function</span>() {<br />
+<span>return</span> ++count;<br />
+    };<br />
+<span>return</span> innerFunc;<br />
+}<br />
+<br />
+<span>var</span> myClosure = closure(100);<br />
+<span>var</span> myClosure2 = closure(200);<br />
+<br />
+console.log(myClosure());<span>// 101</span><br />
+console.log(myClosure());<span>// 102</span><br />
+console.log(myClosure2());<span>// 201</span><br />
+console.log(myClosure2());<span>// 202</span><br />
+<br /></p>
+<p>ここまで辿り着いたあなたなら、細かい説明は不要でしょう。<br />
+        そう、クロージャはそれぞれが独立して動作します。<br />
+        Callオブジェクトは関数呼び出しのたびに生成されるため、例４−８−②ではmyClosureとmyClosure2の呼び出し時にそれぞれ別のCallオブジェクトが生成されています。<br />
+        要するに、それぞれ別のスコープチェーンが生成される訳です。</p>
+<p><img alt="" src="images/000001.gif" /></p>
+<p>図に表すとこんな感じです。<br />
+        カンのいい人は、既にこの時点でクロージャの使い所が思い描けているかもしれませんね。<br />
+        クロージャは、<br />
+<span>・グローバル変数の代わりとして</span><br />
+<span>・メンバに加える処理がシンプルなオブジェクトの代わりとして</span><br />
+        こんな用途の際に利用が出来ます。<br />
+        他にもありますけど、とりあえずはこの二つを思い描いておけば十分問題ないと思います。<br />
+        グローバル変数の代わりに使えば、<span><b><i>オブジェクト指向のような構文</i></b></span>が実現出来ます。<br />
+        また、シンプルなオブジェクトの代わりに使えば、<span><b><i>コードがよりスタイリッシュになる</i></b></span>かもしれません。<br />
+        例えば、画面上のボタンを管理するオブジェクト（objBtnとします）と押した回数をインクリメントするメソッド（addClickCountとします）があるとして<br />
+        objBtn.addClickCount();<br />
+        って書くよりも、クロージャを使って（clickBtnとします）<br />
+        clickBtn();<br />
+        って書いたほうがスタイリッシュじゃないですか？<br />
+        そして、何より<span><b><i>クロージャを駆使している方がカッコイイ</i></b></span>と思いませんか？<br />
+        少なくとも筆者としては、華麗に（無駄なく）クロージャを使いこなしているソースを見たら「お、やるなおぬし？」とか思いますよ(笑) さてさて。<br />
+        長かったクロージャの説明もいよいよ終わるのですが、最後の最後に以下のことを伝えておきますね。<br />
+        JavaScriptでは、クロージャを使わなければ何らかの処理が実現出来ないと言うことは、決してありません。<br />
+        なので、クロージャなんて難解なモノをわざわざ理解しなくたって、いくらでもコーディングは可能です。<br />
+        しかし、「<span><b><i>クロージャを理解すること＝JavaScriptの奥深さ、面白さを理解すること</i></b></span>」だと、筆者は考えています。<br />
+        本書の読者さまの中で、一人でも多くの方が同じように考えてもらえるようになったら、こんなに嬉しいことはありません。</p>
+<div id="calibre_link-302"></div>
+</div>
+<div id="calibre_link-117">
+<div id="calibre_link-303"></div><h2 id="calibre_link-46"><b><u>Chapter５．プロトタイプを知っておこう！</u></b></h2>
+<h3 id="calibre_link-304"><b><u>５−１．プロトタイプとは</u></b></h3>
+<p>オブジェクト、関数とJavaScriptの独自世界にドップリ浸って来たことですし、せっかくなのでもう一丁JavaScriptの独自世界に触れておきましょう。<br />
+        JavaScriptにおける「プロトタイプ」とは、若干語弊はあるものの、とりあえずは「<span><b><i>クラスの代わり</i></b></span>」とでも考えてください。<br />
+        JavaScriptには「クラス」と言う概念が無い（※）ので、代わりにこの<span><b><i>「プロトタイプ」を駆使してオブジェクト指向ライクな実装</i></b></span>をして行きます。<br />
+        ※ES6（ECMAScript6）ではようやくクラスの概念が用意されましたが、未だ普及状況が微妙なため、一旦ここでは「存在しない」ものとして考えます</p>
+<div id="calibre_link-305"></div>
+</div>
+<div id="calibre_link-83">
+<div id="calibre_link-306"></div><h3 id="calibre_link-47"><b><u>５−２．prototypeプロパティ</u></b></h3>
+<p>オブジェクトには、メンバを追加するためのprototypeプロパティというモノが用意されています。<br />
+        prototypeプロパティは、特に意識して使わない限りは空のオブジェクトを参照しているのですが、このプロパティに何らかの格納をした場合、オブジェクトをインスタンス化した先のオブジェクトに引き継ぐことが出来ます。<br />
+        やはり言葉だと難しいので、例を見て行きましょう。</p>
+<p><span><b>例：５−２−①</b></span></p>
+<p><br />
+<span>var</span> Phone =<span>function</span>(name) {<br />
+    this.name = name;<br />
+};<br />
+Phone.prototype.getName =<span>function</span>() {<br />
+<span>return</span> this.name;<br />
+};<br />
+<span>var</span> featurePhone =<span>new</span> Phone('feature phone');<br />
+<span>var</span> smartPhone =<span>new</span> Phone('smart phone');<br />
+<br />
+console.log(featurePhone.getName());<span>// feature phone</span><br />
+console.log(smartPhone.getName());<span>// smart phone</span><br />
+<br /></p>
+<p>prototypeプロパティを使って、オブジェクトにメソッドを追加する例です。<br />
+        プロパティに格納したメソッドが、インスタンス化したそれぞれのオブジェクトに引き継がれていることがわかると思います。<br />
+        しかし、何でわざわざこんなプロパティを使ってメソッドを定義しているのでしょうか？<br />
+        コンストラクタの中で定義しておけばいいじゃん、って思いませんか？</p>
+<p>これ、答えは「<span><b><i>メモリ使用量の削減</i></b></span>」のためなのです。<br />
+        インスタンス化したオブジェクトは、<span><b><i>コンストラクタで定義されているメンバ分のメモリ領域を都度確保</i></b></span>します。<br />
+        プロパティはインスタンス毎に違う値になるからそれで問題無いのですが、<span><b><i>メソッドはインスタンスを通して全て同じ振る舞いをするため、個別にメモリを確保するのはただの無駄</i></b></span>です。<br />
+        ここで、prototypeプロパティの出番なのです。<br />
+<span><b><i>インスタンス化されたオブジェクトは、使用したコンストラクタのprototypeプロパティに対して暗黙の参照を持ちます。</i></b></span><br />
+        と言うことは、<span><b><i>prototypeプロパティに格納したメソッドにも暗黙の参照を持っている</i></b></span>ので、わざわざ自前でメソッドを持つ必要がありません。<br />
+        これにより、無駄なメモリ消費が避けられる、と言う訳です。</p>
+<p>また、prototypeプロパティの利用は、もう一つのメリットがあります。<br />
+        次の例を見てください。</p>
+<p><span><b>例：５−２−②</b></span></p>
+<p><br />
+<span>var</span> Phone =<span>function</span>(name) {<br />
+    this.name = name;<br />
+};<br />
+<br />
+<span>var</span> featurePhone =<span>new</span> Phone('feature phone');<br />
+<br />
+Phone.prototype.getName =<span>function</span>() {<br />
+<span>return</span> this.name;<br />
+};<br />
+<br />
+<span>var</span> smartPhone =<span>new</span> Phone('smart phone');<br />
+<br />
+console.log(featurePhone.getName());<span>// feature phone</span><br />
+console.log(smartPhone.getName());<span>// smart phone</span><br />
+<br /></p>
+<p>featurePhoneの生成を、prototypeプロパティにメソッドを追加する前に移動してみました。<br />
+        しかし、featurePhoneもgetNameメソッドを呼び出せています。<br />
+        まぁ、これも「<span><b><i>インスタンス化されたオブジェクトは、使用したコンストラクタのprototypeプロパティに対して暗黙の参照を持つ</i></b></span>」ことを考えれば、特に不思議なことではないと思います。<br />
+        要するに、prototypeプロパティでメソッドを管理していれば、インスタンスがオブジェクト（コンストラクタ）の変更をリアルタイムに認識できるのです。</p>
+<p>いかがでしょうか。<br />
+        特に、メモリ削減の観点だけでも、prototypeプロパティの価値が十分に伝わると思います。<br />
+        今後、コンストラクタを定義する際には、<span><b><i>メソッドは必ずprototypeプロパティで管理する</i></b></span>よう徹底しましょう。</p>
+<p>なお、例５−２−①、②ではprototypeプロパティの定義をドット演算子で行いましたが、同じことをオブジェクトリテラルを使っても実現出来ます。<br />
+        むしろ、実際の利用シーンではいくつものメソッドが必要になると思うので、リテラル表記の方が何かと好ましいでしょう。<br />
+        オブジェクトリテラルでprototypeプロパティを定義する例も挙げておきますので、是非活用してください。</p>
+<p><span><b>例：５−２−③</b></span></p>
+<p><br />
+<span>var</span> Phone =<span>function</span>(name,model,color) {<br />
+    this.name = name;<br />
+    this.model = model;<br />
+    this.color = color;<br />
+};<br />
+<br />
+Phone.prototype = {<br />
+    getName :<span>function</span>() {<span>return</span> this.name;},<br />
+    getModel :<span>function</span>() {<span>return</span> this.model;},<br />
+    getColor :<span>function</span>() {<span>return</span> this.color;}<br />
+}<br />
+<br />
+<span>var</span> featurePhone =<span>new</span> Phone('feature phone', 'X-X', 'black');<br />
+<span>var</span> smartPhone =<span>new</span> Phone('smart phone', 'XX-XX', 'red');<br />
+<br />
+console.log(featurePhone.getModel());<span>// X-X</span><br />
+console.log(smartPhone.getColor());<span>// red</span><br />
+<br /></p>
+<div id="calibre_link-308"></div>
+</div>
+<div id="calibre_link-99">
+<div id="calibre_link-309"></div><h3 id="calibre_link-48"><b><u>５−３．プロトタイプチェーン</u></b></h3>
+<p>プロトタイプチェーンとは、JavaScriptの世界でオブジェクト指向の<span><b><i>継承</i></b></span>を行うための仕組みです。<br />
+        この仕組みも、言葉で説明を始める前に、まずは例を見て行きましょう。</p>
+<p><span><b>例：５−３−①</b></span></p>
+<p><br />
+<span>var</span> Phone =<span>function</span>() {};<br />
+Phone.prototype = {<br />
+    getOwner :<span>function</span>() { console.log('Owner is' , this.owner); }<br />
+};<br />
+<br />
+<span>var</span> SmartPhone =<span>function</span>(owner) { this.owner = owner };<br />
+<strong><b>SmartPhone.prototype =<span><b>new</b></span> Phone();</b></strong>  ① <br />
+SmartPhone.prototype.tap =<span>function</span>() { console.log('tap!') };<br />
+<br />
+<span>var</span> myPhone =<span>new</span> SmartPhone('igarashi');<br />
+myPhone.getOwner(); ②<span>// Owner is igarashi</span><br />
+myPhone.tap();<span>// tap!</span><br />
+<br />
+<span>var</span> otherPhone =<span>new</span> SmartPhone('tarama');<br />
+otherPhone.getOwner();<span>// Owner is tarama</span><br />
+otherPhone.tap();<span>// tap!</span><br />
+<br /></p>
+<p>いかがでしょうか。<br />
+        こちら、何と言ってもポイントは①の部分で、これがプロトタイプチェーンの正体です。<br />
+<span><b><i>継承したいオブジェクトのインスタンスを、自身のprototypeプロパティに格納するのです。</i></b></span><br />
+        何でこれで継承になるのかは、５−２で説明したprototypeプロパティの役割と、４−７のスコープチェーンを理解出来ていれば、案外すんなりと理解出来ると思います。<br />
+        具体的に、②の部分では、以下の様なメンバの解決が行われます。<br />
+<span>・myPhoneオブジェクト自身のgetOwnerメソッドを探す</span><br />
+<span>・見付からないため、myPhoneのコンストラクタ（SmartPhoneオブジェクト）のプロトタイプ（Phoneオブジェクトのインスタンス）にgetOwnerメソッドを探しに行く</span><br />
+<span>・Phoneオブジェクトのインスタンスにも見付からないため、PhoneオブジェクトのプロトタイプにgetOwnerメソッド探しに行く</span><br />
+<span>・PhoneオブジェクトのプロトタイプにてgetOwnerメソッドを発見する</span><br />
+        こんな感じです。<br />
+        順を追っていけば全然難しくないですよね。</p>
+<p>このプロトタイプチェーンを使いこなせれば、きっとJavaScriptでも自由自在にオブジェクト指向ライクな記述が出来るようになると思います。<br />
+        是非、自分の手で色々と試してみてください。</p>
+<p>※ちなみに、JavaScriptにおける「継承」は、ES5準拠の<span><b><i>Object.create</i></b></span>を使っても出来るのですが、本書では割愛いたします</p>
+<div id="calibre_link-311"></div>
+</div>
+<div id="calibre_link-132">
+<div id="calibre_link-312"></div><h2 id="calibre_link-49"><b><u>Chapter６．ES6(ECMAScript6)の新機能を覗いてみよう！</u></b></h2>
+<h3 id="calibre_link-313"><b><u>６−１．ECMAScriptとは</u></b></h3>
+<p>ECMAScriptと言うのは、Ecma Internationalって言う標準化団体によって標準化された言語仕様です。<br />
+        実は、ブラウザ上で動作するJavaScriptって言うのは、このECMAScriptの仕様を元に実装されてたりします。<br />
+        そして、ECMAScript6と言うのは、2015年6月に採用されたECMAScriptのバージョンであり、2016年5月現在での最新バージョンとなります。<br />
+        ※本書では、基本的にECMAScript6を「ES6」と表記します</p>
+<p>ES6では、実に様々な目玉機能が実装されています。<br />
+        とは言え、現段階ではまだそこまで普及が進んでおらず（特にモバイルは進んでいません）、少なくとも一般的な開発現場でこれを利用する機会はまだほとんど無いでしょう。<br />
+        しかし、前バージョンと比べて結構大きく様変わりしている点もあるため、いざES6が普通に使われる時代になって置いてけぼりにならないよう、今のうちから概要ぐらいは抑えておきたいものです。</p>
+<p>本書では、ES6の新機能のうち、筆者の主観において<span><b><i>特に重要だと思われる機能</i></b></span>についていくつか簡単に紹介して行きます。<br />
+        もっと本格的にES6について知りたい人は、ボチボチ書籍もサイトも目にするようになって来たので、それらを参考にして頂ければと思います。</p>
+<div id="calibre_link-314"></div>
+</div>
+<div id="calibre_link-100">
+<div id="calibre_link-315"></div><h3 id="calibre_link-50"><b><u>６−２．ブロックスコープの宣言</u></b></h3>
+<p>従来のJavaScriptでは、ブロックスコープと言う概念は存在しませんでした。<br />
+        しかし、ES6ではいよいよブロックスコープが利用可能となりました。<br />
+        ブロックスコープの変数を宣言するには、var命令ではなく<span><b><i>let命令</i></b></span>を利用します。</p>
+<p><span><b>例：６−２−①</b></span></p>
+<p><br />
+<span>if</span> (true) {<br />
+<span>let</span> hoge = 'hoge';<br />
+}<br />
+console.log(hoge);<span>// エラー</span><br />
+<br /></p>
+<p>なお、let命令では、同じスコープ内での変数の重複を認めない仕様となっています。<br />
+        ES6以降もvar命令は利用可能ですが、特別な理由が無い限りはlet命令を利用をすることになると思われます。</p>
+<div id="calibre_link-317"></div>
+</div>
+<div id="calibre_link-90">
+<div id="calibre_link-318"></div><h3 id="calibre_link-51"><b><u>６−３．定数の宣言</u></b></h3>
+<p>定数も従来のJavaScriptでは存在しない概念でしたが、ES6からは<span><b><i>const命令</i></b></span>により宣言可能となっています。</p>
+<p><span><b>例：６−３−①</b></span></p>
+<p><br />
+<span>const</span> hoge = 'hoge';<br />
+hoge = 'fuga';<span>// エラー</span><br />
+<br /></p>
+<p>他の言語ではおなじみの概念ですね。<br />
+        ちなみに、const命令の正しい意味は「変更禁止」ではなく、「<span><b><i>再代入禁止</i></b></span>」であることに注意してください。<br />
+        例えば、以下の例のような記述は可能ってことです。</p>
+<p><span><b>例：６−３−②</b></span></p>
+<p><br />
+<span>const</span> arr = [1, 3, 5];<br />
+arr[0] = 2;<br />
+console.log(arr);<span>// [2. 3, 5]</span><br />
+<br /></p>
+<div id="calibre_link-320"></div>
+</div>
+<div id="calibre_link-127">
+<div id="calibre_link-321"></div><h3 id="calibre_link-52"><b><u>６−４．テンプレート文字列</u></b></h3>
+<p>テンプレート文字列とは、いわゆる<span><b><i>PHPなどで利用できるヒアドキュメント</i></b></span>のようなものです。<br />
+        ES6からは、値をバッククォート（`）で括ることにより、実現可能となっています。<br />
+        テンプレート文字列を利用することにより、<br />
+<span><b><i>・改行をそのまま書ける</i></b></span><br />
+<span><b><i>・変数を文字列に埋め込める</i></b></span><br />
+        などのメリットがあります。<br />
+        なお、文字列を変数に埋め込む場合は、<span><b><i>${...}</i></b></span>と言う記述ルールになっています。</p>
+<p><span><b>例：６−４−①</b></span></p>
+<p><br />
+<span>let</span> val = `Java<br />
+Script`;<br />
+console.log(val);<span>// Java<br />
+                      Script</span><br />
+<br />
+<span>let</span> name = 'igarashi';<br />
+<span>let</span> str = `My name is ${name} !`<br />
+console.log(str);<span>// My name is igarashi !</span><br />
+<br /></p>
+<div id="calibre_link-323"></div>
+</div>
+<div id="calibre_link-0">
+<div id="calibre_link-324"></div><h3 id="calibre_link-53"><b><u>６−５．分割代入</u></b></h3>
+<p>ES6では、<span><b><i>複数の変数に対して、一度で複数の値を代入する</i></b></span>ことが出来るようになります。<br />
+        これを分割代入と言います。<br />
+        分割代入では、変数の他にオブジェクトのプロパティに対しても同様に値の代入を行うことができます。</p>
+<p><span><b>例：６−５−①</b></span></p>
+<p><br />
+<span>let</span> [name, age] = ['igarashi', 35];<br />
+<span>let</span> {name, age, tel} = {name:'tarama', age:37};<br />
+<br /></p>
+<p>なお、分割代入では、<span><b><i>代入時に足りない分はundefinedになり、余った分は切り捨てられる</i></b></span>仕様となっています。</p>
+<div id="calibre_link-326"></div>
+</div>
+<div id="calibre_link-77">
+<div id="calibre_link-327"></div><h3 id="calibre_link-54"><b><u>６−６．for...of</u></b></h3>
+<p>従来のJavaScriptには<span><b><i>for...in命令</i></b></span>が存在しましたが、あんまり使い所の無い命令でした。※Chapter２、２−５−５参照<br />
+        しかし、ES6からはfor...of命令が用意され、これはかなり使い道のある命令となっています。<br />
+        と言うのも、for...in命令は対象オブジェクトのプロパティ名を返却するのに対し、<span><b><i>for...of命令は値を列挙</i></b></span>してくれます。<br />
+        要するに、JavaScriptでもようやく<span><b><i>Javaのfor-each文と同じことが出来る</i></b></span>ようになると言う訳です。</p>
+<p><span><b>例：６−６−①</b></span></p>
+<p><br />
+<span>let</span> arr = ['iga', 'tara', 'sato'];<br />
+<span>for</span> (<span>let</span> val<span>in</span> arr) {<br />
+    console.log(val);<span>// 0、1、2と順に表示</span><br />
+}<br />
+<br />
+<span>let</span> arr2 = ['iga', 'tara', 'sato'];<br />
+<span>for</span> (<span>let</span> val2<span>of</span> arr2) {<br />
+    console.log(val2);<span>// iga、tara、satoと順に表示</span><br />
+}<br />
+<br /></p>
+<div id="calibre_link-329"></div>
+</div>
+<div id="calibre_link-68">
+<div id="calibre_link-330"></div><h3 id="calibre_link-55"><b><u>６−７．引数のデフォルト値</u></b></h3>
+<p>ES6では、引数のデフォルト値もサポートされます。<br />
+        文法は至ってシンプルで、<span><b><i>引数の後に=で初期値を記述する</i></b></span>だけです。</p>
+<p><span><b>例：６−７−①</b></span></p>
+<p><br />
+<span>function</span> sample(val = 'hoge') {<br />
+    console.log(val);<br />
+}<br />
+sample();<span>// hoge</span><br />
+<br /></p>
+<div id="calibre_link-332"></div>
+</div>
+<div id="calibre_link-101">
+<div id="calibre_link-333"></div><h3 id="calibre_link-56"><b><u>６−８．可変長引数</u></b></h3>
+<p>ES6では、<span><b><i>関数の引数の前にピリオドを３個付ける</i></b></span>と可変長引数となります。<br />
+        従来のargumentsオブジェクトを利用した可変長引数と違い、<span><b><i>引数に名前を付けられる</i></b></span>ため、可読性がグッと高くなります。</p>
+<p><span><b>例：６−８−①</b></span></p>
+<p><br />
+<span>function</span> sumVal(...args) {<br />
+<span>let</span> result = 0;<br />
+<span>for</span> (<span>let</span> arg<span>of</span> args){<br />
+        result += arg;<br />
+    }<br />
+    console.log(result);<br />
+}<br />
+<br />
+sumVal(1, 2, 3);<span>// 6</span><br />
+sumVal(10, 100, 1000);<span>// 1110</span><br />
+<br /></p>
+<div id="calibre_link-335"></div>
+</div>
+<div id="calibre_link-65">
+<div id="calibre_link-336"></div><h3 id="calibre_link-57"><b><u>６−９．アロー関数</u></b></h3>
+<p>アロー関数とは、無名関数の定義をより簡潔に記述するための仕組みです。<br />
+        まずは以下の例を見てください。</p>
+<p><span><b>例：６－９－①</b></span></p>
+<p><br />
+<span>let</span> func =<span>function</span>(val) {<br />
+    console.log(val);<br />
+}<br />
+<br />
+<span>let</span> newFunc = (val) =&gt; {<br />
+    console.log(val);<br />
+}<br />
+<br />
+func('hoge');<span>// hoge</span><br />
+newFunc('fuga');<span>// fuga</span><br />
+<br /></p>
+<p>func関数は従来の記述方式、newFunc関数はアロー関数（=&gt;）で記述しています。<br />
+        結果を見てわかる通り、どちらも同じ内容となっています。<br />
+        アロー関数の方が、記述量が少なくて、スッキリしていますね。（慣れないと読みにくいですが・・・）<br />
+        ちなみに、<span><b><i>引数が一つの場合は()が省略可能</i></b></span>だったり、<span><b><i>処理が１行の場合は{}やreturnも省略可能</i></b></span>だったりします。</p>
+<p><span><b>例：６－９－②</b></span></p>
+<p><br />
+<span>let</span> func1 = val =&gt; {<br />
+    console.log(val);<br />
+}<br />
+<br />
+<span>let</span> func2 = (val1, val2) =&gt; val1 + val2;<br />
+<br />
+func1('hoge');<span>// hoge</span><br />
+console.log(func2('hoge', 'fuga'));<span>// hogefuga</span><br />
+<br /></p>
+<p>何とも簡素な記述が可能になったものですね。<br />
+        JavaScriptでは、ファイルサイズを軽量化しなければならないケースが多々ありますので、非常に有効な記述方法だと言えるでしょう。</p>
+<div id="calibre_link-338"></div>
+</div>
+<div id="calibre_link-119">
+<div id="calibre_link-339"></div><h3 id="calibre_link-58"><b><u>６−１０．オブジェクトリテラルの進化</u></b></h3>
+<p>ES6では、オブジェクトリテラルをよりシンプルに記述することが出来ます。<br />
+        まず、<span><b><i>プロパティとその値を表す変数が同じ名前であれば、値の指定を省略</i></b></span>出来ます。</p>
+<p><span><b>例：６−１０−①</b></span></p>
+<p><br />
+<span>let</span> name = 'smart phone';<br />
+<span>let</span> model = 'xx-xx';<br />
+<span>let</span> color = 'blue';<br />
+<br />
+<span>let</span> phone = {name, model, color};<br />
+console.log(phone);<span>// Object {name: "smart phone", model: "xx-xx", color: "blue"}</span><br />
+<br /></p>
+<p>次に、メソッドの定義も簡略化、と言うより<span><b><i>直感的</i></b></span>に書けるようになります。</p>
+<div id="calibre_link-341"></div>
+</div>
+<div id="calibre_link-122">
+<div id="calibre_link-342"></div><p><span><b>例：６−１０−②</b></span></p>
+<p><br />
+<span>let</span> phone = {<br />
+    name: 'smart phone',<br />
+    getName() {<br />
+<span>return</span> `${this.name}です`;<br />
+    }<br />
+}<br />
+<br />
+console.log(phone.getName());<span>// smart phoneです</span><br />
+<br /></p>
+<div id="calibre_link-344"></div>
+</div>
+<div id="calibre_link-109">
+<div id="calibre_link-345"></div><h3 id="calibre_link-59"><b><u>６－１１．クラスの定義</u></b></h3>
+<p>ついにES6ではクラスの定義が可能になります。<br />
+        従来では、<span><b><i>prototypeを駆使して「クラスライク」な振る舞い</i></b></span>を実現していましたが、正式に「クラス」が使えるようになるのです！<br />
+        以下の例にて、prototypeでの実装とクラスでの実装を比較してみてください。</p>
+<p><span><b>例：６－１１－①</b></span></p>
+<p><br />
+<span>/* プロトタイプ */</span><br />
+<span>let</span> Phone =<span>function</span>(name) {<br />
+    this.setName(name);<br />
+};<br />
+<br />
+Phone.prototype = {<br />
+    setName :<span>function</span>(name) {this.name = name;},<br />
+    getName :<span>function</span>() {<span>return</span> '機種は' + this.name + 'です';},<br />
+}<br />
+<br />
+<span>let</span> smartPhone =<span>new</span> Phone('smart phone');<br />
+console.log(smartPhone .getName());<span>// 機種はsmart phoneです</span><br />
+<br />
+<span>/* クラス */</span><br />
+<span>class</span> Phone {<br />
+    constructor(name) {<br />
+        this.name = name;<br />
+    }<br />
+    set name(name) {<br />
+        this._name = name;<br />
+    }<br />
+    get name() {<br />
+<span>return</span> this._name;<br />
+    }<br />
+    getName() {<br />
+        console.log('機種は' + this.name + 'です');<br />
+    }<br />
+}<br />
+<br />
+<span>let</span> smartPhone =<span>new</span> Phone('smart phone');<br />
+smartPhone.getName();<span>// 機種はsmart phoneです</span><br />
+<br /></p>
+<p>いかがでしょうか。<br />
+        他言語経験者にとっては、クラス構文の方が断然理解し易いと思います。<br />
+        ※なお、例で使用している「set」と「get」はES6での新機能では無いのでご注意ください</p>
+<p>ちなみに、このクラス構文は、<span><b><i>モバイル環境での普及があまり進んでいません</i></b></span>が、筆者的には特に本格的な普及が待ち遠しい機能です。</p>
+<div id="calibre_link-347"></div>
+</div>
+<div id="calibre_link-104">
+<div id="calibre_link-348"></div><h2 id="calibre_link-60"><b><u>Chapter７．終わりに</u></b></h2>
+<p>最後まで読んでいただき、誠にありがとうございました！<br />
+        本書は我々<span><b><i>Kinky-Do</i></b></span>の処女作となりますので、随所に至らない箇所があったかもしれませんが、何卒ご容赦くださいませ。</p>
+<p>JavaScriptは、もはやWebサイトに動的な要素を加えるためだけの存在ではありません。<br />
+        モバイル向けのハイブリットアプリやPC向けのデスクトップアプリ、サーバサイドjsなど、年々活躍の場は広がっています。<br />
+        IT業界、特に「開発」を行う人にとっては、是が非でも習得しておきたいスキルだと言えるでしょう。<br />
+        また、昨今ではjQueryやAngularJSなどの便利で強力なフレームワークの利用が大前提のケースも多々見受けられますが、それでも根本のJavaScriptをちゃんと理解しておくことを避けてはなりません。<br />
+        巷に溢れる「フレームワークに翻弄されている」「フレームワークを使わされている」エンジニアにならないためにも、基礎をしっかりと固めましょう！<br />
+        本書を読み終えてくださった方々が、今後ますますより良いエンジニアライフを送られますよう、心からお祈り申し上げます！！</p>
+<p>さて、本書はこれにて終わりとなりますが、いかがでしたでしょうか。<br />
+        今後も２冊目、３冊目と続けて（ノンビリとですが）執筆して行きたいと思っていますので、またご縁があればどうぞご贔屓に！</p>
+<p>See you !　(^_^)/~</p>
+</div>
+
+
+
+
+<script>function myFunction(){document.getElementById("tateyoko").classList.toggle("tateread")}</script></body></html>
