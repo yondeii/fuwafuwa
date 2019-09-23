@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>すごく簡単な電子書籍の作り方: ～Windowsフリーソフトで作るEPUBファイル～</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/mainday.css" title="default">
+<link rel="alternate stylesheet" href="/css/mainnight.css" title="alternate">
+<script type="text/javascript" src="/js/styleswitcher.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+</head>
+<body>
+<div class="novelpage">
+<div class="novelbody">
+<div id="tateyoko">
+<div id="_top"></div>
+<a href="/">🏠</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('default'); return false;">日</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">月</a>&emsp;
+<a href="#_top" onclick="myFunction()" style="cursor: pointer;">縦書き／横書き</a>
+<div id="calibre_link-8">
+<div>
+<div>
+<table class="noveltitle">
+<tr>
+<td colspan="2"><i><span><i>すごく簡単な電子書籍の作り方: ～Windowsフリーソフトで作るEPUBファイル～</i></span></i></td>
+</tr>
+<tr>
+                    
+                    
+      </tr>
+<tr>
+<td colspan="2">楠樹 暖</td>
+</tr>
+<tr>
+<td colspan="2">oritoyo shuppan (2015)</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+</tr>
+</table>
+<div></div>
+</div>
+<div></div>
+</div>
+</div>
+
+
+
+<div id="calibre_link-9"><div></div>
+<p>すごく簡単な電子書籍の作り方<br />
+～Windowsフリーソフトで作るEPUBファイル～</p>
+<div></div>
+<p>楠樹 暖</p>
+<div></div>
+<p>織豊出版</p>
+</div>
+
+
+<div id="calibre_link-19">
+<h1><b>はじめに</b></h1>
+<p>Amazon Kindle ダイレクト・パブリッシング（KDP）や、楽天Koboライティングライフ等により、誰もが簡単に本を出版できるようになりました。しかし、<ruby>要<rp>（</rp>
+<rt>かなめ</rt>
+<rp>）</rp>
+</ruby>
+ であるEPUBファイルの作成で困っている人も多いと思います。本書ではWindowsフリーソフトt2epubを使って簡単にEPUBファイルを作る方法を紹介します。</p>
+<p>また、マンガ、絵本、イラスト集、写真集を作るときの固定レイアウトのEPUBファイルを作る方法も紹介します。</p>
+<p><br />
+</p>
+<p>本書が対象とするのは、Windowsだけです。Macやその他OSの方は申し訳ありませんが対象外です。</p>
+<p>また、記述内容もすごく簡単に最小限のことしか書いてありません。中級者以上の方は専門の本をご覧ください。</p>
+</div>
+
+
+<div id="calibre_link-18">
+<nav>
+<h1><b>目次</b></h1>
+<ol>
+<li value="1">
+<a href="#calibre_link-19">はじめに</a>
+</li>
+<li value="2">
+<a href="#calibre_link-20">準備</a>
+</li>
+<li value="3">
+<a href="#calibre_link-21">電子書籍作成</a>
+</li>
+<li value="4">
+<a href="#calibre_link-22">表紙を付ける</a>
+</li>
+<li value="5">
+<a href="#calibre_link-4">挿絵を入れる</a>
+</li>
+<li value="6">
+<a href="#calibre_link-10">挿絵を文の途中に入れる</a>
+</li>
+<li value="7">
+<a href="#calibre_link-7">ルビを振る</a>
+</li>
+<li value="8">
+<a href="#calibre_link-23">傍点を振る</a>
+</li>
+<li value="9">
+<a href="#calibre_link-14">固定レイアウトのEPUB作成</a>
+</li>
+<li value="10">
+<a href="#calibre_link-1">「小説家になろう」サイトからのEPUB作成</a>
+</li>
+<li value="11">
+<a href="#calibre_link-6">Kindle版作成時のノウハウ</a>
+</li>
+<li value="12">
+<a href="#calibre_link-2">あとがき</a>
+</li>
+<li value="13">
+<a href="#calibre_link-24">楠樹暖の作品</a>
+</li>
+<li value="14">
+<a hidden="hidden" href="#calibre_link-25">奥付</a>
+</li>
+</ol>
+</nav>
+</div>
+
+
+<div id="calibre_link-20">
+<h1><b>準備</b></h1>
+<p>EPUBファイルを作るには準備が必要です。</p>
+<p>Windowsパソコン一式以外で必要なものは</p>
+<p>・EPUB変換ツール　<strong><b>t2epub</b></strong>
+</p>
+<p>（<a href="http://www.rechner-systems.com/lab/index.php?t2epub">http://www.rechner-systems.com/lab/index.php?t2epub</a>
+ ）</p>
+<p>です。</p>
+<p>フリーソフトですので無料で使えます。</p>
+<p>
+<a href="http://www.vector.co.jp/soft/winnt/writing/se501127.html">Vectorのサイト</a>
+ からダウンロードしましょう。</p>
+<p><br />
+</p>
+<p><img src="images/000018.jpg" />
+</p>
+</div>
+
+
+<div id="calibre_link-17">
+<p>ダウンロードしたらZIPファイルの中のt2epubフォルダをコピーして、任意のフォルダ(たとえばC:\ など)にペーストします。C:\Program Files フォルダなどに置くと、フォルダに書き込み権限を与えないと使えない場合がありますので注意してください。</p>
+<p>解凍ツールによっては、ZIPファイルをダブルクリックするとデスクトップにt2epubフォルダが解凍される場合もあります。</p>
+<p><br />
+</p>
+<p><img src="images/000009.jpg" />
+</p>
+</div>
+
+
+<div id="calibre_link-28">
+<p>「t2epub.exe」、「t2epub4fixed.exe」をコピーして、デスクトップにショートカットとして貼り付けておきます。</p>
+<p><br />
+</p>
+<p><img src="images/000003.jpg" />
+</p>
+<p><br />
+</p>
+<p>任意の場所に作業フォルダを作ります。</p>
+<p>(例：C:\作業フォルダ)</p>
+<p>以降、電子書籍の作成はこのフォルダで行います。</p>
+</div>
+
+
+<div id="calibre_link-21">
+<h1><b>電子書籍作成</b></h1>
+<p><br />
+</p>
+<h2><b>テキストファイルの準備</b></h2>
+<p>これからは、サンプルとして</p>
+<p>書籍名＝『楠の奇談』</p>
+<p>著者　＝『楠樹暖』</p>
+<p>出版社＝『織豊出版』</p>
+<p>で流れを説明していきます。</p>
+<p><br />
+</p>
+<p>まず最初に作業フォルダに本の書籍名と同じ名前のフォルダ（以降、「書籍フォルダ」と呼びます）を作ります。</p>
+<p><br />
+</p>
+<p><img src="images/000041.jpg" />
+</p>
+</div>
+
+
+<div id="calibre_link-16">
+<p>本のフォルダの中にファイルを二つ作ります。</p>
+<p>電子書籍の作成には最低二つファイルが必要です。</p>
+<p>(1) 書籍情報ファイル</p>
+<p>(2) 本文ファイル</p>
+<p>この場合は表紙用のファイルが無いので自動で作られます。表紙の指定方法は後ほど説明します。</p>
+<p><br />
+</p>
+<p><img src="images/000005.jpg" />
+</p>
+<p><br />
+</p>
+<p>ファイル名は何でも構わないのですが、ファイル名順で並び替えた時に書籍情報ファイルが先頭にくるような名前にしてください。ファイル名の最初に数字を付けておくと便利です。</p>
+</div>
+
+
+<div id="calibre_link-39">
+<h3><b>書籍情報ファイル</b></h3>
+<p>書籍情報ファイルをエディタで開いて書籍情報を書きます。</p>
+<p>1行目：書籍名</p>
+<p>2行目：作者名</p>
+<p>3行目：出版社名</p>
+<p><br />
+</p>
+<p>3行目の出版社名は無くても構いません。</p>
+<p>4行目以降に記述した内容は奥付として本の後ろに書かれます。</p>
+<p><br />
+</p>
+<p><img src="images/000030.jpg" />
+</p>
+</div>
+
+
+<div id="calibre_link-3">
+<h3><b>本文ファイル</b></h3>
+<p>本文ファイルをエディタで開いて本文を書きます。</p>
+<p>既に他にテキストファイルを持っている場合は、ファイルをコピーしてリネームしても、テキストをコピー＆ペーストしてもいいです。</p>
+<p>1行目：目次に追加される章のタイトル</p>
+<p>2行目以降：実際の本文</p>
+<p><br />
+</p>
+<p><img src="images/000014.jpg" />
+</p>
+<p><br />
+</p>
+<p>1行目のタイトルを付け忘れると本文の最初の文が章のタイトルとなってしまうので注意してください。</p>
+<p><br />
+</p>
+<p>改行だけの行が二つ続くと改ページになります。</p>
+<p>改行だけの行が三つ続くと新たな章になります。次の行が章のタイトルとなります。</p>
+<p><br />
+</p>
+<p>最初の設定では、HTMLタグが有効となっていますので、HTMLタグとして使用しない半角の「&lt;」や「&gt;」は全角に置き換えてください。</p>
+<p><br />
+</p>
+<p>本文ファイルは二つ以上あっても構いません。それぞれの1行目が目次の章のタイトルとなります。</p>
+</div>
+
+
+<div id="calibre_link-11">
+<h2><b>EPUB変換</b></h2>
+<p>テキストファイルの準備ができたらEPUBに変換します。</p>
+<p>t2epubショートカットに書籍フォルダをドロップしてt2epubを起動します。</p>
+<p><br />
+</p>
+<p><img src="images/000007.jpg" />
+</p>
+<p><br />
+</p>
+<p>「EPUB変換」ボタンをクリックします。</p>
+</div>
+
+
+<div id="calibre_link-15">
+<p>EPUBファイル完成！</p>
+<p><br />
+</p>
+<p><img src="images/000017.jpg" />
+<img src="images/000028.jpg" />
+</p>
+<p><br />
+</p>
+<p>表紙用の画像ファイルを用意しなかったので表紙は文字だけになっています。</p>
+</div>
+
+
+<div id="calibre_link-22">
+<h1><b>表紙を付ける</b></h1>
+<p><br />
+</p>
+<p>前の章では最小限のEPUB作成だけでした。</p>
+<p>この章では表紙の付け方を説明します。</p>
+<p><br />
+</p>
+<p>作業フォルダの書籍フォルダに表紙用の画像ファイルを置きます。</p>
+<p><br />
+</p>
+<p><img src="images/000036.jpg" />
+</p>
+</div>
+
+
+<div id="calibre_link-31">
+<p>t2epubショートカットに書籍フォルダをドロップしてt2epubを起動します。</p>
+<p><br />
+</p>
+<p><img src="images/000004.jpg" />
+</p>
+<p><br />
+</p>
+<p>「EPUB変換」ボタンをクリックします。</p>
+</div>
+
+
+<div id="calibre_link-26">
+<p>表紙が付きました。</p>
+<p><br />
+</p>
+<p><img src="images/000026.jpg" />
+</p>
+</div>
+
+
+<div id="calibre_link-4">
+<h1><b>挿絵を入れる</b></h1>
+<p>表紙以外の画像ファイルは挿絵になります。画像ファイルを置く場所は書籍フォルダの直下です(本文ファイルと同じフォルダ)。</p>
+<p>気をつけないといけないのは、ファイル名の並びで先頭の画像ファイルが表紙ファイルになるということです。また、本文ファイルのファイル名もページ位置に影響します。ページ順にファイルの先頭の数字を変えると便利です。</p>
+</div>
+
+
+<div id="calibre_link-0">
+<p>本文の途中に入れたい場合は本文ファイルを分割します。</p>
+<p>分割した後ろの本文ファイルの先頭は章のタイトルになってしまうので、空行だけにします。</p>
+<p><br />
+</p>
+<p><img src="images/000012.jpg" />
+</p>
+<p>↓</p>
+<p><img src="images/000034.jpg" />
+</p>
+<p><img src="images/000011.jpg" />
+ 003_挿絵.png</p>
+<p><img src="images/000023.jpg" />
+</p>
+</div>
+
+
+<div id="calibre_link-34">
+<p>t2epubショートカットに書籍フォルダをドロップしてt2epubを起動します。</p>
+<p><br />
+</p>
+<p><img src="images/000022.jpg" />
+</p>
+<p><br />
+</p>
+<p>「EPUB変換」ボタンをクリックします。</p>
+</div>
+
+
+<div id="calibre_link-12">
+<p>挿絵が付きました。</p>
+<p><br />
+</p>
+<p><img src="images/000037.jpg" />
+<img src="images/000025.jpg" />
+</p>
+</div>
+
+
+<div id="calibre_link-10">
+<h1><b>挿絵を文の途中に入れる</b></h1>
+<p>先の方法では、挿絵は1ページ分を占めていましたが、HTMLのタグを使うことで文の途中に入れることもできます。</p>
+<p>&lt;img src="images/○○.jpg" /&gt;</p>
+<p>位置の指定もできます。詳しくはHTMLやCSSの本で調べてください。</p>
+<p>書籍フォルダの中にimagesフォルダを作って、画像ファイルはimagesフォルダに置いてください。imagesフォルダは設定で決まっているので変更してはいけません。</p>
+</div>
+
+
+<div id="calibre_link-32">
+<p><img src="images/000015.jpg" />
+</p>
+<p><br />
+</p>
+<p><img src="images/000033.jpg" />
+</p>
+<p><br />
+</p>
+<p>&lt;image&gt;タグ内のstyleの「float: right;」は画像を右側（縦書きの場合は下側）に寄せ、文章を左側（縦書きの場合は上側）に回り込ませる指定です。</p>
+</div>
+
+
+<div id="calibre_link-7">
+<h1><b>ルビを振る</b></h1>
+<p><br />
+</p>
+<p>ルビは記号を使って記述します。</p>
+<p>全角の「｜」 が開始を表す記号で、「《」、「》」に囲まれた文字がルビとなります。「｜」は省略可能です。</p>
+<p>例：｜漢字《かんじ》　　<ruby>漢字<rp>（</rp>
+<rt>かんじ</rt>
+<rp>）</rp>
+</ruby>
+</p>
+<p>省略した場合は「《」の前の漢字部分が対象となります。</p>
+<p>例：漢字《かんじ》　　　<ruby>漢字<rp>（</rp>
+<rt>かんじ</rt>
+<rp>）</rp>
+</ruby>
+</p>
+<p><br />
+</p>
+<p>ルビは「小説家になろう」サイトのルビ記法に似ていますが、半角の「|」や、「（」、「）」を使った場合はルビになりません(設定により変更可能です)。</p>
+</div>
+
+
+<div id="calibre_link-37">
+<p><img src="images/000019.jpg" />
+</p>
+<p><br />
+</p>
+<p><img src="images/000039.jpg" />
+</p>
+</div>
+
+
+<div id="calibre_link-23">
+<h1><b>傍点を振る</b></h1>
+<p><br />
+</p>
+<p>傍点は記号を使って記述します。</p>
+<p>全角の「《《」、「》》」に囲まれた文字に傍点が振られます。</p>
+<p>例：《《傍点》》　　<strong>傍点</strong>
+</p>
+</div>
+
+
+<div id="calibre_link-14">
+<h1><b>固定レイアウトのEPUB作成</b></h1>
+<p>マンガ、イラスト集、写真集等の固定レイアウトのEPUBを作成する方法を説明します。</p>
+<p>手順の説明には、マンガ『ブラックジャックによろしく』を使用します。</p>
+<p><br />
+</p>
+<p>作業フォルダに、書籍フォルダを作ります。</p>
+<p>書籍フォルダに、</p>
+<p>(1)書籍情報ファイル</p>
+<p>(2)表紙画像ファイル</p>
+<p>(3)各ページの画像ファイル</p>
+<p>を置きます。</p>
+<p>表紙画像ファイルのファイル名は、各ページの画像ファイルよりも前に来るようにしてください。</p>
+<p><br />
+</p>
+<p><img src="images/000021.jpg" />
+</p>
+</div>
+
+
+<div id="calibre_link-29">
+<p>t2epub4fixedショートカットに書籍フォルダをドロップしてt2epub4fixedを起動します(t2epub.exeではないです)。</p>
+<p><br />
+</p>
+<p><img src="images/000002.jpg" />
+</p>
+<p><br />
+</p>
+<p>「EPUB変換」ボタンをクリックします。</p>
+</div>
+
+
+<div id="calibre_link-35">
+<p>EPUBが出来ました。</p>
+<p><img src="images/000024.jpg" />
+ 表紙</p>
+<p></p>
+<p><img src="images/000010.jpg" />
+ 1、2ページ</p>
+<p></p>
+<p><img src="images/000001.jpg" />
+ 3、4ページ</p>
+<p></p>
+<p>t2epubの設定が最初のままの場合、「1ページと2ページ」「3ページと4ページ」と見開き配置になっていますので、元画像の3ページ目、4ページ目が見開きとして横長の1枚の絵になっています。1ページずれると見開きがおかしなことになるので注意してください。</p>
+</div>
+
+
+<div id="calibre_link-1">
+<h1><b>「小説家になろう」サイトからのEPUB作成</b></h1>
+<p><br />
+</p>
+<p>この章では「小説家になろう」サイトからEPUBを作る方法を説明します。</p>
+<p><br />
+</p>
+<p>「小説家になろう」サイトにログインをし、投稿済み小説－管理ページに行きます。</p>
+<p><br />
+</p>
+<p><img src="images/000016.jpg" />
+</p>
+<p><br />
+</p>
+<p>作業フォルダに小説のタイトルの名前のフォルダを作ります。</p>
+<p>書籍情報ファイルと、本文ファイルを作ります。</p>
+<p>書籍情報ファイルの1行目を「タイトル」に、2行目を「作者名」にして保存します。</p>
+<p>「小説家になろう」サイトの本文を編集画面で開きます。</p>
+<p><br />
+</p>
+<p><img src="images/000020.jpg" />
+</p>
+<p><br />
+</p>
+<p>本文をコピーして、本文ファイルにペーストします。</p>
+<p>本文ファイルの1行目を章のタイトルにします。</p>
+<p>本文ファイルは適宜分割します。1行目の章のタイトルを忘れないようにします。章のタイトルを付けたくない場合は空行にします。</p>
+<p><br />
+</p>
+<p><img src="images/000029.jpg" />
+</p>
+<p><br />
+</p>
+<p>ルビ記法を揃えます。「｜」 が半角なら全角に変換します。「（」、「）」を使っている場合は、「《」、「》」に変換します。</p>
+<p><br />
+</p>
+<p>イラストを使用している個所をHTMLタグの&lt;image&gt;に変更します。&lt;<i><i>iコード</i></i>
+ |<i><i>ユーザID</i></i>
+ &gt;の個所です。画像は別途用意して、書籍フォルダのimagesフォルダに置きます。画像フォルダに応じて&lt;image&gt;タグのプロパティを記述してください。</p>
+<p><br />
+</p>
+<p>t2epubショートカットに書籍フォルダをドロップしてt2epubを起動します。</p>
+<p>「EPUB変換」ボタンをクリックしてEPUBを作ります。</p>
+</div>
+
+
+<div id="calibre_link-6">
+<h1><b>Kindle版作成時のノウハウ</b></h1>
+<h2><b>mobi作成</b></h2>
+<p>Kindleで動作確認する場合は、EPUBファイルよりも、mobiファイルの方が便利です。t2epubでEPUB変換時にmobiも一緒に作るようにしておきましょう。</p>
+<p>mobiの変換には、<strong><b>KindleGen</b></strong>
+ が必要です。</p>
+<p>
+<strong><b>KindleGen</b></strong>
+ は、以下から入手してください。</p>
+<p>
+<a href="http://www.amazon.co.jp/gp/feature.html?ie=UTF8&amp;docId=3077677546">http://www.amazon.co.jp/gp/feature.html?ie=UTF8&amp;docId=3077677546</a>
+</p>
+<p><br />
+</p>
+<p>ダウンロードしたZIPファイルから<strong><b>kindlegen.exe</b></strong>
+ をコピーして、t2epubフォルダに貼り付けます。</p>
+<p><br />
+</p>
+<p>あとは、t2epubのEPUB変換時に、コマンドプロンプトの黒い画面が出てmobiに変換するようになります。</p>
+<p>mobi変換の結果は.logファイルに出力されます。問題がないか確認して、問題があったら修正しましょう。</p>
+<p>よくあるのは、&lt;img&gt;タグで指定した画像ファイルが無い場合です。max-widthやmax-heightがサポートされていないという警告は、たぶん無視しても構いません。</p>
+</div>
+
+
+<div id="calibre_link-33">
+<h2><b>iPhoneでの確認方法</b></h2>
+<p>Kindle端末で確認する場合には、mobiファイルを直接コピーしたり、Kindleパーソナル・ドキュメントサービスのSend-to-Kindleを使います。ただし、iPhoneの場合は、mobiファイルのコピーはできませんし、Send-to-Kindleでmobiファイルを送れますが、iPhoneのKindleアプリで確認すると、縦書きが横書きになってしまいます。</p>
+<p>iPhoneで確認する場合は、<strong><b>Kindleプレビューア</b></strong>
+ と<strong><b>iTunes</b></strong>
+ が必要です。</p>
+<p>
+<strong><b>Kindleプレビューア</b></strong>
+ は、以下から入手してください。</p>
+<p>
+<a href="http://www.amazon.co.jp/gp/feature.html?ie=UTF8&amp;docId=3077677546">http://www.amazon.co.jp/gp/feature.html?ie=UTF8&amp;docId=3077677546</a>
+</p>
+<p><br />
+</p>
+<p>Kindleプレビューアを起動し、作成したEPUB、またはmobiを開きます。</p>
+<p>メニュー[デバイス]-[Kindle for iOS]を選択します。</p>
+<p>.azkファイルができます。</p>
+<p>.azkファイルは、ファイル名に日本語を使っているとKindleアプリでうまく動作しないので、半角英数字に変えます。</p>
+<p>iTunesを起動します。</p>
+<p>iPhoneをパソコンに接続します。</p>
+<p>iPhoneのメニュー[App]を選択します。</p>
+<p>[ファイル共有]の[App]で[Kindle]を選択します。</p>
+<p>[Kindleの書類]のところに.azkファイルをドロップします。</p>
+<p>しばらくすると、.azkファイルが[Kindleの書類]から消えます。iPhoneのKindleアプリで確認してください。</p>
+</div>
+
+
+<div id="calibre_link-2">
+<h1><b>あとがき</b></h1>
+<p>本書の内容で、電子書籍作成で最小限のことはできるようになったはずです。</p>
+<p>EPUB変換ツールt2epubはHTMLタグをそのまま通すため、HTMLタグ操作でもっと色々なことができるようになります。また、templateフォルダのCSSファイルを編集することで細かい表現もできるようになります。本書ではEPUBの作成方法について「すごく簡単に」解説しただけですので、更に進むには、EPUB、HTML、CSSの知識が必要となります。詳しくは専門書をお読みください。</p>
+<p><br />
+</p>
+<p>本書の挿絵のサンプルとして、電子ショートショート作家 くにさきたすく さんから頂いたイラストを使用しています。また、「小説家になろう」のサンプルとして、くにさきたすく さんの作品に対するオマージュ作品を使用しています。くにさきたすく さん、ありがとうございました。</p>
+<p><br />
+</p>
+<p>本書のマンガのサンプルとして、二次利用フリーな『ブラックジャックによろしく』から一部を抜粋してを使用いたしました。佐藤秀峰先生、漫画onWeb様、ありがとうございました。</p>
+<p>タイトル ブラックジャックによろしく</p>
+<p>著作者名 佐藤秀峰</p>
+<p>サイト名 漫画 on web</p>
+</div>
+
+
+<div id="calibre_link-24">
+<h1><b>楠樹暖の作品</b></h1>
+<p>
+<strong><b>『閃きのフラッシュフィクションズ：楠樹暖ショートショート集』</b></strong>
+</p>
+<p>
+<a href="http://www.amazon.co.jp/dp/B01I1XPJN0"><img src="images/000040.jpg" />
+</a>
+</p>
+<p>ショートショート11本収録しています。</p>
+<p>定価100円</p>
+</div>
+
+
+<div id="calibre_link-27">
+<p>
+<strong><b>『たなごころのたわごと：楠樹暖掌編集』</b></strong>
+</p>
+<p>
+<a href="http://www.amazon.co.jp/dp/B010UROQ7K"><img src="images/000006.jpg" />
+</a>
+</p>
+<p>楠樹暖が折本で発表した作品をベースにして電子書籍化した短編集です。</p>
+<p>掌編120本、ショートショート3本の合わせて123本収録しています。</p>
+<p>定価100円</p>
+</div>
+
+
+<div id="calibre_link-13">
+<p>
+<strong><b>『星くずのフラグメンツ：楠樹暖断片集』</b></strong>
+</p>
+<p>
+<a href="http://www.amazon.co.jp/dp/B00OQDLNF8"><img src="images/000008.jpg" />
+</a>
+</p>
+<p>楠樹暖が折本で発表した作品をベースにして電子書籍化した短編集です。</p>
+<p>掌編186本、ショートショート6本の合わせて192本収録しています。</p>
+<p>定価100円</p>
+</div>
+
+
+<div id="calibre_link-30">
+<p>
+<strong><b>『暖かい樹の奇談集』</b></strong>
+</p>
+<p>
+<a href="http://www.amazon.co.jp/dp/B00DDHEHTM"><img src="images/000031.jpg" />
+</a>
+</p>
+<p>一話140字以内で書かれた約300の掌編たち、どれも一話完結の物語となっています。</p>
+<p>定価100円</p>
+</div>
+
+
+<div id="calibre_link-5">
+<p>
+<strong><b>『恋獄のマキシミン』</b></strong>
+</p>
+<p><br />
+</p>
+<p>
+<a href="http://www.amazon.co.jp/dp/B00EXGURCS"><img src="images/000035.jpg" />
+</a>
+</p>
+<p>幸せの絶頂というほど天国でもなく、不幸のどん底というほど地獄でもない。</p>
+<p>そんな男女が繰り広げる恋の駆け引きを描くショートショート集。</p>
+<p>気楽に読める約2ページ分の作品が16作品。</p>
+<p>定価100円</p>
+</div>
+
+
+<div id="calibre_link-40">
+<p>
+<strong><b>『世界の滅亡と色彩を持たないディストピア』</b></strong>
+</p>
+<p><br />
+</p>
+<p>
+<a href="http://www.amazon.co.jp/dp/B00IXQ2G8C"><img src="images/000038.jpg" />
+</a>
+</p>
+<p>ハードボイルドな文体で綴る疾走感あふれる滅亡系パルプフィクション！</p>
+<p>スマホで読みやすい一つが短い掌編が42作品！</p>
+<p>定価100円</p>
+</div>
+
+
+<div id="calibre_link-38">
+<p>
+<strong><b>『ＫＤＰ作家がアップロード前に気をつけたいチェックポイント』</b></strong>
+</p>
+<p><br />
+</p>
+<p>
+<a href="http://www.amazon.co.jp/dp/B00E0ESPCW"><img src="images/000013.jpg" />
+</a>
+</p>
+<p>ＫＤＰで本を出す前に、最低限必要と思われる見てくれについて気をつけたいチェックポイントを紹介します。</p>
+<p>定価250円</p>
+</div>
+
+
+<div id="calibre_link-36">
+<p>
+<strong><b>つづら折本（楠樹式豆本）</b></strong>
+</p>
+<p><br />
+</p>
+<p><img src="images/000000.jpg" />
+</p>
+<p>Ａ４一枚から作る豆本！　三ヶ所切って折るだけでＡ９サイズの豆本ができる！</p>
+<p>折本の遺伝子を受け継ぐ豆本！　コンビニのネットプリントで本を配布するのに最適です。</p>
+<p>Ａ７サイズの楠樹式折本もあります。</p>
+<p>詳しくは「楠樹式豆本」で検索！</p>
+<p></p>
+<p><br />
+</p>
+<p><img src="images/000027.jpg" />
+</p>
+<p>写真はＡ４の紙の上に、左から八頁折本（Ａ７判）、楠樹式豆本（Ａ９判）</p>
+</div>
+
+
+<div id="calibre_link-25">
+<table>
+<tr>
+<td>
+<table>
+<tr>
+<td colspan="2">すごく<ruby>簡単<rt>かんたん</rt>
+</ruby>
+ な<ruby>電子書籍<rt>でんししょせき</rt>
+</ruby>
+ の<ruby>作<rt>つく</rt>
+</ruby>
+ りかた<br />
+～Windowsフリーソフトで<ruby>作<rt>つく</rt>
+</ruby>
+ るEPUBファイル～</td>
+</tr>
+<tr>
+<td colspan="2"><hr />
+</td>
+</tr>
+<tr>
+<td colspan="2">２０１５年４月１６日　初版発行</td>
+</tr>
+<tr>
+<td colspan="2">２０１６年７月　７日　第２版</td>
+</tr>
+<tr>
+<td colspan="2">　</td>
+</tr>
+<tr>
+<td>著　者</td>
+<td>
+<ruby>楠樹<rp>（</rp>
+<rt>くすのき</rt>
+<rp>）</rp>
+</ruby>
+<ruby>暖<rp>（</rp>
+<rt>だん</rt>
+<rp>）</rp>
+</ruby>
+</td>
+</tr>
+<tr>
+<td>　</td>
+<td>
+<a href="https://twitter.com/kusunokidan">https://twitter.com/kusunokidan</a>
+</td>
+</tr>
+<tr>
+<td>発行元</td>
+<td>
+<ruby>織豊<rp>（</rp>
+<rt>おりとよ</rt>
+<rp>）</rp>
+</ruby>
+<ruby>出版<rp>（</rp>
+<rt>しゅっぱん</rt>
+<rp>）</rp>
+</ruby>
+</td>
+</tr>
+<tr>
+<td>　</td>
+<td>
+<a href="http://www.oritoyo.com/">http://www.oritoyo.com/</a>
+</td>
+</tr>
+<tr>
+<td>サンプル挿絵</td>
+<td>くにさきたすく（電子ショートショート作家）</td>
+</tr>
+<tr>
+<td>　</td>
+<td>
+<a href="https://twitter.com/taskuni">https://twitter.com/taskuni</a>
+</td>
+</tr>
+<tr>
+<td colspan="2"><hr />
+</td>
+</tr>
+<tr>
+<td colspan="2">©2015,2016 KUSUNOKI Dan</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+
+
+<script>function myFunction(){document.getElementById("tateyoko").classList.toggle("tateread")}</script></body></html>

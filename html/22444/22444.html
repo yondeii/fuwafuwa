@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>はじめてのJavaScriptプログラミング</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/mainday.css" title="default">
+<link rel="alternate stylesheet" href="/css/mainnight.css" title="alternate">
+<script type="text/javascript" src="/js/styleswitcher.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+</head>
+<body>
+<div class="novelpage">
+<div class="novelbody">
+<div id="tateyoko">
+<div id="_top"></div>
+<a href="/">🏠</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('default'); return false;">日</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">月</a>&emsp;
+<a href="#_top" onclick="myFunction()" style="cursor: pointer;">縦書き／横書き</a>
+<div id="calibre_link-21">
+<div>
+<div>
+<table class="noveltitle">
+<tr>
+<td colspan="2"><i><span><i>はじめてのJavaScriptプログラミング</i></span></i></td>
+</tr>
+<tr>
+                    
+                    
+      </tr>
+<tr>
+<td colspan="2">多羅樹</td>
+</tr>
+<tr>
+<td colspan="2"> (2016)</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+</tr>
+</table>
+<div></div>
+</div>
+<div></div>
+</div>
+</div>
+
+
+
+<div {http://www.idpf.org/2007/ops}type="frontmatter" id="calibre_link-28">
+<nav id="calibre_link-16" {http://www.idpf.org/2007/ops}type="toc">
+<h1 id="calibre_link-57"><b><u>目次</u></b></h1>
+<ol>
+<li value="1">
+<a href="#calibre_link-29">はじめに</a>
+</li>
+<li value="2">
+<a href="#calibre_link-30">サンプルについて</a>
+</li>
+<li value="3">
+<a href="#calibre_link-31">１．JavaScript基礎講座</a>
+<ol>
+<li value="1">
+<a href="#calibre_link-32">１－１．JavaScriptって何だろう？</a>
+</li>
+<li value="2">
+<a href="#calibre_link-33">１－２．何ができるんだろう？</a>
+</li>
+<li value="3">
+<a href="#calibre_link-34">１－３．何を準備すればいいんだろう？</a>
+</li>
+<li value="4">
+<a href="#calibre_link-35">１－４．どうやって動かすんだろう？</a>
+</li>
+</ol>
+</li>
+<li value="4">
+<a href="#calibre_link-36">２．JavaScript実践講座</a>
+<ol>
+<li value="1">
+<a href="#calibre_link-37">２－１．変数を理解しよう</a>
+</li>
+<li value="2">
+<a href="#calibre_link-38">２－２．データ型を理解しよう</a>
+</li>
+<li value="3">
+<a href="#calibre_link-39">２－３．配列を理解しよう</a>
+</li>
+<li value="4">
+<a href="#calibre_link-40">２－４．コメントを理解しよう</a>
+</li>
+<li value="5">
+<a href="#calibre_link-41">２－５．メッセージダイアログを表示してみよう</a>
+</li>
+<li value="6">
+<a href="#calibre_link-42">２－６．処理を分岐させてみよう</a>
+</li>
+<li value="7">
+<a href="#calibre_link-43">２－７．処理を繰り返してみよう</a>
+</li>
+<li value="8">
+<a href="#calibre_link-44">２－８．関数を理解しよう</a>
+</li>
+<li value="9">
+<a href="#calibre_link-45">２－９．文字や背景の色を変えてみよう</a>
+</li>
+<li value="10">
+<a href="#calibre_link-46">２－１０．タイマーを使ってみよう</a>
+</li>
+<li value="11">
+<a href="#calibre_link-47">２－１１．乱数を使ってみよう</a>
+</li>
+</ol>
+</li>
+<li value="5">
+<a href="#calibre_link-48">３．JavaScript応用講座</a>
+<ol>
+<li value="1">
+<a href="#calibre_link-49">３－１．ワリカンプログラムを作ってみよう</a>
+</li>
+<li value="2">
+<a href="#calibre_link-50">３－２．おみくじプログラムを作ってみよう</a>
+</li>
+<li value="3">
+<a href="#calibre_link-51">３－３．じゃんけんプログラムを作ってみよう</a>
+</li>
+<li value="4">
+<a href="#calibre_link-52">３－４．デジタル時計プログラムを作ってみよう</a>
+</li>
+<li value="5">
+<a href="#calibre_link-53">３－５．お散歩プログラムを作ってみよう</a>
+</li>
+<li value="6">
+<a href="#calibre_link-54">３－６．神経衰弱プログラムを作ってみよう</a>
+</li>
+</ol>
+</li>
+<li value="6">
+<a href="#calibre_link-55">おわりに</a>
+</li>
+<li value="7">
+<a href="#calibre_link-56">【課題の答え】</a>
+</li>
+</ol>
+</nav>
+</div>
+<div {http://www.idpf.org/2007/ops}type="frontmatter" id="calibre_link-15">
+<p></p>
+<p></p></div>
+<div id="calibre_link-11">
+<h2 id="calibre_link-60"><b><u>はじめに</u></b></h2>
+<p>「<span><b><i>はじめてのJavaScriptプログラミング</i></b></span>」をお買い上げいただきまして、誠にありがとうございました。<br />
+本書は、JavaScriptやプログラムにはじめて触れる人に向けた内容となっています。<br />
+覚えることも大切ですが、まずは「楽しむ」ことが上達の第一歩だと考えていますので、極力その点について気をつけながら執筆したつもりです。<br />
+是非、最後まで楽しみながらお付き合いいただけますと幸いです。</p>
+<p>なお、文中には一部「HTML」の記述を用いざるを得ない箇所が多々あります。<br />
+特に意識しないでも問題が無いようにはしてありますが、「HTML」についても詳しく知りたい人は、本書の姉妹書「<span><b><i>ゼロからはじめるWebサイト作り 〜HTMLはじめの一歩〜</i></b></span>」を読んでみてください。<br />
+（本書と同じく、Kindleストアにてお買い求めいただけます）</p>
+</div>
+<div id="calibre_link-3">
+<h2 id="calibre_link-61"><b><u>サンプルについて</u></b></h2>
+<p>本書に掲載するサンプルは、主に以下の環境で確認を行っております。<br />
+<span>・MaxOS X 10.11.1　Chrome最新版</span><br />
+<span>・Windows 10 Home　バージョン：1511　Chrome最新版</span><br />
+これら以外の環境では、若干見栄えが異なる可能性がありますので、ご注意ください。</p>
+<p>なお、本書のサンプルは全て「UTF-8」と言う文字コードで保存することを前提としています。<br />
+UTF-8での保存方法がわからない場合は、以下のキーワードを参考にしてGoogleなどで検索してみてください。</p>
+<p>「<span><b><i>エディタ名</i></b></span>　UTF-8　保存」<br />
+例）サクラエディタ　UTF-8　保存<br />
+　　メモ帳　UTF-8　保存</p>
+</div>
+<div id="calibre_link-17">
+<h2 id="calibre_link-62"><b><u>１．JavaScript基礎講座</u></b></h2>
+<h3 id="calibre_link-32"><b><u>１－１．JavaScriptって何だろう？</u></b></h3>
+<p>JavaScriptは、ズバリ「プログラミング言語」です。<br />
+そう、プログラムを作るための言語です。<br />
+世の中には様々なプログラミング言語が存在しますが、それらの中でもかなり人気があるのがJavaScriptです。<br />
+ちなみに「ジャバスクリプト」と読みます。<br />
+なお、世の中には「Java」と言う名前が良く似た言語も存在するのですが、JavaScriptとJavaは全くの別物なので混同しないよう注意してください。</p>
+<p>JavaScriptは、手軽に始められ、比較的覚えやすいことから年々その人気が高まっています。<br />
+しかし、JavaScriptは手軽さに反して非常にパワフルで奥深い言語なため、基礎を疎かにして小手先で覚えてしまうと後々にとても痛い目に合ってしまいます。<br />
+ですので、あせらず一歩一歩確実に覚えるようにして行きましょう。<br />
+とは言うものの、あまり過度な心配はいりません。<br />
+本書冒頭でも述べた通り、プログラミング上達のコツは楽しむことです。<br />
+まずは、JavaScriptの手軽さを最大限に活かして、存分に楽しむところから初めてみましょう。</p>
+</div>
+<div id="calibre_link-14">
+<h3><b><u>１－２．何ができるんだろう？</u></b></h3>
+<p>JavaScriptは、主に「Webブラウザ上で動くプログラムを作るための言語」です。<br />
+Webブラウザとは、Internet ExplorerやGoogle Chromeなどの「Webサイト（ホームページ）を見るため」のアプリケーションなので、「Webサイト上で動くプログラムを作るための言語」とも言えます。</p>
+<p>Webサイト上で動くプログラムと言っても多種多様ですが、例えば有名なところだとGoogleMapやGmailがあります。<br />
+それらの有名で高機能なWebサイトでも、JavaScriptは活躍しています。<br />
+とは言え、これらは極端な例です。<br />
+まずは、JavaScriptを使うと「HTML文書に様々な動きを加えられる」と理解してもらえればと思います。<br />
+ここで言う「様々な動き」とは、例えばボタンをクリックしたらメッセージが表示されるとか、一定の時間が経過したら背景の色が変わるとか、そう言ったものを想像してください。<br />
+HTML文書はその名の通り「文章を表すための物」なのですが、JavaScriptを使うことによって様々な動きを加えることが出来るのです。</p>
+<img src="images/00005.jpeg" />
+</div>
+<div id="calibre_link-0">
+<h3><b><u>１－３．何を準備すればいいんだろう？</u></b></h3>
+<p>「プログラムを作る」となると、準備が大変なイメージがあると思います。<br />
+一般的なイメージとしては、「専用のソフトウェアを買って、プログラムを動かすための準備をして・・・」のような感じでしょうか。<br />
+しかし、心配ご無用です。<br />
+JavaScriptでプログラムを作る場合、極端な表現をすれば「パソコン一台あればOK」です。<br />
+特別なソフトウェアは必要ありませんし、何か準備を行う必要もありません。<br />
+もっと正確な表現をするならば、「何らかのテキストエディタ」があれば、JavaScriptのプログラムは作れます。<br />
+例えばWindowsであれば、最初からインストールされている「メモ帳」でも問題ありませんし、Macでも最初からインストールされている「テキストエディット」で作ることができます。<br />
+要するに、あなたが普段使っているパソコンで、今すぐにでもJavaScriptのプログラムが作れると言うことです。<br />
+ですが、WindowsにしろMacにしろ、標準でインストールされているテキストエディタは本格的に使い出すと何かと不便な点があります。<br />
+なので、筆者のオススメのテキストエディタをご紹介します。</p>
+<p>■Windowsの場合<br />
+　サクラエディタ（http://sakura-editor.sourceforge.net/）<br />
+　このエディタは開発現場のプロ達でも好んで使う人が多いぐらい、非常に高性能なエディタです。<br />
+　しかも無料で使えるので、気軽に試してみてもらえればと思います。</p>
+<p>■Macの場合<br />
+　CotEditor（https://coteditor.com/）<br />
+　日本製のエディタで、シンプルで非常に使いやすいエディタです。<br />
+　こちらも無料なので、Macユーザーの人は是非試してみてください。</p>
+</div>
+<div id="calibre_link-23">
+<h3><b><u>１－４．どうやって動かすんだろう？</u></b></h3>
+<p>ここまでの説明で、JavaScriptのプログラムは何を使って作ればいいのかは理解してもらえたと思います。<br />
+では次に、いよいよ作ったプログラムの動かし方を説明します。</p>
+<p>１－２で説明した通り、JavaScriptでは基本的に「Webブラウザ上で動くプログラム」を作ります。<br />
+ですので、何らかのWebブラウザがあれば、自分で作ったプログラムも動かせると言うことです。<br />
+また、WebブラウザはWindowsの場合はInternet Explorerが、Macの場合はSafariが最初からインストールされているため、何も特別な準備は必要ないと言うことになります。<br />
+しかし、JavaScriptのプログラムは、それ単体では動きません。<br />
+これも１－２で説明している通り、JavaScriptは「Webサイト上で動くプログラム」なので、基本的にはHTMLファイルとセットで動作させる必要があります。<br />
+とは言え、HTMLも何か特別な環境を用意しなくても作成し、動作させることが可能なので、何も特別な準備が必要ないことには変わりません。</p>
+<p>なお、Windowsの場合、標準でインストールされているInternet Explorerよりも、Google Chromeを利用することを強くオススメします。<br />
+Google Chromeには非常に強力な「開発者ツール」が搭載されており、いずれプログラムの腕が上達した際にはとても便利な存在となります。<br />
+ですので、今のうちからGoogle Chromeを使うことに慣れておくことが望ましいでしょう。</p>
+<p>さて、これで本書の「JavaScript基礎講座」は終わりです。<br />
+次からはいよいよ実践的な内容になりますが、あまり難しく考えなくて大丈夫ですので、是非楽しみながら読み進めてください。<br />
+また、可能であれば、<span><b><i>読み進めるのと同時に本書の内容を自分でも実践してみてください</i></b></span>。</p>
+</div>
+<div id="calibre_link-7">
+<h2 id="calibre_link-63"><b><u>２．JavaScript実践講座</u></b></h2>
+<h3 id="calibre_link-37"><b><u>２－１．変数を理解しよう</u></b></h3>
+<p>変数とは、何らかの「値」を入れておくための「名前付きの箱」のような物です。<br />
+例えば、コンビニにあるカゴを思い浮かべてください。<br />
+買い物へいくと、カゴ（変数）へ商品（値）を入れていきますよね？<br />
+そのカゴ（変数）には、商品（値）を自由に出したり入れたりすることができます。<br />
+そして、支払いをする時に、カゴ（変数）から商品（値）を取り出して会計をする。<br />
+このように、買い物をする時のカゴのような働きをする物が、「変数」となります。<br />
+最初は何のために使うのかいまいちピンと来ないと思いますが、変数はプログラミングを行う上で非常に重要な要素となるため、しっかり理解しておきましょう。</p>
+<p>JavaScriptでは、次のような書き方で変数を用意します。<br />
+ちなみに、このように「変数を用意する」行為を、プログラミングの世界では「変数を宣言する」と言うので、覚えておいてください。</p>
+<p><span><b>例：変数の宣言</b></span></p>
+<p><br />
+<span>let</span> hensu1;<br />
+<br /></p>
+<p>この例では、hensu1と言う名前の変数を用意しました。<br />
+最初に「let」と書いて、その後ろに半角のスペースを一つ書いて、さらにその後ろに変数の名前を書くルールになっています。<br />
+変数の名前は半角のアルファベット、半角の数値、半角のアンダースコア（半角のアンダーバー）、半角のドル記号で構成されていて、かつ数字から始まってはいけないと言うルールがあります。（一部、ルールを満たしていても使用できない名前があります）<br />
+また、変数宣言に限った話ではないのですが、JavaScriptでプログラムを書く場合、末尾に必ずセミコロン（;）を付けると言うことも合わせて覚えておいてください。<br />
+なお、次のような書き方をすると、複数の変数を一気に宣言することが出来ます。</p>
+<p><span><b>例：複数の変数宣言</b></span></p>
+<p><br />
+<span>let</span> hensu1,hensu2,hensu3;<br />
+<br /></p>
+<p>この例では、hensu1、hensu2、hensu3と言う名前の変数を用意しました。<br />
+変数名を半角のカンマで区切って、必要な分だけ変数名を書けばOKです。</p>
+<p>では次に、用意した変数に何か値を入れてみたいと思います。<br />
+この「変数に値を入れる」と言う行為は、プログラミングの世界では「代入」と言います。</p>
+<p><span><b>例：値の代入</b></span></p>
+<p><br />
+<span>let</span> hensu1,hensu2;<br />
+<br />
+hensu1 = 100;<br />
+hensu2 = 'あいうえお';<br />
+<br /></p>
+<p>値の代入は半角のイコール（=）で行います。<br />
+変数名、半角のスペース、半角のイコール、半角のスペース、変数に代入する値の順番で書きます。<br />
+この例では、hensu1には「100」を、hensu2には、「あいうえお」をそれぞれ代入しています。（「あいうえお」の前後に付いている「'」はこの先で説明するので、今はあまり気にしないでください）<br />
+なお、JavaScriptでは、変数の宣言と同時に値を代入することも可能です。</p>
+<p><span><b>例：変数宣言と値の代入を同時に行う</b></span></p>
+<p><br />
+<span>let</span> hensu1 = 100,hensu2 = 'あいうえお';<br />
+<span>let</span> hensu3 = 200;<br />
+<span>let</span> hensu4 = 'かきくけこ';<br />
+<br /></p>
+<p>さて、変数についての説明はひとまずここまでになります。<br />
+定義した変数は一体どのような時に使うのか、どのように使うのかはこの先々で多々出て来ますので、今のところは「宣言」と「代入」についてしっかり覚えておきましょう。</p>
+</div>
+<div id="calibre_link-25">
+<h3 id="calibre_link-64"><b><u>２－２．データ型を理解しよう</u></b></h3>
+<p>JavaScriptでは、プログラムで扱う値の一つ一つが、それぞれどのような種類なのかが決められています。<br />
+例えば、「100」ならば「数値」、「あいうえお」なら「文字列」となります。<br />
+そして、この「数値」とか「文字列」が「データ型」です。</p>
+<p>JavaScriptのデータ型には様々な種類が存在するのですが、まずは次の３つを理解してください。</p>
+<p>①文字列型<br />
+いわゆる「文字」をプログラムで扱う場合、その値は全て「文字列型」となります。<br />
+なお、JavaScriptでは文字列を表す際に、値の前後をシングルクォーテーション（'）かダブルクォーテーション（"）で囲う必要があります。<br />
+どちらを使っても構いませんが、囲う前後で異なるクォーテーションを使うことは出来ないので注意してください。</p>
+<p><span><b>例：文字列型</b></span></p>
+<p><br />
+<span>let</span> moji1 = 'あいうえお';<br />
+<span>let</span> moji2 = "かきくけこ";<br />
+<br /></p>
+<p>なお、この文字列に限り、全角の文字が使用できると思ってください。<br />
+基本的にJavaScriptでのプログラミングでは全ての記述を半角文字で記載しますが、このクォーテーションで囲った文字列のみ、全角の入力が許可されます。</p>
+<p>②数値型<br />
+何らかの数字をプログラムで扱う場合、その値は「数値型」となります。<br />
+実数も小数も、10進数も16進数も8進数も、全て引っくるめて「数値」として考えてください。<br />
+なお、これら数値もシングルクォーテーション、またはダブルクォーテーションで囲うと「文字列」として扱われますので、注意してください。</p>
+<p><span><b>例：数値型</b></span></p>
+<p><br />
+<span>let</span> suchi1 = 10;<br />
+<span>let</span> suchi2 = 3.14;<br />
+<br /></p>
+<p>③真偽型<br />
+これは日常生活ではあまり聞かない言葉かもしれません。<br />
+しかし、プログラミングの世界では非常に重要な考え方なので、しっかり理解しておきましょう。<br />
+真偽型は、「true」と「false」と言う二種類の値を管理するための型で、それぞれtrueが「真」を、falseが「偽」を意味します。<br />
+trueもfalseもシングルクォーテーションやダブルクォーテーションで囲う必要はなく、逆に囲ってしまうと数値型と同じく「文字列」として扱われますので、注意してください。<br />
+なお、どのような場合にこれらの値を使うのかは、プログラムを書くにつれて自然と身に付くと思いますので、今はまだあまり深く考えなくて大丈夫です。</p>
+<p><span><b>例：真偽型</b></span></p>
+<p><br />
+<span>let</span> flg = true;<br />
+<span>let</span> flg2 = false;<br />
+<br /></p>
+<p>データ型については、一旦ここまでにしておきましょう。<br />
+本当はもっともっと複雑でややこしい要素もあるのですが、まずはここで説明した３種類の型が基本となりますので、しっかりと理解しておいてください。</p>
+</div>
+<div id="calibre_link-26">
+<h3 id="calibre_link-65"><b><u>２－３．配列を理解しよう</u></b></h3>
+<p>配列とは、いくつかの値をひとまとめにして扱うための仕組みです。<br />
+JavaScriptでプログラミングを行うと、この配列を使うケースが多々あるため、しっかりと理解しておきましょう。</p>
+<p>まずは、配列を準備する方法から説明して行きます。<br />
+配列の準備方法はいくつか種類があるのですが、まずはスタンダードなやり方を覚えましょう。</p>
+<p><span><b>例：配列の準備</b></span></p>
+<p><br />
+<span>let</span> arr = ['あいうえお', 'かきくけこ', 'さしすせそ'];<br />
+<span>let</span> arr2 = [100, 200, 300, 400, 500];<br />
+<br /></p>
+<p>この例では、arrと言う名前の変数に対して「あいうえお」「かきくけこ」「さしすせそ」と言う3つの文字列を扱う配列を代入しました。<br />
+また、arr2と言う名前の変数に対しては、「100」「200」「300」「400」「500」と言う５つの数値を扱う配列を代入しました。<br />
+配列は次のルールに則って準備します。<br />
+<span>・半角の角括弧（[ ]　これをブラケットと言います）で配列で扱う全ての値を囲う</span><br />
+<span>・ブラケットの中で、配列で扱う値を半角のカンマ（,）で区切って指定する</span></p>
+<p>なお、配列で扱える値の個数の上限はあると言えばあるのですが、数千程度の数では無いため、とりあえず今の所は「いくらでも扱える」と考えてもらって問題ありません。<br />
+次に、配列でまとめた値の管理について説明して行きます。<br />
+配列は「どの配列」の「何番目」に「どんな値」が入っているか、と言う考え方をします。<br />
+ここでとても重要な点として、配列の「何番目」と言う順番は1からではなく0から始まると言うことです。<br />
+例えば、「arr」と言う配列の「2番目」には「さしすせそ」と言う値が入っている、と言った感じです。<br />
+先に挙げた例で考えると、変数「arr」には、次のように値が管理されています。<br />
+<span>・0番目には「あいうえお」</span><br />
+<span>・1番目には「かきくけこ」</span><br />
+<span>・2番目には「さしすせそ」</span><br />
+このようになっています。<br />
+この「順番を0番目から数える」と言う考え方は、JavaScriptの配列に限った話ではなく、プログラミングの世界では共通的な常識のような考え方なので、必ず覚えておいてください。</p>
+<p>配列の説明はここまでとします。<br />
+変数と同じく、どのような時に使うのか、どのように使うのかはこの先々で説明して行きますので、まずはここで説明したことをしっかりと理解しておいてください。</p>
+</div>
+<div id="calibre_link-2">
+<h3 id="calibre_link-66"><b><u>２－４．コメントを理解しよう</u></b></h3>
+<p>コメントとは、プログラムで実行する処理とは別に、プログラムの作り手や読み手に向けた「メモ」を書き残すような仕組みです。<br />
+例えば、「この処理はこんな動きをします」とか、「この変数はこのような用途で使います」と言った使い方をします。<br />
+言葉ではいまいち理解し辛いと思いますので、まずは以下の例を見てみましょう。</p>
+<p><span><b>例：コメント</b></span></p>
+<p><br />
+<span>let</span> hensu1,hensu2;<span>// 変数を2つ宣言します</span>  ①<br />
+<br />
+<span>/*</span><br />
+<span>ここで変数に</span>  ②<br />
+<span>値を代入します</span><br />
+<span>*/</span><br />
+hensu1 = 100;<br />
+hensu2 = 'あいうえお';<br />
+<br />
+<span>// hensu1 = 10000; この行は実行されません</span>  ③<br />
+<br /></p>
+<p>JavaScriptには、２通りのコメントの書き方が用意されています。<br />
+一つは例の①のように、半角のスラッシュ（/）を２つ続ける書き方です。<br />
+この書き方は、単一行のコメントを書く場合に利用します。<br />
+もう一つは、②のように、半角スラッシュと半角のアスタリスク（*）と、半角のアスタリスクと半角のスラッシュで囲う書き方です。<br />
+この書き方を行うと、それぞれの間にある行全てがコメントになるため、主に複数行のコメントを書く場合に利用します。</p>
+<p>なお、冒頭で説明した通り、コメントはプログラムで実行する処理とみなされないため、③のような使い方も出来ます。<br />
+プログラムのコードとみなされる行でも、コメントにすれば実行されなくなるため、「記述自体は消したくないけど、一時的に実行させないようにしたい」ような場合によく使われます。<br />
+ここから先、例を書く際にはコメントをガンガン活用して行きますので、まずはそれらを見ながら慣れて行ってください。</p>
+<p>コメントの説明は以上になります。<br />
+ここまでの一通りの説明で、JavaScriptでプログラミングを行うための本当に「最低限」のことを説明して来ました。<br />
+次からは、いよいよプログラムの「処理」について触れて行きます。<br />
+繰り返しになりますが、楽しんで読み進めてくださいね。</p>
+</div>
+<div id="calibre_link-9">
+<h3 id="calibre_link-67"><b><u>２－５．メッセージダイアログを表示してみよう</u></b></h3>
+<p>インターネットをしていると、何らかのタイミングでメッセージのダイアログが表示されることがありますよね。<br />
+例えば、こんな感じの物です。</p>
+<img src="images/000008.gif" />
+<p>JavaScriptプログラミングの第一歩は、これらメッセージダイアログを表示させるところから初めてみましょう。<br />
+なお、ここからは「実際に動くサンプル」を用いて、必要なことを随時説明して行く形式を取ります。<br />
+あなたが普段使っているパソコンで、例と全く同じ内容をエディタで書いて「<span><b><i>htmlファイルとして（拡張子を.htmlにして）</i></b></span>」保存して、そのままファイルをダブルクリックすれば動作するはずなので、是非試してみてください。</p>
+<p>では、まずは「OK」ボタンが一つ付いているダイアログを表示させてみましょう。<br />
+この処理は<span><b><i>alert</i></b></span>と言う命令を使います。<br />
+では、早速例を見て行きましょう。</p>
+<p><span><b>例：alertによるメッセージダイアログの表示</b></span></p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>メッセージダイアログの表示<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>// メッセージダイアログを表示する</span><br />
+    alert('こんにちは！');  ①<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body&gt;</span><br />
+<span>&lt;h1&gt;</span>メッセージダイアログの表示<span>&lt;/h1&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<img src="images/000013.gif" />
+<p>この例をファイルに保存してブラウザで表示すると、画面が表示される際に「こんにちは！」と書いてあるメッセージダイアログが表示されます。<br />
+※日本語が文字化けしてしまう場合は、htmlファイルの文字コードをutf-8で保存し直してください（以後、全て同様です）<br />
+非常に簡単な例ですが、これも立派なプログラムです。<br />
+例の①の通り、JavaScriptのプログラムは、htmlのscriptタグの中に書くことによって動作します。（違う場所に書くやり方もありますが、本書では触れません）<br />
+この例では、scriptタグの中で先に説明したalertと言う命令を使って、メッセージダイアログを表示させています。<br />
+なお、このalertのように、何か処理をするために使う命令を「<span><b><i>関数</i></b></span>」と呼びますので、覚えておいてください。</p>
+<p>alert関数は、カッコの中に与えた値をメッセージダイアログで表示します。<br />
+また、関数のカッコの中に変数を書くと、変数の中に代入されている値を表示します。<br />
+ちなみに、何らかの関数のカッコの中に書く値のことを、プログラミングの世界では「<span><b><i>引数（ひきすう）</i></b></span>」と呼びますので、これも必ず覚えておいてください。</p>
+<p><span><b>例：alertで変数の中身を表示する</b></span></p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>メッセージダイアログの表示<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>// 変数を宣言して、値を代入する</span><br />
+<span>let</span> hensu = 'こんばんは！';  ①<br />
+<br />
+<span>// 変数の中身をダイアログで表示する</span><br />
+    alert(hensu);  ②<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body&gt;</span><br />
+<span>&lt;h1&gt;</span>メッセージダイアログの表示<span>&lt;/h1&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<img src="images/000012.gif" />
+<p>この例をファイルに保存してブラウザで表示すると、画面が表示される際に「こんばんは！」と書いてあるメッセージダイアログが表示されます。<br />
+例の①で変数を宣言し、②では宣言しておいた変数をalert関数で表示しているからです。<br />
+この例のように、変数に代入しておいた値は、いつでも好きな時に使うことが出来ます。<br />
+「予めカゴの中に入れておいた値を、好きな時に取り出して使い、またカゴの中にしまう」<br />
+このようにイメージしてもらうといいかもしれません。</p>
+<p>では次に、別のメッセージダイアログを紹介します。<br />
+alert関数では「OK」と言うボタンが一つ付いているメッセージダイアログを表示しましたが、<span><b><i>confirm</i></b></span>関数を使うと「OK」と言うボタンと「キャンセル」と言うボタンが付いたメッセージダイアログを表示出来ます。<br />
+これは、Webサイトの利用者に対して何かの確認を行う場合に利用されます。</p>
+<p><span><b>例：confirmによるメッセージダイアログの表示</b></span></p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>メッセージダイアログの表示<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>// 確認ダイアログを表示する</span><br />
+    confirm('確認メッセージです！');<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body&gt;</span><br />
+<span>&lt;h1&gt;</span>メッセージダイアログの表示<span>&lt;/h1&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<img src="images/000020.gif" />
+<p>confirm関数で表示したダイアログでは、利用者が「OK」を押したのか、それとも「キャンセル」を押したのかによって、その後に続く処理を分岐させるのが一般的です。<br />
+例えば、「次のページに進みますか？」とメッセージを表示して、「OK」が押されたら次のページに移動し、「キャンセル」が押された場合はそのページに留まるようなイメージです。<br />
+このような使い方は、この先で説明して行きますので、今はconfirm関数でメッセージダイアログを出す方法について覚えておいてください。</p>
+<p>最後に、alert関数やconfirm関数とは違い、利用者に何かを入力してもらうためのメッセージダイアログを紹介します。<br />
+<span><b><i>prompt</i></b></span>関数を使うと、そのようなダイアログを表示することが出来ます。</p>
+<p><span><b>例：promptによるメッセージダイアログの表示</b></span></p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>メッセージダイアログの表示<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>// 入力ダイアログを表示する</span><br />
+    prompt('名前を入力してください', '例）たろう');<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body&gt;</span><br />
+<span>&lt;h1&gt;</span>メッセージダイアログの表示<span>&lt;/h1&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<img src="images/00011.jpeg" />
+<p>さて、例を見て気が付いた人もいると思いますが、prompt関数の引数が、alert関数やconfirm関数と異なっていると思います。<br />
+これは、半角のカンマで区切ることによって、関数に引数を２つ渡しているのです。<br />
+そして、prompt関数では、最初の引数をダイアログ上のメッセージとして、二つ目の引数を入力エリアの初期値（最初から表示されている値）として扱います。<br />
+なお、二つ目の引数は、不要であれば省略しても構いません。<br />
+また、prompt関数で表示したメッセージダイアログに入力された内容を使う方法については、confirm関数と同じくこの先で詳しく説明して行きます。</p>
+<p>メッセージダイアログの説明は以上になります。<br />
+JavaScriptには、３種類のメッセージダイアログ表示方法があることがわかったと思いますので、用途に応じて使い分けてみてください。</p>
+</div>
+<div id="calibre_link-1">
+<h3 id="calibre_link-68"><b><u>２－６．処理を分岐させてみよう</u></b></h3>
+<p>プログラムと言うものは、条件分岐の集合体と言っても過言ではありません。<br />
+「何」が「どんな状態」の場合に「どんな処理を行うか」、このような判断の積み重ねによって、プログラムは構築されます。<br />
+これが例えゲームになったとしても同じことで、「十字キーの右が押されたら、キャラクターを右に動かす」と言ったイメージになります。<br />
+ここでは、この一つ先に触れたconfirm関数とprompt関数の実際の使い方と一緒に、条件分岐について説明して行きます。</p>
+<p>まずは、confirm関数で表示したメッセージダイアログで、押されたボタンごとに処理を分岐させてみましょう。<br />
+見慣れない記述が出てくると思いますが、とりあえず気にせず読み進めてください。</p>
+<p><span><b>例：押されたボタンごとに処理を分岐させる</b></span></p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>条件分岐<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>// 変数を宣言する</span><br />
+<span>let</span> kekka;<br />
+<br />
+<span>// 確認ダイアログを表示して、結果を</span><br />
+<span>// 変数に代入する</span><br />
+    kekka = confirm('処理を進めていいですか？');  ①<br />
+<br />
+<span>// 確認ダイアログの結果ごとに処理を分岐させる</span><br />
+<span>if</span> (kekka == true) {  ②<br />
+<span>// OKボタンが押された場合に実行する処理</span><br />
+        alert('OKが押されました');<br />
+    }<span>else</span> {<br />
+<span>// OKボタンが押された場合以外に実行する処理</span><br />
+        alert('キャンセルが押されました');<br />
+    }<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body&gt;</span><br />
+<span>&lt;h1&gt;</span>条件分岐<span>&lt;/h1&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<img src="images/00007.jpeg" />
+<p>この例を動かすと、まず画面が表示される際に「処理を進めていいですか？」と言う確認のダイアログが表示されます。<br />
+そして、ダイアログで「OK」ボタンを押すと「OKが押されました」と言うメッセージダイアログが、「キャンセル」ボタンを押すと「キャンセルが押されました」と言うメッセージダイアログがそれぞれ表示されます。<br />
+とてもシンプルな例ですが、これも立派な条件分岐です。</p>
+<p>この例では、着目すべき点が２つあります。<br />
+①の行では、要約すると「利用者がダイアログで押したボタンの種類を、kekkaと言う変数に代入する」と言うことを行っています。<br />
+実は、confirm関数は「押されたボタンがどちらなのか」を判断するための「結果」を「返却」してくれます。<br />
+confirm関数では、OKボタンが押された場合は真偽値の「true」を、それ以外の場合は「false」を返却してくれるのです。<br />
+また、返却された値は、例のような書き方でそのまま変数に代入することが可能です。<br />
+ちなみに、このように何らかの関数が返却する結果を、プログラミングの世界では「<span><b><i>戻り値（もどりち）</i></b></span>」と呼びます。</p>
+<p>そして、②の行以下で行っているのが、いわゆる「条件分岐」です。<br />
+JavaScriptの条件分岐は、基本的に「if〜else」と言う構文を使います。<br />
+訳すと「もし〜他には〜」となるので、比較的覚えやすいですね。<br />
+この構文は通称「if文（いふぶん）」と呼ばれているので、この呼び方には慣れておきましょう。<br />
+なお、この構文のルールは、以下の点を念頭に置いた上で、細かいところは「形」で覚えてください。<br />
+プログラミングをしていれば何度も何度も書くことになるので、必ず覚えられます。<br />
+<span>・「if」のカッコの中に条件を書き、その条件に該当する時に行う処理をそのあとの波括弧（{ }）の中に書く</span><br />
+<span>・「if」の条件に該当しない場合に行う処理は、「else」の波括弧の中に書く</span><br />
+<span>・「else」が不要な場合は書かなくてよい</span></p>
+<p>さて、if文について説明したところで、次は「条件」の書き方について説明します。<br />
+「条件」と言っても様々なものが存在しますが、まずは以下について覚えておきましょう。</p>
+<p>■「何か」と「何か」が同じ値であるかどうか<br />
+　この条件には「==」と言う演算子を使います。
+例えば、変数の「hensu」に代入されている値が「1」である、と言うような条件を書く場合は以下のようになります。</p>
+<p><br />
+<span>if</span> (hensu == 1) {<br />
+    ～略～<br />
+}<br />
+<br /></p>
+<p>なお、イコールが一つの場合は前述の通り「代入」として扱われてしまいますので、注意してください。</p>
+<p>■「何か」と「何か」が異なる値かどうか<br />
+　この条件には「!=」と言う条件を使います。<br />
+例えば、変数の「hensu」に代入されている値が「1」以外である、と言うような条件を書く場合は以下のようになります。</p>
+<p><br />
+<span>if</span> (hensu != 1) {<br />
+    ～略～<br />
+}<br />
+<br /></p>
+<p>■「何か」の値が「何か」より大きい、または小さい（未満）かどうか<br />
+　この条件には「&gt;」または「&lt;」を使います。<br />
+例えば、変数の「hensu」に代入されている値が「1」よりも大きい、と言うような条件を書く場合は以下のようになります。</p>
+<p><br />
+<span>if</span> (hensu &gt; 1) {<br />
+    ～略～<br />
+}<br />
+<br /></p>
+<p>また、変数の「hensu」に代入されている値が「1」よりも小さい、と言うような条件を書く場合は以下のようになります。</p>
+<p><br />
+<span>if</span> (hensu &lt; 1) {<br />
+    ～略～<br />
+}<br />
+<br /></p>
+<p>■「何か」の値が「何か」以上、または以下かどうか<br />
+　この条件には「&gt;=」または「&lt;=」を使います。<br />
+例えば、変数の「hensu」に代入されている値が「1」以上、と言うような条件を書く場合は以下のようになります。</p>
+<p><br />
+<span>if</span> (hensu &gt;= 1) {<br />
+    ～略～<br />
+}<br />
+<br /></p>
+<p>また、変数の「hensu」に代入されている値が「1」以下、と言うような条件を書く場合は以下のようになります。</p>
+<p><br />
+<span>if</span> (hensu &lt;= 1) {<br />
+    ～略～<br />
+}<br />
+<br /></p>
+<p>いかがでしょうか？<br />
+ここで紹介した演算子が使えれば、ある程度の条件分岐は書けるようになるので、しっかり覚えておきましょう。<br />
+続いて、複数の条件を組み合わせて判断する方法にも少し触れておきます。<br />
+少し難しい話になってしまいますが、とても利用頻度の高い書き方なので、先に紹介した条件の書き方を合わせてしっかり覚えておきましょう。</p>
+<p>■「何かの条件」と「何かの条件」を共に満たすかどうか<br />
+　この条件には「&amp;&amp;」を使います。<br />
+例えば、変数の「hensu1」に代入されている値が「1」で、かつ「hensu2」に代入されている値が「2」、と言うような条件を書く場合は以下のようになります。</p>
+<p><br />
+<span>if</span> (hensu == 1 &amp;&amp; hensu2 == 2) {<br />
+    ～略～<br />
+}<br />
+<br /></p>
+<p>このように書くと、「hensu1 == 1」と「hensu2 == 2」を共に満たす場合にのみ処理が実行されます。<br />
+どちらか一方でも条件を満たさない場合は、処理が実行されません。</p>
+<p>■「何かの条件」と「何かの条件」のどちらかを満たすかどうか<br />
+　この条件には「||」を使います。<br />
+例えば、変数の「hensu1」に代入されている値が「1」、または「hensu2」に代入されている値が「2」、と言うような条件を書く場合は以下のようになります。</p>
+<p><br />
+<span>if</span> (hensu == 1 || hensu2 == 2) {<br />
+    ～略～<br />
+}<br />
+<br /></p>
+<p>このように書くと、「hensu1 == 1」と「hensu2 == 2」のどちらか一方でも満たす場合に処理が実行されます。<br />
+どちらとも条件を満たさない場合には処理が実行されません。</p>
+<p>さて、以上で条件の書き方も一通り説明出来たと思うので、最後にprompt関数で表示したダイアログで、利用者が入力した値に応じた分岐をさせてみたいと思います。<br />
+今回も見慣れない記述が出てきますが、まずは気にせず読み進めてください。</p>
+<p><span><b>例：入力された値ごとに処理を分岐させる</b></span></p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>条件分岐<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>// 変数を宣言する</span><br />
+<span>let</span> kekka;<br />
+<br />
+<span>// 入力ダイアログを表示して、入力内容を変数に代入する</span><br />
+    kekka = prompt('あなたは中学何年生ですか？', '1～3の間で入力してください');<br />
+<br />
+<span>// 変数に代入されている値ごとに処理を分岐させる</span><br />
+<span>switch</span> (kekka) {  ①<br />
+<span>case</span> '1' :<br />
+  <span>// 「1」と入力された場合に実行する処理</span><br />
+            alert('１年生ですね。中学校は楽しいですか？');<br />
+  <span>break</span>;  ②<br />
+<span>case</span> '2' :<br />
+  <span>// 「2」と入力された場合に実行する処理</span><br />
+            alert('２年生ですね。来年は受験ですね。');<br />
+  <span>break</span>;<br />
+<span>case</span> '3' :<br />
+  <span>// 「3」と入力された場合に実行する処理</span><br />
+            alert('３年生ですね。中学校生活もあと少しですね。');<br />
+  <span>break</span>;<br />
+<span>default</span>:<br />
+  <span>// 入力が「1」でも「2」でも「3」でもない場合に実行する処理</span><br />
+            alert('入力が正しくありません');<br />
+  <span>break</span>;<br />
+    }<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body&gt;</span><br />
+<span>&lt;h1&gt;</span>条件分岐<span>&lt;/h1&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<img src="images/00016.jpeg" />
+<p>この例を動かすと、まず画面が表示される際に「あなたは中学何年生ですか？」と言う入力のダイアログが表示されます。<br />
+そして、ダイアログで何らかの入力を行った後に「OK」ボタンを押すと、入力値にごと異なるメッセージダイアログが表示されます。<br />
+（何を入力したらどのような結果になるかは、実際に自分で動かして確かめてみてください）</p>
+<p>この例で着目すべき点は、何と言っても①の行にあるswitchを言う命令のカタマリです。<br />
+これは、if文ではない、もう一つの条件分岐のための構文です。<br />
+if文と比べて、いくつかの条件をまとめて指定したい時によく利用されます。<br />
+この構文のルールもif文と同じく、以下の点を念頭に置いた上でまずは「形」で覚えてください。<br />
+<span>・「switch」のカッコの中に、条件に使用する変数を書く</span><br />
+<span>・「case」の後ろに、条件指定した変数を分岐させる値を書き、その後ろに半角のコロン（:）を付ける</span><br />
+<span>・条件に応じた処理の最後には必ず「break;」と書く</span><br />
+<span>・「default」は、caseのどの条件にも該当しない場合に行う処理を書くための物で、不要であれば省略可能</span></p>
+<p>条件分岐の説明は、一旦ここまでにしておきます。<br />
+ここで説明した処理（記述）はこの先も随所で出てきますので、何度も繰り返し見たり書いたりすることで、自ずと身に付くことでしょう。</p>
+</div>
+<div id="calibre_link-10">
+<h3 id="calibre_link-69"><b><u>２－７．処理を繰り返してみよう</u></b></h3>
+<p>処理の繰り返しは、条件分岐と並んでプログラミングの土台となるものです。<br />
+ここでは、先に説明した配列と合わせて、処理の繰り返しについて説明して行きます。<br />
+JavaScriptの繰り返し処理は、用途に応じていくつか種類がありますが、まずは代表的な２つについて学びましょう。</p>
+<p>まず１つ目は、予め繰り返したい回数が決まっている場合に使う「<span><b><i>for文（ふぉーぶん）</i></b></span>」について説明します。<br />
+このfor文を使って、配列の中身を確認するプログラムを作ってみましょう。</p>
+<p><span><b>例：繰り返し処理を用いて配列の中身を確認する</b></span></p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>繰り返し<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>// 配列を宣言する</span><br />
+<span>let</span> arr = [100, 200, 300, 400];<br />
+<br />
+<span>// 配列に代入されている値の数だけ処理を繰り返す</span><br />
+<span>for</span> (<span>let</span> i = 0; i &lt; 4; i++) {  ①<br />
+<span>// 繰り返し実行する処理</span><br />
+        alert(arr[i]);  ②<br />
+    }<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body&gt;</span><br />
+<span>&lt;h1&gt;</span>繰り返し<span>&lt;/h1&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<img src="images/000019.gif" />
+<p>この例を動かすと、「100」「200」「300」「400」と、計4回のメッセージダイアログが表示されます。<br />
+alert関数の実行を、4回「繰り返している」からです。（②の行の処理が4回実行されています）<br />
+では、例の①の行の記述を参考に、先ほど紹介したfor文について詳しく見て行きましょう。<br />
+for文は、大きく以下の３つの要素で構成されています。<br />
+<span>・「for」と言う記述</span><br />
+<span>・カッコで囲まれた「繰り返し条件」</span><br />
+<span>・波括弧（{ }）で囲まれた繰り返し実行する処理</span><br />
+これら３つの中で、まず先頭はお約束、最後は先に説明したif文と同じ意味合いです。（条件に該当する際に実行する処理は波括弧で囲ってましたよね）<br />
+ですので、２つ目の「繰り返し条件」について説明して行きます。<br />
+例では、この部分は以下のように書かれています。</p>
+<p><br />
+<span>let</span> i = 0; i &lt; 4; i++<br />
+<br /></p>
+<p>これ、よく見てみると、３つの命令がまとめて書かれていることに気が付きませんか？<br />
+要するに、さっきの１文は以下のように分解出来ると言うことです。</p>
+<p><br />
+<span>let</span> i = 0  ①<br />
+i &lt; 4  ②<br />
+i++  ③<br />
+<br /></p>
+<p>では、分解したそれぞれについて見て行きましょう。<br />
+①はすでにお馴染みの変数宣言です。<br />
+ここでは、繰り返し処理の判定に使うための変数を宣言して、初期値を代入しています。<br />
+そして、②では繰り返しの条件を明示しています。<br />
+for文では、①で宣言した変数が②の条件に該当する間処理を繰り返す、と言うルールになっています。<br />
+要するに、①と②を合わせると、「変数iが4未満の間は処理を繰り返す」と言う意味になります。<br />
+そして、何やら見慣れないことが書いてあると思いますが、③では「変数iの値を1ずつ加算する」と言う定義をしています。<br />
+変数iの初期値は0なので、処理を繰り返すたびに1ずつ加算されることになります。</p>
+<p>これらをまとめると、例で定義したfor文は、次のルールに則り処理を繰り返していることになります。<br />
+<span>・繰り返し判定に使う変数はiで、その初期値は0</span><br />
+<span>・変数iが4未満の間、処理を繰り返す</span><br />
+<span>・変数iは、処理が1回繰り返されるたびに、代入されている値が1加算される</span><br />
+と言うことは、「変数i はその値を0、1、2、3・・・と加算されて行き、4になった際に繰り返しが終了する」となりますので、結果として処理は4回繰り返されることになる訳です。</p>
+<p>では次に、例で繰り返し実行された処理について見てみましょう。<br />
+例では、for文で繰り返し実行されていた処理は以下の通りでした。</p>
+<p><br />
+alert(arr[i]);<br />
+<br /></p>
+<p>これは、配列の中身をメッセージダイアログで表示する、と言うことをしている処理です。<br />
+alert関数の引数に書いてある記述に着目してください。<br />
+これが「配列の中身を参照する」方法です。<br />
+配列は、配列名の後ろにブラケット（[ ]）で何番目の値かを指定して、その中身を参照することが出来ます。<br />
+例ではブラケットの中に変数iが指定されているため、繰り返し実行される処理は<br />
+<span>・arr[0]</span><br />
+<span>・arr[1]</span><br />
+<span>・arr[2]</span><br />
+<span>・arr[3]</span><br />
+となります。<br />
+ですので、結果として「配列の中身を確認する処理」となっているのです。</p>
+<p>では次に、もう一つの繰り返しのための構文、「while文」を説明して行きましょう。<br />
+ちなみに、「while」は日本語的には「ホワイル」とか「ファイル」とか「ワイル」とか呼ばれますので、気に入った呼び方をしてください。<br />
+for文は予め繰り返したい回数が決まっている場合に使用しますが、while文は、「ある条件が真（true）の間処理を繰り返す」と行った場合に使われます。<br />
+具体的なことは例を見てみましょう。</p>
+<p><span><b>例：while文を使った繰り返し処理</b></span></p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>繰り返し<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>// 変数を宣言して初期値を代入する</span><br />
+<span>let</span> i = 1;<br />
+<br />
+<span>// 変数iが4以下の間処理を繰り返す</span><br />
+<span>while</span> (i &lt;= 4) {  ①<br />
+<span>// メッセージダイアログを表示する</span><br />
+        alert(i + '回目');  ②<br />
+<br />
+<span>// 変数iの値を1加算する</span><br />
+        i++;<br />
+    }<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body&gt;</span><br />
+<span>&lt;h1&gt;</span>繰り返し<span>&lt;/h1&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<img src="images/000003.gif" />
+<p>この例を動かすと、「1回目」「2回目」「3回目」「4回目」と、計4回のメッセージダイアログが表示されます。<br />
+先に説明したfor文を理解していれば、何となく分かりやすいのではないでしょうか？<br />
+では早速ポイントを説明して行きましょう。<br />
+まず例の①では、繰り返し条件を書いています。<br />
+「while」のあとに半角のスペースを書いて、その後のカッコの中に条件を書くルールになっています。<br />
+例では、「変数iの値が4以下の間処理を繰り返す」と言う指定をしています。<br />
+次に②では、変数iの値と「回目」と言う文字列を連結（※）させて、メッセージダイアログで表示しています。<br />
+変数iの値は、メッセージダイアログを表示した後にfor文の時と同じ方法で値を1加算しているため、処理が繰り返されるたびに「1回目」「2回目」・・・と表示されるのです。</p>
+<p>さて、処理の繰り返しについての説明は一旦ここまでとしますが、先の説明の※の部分で触れた値の連結のような「演算処理」について、最後に触れておきたいと思います。<br />
+プログラムでは様々な演算を行うことになりますが、最も多いのが「算術的な演算」と「文字列の連結」になります。<br />
+まず、「算術的な演算」と言うのは、いわゆる「足し算」や「引き算」などの「計算」だと考えてください。<br />
+JavaScriptでは、単純な四則演算から本格的な算術演算まで様々な計算が行えますが、まずは最もスタンダードな以下の４つを覚えておきましょう。<br />
+<span>・足し算は「+」で行う</span><br />
+<span>・引き算は「-」で行う</span><br />
+<span>・掛け算は「*」で行う</span><br />
+<span>・割り算は「/」で行う</span><br />
+なお、使い方は以下の通りです。</p>
+<p><br />
+<span>let</span> hensu1 = 1 + 2;<span>// 3</span><br />
+<span>let</span> hensu2 = 5 - 3;<span>// 2</span><br />
+<span>let</span> hensu3 = 2 * 4;<span>// 8</span><br />
+<span>let</span> hensu4 = 9 / 3;<span>// 3</span><br />
+<br /></p>
+<p>次に「文字列の連結」は、先の例でも書いた通り「何らかの文字列」と「何らかの文字列」を結合させる処理で、例えば「あいう」と「えお」を連結して「あいうえお」と言う文字列にするような感じです。<br />
+これは、文字列と「何らかの型の値」を半角のプラス（+）で続けて書けばOKです。</p>
+<p><br />
+<span>let</span> hensu = 'あいう' + 'えお';<span>// あいうえお</span><br />
+<br /></p>
+<p>ここで1点注意して欲しいのが、どんな型の値でも、文字列と連結した結果は文字列になってしまうと言う点です。<br />
+要するに、数値型の「1」と文字列型の「1」を「+」で演算すると、「2」ではなく「11」になると言うことです。<br />
+この点は混乱し易いので、十分に注意するようにしてください。</p>
+<p><br />
+<span>let</span> hensu1 = 1 + '1';<span>// 11</span><br />
+<span>let</span> hensu2 = '10' + true;<span>// 10true</span><br />
+<br /></p>
+<p>演算処理はここまでにしておきましょう。<br />
+繰り返し処理も演算処理も、条件分岐と同じくこれから先嫌と言うほど使うことになりますので、必ず自ずと身に付きます。<br />
+ですので、今はここで説明した内容をしっかりと覚えておくようにしましょう。</p>
+</div>
+<div id="calibre_link-6">
+<h3 id="calibre_link-70"><b><u>２－８．関数を理解しよう</u></b></h3>
+<p>　「関数」とは、一言で表すならば「処理の集まり」です。<br />
+もっと関数についてイメージしやすいように、日常生活に例えて説明しましょう。<br />
+役所へ住民票を受け取りに行くとします。<br />
+その際に必要な申込書を窓口へ届け出て、それを受け取った役所は、必要な書類を探したり印刷したりします。<br />
+そうして完成した住民票を、最後は自分が受け取ります。<br />
+ここに出てくる役割を、プログラム用語に置き換えると、以下のようになります。<br />
+<span>・役所＝住民票を発行する手続き</span><br />
+<span>・住民票＝関数の実行結果</span><br />
+<span>・必要な申込書＝引数</span><br />
+<span>・書類を探す、印刷する＝処理</span><br />
+その際、必要な申込書（引数）にミスがあった場合、住民票（関数の実行結果）が貰えないことがあるので注意が必要です。<br />
+また、関数と言うのは、alert関数のように予め用意されている物もありますが、自分で自由に作ることも出来ます。<br />
+ここでは、そのような「自作の関数」について覚えてもらいたいと思います。</p>
+<p>「なぜ関数を作るのか？」と言う点について、具体例を挙げながら説明します。</p>
+<p><span><b>例：同じ記述を何度も繰り返し書いている</b></span></p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>関数<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>// 変数を宣言する</span><br />
+<span>let</span> hensu1 = 1;<br />
+<br />
+<span>// 処理を10回繰り返す</span><br />
+<span>for</span> (<span>let</span> i = 0; i &lt; 10; i++) {<br />
+<span>// hensu1 の値とiの値を足す</span><br />
+        hensu1 = hensu1 + i;<br />
+    }<br />
+<span>// hensu1の値をメッセージダイアログで表示する</span><br />
+    alert(hensu1);<br />
+<br />
+<span>// 変数を宣言する</span><br />
+<span>let</span> hensu2 = 10;<br />
+<br />
+<span>// 処理を10回繰り返す</span><br />
+<span>for</span> (<span>let</span> i = 0; i &lt; 10; i++) {<br />
+<span>// hensu2 の値とiの値を足す</span><br />
+        hensu2 = hensu2 + i;<br />
+    }<br />
+<span>// hensu2の値をメッセージダイアログで表示する</span><br />
+    alert(hensu2);<br />
+<br />
+<span>// 変数を宣言する</span><br />
+<span>let</span> hensu3 = 100;<br />
+<br />
+<span>// 処理を10回繰り返す</span><br />
+<span>for</span> (<span>let</span> i = 0; i &lt; 10; i++) {<br />
+<span>// hensu3 の値とiの値を足す</span><br />
+        hensu3 = hensu3 + i;<br />
+    }<br />
+<span>// hensu3の値をメッセージダイアログで表示する</span><br />
+    alert(hensu3);<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body&gt;</span><br />
+<span>&lt;h1&gt;</span>関数<span>&lt;/h1&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<p></p>
+<p><img src="images/000009.gif" />
+</p><p>この例は、実行すると「46」、「55」、「145」と3回メッセージダイアログが表示されます。<br />
+処理そのものは、ここまで説明して来たことを理解出来ていれば、何も難しいことはないと思います。<br />
+しかし、何やら同じような処理ばかり書いてあって、無駄に記述が長くなっている気がしませんか？<br />
+同じような処理はひとまとめにしてスッキリさせたくなりませんか？<br />
+（若干強引な気もしますが）そう、こんな時がまさしく関数の出番なのです。<br />
+では、早速先ほどの例を関数を使ったバージョンに書き換えてみましょう。</p>
+<p><span><b>例：同じ処理を関数にまとめる</b></span></p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>関数<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>// 関数を自作する</span><br />
+<span>function</span> myFunction(hikisu) {  ①<br />
+<span>// 引数の値を取得する</span><br />
+<span>let</span> temp = hikisu;<br />
+<br />
+<span>// 処理を10回繰り返す</span><br />
+<span>for</span> (<span>let</span> i = 0; i &lt; 10; i++) {<br />
+  <span>// 退避した引数の値とiの値を足す</span><br />
+            temp = temp + i;<br />
+        }<br />
+<br />
+<span>// 戻り値を返却する</span><br />
+<span>return</span> temp;  ②<br />
+    }<br />
+<br />
+<span>// 自作した関数を呼び出す  ③</span><br />
+<span>let</span> hensu1 = myFunction(1);<br />
+<span>let</span> hensu2 = myFunction(10);<br />
+<span>let</span> hensu3 = myFunction(100);<br />
+<br />
+<span>// メッセージダイアログを表示する</span><br />
+    alert(hensu1);<br />
+    alert(hensu2);<br />
+    alert(hensu3);<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body&gt;</span><br />
+<span>&lt;h1&gt;</span>関数<span>&lt;/h1&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<p></p>
+<p><img src="images/000009.gif" />
+</p><p>いかがでしょうか？<br />
+実行すると先の例と全く同じ動作をしますが、だいぶプログラムがスッキリしたと思いませんか？<br />
+感じ方は人それぞれかもしれませんが、少なくとも何度も同じ記述を繰り返しているような要素は無くなったと思います。<br />
+※本当はもっとスッキリさせられるのですが、今回は各種説明のために今の書き方になっています</p>
+<p>では、今回もポイントの説明をして行きましょう。<br />
+まず①ですが、ここで関数の作成をしています。<br />
+「function」と言う記述と半角のスペースの後に任意の関数名を付けて、カッコの中に引数を扱う変数の名前を書きます。<br />
+なお、引数を必要としない場合はカッコだけ書き、逆に複数必要とする場合はカッコの中にカンマで区切って必要な数だけ記述します。<br />
+そして、if文やfor文などと同じように、関数で実行する処理はいつもの波括弧で囲って記述します。<br />
+次に、②では戻り値の返却をしています。<br />
+関数の呼び出し元に戻り値を返却する場合は、「return」と言う記述と半角のスペースの後に、返却する値を書きます。<br />
+戻り値が不要な場合は記述する必要はありません。<br />
+最後に、③では自作した関数の呼び出していますが、これはalert関数などの予め用意されている物の呼び出し方と何も変わりません。</p>
+<p>関数は、今回のような「似たような記述をまとめる」と言った用途以外にも、よく使われる処理を予め関数として準備しておいたり、プログラムを読みやすくするために処理を関数に分割しておいたりと、様々な用途があります。<br />
+また、JavaScriptを詳しく理解しようとすると、この「関数」と言う存在は非常に難解な物となります。<br />
+とは言え、まずはここで説明した内容が基礎になりますので、今のところは例にも書いた<br />
+<span>・自作関数の作り方</span><br />
+<span>・引数の受け取り方</span><br />
+<span>・戻り値の返し方</span><br />
+これらをしっかりと理解しておくようにしましょう。</p>
+<p></p>
+<p></p></div>
+<div id="calibre_link-13">
+<h3 id="calibre_link-71"><b><u>２－９．文字や背景の色を変えてみよう</u></b></h3>
+<p>さて、ここからはHTMLも絡めた「より実践的」な内容になって行きます。<br />
+今まで説明して来た内容と比べて、「より動かしている」感じがすると思いますので、張り切って行きましょう。<br />
+まずは第一弾として、ボタンを押したら文字や背景の色が変わるプログラムを作ってみたいと思います。</p>
+<p><span><b>例：ボタンを押したら文字や背景の色が変わる</b></span></p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>文字や背景の色を変える<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>// 「こんにちは」の文字色と背景色を変える処理</span><br />
+<span>function</span> func1() {<br />
+<span>// 文字色を変える</span><br />
+        document.getElementById('moji1').style.color = 'red';  ②<br />
+        document.getElementById('moji2').style.color = 'black';<br />
+<br />
+<span>// 背景色を変える</span><br />
+        document.bgColor = '#90ee90';  ③<br />
+    }<br />
+<br />
+<span>// 「こんばんは」の文字色と背景色を変える処理</span><br />
+<span>function</span> func2() {<br />
+<span>// 文字色を変える</span><br />
+        document.getElementById('moji1').style.color = 'black';<br />
+        document.getElementById('moji2').style.color = 'red';<br />
+<br />
+<span>// 背景色を変える</span><br />
+        document.bgColor = '#00ffff';<br />
+    }<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body&gt;</span><br />
+<span>&lt;h1&gt;</span>文字や背景の色を変える<span>&lt;/h1&gt;</span><br />
+<span>&lt;p</span><span>id</span>="moji1"<span>&gt;</span>こんにちは<span>&lt;/p&gt;</span><br />
+<span>&lt;p</span><span>id</span>="moji2"<span>&gt;</span>こんばんは<span>&lt;/p&gt;</span><br />
+<span>&lt;input</span><span>type</span>="button"<span>value</span>="こんにちは"<span>onclick</span>="func1()"<span>&gt;</span>  ①<br />
+<span>&lt;input</span><span>type</span>="button"<span>value</span>="こんばんは"<span>onclick</span>="func2()"<span>&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<img src="images/00018.jpeg" />
+<p>今回のプログラムのポイントは３点です。<br />
+まず①では、htmlで用意したボタンに対して「クリックされたらこの関数を実行しなさい」と言う指定をしています。<br />
+次に②では、文字の色を変える処理を行っています。<br />
+色々と複雑なことが書かれていると思いますが、まずは次の２つを覚えて、あとは「お約束」として捉えておいてください。<br />
+<span>・getElementByIdと言う関数の引数に、処理の対象とするhtmlタグのID名を指定する</span><br />
+<span>・式の右辺（=の右）に変えたい色を指定する<br />
+最後に③では、画面の背景色を変える処理を行っています。</span><br />
+「document.bgColor」と言う変数みたいな物（※）に代入した値が、画面の背景色に反映されることを覚えておきましょう。<br />
+なお、文字色も背景色も、指定可能な値はCSSで利用可能な「色名」や「カラーコード」となります。<br />
+よくわからない人は、「色見本」と言うキーワードでググったサイトから目的の色を探しだして、その色の「#」から始まる値を使うようにすればいいでしょう。</p>
+<p>※・・・プロパティと言いますが、一旦は「変数みたいな物」と言う認識で構いません</p>
+<p>いかがでしょうか、「ボタンを押す」と言うアクションが加わると、一気に本格的なプログラムを書いている気がして来ませんか？<br />
+ちなみに、ここからはしっかりと理解を深めるための「課題」を出しますので、例の内容を自分で改造して、実際に動かして、色々と試すようにしてみてください。<br />
+（課題の答えは巻末に掲載しています）</p>
+<p>【課題】<br />
+<span>・func3関数を追加する</span><br />
+<span>・func3関数では、背景色を「赤」に変え、「こんにちは」と「こんばんは」の文字色を「白」に変更する</span><br />
+<span>・func3を呼び出すためのボタンを追加する</span></p>
+</div>
+<div id="calibre_link-19">
+<h3 id="calibre_link-72"><b><u>２－１０．タイマーを使ってみよう</u></b></h3>
+<p>「より実践的」な内容の第二弾は、タイマー処理です。<br />
+タイマー処理とは、「ある一定の時間が経過したら処理を行う」とか「ある一定の時間おきに処理を繰り返す」と言うような物を指します。<br />
+業務用のWebサイトではあまり出番がありませんが、ブラウザゲームを作る際には大活躍する機能です。<br />
+ゲームを作ってみたい人は、是非使いこなせるようになってください。</p>
+<p>では早速例を見てみましょう。<br />
+タイマー処理を使って、1秒おきに画面上の数値に1加算して行くプログラムです。<br />
+正直なところ、何の面白みも無いプログラムのくせににちょっと難易度が高めになっていますが、基本的な書き方となるのでしっかり理解できるよう頑張ってください。</p>
+<p><span><b>例：1秒おきに画面上の数値に1加算する</b></span></p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>数値を加算する<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>// 加算するための変数を宣言</span><br />
+<span>let</span> count = 0;<br />
+<br />
+<span>// 1秒おきに画面上の数値に1加算する</span><br />
+<span>function</span> countup() {<br />
+        setInterval(<span>function</span>() {  ②<br />
+            count++;<br />
+            document.getElementById('number').innerText = count;  ③<br />
+        },1000);<br />
+    }<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body</span><span>onload</span>="countup()"<span>&gt;</span>  ①<br />
+<span>&lt;span</span><span>id</span>="number"<span>&gt;</span>0<span>&lt;/span&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<img src="images/00002.jpeg" />
+<p>いかがでしょう、恐らくはかなり「理解不能」に感じていると思います。<br />
+でも例えそうであったとしても、大丈夫、すぐに慣れます！<br />
+なので、とりあえず今まで通りポイントについて一つひとつ触れて行きましょう！</p>
+<p>まず例の①ですが、ここでは「画面の読み込みが完了したらinit関数を実行しなさい」と言うことを書いています。<br />
+次に②ですが、ここに書いてある「setInterval関数」が今回の主役です。<br />
+この関数は、一つ目に指定した「関数」を、二つ目にしていした時間（ミリ秒）おきに実行します。　※1000ミリ秒＝1秒<br />
+「引数に関数を渡す」と言う概念は非常に混乱すると思いますが、今のところは例で書いた「形」を覚えるようにして、引数で渡している関数に内容を用途に応じて書き換えるようにしてみると思います。<br />
+最後に③ですが、ここでは画面に用意したspanタグの内容を変数countの値に書き換えています。<br />
+「getElementById関数」は先に出てきた時と同じですが、「innerText」に対して値を代入すると画面上の表示内容を変更出来ると言うことを覚えておきましょう。</p>
+<p>タイマー処理の説明は以上になります。<br />
+一気に難易度が上がったように感じているでしょうが、今は例の書き方を真似して、「ここをこう変えたら、こんな感じに動いた！」と言うようなことを繰り返してみることが大事です。<br />
+細かいことは後でいくらでも覚えられるので、今は自分で書いて動かして、楽しむことを優先しましょう。<br />
+と言うわけで、今回も課題を出します。<br />
+頑張ってチャレンジしてみてください。</p>
+<p>【課題】<br />
+<span>・画面上にボタンを用意する</span><br />
+<span>・画面表示時に自動的にタイマー処理が始まるのではなく、用意したボタンを押したらタイマー処理が始まるようにする</span><br />
+<span>・画面上の値が2ずつ加算されるようにする</span></p>
+</div>
+<div id="calibre_link-20">
+<h3 id="calibre_link-73"><b><u>２－１１．乱数を使ってみよう</u></b></h3>
+<p>プログラムでは、「実行するたびに異なる結果を得たい」と言うシチュエーションがあり、そんな時は「乱数」を使います。<br />
+乱数は、「ランダムな数値を生成するための仕組み」です。<br />
+比較的応用の効く仕組みなので、まずは基本的な使い方をしっかりと覚えましょう。</p>
+<p><span><b>例：ボタンを押すたびに異なる数値を表示する</b></span></p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>ボタンを押すたびに異なる数値を表示する<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>function</span> show() {<br />
+<span>// 0～9の間の整数をランダムで生成する</span><br />
+<span>let</span> ransu = Math.floor(Math.random() * 10);  ①<br />
+<br />
+<span>// 生成した乱数をメッセージダイアログで表示する</span><br />
+        alert(ransu);<br />
+    }<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body&gt;</span><br />
+<span>&lt;input</span><span>type</span>="button"<span>value</span>="乱数を表示する"<span>onclick</span>="show()"<span>&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<img src="images/000010.gif" />
+<p>さて、今までと違ってだいぶシンプルな例になっていますが・・・実は少しだけ複雑な処理をしています。<br />
+ポイントは①の１行だけなのですが、この１行で３つの処理を行っています。<br />
+まず、「Math.random」と言う関数で「0以上1未満の乱数値」を生成しています。<br />
+次に、生成した乱数に10を掛けています。<br />
+そして最後に、「Math.floor」と言う関数で、値の小数点以下の値を切り捨てています。<br />
+その結果、「0～9の間の整数をランダムで生成する」と言う処理を実現しています。<br />
+言葉だとわかりづらいと思いますので、図にして説明してみましょう。</p>
+<p><br />
+Math.random()<br />
+↓　乱数の生成<br />
+0.7185296065561431<br />
+↓ 10を掛ける<br />
+7.185296065561431<br />
+↓ Math.floor()で小数点以下を切り捨てる<br />
+7<br />
+<br /></p>
+<p>重要なのは、「Math.random」関数が「0以上1未満の乱数値」を生成すると言う点です。<br />
+「0以上1未満」の乱数値が生成されるので、10を掛けて不要部分を切り捨てれば見事に「0～9の間の整数」がランダムで生成されると言うカラクリになっています。<br />
+とりあえず、「<span>Math.floor(Math.random() * 10)</span>」と言う一連の記述を覚えておけば応用が効くので、頑張って記憶してください。<br />
+では恒例の課題です。</p>
+<p>【課題】<br />
+<span>・ランダムで生成される値を「5〜10」の間の整数に変更する</span></p>
+<p>　さて、以上で「JavaScript実践講座」は終わりです。<br />
+次の「JavaScript応用講座」では、これまで以上にちゃんと動かせるプログラムを使って、色々なことを説明して行きます。<br />
+これまで以上に難しい分、動かした時の楽しさは比にならないぐらいの物になると思いますので、お楽しみに！</p>
+</div>
+<div id="calibre_link-22">
+<h2 id="calibre_link-74"><b><u>３．JavaScript応用講座</u></b></h2>
+<h3 id="calibre_link-49"><b><u>３－１．ワリカンプログラムを作ってみよう</u></b></h3>
+<img src="images/00014.jpeg" />
+<p>簡単なワリカン用プログラムです。<br />
+人数と金額を入力して「計算」ボタンを押すと、メッセージダイアログで<br />
+<span>・一人あたりの支払い金額</span><br />
+<span>・余り</span><br />
+を表示します。<br />
+サンプルなので、半角の数値以外の値を入力したりするとエラーになってしまいますが、必要最低限の動作はします。<br />
+なお、先にも触れていますが、このプログラム（以降も全て同様）を実際に作成する際には、htmlファイルの文字コードを「UTF-8」にすることを忘れないようにしてください。</p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>ワリカンプログラム<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>function</span> calculate() {<br />
+<span>// 画面の入力値を取得する</span><br />
+<span>let</span> num = document.getElementById('number').value;  ①<br />
+<span>let</span> bill = document.getElementById('bill').value;<br />
+<br />
+<span>// 一人あたりの金額と余りを算出する</span><br />
+<span>let</span> result = Math.floor(bill / num);  ②<br />
+<span>let</span> remain = bill - result * num;<br />
+<br />
+<span>// 余りの有無に応じたメッセージ文言を作成する</span><br />
+<span>let</span> message = '一人あたりの支払金額は' + result + '円、';  ③<br />
+<span>if</span> (remain &gt; 0) {<br />
+            message += '余りが' + remain + '円です。';<br />
+        }<span>else</span> {<br />
+            message += '余りはありません。';<br />
+        }<br />
+<br />
+<span>// ワリカン結果をメッセージダイアログで表示する</span><br />
+        alert(message);<br />
+    }<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body&gt;</span><br />
+    人数：<span>&lt;input</span><span>id</span>="number"<span>type</span>="text"<span>size</span>="2"<span>&gt;</span>人<span>&lt;br&gt;</span><br />
+    金額：<span>&lt;input</span><span>id</span>="bill"<span>type</span>="text"<span>size</span>="6"<span>&gt;</span>円<span>&lt;br&gt;</span><br />
+<span>&lt;input</span><span>type</span>="button"<span>value</span>="計算"<span>onclick</span>="calculate()"<span>&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<p>このプログラムにはポイントが3点あります。<br />
+①では、画面の入力値（人数と金額）を取得して、それぞれ変数に代入しています。<br />
+その際に、例えば人数では「document.getElementById('number').value」と言う書き方をしています。<br />
+getElementByIdは２－９でも説明しましたが、このように書くと「指定したID属性を持つinputタグの入力値」を取得出来るので、是非覚えておいてください。<br />
+次に、②では入力値を使って一人あたりの金額と余りを算出しています。<br />
+金額に小数が入らないように、「Math.floor」と言う関数を使って除算した結果を切り捨てているのがポイントです。<br />
+なお、JavaScriptでは切り捨て以外にも様々な計算用の関数が用意されていますので、気になる人は「JavaScript Math」のようにGoogleなどで検索してみてください。<br />
+そして、最後に③では余りが有るか無いかによって適切なメッセージが表示されるように、条件によって作成する文言を変えています。</p>
+<p></p>
+<p></p></div>
+<div id="calibre_link-4">
+<h3 id="calibre_link-75"><b><u>３－２．おみくじプログラムを作ってみよう</u></b></h3>
+<img src="images/000004.gif" />
+<p>２－１１で説明した乱数を使った簡単なおみくじプログラムです。<br />
+ボタンを押すと占い結果がメッセージダイアログで表示します。</p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>おみくじプログラム<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>function</span> divine() {<br />
+<span>// 1～7の間の整数を生成する</span><br />
+<span>let</span> r = Math.floor(Math.random() * 7);<br />
+<span>let</span> fortune;<br />
+<br />
+<span>// 生成した乱数の値ごとにおみくじ結果を決定する</span><br />
+<span>switch</span> (r) {<br />
+  <span>case</span> 0:<br />
+                fortune = '大吉';<br />
+      <span>break</span>;<br />
+  <span>case</span> 1:<br />
+                fortune = '吉';<br />
+      <span>break</span>;<br />
+  <span>case</span> 2:<br />
+                fortune = '中吉';<br />
+      <span>break</span>;<br />
+  <span>case</span> 3:<br />
+                fortune = '小吉';<br />
+      <span>break</span>;<br />
+  <span>case</span> 4:<br />
+                fortune = '末吉';<br />
+      <span>break</span>;<br />
+  <span>case</span> 5:<br />
+                fortune = '凶';<br />
+      <span>break</span>;<br />
+  <span>case</span> 6:<br />
+                fortune = '大凶';<br />
+      <span>break</span>;<br />
+        }<br />
+<br />
+<span>// 占い結果をメッセージダイアログで表示する</span><br />
+        alert('あなたの運勢は、【' + fortune + '】です。');<br />
+    }<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body&gt;</span><br />
+<span>&lt;input</span><span>type</span>="button"<span>value</span>="占う！"<span>onclick</span>="divine()"<span>&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<p>このプログラムは、1～7の間の乱数を生成し、その値によっておみくじ結果を決定しています。<br />
+占い結果を画面上に画像で表示するような内容にすると、グッと面白いプログラムになるでしょう。<br />
+HTMLやCSSに自信がある人は、是非チャレンジしてみてください。</p>
+<p></p>
+<p></p></div>
+<div id="calibre_link-12">
+<h3 id="calibre_link-76"><b><u>３－３．じゃんけんプログラムを作ってみよう</u></b></h3>
+<img src="images/000001.gif" />
+<p>３－２と同じく、乱数を使ったじゃんけんプログラムです。<br />
+ボタンを押すと勝敗をメッセージダイアログで表示します。</p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>じゃんけんプログラム<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>function</span> janken(jibun) {<br />
+<span>// 1～3の間の乱数を生成（0→グー、1→チョキ、2→パー、とする）</span><br />
+<span>let</span> aite = Math.floor(Math.random() * 3);  ②<br />
+<span>let</span> result;<br />
+<br />
+<span>// じゃんけん結果に応じた文言の生成</span><br />
+<span>if</span> (aite == jibun) {  ③<br />
+            result = 'あいこ';<br />
+        }<span>else if</span> (aite == 0 &amp;&amp; jibun == 2) {<br />
+            result = '勝ち！';<br />
+        }<span>else if</span> (aite == 1 &amp;&amp; jibun == 0) {<br />
+            result = '勝ち！';<br />
+        }<span>else if</span> (aite == 2 &amp;&amp; jibun == 1) {<br />
+            result = '勝ち！';<br />
+        }<span>else</span> {<br />
+            result = '負け...';<br />
+        }<br />
+<br />
+<span>// 相手の手ごとの文言を生成</span><br />
+<span>let</span> message = '相手の手：';  ④<br />
+<span>if</span> (aite == 0) {<br />
+            message += 'グー';<br />
+        }<span>else if</span> (aite == 1) {<br />
+            message += 'チョキ';<br />
+        }<span>else if</span> (aite == 2) {<br />
+            message += 'パー';<br />
+        }<br />
+        message += '\n' + result;  ⑤<br />
+<br />
+        alert(message);<br />
+    }<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body&gt;</span><br />
+<span>&lt;input</span><span>type</span>="button"<span>value</span>="グー"<span>onclick</span>="janken(0)"<span>&gt;</span>  ①<br />
+<span>&lt;input</span><span>type</span>="button"<span>value</span>="チョキ"<span>onclick</span>="janken(1)"<span>&gt;</span><br />
+<span>&lt;input</span><span>type</span>="button"<span>value</span>="パー"<span>onclick</span>="janken(2)"<span>&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<p>このプログラムにはポイントが5点あります。<br />
+①では、グー、チョキ、パーのそれぞれのボタンが押された際に、janken関数にそれぞれ異なる引数を設定して呼び出すようにしています。<br />
+これによって、janken関数の中で「どのボタンから呼び出されたか」がわかるようになります。<br />
+次に、②では1～3の間の乱数を生成してそれを相手の手とし、③で自分の手と相手の手のそれぞれに応じた結果を表示するための文言を生成しています。<br />
+④では、相手の手（乱数で生成した整数）をメッセージ出力するための文言編集をしています。<br />
+そして⑤では、「相手の手」と「じゃんけん結果」を連結しているのですが、それぞれの間に「\n」と書いています。<br />
+これは改行を意味する特別な値で、ここでは結果を見やすくするために使用しています。</p>
+<p></p>
+<p></p></div>
+<div id="calibre_link-24">
+<h3 id="calibre_link-77"><b><u>３－４．デジタル時計プログラムを作ってみよう</u></b></h3>
+<img src="images/000000.gif" />
+<p>２－１０で説明したタイマー処理を使って、現在の時刻を更新し続けるプログラムです。<br />
+画面を表示すると、自動的に処理が開始されます。</p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>デジタル時計プログラム<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>function</span> countClock() {<br />
+<span>// 日付の情報を取得する</span><br />
+<span>let</span> dates =<span>new</span> Date();  ②<br />
+<span>let</span> hour = dates.getHours();<span>// 「時」の取得</span><br />
+<span>let</span> min = dates.getMinutes();<span>// 「分」の取得</span><br />
+<span>let</span> sec = dates.getSeconds();<span>// 「秒」の取得</span><br />
+<br />
+<span>// 取得した各日付値を2桁に揃える</span><br />
+        hour = ('0' + hour).slice(-2);  ③<br />
+        min = ('0' + min).slice(-2);<br />
+        sec = ('0' + sec).slice(-2);<br />
+<br />
+<span>// 画面に整形した時刻用の文言を表示する</span><br />
+<span>let</span> clock = document.getElementById('now');<br />
+        clock.innerHTML = hour + ':' + min + ':' + sec;<br />
+    }<br />
+<br />
+<span>function</span> startClock() {<br />
+        setInterval(countClock, 1000);  ①<br />
+    }<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body</span><span>onload</span>="startClock()"<span>&gt;</span><br />
+<span>&lt;p</span><span>id</span>="now"<span>&gt;&lt;/p&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<p>このプログラムにはポイントが3点あります。<br />
+①では、１秒（１０００ミリ秒）毎にcountClock関数を実行するように設定しています。<br />
+次に、②では「現在の日付」を取得して、「時」「分」「秒」のそれぞれの値を取得しています。<br />
+この一連の処理では、ご覧の通り色々な機能を使っているのですが、ここではその詳細にまでは触れません。<br />
+今は、「こう書けば現在の時刻情報が取得出来るんだ」と覚えておいてもらえれば大丈夫です。<br />
+最後の③では、取得した「時」「分」「秒」が一桁の場合は、頭に「0」を付けると言う処理を行っています。<br />
+これはいわゆる一つの「テクニック」なので、②と同じく書き方を覚えておいてください。<br />
+※「値の先頭に'0'を文字列連結して、出来上がった文字列の後ろから2文字を取り出し、結果として先頭をゼロ埋めした2桁の文字列に揃える」と言うことしています</p>
+<p></p>
+<p></p></div>
+<div id="calibre_link-5">
+<h3 id="calibre_link-78"><b><u>３－５．お散歩プログラムを作ってみよう</u></b></h3>
+<img src="images/000017.gif" />
+<p>キーボードのカーソルキー（←↑→↓）を押すと、画面上の★マークが上下左右に移動するプログラムです。<br />
+★マークが画面の範囲外に移動して見失ってしまった場合は、画面を再表示してください。<br />
+なお、このプログラムは一部Chrome以外のブラウザでは正常に動作しない記述がありますので、注意してください。</p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>お散歩プログラム<span>&lt;/title&gt;</span><br />
+<span>&lt;style&gt;</span><br />
+#star {  ②<br />
+    position: absolute;<br />
+}<br />
+<span>&lt;/style&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>function</span> moveStar() {<br />
+<span>// 押されたキーを取得する</span><br />
+<span>let</span> keyCode = event.keyCode;  ③<br />
+<br />
+<span>// 「★」の位置情報を取得する</span><br />
+<span>let</span> star = document.getElementById('star');  ④<br />
+<span>let</span> top = parseInt(star.offsetTop);<span>// 縦</span>  ⑤<br />
+<span>let</span> left = parseInt(star.offsetLeft);<span>// 横</span><br />
+<br />
+<span>// 押されたキーに応じて、上下左右に★の位置を変更する</span><br />
+<span>if</span> (keyCode == 37) {  ⑥<br />
+  <span>// カーソル←キー押下</span><br />
+            star.style.left = left - 10;<br />
+        }<span>else if</span> (keyCode == 38) {<br />
+  <span>// カーソル↑キー押下</span><br />
+            star.style.top = top - 10;<br />
+        }<span>else if</span> (keyCode == 39) {<br />
+  <span>// カーソル→キー押下</span><br />
+            star.style.left = left + 10;<br />
+        }<span>else if</span> (keyCode == 40) {<br />
+  <span>// カーソル↓キー押下</span><br />
+            star.style.top = top + 10;<br />
+        }<br />
+    }<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body</span><span>onKeyDown</span>="moveStar()"<span>&gt;</span>  ①<br />
+<span>&lt;p&gt;</span>キーボードの「↑」「↓」「→」「←」で星印が動きます<span>&lt;/p&gt;</span><br />
+<span>&lt;div</span><span>id</span>="star"<span>&gt;</span>★<span>&lt;/div&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<p>このプログラムにはポイントが6点あります。<br />
+①では、bodyタグのonKeyDownイベントを使って、画面上で何らかのキーが押された際にmoveStar関数が実行されるようにしています。<br />
+なお、②についてはプログラムで★マークを動かすためのオマジナイだと思って、特に気にしないでください。（書いてないと動作しません）<br />
+次に、③では押されたキーの「キーコード」と言うものを取得しています。<br />
+キーボード上の各キーにはそれぞれコードが割り当てられていて、「event.keyCode」と書くことで押されたキーのコードが取得出来ます。<br />
+続いて、④では★マークの「存在そのもの」をstar変数に代入していると考えてください。<br />
+これにより、これ以降のプログラムでstar変数が★マークそのものとして振る舞ってくれます。<br />
+例えば、⑤では★マークの位置情報（縦位置、横位置）を取得しているのですが、「star.offsetTop」と言う記述は「document.getElementById('star').offsetTop」と同じ意味になっていると言うことです。<br />
+なお、位置情報の取得に使用している「parseInt(star.offsetTop)」と「parseInt(star.offsetLeft)」と言う記述は、今のところはそれぞれお約束だと覚えておいてください。<br />
+最後に、⑥ではキーコードを使って「画面で押されたキーがカーソルキーの場合、★マークの位置を変更する」と言うことを行っています。<br />
+カーソルキーの←↑→↓のキーコードがそれぞれ37、38、39、40になるので、条件分岐の式に使用しています。</p>
+<p>このプログラムの解説は以上です。<br />
+ここまで紹介してきたプログラムと比べて一気に難易度が上がったと思いますが、その分面白さも増したと思います。<br />
+このプログラムは、このままの記述では少し厳しいところはありますが、概念そのものは様々なゲームプログラムに応用が可能です。<br />
+例えば、★マークを何らかのキャラクター画像に変えてみたり、背景画像を当ててみたりすると一気に雰囲気が出てきます。</p>
+<p></p>
+<p></p></div>
+<div id="calibre_link-27">
+<h3 id="calibre_link-79"><b><u>３－６．神経衰弱プログラムを作ってみよう</u></b></h3>
+<img src="images/00015.jpeg" />
+<p>一人用の神経衰弱プログラムです。<br />
+このプログラムが本書で紹介する最後の内容になりますが、最後に相応しいかなりの難易度になっていると思います。（経験者でも結構難しい内容かもしれません）<br />
+また、一部本書では説明していないレベルの機能も使っていますので、今のところは一通り真似したプログラムを動かしてみて、楽しんでみる程度に留めておいた方が無難です。<br />
+この先も勉強を続けて、いつかワンランク上のレベルに達した時に、このプログラムの内容を理解するようにしてみましょう。</p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>神経衰弱プログラム<span>&lt;/title&gt;</span><br />
+<span>&lt;style&gt;</span><br />
+button {<br />
+    width: 60px;<br />
+    line-height: 90px;<br />
+    margin: 3px;<br />
+    border: 1px solid #000000;<br />
+    border-radius: 4px;<br />
+    background-color: #CCCCCC;<br />
+}<br />
+button:disabled {<br />
+    background-color: #FFFFFF;<br />
+}<br />
+<span>&lt;/style&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>// カードの配置情報を格納する配列変数を宣言</span><br />
+<span>let</span> cards=[];<br />
+<br />
+<span>// カードの配置情報を初期化</span><br />
+<span>function</span> init() {<br />
+<span>// 使用するカードのセットとして、1～8（♠・♥）の2種×8組=16枚をセット</span><br />
+<span>let</span> cardSet = [];<br />
+<span>let</span> cardNum = 1;<br />
+<span>for</span> (<span>let</span> c = 0; c &lt; 16; c+=2) {<br />
+            cardSet[c] = ['♠', cardNum];<span>// 配列の偶数番目には♠の1〜8をセット</span><br />
+            cardSet[c + 1] = ['♥', cardNum];<span>// 配列の奇数番目には♥の1〜8をセット</span><br />
+            cardNum++;<br />
+        }<br />
+<br />
+<span>// 作成したカードセットをシャッフル</span><br />
+<span>for</span> (<span>let</span> s = 0; s &lt; 50; s++) {<br />
+  <span>// カード情報の配列からランダムに２箇所を選択して入れ替える</span><br />
+  <span>// これを５０回繰り返してシャッフルする</span><br />
+  <span>let</span> r1 = Math.floor(Math.random() * cardSet.length);<br />
+  <span>let</span> r2 = Math.floor(Math.random() * cardSet.length);<br />
+  <span>let</span> tmp = cardSet[r1];<br />
+            cardSet[r1] = cardSet[r2];<br />
+            cardSet[r2] = tmp;<br />
+        }<br />
+<br />
+<span>// シャッフルしたカードセットを左上から順番に配置</span><br />
+<span>for</span> (<span>let</span> y = 0; y &lt; 4; y++) {<br />
+            cards[y] = [];<br />
+  <span>for</span> (<span>let</span> x = 0; x &lt; 4; x++) {<br />
+                cards[y][x] = cardSet[y * 4 + x];<br />
+            }<br />
+        }<br />
+    }<br />
+<br />
+<span>let</span> px = null;<span>// 直前にめくったカードの位置情報（横位置）</span><br />
+<span>let</span> py = null;<span>// 直前にめくったカードの位置情報（縦位置）</span><br />
+<span>let</span> ccnt = 0;<span>// めくった枚数</span><br />
+<br />
+<span>// クリックした位置のカードをめくる（引数ax、ayはクリック位置の情報）</span><br />
+<span>function</span> turn(ay, ax) {<br />
+<br />
+<span>let</span> current = cards[ay][ax];<span>// クリック位置に対応するカード情報を取り出す</span><br />
+<span>let</span> card = document.getElementById(ay + '_' + ax);<br />
+        card.innerHTML = current[0] + current[1];<span>// クリック位置にカードを表示する</span><br />
+        card.disabled = true;<span>// クリック位置を操作不能にする</span><br />
+        ccnt++;<span>// めくった枚数をカウントアップ</span><br />
+<span>if</span> (px == null) {<br />
+            px = ax;<span>// pxがnull（＝１枚目）の場合、今の位置情報をpx、pyに保存</span><br />
+            py = ay;<br />
+        }<span>else</span> {<br />
+  <span>let</span> previous = cards[py][px];<span>// 直前にめくった位置に対応するカード情報を取り出す</span><br />
+            setTimeout(<br />
+      <span>// カードクリック後、50ミリ秒後に成否の判定を行う</span><br />
+      <span>function</span>(){<br />
+          <span>if</span> (previous[1] == current[1]) {<br />
+                        alert('あたり！');<span>// 1枚目と2枚目が同じ数字の場合は「あたり」</span><br />
+                    }<span>else</span> {<br />
+                        alert('はずれ...');<span>// 1枚目と2枚目が違う数字の場合は「はずれ」</span><br />
+<br />
+              <span>// めくったカードを元に戻す</span><br />
+              <span>let</span> pcard = document.getElementById(py + '_' + px);<br />
+                        pcard.innerHTML = '？';<br />
+                        pcard.disabled = false;<br />
+                        card.innerHTML = '？';<br />
+                        card.disabled =false;<br />
+                        ccnt -= 2;<br />
+                    }<br />
+<br />
+          <span>// 直前にめくったカードの位置情報を初期化する</span><br />
+                    px = null;<br />
+                    py = null;<br />
+<br />
+          <span>// めくった枚数が16枚に達した場合、全てのカードがめくられたと判断する</span><br />
+          <span>if</span> (ccnt &gt;= 16) {<br />
+                        complete();<br />
+                    }<br />
+                }<br />
+                , 50<br />
+            );<br />
+        }<br />
+    }<br />
+<br />
+<span>// ゲームクリアの処理</span><br />
+<span>function</span> complete() {<br />
+        alert('ゲームクリア！');<br />
+    }<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body</span><span>onload</span>="init()"<span>&gt;</span><br />
+<span>&lt;table&gt;</span><br />
+<span>&lt;tr&gt;</span><br />
+  <span>&lt;td&gt;&lt;button</span><span>id</span>="0_0"<span>type</span>="button"<span>onclick</span>="turn(0, 0)"<span>&gt;</span>？<span>&lt;/button&gt;&lt;/td&gt;</span><br />
+  <span>&lt;td&gt;&lt;button</span><span>id</span>="0_1"<span>type</span>="button"<span>onclick</span>="turn(0, 1)"<span>&gt;</span>？<span>&lt;/button&gt;&lt;/td&gt;</span><br />
+  <span>&lt;td&gt;&lt;button</span><span>id</span>="0_2"<span>type</span>="button"<span>onclick</span>="turn(0, 2)"<span>&gt;</span>？<span>&lt;/button&gt;&lt;/td&gt;</span><br />
+  <span>&lt;td&gt;&lt;button</span><span>id</span>="0_3"<span>type</span>="button"<span>onclick</span>="turn(0, 3)"<span>&gt;</span>？<span>&lt;/button&gt;&lt;/td&gt;</span><br />
+<span>&lt;/tr&gt;</span><br />
+<span>&lt;tr&gt;</span><br />
+  <span>&lt;td&gt;&lt;button</span><span>id</span>="1_0"<span>type</span>="button"<span>onclick</span>="turn(1, 0)"<span>&gt;</span>？<span>&lt;/button&gt;&lt;/td&gt;</span><br />
+  <span>&lt;td&gt;&lt;button</span><span>id</span>="1_1"<span>type</span>="button"<span>onclick</span>="turn(1, 1)"<span>&gt;</span>？<span>&lt;/button&gt;&lt;/td&gt;</span><br />
+  <span>&lt;td&gt;&lt;button</span><span>id</span>="1_2"<span>type</span>="button"<span>onclick</span>="turn(1, 2)"<span>&gt;</span>？<span>&lt;/button&gt;&lt;/td&gt;</span><br />
+  <span>&lt;td&gt;&lt;button</span><span>id</span>="1_3"<span>type</span>="button"<span>onclick</span>="turn(1, 3)"<span>&gt;</span>？<span>&lt;/button&gt;&lt;/td&gt;</span><br />
+<span>&lt;/tr&gt;</span><br />
+<span>&lt;tr&gt;</span><br />
+  <span>&lt;td&gt;&lt;button</span><span>id</span>="2_0"<span>type</span>="button"<span>onclick</span>="turn(2, 0)"<span>&gt;</span>？<span>&lt;/button&gt;&lt;/td&gt;</span><br />
+  <span>&lt;td&gt;&lt;button</span><span>id</span>="2_1"<span>type</span>="button"<span>onclick</span>="turn(2, 1)"<span>&gt;</span>？<span>&lt;/button&gt;&lt;/td&gt;</span><br />
+  <span>&lt;td&gt;&lt;button</span><span>id</span>="2_2"<span>type</span>="button"<span>onclick</span>="turn(2, 2)"<span>&gt;</span>？<span>&lt;/button&gt;&lt;/td&gt;</span><br />
+  <span>&lt;td&gt;&lt;button</span><span>id</span>="2_3"<span>type</span>="button"<span>onclick</span>="turn(2, 3)"<span>&gt;</span>？<span>&lt;/button&gt;&lt;/td&gt;</span><br />
+<span>&lt;/tr&gt;</span><br />
+<span>&lt;tr&gt;</span><br />
+  <span>&lt;td&gt;&lt;button</span><span>id</span>="3_0"<span>type</span>="button"<span>onclick</span>="turn(3, 0)"<span>&gt;</span>？<span>&lt;/button&gt;&lt;/td&gt;</span><br />
+  <span>&lt;td&gt;&lt;button</span><span>id</span>="3_1"<span>type</span>="button"<span>onclick</span>="turn(3, 1)"<span>&gt;</span>？<span>&lt;/button&gt;&lt;/td&gt;</span><br />
+  <span>&lt;td&gt;&lt;button</span><span>id</span>="3_2"<span>type</span>="button"<span>onclick</span>="turn(3, 2)"<span>&gt;</span>？<span>&lt;/button&gt;&lt;/td&gt;</span><br />
+  <span>&lt;td&gt;&lt;button</span><span>id</span>="3_3"<span>type</span>="button"<span>onclick</span>="turn(3, 3)"<span>&gt;</span>？<span>&lt;/button&gt;&lt;/td&gt;</span><br />
+<span>&lt;/tr&gt;</span><br />
+<span>&lt;/table&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<p>このプログラムの大まかな仕様（ルール）は次の通りです。<br />
+<span>・カードは4×4の16枚（♠と♥の1～8）で固定する</span><br />
+<span>・ボタンをカードとして見立てて、「クリック＝めくるアクション」とする</span><br />
+<span>・めくったカードの数字が同じであれば「一致」とする</span><br />
+<span>・一致・不一致に合わせて「あたり」「はずれ」をアラート表示</span><br />
+<span>・１６枚全てがめくり終わったらゲームクリアの表示</span></p>
+<p>また、基本的な作りとしては、画面の表示時にカード情報を初期化（準備）して、ボタンをクリックのたびに「めくり」と「一致判定」を行い、全てのカードを揃えたらゲームクリアのメッセージダイアログを表示します。<br />
+なお、このプログラムの詳細はあえて個別には解説しません。<br />
+冒頭でも述べた通り、このプログラムの難易度を考えると、とても現段階では理解出来ないレベルだと思います。<br />
+ここでは「これだけのプログラム量で、ここまでのプログラムが書ける」ということを実感してもらいたく、本書のラストであえて掲載してみました。<br />
+逆に言えば、いつかこのプログラムを理解出来るようになった時、あなた自身のプログラミングの腕が確かに向上した物だと考えられると言うことです。<br />
+いつの日か本書の存在を思い出していただき、是非このプログラムに再チャレンジしてみてくださいね！</p>
+<p></p>
+<p></p></div>
+<div id="calibre_link-18">
+<h2 id="calibre_link-80"><b><u>おわりに</u></b></h2>
+<p>最後まで読んでいただきまして、誠にありがとうございました。<br />
+恐らく本書の読者様は、ほとんどの方がプログラミング未経験者、またはJavaScript未経験者かと思いますが、いかがでしたでしょうか。<br />
+無事にJavaScriptプログラミングの第一歩を踏み出せていたら幸いでございます。</p>
+<p>本書は、タイトルや内容の通り、JavaScriptプログラミングの初歩の初歩を学ぶための物です。<br />
+ですので、もっと凝ったレベルの物を作ってみたくなった時に、きっと壁にぶつかってしまうと思います。<br />
+そんな時に次のレベルの学習をするためにお勧めの本を紹介します。<br />
+それは、鶴田正信氏が執筆された「基礎から徹底的に学ぶJavaScript」です。<br />
+是非この本をKindleストアで探してみてください。<br />
+数あるJavaScriptの書籍の中でも、ここまで安価でこんなにも深い内容まで網羅されていることに筆者は驚愕したぐらいです。<br />
+筆者も似たような趣旨の本を書こうと思っていましたが、この本を見付けた時点で諦めてしまいました。<br />
+それぐらいに素晴らしい内容なので、心からお勧めいたします。</p>
+<p>また、せっかくのプログラムも、デザインがチープだと非常に味気ない物になってしまいます。<br />
+そんな時はCSSの出番です。<br />
+CSSを駆使して華やかなデザインを実装すれば、プログラムの完成度も一気に増します。<br />
+なお、CSSについて一から学習される際には、本書の姉妹書である「初心者の為のCSS入門」を読んでみてください。<br />
+本書と同じく、Kindleストアでお買い求め頂けます。</p>
+<p>さて、最後は自署の宣伝になってしまいましたが、読者のみなさまの今後益々のご活躍を願いつつ、筆を擱くことといたします。</p>
+<p>多羅樹</p>
+</div>
+<div id="calibre_link-8">
+<h2 id="calibre_link-81"><b><u>【課題の答え】</u></b></h2>
+<p><span><b>２－９</b></span></p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>文字や背景の色を変える<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>// 「こんにちは」の文字色と背景色を変える処理</span><br />
+<span>function</span> func1() {<br />
+<span>// 文字色を変える</span><br />
+        document.getElementById('moji1').style.color = 'red';<br />
+        document.getElementById('moji2').style.color = 'black';<br />
+<br />
+<span>// 背景色を変える</span><br />
+        document.bgColor = '#90ee90';<br />
+    }<br />
+<br />
+<span>// 「こんばんわ」の文字色と背景色を変える処理</span><br />
+<span>function</span> func2() {<br />
+<span>// 文字色を変える</span><br />
+        document.getElementById('moji1').style.color = 'black';<br />
+        document.getElementById('moji2').style.color = 'red';<br />
+<br />
+<span>// 背景色を変える</span><br />
+        document.bgColor = '#00ffff';<br />
+    }<br />
+<br />
+<span><b>// 課題の関数</b></span><br />
+<span><b>function func3() {</b></span><br />
+<span><b>// 文字色を変える</b></span><br />
+<span><b>document.getElementById('moji1').style.color = 'white';</b></span><br />
+<span><b>document.getElementById('moji2').style.color = 'white';</b></span><br />
+<br />
+<span><b>// 背景色を変える</b></span><br />
+<span><b>document.bgColor = 'red';</b></span><br />
+<span><b>}</b></span><br />
+<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body&gt;</span><br />
+<span>&lt;h1&gt;</span>文字や背景の色を変える<span>&lt;/h1&gt;</span><br />
+<span>&lt;p</span><span>id</span>="moji1"<span>&gt;</span>こんにちは<span>&lt;/p&gt;</span><br />
+<span>&lt;p</span><span>id</span>="moji2"<span>&gt;</span>こんばんわ<span>&lt;/p&gt;</span><br />
+<span>&lt;input</span><span>type</span>="button"<span>value</span>="こんにちは"<span>onclick</span>="func1()"<span>&gt;</span><br />
+<span>&lt;input</span><span>type</span>="button"<span>value</span>="こんばんわ"<span>onclick</span>="func2()"<span>&gt;</span><br />
+<span><b>&lt;input type="button" value="課題のボタン" onclick="func3()"&gt;</b></span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<p><span><b>２－１０</b></span></p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>数値を加算する<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>// 加算するための変数を宣言</span><br />
+<span>let</span> count = 0;<br />
+<br />
+<span>// 1秒おきに画面上の数値に1加算する</span><br />
+<span>function</span> countup() {<br />
+        setInterval(<span>function</span>() {<br />
+  <span><b>count = count + 2;</b></span><br />
+            document.getElementById('number').innerText = count;<br />
+        },1000);<br />
+    }<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span><b>&lt;body&gt;</b></span><br />
+<span>&lt;span</span><span>id=</span>"number"<span>&gt;</span>0<span>&lt;/span&gt;</span><br />
+<span><b>&lt;input type="button" value="はじめる" onclick="countup()"&gt;</b></span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<p><span><b>２－１１</b></span></p>
+<p><br />
+<span>&lt;!DOCTYPE html&gt;</span><br />
+<span>&lt;html&gt;</span><br />
+<span>&lt;head&gt;</span><br />
+<span>&lt;meta</span><span>charset</span>="utf-8"<span>&gt;</span><br />
+<span>&lt;title&gt;</span>ボタンを押すたびに異なる数値を表示する<span>&lt;/title&gt;</span><br />
+<span>&lt;script&gt;</span><br />
+<span>function</span> show() {<br />
+<span><b>// 5～10の間の整数をランダムで生成する</b></span><br />
+<span><b>let ransu = Math.floor(Math.random() * 6) + 5;</b></span><br />
+<br />
+<span>// 生成した乱数をメッセージダイアログで表示する</span><br />
+        alert(ransu);<br />
+    }<br />
+<span>&lt;/script&gt;</span><br />
+<span>&lt;/head&gt;</span><br />
+<span>&lt;body&gt;</span><br />
+<span>&lt;input</span><span>type</span>="button"<span>value</span>="乱数を表示する"<span>onclick</span>="show()"<span>&gt;</span><br />
+<span>&lt;/body&gt;</span><br />
+<span>&lt;/html&gt;</span><br />
+<br /></p>
+<p></p>
+<p></p></div>
+
+
+
+
+<script>function myFunction(){document.getElementById("tateyoko").classList.toggle("tateread")}</script></body></html>

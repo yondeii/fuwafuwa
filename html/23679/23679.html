@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>コーディングが５倍早くなるjQueryセレクター超活用</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/mainday.css" title="default">
+<link rel="alternate stylesheet" href="/css/mainnight.css" title="alternate">
+<script type="text/javascript" src="/js/styleswitcher.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+</head>
+<body>
+<div class="novelpage">
+<div class="novelbody">
+<div id="tateyoko">
+<div id="_top"></div>
+<a href="/">🏠</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('default'); return false;">日</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">月</a>&emsp;
+<a href="#_top" onclick="myFunction()" style="cursor: pointer;">縦書き／横書き</a>
+<div id="calibre_link-0">
+<div>
+<div>
+<table class="noveltitle">
+<tr>
+<td colspan="2"><i><span><i>コーディングが５倍早くなるjQueryセレクター超活用</i></span></i></td>
+</tr>
+<tr>
+                    
+                    
+      </tr>
+<tr>
+<td colspan="2">Paul Cyan</td>
+</tr>
+<tr>
+<td colspan="2">state of Nevada las vegas research institute (2013)</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+</tr>
+</table>
+<div></div>
+</div>
+<div></div>
+</div>
+</div>
+
+
+
+<div id="calibre_link-1">
+<div>
+<p><span id="calibre_link-2"><b>jQuer</b></span><span><b>y</b></span><span id="calibre_link-3"><b>とは？本書の形式について</b></span></p>
+<p>&nbsp;</p>
+<p><span>本書を手に取られている方は既</span><span>に</span><span>jQuer</span><span>y</span><span>についての概要を知っているはずです。</span></p>
+<p><span>なので概要は省略し、本書の主題通</span><span>り</span><span>jQuer</span><span>y</span><span>セレクターの解説のみに留めます。</span></p>
+<p><span>また、本書のサンプルは派手なことを一切やりません。</span></p>
+<p><span>これは純粋に「セレクターのみ」を集中的に理解できるようにと余計な部分をそぎ落としているからです。</span></p>
+<p>&nbsp;</p>
+<p><span>jQuer</span><span>y</span><span>を少し使えるようになったけれどセレクターがよくわからない・・・本書はそういった方を対象にしています。ほぼ全て</span><span>の</span><span>jQuer</span><span>y</span><span>書籍やサイトのチュートリアルでは、セレクターという重要な概念について軽くしか触れられていなかったり、サンプルが不必要に難解で、かえて理解を妨げているものが多かったりします。本書のサンプルコードはすべて「初心者でも理解できる簡単なもの」かつ「全てのサンプルが統一された同じ形式」と割りきっており、一切の余分なぜい肉をそぎ落として複雑なセレクター概念もシンプルに解説しています。なので他のセレクターを解説した書籍やど</span><span>の</span><span>WE</span><span>B</span><span>サイトよりも圧倒的に短時間で分かりやすくセレクターを理解できるのではないかと思います。（もちろん本書の後半では前半で学んだ用例を組み合わせた実戦的なサンプルもちゃんと存在しています）</span></p>
+<p>&nbsp;</p>
+<p><span>上級者を自負する方でもセレクターは６割程度しか理解していないという人は意外に多いので、本書でこっそり勉強して最後までマスターしてしまいましょう。</span></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-4"><b>jQuer</b></span><span><b>y</b></span><span><b>セレクターとは</b></span></p>
+<p>&nbsp;</p>
+<p><span>jQuer</span><span>y</span><span>セレクターとは</span><span>、</span><span>HTM</span><span>L</span><span>要素をセレクトする、言い換えれば「ターゲットを選択する」為の概念です。これをマスターしているかどうか</span><span>で</span><span>jQuer</span><span>y</span><span>プログラムを高速に展開したり、無駄なコードを一切書かずに済むようになったり</span><span>、</span><span>1</span><span>0</span><span>分</span><span>の1</span><span>のコード量で同じことが記述できるようになったりするなど上級者と入門者との間でとくに差が開くポイントでもあります。</span></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-5"><b>サンプルのお手軽実行</b></span></p>
+<p>&nbsp;</p>
+<p><span>本書のサンプルを実行する際</span><span>は</span><span>jsfiddl</span><span>e</span><span>がお勧めです。（</span><a href="http://jsfiddle.net/"><span><u>http://jsfiddle.net/</u></span></a><span>）</span></p>
+<p><span>jsfiddl</span><span>e</span><span>と</span><span>は</span><span>WE</span><span>B</span><span>ブラウザ上</span><span>で</span><span>jQuer</span><span>yや</span><span>JavaScrip</span><span>t</span><span>を試せるサイトで、</span></p>
+<p><span>毎</span><span>回</span><span>htm</span><span>l</span><span>ファイル</span><span>や</span><span>j</span><span>s</span><span>ファイルを編集すること無く本書のサンプルを気軽に</span></p>
+<p><span>実行できます。</span></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-6"><b>jQuer</b></span><span><b>y</b></span><span><b>セレクター早見表</b></span></p>
+<p>&nbsp;</p>
+<p><span>下記は本書で紹介する主なjQueryセレクターの用例の一覧です。</span></p>
+<p><span>いずれも実務では非常によく使われるものなので</span><span>jQueryをマスターするには</span></p>
+<p><span>避けては通れないものです。</span><span>とはいえ複雑に考える必要はありません。</span></p>
+<p><span>本書では一つ一つ</span><span>を短いコードで解説していきます。</span></p>
+<p>&nbsp;</p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<tbody> 
+<tr> 
+<td>
+<p><span>名称</span></p>
+</td> 
+<td>
+<p><span>書式</span></p>
+</td> 
+<td>
+<p><span>指定対象</span></p>
+</td> 
+</tr> 
+<tr> 
+<td colspan="3">
+<p><span>CSSでよく利用されるセレクター</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>要素セレクター</span></p>
+</td> 
+<td>
+<p><span>$("要素名")</span></p>
+</td> 
+<td>
+<p><span>特定の要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>IDセレクター</span></p>
+</td> 
+<td>
+<p><span>$("#ID名")</span></p>
+</td> 
+<td>
+<p><span>特定のid属性を持つ要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>クラスセレクター</span></p>
+</td> 
+<td>
+<p><span>$(".クラス名")</span></p>
+</td> 
+<td>
+<p><span>特定のclass属性を持つ要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>子孫セレクター</span></p>
+</td> 
+<td>
+<p><span>$("要素1　要素2")</span></p>
+</td> 
+<td>
+<p><span>特定の要素の内側にある要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>ユニバーサルセレクター</span></p>
+</td> 
+<td>
+<p><span>$("*")</span></p>
+</td> 
+<td>
+<p><span>すべての要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>グループセレクター</span></p>
+</td> 
+<td>
+<p><span>$("セレクター1,　セレクター2,　...")</span></p>
+</td> 
+<td>
+<p><span>複数のセレクター</span></p>
+</td> 
+</tr> 
+<tr> 
+<td colspan="3">
+<p><span>CSS2のセレクター</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>子セレクター</span></p>
+</td> 
+<td>
+<p><span>$("親要素名　&gt;　子要素名")</span></p>
+</td> 
+<td>
+<p><span>特定の要素の直下の子要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>隣接セレクター</span></p>
+</td> 
+<td>
+<p><span>$("要素1　+　要素2")</span></p>
+</td> 
+<td>
+<p><span>特定の要素の次の要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>first-child擬似クラス</span></p>
+</td> 
+<td>
+<p><span>$("要素:first-child")</span></p>
+</td> 
+<td>
+<p><span>同一要素内の最初の要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td colspan="3">
+<p><span>CSS3のセレクター</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>間接セレクター</span></p>
+</td> 
+<td>
+<p><span>$("要素1~要素2")</span></p>
+</td> 
+<td>
+<p><span>特定の要素の後に出現する要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>否定擬似クラス</span></p>
+</td> 
+<td>
+<p><span>$("要素1:not(要素2)")</span></p>
+</td> 
+<td>
+<p><span>特定の要素のうち要素2の条件を除く要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>empty擬似クラス</span></p>
+</td> 
+<td>
+<p><span>$("要素:empty")</span></p>
+</td> 
+<td>
+<p><span>子要素やテキストを含まない要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>nth-child擬似クラス</span></p>
+</td> 
+<td>
+<p><span>$("要素:nth-child(番号)")</span></p>
+</td> 
+<td>
+<p><span>特定の要素内の指定した番号の要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>last-child擬似クラス</span></p>
+</td> 
+<td>
+<p><span>$("要素:last-child")</span></p>
+</td> 
+<td>
+<p><span>同一要素内の最後の要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>only-child擬似クラス</span></p>
+</td> 
+<td>
+<p><span>$("要素:only-child")</span></p>
+</td> 
+<td>
+<p><span>特定の要素が1つだけ含まれる要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td colspan="3">
+<p><span>CSSの属性セレクター</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>[attribute]</span></p>
+</td> 
+<td>
+<p><span>$("[属性名]")</span></p>
+</td> 
+<td>
+<p><span>特定の属性を持つ要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>[attribute　=　'value']</span></p>
+</td> 
+<td>
+<p><span>$("[属性名　=　'値']")</span></p>
+</td> 
+<td>
+<p><span>特定の属性が指定した値を持つ要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>[attribute　!=　'value']</span></p>
+</td> 
+<td>
+<p><span>$("要素名[属性名　!=　'値']")</span></p>
+</td> 
+<td>
+<p><span>特定の属性が指定した値を持たない要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>[attribute　^=　'value']</span></p>
+</td> 
+<td>
+<p><span>$("[属性名　^=　'値']")</span></p>
+</td> 
+<td>
+<p><span>特定の属性が指定した値で始まっている要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>[attribute　$=　'value']</span></p>
+</td> 
+<td>
+<p><span>$("[属性名　$=　'値']")</span></p>
+</td> 
+<td>
+<p><span>特定の属性が指定した値で終わっている要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>[attribute　*=　'value']</span></p>
+</td> 
+<td>
+<p><span>$("[属性名　*=　'値']")</span></p>
+</td> 
+<td>
+<p><span>特定の属性が指定した値を含んでいる要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>[attributeFilter1][...2]</span></p>
+</td> 
+<td>
+<p><span>$("[属性セレクター1][...2]")</span></p>
+</td> 
+<td>
+<p><span>複数の属性セレクターに該当する要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td colspan="3">
+<p><span>jQuery</span><span>の独自フィルター</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>firstフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:first")</span></p>
+</td> 
+<td>
+<p><span>指定した要素の最初の要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>lastフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:last")</span></p>
+</td> 
+<td>
+<p><span>指定した要素の最後の要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>evenフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:even")</span></p>
+</td> 
+<td>
+<p><span>指定した要素の偶数番目の要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>oddフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:odd")</span></p>
+</td> 
+<td>
+<p><span>指定した要素の奇数番目の要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>eq</span><span>フィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:</span><span>eq(番号)")</span></p>
+</td> 
+<td>
+<p><span>指定した番号の要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>gtフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:</span><span>gt(番号)")</span></p>
+</td> 
+<td>
+<p><span>指定した番号より後の要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>ltフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:</span><span>lt(番号)")</span></p>
+</td> 
+<td>
+<p><span>指定した番号より前の要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>headerフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:header")</span></p>
+</td> 
+<td>
+<p><span>h1～h6までのheading要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>containsフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:contains('文字列')")</span></p>
+</td> 
+<td>
+<p><span>特定の文字列が含まれている要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>hasフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素1:has(要素2)")</span></p>
+</td> 
+<td>
+<p><span>特定の要素が含まれている要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>parentフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:parent")</span></p>
+</td> 
+<td>
+<p><span>子要素やテキストを含む要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>animatedフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:animated")</span></p>
+</td> 
+<td>
+<p><span>アニメーションしている要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td colspan="3">
+<p><span>フォームフィルター</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>:inputフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:input")</span></p>
+</td> 
+<td>
+<p><span>input要素/textarea要素/select要素/button要素</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>:textフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:text")</span></p>
+</td> 
+<td>
+<p><span>1行テキストフォーム（input　type="text"）</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>:passwordフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:password")</span></p>
+</td> 
+<td>
+<p><span>パスワードフォーム（input　type="password"）</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>:radioフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:radio")</span></p>
+</td> 
+<td>
+<p><span>ラジオボタン（input　type="radio"）</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>:checkboxフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:checkbox")</span></p>
+</td> 
+<td>
+<p><span>チェックボックス（input　type="checkbox"）</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>:submitフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:submit")</span></p>
+</td> 
+<td>
+<p><span>送信ボタン（input　type="submit/image"）</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>:imageフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:image")</span></p>
+</td> 
+<td>
+<p><span>イメージボタン（input　type="image"）</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>:resetフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:reset")</span></p>
+</td> 
+<td>
+<p><span>リセットボタン（input　type="reset"）</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>:buttonフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:button")</span></p>
+</td> 
+<td>
+<p><span>ボタン（button要素）</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>:fileフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:file")</span></p>
+</td> 
+<td>
+<p><span>ファイル選択フォーム（input　type="file"）</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>:checkedフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:checked")</span></p>
+</td> 
+<td>
+<p><span>チェックされているチェックボックス/ラジオボタン</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>:selectedフィルター</span></p>
+</td> 
+<td>
+<p><span>$("要素:selected")</span></p>
+</td> 
+<td>
+<p><span>セレクトボックスで選択されている要素</span></p>
+</td> 
+</tr> 
+      
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span id="calibre_link-7"><b>１</b></span><span><b>．</b></span><span><b>i</b></span><span><b>d</b></span><span><b>値で要素を選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>以下</span><span>は</span><span>jQuer</span><span>y</span><span>セレクターの使い方としては最も基本的なサンプルです。</span></p>
+<p><span>要素</span><span>を</span><span>i</span><span>d</span><span>値から選択するには、</span><span>「</span><span>#i</span><span>d</span><span>値」のように指定します。</span></p>
+<p><span>以下は</span><span>、</span><span>i</span><span>d</span><span>値が</span><span>「</span><span>aa</span><span>a</span><span>」の要素</span><span>の</span><span>CS</span><span>S</span><span>を変更し、背景色をピンク色にさせる例です。</span></p>
+<p><span>$('</span><span>#aaa').css('background-color', 'pink');</span><span>の部分</span><span>は</span><span>i</span><span>d値</span><span>aa</span><span>a</span><span>を持つ要素を選択し、そ</span><span>の</span><span>CS</span><span>S「</span><span>background-colo</span><span>r</span><span>（背景色）」を</span><span>「</span><span>pin</span><span>k</span><span>（ピンク）」に変更する・・という意味です。</span></p>
+<p><span>なお</span><span>、</span><span>$('#aaa'</span><span>)</span><span>ではな</span><span>く</span><span>$("#aaa"</span><span>)</span><span>としても構いません</span><span>。</span><span>JavaScrip</span><span>t</span><span>では</span><span>「"</span><span>」を使うよりも</span><span>「'</span><span>」でセレクターを指定した方が僅かながら高速なので本書で</span><span>は'</span><span>で統一しています。</span></p>
+<p><span>※本書のサンプルは</span><span>全</span><span>て</span><span>HTML</span><span>5</span><span>記法を採用しておりますが、今後はページ数を短くするためこれ以降のサンプルで</span><span>は</span><span>&lt;!DOCTYPE html</span><span>&gt;と</span><span>&lt;head</span><span>&gt;と</span><span>jQuer</span><span>y</span><span>のロード部を省略します。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;!DOCTYPE html&gt;</span><span>&lt;html&gt;</span><span>&lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;/head&gt;</span><span>&lt;body&gt;</span><span>&lt;div id="aaa"</span><span>&gt;</span><span>ああああ</span><span>あ</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>いいい</span><span>い</span><span>&lt;/div&gt;</span></p>
+<p><span>&lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"&gt;&lt;/script&gt;</span><span>&lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('</span><span>#aaa').css('background-color', 'pink');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00025.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-8"><b>２．タグ名で要素を選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>セレクターにはタグ名を記載して選択させることも出来ます。</span></p>
+<p><span>下記サンプルで</span><span>は</span><span>di</span><span>v</span><span>タグを指定しているので</span><span>、</span><span>di</span><span>v</span><span>タグを持つ２つの要素が</span></p>
+<p><span>両方共ピンク</span><span>色になります。実際に</span><span>は</span><span>i</span><span>d</span><span>値の指定や、後述するクラス名での特定が</span></p>
+<p><span>最もよく使われますが、この記法も比較的使うことは多いので覚えておきましょう。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;div id="</span><span>aaa"</span><span>&gt;</span><span>ああああ</span><span>あ</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>いいい</span><span>い</span><span>&lt;/div&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('div').css('background-color', 'pink');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00010.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-9"><b>３．クラスで要素を選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>$('</span><span>.</span><span>クラス</span><span>名</span><span>'</span><span>)</span><span>のようにクラス名で要素を特定することも可能です。</span></p>
+<p><span>$('#i</span><span>d値</span><span>'</span><span>)</span><span>のよう</span><span>な</span><span>i</span><span>d</span><span>指定の場合は該当す</span><span>る</span><span>i</span><span>d</span><span>名を持つ最初の要素が選ばれる</span></p>
+<p><span>だけですが、クラスの場合はそのクラスを持つ全ての要素が選択されます。</span></p>
+<p><span>つまり、複数の要素を一括して変更したりが簡単にできるのです。</span></p>
+<p><span>下記サンプルでは</span><span>「うううう」と「おおおお」の要素にクラス名</span><span>「</span><span>tes</span><span>t</span><span>」を持たせており、</span></p>
+<p><span>$('.test'</span><span>)</span><span>でそれらを特定し</span><span>、</span><span>CS</span><span>S</span><span>で背景色を黄色に変更しています。</span></p>
+<p><span>このクラス指定は</span><span>非常によく使われる記法で</span><span>、</span><span>i</span><span>d</span><span>値指定と並び最も</span></p>
+<p><span>基本的</span><span>な</span><span>jQuer</span><span>y</span><span>セレクターの用例となります。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;div</span><span>&gt;</span><span>あああ</span><span>あ</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>いいい</span><span>い</span><span>&lt;/div&gt;</span><span>&lt;div class="test"</span><span>&gt;</span><span>ううう</span><span>う</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>えええ</span><span>え</span><span>&lt;/div&gt;</span><span>&lt;div class="test"</span><span>&gt;</span><span>おおお</span><span>お</span><span>&lt;/div&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('.test').css('background-color', 'yellow');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00011.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-10"><b>４．複数のセレクターをまとめて選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>カンマ（　</span><span>,</span><span>）で区切れば複数のセレクターをまとめて指定する事も可能です。</span></p>
+<p><span>下記サンプル</span><span>の</span><span>$('#aaa, .test'</span><span>)</span><span>は</span></p>
+<p><span>「</span><span>#aa</span><span>a</span><span>、また</span><span>は</span><span>.tes</span><span>t</span><span>」などと文章的に読み替えるとわかりやすいでしょう。</span></p>
+<p><span>$('</span><span>#aaa, .test'</span><span>)</span><span>の部分は前後を入れ替え</span><span>て</span><span>$('.test, #aaa'</span><span>)</span><span>などとしても</span></p>
+<p><span>全く</span><span>同じ実行結果になります。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;div id="aaa"</span><span>&gt;</span><span>あああ</span><span>あ</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>いいい</span><span>い</span><span>&lt;/div&gt;</span><span>&lt;div class="test"</span><span>&gt;</span><span>ううう</span><span>う</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>えええ</span><span>え</span><span>&lt;/div&gt;</span><span>&lt;div class="test"</span><span>&gt;</span><span>おおお</span><span>お</span><span>&lt;/div&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('#aaa, .test').css('background-color', 'yellow');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00015.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-11"><b>５．すべての要素を選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>すべての要素を指定するに</span><span>は</span><span>$('*'</span><span>)</span><span>と</span><span>、*</span><span>のアスタリスク記号で指定します。</span></p>
+<p><span>全ての要素・・・とは文字通</span><span>り</span><span>&lt;body</span><span>&gt;</span><span>要素なども含め、ページ上のあらゆる</span></p>
+<p><span>要素を全て選択します。</span><span>下記サンプルで</span><span>も</span><span>&lt;div</span><span>&gt;</span><span>要素を飛び越えてページ全体が黄色になっているのはそのせいです。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;div id="aaa"</span><span>&gt;</span><span>あああ</span><span>あ</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>いいい</span><span>い</span><span>&lt;/div&gt;</span><span>&lt;div class="test"</span><span>&gt;</span><span>ううう</span><span>う</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>えええ</span><span>え</span><span>&lt;/div&gt;</span><span>&lt;div class="test"</span><span>&gt;</span><span>おおお</span><span>お</span><span>&lt;/div&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('*').css('background-color', 'yellow');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00022.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-12"><b>コラム　～　CS</b></span><span><b>S</b></span><span><b>リセットについて</b></span><span><b>。</b></span><span><b>HTML5 Doctor CSS Rese</b></span><span><b>t</b></span><span><b>を使いましょう</b></span></p>
+<p>&nbsp;</p>
+<p><span>↑のサンプルで解説し</span><span>た*</span><span>アスタリスク記法は各ブラウザ間の差異を無くすために</span></p>
+<p><span>全ての要素</span><span>の</span><span>CS</span><span>S</span><span>をリセットする</span><span>「</span><span>CS</span><span>S</span><span>リセット」と呼ばれるテクニックで非常に</span></p>
+<p><span>よく使われています。が、実際に</span><span>は</span><span>CS</span><span>S</span><span>リセットはライブラリー化されており、</span></p>
+<p><span>通常はそれをロードしたら終わりなのでこのアスタリスク記法が使われる事は</span></p>
+<p><span>ほとんどありません。</span></p>
+<p><span>CS</span><span>S</span><span>リセットについては複数のリセットライブラリーが存在しますが、</span></p>
+<p><span>HTML</span><span>5</span><span>と相性がよく、世界的に広く使われるているのは</span></p>
+<p><span>「</span><span>HTML5 Doctor CSS Rese</span><span>t</span><span>」です。</span></p>
+<p><a href="http://www.cssreset.com/scripts/html5-doctor-css-reset-stylesheet/"><span><u>http://www.cssreset.com/scripts/html5-doctor-cssreset-stylesheet/</u></span></a></p>
+<p><span>本書では省略していますが</span><span>、</span><span>&lt;head</span><span>&gt;</span><span>タグ内に</span></p>
+<p><span>@import("</span><a href="http://www.cssreset.com/downloads/css-resets/html5-doctor-reset-stylesheet/html5-doctor-reset-stylesheet.css"><span><u>http://www.cssreset.com/downloads/cssresets/html5-doctor-reset-stylesheet/html5-doctor-reset-stylesheet.css</u></span></a><span>")</span><span>;</span><span>などと記述するだけ</span><span>で</span><span>CS</span><span>S</span><span>をリセットできます。</span></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-13"><b>６．</b></span><span><b>ある要素の配下にある要素だけを選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>$(</span><span>'</span><span>ある要素　配下の要</span><span>素</span><span>'</span><span>)</span><span>の様に、</span></p>
+<p><span>セレクター内で半角スペースで区切るとその配下にある要素全てを選択できます。</span></p>
+<p><span>注意して欲しいのは配下の要素とは、子要素の子要素も含む、という点です。</span></p>
+<p><span>今回の</span><span>サンプルで</span><span>は</span><span>$('.test span'</span><span>)</span><span>と、</span><span>「</span><span>tes</span><span>t</span><span>クラスを持つ要素の配下</span><span>の</span><span>spa</span><span>n</span><span>要素」を選択させています。（配下の要素２</span><span>は</span><span>di</span><span>v</span><span>要素の下に存在しますが、配下の要素１と同じように階層を無視して選択されています。この辺の概念は少し難しく感じるかもしれませんが、実際に色々トライしてみたら理解できると思います）</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;div</span><span>&gt;</span><span>あああ</span><span>あ</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>いいい</span><span>い</span><span>&lt;/div&gt;</span><span>&lt;div class="test"</span><span>&gt;</span><span>うううう　&lt;span</span><span>&gt;</span><span>配下の要素</span><span>１</span><span>&lt;/span&gt;&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>えええ</span><span>え</span><span>&lt;/div&gt;</span><span>&lt;div class="test"</span><span>&gt;</span><span>おおおお　&lt;div&gt;&lt;span</span><span>&gt;</span><span>配下の要素</span><span>２</span><span>&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('.test span').css('background-color', 'yellow');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00002.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-14"><b>７．ある要素の直下にある要素だけを選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>↑のサンプルでは「配下」を選択していました。</span></p>
+<p><span>そのため</span><span>、</span><span>di</span><span>v</span><span>要素の下にある「配下の要素２」までもが選択されていました。</span></p>
+<p><span>下記サンプルで</span><span>は</span><span>tes</span><span>t</span><span>クラスを持つ要素の直下</span><span>の</span><span>spa</span><span>n</span><span>要素だけを選択するものです。</span></p>
+<p><span>$(</span><span>'</span><span>ある要素　&gt; 直下の要</span><span>素</span><span>'</span><span>)</span><span>の書き方で特定の要素の直下の要素を選択できます。</span></p>
+<p><span>今回のサンプルでは「配下の要素２」</span><span>は</span><span>di</span><span>v</span><span>で囲まれているので直下の要素</span><span>が</span><span>spa</span><span>n</span><span>ではないので選択されません。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;div</span><span>&gt;</span><span>あああ</span><span>あ</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>いいい</span><span>い</span><span>&lt;/div&gt;</span><span>&lt;div class="test"</span><span>&gt;</span><span>うううう　&lt;span</span><span>&gt;</span><span>配下の要素</span><span>１</span><span>&lt;/span&gt;&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>えええ</span><span>え</span><span>&lt;/div&gt;</span><span>&lt;div class="test"</span><span>&gt;</span><span>おおおお　&lt;div&gt;&lt;span</span><span>&gt;</span><span>配下の要素</span><span>２</span><span>&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('.test &gt; span').css('background-color', 'yellow');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00009.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-15"><b>８．指定した要素の次の要素を選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>$(</span><span>'</span><span>ある要素　+ その次の要</span><span>素</span><span>'</span><span>)</span><span>の書き方で特定の要素の次にある要素を選択できます。</span></p>
+<p><span>一見複雑に見えますが、考え方はとてもシンプルです。</span></p>
+<p><span>下記サンプルで</span><span>は</span><span>$('.test + div'</span><span>)</span><span>の書き方で、クラス</span><span>に</span><span>tes</span><span>t</span><span>を持つ「うううう」の次にあ</span><span>る</span><span>di</span><span>v</span><span>要素の「ええええ」が選択されます。「おおおお」もクラス</span><span>に</span><span>tes</span><span>t</span><span>を持っていますが、その次にある「選択されない要素」</span><span>は</span><span>di</span><span>v</span><span>ではな</span><span>くp</span><span>要素なので選択されません。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;div</span><span>&gt;</span><span>あああ</span><span>あ</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>いいい</span><span>い</span><span>&lt;/div&gt;</span><span>&lt;div class="test"</span><span>&gt;</span><span>ううう</span><span>う</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>えええ</span><span>え</span><span>&lt;/div&gt;</span><span>&lt;div class="test"</span><span>&gt;</span><span>おおお</span><span>お</span><span>&lt;/div&gt;</span><span>&lt;p</span><span>&gt;</span><span>選択されない要</span><span>素</span><span>&lt;/p&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('.test + div').css('background-color', 'yellow');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00019.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-16"><b>９．指定した要素以降の同じ階層にある要素を選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>特定の要素以降で、同じ階層にある要素を選択するには</span></p>
+<p><span>$(</span><span>'</span><span>ある要素　</span><span>~</span><span>同じ階層にある要</span><span>素</span><span>'</span><span>)</span><span>の書き方をします。</span></p>
+<p><span>下記サンプルは少し複雑ですが、実際に実行してみると簡単です。</span></p>
+<p><span>$('#bbb~ h4'</span><span>)は</span><span>I</span><span>D名</span><span>bb</span><span>b</span><span>を持つ要素の「いいいい」以降の要素で</span></p>
+<p><span>h</span><span>4</span><span>タグの要素を選択する・・・という意味です。</span></p>
+<p><span>「</span><span>いいいい」の真上にも「選択されない要素１」</span><span>の</span><span>h</span><span>4</span><span>要素は存在しますが、</span></p>
+<p><span>#</span><span>bb</span><span>b</span><span>の要素よりも前にあるので選択されません。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;div</span><span>&gt;</span><span>あああ</span><span>あ</span><span>&lt;/div&gt;</span><span>&lt;h4</span><span>&gt;</span><span>選択されない要素</span><span>１</span><span>&lt;/h4&gt;</span><span>&lt;div id="</span><span>bbb"</span><span>&gt;</span><span>いいい</span><span>い</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>ううう</span><span>う</span><span>&lt;/div&gt;</span><span>&lt;h4</span><span>&gt;</span><span>選択される要素</span><span>１</span><span>&lt;/h4&gt;</span><span>&lt;div</span><span>&gt;</span><span>えええ</span><span>え</span><span>&lt;/div&gt;</span><span>&lt;h5</span><span>&gt;</span><span>選択されない要素</span><span>２</span><span>&lt;/h5&gt;</span><span>&lt;h4</span><span>&gt;</span><span>選択される要素</span><span>２</span><span>&lt;/h4&gt;</span><span>&lt;div</span><span>&gt;</span><span>おおお</span><span>お</span><span>&lt;/div&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('#bbb ~ h4').css('background-color', 'yellow');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00024.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-17"><b>１０．先頭／末尾の要素だけを選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>これはとても簡単な概念です。</span></p>
+<p><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:first'</span><span>)</span><span>で特定の要素の最初の要素を選択し、</span></p>
+<p><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:last'</span><span>)</span><span>で特定の要素の最後の要素を選択できます。</span></p>
+<p><span>下記サンプルで</span><span>は</span><span>$('div:first'</span><span>)</span><span>で</span><span>全</span><span>di</span><span>v</span><span>要素の中で最初に登場した「ああああ」を黄色にし、</span></p>
+<p><span>$('</span><span>div:last'</span><span>)</span><span>で</span><span>全</span><span>di</span><span>v</span><span>要素の中で最後に登場した「おおおお」を赤色にしています。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;div</span><span>&gt;</span><span>あああ</span><span>あ</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>いいい</span><span>い</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>ううう</span><span>う</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>えええ</span><span>え</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>おおお</span><span>お</span><span>&lt;/div&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('div:first').css('background-color', 'yellow');</span><span>$('</span><span>div:last').css('background-color', 'red');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00005.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-18"><b>１１．子要素から先頭／末尾を選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>これは↑で紹介した概念と似ているため非常に紛らわしいです。</span></p>
+<p><span>jQuer</span><span>y</span><span>歴の長い上級者でも恐らく大半はこの区別が付いていないと思います。</span></p>
+<p><span>$(</span><span>'</span><span>ある子要</span><span>素</span><span>:first-child'</span><span>)</span><span>で特定の同じ階層に存在する子要素の最初の要素を選択します。</span></p>
+<p><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:first'</span><span>)</span><span>との違いは「同じ階層に限定されるかどうか」、です。</span></p>
+<p><span>下記の２つのサンプルで違いが理解できます。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;section&gt;</span><span>&lt;div</span><span>&gt;</span><span>あああ</span><span>あ</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>いいい</span><span>い</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>ううう</span><span>う</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>えええ</span><span>え</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>おおお</span><span>お</span><span>&lt;/div&gt;</span><span>&lt;/section&gt;</span></p>
+<p><span> &lt;section&gt;</span><span>&lt;div</span><span>&gt;</span><span>かかか</span><span>か</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>ききき</span><span>き</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>くくく</span><span>く</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>けけけ</span><span>け</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>こここ</span><span>こ</span><span>&lt;/div&gt;</span><span>&lt;/section&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('</span><span>div:first-child').css('background-color', 'yellow');</span><span>$('</span><span>div:last-child').css('background-color', 'red');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00004.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>下記のよう</span><span>に</span><span>$('div:first-child'</span><span>)</span><span>か</span><span>ら</span><span>$('div:first'</span><span>)</span><span>と</span></p>
+<p><span>１０節で解説したものに置き換えると階層が限定されないので、</span></p>
+<p><span>全て</span><span>の</span><span>di</span><span>v</span><span>要素の中から最初と最後の要素が選択されています。</span></p>
+<p>&nbsp;</p>
+<p><span>$('div:first').css('background-color', 'yellow');</span><span>$('</span><span>div:last').css('background-color', 'red');</span></p>
+<p><img src="images/00000.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-19"><b>１２．偶数／奇数番目の要素だけを選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>偶数とは英語</span><span>で</span><span>even numbe</span><span>r</span><span>です。</span></p>
+<p><span>奇数とは英語</span><span>で</span><span>odd numbe</span><span>r</span><span>です。</span></p>
+<p><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:even'</span><span>)</span><span>で偶数番目の要素のみが、</span></p>
+<p><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:odd'</span><span>)</span><span>で奇数番目の要素のみが、選択されます。</span></p>
+<p><span>一つ注意して欲しいの</span><span>は</span><span>JavaScrip</span><span>tはC</span><span>言語などの他の</span></p>
+<p><span>プログラミング言語同様に物</span><span>を</span><span>0,1,2,3...</span><span>.</span><span>などと</span></p>
+<p><span>0</span><span>番から数え始めるという点です。これ</span><span>は</span><span>JavaScrip</span><span>t</span><span>もそれを使っ</span><span>た</span><span>jQuer</span><span>y</span><span>も</span></p>
+<p><span>システム内部では要素</span><span>を0</span><span>番目から数えているからです。</span></p>
+<p><span>JavaScrip</span><span>t</span><span>の配列を既に知っている方はそれと同じ考え方だと思って下さい。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;div&gt;0000&lt;/div&gt;</span><span>&lt;div&gt;1111&lt;/div&gt;</span><span>&lt;div&gt;2222&lt;/div&gt;</span><span>&lt;div&gt;3333&lt;/div&gt;</span><span>&lt;div&gt;4444&lt;/div&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('div:even').css('background-color', 'yellow');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00026.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-20"><b>１３．指定したインデックス番号（より大きい／未満）の要素を選択するには？　</b></span></p>
+<p>&nbsp;</p>
+<p><span>プログラミング言語では「インデック</span><span>ス</span><span>(index</span><span>)</span><span>」という言葉を非常によく使います。</span></p>
+<p><span>直訳すると「</span><span>添字」です。古く</span><span>はC</span><span>言語やそれ以前の古いプログラミング言語から誕生した配列の概念からこの言葉は広く使われるようになりました。</span></p>
+<p><span>JavaScrip</span><span>t</span><span>でも様々な場面でこの言葉は使われますが</span><span>、</span><span>jQuer</span><span>y</span><span>セレクターにおいては</span></p>
+<p><span>要素に「割り振られた数字」程度に考えて下さい。</span></p>
+<p><span>jQuer</span><span>y</span><span>では全ての要素にインデックス番号を自動的に割り振ります。</span></p>
+<p><span>インデックス番号０番はその階層での最初の要素で、インデックス番号３番なら４つ目の要素（</span><span>１２節でも解説しましたが、１からではなく０から数えるので）、インデックス番号６なら７番目の要素・・・・という風に考えます</span><span>。</span><span>jQuer</span><span>y</span><span>でインデックス番号を取り扱うには以下の３つの書き方があります。</span></p>
+<p>&nbsp;</p>
+<p><span>　</span><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:lt</span><span>(</span><span>インデックス番</span><span>号</span><span>)' )</span><span></span><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:eq</span><span>(</span><span>インデックス番</span><span>号</span><span>)' )</span><span></span><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:gt</span><span>(</span><span>インデックス番</span><span>号</span><span>)' )</span></p>
+<p><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:lt</span><span>(</span><span>インデックス番</span><span>号</span><span>)'</span><span>)の</span><span>l</span><span>t</span><span>は</span><span>「</span><span>less tha</span><span>n</span><span>」、つまり「～より小さい」という意味です。指定したインデックス番号よりも小さいインデックス番号を選択します。</span></p>
+<p>&nbsp;</p>
+<p><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:eq</span><span>(</span><span>インデックス番</span><span>号</span><span>)'</span><span>)の</span><span>l</span><span>t</span><span>は</span><span>「</span><span>equa</span><span>l</span><span>」、つまり「～と等しい」という意味です。指定したインデックス番号を選択します。</span></p>
+<p>&nbsp;</p>
+<p><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:gt</span><span>(</span><span>インデックス番</span><span>号</span><span>)'</span><span>)の</span><span>g</span><span>t</span><span>は</span><span>「</span><span>greater tha</span><span>n</span><span>」、つまり「～より大きい」という意味です。指定したインデックス番号よりも大きいインデックス番号を選択します。</span></p>
+<p>&nbsp;</p>
+<p><span>一見複雑に思えますが、実はとてもシンプルな考え方なので</span></p>
+<p><span>難しく考えずにサンプルを見てみましょう。</span></p>
+<p><span>下記のサンプルでは</span><span>「</span><span>&lt;div&gt;2222&lt;/div</span><span>&gt;</span><span>」を基点にして</span><span>、</span><span>$('div:eq(2)'</span><span>)</span><span>で</span><span>「</span><span>222</span><span>2</span><span>」を黄色に</span><span>、</span><span>$('div:lt(2)'</span><span>)</span><span>で</span><span>「</span><span>222</span><span>2</span><span>」より小さ</span><span>い</span><span>111</span><span>1と</span><span>000</span><span>0</span><span>をピンクに</span><span>、</span><span>$('div:gt(2)'</span><span>)</span><span>で</span><span>「</span><span>222</span><span>2</span><span>」より大き</span><span>い</span><span>333</span><span>3と</span><span>444</span><span>4</span><span>をオレンジ色にしています。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;div&gt;0000&lt;/div&gt;</span><span>&lt;div&gt;1111&lt;/div&gt;</span><span>&lt;div&gt;2222&lt;/div&gt;</span><span>&lt;div&gt;3333&lt;/div&gt;</span><span>&lt;div&gt;4444&lt;/div&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('div:lt(2)').css('background-color', 'pink');</span><span>$('</span><span>div:eq(2)').css('background-color', 'yellow');</span><span>$('</span><span>div:gt(2)').css('background-color', 'orange');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00023.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-21"><b>１４．位置番号で特定の要素だけを選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>↑のインデックス番号の指定とよく似た概念です。</span></p>
+<p><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:nth-child</span><span>(</span><span>位置番</span><span>号</span><span>)'</span><span>)</span><span>という記法で</span></p>
+<p><span>指定した位置の要素を選択できます。</span></p>
+<p><span>前述のインデックス番号での指定とは違い、</span></p>
+<p><span>位置番号は素直に１から数えるので混乱しないようにしましょう。</span></p>
+<p><span>下記サンプルで</span><span>は</span><span>$('div:nth-child(1)'</span><span>)</span><span>は最初</span><span>の</span><span>di</span><span>v</span><span>要素を、</span></p>
+<p><span>$('</span><span>div:nth-child(3)'</span><span>)</span><span>は３つ目の要素</span><span>を</span><span>di</span><span>v</span><span>要素を選択します。</span></p>
+<p>&nbsp;</p>
+<p><span>なお、ちょっとした小ネタですが</span><span>、</span><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:nth-child(even)'</span><span>)</span><span>だと</span><span>か</span><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:nth-child(odd)'</span><span>)</span><span>などと位置番号に</span><span>「</span><span>eve</span><span>n</span><span>」または</span><span>「</span><span>od</span><span>d</span><span>」を書けば偶数番目、奇数番目の要素だけを選択する・・なども出来ます。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;div&gt;0000&lt;/div&gt;</span><span>&lt;div&gt;1111&lt;/div&gt;</span><span>&lt;div&gt;2222&lt;/div&gt;</span><span>&lt;div&gt;3333&lt;/div&gt;</span><span>&lt;div&gt;4444&lt;/div&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('div:nth-child(1)').css('background-color', 'pink');</span><span>$('</span><span>div:nth-child(3)').css('background-color', 'yellow');</span><span>$('</span><span>div:nth-child(5)').css('background-color', 'orange');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00020.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>一つの注意点として</span><span>は</span><span>nth-chil</span><span>dは</span><span>chil</span><span>d</span><span>と名前に入る通り、</span></p>
+<p><span>１１節で解説したのと同様に、要素を子要素として選択する記法です。</span></p>
+<p><span>なので階層を個別に限定して選択します。</span></p>
+<p><span>nth-chil</span><span>dは</span><span>first-chil</span><span>dや</span><span>last-chil</span><span>d</span><span>の位置番号を指定できるバージョンです。</span></p>
+<p><span>たとえば</span><span>１３節で解説したインデックス番号で指定した</span></p>
+<p><span>$('</span><span>div:eq</span><span>(</span><span>インデックス番</span><span>号</span><span>)'</span><span>)と</span><span>$('div:nth-child</span><span>(</span><span>位置番</span><span>号</span><span>)'</span><span>)</span><span>は意味としては同じに見えますが、前者は全て</span><span>の</span><span>di</span><span>v</span><span>要素の中で最初の要素だけを選択するのに対し、後者は階層単位</span><span>で</span><span>di</span><span>v</span><span>を取り扱いそれぞれの階層で最初</span><span>の</span><span>di</span><span>v</span><span>要素を全て選択します。下記にサンプルを示します。実行結果は１１節と似ていますね。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;section&gt;</span><span>&lt;div&gt;1111&lt;/div&gt;</span><span>&lt;div&gt;2222&lt;/div&gt;</span><span>&lt;div&gt;3333&lt;/div&gt;</span><span>&lt;div&gt;4444&lt;/div&gt;</span><span>&lt;div&gt;5555&lt;/div&gt;</span><span>&lt;/section&gt;</span></p>
+<p><span> &lt;section&gt;</span><span>&lt;div&gt;1111&lt;/div&gt;</span><span>&lt;div&gt;2222&lt;/div&gt;</span><span>&lt;div&gt;3333&lt;/div&gt;</span><span>&lt;div&gt;4444&lt;/div&gt;</span><span>&lt;div&gt;5555&lt;/div&gt;</span><span>&lt;/section&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('div:eq(0)').css('background-color', 'pink');</span><span>$('</span><span>div:nth-child(3)').css('background-color', 'yellow');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00016.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-22"><b>１５．指定した要素以外の要素を選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:not</span><span>(</span><span>セレクタ</span><span>ー</span><span>)'</span><span>)</span><span>の書き方で特定のセレクターに当てはまる要素以外の要素を選択することが出来ます。セレクターとはこれまで取り扱ってきた</span><span>、</span><span>I</span><span>D</span><span>値だとかクラス名だとかの総称です。下記のサンプルではクラ</span><span>ス</span><span>tes</span><span>t</span><span>を持つ「うううう」以外の全て</span><span>の</span><span>di</span><span>v</span><span>要素の背景色を黄色に変更しています。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;div</span><span>&gt;</span><span>あああ</span><span>あ</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>いいい</span><span>い</span><span>&lt;/div&gt;</span><span>&lt;div class="test"</span><span>&gt;</span><span>ううう</span><span>う</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>えええ</span><span>え</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>おおお</span><span>お</span><span>&lt;/div&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('div:not(.test)').css('background-color', 'yellow');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00012.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>応用的な例として</span><span>、</span><span>$('div:not(#aaa, .test)'</span><span>)</span><span>などのように複数のセレクターをカンマ（　</span><span>,</span><span>）区切りで記述したり、また</span><span>、</span><span>$('div:not(:eq(2))'</span><span>)</span><span>などと特定のインデックス番号以外の要素を選択させたりするような事も可能です</span><span>。</span><span>no</span><span>t</span><span>はちょっとした場面でよく使う記法なので覚えておくと便利でしょう。</span></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-23"><b>１６．特定のテキストを含んだ要素を</b></span><span><b>選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:contains(</span><span>"</span><span>指定文字</span><span>列</span><span>")')</span><span>の形式で特定の文字列を含む要素のみを選択できます。</span></p>
+<p><span>下記のサンプルで</span><span>は</span><span>$('div:contains(</span><span>"</span><span>えええ</span><span>え</span><span>")'</span><span>)</span><span>で</span></p>
+<p><span>「ええええ」を含</span><span>む</span><span>di</span><span>v</span><span>のみが選択されています。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;div</span><span>&gt;</span><span>あああ</span><span>あ</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>いいい</span><span>い</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>ううう</span><span>う</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>えええ</span><span>え</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>おおお</span><span>お</span><span>&lt;/div&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('div:contains(</span><span>"</span><span>えええ</span><span>え</span><span>")').css('background-color', 'yellow');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00007.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-24"><b>１７．空要素だけを選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:empty'</span><span>)</span><span>の書き方で特定の要素から空要素のみを選択できます。</span></p>
+<p><span>下記サンプルで</span><span>は</span><span>$('div:empty').text(</span><span>'</span><span>文字</span><span>列</span><span>')</span><span>;</span><span>と、空要素</span><span>の</span><span>di</span><span>v</span><span>のみを選択し、</span></p>
+<p><span>文字列を挿入しています。</span><span>時々ふと使うことがある便利な記法なので覚えておきましょう。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;div</span><span>&gt;</span><span>あああ</span><span>あ</span><span>&lt;/div&gt;</span><span>&lt;div&gt;&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>いいい</span><span>い</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>ううう</span><span>う</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>えええ</span><span>え</span><span>&lt;/div&gt;</span><span>&lt;div&gt;&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>おおお</span><span>お</span><span>&lt;/div&gt;</span><span>&lt;div&gt;&lt;/div&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('</span><span>div:empty').text(</span><span>'</span><span>文字</span><span>列</span><span>');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00003.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-25"><b>１８．空要素ではない要素を選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>↑で解説し</span><span>た</span><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:empty'</span><span>)</span><span>とは逆の働きをするの</span><span>が</span><span>paren</span><span>t</span><span>です。</span></p>
+<p><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:parent'</span><span>)</span><span>で配下に子要素や何らかのテキストを持つ、</span></p>
+<p><span>つまり空要素ではない要素だけを選択します。</span></p>
+<p><span>下記サンプルで</span><span>は</span><span>$('div:parent'</span><span>)</span><span>で空要素ではない３つ</span><span>の</span><span>di</span><span>v</span><span>要素の文字列を</span></p>
+<p><span>「変更された文字列」に変えています。</span></p>
+<p><span>頻繁に使うような記法ではありませんが、こ</span><span>の</span><span>paren</span><span>tは</span><span>empt</span><span>y</span><span>同様に</span></p>
+<p><span>時々使うことがあるので一応知っていると良いでしょう。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;div</span><span>&gt;</span><span>あああ</span><span>あ</span><span>&lt;/div&gt;</span><span>&lt;div&gt;&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>ううう</span><span>う</span><span>&lt;/div&gt;</span><span>&lt;div&gt;&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>おおお</span><span>お</span><span>&lt;/div&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('div:parent').text(</span><span>'</span><span>変更された文字</span><span>列</span><span>');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span><img src="images/00017.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-26"><b>１９</b></span><span><b>．指定した子要素を持つ要素を取得するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>$(</span><span>'</span><span>ある要</span><span>素</span><span>:has</span><span>(</span><span>子要</span><span>素</span><span>)'</span><span>)</span><span>の形式で特定の子要素を持つ要素のみを選択できます。</span></p>
+<p><span>下記サンプルで</span><span>は</span><span>$('div:has(span)'</span><span>)</span><span>で子要素とし</span><span>て</span><span>spa</span><span>n</span><span>を持</span><span>つ</span><span>di</span><span>v</span><span>要素のみを選択しています</span><span>。</span><span>ha</span><span>s</span><span>の子要素はセレクター形式で記述できるの</span><span>で</span><span>I</span><span>D</span><span>値やクラス名などを入れて使用することも可能です。知っていると便利なので覚えておきましょう。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;div</span><span>&gt;</span><span>あああ</span><span>あ</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>いいい</span><span>い</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>ううう</span><span>う</span><span>&lt;span</span><span>&gt;</span><span>子要</span><span>素</span><span>&lt;/span&gt;&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>えええ</span><span>え</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>おおお</span><span>お</span><span>&lt;/div&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('div:has(span)').css('background-color', 'yellow');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span><img src="images/00006.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-27"><b>２０</b></span><span><b>．指定した子要素一つだけの要素を選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>$(</span><span>'</span><span>ある子要</span><span>素</span><span>:only-child'</span><span>)</span><span>でその階層に特定の子要素１つのみしか</span></p>
+<p><span>存在しないという子要素を</span><span>選択できます。</span></p>
+<p><span>下記サンプルで</span><span>は</span><span>$('span:only-child'</span><span>)で</span><span>spa</span><span>n</span><span>要素１つだけ、</span></p>
+<p><span>つまり</span><span>「うううう」</span><span>の</span><span>di</span><span>v</span><span>階層の中にあ</span><span>る</span><span>spa</span><span>n</span><span>要素を選択しています。</span></p>
+<p><span>この例で</span><span>は</span><span>spa</span><span>n</span><span>が２つあったり、他の子要素も同じ階層に混じっていたら</span></p>
+<p><span>選択されないという点に注意して下さい。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;div</span><span>&gt;</span><span>あああ</span><span>あ</span><span>&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>いいい</span><span>い</span><span>&lt;span</span><span>&gt;</span><span>子要</span><span>素</span><span>&lt;/span&gt;&lt;b</span><span>&gt;</span><span>他の要</span><span>素</span><span>&lt;/b&gt;&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>ううう</span><span>う</span><span>&lt;span</span><span>&gt;</span><span>子要</span><span>素</span><span>&lt;/span&gt;&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>えええ</span><span>え</span><span>&lt;span</span><span>&gt;</span><span>子要</span><span>素</span><span>&lt;/span&gt;&lt;span</span><span>&gt;</span><span>子要</span><span>素</span><span>&lt;/span&gt;&lt;/div&gt;</span><span>&lt;div</span><span>&gt;</span><span>おおお</span><span>お</span><span>&lt;/div&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('span:only-child').css('background-color', 'yellow');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00014.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-28"><b>２１．属性の値によって選択要素を絞り込むには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>まず下記の表を見て下さい。</span></p>
+<p>&nbsp;</p>
+<p><span><b>主要な属性フィルタ</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<thead> 
+<tr> 
+<th><b>
+<p><b><span><b>フィルタ</b></span></b></p>
+</b></th> 
+<th><b>
+<p><b><span><b>概要</b></span></b></p>
+</b></th> 
+</tr> 
+</thead> 
+<tbody> 
+<tr> 
+<td>
+<p><span>[</span><span>属性</span><span>名</span><span>]</span></p>
+</td> 
+<td>
+<p><span>指定された属性を持つ要素にマッチ</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>[</span><span>属性名　</span><span>=値</span><span>]</span></p>
+</td> 
+<td>
+<p><span>属性が指定された値に等しい要素にマッチ</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>[</span><span>属性名　!</span><span>=値</span><span>]</span></p>
+</td> 
+<td>
+<p><span>属性が指定された値に等しくない要素にマッチ</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>[</span><span>属性名　^</span><span>=値</span><span>]</span></p>
+</td> 
+<td>
+<p><span>属性値が指定された値で始まる要素にマッチ（前方一致）</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>[</span><span>属性名　$</span><span>=値</span><span>]</span></p>
+</td> 
+<td>
+<p><span>属性値が指定された値で終わる要素にマッチ（後方一致）</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>[</span><span>属性名　*</span><span>=値</span><span>]</span></p>
+</td> 
+<td>
+<p><span>属性値が指定された値を含む要素にマッチ（部分一致）</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>それほど複雑ではないので説明するよりも実際に使われている場面を見たほうが速いです。</span><span>下記サンプルでは</span></p>
+<p><span>$('a[</span><span>href^="http://"]'</span><span>)で</span><span>hre</span><span>f</span><span>属性の値</span><span>が</span><span>http:/</span><span>/</span><span>から始まる要素を選択し、背景色をイエローにしています。</span></p>
+<p><span>$('a[</span><span>href*="ccc"]'</span><span>)で</span><span>hre</span><span>f</span><span>属性の値</span><span>に</span><span>cc</span><span>c</span><span>が含まれる要素を選択し、背景色をピンクにしています。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;a href="http://test.com/"</span><span>&gt;</span><span>あああ</span><span>あ</span><span>&lt;/a&gt;</span><span>&lt;a</span><span>href="test.html"</span><span>&gt;</span><span>いいい</span><span>い</span><span>&lt;/a&gt;</span><span>&lt;a</span><span>href="aaabbbccc.html"</span><span>&gt;</span><span>ううう</span><span>う</span><span>&lt;/a&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('a[href^="http://"]').css('background-color', 'yellow');</span><span>$('a[</span><span>href*="ccc"]').css('background-color', 'pink');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00021.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span>ところで</span><span>、</span><span>$('a[href*="ccc"]'</span><span>)</span><span>ではな</span><span>くa</span><span>を省略し</span><span>て</span><span>$('[href*="ccc"]'</span><span>)</span><span>などと書くことも出来ます。この場合要素が限定さないので</span><span>、</span><span>hre</span><span>f</span><span>属性を持ちその中</span><span>に</span><span>cc</span><span>c</span><span>が含まれる全ての要素が選択されてしまいます。</span></p>
+<p><span>属性フィルタは強力な分意図していない要素まで変更してしまうことも多いので、</span><span>通常はタグ名</span><span>や</span><span>i</span><span>d</span><span>値、クラス名などと併用してある程度範囲を限定して使う方が良いでしょう。</span></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-29"><b>２２．</b></span><span><b>複数の属性フィルタを組み合わせるには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>↑で解説した属性フィルタは複合して使うことが出来ます。</span></p>
+<p><span>下記サンプルで</span><span>は</span><span>hre</span><span>f</span><span>属性が</span><span>「</span><span>http:/</span><span>/</span><span>～」で始まり、かつ、何らか</span><span>の</span><span>targe</span><span>t</span><span>属性を持</span><span>つ</span><span>&lt;a</span><span>&gt;</span><span>タグの背景色だけを変更しています</span><span>。</span><span>$('a[href^="http://"][target]'</span><span>)</span><span>の記述により、</span><span>「a</span><span>要素かつ</span><span>、</span><span>http:/</span><span>/</span><span>から始ま</span><span>る</span><span>hre</span><span>f</span><span>属性を持ち、何らか</span><span>の</span><span>targe</span><span>t</span><span>属性を持つ」という条件に合致する「えええ」が選択されています。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;a href="http://test.com"</span><span>&gt;</span><span>ああ</span><span>あ</span><span>&lt;/a&gt;</span><span>&lt;a</span><span>href="something.html" target="_blank"</span><span>&gt;</span><span>いい</span><span>い</span><span>&lt;/a&gt;</span><span>&lt;a</span><span>href="http://test.com"</span><span>&gt;</span><span>うう</span><span>う</span><span>&lt;/a&gt;</span><span>&lt;a</span><span>href="http://test.com" target="_blank"</span><span>&gt;</span><span>ええ</span><span>え</span><span>&lt;/a&gt;</span><span>&lt;a</span><span>href="http://test.com"</span><span>&gt;</span><span>おお</span><span>お</span><span>&lt;/a&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $('a[href^="http://"][target]').css('background-color', 'yellow');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p><img src="images/00001.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-30"><b>２３．フォーム要素やヘッダー要素を選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>まず下記の表を見てみましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>各フォーム要素フィルタ一覧</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<thead> 
+<tr> 
+<th><b>
+<p><b><span><b>フィルタ</b></span></b></p>
+</b></th> 
+<th><b>
+<p><b><span><b>概要</b></span></b></p>
+</b></th> 
+</tr> 
+</thead> 
+<tbody> 
+<tr> 
+<td>
+<p><span>　</span><span>: input</span></p>
+</td> 
+<td>
+<p><span>すべて</span><span>の</span><span>&lt;input</span><span>&gt;、</span><span>&lt;select</span><span>&gt;、</span><span>&lt;textarea</span><span>&gt;、</span><span>&lt;button</span><span>&gt;</span><span>要素を取得</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>　</span><span>: text</span></p>
+</td> 
+<td>
+<p><span>すべてのテキストボックスを取得</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>　: password</span></p>
+</td> 
+<td>
+<p><span>すべてのパスワード入力ボックスを取得</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>　: radio</span></p>
+</td> 
+<td>
+<p><span>すべてのラジオボタンを取得</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>　: checkbox</span></p>
+</td> 
+<td>
+<p><span>すべてのチェックボックスを取得</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>　: submit</span></p>
+</td> 
+<td>
+<p><span>すべてのサブミット・ボタンを取得</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>　: image</span></p>
+</td> 
+<td>
+<p><span>すべての画像ボタンを取得</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>　: reset</span></p>
+</td> 
+<td>
+<p><span>すべてのリセット・ボタンを取得</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>　: button</span></p>
+</td> 
+<td>
+<p><span>すべてのボタン</span><span>（</span><span>&lt;button</span><span>&gt;、</span><span>&lt;input type="button"</span><span>&gt;</span><span>要素）を取得</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>　</span><span>: file</span></p>
+</td> 
+<td>
+<p><span>すべてのファイル選択ボックスを取得</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>　: hidden</span></p>
+</td> 
+<td>
+<p><span>すべての隠しフィールドと不可視状態にある要素を取得</span><span>（*</span><span>）</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>　</span><span>: header</span></p>
+</td> 
+<td>
+<p><span>&lt;h1</span><span>&gt;、</span><span>&lt;h2</span><span>&gt;</span><span>......などのヘッダ要素を取得</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p><span>※</span><span>　:hidde</span><span>n</span><span>フィルタは</span><span>（</span><span>&lt;input type="hidden"</span><span>&gt;</span><span>）だけではなく、</span></p>
+<p><span>　非表示状態になっている要素にもマッチします。</span><span>ご注意ください。</span></p>
+<p>&nbsp;</p>
+<p><span>下記サンプルは実用例です</span><span>。</span><span>$(':header'</span><span>)</span><span>ではヘッダー要素を選択しており、</span></p>
+<p><span>$(':text[value=</span><span>"</span><span>ああ</span><span>あ</span><span>"]'</span><span>)</span><span>は前節で解説した属性フィルタとの組み合わせ</span><span>で</span><span>valu</span><span>e</span><span>に「あああ」を持つテキストボックスを選択しています。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;h1</span><span>&gt;</span><span>ヘッダー要</span><span>素</span><span>&lt;/h1&gt;</span><span>&lt;input type="text" value=</span><span>"</span><span>ああ</span><span>あ</span><span>"&gt;&lt;br&gt;</span><span>&lt;input type="text" value=</span><span>"</span><span>いい</span><span>い</span><span>"&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $(':header').css('text-decoration', 'underline');</span><span>$(':text[value=</span><span>"</span><span>ああ</span><span>あ</span><span>"]').css('background-color', 'Red');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p id="calibre_link-31"><img src="images/00008.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-32"><b>２４．特定の状態の要素のみを選択するには？</b></span></p>
+<p>&nbsp;</p>
+<p><span>まずは下記の表を見てみましょう。</span></p>
+<p>&nbsp;</p>
+<p><span><b>各表示状態フィルタの一覧</b></span></p>
+ 
+<table cellspacing="0" cellpadding="0" border="1"> 
+<thead> 
+<tr> 
+<th><b>
+<p><b><span><b>フィルタ</b></span></b></p>
+</b></th> 
+<th><b>
+<p><b><span><b>概要</b></span></b></p>
+</b></th> 
+</tr> 
+</thead> 
+<tbody> 
+<tr> 
+<td>
+<p><span>　</span><span>: hidden</span></p>
+</td> 
+<td>
+<p><span>非表示状態にある要素を取得</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>　: visible</span></p>
+</td> 
+<td>
+<p><span>表示状態にある要素を取得</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>　: enabled</span></p>
+</td> 
+<td>
+<p><span>利用可能な状態にある要素を取得</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>　: disabled</span></p>
+</td> 
+<td>
+<p><span>利用不可の状態にある要素を取得</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>　: checked</span></p>
+</td> 
+<td>
+<p><span>チェック済みの要素を取得</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>　: selected</span></p>
+</td> 
+<td>
+<p><span>選択状態にある要素を取得</span></p>
+</td> 
+</tr> 
+<tr> 
+<td>
+<p><span>　: animated</span></p>
+</td> 
+<td>
+<p><span>アニメーション中の要素を取得</span></p>
+</td> 
+</tr> 
+</tbody> 
+</table>
+<p>&nbsp;</p>
+<p><span>下記サンプルは前節で解説したフォーム要素フィルタと</span></p>
+<p><span>この節で登場した表示状態フィルタを組み合わせて利用した例です。</span></p>
+<p><span>$(':hidden').show(3000)</span><span>;</span><span>は</span><span>、</span><span>style="display:none</span><span>"</span><span>で非表示状態にされている</span></p>
+<p><span>隠されていたヘッダー要素</span><span>を</span><span>300</span><span>0</span><span>ミリ秒</span><span>（3</span><span>秒）掛けてじわじわと表示させています。</span></p>
+<p><span>$(':</span><span>text:disabled'</span><span>)</span><span>は</span><span>、</span><span>disabled="disabled</span><span>"</span><span>などとなっている入力不可なテキストボックスを選択します</span><span>。</span><span>$(':checkbox:checked').css('box-shadow', '2px 2px 8px blue')</span><span>;</span><span>はチェックされているチェックボックスを選択し、それに青い影をつけています。</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;html&gt;</span><span>&lt;body&gt;</span><span>&lt;h1 style="display:none"</span><span>&gt;</span><span>隠されていたヘッダー要</span><span>素</span><span>&lt;/h1&gt;</span><span>&lt;input type="text" value=</span><span>"</span><span>ああ</span><span>あ</span><span>" disabled="disabled"&gt;&lt;br&gt;</span><span>&lt;input type="checkbox" checked="checked"&gt;</span></p>
+<p><span> &lt;script&gt;</span><span>$(function(){</span></p>
+<p><span> $(':hidden').show(3000);</span><span>$(':text:disabled').css('background-color', 'red');</span><span>$(':</span><span>checkbox:checked').css('box-shadow', '2px 2px 8px blue');</span><span>});</span><span>&lt;/script&gt;</span><span>&lt;/body&gt;</span><span>&lt;/html&gt;</span></p>
+<p id="calibre_link-33"><img src="images/00018.jpeg" alt="" /></p>
+<p>&nbsp;</p>
+<p><span id="calibre_link-34"><b>セレクターの</b></span><span><b>まとめ</b></span></p>
+<p>&nbsp;</p>
+<p><span>下記はこれまで学習してきたセレクターを実践した際の早見表です。</span></p>
+<p><span>これらを活用して快適なセレクターライフを送って下さい！</span></p>
+<p>&nbsp;</p>
+<p><span>&lt;</span><span>セレクターまとめ　&gt;</span></p>
+<p><span>$("body")</span><span>bod</span><span>y</span><span>要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$</span><span>("</span><span>#id</span><span>1"</span><span>)</span><span>I</span><span>D</span><span>名　id</span><span>1</span><span>の要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$</span><span>("</span><span>.class</span><span>1"</span><span>)</span><span>CLAS</span><span>S</span><span>名　class</span><span>1</span><span>の要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$</span><span>("</span><span>.class1 .class</span><span>2"</span><span>)</span><span>CLAS</span><span>S</span><span>名　class</span><span>1</span><span>の要素の中にあ</span><span>る</span><span>CLAS</span><span>S</span><span>名　class</span><span>2</span><span>の要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$</span><span>("</span><span>.class3, .class</span><span>4"</span><span>)</span><span>CLAS</span><span>S</span><span>名　class</span><span>3</span><span>、もしく</span><span>は</span><span>CLAS</span><span>S</span><span>名　class</span><span>4</span><span>の要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$</span><span>("</span><span>.class</span><span>5","</span><span>#id</span><span>1"</span><span>)</span><span>I</span><span>D</span><span>名　id</span><span>1</span><span>の要素の中にあ</span><span>る</span><span>CLAS</span><span>S</span><span>名　class</span><span>5</span><span>の要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$</span><span>("</span><span>.class6.class</span><span>7"</span><span>)</span><span>CLAS</span><span>S</span><span>名　class</span><span>6</span><span>と　class7</span><span>2</span><span>つ持つ要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$("a[href]")</span><span>a</span><span>タグ</span><span>の</span><span>hre</span><span>f</span><span>属性がある要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$("a[href = '#pagetop']")</span><span>a</span><span>タグ</span><span>の</span><span>hre</span><span>f</span><span>属性の値が</span><span>「</span><span>#pageto</span><span>p</span><span>」の要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$("a[href != '#pagetop']")</span><span>a</span><span>タグ</span><span>の</span><span>hre</span><span>f</span><span>属性の値が</span><span>「</span><span>#pageto</span><span>p</span><span>」でない要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$("a[href ^= '#link']")</span><span>a</span><span>タグ</span><span>の</span><span>hre</span><span>f</span><span>属性の値が</span><span>「</span><span>#lin</span><span>k</span><span>」から始まる要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$("a[href $= 'bottom']")</span><span>a</span><span>タグ</span><span>の</span><span>hre</span><span>f</span><span>属性の値が</span><span>「</span><span>botto</span><span>m</span><span>」で終わる要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$("a[href *= 'page']")</span><span>a</span><span>タグ</span><span>の</span><span>hre</span><span>f</span><span>属性の値に</span><span>「</span><span>pag</span><span>e</span><span>」が含まれている要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$("ul li:first")</span><span>すべて</span><span>の</span><span>u</span><span>l</span><span>タグ内をあわせ</span><span>た</span><span>l</span><span>i</span><span>タグの中の最初の要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$("ul li:first-child")</span><span>各</span><span>u</span><span>l</span><span>タグ内にあるそれぞれ</span><span>の</span><span>l</span><span>i</span><span>タグの最初の要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$("ul li:last")</span><span>すべて</span><span>の</span><span>u</span><span>l</span><span>タグ内をあわせ</span><span>た</span><span>l</span><span>i</span><span>タグの中の最後の要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$("ul li:last-child")</span><span>各</span><span>u</span><span>l</span><span>タグ内にあるそれぞれ</span><span>の</span><span>l</span><span>i</span><span>タグの最後の要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$</span><span>('</span><span>li:not</span><span>("</span><span>.class</span><span>6")'</span><span>)</span><span>l</span><span>i</span><span>タグ</span><span>で</span><span>CLAS</span><span>S</span><span>名　class</span><span>6</span><span>が指定されていない要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>＜階層の活用例（応用編）＞</span></p>
+<p>&nbsp;</p>
+<p><span>$</span><span>("</span><span>#id</span><span>1"</span><span>).find</span><span>("</span><span>.class</span><span>7"</span><span>)</span><span>I</span><span>D</span><span>名　id</span><span>1</span><span>の要素の中にあ</span><span>る</span><span>CLAS</span><span>S</span><span>名　class</span><span>7</span><span>の要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$</span><span>("</span><span>u</span><span>l"</span><span>).children</span><span>("</span><span>.class</span><span>6"</span><span>)</span><span>u</span><span>l</span><span>タグ　の子要素にある　CLAS</span><span>S</span><span>名　class</span><span>6</span><span>の要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$</span><span>("</span><span>li.class</span><span>6"</span><span>).parent()</span><span>CLAS</span><span>S</span><span>名　class</span><span>6</span><span>があ</span><span>る</span><span>l</span><span>i</span><span>タグを持つ親要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$</span><span>("</span><span>li.class</span><span>6"</span><span>).parent</span><span>("</span><span>#id</span><span>1"</span><span>)</span><span>CLAS</span><span>S</span><span>名　class</span><span>6</span><span>があ</span><span>る</span><span>l</span><span>i</span><span>タグを持つ親要素</span><span>で</span><span>I</span><span>D</span><span>名　id</span><span>1</span><span>の要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$</span><span>("</span><span>li.class</span><span>6"</span><span>).next()</span><span>CLAS</span><span>S</span><span>名　class</span><span>6</span><span>があ</span><span>る</span><span>l</span><span>i</span><span>タグに隣接する弟要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$</span><span>("</span><span>li.class</span><span>6"</span><span>).next</span><span>("</span><span>.class</span><span>7"</span><span>)</span><span>CLAS</span><span>S</span><span>名　class</span><span>6</span><span>があ</span><span>る</span><span>l</span><span>i</span><span>タグに隣接する弟要素の中</span><span>で</span><span>CLAS</span><span>S</span><span>名　class</span><span>7</span><span>の要素であれば選択</span></p>
+<p><span>(</span><span>それ以外であれば選択しな</span><span>い</span><span>)</span></p>
+<p><span>$</span><span>("</span><span>li.class</span><span>7"</span><span>).prev()</span><span>CLAS</span><span>S</span><span>名　class</span><span>7</span><span>があ</span><span>る</span><span>l</span><span>i</span><span>タグに隣接する兄要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$</span><span>("</span><span>li.class</span><span>7"</span><span>).next</span><span>("</span><span>.class</span><span>6"</span><span>)</span><span>CLAS</span><span>S</span><span>名　class</span><span>7</span><span>があ</span><span>る</span><span>l</span><span>i</span><span>タグに隣接する兄要素の中</span><span>で</span><span>CLAS</span><span>S</span><span>名　class</span><span>6</span><span>の要素であれば選択</span></p>
+<p><span>(</span><span>それ以外であれば選択しな</span><span>い</span><span>)</span></p>
+<p><span>$("a[href ^= '#link']").closest("li")</span><span>a</span><span>タグ</span><span>の</span><span>hre</span><span>f</span><span>属性の値が</span><span>「</span><span>#lin</span><span>k</span><span>」から始まる要素の最も近</span><span>い</span><span>l</span><span>i</span><span>タ</span><span>グ(</span><span>親要</span><span>素)</span><span>を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$</span><span>("</span><span>l</span><span>i"</span><span>).slice</span><span>("</span><span>3,1</span><span>2"</span><span>)</span><span>すべて</span><span>の</span><span>l</span><span>i</span><span>タグをあわせ</span><span>た0</span><span>から数え</span><span>て3</span><span>個目か</span><span>ら</span><span>1</span><span>2</span><span>個目までの間の要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$("li").find("a").css({color: 'white'}).end()</span><span>l</span><span>i</span><span>タグ内にあ</span><span>るa</span><span>タグにスタイルを追加した後、直前の要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$</span><span>("</span><span>l</span><span>i"</span><span>).not</span><span>("</span><span>li.class</span><span>6"</span><span>)</span><span>すべて</span><span>の</span><span>l</span><span>i</span><span>タグ</span><span>で</span><span>CLAS</span><span>S</span><span>名　class</span><span>6</span><span>が指定されていない要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$("a[href *= 'middle']").first()</span><span>a</span><span>タグ</span><span>の</span><span>hre</span><span>f</span><span>属性の値に</span><span>「</span><span>middl</span><span>e</span><span>」が含まれている一番最初にある要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$("a[href *= 'middle']").last()</span><span>a</span><span>タグ</span><span>の</span><span>hre</span><span>f</span><span>属性の値に</span><span>「</span><span>middl</span><span>e</span><span>」が含まれている一番最後にある要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$("p").siblings()</span><span>p</span><span>タグの兄弟要素を選択</span></p>
+<p>&nbsp;</p>
+<p><span>$("p").siblings("p")</span><span>p</span><span>タグの兄弟要素の中</span><span>でp</span><span>タグの要素を選択</span></p>
+</div>
+</div>
+
+
+
+
+<script>function myFunction(){document.getElementById("tateyoko").classList.toggle("tateread")}</script></body></html>

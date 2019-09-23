@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>はじめての駅すぱあとWebサービス 駅データ、経路検索のWebAPI</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/mainday.css" title="default">
+<link rel="alternate stylesheet" href="/css/mainnight.css" title="alternate">
+<script type="text/javascript" src="/js/styleswitcher.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+</head>
+<body>
+<div class="novelpage">
+<div class="novelbody">
+<div id="tateyoko">
+<div id="_top"></div>
+<a href="/">🏠</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('default'); return false;">日</a>&emsp;
+<a href="#" onclick="setActiveStyleSheet('alternate'); return false;">月</a>&emsp;
+<a href="#_top" onclick="myFunction()" style="cursor: pointer;">縦書き／横書き</a>
+<div id="calibre_link-29">
+<div>
+<div>
+<table class="noveltitle">
+<tr>
+<td colspan="2"><i><span><i>はじめての駅すぱあとWebサービス 駅データ、経路検索のWebAPI</i></span></i></td>
+</tr>
+<tr>
+                    
+                    
+      </tr>
+<tr>
+<td colspan="2">丸山 ひかる &amp; 見川 孝太</td>
+</tr>
+<tr>
+<td colspan="2">GitBook (2018)</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+</tr>
+</table>
+<div></div>
+</div>
+<div></div>
+</div>
+</div>
+
+
+
+<div id="calibre_link-52">
+<div>
+<div><div></div>
+<h1>目次</h1>
+<ol>
+<li value="1">
+<span>
+<a href="#calibre_link-53">はじめに</a>
+<span>1.1</span>
+</span>
+</li>
+<li value="2">
+<span>
+<a href="#calibre_link-3">駅すぱあとWebサービスとは？</a>
+<span>1.2</span>
+</span>
+</li>
+<li value="3">
+<span>
+<a href="#calibre_link-9">アプリケーションを作ってみよう</a>
+<span>1.3</span>
+</span>
+</li>
+<li value="4">
+<span>
+<a href="#calibre_link-54">APIの解説</a>
+<span>1.4</span>
+</span>
+<ol>
+<li value="1">
+<span>
+<a href="#calibre_link-55">APIのリクエストURLを理解する</a>
+<span>1.4.1</span>
+</span>
+</li>
+<li value="2">
+<span>
+<a href="#calibre_link-56">レスポンスのデータフォーマット</a>
+<span>1.4.2</span>
+</span>
+</li>
+<li value="3">
+<span>
+<a href="#calibre_link-57">APIの詳しい仕様</a>
+<span>1.4.3</span>
+</span>
+</li>
+</ol>
+</li>
+<li value="5">
+<span>
+<a href="#calibre_link-58">さいごに</a>
+<span>1.5</span>
+</span>
+</li>
+<li value="6">
+<span>
+<a href="#calibre_link-59">付録</a>
+<span>1.6</span>
+</span>
+<ol>
+<li value="1">
+<span>
+<a href="#calibre_link-60">開発を始める前に</a>
+<span>1.6.1</span>
+</span>
+</li>
+<li value="2">
+<span>
+<a href="#calibre_link-61">開発お役立ちツール</a>
+<span>1.6.2</span>
+</span>
+<ol>
+<li value="1">
+<span>
+<a href="#calibre_link-62">APIの仕様理解を深める「API Checker」</a>
+<span>1.6.2.1</span>
+</span>
+</li>
+<li value="2">
+<span>
+<a href="#calibre_link-10">オススメのブラウザ拡張機能</a>
+<span>1.6.2.2</span>
+</span>
+</li>
+<li value="3">
+<span>
+<a href="#calibre_link-45">開発者ツールを使いこなす</a>
+<span>1.6.2.3</span>
+</span>
+</li>
+</ol>
+</li>
+<li value="3">
+<span>
+<a href="#calibre_link-63">リンク集</a>
+<span>1.6.3</span>
+</span>
+</li>
+<li value="4">
+<span>
+<a href="#calibre_link-64">特別付録！スタンダードプラン10%OFFクーポンコード</a>
+<span>1.6.4</span>
+</span>
+</li>
+</ol>
+</li>
+<li value="7">
+<span>
+<a href="#calibre_link-65">プロフィール</a>
+<span>1.7</span>
+</span>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-66">
+<div><div></div>
+<div><div></div>
+<h1 id="calibre_link-72">はじめに</h1>
+<p>本書を手にとっていただいているということは「駅すぱあと」<sup>
+<a id="calibre_link-68" href="#calibre_link-67">1</a>
+</sup>
+ をご存知でしょうか？ 少なくとも興味があると考えて良いでしょうか？ もちろん駅すぱあとが何かなんて知らないという方もいらっしゃるでしょう。 そんな方のために、この「はじめに」があります。 すでにご存知の方は次のページをめくっていただいても問題ありません。 「駅すぱあと」とは、1988年に誕生した経路探索ソフトです。 昨今ではスマホアプリで乗り換えを調べる際などに利用されている方もいるのではないでしょうか。 個人向けと思われがちなこの駅すぱあとですが、経路を調べる以外にも様々な機能を備え、多くの企業やアプリケーションで長く使われている歴史があります。 本書は、その駅すぱあとの提供形態の１つであるWebAPIの入門書となります。 利用を検討されたり、興味を持たれたりした際に本書がお役にたてば幸いです。</p>
+<div></div>
+<h2 id="calibre_link-73">脚注</h2>
+<blockquote id="calibre_link-67">
+<sup>1</sup>
+ . 「駅すぱあと」とは<a href="https://ekiworld.net/about/index.html" target="_blank">https://ekiworld.net/about/index.html</a>
+<a title="Jump back to footnote [1] in the text." href="#calibre_link-68">↩</a>
+</blockquote>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-15">
+<div><div></div>
+<div><div></div>
+<h1 id="calibre_link-74">駅すぱあとWebサービスとは？</h1>
+<p>「駅すぱあとWebサービス」とは、駅すぱあとの提供形態の１つです。これまでSDK<sup>
+<a id="calibre_link-21" href="#calibre_link-16">1</a>
+</sup>
+ やイントラネット<sup>
+<a id="calibre_link-22" href="#calibre_link-17">2</a>
+</sup>
+ などで提供してきた駅すぱあとの機能をWebAPIとして提供しています。 WebAPIとして提供することで、自身の環境でのインストールや環境構築、データの更新やスケールなど従来の様々な付帯作業を気にする必要がなくなります。</p>
+<p>様々なサービスがみなさんの価値ある仕事に集中するために用意されているように、駅すぱあとWebサービスも極力「必要だけれども差別化要因にはならないこと」を無くすよう作られています。</p>
+<p>また、実際にコードを書くエンジニアの方に使いやすいサービスであるべく、法人向けの有償プランだけではなく個人で無料で使えるプラン<sup>
+<a id="calibre_link-23" href="#calibre_link-18">3</a>
+</sup>
+ を用意したり、APIのドキュメント<sup>
+<a id="calibre_link-24" href="#calibre_link-19">4</a>
+</sup>
+ をWebで一般公開したり、サンプルコード<sup>
+<a id="calibre_link-25" href="#calibre_link-20">5</a>
+</sup>
+ をGithubで公開したりしています。我々の会社のプロダクトのバックエンドとして利用されることも多く、内外での実績に支えられています。 少し技術的な話をすると、各APIはREST(Representational State Transfer)ベースで提供されており、XMLまたはJSONでの結果取得が可能です。HTTPが利用可能な言語であれば特別なライブラリ等を使わずに実装が可能です。</p>
+<p>ちなみに機能にはどういったものがあるのでしょうか？ドキュメントを元に列挙してみました。</p>
+<ul>
+<li>探索</li>
+<li>駅の情報</li>
+<li>路線の情報</li>
+<li>会社の情報</li>
+<li>運賃計算操作</li>
+<li>時刻表</li>
+<li>路線図</li>
+<li>鉄道運行情報</li>
+</ul>
+<p>これは抜粋ですが、さらにこのカテゴリ以下に様々なAPIがありその数は40を超えます。すべての機能を駆使すれば、iOS/Androidで提供されているような乗り換えのためのアプリを作成することだって可能です。次項からは、そのための準備を含めて解説していきます。</p>
+<div></div>
+<h2 id="calibre_link-75">脚注</h2>
+<blockquote id="calibre_link-16">
+<sup>1</sup>
+ . 駅すぱあとSDK/ネットワークSDK<a href="https://ekiworld.net/service/sier/sdk/index.html" target="_blank">https://ekiworld.net/service/sier/sdk/index.html</a>
+<a title="Jump back to footnote [1] in the text." href="#calibre_link-21">↩</a>
+</blockquote>
+<blockquote id="calibre_link-17">
+<sup>2</sup>
+ . 駅すぱあとイントラネットVer.2<a href="https://ekiworld.net/service/sier/intranet/index.html" target="_blank">https://ekiworld.net/service/sier/intranet/index.html</a>
+<a title="Jump back to footnote [2] in the text." href="#calibre_link-22">↩</a>
+</blockquote>
+<blockquote id="calibre_link-18">
+<sup>3</sup>
+ . 駅すぱあとWebサービス フリープラン<a href="https://ekiworld.net/service/lp/webservice/" target="_blank">https://ekiworld.net/service/lp/webservice/</a>
+<a title="Jump back to footnote [3] in the text." href="#calibre_link-23">↩</a>
+</blockquote>
+<blockquote id="calibre_link-19">
+<sup>4</sup>
+ . 駅すぱあとWebサービス 開発者向けドキュメント<a href="http://docs.ekispert.com/v1/" target="_blank">http://docs.ekispert.com/v1/</a>
+<a title="Jump back to footnote [4] in the text." href="#calibre_link-24">↩</a>
+</blockquote>
+<blockquote id="calibre_link-20">
+<sup>5</sup>
+ . HTML5インターフェースサンプル<a href="https://github.com/EkispertWebService/GUI" target="_blank">https://github.com/EkispertWebService/GUI</a>
+<a title="Jump back to footnote [5] in the text." href="#calibre_link-25">↩</a>
+</blockquote>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-38">
+<div><div></div>
+<div><div></div>
+<h1 id="calibre_link-76">アプリケーションを作ってみよう</h1>
+<p>それでは、ここからは簡単なWebアプリケーションを例に実際の開発の流れを見て行きましょう。一緒に手を動かしながら読み進めていただくと、より理解が深まります。</p>
+<p>入力された文字列から駅を確定し、経路探索を行い結果を表示する簡単なWebアプリケーションを作ります。</p>
+<p><img src="images/000008.jpg" alt="img" />
+</p>
+<p>実装するアプリケーション画面イメージ</p>
+<p>駅すぱあとWebサービスには、無料で使える「フリープラン」<sup>
+<a id="calibre_link-46" href="#calibre_link-39">1</a>
+</sup>
+ と、全ての機能が使える「スタンダードプラン」<sup>
+<a id="calibre_link-47" href="#calibre_link-40">2</a>
+</sup>
+ の2つのプランがあります。 今回はフリープランで使える機能を用いてアプリケーションを作成します。</p>
+<p>駅すぱあとWebサービスをご利用いただくにはアクセスキー<sup>
+<a id="calibre_link-48" href="#calibre_link-41">3</a>
+</sup>
+ が必要ですが、本書をお読みいただいている皆さまがその場で試していただけるようにアクセスキーを用意しました。</p>
+<p>書籍限定 お試し用アクセスキー：<strong>LE_EeMdKVHwJQSen</strong>
+<br />
+※ フリープランの機能をお試しいただけるアクセスキーです。</p>
+<p>では早速実装にうつります。</p>
+<p>
+<code>index.html</code>
+ など、適当なファイルを作成し、HTMLをリスト1のように入力します。</p>
+<p>Webアプリケーションをサクッと動かすのに便利なツール「JS Bin」<sup>
+<a id="calibre_link-49" href="#calibre_link-42">4</a>
+</sup>
+ 、「JSFiddle」<sup>
+<a id="calibre_link-50" href="#calibre_link-43">5</a>
+</sup>
+ などをご利用いただくのも手です。</p>
+<p>▼リスト1 HTMLソースコード</p>
+<pre>
+<code>
+<span>&lt;!DOCTYPE html&gt;</span>
+
+
+<span>&lt;<span>html</span>
+
+&gt;</span>
+
+
+<span>&lt;<span>head</span>
+
+&gt;</span>
+
+
+<span>&lt;<span>meta</span>
+<span>charset</span>
+
+=<span>"utf-8"</span>
+
+&gt;</span>
+
+
+<span>&lt;<span>meta</span>
+<span>name</span>
+
+=<span>"viewport"</span>
+<span>content</span>
+
+=<span>"width=device-width"</span>
+
+&gt;</span>
+
+
+<span>&lt;<span>title</span>
+
+&gt;</span>
+
+駅すぱあとWebサービス 経路探索サンプルアプリ<span>&lt;/<span>title</span>
+
+&gt;</span>
+
+
+<span>&lt;<span>script</span>
+<span>src</span>
+
+=<span>"https://cdn.rawgit.com/EkispertWebService/GUI/84587/expGuiStation/expGuiStation.js"</span>
+
+&gt;</span>
+<span>&lt;/<span>script</span>
+
+&gt;</span>
+
+
+<span>&lt;<span>script</span>
+<span>src</span>
+
+=<span>"https://cdn.rawgit.com/EkispertWebService/GUI/84587/expGuiCourseLight/expGuiCourseLight.js"</span>
+
+&gt;</span>
+<span>&lt;/<span>script</span>
+
+&gt;</span>
+
+
+<span>&lt;<span>link</span>
+<span>rel</span>
+
+=<span>"stylesheet"</span>
+<span>href</span>
+
+=<span>"https://cdn.rawgit.com/EkispertWebService/GUI/84587/expGuiStation/expCss/expGuiStation.css"</span>
+
+ /&gt;</span>
+
+
+<span>&lt;/<span>head</span>
+
+&gt;</span>
+
+
+<span>&lt;<span>script</span>
+
+&gt;</span>
+<span>
+<span>var</span>
+
+ accessKey =<span>"LE_EeMdKVHwJQSen"</span>
+
+;<span>// お試し用のアクセスキー</span>
+
+
+<span>var</span>
+
+ depStationApp;
+<span>var</span>
+
+ arrStationApp;
+<span>var</span>
+
+ courseLight;
+
+<span>
+<span>function</span>
+<span>init</span>
+
+()</span>
+
+{
+  depStationApp =<span>new</span>
+
+ expGuiStation(<span>document</span>
+
+.getElementById(<span>"depStation"</span>
+
+));
+  depStationApp.setConfigure(<span>"key"</span>
+
+, accessKey);
+  depStationApp.setConfigure(<span>"ssl"</span>
+
+,<span>true</span>
+
+);
+  depStationApp.dispStation();
+
+  arrStationApp =<span>new</span>
+
+ expGuiStation(<span>document</span>
+
+.getElementById(<span>"arrStation"</span>
+
+));
+  arrStationApp.setConfigure(<span>"key"</span>
+
+, accessKey);
+  arrStationApp.setConfigure(<span>"ssl"</span>
+
+,<span>true</span>
+
+);
+  arrStationApp.dispStation();
+
+  courseLight =<span>new</span>
+
+ expGuiCourseLight();
+  courseLight.setConfigure(<span>"key"</span>
+
+, accessKey);
+  courseLight.setConfigure(<span>"ssl"</span>
+
+,<span>true</span>
+
+);
+}
+
+<span>// 探索ボタンの動作</span>
+
+
+<span>window</span>
+
+.onload =<span>
+<span>function</span>
+
+()</span>
+
+{
+<span>var</span>
+
+ search =<span>document</span>
+
+.getElementById(<span>'search'</span>
+
+);
+  search.addEventListener(<span>'click'</span>
+
+, (e) =&gt; {
+
+<span>// 候補を閉じる</span>
+
+
+    depStationApp.closeStationList();
+    arrStationApp.closeStationList();
+
+<span>var</span>
+
+ searchObj = courseLight.createSearchInterface();
+
+<span>// 出発着の設定</span>
+
+
+    searchObj.setFrom(depStationApp.getStationCode());
+    searchObj.setTo(arrStationApp.getStationCode());
+
+<span>// 探索を実行</span>
+
+
+    courseLight.search(searchObj,<span>
+<span>function</span>
+
+(<span>isSuccess</span>
+
+)</span>
+
+{
+<span>if</span>
+
+ (!isSuccess) {
+        alert(<span>"探索結果が取得できませんでした"</span>
+
+);
+      }<span>else</span>
+
+ {
+<span>document</span>
+
+.getElementById(<span>"ekispertUrl"</span>
+
+).textContent =<span>"駅すぱあと for web の探索結果を表示する"</span>
+
+;
+<span>document</span>
+
+.getElementById(<span>"ekispertUrl"</span>
+
+).href = courseLight.getResourceURI();
+      }
+    });
+  })
+};
+
+<span>window</span>
+
+.addEventListener(<span>'load'</span>
+
+, init);
+
+</span>
+<span>&lt;/<span>script</span>
+
+&gt;</span>
+
+
+<span>&lt;<span>body</span>
+
+&gt;</span>
+
+
+<span>&lt;<span>div</span>
+
+&gt;</span>
+
+
+  出発地
+<span>&lt;<span>div</span>
+<span>id</span>
+
+=<span>"depStation"</span>
+
+&gt;</span>
+<span>&lt;/<span>div</span>
+
+&gt;</span>
+
+
+<span>&lt;/<span>div</span>
+
+&gt;</span>
+
+
+<span>&lt;<span>div</span>
+
+&gt;</span>
+
+
+  目的地
+<span>&lt;<span>div</span>
+<span>id</span>
+
+=<span>"arrStation"</span>
+
+&gt;</span>
+<span>&lt;/<span>div</span>
+
+&gt;</span>
+
+
+<span>&lt;/<span>div</span>
+
+&gt;</span>
+
+
+<span>&lt;<span>button</span>
+<span>id</span>
+
+=<span>"search"</span>
+
+&gt;</span>
+
+探索<span>&lt;/<span>button</span>
+
+&gt;</span>
+
+
+<span>&lt;<span>a</span>
+<span>id</span>
+
+=<span>"ekispertUrl"</span>
+<span>href</span>
+
+=<span>""</span>
+<span>target</span>
+
+=<span>"_blank"</span>
+
+&gt;</span>
+<span>&lt;/<span>a</span>
+
+&gt;</span>
+
+
+<span>&lt;/<span>body</span>
+
+&gt;</span>
+
+
+<span>&lt;/<span>html</span>
+
+&gt;</span>
+
+
+</code>
+</pre>
+<p>コードの中身を見ると、<code>&lt;script src="https://cdn.rawgit.com/EkispertWebService/GUI/84587/expGuiStation/expGuiStation.js"&gt;&lt;/script&gt;</code>
+ など、いくつかの外部ファイルをインクルードしていますが、これは「HTML5インターフェースサンプル」<sup>
+<a id="calibre_link-51" href="#calibre_link-44">6</a>
+</sup>
+ です。 HTML5インターフェースサンプルとは、HTMLとJavaScript、CSSで実装された画面をサンプルとして提供しているものです。</p>
+<p>ファイルに入力し終えたら、ファイルをブラウザで開いてください。 駅が検索でき、経路探索結果のURLが表示されるアプリケーションができました。</p>
+<p><img src="images/000005.jpg" alt="img" />
+</p>
+<p>アプリケーション実行結果</p>
+<p></p>
+<div><div></div>
+<div>
+<p>アプリケーションが意図した挙動にならなかったら、ブラウザが提供する「開発者ツール」を使ってデバッグしましょう。 「開発者ツール」と聞いてピンとこない方は、本書付録の「<a href="#calibre_link-45">開発者ツールを使いこなす</a>
+ 」をご参考にしてください。</p>
+</div>
+</div>
+<p></p>
+<div></div>
+<h2 id="calibre_link-77">脚注</h2>
+<blockquote id="calibre_link-39">
+<sup>1</sup>
+ . 駅すぱあとWebサービス フリープラン<a href="https://ekiworld.net/service/lp/webservice/" target="_blank">https://ekiworld.net/service/lp/webservice/</a>
+<a title="Jump back to footnote [1] in the text." href="#calibre_link-46">↩</a>
+</blockquote>
+<blockquote id="calibre_link-40">
+<sup>2</sup>
+ . 駅すぱあとWebサービス スタンダードプラン<a href="https://ekiworld.net/service/sier/webservice/index.html" target="_blank">https://ekiworld.net/service/sier/webservice/index.html</a>
+<br />
+※ スタンダードプランは法人のお客様のみご利用いただけます。<a title="Jump back to footnote [2] in the text." href="#calibre_link-47">↩</a>
+</blockquote>
+<blockquote id="calibre_link-41">
+<sup>3</sup>
+ . Webから申し込みいただくことで、アクセスキーを取得できます。<br />
+フリープラン:<a href="https://ekiworld.net/free_provision/index.php" target="_blank">https://ekiworld.net/free_provision/index.php</a>
+<br />
+スタンダードプラン:<a href="https://ekiworld.net/trial/index.php?case=6" target="_blank">https://ekiworld.net/trial/index.php?case=6</a>
+<a title="Jump back to footnote [3] in the text." href="#calibre_link-48">↩</a>
+</blockquote>
+<blockquote id="calibre_link-42">
+<sup>4</sup>
+ . JS Bin<a href="https://jsbin.com/" target="_blank">https://jsbin.com/</a>
+<a title="Jump back to footnote [4] in the text." href="#calibre_link-49">↩</a>
+</blockquote>
+<blockquote id="calibre_link-43">
+<sup>5</sup>
+ . JSFiddle<a href="https://jsfiddle.net/" target="_blank">https://jsfiddle.net/</a>
+<a title="Jump back to footnote [5] in the text." href="#calibre_link-50">↩</a>
+</blockquote>
+<blockquote id="calibre_link-44">
+<sup>6</sup>
+ . HTML5インターフェースサンプル<a href="https://github.com/EkispertWebService/GUI" target="_blank">https://github.com/EkispertWebService/GUI</a>
+<a title="Jump back to footnote [6] in the text." href="#calibre_link-51">↩</a>
+</blockquote>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-31">
+<div><div></div>
+<div><div></div>
+<h1 id="calibre_link-78">APIの解説</h1>
+<p>ここまでで、駅すぱあとWebサービスを使ったアプリケーションを実装しました。 では、アプリケーション内ではどんな内容のリクエストを送信し、APIからどのようなデータが返却されているのでしょうか？ こちらの項目では、駅簡易情報API(/station/light)<sup>
+<a id="calibre_link-33" href="#calibre_link-32">1</a>
+</sup>
+ を例に詳しく解説します。</p>
+<div></div>
+<h2 id="calibre_link-79">脚注</h2>
+<blockquote id="calibre_link-32">
+<sup>1</sup>
+ . 駅簡易情報API<a href="http://docs.ekispert.com/v1/le/api/station/light.html" target="_blank">http://docs.ekispert.com/v1/le/api/station/light.html</a>
+<a title="Jump back to footnote [1] in the text." href="#calibre_link-33">↩</a>
+</blockquote>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-7">
+<div><div></div>
+<div><div></div>
+<h2 id="calibre_link-80">APIのリクエストURLを理解する</h2>
+<p>次のURLをブラウザでアクセスしてみてください。</p>
+<pre>
+<code>https://api.ekispert.jp/v1/xml/station/light?name=渋谷&amp;type=train&amp;key=LE_EeMdKVHwJQSen
+</code>
+</pre>
+<p><img src="images/000007.jpg" alt="img" />
+</p>
+<p>ブラウザでURLを開いた時の画面（XML）</p>
+<p></p>
+<div><div></div>
+<div>
+<p>リスト3のようなレスポンスが表示された場合は、アクセスキーが間違っている可能性があります。今一度、アクセスキーをお確かめください。</p>
+<p>▼リスト3 403エラーのレスポンス例</p>
+<pre>
+<code>
+<span>
+<span>&lt;?</span>
+
+xml version=<span>"1.0"</span>
+
+ encoding=<span>"UTF-8"</span>
+<span>?&gt;</span>
+</span>
+
+
+<span>&lt;<span>ResultSet</span>
+<span>apiVersion</span>
+
+=<span>"1.27.0.0"</span>
+<span>engineVersion</span>
+
+=<span>""</span>
+
+&gt;</span>
+
+
+<span>&lt;<span>Error</span>
+<span>code</span>
+
+=<span>"W403"</span>
+
+&gt;</span>
+
+
+<span>&lt;<span>Message</span>
+
+&gt;</span>
+
+認証エラー<span>&lt;/<span>Message</span>
+
+&gt;</span>
+
+
+<span>&lt;/<span>Error</span>
+
+&gt;</span>
+
+
+<span>&lt;/<span>ResultSet</span>
+
+&gt;</span>
+
+
+</code>
+</pre>
+</div>
+</div>
+<p></p>
+<p>何気なくアクセスしたURLは、APIのバージョン、レスポンスのデータフォーマット、APIの機能、そして、クエリパラメータで構成されています。</p>
+<p><img src="images/000004.jpg" alt="img" />
+</p>
+<p>APIのリクエストURL構成</p>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-28">
+<div><div></div>
+<div><div></div>
+<h2 id="calibre_link-81">レスポンスのデータフォーマット</h2>
+<p>駅すぱあとWebサービスのレスポンスはXMLまたはJSONで取得可能です。 データフォーマット部分を「xml」と指定すればXMLが、「json」と指定すればJSONのフォーマットでデータが返ってきます。</p>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-8">
+<div><div></div>
+<div><div></div>
+<h2 id="calibre_link-82">APIの詳しい仕様</h2>
+<p>駅簡易情報API(/station/light)は、「<a href="#calibre_link-9">アプリケーションを作ってみよう</a>
+ 」で作成したアプリケーションの駅入力フォームの裏側で利用されている機能です。以下のURLにアクセスします。</p>
+<pre>
+<code>https://api.ekispert.jp/v1/json/station/light?name=渋谷&amp;type=train&amp;key=LE_EeMdKVHwJQSen
+</code>
+</pre>
+<p></p>
+<div><div></div>
+<div>
+<p>ブラウザでJSONのレスポンスデータを見たときに、改行が無く見づらいと感じたら、ブラウザが提供する「ブラウザ拡張機能」を利用してみてください。 本書付録の「<a href="#calibre_link-10">オススメのブラウザ拡張機能</a>
+ 」をご参考にしてください。</p>
+<p><img src="images/000000.jpg" alt="img" />
+</p>
+<p>ブラウザでURLを開いた時の画面（JSON、ブラウザ拡張機能無し）</p>
+<p><img src="images/000002.jpg" alt="img" />
+</p>
+<p>ブラウザでURLを開いた時の画面（JSON、ブラウザ拡張機能有り）</p>
+</div>
+</div>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>候補文字列から駅検索を行うためのパラメータです。</td>
+</tr>
+<tr>
+<td>type</td>
+<td>駅の交通種別を指定するパラメータです。</td>
+</tr>
+</tbody>
+</table>
+<p><img src="images/000009.jpg" alt="img" />
+</p>
+<p>レスポンスデータの解説</p>
+<p>駅すぱあとが持つ駅には、「駅コード」<sup>
+<a id="calibre_link-13" href="#calibre_link-11">1</a>
+</sup>
+ と呼ばれるユニークな値が振られています。駅コードは、駅名変更などに関わらず基本的に不変ですので、保存を前提とした利用は駅コードの利用が推奨されます。「都道府県コード」<sup>
+<a id="calibre_link-14" href="#calibre_link-12">2</a>
+</sup>
+ とは、駅すぱあとWebサービスで定める都道府県に紐づいたコードです。</p>
+<div></div>
+<h2 id="calibre_link-83">脚注</h2>
+<blockquote id="calibre_link-11">
+<sup>1</sup>
+ . 駅コード<a href="http://docs.ekispert.com/v1/le/dictionary/station-code/" target="_blank">http://docs.ekispert.com/v1/le/dictionary/station-code/</a>
+<a title="Jump back to footnote [1] in the text." href="#calibre_link-13">↩</a>
+</blockquote>
+<blockquote id="calibre_link-12">
+<sup>2</sup>
+ . 都道府県コード<a href="http://docs.ekispert.com/v1/le/dictionary/prefecture-code/" target="_blank">http://docs.ekispert.com/v1/le/dictionary/prefecture-code/</a>
+<a title="Jump back to footnote [2] in the text." href="#calibre_link-14">↩</a>
+</blockquote>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-2">
+<div><div></div>
+<div><div></div>
+<h1 id="calibre_link-84">さいごに</h1>
+<p>ここまで、サンプルコードを利用した簡単なアプリケーション作成と基本的なAPIの解説を紹介しましたがいかがでしょうか？ 「<a href="#calibre_link-3">駅すぱあとWebサービスとは？</a>
+ 」でも書きましたが、本サービスには他にも多くの機能<sup>
+<a id="calibre_link-5" href="#calibre_link-4">1</a>
+</sup>
+ があります。ですが、基本的な使い方、サンプルコードの再利用の方法はここまでに解説した通りです。みなさんが本サービスを気に入ってくださり、新たなアイデアや効率化などを発想していただけたら著者としてはこれに勝る喜びはありません。</p>
+<div></div>
+<h2 id="calibre_link-85">脚注</h2>
+<blockquote id="calibre_link-4">
+<sup>1</sup>
+ . API一覧<a href="http://docs.ekispert.com/v1/api/#api%E4%B8%80%E8%A6%A7" target="_blank">http://docs.ekispert.com/v1/api/#api%E4%B8%80%E8%A6%A7</a>
+<a title="Jump back to footnote [1] in the text." href="#calibre_link-5">↩</a>
+</blockquote>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-0">
+<div><div></div>
+<div><div></div>
+<h1 id="calibre_link-86">付録</h1>
+<p>本書は駅すぱあとWebサービスの入門書として、流れを追いながら学習できるように書きました。 まずは余計なことを考えずに触ってもらいたいという思いもあり、注意点等は最低限に抑えました。 ここで改めて開発時に特に注意すべき点や開発に役立つ情報を「付録」という形で用意しました。</p>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-35">
+<div><div></div>
+<div><div></div>
+<h2 id="calibre_link-87">開発を始める前に</h2>
+<h3 id="calibre_link-88">レスポンスXMLのデータ構造について</h3>
+<p>JSONを使われる方は流して読む程度で構いませんが、XMLを使おうと考えている方は注意して読んで頂ければと思います。 駅すぱあとWebサービスでは後方互換性を保って機能追加が行われていますが、互換性維持のために幾つかのポイントを意識する必要があります。</p>
+<p>特に重要なのが、要素の取得についてです。 要素は表す内容に対してユニークですが、階層や全体のデータの中でユニークなわけではありません。 例えばStation要素は駅を表しますが、全体のデータ構造に対して、あらたに駅を表現する必要があれば、今までなかった階層や親要素の子要素として出現する可能性があります。 つまり、現時点でのデータ構造のみを前提とした相対パスでの実装は大きな危険を伴います。 同じStationでも親子関係における文脈の意味が強くでるため、必ず絶対パスで取得するようにしてください。 XMLを利用する際には、XMLパーサを利用することが多いかと思いますが、DOMでパースしてXPATHを利用する際には手軽に相対パスで取得できてしまうため、注意が必要です。</p>
+<h3 id="calibre_link-89">課金の対象を知る</h3>
+<p>フリープランをご利用いただく場合は読み飛ばしていただいて構いません。</p>
+<p>スタンダードプランでは、多くのAPIが用意されていますが、その中にも課金対象となるものとそうでないものがあります。 意図せず無駄な課金が発生してしまい、想定していたよりも費用が掛かってしまうのは望むところではありません。 特に良くあるのが、「<a href="#calibre_link-9">アプリケーションを作ってみよう</a>
+ 」の項にもある駅の入力補助をインクリメンタルサーチで実装するケースです。 実装には駅情報API(/station)を用いるように見えますが、駅情報API(/station)は課金対象です。 コール数が多くなるインクリメンタルサーチに利用するのは現実的ではありません。 そのために課金対象外のAPIとして駅簡易情報API(/station/light)を用意しています。 駅簡易情報API(/station/light)は駅情報API(/station)のサブセットのような扱いになっており、駅の座標等を持っていないので課金対象外となっています。 インクリメンタルサーチの結果に必要なのは名称やコードなのでこのような実装には駅簡易情報API(/station/light)で十分です。 駅簡易情報API(/station/light)以外にも経路を検索するまでに必要な操作は基本的に課金対象外として用意してありますので、結果を得る過程で不要な課金を避けることができます。</p>
+<p>いかがでしょうか？他にも注意点はありますが、全てドキュメント<sup>
+<a id="calibre_link-37" href="#calibre_link-36">1</a>
+</sup>
+ に記載されていますので開発を始める際にはご一読ください。</p>
+<div></div>
+<h2 id="calibre_link-90">脚注</h2>
+<blockquote id="calibre_link-36">
+<sup>1</sup>
+ . 利用上の注意<a href="http://docs.ekispert.com/v1/get-started/attention/" target="_blank">http://docs.ekispert.com/v1/get-started/attention/</a>
+<a title="Jump back to footnote [1] in the text." href="#calibre_link-37">↩</a>
+</blockquote>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-27">
+<div><div></div>
+<div><div></div>
+<h2 id="calibre_link-91">開発お役立ちツール</h2>
+<p>駅すぱあとWebサービスを使って開発をする上で、実際に著者が活用しているツールをご紹介します。</p>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-69">
+<div><div></div>
+<div>
+<h3 id="calibre_link-92">APIの仕様理解を深める「API Checker」</h3>
+<p>駅すぱあとWebサービスのドキュメントサイトでは、APIを試すのにぴったりなツール「API Chercker」<sup>
+<a id="calibre_link-71" href="#calibre_link-70">1</a>
+</sup>
+ を用意しています。これは、APIの仕様を調べるだけではなく、APIをインタラクティブに呼び出し挙動を試すことができるため、APIの理解を深めることができます。</p>
+<p><img src="images/000001.jpg" alt="img" />
+</p>
+<p>ドキュメントサイトで用意しているAPI Checkerの画面</p>
+<div></div>
+<h2 id="calibre_link-93">脚注</h2>
+<blockquote id="calibre_link-70">
+<sup>1</sup>
+ . API Checker<br />
+スタンダードプラン:<a href="http://docs.ekispert.com/v1/tools/api-checker/" target="_blank">http://docs.ekispert.com/v1/tools/api-checker/</a>
+<br />
+フリープラン:<a href="http://docs.ekispert.com/v1/le/tools/api-checker/" target="_blank">http://docs.ekispert.com/v1/le/tools/api-checker/</a>
+<a title="Jump back to footnote [1] in the text." href="#calibre_link-71">↩</a>
+</blockquote>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-26">
+<div><div></div>
+<div>
+<h3 id="calibre_link-94">オススメのブラウザ拡張機能</h3>
+<p>「ブラウザ拡張機能」とは、ブラウザの機能を拡張するためのプログラムです。 「プラグイン」とも呼ばれることがありますが、本書では「ブラウザ拡張機能」と表記します。</p>
+<p>ブラウザ拡張機能のインストール方法や管理方法は割愛し、WebAPIを使って開発する上で便利なGoogle Chromeのブラウザ拡張機能を紹介します。 ここでは、Google Chromeのブラウザ拡張機能を紹介しますが、他のブラウザでも類似するブラウザ拡張機能を提供していると思いますので、探してみてください。</p>
+<h4 id="calibre_link-95">・JSON Formatter</h4>
+<p><img src="images/000012.jpg" alt="img" />
+</p>
+<p>JSONデータがブラウザで見やすくなるブラウザ拡張機能です。WebAPIのレスポンスをブラウザで確認する時に活用します。</p>
+<p>
+<a href="https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa" target="_blank">https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa</a>
+</p>
+<h4 id="calibre_link-96">・XML Tree</h4>
+<p><img src="images/000013.jpg" alt="img" />
+</p>
+<p>XMLデータがブラウザで見やすくなるブラウザ拡張機能です。さらに、XPathでXMLデータからデータを抽出することもできます。</p>
+<p>
+<a href="https://chrome.google.com/webstore/detail/xml-tree/gbammbheopgpmaagmckhpjbfgdfkpadb" target="_blank">https://chrome.google.com/webstore/detail/xml-tree/gbammbheopgpmaagmckhpjbfgdfkpadb</a>
+</p>
+<h4 id="calibre_link-97">・ウェブページ全体をスクリーンショット - FireShot</h4>
+<p>ページ全体をスクリーンショット出来るブラウザ拡張機能です。 実装するアプリケーションのレビューなどで活用できます。</p>
+<p>
+<a href="https://chrome.google.com/webstore/detail/take-webpage-screenshots/mcbpblocgmgfnpjjppndjkmgjaogfceg" target="_blank">https://chrome.google.com/webstore/detail/take-webpage-screenshots/mcbpblocgmgfnpjjppndjkmgjaogfceg</a>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-1">
+<div><div></div>
+<div>
+<h3 id="calibre_link-98">開発者ツールを使いこなす</h3>
+<p>今回実装したアプリケーションのように、JavaScriptを使ってブラウザ上で動くアプリケーションを作るなら、「開発者ツール」を使いこなしましょう。開発速度がグッとあがるはずです。 開発者ツールとは、ブラウザに搭載されているデバッグツールです。「デベロッパーツール」とも呼ばれることがありますが、本書では「開発者ツール」と表記します。 現在だとほぼ全てのブラウザで標準搭載されており、Windowsの場合は「F12」、Macの場合は「Option + Command + i」で起動できます。</p>
+<p><img src="images/000003.jpg" alt="img" />
+</p>
+<p>ブラウザ上で開発者ツールを立ち上げた状態（Google Chrome）</p>
+<p>ここからは、Google Chromeを例に説明します。</p>
+<p>開発者ツールの「Console」パネルは、JavaScriptのデバッグに役立ちます。 アプリケーションが意図しない挙動をしている時は、まずConsoleパネルでエラーが発生していないか確認しましょう。</p>
+<p><img src="images/000011.jpg" alt="img" />
+</p>
+<p>開発者ツールのConsoleパネル（Javascriptコード内でシンタックスエラーが発生している場面）</p>
+<p>「Network」パネルは、表示しているページで行うHTTP通信が一覧として現れ、リクエスト、レスポンスの内容やアクセスの状況を見ることができます。つまり、駅すぱあとWebサービスへのアクセスに成功しているか、どんなやりとりがされているか確認できます。</p>
+<p><img src="images/000006.jpg" alt="img" />
+</p>
+<p>開発者ツールのNetworkパネル</p>
+<p>詳細な使い方に関してもっと知りたくなったかと思いますが、インターネット上にたくさんの情報が公開されているので、ここでは割愛します。 興味を持って探求することはエンジニアとしてのスキルアップに繋がるはずです。ぜひ調べてみてください。</p>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-30">
+<div><div></div>
+<div><div></div>
+<h2 id="calibre_link-99">リンク集</h2>
+<h4 id="calibre_link-100">・駅すぱあとWebサービス 製品ページ</h4>
+<p>駅すぱあとWebサービスの情報はこちらにまとまっています。<br />
+<a href="https://ekiworld.net/service/sier/webservice/index.html" target="_blank">https://ekiworld.net/service/sier/webservice/index.html</a>
+</p>
+<h4 id="calibre_link-101">・駅すぱあとWebサービス 開発者向けドキュメント</h4>
+<p>APIの仕様や開発に役立つ多くの情報を載せています。<br />
+<a href="http://docs.ekispert.com/v1/" target="_blank">http://docs.ekispert.com/v1/</a>
+</p>
+<h4 id="calibre_link-102">・HTML5インターフェースサンプル</h4>
+<p>HTMLとJavaScript、CSSで実装された画面をサンプルとして提供しているものです。<br />
+<a href="https://github.com/EkispertWebService/GUI" target="_blank">https://github.com/EkispertWebService/GUI</a>
+</p>
+<h4 id="calibre_link-103">・駅すぱあとWebサービス Facebookページ</h4>
+<p>駅すぱあとWebサービスに関しての最新の情報を配信しています。<br />
+<a href="https://www.facebook.com/EkispertWebService/" target="_blank">https://www.facebook.com/EkispertWebService/</a>
+</p>
+<h4 id="calibre_link-104">・ステータスページ</h4>
+<p>駅すぱあとWebサービスの稼働状況をご覧いただけます。<br />
+<a href="http://status.api.ekispert.jp/" target="_blank">http://status.api.ekispert.jp/</a>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-6">
+<div><div></div>
+<div><div></div>
+<h2 id="calibre_link-105">特別付録！スタンダードプラン10%OFFクーポンコード</h2>
+<p>本書の出版を記念して、スタンダードプランの初期費用が10%OFFとなるクーポンコードを期間限定で発行いたします。 駅すぱあとWebサービスがお得に始められるのは、2018年12月末までです。 この機会にぜひご利用ください。</p>
+<p>クーポンコード：<strong>EBOOKEKIWEB</strong>
+</p>
+<p>ご契約時に、弊社営業担当に上記クーポンコードをお伝えください。 スタンダードプランの初期費用から10%割引させていただきます。</p>
+<p>ヴァル研究所から直接お見積書及びお申込書をご提示する場合にのみ適用いたします。</p>
+<p>本キャンペーンは2018年12月末まで有効です。</p>
+</div>
+</div>
+</div>
+
+
+<div id="calibre_link-34">
+<div><div></div>
+<div><div></div>
+<h1 id="calibre_link-106">プロフィール</h1>
+<h4 id="calibre_link-107">丸山 ひかる（まるやま ひかる）</h4>
+<p>株式会社ヴァル研究所</p>
+<p>2014年に株式会社ヴァル研究所にエンジニアとして新卒入社。 入社して間もなく経路検索WebAPI「駅すぱあとWebサービス」の開発部署へ配属。 新機能の開発や保守、基盤の改修などに携わる。 開発だけではなくお客様とのやりとりや、ドキュメントの改善活動を通してデベロッパーリレーションに興味をもち、テクニカルエバンジェリストとなる。 現在はエンジニアと、自社サービスをつなぐべく積極的に活動中。</p>
+<h4 id="calibre_link-108">見川 孝太（みかわ こうた）</h4>
+<p>株式会社ヴァル研究所</p>
+<p>2000年に株式会社ヴァル研究所入社。 イントラネット版やモバイル携帯公式などのプロジェクトを経て、経路検索WebAPI「駅すぱあとWebサービス」の立ち上げに中心メンバーとして関わる。 現在は「駅すぱあとWebサービス」の開発部 部長。 オンプレの苦い経験からAWSに魅せられ、AWSの社内普及活動を行う。 2013年には世界最大のAWSユーザグループ・JAWS-UGの中央線支部を立ち上げから運営を担当。 「AWS Summit」などにも登壇する。</p>
+</div>
+</div>
+</div>
+
+
+<script>function myFunction(){document.getElementById("tateyoko").classList.toggle("tateread")}</script></body></html>
