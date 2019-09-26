@@ -413,6 +413,7 @@ font-family:Palatino;
 }
 
 .tateread {
+background-color: #fff;
 writing-mode: vertical-rl;
 font-size: 1.18em;
 max-height:90vh;
@@ -445,6 +446,7 @@ font-family: "Meiryo";
 }
 
 .novelpage {
+background-color: #fff;    
 margin: 0 auto;
 font-size: 1.18em;
 max-width:52em;
