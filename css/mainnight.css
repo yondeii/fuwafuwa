@@ -303,6 +303,7 @@ grid-area: series;
 font-size: 0.75em;
 }
 .pagination {
+margin-top:1em;
 width:100%;
 display: flex;
 align-items: center;
