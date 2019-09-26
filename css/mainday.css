@@ -3,7 +3,7 @@ max-height:1000000px;
 }
 
 body {
-background-color: #f8f8f8;
+background-color: #fff;
 font-family: "Libre Franklin","Helvetica Neue",helvetica,arial,sans-serif;
 font-size: 100%;
 line-height: 1.63;
@@ -14,6 +14,9 @@ color: rgb(37, 37, 37);
 margin:0;
 }
 
+.bodydiv{
+background-color: #f8f8f8;
+}
 @media screen and (max-width: 750px) {
 .modechange {
 display: flex;
