@@ -3,7 +3,7 @@ max-height:1000000px;
 }
 
 body {
-background-color: rgb(34, 34, 34);
+background-color: #222222;
 font-family: "Libre Franklin","Helvetica Neue",helvetica,arial,sans-serif;
 font-size: 100%;
 line-height: 1.63;
@@ -14,44 +14,36 @@ color: rgb(217, 217, 217);
 margin:0;
 }
 
-@media screen and (max-width: 750px) {
-.modechange {
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 3vw;
-height:2.5em;
-}
-}
 
-@media screen and (min-width: 750px) {
+
 .modechange {
+background-color: #4a4b50;
 display: flex;
 align-items: center;
 justify-content: center;
-font-size: 1.5em;
+font-size: 2em;
 font-weight:100;
 letter-spacing: 0.115em;
 height:2.5em;
-}
-}
-
-.modechange {
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+box-shadow: 0 2px 5px 0 rgba(14,30,37,.12);
 }
 
 .modechange a {
+font-family:"Hiragino Kaku Gothic Pro";
 margin: 0;
 padding:1em 0.5em;
-color: rgb(164, 164, 164);
+color: rgb(245, 245, 245);
 font-size:1.1em;
 font-weight:100;
 letter-spacing: 0.115em;
+transition: 0.25s;
 }
 
 .modechange a:hover {
+background-color: #222222;
 color: rgb(245, 245, 245);
-font-weight:300;
+font-weight:500;
+text-decoration:none;
 }
 
 
@@ -76,8 +68,6 @@ z-index:-9999;
 max-height:50vh;
 margin-top:5vh;
 margin-bottom:10vh;
-padding: 5px;
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 img {
@@ -364,6 +354,12 @@ background-color: #171616;
 padding:3px 7px 3px 7px;
 margin-left:2px;
 margin-top:5px;
+border-radius: 2px;
+transition: 0.12s;
+}
+
+.frontpages a:hover {
+background-color: #4a4b50;
 }
 
 .themeheading {

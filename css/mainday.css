@@ -15,45 +15,36 @@ margin:0;
 }
 
 .bodydiv{
-background-color: #f8f8f8;
-}
-@media screen and (max-width: 750px) {
-.modechange {
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 3vw;
-height:2.5em;
-}
+background-color: #fdfdfd;
 }
 
-@media screen and (min-width: 750px) {
 .modechange {
-background-color: #fff;
+background-color: #004488;
 display: flex;
 align-items: center;
 justify-content: center;
-font-size: 1.5em;
+font-size: 2em;
 font-weight:100;
 letter-spacing: 0.115em;
 height:2.5em;
 box-shadow: 0 2px 5px 0 rgba(14,30,37,.12);
 }
-}
 
 .modechange a {
+font-family:"Hiragino Kaku Gothic Pro";
 margin: 0;
 padding:1em 0.5em;
-color: rgb(72, 69, 69);
+color: rgb(255, 255, 255);
 font-size:1.1em;
 font-weight:100;
 letter-spacing: 0.115em;
+transition: 0.25s;
 }
 
 .modechange a:hover {
-color: rgb(28, 28, 28);
-text-decoration:underline rgb(28, 28, 28);
+background-color:#fdfdfd;
 font-weight:500;
+text-decoration:none;
 }
 
 .brush {
@@ -86,7 +77,6 @@ z-index:-9999;
 max-height:50vh;
 margin-top:5vh;
 margin-bottom:10vh;
-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
 }
 
 img {
@@ -376,17 +366,18 @@ justify-content: center;
 }
 .frontpages a {
 display:inline-block;
-padding:3px 7px 3px 7px;
+padding:3px 10px 3px 10px;
 margin-left:2px;
 margin-top:5px;
 box-shadow: 0 2px 2px 0 rgba(14,30,37,.12);
 border-radius: 2px;
-transition: 0.22s;
+transition: 0.12s;
 }
 
 .frontpages a:hover {
-background-color: #f2f2f2;
+background-color: #97c9fb;
 text-decoration:none;
+box-shadow:inset 0 2px 2px 0 rgba(14,30,37,.12);
 }
   
 .themeheading {
