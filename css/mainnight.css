@@ -231,16 +231,27 @@ border-radius: 8px;
 .gallery a {
 background-color: #171616;
 display:inline-block;
+border-radius: 2px;
+transition: 0.15s;
 margin: 5px;
 padding:2px;
-border: 1px solid #302e2e;
 }
 
+
+.gallery a:hover {
+color: rgb(72, 69, 69);
+background-color: #f8f8f8;
+}
 .item-1 {
 grid-area: cover;
 height:220px;
 width:155px;
 margin-bottom:4px;
+}
+.item-1 a {
+margin: 0;
+padding:0;
+border:none;
 }
 .item-1 img {
 grid-area: cover;
